@@ -157,32 +157,34 @@ In this task, you will update release tasks.
 1.  On the lab computer, switch to the browser window displaying the **Controlling Deployments using Release Gates** project in the Azure DevOps portal, in the vertical navigational pane, select **Pipelines** and then, within the **Pipelines** section, click **Releases**. 
 1.  Within the **Releases** view, on the **PartsUnlimited-CD** pane, click **Edit**.
 
-    > **Note**: The pipeline contains two environments named **Canary Environment** and **Production**. 
+    > **Note**: The pipeline contains two stages named **Canary Environment** and **Production**. 
 
-1.  Within the **Canary Environments** stage, click the **1 job, 2 tasks** label.
+1.  On the **Pipeline** tab, in the **Artifacts** rectangle, click the **Continuous deployment trigger** button in the top right corner of the **PartsUnlimited-CI** build artifact.
+2.  If the continuous deployment trigger for the **PartsUnlimited-CI** build is disabled, toggle the switch to enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner. 
+3.  Within the **Canary Environments** stage, click the **1 job, 2 tasks** label.
 
     > **Note**: The canary environment has 2 tasks which, respectively, publish the package to Azure Web App and enable continuous monitoring of the application after deployment. 
 
-1.  On the **All pipelines > PartsUnlimited-CD** pane, ensure that the **Canary Environment** stage is selected. In the **Azure subscription** dropdown list, select your Azure subscription and click **Authorize**. If prompted, authenticate by using the user account with the Owner role in the Azure subscription.
-1.  In the **App Service name** dropdown list, select the name of the **Canary** web app.
-1.  In the **Resource Group and Application Insights** dropdown list, select the **az400m10l01-RG** entry.
-1.  In the **Application Insights resource name** dropdown list, select the name of the **Canary** Application Insights resource, which should match the name of the **Canary** web app. 
-1.  On the **All pipelines > PartsUnlimited-CD** pane, click the **Tasks** tab and, in the dropdown list, select **Production**.
-1.  With the **Production** stage selected, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **Canary Environment** stage and click **Authorize**. 
-1.  In the **App Service name** dropdown list, select the name of the **Prod** web app.
-1.  On the **All pipelines > PartsUnlimited-CD** pane, click **Save** and, in the **Save** dialog box, click **OK**.
-1.  On the **Pipelines** pane, click the entry representing **PartsUnlimited-CI** build pipeline and then, on the **PartsUnlimited-CI** pane, click on **Run Pipeline**. 
-1.  On the **Run pipeline** pane, accept the default settings and click **Run** to trigger the pipeline.
+4.  On the **All pipelines > PartsUnlimited-CD** pane, ensure that the **Canary Environment** stage is selected. In the **Azure subscription** dropdown list, select your Azure subscription and click **Authorize**. If prompted, authenticate by using the user account with the Owner role in the Azure subscription.
+5.  In the **App Service name** dropdown list, select the name of the **Canary** web app.
+6.  In the **Resource Group and Application Insights** dropdown list, select the **az400m10l01-RG** entry.
+7.  In the **Application Insights resource name** dropdown list, select the name of the **Canary** Application Insights resource, which should match the name of the **Canary** web app. 
+8.  On the **All pipelines > PartsUnlimited-CD** pane, click the **Tasks** tab and, in the dropdown list, select **Production**.
+9.  With the **Production** stage selected, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **Canary Environment** stage and click **Authorize**. 
+10. In the **App Service name** dropdown list, select the name of the **Prod** web app.
+11. On the **All pipelines > PartsUnlimited-CD** pane, click **Save** and, in the **Save** dialog box, click **OK**.
+12. On the **Pipelines** pane, click the entry representing **PartsUnlimited-CI** build pipeline and then, on the **PartsUnlimited-CI** pane, click on **Run Pipeline**. 
+13. On the **Run pipeline** pane, accept the default settings and click **Run** to trigger the pipeline.
 
     > **Note**: After the build succeeds, the release will be triggered automatically and the application will be deployed to both the environments.
 
-1.  In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **PartsUnlimited-CD** pane, click the entry representing the most recent release.
+14. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **PartsUnlimited-CD** pane, click the entry representing the most recent release.
 
-1.  On the **PartsUnlimited-CD > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully. 
-1.  Switch to the Azure portal interface, navigate to the resource group **az400m10l01-RG**, in the list of resources, click the **Canary** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
-1.  Close the web browser tab displaying the **Parts Unlimited** web site.
-1.  Switch to the Azure portal interface, navigate back to the resource group **az400m10l01-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
-1.  Close the web browser tab displaying the **Parts Unlimited** web site.
+15. On the **PartsUnlimited-CD > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully. 
+16. Switch to the Azure portal interface, navigate to the resource group **az400m10l01-RG**, in the list of resources, click the **Canary** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
+17. Close the web browser tab displaying the **Parts Unlimited** web site.
+18. Switch to the Azure portal interface, navigate back to the resource group **az400m10l01-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
+19. Close the web browser tab displaying the **Parts Unlimited** web site.
 
     > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Gates in the release pipeline.
 
@@ -208,11 +210,11 @@ In this task, you will configure pre-deployment gates.
 
 1.  On the **Pre-deployment conditions** pane, expand the **Evaluation options** section and configure the following options:
 
-- Set the value of **Time between re-evaluation of gates** to **5 Minutes**.
+    - Set the value of **Time between re-evaluation of gates** to **5 Minutes**.
 
     > **Note**: **Time between re-evaluation of gates** represents the time interval between each evaluation of all the gates. At each sampling interval, new requests are sent concurrently to each gate for fresh results. The sampling interval must be greater than the longest typical response time of any configured gate to allow time for all responses to be received.
 
-- Set the value of **Timeout after which gates fail** to **8 Minutes**.
+    - Set the value of **Timeout after which gates fail** to **8 Minutes**.
 
     > **Note**: **Timeout after which gates fail** represents the maximum evaluation period for all gates. The deployment will be rejected if the timeout is reached before all gates succeed during the same sampling interval. The minimum value we can specify for timeout is 6 minutes and 5 minutes for the sampling interval.
 
@@ -223,6 +225,18 @@ In this task, you will configure pre-deployment gates.
 1.  On the **Pre-deployment conditions** pane, select **On successful gates, ask for approvals** radio button.
 1.  Close the **Pre-deployment conditions** pane, by clicking the **x** mark in its upper right corner.
 
+1.  For the **Query Work Items** gate to work, the **Project Build Service** requires Read permission for the Azure Board queries.
+1.  In the Azure DevOps portal, in the vertical navigational pane, hover the mouse pointer over **Boards** hold down the **Ctrl** key and click **Queries** to open a separate browser tab with the **Queries** pane.
+1.  On the **Queries** pane of the **Boards** view, click **All** to get a list of all queries.
+1.  Right-click the folder **Shared Queries** and select **Security...** to open the pane **Permissions for Shared Queries**.
+1.  On the **Permissions for Shared Queries** pane, into the field **Search for users or groups**, type or paste **Controlling Deployments using Release Gates Build Service** ([Project Name] Build Service) and click the one found identity.
+
+    > **Note**: The user **Controlling Deployments using Release Gates Build Service** has to be searched for like described above, it does not already appear as a member of the **Users** list. Don't confuse the user **Project Collection Build Service** with **Project Build Service**.
+
+1.  Select the user **Controlling Deployments using Release Gates Build Service** in the **Users** list and on the right hand site set the **Read** permission to **Allow**.
+1.  Close the **Permissions for Shared Queries** pane, by clicking the **x** mark in its upper right corner.
+1.  Navigate back to the browser tab where the release pipeline is still open.
+   
 #### Task 2: Configuring post-deployment gates
 
 In this task, you will enable the post-deployment gate for the Canary Environment.
@@ -293,3 +307,4 @@ In this task, you will make a minor change in the application code, commit the u
 ## Review
 
 In this lab, you configured release pipelines and then configured and tested release gates. 
+
