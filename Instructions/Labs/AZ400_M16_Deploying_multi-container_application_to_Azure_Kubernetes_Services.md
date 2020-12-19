@@ -175,8 +175,6 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
 1. Close the Cloud Shell pane.
 
-1. In the Azure portal, open the SQL DB **mhcdb**, Click on “Set server Firewall” and enable “Allow Azure services …” option, and change it to **Yes**.
-
 #### Task 2: Configure the build and release pipelines
 
 In this task, you will configure the build and release pipelines in the Azure DevOps project you generated earlier in this lab, by mapping Azure resources, including the AKS cluster and Azure Container registry to the build and release definitions.
