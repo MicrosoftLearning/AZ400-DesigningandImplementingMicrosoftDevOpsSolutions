@@ -35,23 +35,23 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization. 
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -61,7 +61,7 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -390,6 +390,31 @@ In this task, you will use Application Insights to investigate performance of th
     > **Note**: This will trigger a server error since that category does not exist. Refresh the page a few times to generate more errors.
 
 1.  After about five minutes, check your email account to verify that you have received an email indicating that the alert you defined was triggered.
+
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m17l01')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m17l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 

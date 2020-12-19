@@ -21,7 +21,7 @@ After you complete this lab, you will be able to:
 
 ## Lab duration
 
--   Estimated time: **60 minutes**
+-   Estimated time: **45 minutes**
 
 ## Instructions
 
@@ -31,18 +31,18 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization. 
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -52,7 +52,7 @@ In this exercise, you will set up the prerequisite for the lab, which consists o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -74,11 +74,10 @@ In this exercise, you will create a basic build pipeline from a template, track 
 
 In this task, you will create and configure a build pipeline by using a predefined template.
 
-1.  If needed, start a web browser, navigate to your Azure DevOps organization, and open the **Enabling Continuous Integration with Azure Pipelines** project you generated in the previous exercise. 
+1.  In the web browser displaying your Azure DevOps organization with the **Enabling Continuous Integration with Azure Pipelines** project you generated in the previous exercise, in the vertical navigational pane, select the **Pipelines** section and ensure that the **Pipelines** view is displayed.
 
     > **Note**: Alternatively, you can access the project page directly by navigating to the [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Enabling%20Continuous%20Integration%20with%20Azure%20Pipelines) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name. 
 
-1.  In the web browser window displaying your project settings in the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines** section and ensure that the **Pipelines** view is displayed.
 1.  On the **Pipelines** pane, hover the mouse pointer over the entry representing the existing **PartsUnlimitedE2E** pipeline to reveal the ellipsis symbol on the right side.
 1.  Click the ellipsis and, in the dropdown menu, click **Edit**.
 

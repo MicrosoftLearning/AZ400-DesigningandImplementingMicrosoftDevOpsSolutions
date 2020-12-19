@@ -34,18 +34,18 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
-    
+Identify the applications that you'll use in this lab:
+  
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -55,7 +55,7 @@ In this exercise, you will set up the prerequisite for the lab, which consists o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -69,7 +69,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  On the **Create New Project** page, click **Navigate to project**.
 
-### Exercise 1: Agile Project Management
+### Exercise 1: Manage Agile project
 
 In this exercise, you will use Azure Boards to perform a number of common agile planning and portfolio management tasks, including management of teams, areas, iterations, work items, sprints and capacity, customizing Kanban boards, defining dashboards, and customizing team processes.
 
@@ -79,7 +79,7 @@ In this task, you will create a new team and configure its area and iterations.
 
 Each new project is configured with a default team, which name matches the project name. You have the option of creating additional teams. Each team can be granted access to a suite of Agile tools and team assets. The ability to create multiple teams gives you the flexibility to choose the proper balance between autonomy and collaboration across the enterprise. 
 
-1.  In a web browser navigate to your Azure DevOps organization and open the **Agile Planning and Portfolio Management with Azure Boards** project you generated in the previous exercise. 
+1.  Verify that the web browser displays your Azure DevOps organization with the **Agile Planning and Portfolio Management with Azure Boards** project you generated in the previous exercise. 
 
     > **Note**: Alternatively, you can access the project page directly by navigating to the [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Agile%20Planning%20and%20Portfolio%20Management%20with%20Azure%20Boards) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name. 
 
@@ -175,7 +175,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 1.  On the **NEW TASK** panel, click **Save & Close**.
 1.  Repeat the last five steps to add another task named **Optimize data query for most recent tutorials**. Set its **Remaining Work** to **3** and its **Activity** to **Design**. Click **Save & Close** once completed.
 
-#### Task 3: Managing sprints and capacity
+#### Task 3: Manage sprints and capacity
 
 In this task, you will step through common sprint and capacity management tasks.
 
@@ -251,7 +251,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: The task associated with **Development** is now green and very easy to identify.
 
-#### Task 4: Customizing Kanban boards
+#### Task 4: Customize Kanban boards
 
 In this task, you will step through the process of customizing Kanban boards.
 
@@ -312,7 +312,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     > **Note**: As your team updates the status of work as it progresses from one stage to the next, it helps that they agree on what **done** means. By specifying the **Definition of done** criteria for each Kanban column, you help share the essential tasks to complete before moving an item into a downstream stage. 
 
-1.  On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **Passes \*\*all\*\* tests.**. 
+1.  On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **Passes \*\*all\*\* tests**. 
 1.  On the **Settings** panel, click **Save and close**.
 
     > **Note**: The **QA Approved** stage now has **Doing** and **Done** columns. You can also click the informational symbol (with letter **i** in a circle) next to the column header to read the **Definition of done**.
@@ -328,7 +328,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     > **Note**: If you would like to review a more sophisticated board with many more work items, on the **Board** tab of the **Boards** panel, in the upper left corner, select **PUL-Web** and, in the dropdown list of teams, select the **Agile Planning and Portfolio Management with Azure Boards Team**. This board provides a playground for you to experiment with and review the results.
 
-#### Task 5: Defining dashboards
+#### Task 5: Define dashboards
 
 In this task, you will step through the process of creating dashboards and their core components.
 
@@ -363,7 +363,7 @@ Dashboards allow teams to visualize status and monitor progress across the proje
 
     > **Note**: You can now add this chart to a dashboard.
 
-#### Task 6: Customizing team process
+#### Task 6: Customize team process
 
 In this task we'll create a custom Scrum-based process. The process will include a backlog item field designed to track to a proprietary PartsUnlimited ticket ID.
 

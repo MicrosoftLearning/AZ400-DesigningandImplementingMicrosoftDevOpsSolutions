@@ -34,20 +34,30 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
--   [Visual Studio Code](https://code.visualstudio.com/)
+-   [Visual Studio Code](https://code.visualstudio.com/). This will be installed as part of prerequisites for this lab. 
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
 -   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+
+### Exercise 0: Configure the lab prerequisites
+
+In this exercise, you will set up the prerequisites for the lab, which include Visual Studio Code.
+
+#### Task 1: Install and configure Git and Visual Studio Code
+
+In this task, you will install Visual Studio Code. If you have already implemented this prerequisite, you can proceed directly to the next task.
+
+1.  If you don't have Visual Studio Code installed yet, from your lab computer, start a web browser, navigate to the [Visual Studio Code download page](https://code.visualstudio.com/), download it, and install it. 
 
 ### Exercise 1: Author and deploy Azure Resource Manager templates
 
@@ -438,6 +448,31 @@ In this task, you will modify the main template to account for remaining depende
     > **Note**: As a next step, you could now modularize the remaining resource definitions in the main deployment template, such as the network and virtual machine resource definitions. 
 
     > **Note**: If you are not planning on using the deployed resources, you should delete them to avoid associated charges. You can do so simply by deleting the resource group **az400m13l01-RG**.
+
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m13l01-RG')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m13l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 

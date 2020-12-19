@@ -59,19 +59,19 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 computer by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
 
 ### Exercise 1: Deploy the PartsUnlimted MRP application to an Azure VM by using Chef Server 
 
@@ -81,7 +81,7 @@ In this exercise, you will deploy the PartsUnlimted MRP application to an Azure 
 
 In this task, you will deploy and configure an Azure VM by using an Azure Resource Manager template. The Azure VM will serve as a Chef Automate server.
 
-1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has at least the Contributor role in the Azure subscription you are using in this lab.
+1.  From your lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has at least the Contributor role in the Azure subscription you are using in this lab.
 1.  Open another browser tab and navigate to the [Azure Resource Manager template link](
 https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FPartsUnlimitedMRP%2Fmaster%2FLabfiles%2FAZ-400T05-ImplemntgAppInfra%2FLabfiles%2FM04%2FDeployusingChef%2Fenv%2Fdeploychef.json). This will automatically redirect you to the **Custom deployment** blade in the Azure portal.
 1.  In the Azure portal, on the **Custom deployment** blade, specify the following settings (leave others with their default values):
@@ -609,6 +609,31 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 1.  Once the script completes, switch to the browser window displaying the Azure portal, open another browser tab, and navigate to the URL that consist of the **http://** prefix, followed by the DNS name of the `mrpUbuntuVM` Azure VM, and has the `:9080/mrp/` suffix, resulting in the following format `http://<DNS_name>:9080/mrp/` (where the `<DNS_name>` placeholder represents the DNS name you identified at the end of the previous task).
 1.  Verify that the browser tab displays the landing page of the PU MRP application.
 1.  Switch to the browser window displaying the Chef Automate server dashboard, at the top of the dashboard page, click **Nodes**, and verify that it contains a single node labeled as **mrp-app**.
+
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m14l02')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m14l02')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 

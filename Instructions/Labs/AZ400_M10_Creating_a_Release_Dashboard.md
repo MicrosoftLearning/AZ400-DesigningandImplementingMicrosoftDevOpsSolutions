@@ -6,6 +6,7 @@ lab:
 
 # Lab: Creating a Release Dashboard
 # Student lab manual
+
 ## Lab overview
 
 In this lab, you will step through creation of a release dashboard and the use of REST API to retrieve Azure DevOps release data, which you can make this way available to your custom applications or dashboards. 
@@ -31,7 +32,7 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 computer by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
 #### Review the installed applications
@@ -42,22 +43,22 @@ Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for 
 
 #### Set up an Azure DevOps organization
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner or Contributor role in the Azure subscription.
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal).
 
 ### Exercise 1: Create a release dashboard
 
 In this exercise, you will create a release dashboard in an Azure DevOps organization.
 
-### Task 1: Create an Azure DevOps Starter resource
+#### Task 1: Create an Azure DevOps Starter resource
 
 In this task, you will create an Azure DevOps Starter resource in your Azure subscription. This will automatically create a corresponding project in your Azure DevOps organization. 
 
-1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner or Contributor role in the Azure subscription you will be using in this lab.
+1.  On your lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com) and sign in with the user account that has the Owner or Contributor role in the Azure subscription you will be using in this lab.
 1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click **+ Add**. 
 1.  On the **DevOps Starter** blade, on the **Start fresh with a new application** pane, select the **.NET** tile and click **Next**. 
 1.  On the **DevOps Starter** blade, on the **Choose an application framework** pane, select the **ASP.NET Core** tile, move the **Add a database** slider to the **On** position, and click **Next**. 
@@ -95,7 +96,7 @@ In this task, you will create an Azure DevOps Starter resource in your Azure sub
 
     > **Note**: The creation of the corresponding Azure web app and Azure SQL database might take about 5 minutes. The process automatically creates an Azure DevOps project that includes a ready-to-deploy repository as well as the build and release pipelines. The Azure resources are created as part of the automatically triggered deployment pipeline. 
 
-### Task 2: Create Azure DevOps releases
+#### Task 2: Create Azure DevOps releases
 
 In this task, you will create several Azure DevOps releases, including one that will result in a failed deployment.
 
@@ -119,7 +120,7 @@ In this task, you will create several Azure DevOps releases, including one that 
 1.  Once the job completes, in the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Releases**.
 1.  On the **az400m10l02 - CD** pane, on the **Releases** tab, click the **Release-2** entry, on the **Pipeline** tab of the **Release-2** pane click the **dev** stage, on the **dev** pane, click **View logs**, and monitor progress of the deployment until its failure during the **Test Assemblies** stage. 
 
-### Task 3: Create an Azure DevOps release dashboard
+#### Task 3: Create an Azure DevOps release dashboard
 
 In this task, you will create a dashboard and add to it release-related widgets.
 
@@ -164,7 +165,7 @@ In this task, you will create a dashboard and add to it release-related widgets.
 
 In this exercise, you will query release information via REST API by using Postman.
 
-### Task 1: Generate an Azure DevOps personal access token
+#### Task 1: Generate an Azure DevOps personal access token
 
 In this task, you will generate an Azure DevOps personal access token that will be used to authenticate from the Postman app you will install in the next task of this exercise.
 
@@ -185,7 +186,7 @@ In this task, you will generate an Azure DevOps personal access token that will 
 
 1.  On the **Success** pane, click **Close**.
 
-### Task 2: Query release information via REST API by using Postman
+#### Task 2: Query release information via REST API by using Postman
 
 In this task, you will query release information via REST API by using Postman.
 
@@ -219,6 +220,31 @@ In this task, you will query release information via REST API by using Postman
     ```
 
 1.  Review the output listed on the **Body** tab in the lower right section of the app window and verify that it includes only the failed deployment you initiated in the previous exercise of this lab.
+
+### Exercise 3: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m10l02-rg')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m10l02-rg')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 #### Review
 

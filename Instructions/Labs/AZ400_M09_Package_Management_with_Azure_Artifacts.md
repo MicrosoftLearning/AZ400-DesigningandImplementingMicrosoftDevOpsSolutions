@@ -38,19 +38,19 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
--   Visual Studio 2019 Community Edition available from [Visual Studio Downloads page](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 installation should include **ASP.NET and web development**, **Azure development**, and **.NET Core cross-platform development** workloads.
+-   Visual Studio 2019 Community Edition available from [Visual Studio Downloads page](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 installation should include **ASP.NET and web development**, **Azure development**, and **.NET Core cross-platform development** workloads. This is already preinstalled on your lab computer.
 
 #### Set up an Azure DevOps organization
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -60,7 +60,7 @@ In this exercise, you will set up the prerequisites for the lab, which include t
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the ****PartsUnlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -117,12 +117,8 @@ In this task, you will create and connect to a feed.
 
 1.  Back on the **Artifacts** hub, click **Connect to feed**.
 1.  On the **Connect to feed** pane, in the **NuGet** section, select **Visual Studio** and, on the **Visual Studio** pane, copy the **Source** url. 
-1.  From the lab computer, open a new **Visual Studio** window.
-
-    > **Note**: Do not use the instance you opened to clone the **Parts Unlimited** solution.
-
-1.  In the newly opened Visual Studio window, if prompted to **Get started**, click the **Continue without code** link.
-1.  In the newly opened Visual Studio window, click **Tools** menu header, in the dropdown menu, select **NuGet Package Manager** and, in the cascading menu, select **Package Manager Settings**.
+1.  Switch back to the **Visual Studio** window.
+1.  In the Visual Studio window, click **Tools** menu header, in the dropdown menu, select **NuGet Package Manager** and, in the cascading menu, select **Package Manager Settings**.
 1.  In the **Options** dialog box, click **Package Sources** and click the plus sign to add a new package source.
 1.  At the bottom of the dialog box, in the **Name** textbox, replace **Package source** with **PartsUnlimitedShared** and, in the **Source** textbox, paste the URL you copied in the Azure DevOps portal. 
 1.  Click **Update** and then click **OK** to finalize the addition.
@@ -150,6 +146,8 @@ In this task, you will create and publish a NuGet package.
     | Solution name | **PartsUnlimited.Shared** |
     | Framework | **.NET Framework 4.5.1** |
 
+    > **Note**: Make sure not to select **.NET Standard**.
+
 1.  Within the Visual Studio interface, in the **Solution Explorer** pane, right-click **Class1.cs**, in the right-click menu, select **Delete**, and, when prompted for confirmation, click **OK**.
 1.  Within the Visual Studio interface, in the **Solution Explorer** pane, right-click the **PartsUnlimited.Shared** project node and select **Properties**.
 1.  Within the **PartsUnlimited.Shared** properties pane, verify that the **Target framework** is set to **.NET Framework 4.5.1**.
@@ -161,7 +159,7 @@ In this task, you will create and publish a NuGet package.
 1.  Navigate to the **Connect to feed** pane, in the **NuGet** section and select **NuGet.exe**. This will display the **NuGet.exe** pane.
 1.  On the **NuGet.exe** pane, click **Get the tools**.
 1.  On the **Get the tools** pane, click the **Download the latest NuGet** link. This will automatically open another browser tab displaying the **Available NuGet Distribution Versions** page.
-1.  On the **Available NuGet Distribution Versions** page, click the **nuget.exe v5.5.1** link to download the executable to the local **Downloads** folder.
+1.  On the **Available NuGet Distribution Versions** page, click the link to the latest nuget version and download the executable to the local **Downloads** folder.
 1.  Switch to the **Visual Studio** window. In the **Solution Explorer** pane, right-click the **PartsUnlimited.Shared** project node and, in the right-click menu, select **Open Folder in File Explorer**.
 1.  Within the File Explorer window, move the downloaded **nuget.exe** file from the **Downloads** folder into the folder containing the **.csproj** file.
 1.  In the same File Explorer window, select the **File** menu header, in the dropdown menu, select **Open Windows PowerShell**, and, in the cascading menu, click **Open Windows PowerShell as administrator**. 

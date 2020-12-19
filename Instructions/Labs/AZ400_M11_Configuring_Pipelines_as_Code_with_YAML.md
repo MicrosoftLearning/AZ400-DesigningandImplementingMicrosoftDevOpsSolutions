@@ -29,23 +29,23 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization. 
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -55,7 +55,7 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -112,15 +112,15 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. 
 
-### Exercise 1: Configuring CI/CD Pipelines as Code with YAML in Azure DevOps
+### Exercise 1: Configure CI/CD Pipelines as Code with YAML in Azure DevOps
 
 In this exercise, you will configure CI/CD Pipelines as code with YAML in Azure DevOps.
 
-### Task 1: Disable execution of the existing pipeline
+#### Task 1: Disable execution of the existing pipeline
 
 In this task, you will disable execution of the existing pipeline.
 
-1.  Switch to the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**.
+1.  On the lab computer, switch to the browser window displaying the **Configuring Pipelines as Code with YAML** project in the Azure DevOps portal and, in the vertical navigational pane, select the **Pipelines**.
 
     > **Note**: Before configuring YAML pipelines, you will disable the existing build pipeline.
 
@@ -128,7 +128,7 @@ In this task, you will disable execution of the existing pipeline.
 1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
 1.  On the **Pipeline settings** pane, select the **Paused** option.
 
-### Task 2: Adding a YAML build definition
+### Task 2: Add a YAML build definition
 
 In this task, you will add a YAML build definition to the existing project.
 
@@ -152,7 +152,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 1.  Return to the pipeline run pane, switch from the **Summary** tab to the **Tests** tab, and review test statistics.
 
-### Task 3: Adding continuous delivery to the YAML definition
+#### Task 3: Add continuous delivery to the YAML definition
 
 In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task.
 
@@ -243,7 +243,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: Once the task completes, your app will be deployed to an Azure web app.
 
-### Task 4: Reviewing the deployed site
+#### Task 4: Review the deployed site
 
 1.  Switch back to web browser window displaying the Azure portal and navigate to the blade displaying the properties of the Azure web app.
 1.  On the Azure web app blade, in the **Settings** section, select **Configuration**.
@@ -255,6 +255,31 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 1.  Back on the Azure web app configuration blade, click **Save** to apply the changes and, when prompted, click **Continue**
 1.  On the Azure web app blade, click **Overview** and, on the overview blade, click **Browse** to open your site in a new web browser tab.
 1.  Verify that the deployed site loads as expected in the new browser tab.
+
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m11l01-RG')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m11l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 

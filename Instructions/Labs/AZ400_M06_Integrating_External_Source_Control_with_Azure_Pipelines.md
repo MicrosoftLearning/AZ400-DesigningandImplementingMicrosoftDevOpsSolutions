@@ -35,22 +35,22 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 #### Set up a GitHub account
 
-Follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account).
+If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account).
 
 ### Exercise 1: Getting started with Azure Pipelines
 
@@ -60,7 +60,7 @@ In this exercise, you will integrate a GitHub project with Azure DevOps by using
 
 In this task, you will fork a GitHub repo and install Azure Pipelines in your GitHub account.
 
-1.  Start a web browser on your lab computer, navigate to the [GitHub actionsdemos/calculator site](https://github.com/actionsdemos/calculator) and, if you're not already signed in to GitHub, sign in now.
+1.  On your lab computer, start a web browser, navigate to the [GitHub actionsdemos/calculator site](https://github.com/actionsdemos/calculator) and, if you're not already signed in to GitHub, sign in now.
 
     > **Note**: This is the baseline project we will fork and use for this lab.
 

@@ -9,7 +9,7 @@ lab:
 
 ## Lab overview
 
-In this lab we will deploy, configure, and manage two Linux web servers hosted on Azure virtual machines (VMs) by using Ansible. 
+In this lab we will deploy, configure, and manage Azure resources by using Ansible. 
 
 Ansible is declarative configuration management software. It relies on a description of the intended configuration applicable to managed computers in the form of playbooks. Ansible automatically applies that configuration and maintains it going forward, addressing any potential discrepancies. Playbooks are formatted by using YAML.
 
@@ -61,19 +61,19 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 computer by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
 
 ### Exercise 1: Deploy, configure, and manage Azure VMs by using Ansible
 
@@ -645,8 +645,16 @@ In this task, you will use Ansible playbooks to implement configuration manageme
 
 >**Note**: We could run the `ansible-playbook` command periodically to make sure that the configuration remains consistent with the content of the playbook corresponding playbook. To accomplish this in an automated manner, we will leverage the Linux cron functionality. In this task, we will run the command every minute, but in a production environment, you would likely choose a lower frequency.
 
->**Note**: We will use an ansible playbook to set up our cron job. 
+>**Note**: We will use an Ansible playbook to set up our cron job. 
 
+1.  From the Bash session in the Cloud Shell pane, within the SSH session to the Azure VM configured as the Ansible control machine, run the following to open the Ansible configuration file in the Nano text editor:
+
+    ```bash
+    sudo nano /etc/ansible/ansible.cfg
+    ```
+
+1.  Within the Nano editor interface, in the `[Default]` section, remove the leading hash character `#` from the line `#host_key_checking = False`
+1.  Within the Nano editor interface, press **ctrl + o** key combination, press the **Enter** key, and then press **ctrl + x** key combination to save the changes you made and close the file.
 1.  From the Bash session in the Cloud Shell pane, within the SSH session to the Azure VM configured as the Ansible control machine, run the following to open the playbook that configures a cron job in the Nano text editor:
 
     ```bash
@@ -785,7 +793,32 @@ In this task, you will use Ansible in combination with Azure Resource Manager te
     --query sku
     ```
 
+### Exercise 3: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m14l03')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m14l03')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+
 ## Review
 
-In this lab, you learned how to deploy, configure, and manage two Linux web servers hosted on Azure virtual machines (VMs) by using Ansible. 
+In this lab, you learned how to deploy, configure, and manage Azure resources by using Ansible. 
 

@@ -40,21 +40,20 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
--   File Explorer
--   [Visual Studio Code](https://code.visualstudio.com/) with the [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) extension installed.
--   [Git for Windows](https://gitforwindows.org/) 2.29.2 or later.
+-   [Git for Windows download page](https://gitforwindows.org/). This will be installed as part of prerequisites for this lab.
+-   [Visual Studio Code](https://code.visualstudio.com/). This will be installed as part of prerequisites for this lab. 
 
 #### Set up an Azure DevOps organization
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -64,7 +63,7 @@ In this exercise, you will set up the prerequisites for the lab, which include t
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -78,10 +77,13 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  On the **Create New Project** page, click **Navigate to project**.
 
-#### Task 2: Configuring Visual Studio Code
+#### Task 2: Install and configure Git and Visual Studio Code
 
-In this task, you will configure a Git credential helper to securely store the Git credentials used to communicate with Azure DevOps. If you have already configured a credential helper and Git identity, you can proceed directly to the next task.
+In this task, you will install and configure Git and Visual Studio Code, including configuring the Git credential helper to securely store the Git credentials used to communicate with Azure DevOps. If you have already implemented these prerequisites, you can proceed directly to the next task.
 
+1.  If you don't have Git 2.29.2 or later installed yet, start a web browser, navigate to the [Git for Windows download page](https://gitforwindows.org/) download it, and install it. 
+1.  If you don't have Visual Studio Code installed yet, from the web browser window, navigate to the [Visual Studio Code download page](https://code.visualstudio.com/), download it, and install it. 
+1.  If you don't have Visual Studio C# extension installed yet, in the web browser window, navigate to the [C# extension installation page](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) and install it.
 1.  On the lab computer, open **Visual Studio Code**. 
 1.  In the Visual Studio Code interface, from the main menu, select **Terminal \| New Terminal** to open the **TERMINAL** pane.
 1.  Make sure that the current Terminal is running **PowerShell** by checking if the drop-down list at the top right corner of the **TERMINAL** pane shows **1: powershell**
@@ -100,15 +102,15 @@ In this task, you will configure a Git credential helper to securely store the G
     git config --global user.email <johndoe@example.com>
     ```
 
-### Exercise 1: Cloning an existing repository
+### Exercise 1: Clone an existing repository
 
 In this exercise, you use Visual Studio Code to clone the Git repository you provisioned as part of the previous exercise.
 
-#### Task 1: Cloning an existing repository
+#### Task 1: Clone an existing repository
 
 In this task, you will step through the process of cloning a Git repository by using Visual Studio Code.
 
-1.  In a web browser, navigate to your Azure DevOps organization, and open the **Version Controlling with Git in Azure Repos** project you generated in the previous exercise. 
+1.  Switch to the the web browser displaying your Azure DevOps organization with the **Version Controlling with Git in Azure Repos** project you generated in the previous exercise. 
 
     > **Note**: Alternatively, you can access the project page directly by navigating to the [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Version%20Controlling%20with%20Git%20in%20Azure%20Repos](https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Version%20Controlling%20with%20Git%20in%20Azure%20Repos) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name. 
 
@@ -138,7 +140,7 @@ In this task, you will step through the process of cloning a Git repository by u
 
     > **Note**: You can ignore warnings you might receive regarding problems with loading of the project. The solution may not be in the state suitable for a build, but we're going to focus on working with Git, so building the project is not required.
 
-### Exercise 2: Saving work with commits
+### Exercise 2: Save work with commits
 
 In this exercise, you will step through several scenarios that involve the use of Visual Studio Code to stage and commit changes.
 
@@ -150,7 +152,7 @@ Git commits consists of the following:
 - A reference to the parent commit(s). Git manages your code history using these references.
 - A message describing a commit. You give this message to Git when you create the commit. It's a good idea to keep this message descriptive, but to the point.
 
-#### Task 1: Committing changes
+#### Task 1: Commit changes
 
 In this task, you will use Visual Studio Code to commit changes.
 
@@ -172,7 +174,7 @@ In this task, you will use Visual Studio Code to commit changes.
 
 1.  In the lower left corner of the Visual Studio Code window, to the right of the **master** label, note the **Synchronize Changes** icon of a circle with two vertical arrows pointing in the opposite directions and the number **1** next to the arrow pointing up. Click the icon and, if prompted, whether to proceed, click **OK** to push and pull commits to and from **origin/master**. 
 
-#### Task 2: Reviewing commits
+#### Task 2: Review commits
 
 In this task, you will use the Azure DevOps portal to review commits.
 
@@ -180,7 +182,7 @@ In this task, you will use the Azure DevOps portal to review commits.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Repos** section, select **Commits**.
 1.  Verify that your commit appears at the top of list.
 
-#### Task 3: Staging changes
+#### Task 3: Stage changes
 
 In this task, you will explore the use of staging changes by using Visual Studio Code. Staging changes allows you to selectively add certain files to a commit while passing over the changes made in other files.
 
@@ -203,7 +205,7 @@ In this task, you will explore the use of staging changes by using Visual Studio
 
     > **Note**: Note that since only the staged change was committed, the other change is still pending to be synchronized.
 
-### Exercise 3: Reviewing history
+### Exercise 3: Review history
 
 In this exercise, you will use the Azure DevOps portal to review history of commits.
 
@@ -211,7 +213,7 @@ Git uses the parent reference information stored in each commit to manage a full
 
 Git's use of the **Branches and Merges** feature works through pull requests, so the commit history of your development doesn't necessarily form a straight, chronological line. When you use history to compare versions, think in terms of file changes between two commits instead of file changes between two points in time. A recent change to a file in the master branch may have come from a commit created two weeks ago in a feature branch that was merged yesterday.
 
-#### Task 1: Comparing files
+#### Task 1: Compare files
 
 In this task, you will step through commit history by using the Azure DevOps portal.
 
@@ -225,7 +227,7 @@ In this task, you will step through commit history by using the Azure DevOps por
 
     > **Note**: This view represents the state of the source corresponding to the commit, allowing you to review and download each of source files.
 
-### Exercise 4: Working with branches
+### Exercise 4: Work with branches
 
 In this exercise, you will step through scenarios that involve branch management by using Visual Studio Code and the Azure DevOps portal.
 
@@ -233,7 +235,7 @@ You can manage the in your Azure DevOps Git repo from the **Branches** view of *
 
 Committing changes to a branch will not affect other branches and you can share branches with others without having to merge the changes into the main project. You can also create new branches to isolate changes for a feature or a bug fix from your master branch and other work. Since the branches are lightweight, switching between branches is quick and easy. Git does not create multiple copies of your source when working with branches, but rather uses the history information stored in commits to recreate the files on a branch when you start working on it. Your Git workflow should create and use branches for managing features and bugfixes. The rest of the Git workflow, such as sharing code and reviewing code with pull requests, all work through branches. Isolating work in branches makes it very simple to change what you are working on by simply changing your current branch.
 
-#### Task 1: Creating a new branch in your local repository
+#### Task 1: Create a new branch in your local repository
 
 In this task, you will create a branch by using Visual Studio Code.
 
@@ -245,7 +247,7 @@ In this task, you will create a branch by using Visual Studio Code.
 
     > **Note**: At this point, you are automatically switched to the **dev** branch.
 
-#### Task 2: Working with branches
+#### Task 2: Work with branches
 
 In this task, you will use the Visual Studio Code to work with a branch created in the previous task.
 

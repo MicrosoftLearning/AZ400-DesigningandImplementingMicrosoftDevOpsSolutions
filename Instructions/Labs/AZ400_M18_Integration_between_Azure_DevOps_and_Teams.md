@@ -37,19 +37,19 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 computer by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
--   Microsoft Teams
+-   Microsoft Teams. This will be installed as part of prerequisites for this lab.
 
 #### Set up an Office 365 subscription 
 
-You can create a free trial from [Microsoft Teams sign up page](https://teams.microsoft.com/start). 
+Create a free trial subscription from [Microsoft Teams sign up page](https://teams.microsoft.com/start). 
 
 #### Set up an Azure DevOps organization. 
 
@@ -65,7 +65,7 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Tailwind Traders** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -77,16 +77,17 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
 
-    > **Note**: Ignore the error message regarding creation of wiki.
-
 1.  On the **Create New Project** page, click **Navigate to project**.
 
 #### Task 2: Create a team in Microsoft Teams
 
 In this task, you will create a team in Microsoft Teams.
 
-1.  From the lab computer, launch **Microsoft Teams** either by starting a web browser and navigating to the [Microsoft Teams launch page](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home) or by using the desktop app, available from the [Microsoft Teams download page](
-https://www.microsoft.com/en-us/microsoft-365/microsoft-teams/download-app).
+1.  On the lab computer, start a web browser, navigate to the [Microsoft Teams download page](https://www.microsoft.com/en-us/microsoft-365/microsoft-teams/download-app), and, from there, download and install Microsoft Teams with the default settings. 
+1.  On the lab computer, launch **Microsoft Teams** by using the desktop app.
+
+    > **Note**: Alternatively, you can use a web browser and navigate to the [Microsoft Teams launch page](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home)
+
 1.  When prompted to sign in, sign in with a user account that is part of the Office 365 subscription and has access to your Azure DevOps organization.
 1.  In Microsoft Teams, in the toolbar on the left side of the page, click **Teams** and then, at the bottom of the teams list, click **Join or create a team**.
 

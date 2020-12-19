@@ -9,20 +9,29 @@ lab:
 
 ## Lab overview
 
-In this lab, we will create a new Azure DevOps project, populate the project repository with a sample application code, create a build pipeline. Next, we will install WhiteSource Bolt from the Azure DevOps Marketplace to make it available as a build task, activate it, add it to the build pipeline, use it to scan the project code for security vulnerabilities and licensing compliance issues, and finally view the resulting report.
+In this lab, you will use **WhiteSource Bolt with Azure DevOps** to automatically detect vulnerable open source components, outdated libraries, and license compliance issues in your code. You will leverage WebGoat, an intentionally insecure web application, maintained by OWASP designed to illustrate common web application security issues.
+
+[WhiteSource](https://www.whitesourcesoftware.com/) is the leader in continuous open source software security and compliance management. WhiteSource integrates into your build process, irrespective of your programming languages, build tools, or development environments. It works automatically, continuously, and silently in the background, checking the security, licensing, and quality of your open source components against WhiteSource constantly-updated deﬁnitive database of open source repositories.
+
+WhiteSource provides WhiteSource Bolt, a lightweight open source security and management solution developed specifically for integration with Azure DevOps and Azure DevOps Server. Note that WhiteSource Bolt works per project and does not offer real-time alert capabilities, which requires **Full platform**, generally recommended for larger development teams that want to automate their open source management throughout the entire software development lifecycle (from the repositories to post-deployment stages) and across all projects and products.
+
+Azure DevOps integration with WhiteSource Bolt will enable you to:
+
+- Detect and remedy vulnerable open source components.
+- Generate comprehensive open source inventory reports per project or build.
+- Enforce open source license compliance, including dependencies’ licenses.
+- Identify outdated open source libraries with recommendations to update.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Create a Build pipeline
-- Install WhiteSource Bolt from the Azure DevOps marketplace and activate it
-- Add WhiteSource Bolt as a build task in a build pipeline
-- Run build pipeline and view WhiteSource security and compliance report
+- Activate WhiteSource Bolt
+- Run a build pipeline and review WhiteSource security and compliance report
 
 ## Lab duration
 
--   Estimated time: **60 minutes**
+-   Estimated time: **45 minutes**
 
 ## Instructions
 
@@ -32,23 +41,18 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 computer by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization. 
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops). When creating the Azure DevOps organization, sign in with the same the user same account you used to set up the Office 365 subscription.
-
-#### Prepare an Azure subscription
-
--   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -56,196 +60,68 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 #### Task 1: Create and configure the team project
 
-In this task, you will create an Azure DevOps project and add to it a repository based on the [Parts Unlimited MRP GitHub repository](https://www.github.com/microsoft/partsunlimitedmrp).
+In this task, you will use Azure DevOps Demo Generator to generate a new project based on the [WhiteSource-Bolt template](https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362)
 
-1.  From your lab computer, open a web browser window, navigate to **https://dev.azure.com** and sign in to your Azure DevOps organization.
-1.  In the Azure DevOps portal, in the upper right corner, click **+ New project**. 
-1.  On the **Create new project** pane, in the **Project name** textbox, type **securityandcomplianceproj**, ensure that the **Visibility** option is set to **Private**, and click **Create**.
-1.  On the **securityandcomplianceproj** project pane, in the **Welcome to the project** section, click **Repos**.
-1.  On the **securityandcomplianceproj is empty. Add some code!** pane, in the **Import a repository** section, click **Import**.
-1.  On the Import a Git repository pane, ensure that the **Repository type** is set to **Git**, in the **Clone URL**, type **https://github.com/Microsoft/PartsUnlimitedMRP.git**, and click **Import**. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
-    >**Note**: Once the import completes, you should now see the files populated in your Azure DevOps repo.
+    > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
-#### Task 2: Update references to mavenCentral() in the team project repository
+1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
+1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
+1.  On the **Create New Project** page, in the **New Project Name** textbox, type **WhiteSource Bolt**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
+1.  In the list of templates, in the toolbar, click **DevOps Labs**, select the **WhiteSource Bolt** template and click **Select Template**.
+1.  Back on the **Create New Project** page, if prompted to install a missing extension, select the checkbox below the **WhiteSource Bolt** and click **Create Project**.
 
-In this task, you will modify content of the files in the newly created repository to update references to sources of Maven artifacts.
+    > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
 
->**Note**: This is necessary to address [the PartsUnlimitedMRP GitHub issue #168](https://github.com/microsoft/PartsUnlimitedMRP/issues/168) and the corresponding [PartsUnlimitedMRP GitHub pull request #171](https://github.com/microsoft/PartsUnlimitedMRP/pull/171/files)
+1.  On the **Create New Project** page, click **Navigate to project**.
 
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **securityandcomplianceproj** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Repos**.
-1.  In the **Files** view, in the list of files, locate and select the **src\Backend\IntegrationService\build.gradle** file, on the **build.gradle** pane, click **Edit**, replace `mavenCentral()` in the lines **3** and **21** with the following line, click **Commit**, and, in the **Commit** pane, click **Commit** again:
+### Exercise 1: Implement Security and Compliance in an Azure DevOps pipeline by using WhiteSource Bolt
 
-    ```jscript
-    maven { url 'https://repo1.maven.org/maven2/' }
-    ```
+In this exercise, leverage WhiteSource Bolt to scan the project code for security vulnerabilities and licensing compliance issues, and view the resulting report.
 
-1.  In the **Files** view, in the list of files, locate and select the **src\Backend\OrderService\build.gradle** file, on the **build.gradle** pane, click **Edit**, replace `mavenCentral()` in the lines **8** and **34** with the following line:
+#### Task 1: Activate WhiteSource Bolt
 
-    ```jscript
-    maven { url 'https://repo1.maven.org/maven2/' }
-    ```
+In this task, you will activate WhiteSource Bolt in the newly generated Azure Devops project.
 
-1.  With the file **src\Backend\OrderService\build.gradle** still in the edit mode, replace `maven { url "https://gradle.artifactoryonline.com/gradle/libs/" }` in line **6** with the following line, click **Commit**, and, in the **Commit** pane, click **Commit** again:
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines** and, in the **Pipelines** section, click **WhiteSource Bolt**.
+1.  On the **You're almost there** pane, provide your **Work Email** and **Company Name**, in the **Country** dropdown list, select the entry representing your country, and click *Get Started* button to start using the *Free* version of WhiteSource Bolt. This will automatically open a new browser tab displaying the **Get Started With Bolt** page. 
+1.  Switch back to the web browser tab displaying the Azure DevOps portal and verify that the **You are using a FREE version of WhiteSource Bolt** is displayed.
 
-    ```jscript
-    `maven { url "https://gradle.artifactoryonline.com/gradle/libs/" }`
-    ```
+#### Task 2: Trigger a build
 
-1.  Repeat the previous two steps to modify **src\Backend\OrderService\build.war.gradle**.
-1.  In the **Files** view, in the list of files, locate and select the **src/Backend/OrderService/gradle/wrapper/gradle-wrapper.properties** file, on the **gradle-wrapper.properties** pane, click **Edit**, replace `http\://services.gradle.org/distributions/gradle-2.1-bin.zip` in the line **6** with the following line,  click **Commit**, and, in the **Commit** pane, click **Commit** again:
+In this task, you will trigger a build within your Java code-based Azure DevOps project. You will use **WhiteSource Bolt** extension to identify vulnerable components present in this code.
 
-    ```jscript
-    https\://services.gradle.org/distributions/gradle-2.1-bin.zip
-    ```
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, in the vertical menu bar on the left side, in the **Pipelines** section, click **Pipelines**.
+1.  On the **Pipelines** pane, select the **WhiteSourceBolt** build definition, click **Run pipeline** and, on the **Run pipeline** pane, click **Run** to trigger a build.
+1.  On the build pane, on the **Summary** tab, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
 
-1. Repeat the previous step to modify **src/Clients/gradle/wrapper/gradle-wrapper.properties**.
+    > **Note**: The build definition consists of the following tasks:
 
+    | Tasks | Usage |
+    | ---- | ------ |
+    | ![npm](images/m19/npm.png) **npm** |  Installs and publishes npm packages required for the build |
+    | ![maven](images/m19/maven.png) **Maven** |  builds Java code with the provided pom xml file |
+    | ![whitesourcebolt](images/m19/whitesourcebolt.png) **WhiteSource Bolt** |  scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses |
+    | ![copy-files](images/m19/copy-files.png) **Copy Files** |  copies the resulting JAR files from the source to the destination folder using match patterns |
+    | ![publish-build-artifacts](images/m19/publish-build-artifacts.png) **Publish Build Artifacts** |  publishes the artifacts produced by the build |
+    
+1.  Once the build completes, navigate back to the **Summary** tab and review **Tests and coverage** section. 
 
-### Exercise 1: Integrate WhiteSource Bolt with Azure DevOps build pipeline
+#### Task 3: Analyze Reports
 
-In this exercise, you will create a build pipeline, install WhiteSource Bolt from the Azure DevOps Marketplace to make it available as a build task, activate it, add it to the build pipeline, use it to scan the project code for security vulnerabilities and licensing compliance issues, and finally view the resulting report.
+In this task, you will review the WhiteSource Bolt build report. 
 
-#### Task 1: Create a Build pipeline
+1.  On the build pane, click the **WhiteSource Bolt Build Report** tab header and wait for the report to fully render. 
+1.  While on the **WhiteSource Bolt Build Report** tab, verify that WhiteSource Bolt automatically detected Open Source components in the software including transitive dependencies and their respective licenses.
+1.  While on the **WhiteSource Bolt Build Report** tab, review the Security dashboard, displaying the vulnerabilities discovered during the build.
 
-In this task, you will create a Build pipeline in the newly created Azure DevOps project.
+    > **Note**: The report displays the list of all vulnerable open source components, including **Vulnerability Score**, **Vulnerable Libraries**, and **Severity Distribution**. You can identify the opensource license distribution by leveraging a detailed view of all components and links to their metadata and licensed references.
 
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **securityandcomplianceproj** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
-1.  With the **Pipelines** view in the **Pipelines** section selected, on the **Create your first pipeline** pane, click **Create your first pipeline**.
-1.  On the **Where is your code?** pane, at the bottom of the list of options, click the link **Use the classic editor**.
-1.  On the **Select a source** pane, ensure that the **Azure Repos Git** is selected, accept the default values of the remaining settings, and click **Continue**.
-1.  On the **Select a template** pane, scroll down to the end of the list of available templates, click **Empty pipeline**, and click **Apply**.
-1.  On the **securityandcomplianceproj-CI** pane, on the **Tasks** tab, verify that the **Agent pool** is set to **Azure Pipelines** and the **Agent Specification** is set to **vs2017-win2016**.
-1.  In the list of tasks, click the plus sign to the right of the **Agent job 1** entry, on the **Add tasks** pane, select the **Build** tab, in the **Search** textbox, type **Gradle**, in the list of results, select **Gradle**, and then click **Add** three times to add three identical **Gradle** tasks to the job.
+1.  While on the **WhiteSource Bolt Build Report** tab, scroll down to the **Outdated Libraries** section and review its content.
 
-    >**Note**: Gradle will be used to build the Integration Service, Order Service, and Clients components of the MRP app.
-
-1.  Select the first of the newly added **Gradle** tasks and, on the **Gradle** pane, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Display name | **IntegrationService** |
-    | Gradle wrapper | **src/Backend/IntegrationService/gradlew** |
-    | Working Directory | **src/Backend/IntegrationService** |
-    | JUnit Test Results | clear the checkbox **Publish to Azure Pipelines**, since we will not be running automated tests in Integration Service |
-
-1.  Select the second of the newly added **Gradle** tasks and, on the **Gradle** pane, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Display name | **OrderService** |
-    | Gradle wrapper | **src/Backend/OrderService/gradlew** |
-    | Working Directory | **src/Backend/OrderService** |
-    | JUnit Test Results | ensure that the checkbox **Publish to Azure Pipelines** is enabled and the **Test Results files** textbox is set to **\*\*/TEST-\*.xml**.  |
-
-    >**Note**: Since the Order Service does have unit tests in our sample project, we can automate running the tests as part of the build by adding a test in this Gradle task.
-
-1.  Select the third of the newly added **Gradle** tasks and, on the **Gradle** pane, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Display name | **Clients** |
-    | Gradle wrapper | **src/Clients/gradlew** |
-    | Working Directory | **src/Clients** |
-    | JUnit Test Results | clear the checkbox **Publish to Azure Pipelines**, since we will not be running automated tests in the Clients |
-
-1.  On the **securityandcomplianceproj-CI** pane, on the **Tasks** tab, click the plus sign to the right of the **Agent job 1** entry, on the **Add tasks** pane, select the **Utility** tab, in the list of task templates, select **Copy Files**, and then click the **Add** button twice to add two **Copy Files** tasks to the job.
-1.  With the **Utility** tab selected, in the **Search** textbox, type **Publish Build Artifacts**, in the list of results, select **Publish Build Artifacts**, and then click the **Add** button twice to add two **Publish Build Artifacts** tasks to the job.
-1.  In the list of tasks of **Agent job 1**, select the first **Copy Files to:** task, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Display name | **Copy Files to $(build.artifactstagingdirectory)\drop** |
-    | Source Folder | **$(Build.SourcesDirectory)\src** |
-    | Contents | **\*/build/libs/!(buildSrc).?ar** |
-    | Target Folder | **$(build.artifactstagingdirectory)\drop** |
-
-    >**Note**: We will copy the files from the build and repo folders into a staging area on the agent, to be later picked up from there and published as build pipeline artifacts, which can be later used in a release pipeline. 
-
-    >**Note**: To view more details about the variables that we are using in the tasks you can take a look at the page Predefined build variables
-
-1.  In the list of tasks of **Agent job 1**, select the second **Copy Files to:** task, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Display name | **Copy Files to $(build.artifactstagingdirectory)** |
-    | Source Folder | **$(Build.SourcesDirectory)** |
-    | Contents | **\*\*/deploy/SSH-MRP-Artifacts.ps1**, **\*\*/deploy/deploy_mrp_app.sh** and **\*\*/deploy/MongoRecords.js** |
-    | Target Folder | **$(build.artifactstagingdirectory)** |
-
-    >**Note**: Enter each of the **Contents** entries on a separate line and verify that each of them includes the double asterisk prefix.
-
-1.  In the list of tasks of **Agent job 1**, select the first **Publish Artifact** task, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Path to publish | **$(build.artifactstagingdirectory)\drop** |
-    | Artifact Name | **drop** |
-    | Artifact publish location | **Azure Pipelines** |
-
-    >**Note**: In these publish tasks, we are taking the items from the agent staging area and publishing them as build pipeline artifacts for later use in a release pipeline. We will not create and deploy using our release pipeline in this lab but you have the option of retaining this build pipeline for your own tests.
-
-1.  In the list of tasks of **Agent job 1**, select the first **Publish Artifact** task, specify the following settings (leave others with their default values):
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Path to publish | **$(build.artifactstagingdirectory)\deploy** |
-    | Artifact Name | **deploy** |
-    | Artifact publish location | **Azure Pipelines** |
-
-1.  On the **securityandcomplianceproj-CI** pane, click **Save and Queue**, in the dropdown list, click **Save and Queue**, and, on the **Run pipeline** pane, click **Save and run**.
-1.  On the build run blade, in the **Jobs** section, click **Agent job 1**, monitor the build progress, and ensure it completes successfully before you proceed to the next task.
-
-#### Task 2: Install and activate WhiteSource Bolt in the Azure DevOps project
-
-In this task, you will install and activate WhiteSource Bolt by using the Azure DevOps marketplace.
-
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **securityandcomplianceproj** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
-1.  On the **Pipelines** pane, click **securityandcomplianceproj-CI** entry and then click **Edit**. 
-1.  On the **securityandcomplianceproj-CI** pane, in the list of tasks, click the plus sign to the right of the **Agent job 1** entry, on the **Add tasks** pane, select the **Marketplace** tab, in the **Search** textbox, type **WhiteSource Bolt**, in the list of results, select **WhiteSource Bolt**, and then click **Get it free**. This will automatically open a new web browser tab, displaying the **WhiteSource Bolt** page.
-
-    >**Note**: WhiteSource is available for build servers, while WhiteSource Bolt is intended specifically for *Azure DevOps**.
-
-1.  On the **WhiteSource Bolt** page, click **Get it free**, when prompted, in the **Select an Azure DevOps organization** dropdown list, select your Azure DevOps organization, click **Install**, and click **Proceed to organization**. This will redirect your web browser to the Azure DevOps portal, displaying your organization's pane.
-1.  In the web browser window displaying the Azure DevOps portal, click the **securityandcomplianceproj** project tile and, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
-
-    >**Note**: The **Pipelines** section should include an extra entry labeled **WhiteSource Bolt**.
-
-1.  In the vertical menu bar at the far left of the Azure DevOps portal, within the **Pipelines** section, click **WhiteSource Bolt**.
-1.  When prompted, provide your email address and company name, in the **Country** dropdown list, select your country, and click **Get Started** to activate the WhiteSource Bolt extension.
-
-#### Task 3: Add WhiteSource Bolt as a build task in our build pipeline
-
-In this task, you will add WhiteSource Bolt as a build task in our build pipeline
-
-1.  Switch back to the web browser tab displaying the Azure DevOps portal with the **securityandcomplianceproj-CI** pane open, and, on the pane displaying the **WhiteSource Bolt** task on the right side of the **Tasks** tab, click **Refresh**. 
-
-    >**Note**: Following the refresh, you should be able to add the **WhiteSource Bolt** task to the build pipeline.
-
-1.  Select the **WhiteSource Bolt** task to reveal the **Add** button in its lower right corner and click **Add**.
-1.  Use the mouse pointer to drag the newly added **WhiteSource Bolt** task from the bottom of the task list and drop it directly after the **Clients** **Gradle** task. 
-1.  Review the properties of the **WhiteSource Bolt** task without making any changes, in the top menu, click **Save & queue** menu header, in the drop-down menu, click **Save** and, in the **Save build pipeline** pop-up window, click **Save**.
-
-#### Task 4: Run our build pipeline and view WhiteSource Bolt security and compliance report
-
-In this task, you will run our build pipeline and view WhiteSource Bolt security and compliance report.
-
-1.  On the **securityandcomplianceproj-CI** pane, in the top menu, click **Queue** and, on the **Run pipeline** pane, click **Run**.
-1.  On the build run blade, in the **Jobs** section, click **Agent job 1**, monitor the build progress, and ensure it completes successfully, including the newly added WhiteSource Bolt task. 
-1.  Once the build completes, in the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, within the **Pipelines** section, click **WhiteSource Bolt**.
-1.  In the **WhiteSource Bolt** review the auto-generated report, including the following sections:
-
-- Vulnerability Score
-- Vulnerable Libraries
-- Severity Distribution
-- Aging Vulnerable Libraries
-- License Risks and Compliance, with the associated Risk level
-- Outdated libraries
-- Inventory
-
-    >**Note**: There are two occurrences of **Suspected Apache 2.0** with **Unknown** risk level. You have the option of exporting the report.
-
+    > **Note**: WhiteSource Bolt tracks outdated libraries in the project, providing library details, links to newer versions, and remediation recommendations.
 
 ## Review
 
-In this lab, you created a new Azure DevOps project, populated the project repository with a sample application code, created a build pipeline, installed WhiteSource Bolt from the Azure DevOps Marketplace to make it available as a build task, activated it, added it to the build pipeline, used it to scan the project code for security vulnerabilities and licensing compliance issues, and finally viewed the resulting report.
+In this lab, you will use **WhiteSource Bolt with Azure DevOps** to automatically detect vulnerable open source components, outdated libraries, and license compliance issues in your code.

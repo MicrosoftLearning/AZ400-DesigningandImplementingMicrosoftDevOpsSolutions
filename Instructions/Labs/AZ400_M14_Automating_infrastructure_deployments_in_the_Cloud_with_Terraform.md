@@ -34,18 +34,18 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
 #### Set up an Azure DevOps organization. 
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 #### Prepare an Azure subscription
 
@@ -60,7 +60,7 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Terraform** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -74,7 +74,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  On the **Create New Project** page, click **Navigate to project**.
 
-### Exercise 1: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
+### Exercise 1: Automate infrastructure deployments in the cloud with Terraform and Azure Pipelines
 
 In this exercise, you will deploy Infrastructure as Code into Azure by using Terraform and Azure Pipelines
 
@@ -82,7 +82,7 @@ In this exercise, you will deploy Infrastructure as Code into Azure by using Ter
 
 In this task, you will examine the use of Terraform in provisioning Azure Resources required to deploy PartsUnlimited website.
 
-1.  On your lab computer, switch to the web browser window displaying the Azure DevOps portal with the **Automating infrastructure deployments with Terraform** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Repos**.
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **Automating infrastructure deployments with Terraform** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Repos**.
 1.  On the **Files** pane, click the facing-down caret next to the **master** entry at the top and, in the dropdown list of branches, click the entry representing the **terraform** branch.
 
     > **Note**: Make sure that you are now on the **terraform** branch and **Terraform** folder appears within the content of the repo. 

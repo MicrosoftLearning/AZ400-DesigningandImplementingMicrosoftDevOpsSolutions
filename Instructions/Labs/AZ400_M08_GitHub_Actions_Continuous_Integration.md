@@ -41,22 +41,18 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 computer by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
 
-#### Set up an Azure DevOps organization. 
-
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-
 #### Set up a GitHub account
 
-Follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account).
+If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account).
 
 ### Exercise 1: Implement Continuous Integration with GitHub Actions
 
@@ -71,7 +67,7 @@ In this task, you will create a pull request with a templated workflow by using 
 - Commit the workflow to a new branch.
 - Create a pull request titled CI for Node.
 
-1.  Start a web browser on your lab computer, navigate to the launch page of the [GitHub Actions: Continuous Integration lab](https://lab.github.com/githubtraining/github-actions:-continuous-integration) and, if you're not already signed in to GitHub, click **Sign in** in the upper right corner.
+1.  On your lab computer, start a web browser, navigate to the launch page of the [GitHub Actions: Continuous Integration lab](https://lab.github.com/githubtraining/github-actions:-continuous-integration) and, if you're not already signed in to GitHub, click **Sign in** in the upper right corner.
 1.  On the **GitHub Learning Lab** page, click **Start learning with GitHub learning lab**. 
 1.  Back on the launch page of the [GitHub Actions: Continuous Integration lab](https://lab.github.com/githubtraining/github-actions:-continuous-integration), click **Start free course**.
 1.  In the pop-up window, note that the **GitHub Learning Lab** will create a public repository named **github-actions-for-ci** in your GitHub account and click **Begin GitHub Actions: Continuous Integration**.
@@ -82,7 +78,6 @@ In this task, you will create a pull request with a templated workflow by using 
 
 1.  On the **There's a bug** page, click the **Actions** top menu tab header. 
 1.  On the **Actions** tab of the **github-actions-for-ci** repository, on the **Get started with GitHub Actions** page, in the **Node.js** pane, click **Set up this workflow**.
-
 1.  On the **github-actions-for-ci/.github/workflows/node.js.yml** page, click **Start commit**.
 1.  On the **Commit new file** pane, accept the default settings which will create a new branch for this commit and start a pull request, and click **Commit new file**.
 1.  On the **Open a pull request** **Create node.js.yml** page, in the name of the pull request, rename **Create node.js.yml** to **CI for Node** and click **Create pull request**.
@@ -199,13 +194,15 @@ To complete this task, you will use the following sequence of steps:
           ✓ Wins if up-right diagonal is filled
     ```
 
-1.  In the new comment section, type the names you identified in the previous step, including: 
+1.  Switch back to the **Conversation** tab, scroll down to the very bottom in the list of comments and, on the **Write** tab of the last comment, replace **Leave a comment** with the following names you identified in the previous step, and click **Comment**.
 
     ```
     Initializes with two players
     Starts the game with a random player
     Sets the current player to be whoever it is not
     ```
+
+> **Note**: This will automatically display another set of comments from the bot on the **Conversation** tab, starting with the **Reading failed logs** comment.
 
 #### Task 5: Fix the failing test
 

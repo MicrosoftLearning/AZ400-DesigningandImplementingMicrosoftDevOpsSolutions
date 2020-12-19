@@ -33,28 +33,28 @@ After you complete this lab, you will be able to:
 
 Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
     
--   Username: **Admin**
+-   Username: **Student**
 -   Password: **Pa55w.rd**
 
-#### Review the installed applications
+#### Review applications required for this lab
 
-Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for the applications that you'll use in this lab:
+Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
--   Visual Studio 2019 Community Edition available from [Visual Studio Downloads page](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 installation should include **ASP.NET and web development**, **Azure development**, and **.NET Core cross-platform development** workloads.
+-   Visual Studio 2019 Community Edition available from [Visual Studio Downloads page](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 installation should include **ASP.NET and web development**, **Azure development**, and **.NET Core cross-platform development** workloads. This is already preinstalled on your lab computer.
 
 #### Set up a LaunchDarkly trial account
 
 Use a web browser to navigate to the [LaunchDarkly web site](https://launchdarkly.com/) and create a trial account. 
 
-#### Set up an Azure DevOps organization. 
+#### Set up an Azure DevOps organization.
 
 Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -64,7 +64,7 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
 
-1.  Navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
@@ -188,7 +188,7 @@ In this task, you will integrate LaunchDarkly in your Web application.
 1.  In the upper left corner of the user story tab, click **Unassigned**, type your Azure DevOps user name, press the **Enter** key to assign the work item to yourself, and click **Save Work Item** to save the change.
 1.  In the Visual Studio window, switch to the **Git Changes** pane, in the **Enter a message** textbox, type **Integated LaunchDarkly #<work\_item\_ID>**, where **<work\_item\_ID>** represents the ID you noted earlier, click the down-pointing arrow head next to the **Commit All** button, and, in the dropdown list, click **Commit All and Push**. 
 
-#### Task 3: Automatically rollout LaunchDarkly feature flags during release.
+#### Task 3: Automatically rollout LaunchDarkly feature flags during release
 
 In this task, you will configure automatic roll out of the LaunchDarkly feature flags during an Azure DevOps release
 
@@ -262,6 +262,20 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
 - **User Targeting**: LaunchDarkly targeting lets you turn features on or off for individual users or groups of users. You can use it to roll features out for internal testing, private betas, or usability tests before performing a broader rollout. 
 - **Custom targeting rules**: In addition to targeting individual users, LaunchDarkly allows you to target segments of users by constructing custom rules. In other words, you can create custom rules to target users based on any attributes you specify. 
 - **Projects and environments to manage your development process**: [Projects](https://docs.launchdarkly.com/docs/projects) allow you to manage multiple different software projects under one LaunchDarkly account. [Environments](https://docs.launchdarkly.com/docs/environments) allow you to manage your feature flags throughout your entire development lifecycle — from local development to QA, staging, and production. 
+
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use the Azure portal to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, navigate to the App Service instance you deployed earlier in this lab. 
+1.  On the App Service instance blade, click the link representing the name of the resource group containing the App Service instance.
+1.  On the blade of the resource group containing the App Service instance, click **Delete resource group**, when prompted, provide the name of the resource group, and click **Delete**.
 
 ## Review
 
