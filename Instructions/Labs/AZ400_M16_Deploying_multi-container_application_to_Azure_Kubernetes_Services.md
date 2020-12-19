@@ -124,9 +124,14 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
     az sql server create --location $LOCATION --resource-group $RGNAME --name $SQLNAME --admin-user sqladmin --admin-password P2ssw0rd1234
     ```
 
+1.  From the Bash session in the Cloud Shell pane, run the following to allow access from Azure to the newly provisioned logical server:
+
+    ```bash
+    az sql server firewall-rule create --resource-group $RGNAME --server $SQLNAME --name allowAzure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+    ```
+
 1.  From the Bash session in the Cloud Shell pane, run the following to create the Azure SQL database you will be using in this lab:
 
-    Create a database
 
     ```bash
     az sql db create --resource-group $RGNAME --server $SQLNAME --name mhcdb --service-objective S0 --no-wait
