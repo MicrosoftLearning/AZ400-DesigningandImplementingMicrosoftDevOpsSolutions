@@ -71,7 +71,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Integrating Azure Key Vault with Azure DevOps**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
+1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Configuring Agent Pools and Understanding Pipeline Styles**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
 1.  On the **Choose a template** page, click the **PartsUnlimited** template, and then click **Select Template**.
 1.  Back on the **Create New Project** page, select the checkbox below the **ARM Outputs** label, and click **Create Project**
 
@@ -141,6 +141,7 @@ In this task, you will prepare your lab environment for deployment of an image t
 1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install git:
 
     ```powershell
+    New-Item -Type Directory -Path 'C:\Labfiles' -Force
     Set-Location c:\Labfiles
     git clone https://github.com/actions/virtual-environments.git virtual-environments -q
     ```
@@ -821,7 +822,7 @@ hd', where `az400m05l05xrg001` represents the storage account name.
     }
     ```
 
-1.  On the lab computer, in the File Explorer window and create a new file in the **C:\\Labfiles** folder named **az400m05-vm0.deployment.template.json** with the following content, save it, and close it. 
+1.  On the lab computer, in the File Explorer window and create a new file in the **C:\\Labfiles** folder named **az400m05-vm0.deployment.template.parameters.json** with the following content, save it, and close it. 
 
     ```json
     {
