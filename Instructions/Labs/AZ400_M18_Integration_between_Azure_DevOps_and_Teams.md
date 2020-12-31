@@ -53,7 +53,7 @@ Create a free trial subscription from [Microsoft Teams sign up page](https://tea
 
 #### Set up an Azure DevOps organization. 
 
-Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops). When creating the Azure DevOps organization, sign in with the same the user same account you used to set up the Office 365 subscription.
+Follow instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops). When creating the Azure DevOps organization, sign in with the same user account you used to set up the Office 365 subscription.
 
 > **Note**: Your Office 365 subscription and the Azure DevOps organization must share the same Azure Active Directory (Azure AD) tenant.
 
