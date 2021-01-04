@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Configuring Agent Pools and Understanding Pipeline Styles'
-    az400Module: 'Module 5: Configuring Azure Pipelines'
+    module: 'Module 5: Configuring Azure Pipelines'
 ---
 
 # Lab: Configuring Agent Pools and Understanding Pipeline Styles
