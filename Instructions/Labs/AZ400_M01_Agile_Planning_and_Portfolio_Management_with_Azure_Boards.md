@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Agile Planning and Portfolio Management with Azure Boards'
-    az400Module: 'Module 1: Planning for DevOps'
+    module: 'Module 1: Planning for DevOps'
 ---
 
 # Lab: Agile Planning and Portfolio Management with Azure Boards
