@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Integrating External Source Control with Azure Pipelines'
-    az400Module: 'Module 6: Implementing Continuous Integration using Azure Pipelines'
+    module: 'Module 6: Implementing Continuous Integration using Azure Pipelines'
 ---
 
 # Lab: Integrating External Source Control with Azure Pipelines
