@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Version Controlling with Git in Azure Repos'
-    az400Module: 'Module 2: Getting Started with Source Control'
+    module: 'Module 2: Getting Started with Source Control'
 ---
 
 # Lab: Version Controlling with Git in Azure Repos
