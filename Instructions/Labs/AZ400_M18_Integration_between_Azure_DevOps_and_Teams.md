@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Integration between Azure DevOps and Teams'
-    az400Module: 'Module 18: Implementing System Feedback Mechanisms'
+    module: 'Module 18: Implementing System Feedback Mechanisms'
 ---
 
 # Lab: Integration between Azure DevOps and Teams

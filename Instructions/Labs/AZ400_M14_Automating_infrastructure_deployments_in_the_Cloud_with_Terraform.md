@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines'
-    az400Module: 'Module 14: Third party Infrastructure as Code Tools Available with Azure'
+    module: 'Module 14: Third party Infrastructure as Code Tools Available with Azure'
 ---
 
 # Lab: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines

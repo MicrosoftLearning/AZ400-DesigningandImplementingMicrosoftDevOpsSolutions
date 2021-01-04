@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Managing technical debt with SonarCloud and Azure DevOps'
-    az400Module: 'Module 20: Validating Code Bases for Compliance'
+    module: 'Module 20: Validating Code Bases for Compliance'
 ---
 
 # Lab: Managing technical debt with SonarCloud and Azure DevOps

@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Setting Up and Running Functional Tests'
-    az400Module: 'Module 11: Implementing Continuous Deployment using Azure Pipelines'
+    module: 'Module 11: Implementing Continuous Deployment using Azure Pipelines'
 ---
 
 # Lab: Setting Up and Running Functional Tests

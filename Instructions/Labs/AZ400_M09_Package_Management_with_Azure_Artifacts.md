@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Package Management with Azure Artifacts'
-    az400Module: 'Module 9: Designing and Implementing a Dependency Management Strategy'
+    module: 'Module 9: Designing and Implementing a Dependency Management Strategy'
 ---
 
 # Lab: Package Management with Azure Artifacts

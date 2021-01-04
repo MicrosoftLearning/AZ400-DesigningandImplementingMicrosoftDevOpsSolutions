@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Deploying a multi-container application to Azure Kubernetes Services'
-    az400Module: 'Module 16: Create and Manage Kubernetes Service Infrastructure'
+    module: 'Module 16: Create and Manage Kubernetes Service Infrastructure'
 ---
 
 # Lab: Deploying a multi-container application to Azure Kubernetes Services
