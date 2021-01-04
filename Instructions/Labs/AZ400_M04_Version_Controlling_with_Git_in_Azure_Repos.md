@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Version Controlling with Git in Azure Repos'
-    az400Module: 'Module 4: Scaling Git for Enterprise DevOps'
+    module: 'Module 4: Scaling Git for Enterprise DevOps'
 ---
 
 # Lab: Version Controlling with Git in Azure Repos
