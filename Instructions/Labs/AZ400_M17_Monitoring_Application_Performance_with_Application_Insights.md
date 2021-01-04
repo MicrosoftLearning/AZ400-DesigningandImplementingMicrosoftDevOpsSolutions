@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Monitoring Application Performance with Application Insights'
-    az400Module: 'Module 17: Implementing Feedback for Development Teams'
+    module: 'Module 17: Implementing Feedback for Development Teams'
 ---
 
 # Lab: Monitoring Application Performance with Application Insights

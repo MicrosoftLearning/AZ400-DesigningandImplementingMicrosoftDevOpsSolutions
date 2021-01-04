@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Azure Deployments Using Resource Manager Templates'
-    az400Module: 'Module 13: Managing Infrastructure and Configuration using Azure Tools'
+    module: 'Module 13: Managing Infrastructure and Configuration using Azure Tools'
 ---
 
 # Lab: Azure Deployments Using Resource Manager Templates

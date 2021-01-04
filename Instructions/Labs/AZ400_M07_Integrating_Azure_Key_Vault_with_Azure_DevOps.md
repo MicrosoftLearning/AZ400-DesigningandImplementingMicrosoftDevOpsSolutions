@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Integrating Azure Key Vault with Azure DevOps'
-    az400Module: 'Module 7: Managing Application Configuration and Secrets'
+    module: 'Module 7: Managing Application Configuration and Secrets'
 ---
 
 # Lab: Integrating Azure Key Vault with Azure DevOps

@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: GitHub Actions Continuous Integration'
-    az400Module: 'Module 8: Implementing Continuous Integration with GitHub Actions'
+    module: 'Module 8: Implementing Continuous Integration with GitHub Actions'
 ---
 
 # Lab: GitHub Actions Continuous Integration

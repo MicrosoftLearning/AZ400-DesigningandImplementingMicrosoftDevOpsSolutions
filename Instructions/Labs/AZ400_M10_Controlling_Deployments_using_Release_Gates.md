@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Controlling Deployments using Release Gates'
-    az400Module: 'Module 10: Designing a Release Strategy'
+    module: 'Module 10: Designing a Release Strategy'
 ---
 
 # Lab: Controlling Deployments using Release Gates

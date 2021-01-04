@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Implement Security and Compliance in an Azure DevOps pipeline'
-    az400Module: 'Module 19: Implementing Security in DevOps Projects'
+    module: 'Module 19: Implementing Security in DevOps Projects'
 ---
 
 # Lab: Implement Security and Compliance in an Azure DevOps pipeline
