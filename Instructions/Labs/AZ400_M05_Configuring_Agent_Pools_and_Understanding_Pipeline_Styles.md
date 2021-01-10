@@ -443,7 +443,7 @@ In this task, you will prepare your lab environment for deployment of an image t
     )
     ```
 
-1.  In the Notepad window displaying the content of the **VisualStudio.Tests.ps1** file, replace the section you identified in the previous step with the following content:
+1.  In the Notepad window displaying the content of the **Install-VS.ps1** file, replace the section you identified in the previous step with the following content:
 
     ```powershell
     $workLoads = @(
