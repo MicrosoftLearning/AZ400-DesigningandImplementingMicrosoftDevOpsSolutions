@@ -433,7 +433,7 @@ In this task, you will prepare your lab environment for deployment of an image t
     }
     ```
 
-1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\images\\win\\scripts\\Tests** directory, open the **VisualStudio.Tests.ps1** file in Notepad, locate the following section:
+1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\images\\win\\scripts\\Installers** directory, open the **Install-VS.ps1** file in Notepad, locate the following section:
 
     ```powershell
     $workLoads = @(
