@@ -111,11 +111,11 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 > **Note**: This task is designed to illustrate a variety of ways you can create different kinds of work items, as well as to demonstrate the breadth of features available on the platform. As a result, these steps should not be viewed as prescriptive guidance for project management. The features are intended to be flexible enough to fit your process needs, so explore and experiment as you go.
 
 1.  In the vertical navigational pane of the Azure DevOps portal, select the **Overview** icon and, in the list of the **Overview** items, select **Dashboards**.
-1.  On the **Dashboards** pane, in the **Agile Planning and Portfolio Management with Azure Boards Team** section, select **Overview**.
+1.  By default it opens the  **Agile Planning and Portfolio Management with Azure Boards Team** (or project name) - **Overview** dashboard.
  
     > **Note**: There are many ways to create work items in Azure DevOps, and we'll explore a few of them. Sometimes it's as simple as firing one off from a dashboard. 
 
-1.  Scroll to the right side of the dashboard, in the **New Work Item** section, in the **Enter title** textbox, type **Product training**, in the dropdown list below, select the **Epic** type, and then click **Create**.
+1.  Scroll to the bottom-right side of the dashboard (depends on the resolution of the browser), in the **New Work Item** section, in the **Enter title** textbox, type **Product training**, in the dropdown list below, select the **Epic** type, and then click **Create**.
 1.  On the **Product training** panel, in the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. 
 1.  On the **Product training** panel, next to the **Area** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **PUL-Web**. This will set the **Area** to **Agile Planning and Portfolio Management with Azure Boards\PUL-Web**. 
 1.  On the **Product training** panel, next to the **Iteration** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **Agile Planning and Portfolio Management with Azure Boards\Sprint 2**. 
