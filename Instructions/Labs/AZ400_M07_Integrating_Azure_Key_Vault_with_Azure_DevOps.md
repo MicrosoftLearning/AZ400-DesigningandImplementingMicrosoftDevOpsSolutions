@@ -195,7 +195,7 @@ This will open another browser tab displaying the **Service connections** pane i
 
 1.  On the **New service connection** pane, click **Verify** to determine whether the information you provided is valid. 
 1.  Once you receive the **Verification Succeeded** response, in the **Service connection name** textbox, type **kv-service-connection** and click **Verify and Save**.
-1.  Switch back to the web browser tab displaying the **Azure Key Vault** task. 
+1.  Switch back to the web browser  tab displaying the pipeline definition and the **Azure Key Vault** task.
 1.  With the **Azure Key Vault** task selected, on the **Azure Key Vault** pane, click the **Refresh** button, in the **Azure subscription** dropdown list, select the  **kv-service-connection** entry, in the **Key vault** dropdown list, select the entry representing the Azure Key vault you created in the first task, and, in the **Secrets filter** textbox, type **sqldbpassword**. Finally, expand the **Output Variables** section and, in the **Reference name** textbox, type **sqldbpassword**. 
 
     > **Note**: At runtime, Azure Pipelines will fetch the latest value of the secret and set it as the task variable **$(sqldbpassword)**. The tasks can consumed by the subsequent tasks by referencing that variable.  
@@ -208,7 +208,9 @@ This will open another browser tab displaying the **Service connections** pane i
 
     > **Note**: The **Override template parameters** content references the **sqldbpassword** variable to set the mySQL admin password. This will provision the MySQL database defined in the ARM template using the password that you have specified in the key vault. 
 
-    > **Note**: You may complete the pipeline definition by specifying the subscription and location for the task. Repeat the same for the last task in the pipeline **Azure App Service Deploy**. Finally, save and create a new release to start the deployment.
+1.  You may complete the pipeline definition by specifying the subscription (if need subscription used, click on **authorize** )and location for the task. **Repeat** the same for the last task in the pipeline **Azure App Service Deploy**. 
+
+1.  Finally, **Save** and click on **Create a new release** > **Create** (leave defaults) to start the deployment.
 
 ### Exercise 2: Remove the Azure lab resources
 
