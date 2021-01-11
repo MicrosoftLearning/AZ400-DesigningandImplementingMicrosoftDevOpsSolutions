@@ -122,7 +122,7 @@ In this task, you will manage content of the wiki you published in the previous 
 1.  On the **GitHubActions.md** pane, directly below the `#GitHub Actions` header, add the following markdown element referencing one of the images within the **Documents** folder:
 
     ```
-    ![Tailwind Traders Website](Documents/Images/Website.png)
+    ![Tailwind Traders Website](Images/Website.png)
     ```    
 
 1.  On the **GitHubActions.md** pane, click **Commit** and, on the **Commit** pane, click **Commit**.
