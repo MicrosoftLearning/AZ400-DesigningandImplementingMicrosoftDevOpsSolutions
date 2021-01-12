@@ -99,7 +99,10 @@ In this task, you will create two Azure web apps representing the **Canary** and
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region that will host the two Azure web apps):
+1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region that will host the two Azure web apps, for example 'westeurope' or 'eastus'):
+
+ > **Note**: possible locations can be found by running the following command, use the **Name** on `<region>` : `az account list-locations -o table`
+
    
     ```bash
     RESOURCEGROUPNAME='az400m10l01-RG'
