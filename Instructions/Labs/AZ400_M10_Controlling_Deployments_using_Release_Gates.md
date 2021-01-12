@@ -267,9 +267,8 @@ In this exercise, you will test the release gates by updating the application, w
 
 In this task, you will make a minor change in the application code, commit the update to the repository, and track the build and release process.
 
-1.  In the browser window displaying the Azure DevOps portal, in the vertical navigational pane, select **Pipelines**. 
-1.  On the **Pipelines** pane, in the **Recently run pipelines** section, click **PartsUnlimited-CI**.
-1.  On the **PartsUnlimited-CI**, click the entry representing the most recent run corresponding to the update of the **Index.cshtml** file.
+1.  In the browser window displaying the Azure DevOps portal, in the vertical navigational pane, select **Releases**. 
+1.  Click on **Create release** and ***Create** (leave defaults).
 1.  On the pane representing the most recent run, click the **Releases** tab and then click the **PartsUnlimited-CD/Release-2** entry and review the progress of the deployment to the **Canary Environment**. 
 1.  Click the oval shape representing the **Pre-deployment conditions** on the left edge of the rectangle representing the **Canary Environment** stage, which, at this point, might be labeled either **Evaluating gates** or **Pre-deployment gates failed**.
 1.  On the **Canary Environment** pane, note that the **Query Work Items** gate failed.
