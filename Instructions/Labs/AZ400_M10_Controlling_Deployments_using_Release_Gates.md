@@ -129,7 +129,7 @@ In this task, you will create two Azure web apps representing the **Canary** and
     > **Note**: You will create monitor alerts here, which you will use in later part of this lab. 
 
 1.  On the Application Insights resource, click **Alerts** and then click **+ New alert rule**.
-1.  On the **Create alert rule** blade, in the **Condition** section, click the **Select condition** link. 
+1.  On the **Create alert rule** blade, in the **Condition** section, click the **Add condition** link. 
 1.  On the **Configure signal logic** blade, in the **Search by signal name** textbox, type **Failed Requests** and select it. 
 1.  On the **Configure signal logic** blade, in the **Alert logic** section, leave the **Threshold** set to **Static**, in the **Threshold value** textbox, type **0**, and click on **Done**.
 
