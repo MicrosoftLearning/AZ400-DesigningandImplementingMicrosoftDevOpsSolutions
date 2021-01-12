@@ -267,9 +267,6 @@ In this exercise, you will test the release gates by updating the application, w
 
 In this task, you will make a minor change in the application code, commit the update to the repository, and track the build and release process.
 
-1.  In the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, click **Repos**.
-1.  On the **Files** pane of the **Repos** view, navigate to and select the *"src/PartsUnlimitedWebsite/Views/Home/Index.cshtml"* file. 
-1.  On the **Index.cshtml** pane, click **Edit**, modify the content of line **30** from `<p>20%</p>` to `<p>30%</p>`, click **Commit**, and on the **Commit** pane, click **Commit** again.
 1.  In the browser window displaying the Azure DevOps portal, in the vertical navigational pane, select **Pipelines**. 
 1.  On the **Pipelines** pane, in the **Recently run pipelines** section, click **PartsUnlimited-CI**.
 1.  On the **PartsUnlimited-CI**, click the entry representing the most recent run corresponding to the update of the **Index.cshtml** file.
