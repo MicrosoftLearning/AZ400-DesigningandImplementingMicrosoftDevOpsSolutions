@@ -122,8 +122,8 @@ In this task, you will create two Azure web apps representing the **Canary** and
 
 1.  Navigate to the resource group **az400m10l01-RG** you created earlier in this task and review the resources you created.
 1.  In the list of resources, click the **Canary** web app. 
-1.  On the **Canary** web app page, in the vertical menu on the left, in the **Settings** section, click **Application insights**.
-1.  On the **Application insights** blade, click **Turn on Application Insights**, accept the default settings, and click **Apply** to create and connect Application insights resource to your Canary web app. When prompted for confirmation, click **Yes**.
+1.  On the **Canary** web app page, in the vertical menu on the left, in the **Settings** section, click **Application Insights**.
+1.  On the **Application Insights** blade, click **Turn on Application Insights**, accept the default settings, and click **Apply** to create and connect Application Insights resource to your Canary web app. When prompted for confirmation, click **Yes**.
 1.  Navigate back to the **az400m10l01-RG** resource group, refresh the page view, and click the Application Insights resource you just created. 
 
     > **Note**: You will create monitor alerts here, which you will use in later part of this lab. 
@@ -300,7 +300,7 @@ In this task, you will make a minor change in the application code, commit the u
     > **Note**: This part of web site is intentionally misconfigured, so it will trigger a failed request. 
 
 1.  Return to the home page of the PartsUnlimited web site, click **More** again, and repeat this step a few more times.
-1.  Validate that failed requests were detected by Application Insights by navigating to the Application insights blade of the **Canary** web app page, and, on the Application Insights blade, click **Alerts**, and verify that the page lists one or more **Sev 3** alerts. 
+1.  Validate that failed requests were detected by Application Insights by navigating to the Application Insights blade of the **Canary** web app page, and, on the Application Insights blade, click **Alerts**, and verify that the page lists one or more **Sev 3** alerts. 
 
     > **Note**: Since there is an alert triggered by the exception, **Query Azure Monitor** gate will fail. This, in turn, will prevent deployment to the **Production** environment.
 
