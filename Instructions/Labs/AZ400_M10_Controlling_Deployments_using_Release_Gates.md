@@ -109,8 +109,8 @@ In this task, you will create two Azure web apps representing the **Canary** and
 1.  To create an App service plan
    
     ```bash
-    SERVICEPLANNAME='az400m01l01-SP1'
-    az appservice plan create -g $RESOURCEGROUPNAME -n 'az400m01l01-sp1' --sku S1
+    SERVICEPLANNAME='az400m01l01-sp1'
+    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
     ```
 1.  Create two web apps with unique app names.
  
@@ -124,11 +124,11 @@ In this task, you will create two Azure web apps representing the **Canary** and
 1.  In the list of resources, click the **Canary** web app. 
 1.  On the **Canary** web app page, in the vertical menu on the left, in the **Settings** section, click **Application Insights**.
 1.  On the **Application Insights** blade, click **Turn on Application Insights**, accept the default settings, and click **Apply** to create and connect Application Insights resource to your Canary web app. When prompted for confirmation, click **Yes**.
-1.  Navigate back to the **az400m10l01-RG** resource group, refresh the page view, and click the Application Insights resource you just created. 
+1.  Wait until the  Application Insights resource is created and **click on the name** from the showed "Your app is connected to Application Insights resource: **NAME**" message .
 
     > **Note**: You will create monitor alerts here, which you will use in later part of this lab. 
 
-1.  On the Application Insights resource, click **Alerts** and then click **+ New alert rule**.
+1.  On the **Application Insights resource** window , click **Alerts** option (under Monitoring) and then click **+ New alert rule**.
 1.  On the **Create alert rule** blade, in the **Condition** section, click the **Add condition** link. 
 1.  On the **Configure signal logic** blade, in the **Search by signal name** textbox, type **Failed Requests** and select it. 
 1.  On the **Configure signal logic** blade, in the **Alert logic** section, leave the **Threshold** set to **Static**, in the **Threshold value** textbox, type **0**, and click on **Done**.
