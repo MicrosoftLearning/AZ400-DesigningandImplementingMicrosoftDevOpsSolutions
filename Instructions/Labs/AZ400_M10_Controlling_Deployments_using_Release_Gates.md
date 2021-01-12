@@ -246,7 +246,7 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
 
 1.  Back on the **All pipelines > PartsUnlimited-CD** pane, on the left edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 1.  On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
-1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the entry representing your Azure subscription (under Available Azure service connections), and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
+1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the entry representing your Azure subscription (under Available Azure service), and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
 1.  On **Post-deployment conditions** pane, expand the **Evaluation options** and configure the following options:
 
 - Set the value of **Time between re-evaluation of gates** to **5 Minutes**.
@@ -258,7 +258,8 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
 1.  Close the **Post-deployment conditions** pane, by clicking the **x** mark in its upper right corner.
 1.  Back on the **PartsUnlimited-CD** pane, click **Save**, and in the **Save** dialog box, click **Save** again. 
 
-## Exercise 3: Test release gates
+
+### Exercise 3: Test release gates
 
 In this exercise, you will test the release gates by updating the application, which will trigger a deployment.
 
