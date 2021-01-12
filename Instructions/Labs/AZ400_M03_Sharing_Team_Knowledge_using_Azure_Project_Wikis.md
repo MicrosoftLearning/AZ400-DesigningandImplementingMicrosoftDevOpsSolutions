@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab: Sharing Team Knowledge using Azure Project Wikis'
-    module: 'Module 03: Managing Technical Debt'
+    module: 'Module 3: Managing Technical Debt'
 ---
 
 # Lab: Sharing Team Knowledge using Azure Project Wikis
