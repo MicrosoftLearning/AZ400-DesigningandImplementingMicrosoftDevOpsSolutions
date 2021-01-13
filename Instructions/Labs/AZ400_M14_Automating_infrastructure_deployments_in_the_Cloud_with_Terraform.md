@@ -121,7 +121,7 @@ In this task, you will create Azure resources using Terraform as part of your de
     > **Note**: By default, Terraform stores state locally in a file named terraform.tfstate. When working with Terraform in a team, use of a local file makes Terraform usage complicated. Terraform supports a remote data store, that facilitates state sharing. In this case, we are using the **Azure CLI** task to create an Azure storage account and a blob container to store Terraform state. For more information regarding Terraform remote state, refer to [Terraform documentation](https://www.terraform.io/docs/state/remote.html)
 
 1.  In the list of tasks of the **Dev** stage, select the **Azure PowerShell** task. 
-1.  On the **Azure PowerShell** pane, in the **Azure Connection Type** dropdown list, select **Azure Resource Manager** and then, in the **Azure Subscription** dropdown list, select the newly created Azure service connection.
+1.  On the **Azure PowerShell** pane, in the **Azure Connection Type** dropdown list, select **Azure Resource Manager** and then, in the **Azure Subscription** dropdown list, select the newly created Azure service connection (the one under "Available Azure Service Connection").
 
     > **Note**: To configure the Terraform [backend](https://www.terraform.io/docs/backends/), we need the access key to the Azure Storage account hosting the Terraform state. In this case, we are using Azure PowerShell task to retrieve the access key of the Azure Storage account provisioned in the previous task.
 
