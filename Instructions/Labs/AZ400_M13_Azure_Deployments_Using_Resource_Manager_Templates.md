@@ -77,7 +77,7 @@ In this task, you will use Visual Studio Code to create a Resource Manager templ
     - **C:\\templates** 
     - **C:\\templates\\storage** 
 
-1.  Switch back to Visual Studio Code window with our azuredeploy.json template, click the **File** top level menu, in the dropdown menu, click **Save as**, and save the template as **azuredeploy.json** in the newly created local folder.
+1.  Switch back to Visual Studio Code window with our azuredeploy.json template, click the **File** top level menu, in the dropdown menu, click **Save as**, and save the template as **azuredeploy.json** in the newly created local folder **C:\\templates**.
 1.  Review the template to get a better understanding of its structure. There are five resource types included in the template:
 
     - Microsoft.Storage/storageAccounts
