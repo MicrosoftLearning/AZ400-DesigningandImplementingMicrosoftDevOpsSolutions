@@ -160,6 +160,7 @@ In this task, you will create Azure resources using Terraform as part of your de
 
     > **Note**: This task will deploy the PartsUnlimited package to Azure app service, provisioned by the **Terraform: apply -auto-approve** task in the previous step.
 
+1.  On the **Dev** stage, click on **Agent job** and on the Agent pool dropdown list select: **Azure Pipelines > windows-2019**.
 1.  On the **All pipelines > Terraform-CD** pane, click **Save**, in the **Save** dialog box, click **OK**, and, in the upper right corner, click **Create a release**. 
 1.  On the **Create a new release** pane, in the **Stages for a trigger change from automated to manual** dropdown list, click **Dev**, in the **Artifacts** section, in the **Version** dropdown list, select the entry representing the version of the artifact for this release, and click **Create**.
 1.  In the Azure DevOps portal, navigate back to the **Terraform-CD** pane and click the entry **Release-1** representing the newly created release. 
