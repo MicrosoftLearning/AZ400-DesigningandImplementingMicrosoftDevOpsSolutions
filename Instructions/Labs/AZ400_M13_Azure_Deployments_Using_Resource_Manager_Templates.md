@@ -178,19 +178,19 @@ In this task, you will modify the templates you saved in the previous task such 
 
 1. Last, update the template schema version from 2015-01-01 to 2019-04-01, by updating the first few lines in the template definition file as follows:
 
-```json
-    {
-      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-            "description": "Azure Storage account name."
-          }
-```
+    ```json
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "storageAccountName":{
+              "type": "string",
+              "metadata": {
+                "description": "Azure Storage account name."
+              }
+    ```
 
-1.  Save the storage.json template. The linked storage template should now look as follows:
+1. Save the storage.json template. The linked storage template should now look as follows:
 
     ```json
     {
