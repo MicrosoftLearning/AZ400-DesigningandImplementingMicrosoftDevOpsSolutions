@@ -94,7 +94,7 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
     >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1.  From the Bash session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region where you intend to deploy resources in this lab):
+1.  From the **Bash** session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region where you intend to deploy resources in this lab):
 
  > **Note**: possible locations can be found by running the following command, use the **Name** property on `<Azure_region>` : `az account list-locations -o table`
 
