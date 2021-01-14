@@ -62,11 +62,11 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
-    > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
+    > **Note**: For more information on the site, see  [https://docs.microsoft.com/en-us/azure/devops/demo-gen](https://docs.microsoft.com/en-us/azure/devops/demo-gen) .
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-1.  On the **Create New Project** page, in the **New Project Name** textbox, type ***, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
+1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Deploying a multi-container application to AKS**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
 1.  In the list of templates, in the toolbar, click **DevOps Labs**, select the **Azure Kubernetes Service** template and click **Select Template**.
 1.  Back on the **Create New Project** page, if prompted to install a missing extension, select the checkbox below the **Replace Tokens** and **Kubernetes extension** labels and click **Create Project**.
 
@@ -94,13 +94,18 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
     >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1.  From the Bash session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab (replace the `<Azure_region` placeholder with the name of the Azure region where you intend to deploy resources in this lab):
+1.  From the **Bash** session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab ( **replace the `<Azure_region>` placeholder** with the name of the Azure region where you intend to deploy resources in this lab):
 
-    ```bash
-    LOCATION=<Azure_region>
-    VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
-    ```
-   
+        ```bash
+        LOCATION=<Azure_region>
+        ```
+
+    > **Note**: possible locations can be found by running the following command, use the **Name** property on `<Azure_region>` : `az account list-locations -o table`
+
+        ```bash
+        VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
+        ```
+
 1.  From the Bash session in the Cloud Shell pane, run the following to create a resource group that will host the AKS deployment:
 
     ```bash
@@ -186,8 +191,8 @@ select the entry representing the Azure subscription you are using in this lab, 
 
     >**Note**: This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
 
-1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab.
-1.  Repeat the previous two steps to configure the **Azure subscription** and **Azure Container Registry** settings in the **Build services**, **Push services**, and **Lock services** tasks, but instead of selecting your Azure subscription in this case, select the newly created service connection. 
+1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab (**Refresh the list if needed, typing out the ACR name does not work!**).
+1.  Repeat the previous two steps to configure the **Azure subscription** (next time do not Authorize again, use the created **Available Azure service connections** ) and **Azure Container Registry** settings in the **Build services**, **Push services**, and **Lock services** tasks, but instead of selecting your Azure subscription in this case, select the newly created service connection. 
 
     >**Note**: The pipeline consists of the following tasks
 
@@ -204,6 +209,7 @@ select the entry representing the Azure subscription you are using in this lab, 
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, in the **Pipelines** section, click **Releases**. 
 1.  On the **Pipelines / Releases** pane, select the **MyHealth.AKS.Release** entry and click **Edit**.
 1.  On the **All pipelines / MyHealth.AKS.Release** pane, in the rectangle representing the **Dev** stage of the deployment, click the **2 jobs, 3 tasks** link.
+1.  For the **DB deployment** job and **AKS deployment** job (by clicking on those names) , choose "Agent Pool" **Azure Pipelines --> windows-2019**.
 1.  In the list of tasks of the **Dev** stage, within the **DB deployment** job section, select the **Execute Azure SQL: DacpacTask** task and, on the **Azure SQL Database deployment** pane on the right side, in the **Azure Subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task.
 1.  In the list of tasks of the **Dev** stage, in the **AKS deployment** job section, select the **Create Deployments & Services in AKS** task. 
 1.  On the **Kubectl** pane on the right side, in the **Azure Subscription** dropdown list, select the entry representing the same Azure service connection, in the **Resource group** dropdown list, select the **az400m16l01a-RG** entry, and in the **Kubernetes cluster** dropdown list, select the entry representing the AKS cluster you deployed earlier in this lab.
@@ -222,9 +228,6 @@ select the entry representing the Azure subscription you are using in this lab, 
 1.  In the upper right corner of the **All pipelines / MyHealth.AKS.Release** pane, click **Save**, and, when prompted, click **Save** again to save the changes.
 
     >**Note**: In the list of pipeline variables, **DatabaseName** is set to **mhcdb**, **SQLuser** is set to **sqladmin**, and **SQLpassword** is set to **P2ssw0rd1234**. If you entered different values when creating the Azure SQL database earlier in this lab, update the values of the variables accordingly.
-
-1. For the **DB deployment** job and **AKS deployment** , choose "Agent Pool" **Azure Pipelines --> windows-2019**.
-
 
 #### Task 3: Trigger the build and release pipelines
 
