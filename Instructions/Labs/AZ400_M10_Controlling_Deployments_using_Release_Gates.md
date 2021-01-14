@@ -104,25 +104,20 @@ In this task, you will create two Azure web apps representing the **Canary** and
  > **Note**: possible locations can be found by running the following command, use the **Name** on `<region>` : `az account list-locations -o table`
 
    
-    ```bash
     RESOURCEGROUPNAME='az400m10l01-RG'
     az group create -n $RESOURCEGROUPNAME -l '<region>'
-    ```
-
+    
 1.  To create an App service plan
    
-    ```bash
     SERVICEPLANNAME='az400m01l01-sp1'
     az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
-    ```
+  
 1.  Create two web apps with unique app names.
  
-     ```bash
      SUFFIX=$RANDOM$RANDOM
      az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n PU$SUFFIX-Canary
      az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n PU$SUFFIX-Prod
-     ```
-
+     
 1.  Navigate to the resource group **az400m10l01-RG** you created earlier in this task and review the resources you created.
 1.  In the list of resources, click the **Canary** web app. 
 1.  On the **Canary** web app page, in the vertical menu on the left, in the **Settings** section, click **Application Insights**.
@@ -317,15 +312,12 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1.  List all resource groups created throughout the labs of this module by running the following command:
 
-    ```sh
     az group list --query "[?starts_with(name,'az400m10l01-RG')].name" --output tsv
-    ```
-
+    
 1.  Delete all resource groups you created throughout the labs of this module by running the following command:
 
-    ```sh
     az group list --query "[?starts_with(name,'az400m10l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
+    
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
