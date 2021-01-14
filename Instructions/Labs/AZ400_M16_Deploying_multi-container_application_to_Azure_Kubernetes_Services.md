@@ -206,6 +206,7 @@ select the entry representing the Azure subscription you are using in this lab, 
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, in the **Pipelines** section, click **Releases**. 
 1.  On the **Pipelines / Releases** pane, select the **MyHealth.AKS.Release** entry and click **Edit**.
 1.  On the **All pipelines / MyHealth.AKS.Release** pane, in the rectangle representing the **Dev** stage of the deployment, click the **2 jobs, 3 tasks** link.
+1.  For the **DB deployment** job and **AKS deployment** (by clicking on those names) , choose "Agent Pool" **Azure Pipelines --> windows-2019**.
 1.  In the list of tasks of the **Dev** stage, within the **DB deployment** job section, select the **Execute Azure SQL: DacpacTask** task and, on the **Azure SQL Database deployment** pane on the right side, in the **Azure Subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task.
 1.  In the list of tasks of the **Dev** stage, in the **AKS deployment** job section, select the **Create Deployments & Services in AKS** task. 
 1.  On the **Kubectl** pane on the right side, in the **Azure Subscription** dropdown list, select the entry representing the same Azure service connection, in the **Resource group** dropdown list, select the **az400m16l01a-RG** entry, and in the **Kubernetes cluster** dropdown list, select the entry representing the AKS cluster you deployed earlier in this lab.
@@ -224,9 +225,6 @@ select the entry representing the Azure subscription you are using in this lab, 
 1.  In the upper right corner of the **All pipelines / MyHealth.AKS.Release** pane, click **Save**, and, when prompted, click **Save** again to save the changes.
 
     >**Note**: In the list of pipeline variables, **DatabaseName** is set to **mhcdb**, **SQLuser** is set to **sqladmin**, and **SQLpassword** is set to **P2ssw0rd1234**. If you entered different values when creating the Azure SQL database earlier in this lab, update the values of the variables accordingly.
-
-1. For the **DB deployment** job and **AKS deployment** , choose "Agent Pool" **Azure Pipelines --> windows-2019**.
-
 
 #### Task 3: Trigger the build and release pipelines
 
