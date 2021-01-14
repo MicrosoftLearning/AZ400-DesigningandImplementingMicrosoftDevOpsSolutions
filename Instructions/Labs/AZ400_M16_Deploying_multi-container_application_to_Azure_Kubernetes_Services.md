@@ -96,10 +96,13 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
 1.  From the **Bash** session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab ( **replace the `<Azure_region>` placeholder** with the name of the Azure region where you intend to deploy resources in this lab):
 
+        ```bash
+        LOCATION=<Azure_region>
+        ```
+
     > **Note**: possible locations can be found by running the following command, use the **Name** property on `<Azure_region>` : `az account list-locations -o table`
 
         ```bash
-        LOCATION=<Azure_region>
         VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
         ```
 
