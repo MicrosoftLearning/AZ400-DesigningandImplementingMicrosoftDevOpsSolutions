@@ -80,16 +80,16 @@ In this task, you will generate an Azure DevOps personal access token that will 
 1.   On the lab computer, in the web browser window displaying the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.   On the **Create a new personal access token** pane, click the **Show all scopes** link and, specify the following settings and click **Create** (leave all others with their default values):
 
-    | Setting | Value |
-    | --- | --- |
-    | Name | **Managing technical debt with SonarCloud and Azure DevOps lab** |
-    | Scopes | **Custom defined** |
-    | Scope | **Code** |
-    | Permissions | **Read & write** |
+     | Setting | Value |
+     | --- | --- |
+     | Name | **Managing technical debt with SonarCloud and Azure DevOps lab** |
+     | Scopes | **Custom defined** |
+     | Scope | **Code** |
+     | Permissions | **Read & write** |
 
 1.   On the **Success** pane, copy the value of the personal access token to Clipboard.
 
-    > **Note**: Make sure you record the value of the token. You will not be able to retrieve it once you close this pane. 
+     > **Note**: Make sure you record the value of the token. You will not be able to retrieve it once you close this pane. 
 
 1.   On the **Success** pane, click **Close**.
 
