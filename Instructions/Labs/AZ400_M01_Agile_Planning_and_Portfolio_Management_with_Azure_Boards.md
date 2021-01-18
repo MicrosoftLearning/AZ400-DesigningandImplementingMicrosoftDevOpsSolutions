@@ -98,7 +98,7 @@ Each new project is configured with a default team, which name matches the proje
 
 1.  Repeat the previous step to add **Sprint 2** and **Sprint 3**. The second sprint is our current iteration, and the third is in the near future.
 1.  Back on the **Boards** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
-1.  Click the ellipsis symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
+1.  Click the ellipsis (called "Actions" when hovering or "...") symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
 
     > **Note**: The default setting for all teams is to exclude sub-area paths. We will change it to include sub-areas so that the team gets visibility into all of the work items from all teams. Optionally, the management team could also choose to not include sub-areas, which automatically removes work items from their view as soon as they are assigned to one of the teams.
 
@@ -138,8 +138,8 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: This will make it easy to add tasks and other work items to the features.
 
-1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis symbol in its upper right corner.
-1.  Click the ellipsis icon and, in the dropdown list, select **Add Product Backlog Item**.
+1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis (called "Actions" when hovering or "...") symbol in its upper right corner.
+1.  Click the ellipsis (called "Actions" when hovering or "...") icon and, in the dropdown list, select **Add Product Backlog Item**.
 1.  In the textbox of the new product backlog item, type **As a customer, I want to view new tutorials** and press the **Enter** key to save the entry. 
 
     > **Note**: This creates a new product backlog item (PBI) work item that is a child of the feature and shares its area and iteration.
@@ -372,7 +372,7 @@ All processes are shared within the same organization. That is, one or more team
 1.  On the Azure DevOps page, click the **Azure DevOps** logo in the top left corner to navigate to the account root page.
 1.  In the left bottom corner of the page, click **Organization settings**.
 1.  In the **Organization Settings** vertical menu, in the **Boards** section, select **Process**.
-1.  On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis symbol and, in the dropdown menu, select **Create inherited process**.
+1.  On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis (called "Actions" when hovering or "...") symbol and, in the dropdown menu, select **Create inherited process**.
 1.  In the **Create inherited process from Scrum** panel, in the **Process name (required)** textbox, type **Customized Scrum** and click **Create process**.
 1.  Back on the **All processes** pane, click the **Customized Scrum** entry. 
 
@@ -392,7 +392,7 @@ All processes are shared within the same organization. That is, one or more team
     > **Note**: Our current project uses **Scrum**.
 
 1.  On the **All processes > Scrum** pane, select the **Projects** tab.
-1.  In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis symbol and then select **Change process**.
+1.  In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis (called "Actions" when hovering or "...") symbol and then select **Change process**.
 1.  On the **Change the project process** pane, in the **Select a target process** dropdown list, select the **Customized Scrum** process, click **Save** and then click **Close**.
 1.  Click the **Azure DevOps** logo in the top left corner to return to the account root page.
 1.  On the **Projects** tab, select the entry representing the **Agile Planning and Portfolio Management with Azure Boards** project.
