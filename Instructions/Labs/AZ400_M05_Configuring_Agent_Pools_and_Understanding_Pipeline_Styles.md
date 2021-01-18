@@ -79,12 +79,6 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  On the **Create New Project** page, click **Navigate to project**.
 
-#### Task 2: Install Visual Studio Code
-
-In this task, you will install Visual Studio Code. If you have already implemented these prerequisites, you can proceed directly to the next task.
-
-1.  If you don't have Visual Studio Code installed yet, from the web browser window, navigate to the [Visual Studio Code download page](https://code.visualstudio.com/), download it, and install it. 
-
 #### Task 3: Prepare the lab environment for image deployment
 
 In this task, you will prepare your lab environment for deployment of an image that will be used to provision a self-hosted agent.
