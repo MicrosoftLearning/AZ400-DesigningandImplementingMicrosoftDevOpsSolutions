@@ -110,25 +110,23 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
 > **Note**: This task is designed to illustrate a variety of ways you can create different kinds of work items, as well as to demonstrate the breadth of features available on the platform. As a result, these steps should not be viewed as prescriptive guidance for project management. The features are intended to be flexible enough to fit your process needs, so explore and experiment as you go.
 
-1.  In the vertical navigational pane of the Azure DevOps portal, select the **Overview** icon and, in the list of the **Overview** items, select **Dashboards**.
-1.  By default it opens the  **Agile Planning and Portfolio Management with Azure Boards Team** (or project name) - **Overview** dashboard.
+1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, select **Work Items**.
  
     > **Note**: There are many ways to create work items in Azure DevOps, and we'll explore a few of them. Sometimes it's as simple as firing one off from a dashboard. 
 
-1.  Scroll to the bottom-right side of the dashboard (depends on the resolution of the browser), in the **New Work Item** section, in the **Enter title** textbox, type **Product training**, in the dropdown list below, select the **Epic** type, and then click **Create**.
-1.  On the **Product training** panel, in the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. 
-1.  On the **Product training** panel, next to the **Area** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **PUL-Web**. This will set the **Area** to **Agile Planning and Portfolio Management with Azure Boards\PUL-Web**. 
-1.  On the **Product training** panel, next to the **Iteration** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **Agile Planning and Portfolio Management with Azure Boards\Sprint 2**. 
-1.  Click **Save & Close** to finalize your changes. 
+1.  On the **Work Items** window, click on **+ New Work Item > Epic**.
+
+1.  In the **Enter title** textbox, type **Product training**. 
+1.  In the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. 
+1.  Next to the **Area** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **PUL-Web**. This will set the **Area** to **Agile Planning and Portfolio Management with Azure Boards\PUL-Web**. 
+1.  Next to the **Iteration** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **Agile Planning and Portfolio Management with Azure Boards\Sprint 2**. 
+1.  Click **Save** to finalize your changes. **Do not close it**.
 
     > **Note**: Ordinarily you would want to fill out as much information as possible, but this is sufficient for the purposes of this lab.
 
-1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, in the list of the **Boards** items, select **Work Items**.
-1.  On the **Work items** pane, locate and click the newly created **Product training** epic entry.
-
     > **Note**: The work item form includes all of the relevant work item settings. This includes details about who it's assigned to, its status across many parameters, and all the associated information and history for how it has been handled since creation. One of the key areas to focus on is the **Related Work**. We will explore one of the ways to add a feature to this epic. 
 
-1.  On the **Product training** pane, in the **Related work** section, select the **Add link** entry and, in the dropdown list, select **New item**.
+1.  In the **Related work** section, select the **Add link** entry and, in the dropdown list, select **New item**.
 1.  On the **Add link** panel, in the **Work item type** dropdown list, select **Feature**, in the **Title** textbox, type **Training dashboard** and click **OK**.
 
     > **Note**: On the **Training dashboard** panel, note that the assignment, **Area**, and **Iteration** are already set to the same values as the epic that the feature is based on. In addition, the feature is automatically linked to the parent item it was created from. 
