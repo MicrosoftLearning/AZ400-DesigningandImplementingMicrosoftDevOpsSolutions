@@ -325,43 +325,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1.  Back on the **Board** tab of the **Boards** panel, drag and drop the **Committed** work item onto the **QA Approved \| Doing** stage of the **Expedite** swimlane so that it gets recognized as having priority when QA bandwidth becomes available.
 
     > **Note**: If you would like to review a more sophisticated board with many more work items, on the **Board** tab of the **Boards** panel, in the upper left corner, select **PUL-Web** and, in the dropdown list of teams, select the **Agile Planning and Portfolio Management with Azure Boards Team**. This board provides a playground for you to experiment with and review the results.
-
-#### Task 5: Define dashboards
-
-In this task, you will step through the process of creating dashboards and their core components.
-
-Dashboards allow teams to visualize status and monitor progress across the project. At a glance, you can make informed decisions without having to drill down into other parts of your team project site. The Overview page provides access to a default team dashboard which you can customize by adding, removing, or rearranging the tiles. Each tile corresponds to a widget that provides access to one or more features or functions.
-
-1.  In the vertical navigational pane of the Azure DevOps portal, select the **Overview** icon and, in the list of the **Overview** items, select **Dashboards**.
-1.  If necessary, on the **Dashboards** pane, in the upper left corner, in the **Agile Planning and Portfolio Management with Azure Boards Team** section, select **Agile Planning and Portfolio Management with Azure Boards Team - Overview** and review the existing dashboard. 
-1.  On the **Dashboards** pane, in the upper left corner, in the **Agile Planning and Portfolio Management with Azure Boards Team** section, select **+ New dashboard**.
-1.  On the **Create a dashboard** pane, in the **Name** textbox, type **Product training**, in the **Team** dropdown list, select the **PUL-Web** team, and click **Create**.
-1.  On the new dashboard pane, click **Add a widget**.
-1.  On the **Add Widget** panel, in the **Search** textbox, type **sprint** to find existing widgets that focus on sprints. In the list of results, select **Sprint Overview** and click **Add**.
-1.  In the rectangle representing the newly added widget, click the **Settings** cogwheel icon and review the **Configuration** pane.
-
-    > **Note**: The customization level will vary by widget. 
-
-1.  On the **Configuration** pane, click **Close** without making any changes.
-1.  Back on the **Add Widget** pane, in the **Search** textbox, type **sprint** again to find existing widgets that focus on sprints. In the list of results, select **Sprint Capacity** and click **Add**.
-1.  In the **Dashboard** view, at the top of the pane, click **Done Editing**.
-
-    > **Note**: You can now review two important aspects of your current sprint on your custom dashboard.
-
-    > **Note**: Another way of customizing dashboards is to generate charts based on work item queries, which you can share to a dashboard. 
-
-1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, in the list of the **Boards** items, select **Queries**.
-1.  On the **Queries** pane, click **+ New query**.
-1.  On the **Editor** tab of **Queries > My Queries** pane, in the **Value** dropdown list of the **Work Item Type** row, select **Task**.
-1.  On the **Editor** tab of **Queries > My Queries** pane, in the second row, in the **Field** column, select **Area Path** and, in the corresponding **Value** dropdown list, select **Agile Planning and Portfolio Management with Azure Boards\\PUL-Web**.
-1.  Click **Save query**.
-1.  In the **New query** panel, in the **Enter name** textbox, type **Web tasks**, in the **Folder** dropdown list, select to **Shared Queries**, and click **OK**.
-1.  Select the **Charts** tab and click **+ New chart**.
-1.  On the **Configure Chart** panel, in the **Name** textbox, type **Web tasks - By assignment**, in the **Group by** dropdown list, select **Assigned To**, and click **OK** to save the changes.
-
-    > **Note**: You can now add this chart to a dashboard.
-
-#### Task 6: Customize team process
+#### Task 5: Customize team process
 
 In this task we'll create a custom Scrum-based process. The process will include a backlog item field designed to track to a proprietary PartsUnlimited ticket ID.
 
@@ -402,6 +366,40 @@ All processes are shared within the same organization. That is, one or more team
 
     > **Note**: Once the work item is saved, Azure DevOps will also save the new custom information so that it will be available for queries and through the rest of Azure DevOps.
 
+### Exercise 2 (optional) : Define dashboards
+
+In this task, you will step through the process of creating dashboards and their core components.
+
+Dashboards allow teams to visualize status and monitor progress across the project. At a glance, you can make informed decisions without having to drill down into other parts of your team project site. The Overview page provides access to a default team dashboard which you can customize by adding, removing, or rearranging the tiles. Each tile corresponds to a widget that provides access to one or more features or functions.
+
+1.  In the vertical navigational pane of the Azure DevOps portal, select the **Overview** icon and, in the list of the **Overview** items, select **Dashboards**.
+1.  If necessary, on the **Dashboards** pane, in the upper left corner, in the **Agile Planning and Portfolio Management with Azure Boards Team** section, select **Agile Planning and Portfolio Management with Azure Boards Team - Overview** and review the existing dashboard. 
+1.  On the **Dashboards** pane, in the upper left corner, in the **Agile Planning and Portfolio Management with Azure Boards Team** section, select **+ New dashboard**.
+1.  On the **Create a dashboard** pane, in the **Name** textbox, type **Product training**, in the **Team** dropdown list, select the **PUL-Web** team, and click **Create**.
+1.  On the new dashboard pane, click **Add a widget**.
+1.  On the **Add Widget** panel, in the **Search** textbox, type **sprint** to find existing widgets that focus on sprints. In the list of results, select **Sprint Overview** and click **Add**.
+1.  In the rectangle representing the newly added widget, click the **Settings** cogwheel icon and review the **Configuration** pane.
+
+    > **Note**: The customization level will vary by widget. 
+
+1.  On the **Configuration** pane, click **Close** without making any changes.
+1.  Back on the **Add Widget** pane, in the **Search** textbox, type **sprint** again to find existing widgets that focus on sprints. In the list of results, select **Sprint Capacity** and click **Add**.
+1.  In the **Dashboard** view, at the top of the pane, click **Done Editing**.
+
+    > **Note**: You can now review two important aspects of your current sprint on your custom dashboard.
+
+    > **Note**: Another way of customizing dashboards is to generate charts based on work item queries, which you can share to a dashboard. 
+
+1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, in the list of the **Boards** items, select **Queries**.
+1.  On the **Queries** pane, click **+ New query**.
+1.  On the **Editor** tab of **Queries > My Queries** pane, in the **Value** dropdown list of the **Work Item Type** row, select **Task**.
+1.  On the **Editor** tab of **Queries > My Queries** pane, in the second row, in the **Field** column, select **Area Path** and, in the corresponding **Value** dropdown list, select **Agile Planning and Portfolio Management with Azure Boards\\PUL-Web**.
+1.  Click **Save query**.
+1.  In the **New query** panel, in the **Enter name** textbox, type **Web tasks**, in the **Folder** dropdown list, select to **Shared Queries**, and click **OK**.
+1.  Select the **Charts** tab and click **+ New chart**.
+1.  On the **Configure Chart** panel, in the **Name** textbox, type **Web tasks - By assignment**, in the **Group by** dropdown list, select **Assigned To**, and click **OK** to save the changes.
+
+    > **Note**: You can now add this chart to a dashboard.
 #### Review
 
 In this lab you used Azure Boards to perform a number of common agile planning and portfolio management tasks, including management of teams, areas, iterations, work items, sprints and capacity, customizing Kanban boards, defining dashboards, and customizing team processes.
