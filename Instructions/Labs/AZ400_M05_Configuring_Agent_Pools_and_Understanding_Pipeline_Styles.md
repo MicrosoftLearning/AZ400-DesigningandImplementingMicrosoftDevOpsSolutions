@@ -248,7 +248,7 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     | Enter personal access token | the access token you recorded earlier in this task |
     | Enter agent pool (press enter for default) | **az400m05l05a-pool** |
     | Enter agent name | **az400m05-vm0** |
-    | Enter work folder (press enter for _work) | **C:\agent** |
+    | Enter work folder (press enter for _work) | **Enter** |
     | Enter Perform an unzip for tasks for each step. (press enter for N) | **Enter** |
     | Enter run agent as service? (Y/N) (press enter for N) | **Enter** |
     | Enter configure autologon and run agent on startup (Y/N) (press enter for N) | **Enter** |
