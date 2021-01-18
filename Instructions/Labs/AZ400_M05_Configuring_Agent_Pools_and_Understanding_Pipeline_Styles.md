@@ -233,7 +233,7 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-2.179.0.zip", "$PWD")
     ```
 
-1.  Within the Remote Desktop session to **az400m05-vm0**, from the **Administrator: Windows PowerShell** console, run the following to configure the agent:
+1.  Open the **Administrator: Windows PowerShell** console, run the following to configure the agent:
 
     ```powershell
     .\config.cmd
