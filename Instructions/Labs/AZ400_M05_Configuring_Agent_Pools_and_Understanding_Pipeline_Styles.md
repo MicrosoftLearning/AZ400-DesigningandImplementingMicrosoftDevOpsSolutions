@@ -196,10 +196,8 @@ In this exercise, you will implement self-hosted Azure DevOps agent.
 
 #### Task 1: Configure an Azure DevOps self-hosting agent
 
-In this task, you will configure the newly provisioned Azure VM as an Azure DevOps self-hosting agent and use it to run a build pipeline.
+In this task, you will configure the LOD VM as an Azure DevOps self-hosting agent and use it to run a build pipeline.
 
-1.  On the lab computer, switch to the web browser window displaying the Azure Portal, in the Azure portal, search for and select the **Virtual machines** resource type and, on the **Virtual machines** blade, click **az400m05-vm0**.
-1.  On the **az400m05-vm0** blade, click **Connect**, in the dropdown list, click **RDP**, on the **az400m05-vm0 \| Connect** blade, click **Download RDP File** and open the downloaded RDP file to connect to the **az400m05-vm0** Azure VM by using Remote Desktop. When prompted to sign in, provide the **Student** as the user name and **Pa55w.rd1234** as the password.
 1.  Within the Remote Desktop session to **az400m05-vm0**, start a web browser, navigate to [the Azure DevOps portal](https://dev.azure.com) and sign in by using the Microsoft account associated with your Azure DevOps organization.
 1.  In the Azure DevOps portal, close the **Get the agent** panel, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, click the **Show all scopes** link and, specify the following settings and click **Create** (leave all others with their default values):
