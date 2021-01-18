@@ -224,7 +224,7 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
 
     > **Note**: If you receive an error message at this point indicating that the current system settings prevent you from downloading the file, in the Internet Explorer window, in the upper right corner, click the gearwheel symbol designating the **Settings** menu header, in the dropdown menu, select **Internet Options**, in the **Internet Options** dialog box, click **Advanced**, on the **Advanced** tab, click **Reset**, in the **Reset Internet Explorer Settings** dialog box, click **Reset** again, click **Close**, and try the download again. 
 
-1.  Within the Remote Desktop session to **az400m05-vm0**, start Windows PowerShell as administrator and, from the **Administrator: Windows PowerShell** console, run the following to create the **C:\\agent** directory and extract the content of the downloaded archive into it:
+1.  Start Windows PowerShell as administrator and, from the **Administrator: Windows PowerShell** console, run the following to create the **C:\\agent** directory and extract the content of the downloaded archive into it:
 
     ```powershell
     New-Item -Type Directory -Path 'C:\agent'
