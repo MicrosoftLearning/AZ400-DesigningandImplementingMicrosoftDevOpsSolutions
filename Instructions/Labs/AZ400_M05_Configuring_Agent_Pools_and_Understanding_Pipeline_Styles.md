@@ -281,31 +281,6 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
 1.  On the **Recent** tab of the **Pipelines** pane, click the **PartsUnlimited** entry, on the **Runs** tab of the **PartsUnlimited** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion. 
 
-### Exercise 3: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
-
->**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
-
-1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1.  List all resource groups created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m05')].name" --output tsv
-    ```
-
-1.  Delete all resource groups you created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m05')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
-
 #### Review
 
 In this lab, you learned how to convert classic pipelines into YAML-based ones and how to implement and use self-hosted agents.
