@@ -103,7 +103,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
 In this task, you will manage content of the wiki you published in the previous task.
 
-1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **main** entry, in the repo folder hierarchy, select the **Documents** folder, in the upper right corner, click **+ New** and, in the dropdown menu, click **File**. 
+1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **main** branch, in the repo folder hierarchy, select the **Documents** folder, in the upper right corner, click **+ New** and, in the dropdown menu, click **File**. 
 1.  In the **New file** panel, in the **New file name**, after the **/Documents/** prefix, type **.order**, and click **Create**.
 1.  On the **Contents** tab of the **.order** pane, type the following and click **Commit**.
 
@@ -118,7 +118,7 @@ In this task, you will manage content of the wiki you published in the previous 
 
     >**Note**: The order of wiki content should match the sequence of files and folders listed in the **.order** file.
 
-1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **main** entry, in the listing of files, select **GitHubActions.md**, and on the **GitHubActions.md** pane, click **Edit**. 
+1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **main** branch, in the listing of files, select **GitHubActions.md**, and on the **GitHubActions.md** pane, click **Edit**. 
 1.  On the **GitHubActions.md** pane, directly below the `#GitHub Actions` header, add the following markdown element referencing one of the images within the **Documents** folder:
 
     ```
