@@ -1,4 +1,3 @@
-
 ---
 lab:
     title: 'Lab: Agile Planning and Portfolio Management with Azure Boards'
