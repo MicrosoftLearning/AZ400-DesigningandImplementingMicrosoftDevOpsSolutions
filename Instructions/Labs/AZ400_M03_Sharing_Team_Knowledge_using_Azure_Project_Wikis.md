@@ -139,7 +139,7 @@ In this exercise, you will step through creating and managing a project wiki.
 
 In this task, you will create a project wiki and add to it a Mermaid diagram and an image.
 
-1.  On you lab computer, in the Azure DevOps portal displaying the Wiki pane of the **Sharing Team Knowledge using Azure Project Wikis** project, with the content of the **Tailwind Traders (Documents)** wiki selected, at the top of the pane, click the **Tailwind Traders (Documents)** dropdown list header, and, in the drop down list, select **Create new project wiki**. 
+1.  On your lab computer, in the Azure DevOps portal displaying the Wiki pane of the **Sharing Team Knowledge using Azure Project Wikis** project, with the content of the **Tailwind Traders (Documents)** wiki selected, at the top of the pane, click the **Tailwind Traders (Documents)** dropdown list header, and, in the drop down list, select **Create new project wiki**. 
 1.  In the **Page title** text box, type **Project Design**.
 1.  Place the cursor in the body of the page, click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 1**. This will automatically add the hash character (**#**) at the beginning of the line.
 1.  Directly after the newly added **#** character, type **Authentication and Authorization** and press the **Enter** key.
