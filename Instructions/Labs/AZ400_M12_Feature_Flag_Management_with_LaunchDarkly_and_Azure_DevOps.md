@@ -271,7 +271,7 @@ In this exercise, you will remove the Azure resources provisione in this lab to 
 
 #### Task 1: Remove the Azure lab resources
 
-In this task, you will use the Azure portal to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+In this task, you will use the Azure portal to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
 
 1.  In the Azure portal, navigate to the App Service instance you deployed earlier in this lab. 
 1.  On the App Service instance blade, click the link representing the name of the resource group containing the App Service instance.

@@ -460,7 +460,7 @@ In this exercise, you will remove the Azure resources provisione in this lab to 
 
 #### Task 1: Remove the Azure lab resources
 
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
 
 1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1.  List all resource groups created throughout the labs of this module by running the following command:
