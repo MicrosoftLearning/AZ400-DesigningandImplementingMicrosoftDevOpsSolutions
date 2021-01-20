@@ -1,6 +1,8 @@
 name: Merge upstream branches
 on:
   workflow_dispatch:
+  push:
+    branches: github-action-updatefork
   schedule:
      # actually, ~5 minutes is the highest
      # effective frequency you will get
