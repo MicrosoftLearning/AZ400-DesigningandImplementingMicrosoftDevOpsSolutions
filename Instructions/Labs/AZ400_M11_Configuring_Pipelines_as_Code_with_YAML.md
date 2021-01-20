@@ -75,7 +75,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  In the Azure portal, click the icon consisting of three horizontal lines in the upper left corner of the page and, in the hub menu and click **+ Create a resource**.
-1.  On the **New* blade, in the search text box, type **Web App + SQL** and press the **Enter** key.
+1.  On the **New** blade, in the search text box, type **Web App + SQL** and press the **Enter** key.
 1.  On the **Web App + SQL**, click **Create**.
 1.  On the **Web App + SQL** blade, specify the following settings:
 
@@ -128,7 +128,7 @@ In this task, you will disable execution of the existing pipeline.
 1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
 1.  On the **Pipeline settings** pane, select the **Paused** option.
 
-### Task 2: Add a YAML build definition
+#### Task 2: Add a YAML build definition
 
 In this task, you will add a YAML build definition to the existing project.
 
@@ -156,7 +156,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task.
 
-    > **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
+> **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
 
 1.  On the pipeline run pane, click the ellipsis symbol in the upper right corner and, in the dropdown menu, click **Edit pipeline**.
 1.  On the pane displaying the content of the **azure-pipelines-1.yaml** file, in line **8**, following the `trigger` section, add the following content to define the **Build** stage in the YAML pipeline. 
@@ -192,9 +192,9 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 1.  In the list of tasks on the right side of the code pane, search for and select the **Azure App Service Deploy** task.
 1.  In the **Azure App Service deploy** pane, specify the following settings and click **Add**:
 
-- in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
-- in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab. 
-- in the **Package or folder** text box, type `$(System.ArtifactsDirectory)/drop/*.zip`. 
+    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
+    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab. 
+    - in the **Package or folder** text box, type `$(System.ArtifactsDirectory)/drop/*.zip`. 
 
     > **Note**: This will automatically add the deployment task to the YAML pipeline definition.
 
@@ -283,4 +283,4 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 
 ## Review
 
-In this lab, you configured CI/CD pipelines as code with YAML in Azure DevOps
+In this lab, you configured CI/CD pipelines as code with YAML in Azure DevOps.
