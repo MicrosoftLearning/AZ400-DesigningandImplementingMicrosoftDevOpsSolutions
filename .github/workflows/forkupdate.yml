@@ -13,7 +13,7 @@ jobs:
     steps:
      - uses: TobKed/github-forks-sync-action@master
        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}}
+          github_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} 
           upstream_repository: MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions
           target_repository: unhueteb-org/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions
           upstream_branch: master
