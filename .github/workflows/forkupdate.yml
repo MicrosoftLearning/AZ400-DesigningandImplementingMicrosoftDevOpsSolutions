@@ -1,10 +1,12 @@
 name: Merge upstream branches
 on:
   workflow_dispatch:
+  push:
+    branches: github-action-updatefork
   schedule:
      # actually, ~5 minutes is the highest
      # effective frequency you will get
-    - cron:  '* 1 * * *'
+    - cron:  '* * * * *'
 jobs:
   sync_with_upstream:
     runs-on: ubuntu-latest
