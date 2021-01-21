@@ -170,6 +170,32 @@ In this task, you will create Azure resources using Terraform as part of your de
 1.  In the Azure portal, search for and select the **App Services** resources and, from the **App Services** blade, navigate to the web app which name starts with **pulterraformweb**. 
 1.  On the web app blade, click **Browse**. This will open another web browser tab, displaying the newly deployed web application.
 
+### Exercise 2: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query '[?contains(`["terraformrg", "PULTerraform"]`, name)].name' --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query '[?contains(`["terraformrg", "PULTerraform"]`, name)].name' --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+
+
 ## Review
 
 In this lab, you learned how to automate repeatable deployments with Terraform on Azure using Azure Pipelines.
