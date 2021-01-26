@@ -1,4 +1,4 @@
-name: '$(Date:yyyyMMdd)$(Rev:.rr)'
+name: '$(Date:yyyyMMMdd)$(Rev:.rr)'
 jobs:
   - job: build_markdown_content
     displayName: 'Build Markdown Content'
