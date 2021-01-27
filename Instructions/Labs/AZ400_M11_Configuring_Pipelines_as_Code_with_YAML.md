@@ -235,6 +235,70 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: This will automatically trigger a new build.
 
+1.  The pipeline will look similar to this example  (poiting to your own subscription and webapp):
+
+    ```
+    trigger:
+    - master
+
+    stages:
+    - stage: Build
+    jobs:
+    - job: Build
+        pool:
+        vmImage: 'vs2017-win2016'
+
+        variables:
+        solution: '**/*.sln'
+        buildPlatform: 'Any CPU'
+        buildConfiguration: 'Release'
+
+        steps:
+        - task: NuGetToolInstaller@1
+
+        - task: NuGetCommand@2
+        inputs:
+            restoreSolution: '$(solution)'
+
+        - task: VSBuild@1
+        inputs:
+            solution: '$(solution)'
+            msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+        - task: VSTest@2
+        inputs:
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+        - task: PublishBuildArtifacts@1
+        inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+    - stage: Deploy
+    jobs:
+    - job: Deploy
+        pool:
+        vmImage: 'vs2017-win2016'
+        steps:
+        - task: DownloadBuildArtifacts@0
+        inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            downloadPath: '$(System.ArtifactsDirectory)'
+            artifactName: 'drop'
+        - task: AzureRmWebAppDeployment@4
+        inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'YOUR-AZURE-SUBSCRIPTION'
+            appType: 'webApp'
+            WebAppName: 'YOUR-WEBAPP-NAME'
+            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
+    ```
+
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**.
 1.  On the **Pipelines** pane, click the entry representing the newly configured pipeline.
 1. Click on the most recent run (automatically started).
