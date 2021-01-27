@@ -126,7 +126,7 @@ In this task, you will disable execution of the existing pipeline.
 
 1.  On the **Pipelines** pane, select the **PartsUnlimited** entry. 
 1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
-1.  On the **Pipeline settings** pane, select the **Paused** option.
+1.  On the **Pipeline settings** pane, select the **Paused** option. Click **Save**.    
 
 #### Task 2: Add a YAML build definition
 
