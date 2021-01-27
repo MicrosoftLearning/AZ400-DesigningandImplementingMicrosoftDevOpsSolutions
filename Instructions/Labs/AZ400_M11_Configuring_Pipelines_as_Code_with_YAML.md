@@ -236,11 +236,8 @@ In this task, you will add continuous delivery to the YAML-based definition of t
     > **Note**: This will automatically trigger a new build.
 
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**.
-1.  On the **Pipelines** pane, click the entry representing the newly configured pipeline. 
-1.  In the in the upper right corner of the **PartsUnlimited** pipeline pane listing its runs, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
-1.  On the **Pipeline settings** pane, in the **YAML file path** dropdown list, select the **./azure-pipelines-1.yml** entry, right above it, select the **Enabled** option, and click **Save**. 
-1.  Back on the **PartsUnlimited** pipeline pane listing its runs, in the vertical navigational pane, select the **Pipelines**.
-1.  On the **Pipelines** pane, hover with the mouse pointer over the entry representing the newly configured pipeline so it reveals the ellipsis symbol on the right side, click the ellipsis symbol, and, in the drop-down menu, select **Run pipeline**.
+1.  On the **Pipelines** pane, click the entry representing the newly configured pipeline.
+1. Click on the most recent run (automatically started).
 1.  On the **Summary** pane, monitor the progress of the pipeline run.
 1.  If you notice a message stating that *This pipeline needs permissions to access a resource before this run can continue to Deploy*, click **View**, in the **Waiting for review** dialog box, click **Permit**, and, in the **Permit access?** pane, click **Permit** again.
 1.  At the bottom of the **Summary** pane, click the **Deploy** stage to view details of the deployment.
