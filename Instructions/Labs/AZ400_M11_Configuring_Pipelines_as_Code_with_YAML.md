@@ -218,7 +218,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: You may also want to add an empty line before and after to make it easier to read.
 
-1.  Place the cursor on the first line under the **steps** node of the deployment stage.
+1.  Place the cursor on the first line under the **steps** node of the **deploy** stage.
 1.  On the **Tasks** pane, search for and select the **Download build artifacts** task.
 1.  Click **Add**.
 1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces. 
