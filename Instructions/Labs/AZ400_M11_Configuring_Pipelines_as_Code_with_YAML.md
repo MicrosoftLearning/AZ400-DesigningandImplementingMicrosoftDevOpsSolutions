@@ -208,7 +208,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: By default, these two stages run independently. As a result, the build output from the first stage might not be available to the second stage without additional changes. To implement these changes, we will use one task to publish the build output at the end of the build stage and another to download it in the beginning of the deploy stage. 
 
-1.  Place the cursor on a blank line at the end of the build stage.
+1.  Place the cursor on a blank line at the end of the build stage to add another task. (right below  `task: VSTest@2` )
 1.  On the **Tasks** pane, search for and select the **Publish build artifacts** task. 
 1.  On the **Publish build artifacts** pane, accept the default settings and click **Add**. 
 
