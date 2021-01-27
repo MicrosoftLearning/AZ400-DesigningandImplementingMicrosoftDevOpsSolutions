@@ -116,17 +116,17 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
 In this exercise, you will configure CI/CD Pipelines as code with YAML in Azure DevOps.
 
-#### Task 1: Disable execution of the existing pipeline
+#### Task 1: Delete the existing pipeline
 
-In this task, you will disable execution of the existing pipeline.
+In this task, you will delete the existing pipeline.
 
 1.  On the lab computer, switch to the browser window displaying the **Configuring Pipelines as Code with YAML** project in the Azure DevOps portal and, in the vertical navigational pane, select the **Pipelines**.
 
     > **Note**: Before configuring YAML pipelines, you will disable the existing build pipeline.
 
 1.  On the **Pipelines** pane, select the **PartsUnlimited** entry. 
-1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
-1.  On the **Pipeline settings** pane, select the **Paused** option. Click **Save**.    
+1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**.
+1.  Write **PartsUnlimited** and click **Delete**.    
 
 #### Task 2: Add a YAML build definition
 
