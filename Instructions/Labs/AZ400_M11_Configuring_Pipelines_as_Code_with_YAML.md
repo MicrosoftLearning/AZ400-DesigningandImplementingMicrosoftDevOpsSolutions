@@ -214,7 +214,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: This will publish the build artifacts to a location that will be downloadable under the alias **drop**.
 
-1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
+1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces (or press the **Tab** until task is indented as the ones above).
 
     > **Note**: You may also want to add an empty line before and after to make it easier to read.
 
