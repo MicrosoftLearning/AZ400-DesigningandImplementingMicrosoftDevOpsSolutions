@@ -101,7 +101,6 @@ In this task, you will prepare your lab environment for deployment of an image t
 
     > **Note**: Make sure to record the personal access token at this point. You will not be able to retrieve its value once you navigate away from the current page. 
 
-1.  On the lab computer, start a web browser, navigate to [the Packer download page](https://www.packer.io/downloads), download the current version of Windows 64-bit version of Packer, open the archive containing the **packer.exe** binary, and extract it into the **C:\Windows** directory. 
 1.  On the lab computer, start Windows PowerShell ISE as administrator and, from the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install Chocolatey:
 
     ```powershell
