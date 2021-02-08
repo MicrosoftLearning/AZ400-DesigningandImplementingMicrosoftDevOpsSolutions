@@ -103,7 +103,7 @@ In this task, you will convert a classic pipeline into a YAML pipeline
 
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. 
 1.  On the **Recent** tab of the **Pipelines** pane, click the **PartsUnlimitedE2E** entry. 
-1.  On the **Runs** tab of the **PartsUnlimitedE2E** pane, in the upper right corner, click the vertical ellipsis (three vertical dots) symbol and, in the dropdown menu, click **Export to YAML**. This will automatically download the **build.yml** file to your local **Downloads** folder.
+1.  On the **Runs** tab of the **PartsUnlimitedE2E** pane, in the upper right corner, click the vertical ellipsis (three vertical dots) symbol and, in the dropdown menu, click **Export to YAML**. This will automatically download the **PartsUnlimitedE2E.yml** file to your local **Downloads** folder.
 
     > **Note**: The **Export to YAML** feature replaces an older **View YAML** option available from the pipeline editor pane within the Azure DevOps portal, which was limited to viewing YAML content one job at a time. The new functionality leverages existing classic and YAML pipeline infrastructure, including YAML parsing library, which results in more accurate translation between the two. It supports the following pipeline components:
 
