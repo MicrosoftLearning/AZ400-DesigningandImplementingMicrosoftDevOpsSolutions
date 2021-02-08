@@ -48,10 +48,6 @@ Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for 
 
 If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
-#### Set up a GitHub account
-
-Follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account).
-
 ### Exercise 0: Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisite for the lab, which consists of the preconfigured Parts Unlimited team project based on an Azure DevOps Demo Generator template.
