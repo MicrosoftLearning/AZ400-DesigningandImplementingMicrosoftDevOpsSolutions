@@ -147,7 +147,7 @@ In this task, you will track and review the new build job.
 
 In this task, you will trigger a continuous integration build.
 
-    > **Note**: In the first task of this exercise, you configured the build to support continuous integration. In this task, you will test its functionality.
+   > **Note**: In the first task of this exercise, you configured the build to support continuous integration. In this task, you will test its functionality.
 
 1.  In the web browser window displaying your project settings in the Azure DevOps portal, in the vertical navigational pane, select the **Repos** section and ensure that the **Files** view is displayed.
 1.  In the middle pane, navigate to the file **PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Views/Home/Index.cshtml** and select it. 
