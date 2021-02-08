@@ -166,7 +166,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: You can use the second plus sign directly left to the first backlog item to add a new task to it.
 
-1.  On the **Board** tab of the **PUL-Web** pane, in the upper left corner of the pane, click the second plus sign from the top, the one next to the first work item. This will display the **NEW TASK** panel.
+1.  On the **Backlog** tab of the **PUL-Web** pane, in the upper left corner of the pane, click the second plus sign from the top, the one next to the first work item. This will display the **NEW TASK** panel.
 1.  At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **Add page for most recent tutorials**. 
 1.  On the **NEW TASK** panel, in the **Remaining Work** textbox, type **5**.
 1.  On the **NEW TASK** panel, in the **Activity** dropdown list, select **Development**. 
