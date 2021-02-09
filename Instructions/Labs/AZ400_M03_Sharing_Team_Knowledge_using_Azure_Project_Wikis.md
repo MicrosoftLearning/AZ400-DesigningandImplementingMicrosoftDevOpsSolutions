@@ -96,7 +96,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
     >**Note**: This will automatically display the content of the **README** file.
 
-1.  Review the content of **Devspaces** and **GitHubActions** files and note the overall structure of the wiki, matching the structure of the underlying repo.
+1.  Review the content of  **GitHubActions** file and note the overall structure of the wiki, matching the structure of the underlying repo.
 1.  In the upper section of the pane, select the **Tailwind Traders (Documents)** dropdown menu header and note that you can easily switch between this and previously published wiki.
 
 #### Task 2: Manage content of a published wiki
@@ -109,7 +109,6 @@ In this task, you will manage content of the wiki you published in the previous 
 
     ```text
     GitHubActions
-    Devspaces
     Images
     ```
 
