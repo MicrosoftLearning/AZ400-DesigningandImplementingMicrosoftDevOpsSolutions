@@ -24,10 +24,10 @@ As an example:
 
 There are 4 types of gates included by default in every account.
 
-- Invoke Azure function: Triggers execution of an Azure function and ensures a successful completion. 
-- Query Azure monitor alerts: Observes the configured Azure monitor alert rules for active alerts. 
+- Invoke Azure Function: Triggers execution of an Azure Function and ensures a successful completion. 
+- Query Azure Monitor alerts: Observes the configured Azure Monitor alert rules for active alerts. 
 - Invoke REST API: Makes a call to a REST API and continues if it returns a successful response. 
-- Query Workitems: Ensures the number of matching work items returned from a query is within a threshold. 
+- Query work items: Ensures the number of matching work items returned from a query is within a threshold. 
 
 ## Objectives
 
@@ -97,11 +97,11 @@ In this task, you will create two Azure web apps representing the **Canary** and
 1.  In the Azure portal, click the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
 1.  If prompted to select either **Bash** or **PowerShell**, select **Bash**. 
 
-   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
+    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region that will host the two Azure web apps, for example 'westeurope' or 'eastus'):
 
- > **Note**: possible locations can be found by running the following command, use the **Name** on `<region>` : `az account list-locations -o table`
+    > **Note**: possible locations can be found by running the following command, use the **Name** on `<region>` : `az account list-locations -o table`
 
    
     ```bash
@@ -268,7 +268,7 @@ In this exercise, you will test the release gates by updating the application, w
 In this task, you will make a minor change in the application code, commit the update to the repository, and track the build and release process.
 
 1.  In the browser window displaying the Azure DevOps portal, in the vertical navigational pane, select **Releases**. 
-1.  Click on **Create release** and ***Create** (leave defaults).
+1.  Click on **Create release** and **Create** (leave defaults).
 1.  On the pane representing the most recent run, click the **Releases** tab and then click the **PartsUnlimited-CD/Release-2** entry and review the progress of the deployment to the **Canary Environment**. 
 1.  Click the oval shape representing the **Pre-deployment conditions** on the left edge of the rectangle representing the **Canary Environment** stage, which, at this point, might be labeled either **Evaluating gates** or **Pre-deployment gates failed**.
 1.  On the **Canary Environment** pane, note that the **Query Work Items** gate failed.
@@ -306,7 +306,7 @@ In this task, you will make a minor change in the application code, commit the u
 
 ### Exercise 4: Remove the Azure lab resources
 
-In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges. 
 
 >**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
 

@@ -53,7 +53,7 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 #### Task 1: Configure the team project
 
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
+In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **PartsUnlimited-YAML** template.
 
 1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
@@ -62,7 +62,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
 1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Configuring Pipelines as Code with YAML**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
-1.  In the list of templates, in the toolbar, click **DevOps Labs**, select the **PartsUnlimited-YAML** template and click **Select Template**.
+1.  In the list of templates, in the toolbar, click **General**, select the **PartsUnlimited-YAML** template and click **Select Template**.
 1.  Back on the **Create New Project** page, click **Create Project**
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
@@ -75,7 +75,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  In the Azure portal, click the icon consisting of three horizontal lines in the upper left corner of the page and, in the hub menu and click **+ Create a resource**.
-1.  On the **New* blade, in the search text box, type **Web App + SQL** and press the **Enter** key.
+1.  On the **New** blade, in the search text box, type **Web App + SQL** and press the **Enter** key.
 1.  On the **Web App + SQL**, click **Create**.
 1.  On the **Web App + SQL** blade, specify the following settings:
 
@@ -116,19 +116,19 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
 In this exercise, you will configure CI/CD Pipelines as code with YAML in Azure DevOps.
 
-#### Task 1: Disable execution of the existing pipeline
+#### Task 1: Delete the existing pipeline
 
-In this task, you will disable execution of the existing pipeline.
+In this task, you will delete the existing pipeline.
 
 1.  On the lab computer, switch to the browser window displaying the **Configuring Pipelines as Code with YAML** project in the Azure DevOps portal and, in the vertical navigational pane, select the **Pipelines**.
 
     > **Note**: Before configuring YAML pipelines, you will disable the existing build pipeline.
 
 1.  On the **Pipelines** pane, select the **PartsUnlimited** entry. 
-1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
-1.  On the **Pipeline settings** pane, select the **Paused** option.
+1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**.
+1.  Write **PartsUnlimited** and click **Delete**.    
 
-### Task 2: Add a YAML build definition
+#### Task 2: Add a YAML build definition
 
 In this task, you will add a YAML build definition to the existing project.
 
@@ -143,6 +143,10 @@ In this task, you will add a YAML build definition to the existing project.
 
     > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
+1.  Change `trigger` to **master**.
+
+    > **Note**: Review in Repos if your repository has **master** or **main** branch, new repos will be having **main** by default.
+
 1.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'vs2017-win2016'`.
 1.  On the **Review your pipeline YAML** pane, click **Save and run**.
 1.  On the **Save and run** pane, accept the default settings and click **Save and run**.
@@ -156,7 +160,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task.
 
-    > **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
+> **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
 
 1.  On the pipeline run pane, click the ellipsis symbol in the upper right corner and, in the dropdown menu, click **Edit pipeline**.
 1.  On the pane displaying the content of the **azure-pipelines-1.yaml** file, in line **8**, following the `trigger` section, add the following content to define the **Build** stage in the YAML pipeline. 
@@ -192,9 +196,9 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 1.  In the list of tasks on the right side of the code pane, search for and select the **Azure App Service Deploy** task.
 1.  In the **Azure App Service deploy** pane, specify the following settings and click **Add**:
 
-- in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
-- in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab. 
-- in the **Package or folder** text box, type `$(System.ArtifactsDirectory)/drop/*.zip`. 
+    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
+    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab. 
+    - in the **Package or folder** text box, type `$(System.ArtifactsDirectory)/drop/*.zip`. 
 
     > **Note**: This will automatically add the deployment task to the YAML pipeline definition.
 
@@ -204,17 +208,17 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: By default, these two stages run independently. As a result, the build output from the first stage might not be available to the second stage without additional changes. To implement these changes, we will use one task to publish the build output at the end of the build stage and another to download it in the beginning of the deploy stage. 
 
-1.  Place the cursor on a blank line at the end of the build stage.
+1.  Place the cursor on a blank line at the end of the build stage to add another task. (right below  `task: VSTest@2` )
 1.  On the **Tasks** pane, search for and select the **Publish build artifacts** task. 
 1.  On the **Publish build artifacts** pane, accept the default settings and click **Add**. 
 
     > **Note**: This will publish the build artifacts to a location that will be downloadable under the alias **drop**.
 
-1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
+1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces (or press the **Tab** until task is indented as the ones above).
 
     > **Note**: You may also want to add an empty line before and after to make it easier to read.
 
-1.  Place the cursor on the first line under the **steps** node of the deployment stage.
+1.  Place the cursor on the first line under the **steps** node of the **deploy** stage.
 1.  On the **Tasks** pane, search for and select the **Download build artifacts** task.
 1.  Click **Add**.
 1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces. 
@@ -231,12 +235,73 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: This will automatically trigger a new build.
 
+1.  The pipeline will look similar to this example  (poiting to your own subscription and webapp):
+
+    ```
+    trigger:
+    - master
+
+    stages:
+    - stage: Build
+    jobs:
+    - job: Build
+        pool:
+        vmImage: 'vs2017-win2016'
+
+        variables:
+        solution: '**/*.sln'
+        buildPlatform: 'Any CPU'
+        buildConfiguration: 'Release'
+
+        steps:
+        - task: NuGetToolInstaller@1
+
+        - task: NuGetCommand@2
+        inputs:
+            restoreSolution: '$(solution)'
+
+        - task: VSBuild@1
+        inputs:
+            solution: '$(solution)'
+            msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+        - task: VSTest@2
+        inputs:
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+        - task: PublishBuildArtifacts@1
+        inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+    - stage: Deploy
+    jobs:
+    - job: Deploy
+        pool:
+        vmImage: 'vs2017-win2016'
+        steps:
+        - task: DownloadBuildArtifacts@0
+        inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            downloadPath: '$(System.ArtifactsDirectory)'
+            artifactName: 'drop'
+        - task: AzureRmWebAppDeployment@4
+        inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'YOUR-AZURE-SUBSCRIPTION'
+            appType: 'webApp'
+            WebAppName: 'YOUR-WEBAPP-NAME'
+            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
+    ```
+
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**.
-1.  On the **Pipelines** pane, click the entry representing the newly configured pipeline. 
-1.  In the in the upper right corner of the **PartsUnlimited** pipeline pane listing its runs, click the vertical ellipsis symbol and, in the drop-down menu, select **Settings**.
-1.  On the **Pipeline settings** pane, in the **YAML file path** dropdown list, select the **./azure-pipelines-1.yml** entry, right above it, select the **Enabled** option, and click **Save**. 
-1.  Back on the **PartsUnlimited** pipeline pane listing its runs, in the vertical navigational pane, select the **Pipelines**.
-1.  On the **Pipelines** pane, hover with the mouse pointer over the entry representing the newly configured pipeline so it reveals the ellipsis symbol on the right side, click the ellipsis symbol, and, in the drop-down menu, select **Run pipeline**.
+1.  On the **Pipelines** pane, click the entry representing the newly configured pipeline.
+1. Click on the most recent run (automatically started).
 1.  On the **Summary** pane, monitor the progress of the pipeline run.
 1.  If you notice a message stating that *This pipeline needs permissions to access a resource before this run can continue to Deploy*, click **View**, in the **Waiting for review** dialog box, click **Permit**, and, in the **Permit access?** pane, click **Permit** again.
 1.  At the bottom of the **Summary** pane, click the **Deploy** stage to view details of the deployment.
@@ -264,7 +329,7 @@ In this exercise, you will remove the Azure resources provisione in this lab to 
 
 #### Task 1: Remove the Azure lab resources
 
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
 
 1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1.  List all resource groups created throughout the labs of this module by running the following command:
@@ -283,4 +348,4 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 
 ## Review
 
-In this lab, you configured CI/CD pipelines as code with YAML in Azure DevOps
+In this lab, you configured CI/CD pipelines as code with YAML in Azure DevOps.

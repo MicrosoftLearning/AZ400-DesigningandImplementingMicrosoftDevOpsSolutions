@@ -96,24 +96,24 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
 1.  From the **Bash** session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab ( **replace the `<Azure_region>` placeholder** with the name of the Azure region where you intend to deploy resources in this lab):
 
-        ```bash
-        LOCATION=<Azure_region>
-        ```
+    ```bash
+    LOCATION=<Azure_region>
+    ```
 
     > **Note**: possible locations can be found by running the following command, use the **Name** property on `<Azure_region>` : `az account list-locations -o table`
 
-        ```bash
-        VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
-        ```
+    ```bash
+    VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
+    ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create a resource group that will host the AKS deployment:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to create a resource group that will host the AKS deployment:
 
     ```bash
     RGNAME=az400m16l01a-RG
     az group create --name $RGNAME --location $LOCATION
     ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create an AKS cluster using the latest version available:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to create an AKS cluster using the latest version available:
     
     ```bash
     AKSNAME='az400m16aks'$RANDOM$RANDOM
@@ -122,34 +122,34 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
     
     >**Note**: Wait for the deployment complete before you proceed to the next task. AKS deployment might take about 5 minutes. 
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create the logical server to host the Azure SQL database you will be using in this lab:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to create the logical server to host the Azure SQL database you will be using in this lab:
   
     ```bash
     SQLNAME='az400m16sql'$RANDOM$RANDOM
     az sql server create --location $LOCATION --resource-group $RGNAME --name $SQLNAME --admin-user sqladmin --admin-password P2ssw0rd1234
     ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to allow access from Azure to the newly provisioned logical server:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to allow access from Azure to the newly provisioned logical server:
 
     ```bash
     az sql server firewall-rule create --resource-group $RGNAME --server $SQLNAME --name allowAzure --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
     ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create the Azure SQL database you will be using in this lab:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to create the Azure SQL database you will be using in this lab:
 
 
     ```bash
     az sql db create --resource-group $RGNAME --server $SQLNAME --name mhcdb --service-objective S0 --no-wait
     ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create the Azure Container registry you will be using in this lab:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to create the Azure Container registry you will be using in this lab:
 
     ```bash
     ACRNAME='az400m16acr'$RANDOM$RANDOM
     az acr create --location $LOCATION --resource-group $RGNAME --name $ACRNAME --sku Standard
     ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to grant the AKS-generated managed identity to access to the newly created ACR:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to grant the AKS-generated managed identity to access to the newly created ACR:
 
     ```bash
     # Retrieve the id of the service principal configured for AKS
@@ -164,13 +164,13 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
     >**Note**: For more information regarding this assignment, refer to the [Authenticate with Azure Container Registry from Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks)
 
-1.  From the Bash session in the Cloud Shell pane, run the following to display the name of logical server hosting the Azure SQL database you created earlier in this task:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to display the name of logical server hosting the Azure SQL database you created earlier in this task:
 
     ```bash
     echo $(az sql server list --resource-group $RGNAME --query '[].name' --output tsv)'.database.windows.net'
     ```
 
-1.  From the Bash session in the Cloud Shell pane, run the following to display the name of the login server of the Azure Container registry you created earlier in this task:
+1.  From the **Bash** session in the Cloud Shell pane, run the following to display the name of the login server of the Azure Container registry you created earlier in this task:
 
     ```bash
     az acr show --name $ACRNAME --resource-group $RGNAME --query "loginServer" --output tsv
@@ -201,7 +201,7 @@ select the entry representing the Azure subscription you are using in this lab, 
     | **Replace tokens** | replace a placeholder with the name of the ACR in the database connection string in the **appsettings.json** file and in the **mhc-aks.yaml** manifest file |
     | **Run services** |  prepares the environment by pulling required images, such as aspnetcore-build:1.0-2.0 and restoring packages referenced in **.csproj** |
     | **Build services** |  builds the Docker images specified in the **docker-compose.yml** file and tags images with the **$(Build.BuildId)** and **latest** tags |
-    | **Push services** |  pushes the docker image **myhealth.web** to Azure Container Registry |
+    | **Push services** |  pushes the Docker image **myhealth.web** to Azure Container Registry |
     | **Publish Build Artifacts** |  publishes **mhc-aks.yaml** & **myhealth.dacpac** files to the artifact drop location in Azure DevOps so that they can be used in the subsequent release |
 
     >**Note**: The **appsettings.json** file contains details of the database connection string used to connect to the Azure SQL database, which you created earlier in this lab. The **mhc-aks.yaml** manifest file contains configuration details of **deployments**, **services** and **pods** which will be deployed in Azure Kubernetes Service. For more information regarding deployment manifests, refer to [AKS Deployments and YAML manifests](https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#deployments-and-yaml-manifests)
@@ -216,7 +216,7 @@ select the entry representing the Azure subscription you are using in this lab, 
 1.  In the list of tasks of the **Dev** stage, in the **AKS deployment** job section, with the **Create Deployments & Services in AKS** task selected, the **Kubectl** pane on the right side, scroll down to and expand the **Secrets** section, in the **Azure subscription** dropdown list, select the entry representing the same Azure service connection, and, in the **Azure container registry** dropdown list, select the entry representing the Azure Container registry you created earlier in this lab.
 1.  Repeat the two previous steps for the **Update image in AKS** task.
 
-    >**Note**: The **Create Deployments & Services in AKS** task will create the required deployments and services in AKS as per the configuration specified in **mhc-aks.yaml** file. The pod will pull the latest docker image.
+    >**Note**: The **Create Deployments & Services in AKS** task will create the required deployments and services in AKS as per the configuration specified in **mhc-aks.yaml** file. The pod will pull the latest Docker image.
 
     >**Note**: The **Update image in AKS** task will pull the required image corresponding to the BuildID from the designated repository and deploy that image to the **mhc-front pod** running in AKS.
 
@@ -237,7 +237,7 @@ In this task, you will trigger the build and release pipelines and validate thei
 1.  On the **Pipelines** pane, select the **MyHealth.AKS.build** pipeline, on the **MyHealth.AKS.build** pane, click **Run pipeline**, and, on the **Run pipeline** pane, click **Run**.
 1.  On the build pipeline run pane, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
 
-    >**Note**: The build will generate and push the docker image to ACR. After the build completes, you can review the build summary. 
+    >**Note**: The build will generate and push the Docker image to ACR. After the build completes, you can review the build summary. 
 
 1.  To review the generated images, switch to the web browser window displaying the Azure portal.
 1.  In the Azure portal, search for and select the **Container registries** resource type and, on the **Container registries** blade, select the Azure Container registry you created earlier in this lab.
@@ -274,13 +274,13 @@ In this task, you will trigger the build and release pipelines and validate thei
 
 ### Exercise 2: Remove the Azure lab resources
 
-In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
+In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges. 
 
 >**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
 
 #### Task 1: Remove the Azure lab resources
 
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
 
 1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1.  List all resource groups created throughout the labs of this module by running the following command:
