@@ -245,12 +245,6 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
 
     > **Note**: You can run self-hosted agent as either a service or an interactive process. You might want to start with the interactive mode, since this simplifies verifying agent functionality. For production use, you should consider either running the agent as a service or as an interactive process with auto-logon enabled, since both persist their running state and ensure that the agent starts automatically if the operating system is restarted.
 
-1.  From the **Administrator: Windows PowerShell** console, run the following to start the agent in the interactive mode:
-
-    ```powershell
-    .\run.cmd
-    ```
-
     > **Note**: Verify that the agent is reporting the **Listening for Jobs** status.
 
 1.  Switch to the browser window displaying the Azure DevOps portal and close the **Get the agent** pane.
