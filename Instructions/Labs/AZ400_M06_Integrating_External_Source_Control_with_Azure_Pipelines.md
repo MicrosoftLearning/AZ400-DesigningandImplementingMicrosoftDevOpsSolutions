@@ -65,25 +65,23 @@ In this task, you will fork a GitHub repo and install Azure Pipelines in your Gi
     > **Note**: This is the baseline project we will fork and use for this lab.
 
 1.  On the **actionsdemos/calculator site** page, click **Fork**, to fork the repository to your own GitHub account. If prompted, select the account to fork the repository into.
-
-    > **Note**: The **GitHub Marketplace** provides a variety of tools from Microsoft and 3rd parties that help you extend your project workflows. 
-
 1.  On the page displaying the forked repo, at the top menu, click **Marketplace**.
-1.  In the **Search for apps and actions**, type **Azure Pipelines**, press the **Enter** key, and, in the list of results, click **Azure Pipelines**. 
-1.  On the **Azure Pipelines** page, click **Read more** and read through the benefits of Azure Pipelines.
+    > **Note**: The **GitHub Marketplace** provides a variety of tools from Microsoft and 3rd parties that help you extend your project workflows. 
+2.  In the **Search for apps and actions**, type **Azure Pipelines**, press the **Enter** key, and, in the list of results, click **Azure Pipelines**. 
+3.  On the **Azure Pipelines** page, click **Read more** and read through the benefits of Azure Pipelines.
 
     > **Note**: The Azure Pipelines offering is free for anyone to use for public repositories, and free for a single build queue if you're using a private repository. 
 
-1.  On the **Azure Pipelines** page, click **Install it for free**. If you have multiple **GitHub** accounts, select the one you forked the calculator to from the **Switch billing account** dropdown.
-1.  On the **Review your order** page, click **Complete order and begin installation**.
-1.  On the **Install Azure Pipelines** page, use the default option **All repositories** and click **Install**.
+4.  On the **Azure Pipelines** page, click **Install it for free**. If you have multiple **GitHub** accounts, select the one you forked the calculator to from the **Switch billing account** dropdown.
+5.  On the **Review your order** page, click **Complete order and begin installation**.
+6.  On the **Install Azure Pipelines** page, use the default option **All repositories** and click **Install**.
 
     > **Note**: You have the option to specify repositories to include, but for the purposes of this lab, just include all of them. Note that Azure DevOps requires the listed set of permissions to fulfill its services. 
 
-1.  If prompted, authenticate with your GitHub password to continue.
-1.  When prompted, on the **Setup your Azure Pipelines project** page, in the **Select your Azure DevOps organization** dropdown list, select your Azure DevOps account and click **Create a new project**.
-1.  When prompted, on the **Setup your Azure Pipelines project** page, in the **Project name** textbox, type **Integrating External Source Control with Azure Pipelines**, leave the **Project visibility** set to **Private**, and click **Continue**.
-1.  On the **Azure Pipelines by Microsoft would like permission to** page, click **Authorize Azure Pipelines**.
+7.  If prompted, authenticate with your GitHub password to continue.
+8.  When prompted, on the **Setup your Azure Pipelines project** page, in the **Select your Azure DevOps organization** dropdown list, select your Azure DevOps account and click **Create a new project**.
+9.  When prompted, on the **Setup your Azure Pipelines project** page, in the **Project name** textbox, type **Integrating External Source Control with Azure Pipelines**, leave the **Project visibility** set to **Private**, and click **Continue**.
+10. On the **Azure Pipelines by Microsoft would like permission to** page, click **Authorize Azure Pipelines**.
 
 ### Task 2: Configuring your Azure Pipelines project
 
@@ -111,7 +109,7 @@ In this task, you will configure the Azure Pipelines project based on the fork o
 
 In this task, you will modify the YAML build definition in the forked GitHub repository and track the build process triggered by your modification.
 
-    > **Note**: While the default pipeline is a great start, it doesn't do everything we would like to have automated. For example, it would be great if it also ran our tests to confirm that the changes don't create bugs. Let's return to GitHub where we can edit the YAML by hand. 
+> **Note**: While the default pipeline is a great start, it doesn't do everything we would like to have automated. For example, it would be great if it also ran our tests to confirm that the changes don't create bugs. Let's return to GitHub where we can edit the YAML by hand. 
 
 1.  On the **Summary** tab of the build job's pane, next to the **Repository and version** label, right-click the entry representing the GitHub project repo hosting the fork you created earlier in this lab and select **Open link in new tab**. This will open a new browser tab, displaying the GitHub page with the content of the fork.
 
@@ -125,8 +123,8 @@ In this task, you will modify the YAML build definition in the forked GitHub rep
 1.  To add the test run, add the `npm test` command directly below the `npm run build` command, with the same indentation. In addition, update the `displayName` entry to `'npm install, build, and test'` to clearly indicate what each task of the build is doing: 
 
     ```
-        npm test
-      displayName: 'npm install, build, and test'
+      npm test
+    displayName: 'npm install, build, and test'
     ```
 
 1.  Scroll to the bottom of the page, replace the default commit message with **Adding npm test**, and click **Commit changes**. 
@@ -205,7 +203,7 @@ In this task, you will add a build status badge to your GitHub repo.
 
 1.  On the **Status badge** pane, click the **Copy to clipboard** button for **Sample Markdown**.
 1.  Switch back to the browser tab displaying the GitHub page displaying the content of the forked repo and, if needed, click the **<> Code** tab.
-1.  In the list of repo files, click **README.md** and, on the **master/calculator/README.md** page, in the upper right corner of the pane displaying the file content, click the **Edit this file** icon in the shape of a pencil. 
+1.  In the list of repo files, click **README<nolink>.md** and, on the **master/calculator/README.md** page, in the upper right corner of the pane displaying the file content, click the **Edit this file** icon in the shape of a pencil. 
 1.  Add an extra line above line 6 and paste into it the content of Clipboard.
 1.  Scroll to the bottom of the page, replace the default commit message with **Add an Azure Pipelines status badge**, and click **Commit changes**. 
 
