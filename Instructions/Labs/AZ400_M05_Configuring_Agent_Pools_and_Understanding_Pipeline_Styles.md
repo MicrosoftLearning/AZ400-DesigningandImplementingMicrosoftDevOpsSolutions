@@ -241,11 +241,11 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     | Enter work folder (press enter for _work) | **Enter** |
     | Enter Perform an unzip for tasks for each step. (press enter for N) | **Enter** |
     | Enter run agent as service? (Y/N) (press enter for N) | **Y** |
-    | Enter configure autologon and run agent on startup (Y/N) (press enter for N) | **Enter** |
+    | Enter User account to use for the service (press enter for NT AUTHORITY\NETWORK SERVICE) | **Enter** |
 
     > **Note**: You can run self-hosted agent as either a service or an interactive process. You might want to start with the interactive mode, since this simplifies verifying agent functionality. For production use, you should consider either running the agent as a service or as an interactive process with auto-logon enabled, since both persist their running state and ensure that the agent starts automatically if the operating system is restarted.
 
-1.  Within the Remote Desktop session to **az400m05-vm0**, from the **Administrator: Windows PowerShell** console, run the following to start the agent in the interactive mode:
+1.  From the **Administrator: Windows PowerShell** console, run the following to start the agent in the interactive mode:
 
     ```powershell
     .\run.cmd
