@@ -81,7 +81,7 @@ In this task, you will create and configure a build pipeline by using a predefin
 1.  On the **Pipelines** pane, hover the mouse pointer over the entry representing the existing **PartsUnlimitedE2E** pipeline to reveal the ellipsis symbol on the right side.
 1.  Click the ellipsis and, in the dropdown menu, click **Edit**.
 
-    > **Note**: In order to avoid two pipelines triggered later in the lab, start by disable the CI trigger for the template created pipeline.
+    > **Note**: In order to avoid two pipelines being triggered later in the lab, start by disabling the CI trigger for the pipeline created by the template.
 
 1.  On the **Tasks** tab of the **PartsUnlimitedE2E** pane, click the **Triggers** tab, clear the checkbox **Enable continuous integration**, click **Save & queue** and then click **Save**.
 1.  To create a new pipeline, navigate back to the **Pipelines** view by selecting **Pipelines** in the vertical navigational pane in the Azure DevOps portal.
@@ -133,13 +133,11 @@ In this task, you will track and review the new build job.
 
     > **Note**: If you want to review an earlier task, you can scroll the right pane to review its logs.
 
-    > **Note**: 
-
-1.  Once the build completes successfully, on the job details pane, click the left-facing arrow to return to the summary view. 
+2.  Once the build completes successfully, on the job details pane, click the left-facing arrow to return to the summary view. 
 
     > **Note**: The summary view provides overview details about the build, including details about commits, tests, and artifacts.
 
-1.  Select the **Tests** tab to review tests for this build. 
+3.  Select the **Tests** tab to review tests for this build. 
 
     > **Note**: You also have easy access to the pipeline editor, the ability to queue a new build, and download the artifacts of this build.
 
