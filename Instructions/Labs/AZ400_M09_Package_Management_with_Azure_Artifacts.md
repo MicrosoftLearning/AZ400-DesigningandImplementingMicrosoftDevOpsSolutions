@@ -46,7 +46,7 @@ Ensure that you're signed in to your Windows 10 virtual machine by using the fol
 Identify the applications that you'll use in this lab:
     
 -   Microsoft Edge
--   Visual Studio 2019 Community Edition available from [Visual Studio Downloads page](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 installation should include **ASP.NET and web development**, **Azure development**, and **.NET Core cross-platform development** workloads. This is already preinstalled on your lab computer.
+-   Visual Studio 2019 Community Edition available from [Visual Studio Downloads page](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 installation should include **ASP<nolink>.NET and web development**, **Azure development**, and **.NET Core cross-platform development** workloads. This is already preinstalled on your lab computer.
 
 #### Set up an Azure DevOps organization
 
@@ -58,7 +58,7 @@ In this exercise, you will set up the prerequisites for the lab, which include t
 
 #### Task 1: Configure the team project
 
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the ****PartsUnlimited** template.
+In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **PartsUnlimited** template.
 
 1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
@@ -181,13 +181,13 @@ In this task, you will create and publish a NuGet package.
 
 1.  Switch to the **Administrator: Windows PowerShell** window and run the following to publish the package to the **PartsUnlimitedShared** feed:
 
-    > **Note**: You need to provide an **API Key**, which can be any non-empty string. We're using **VSTS** here. When prompted, sign in to your Azure DevOps organization. 
+    > **Note**: You need to provide an **API Key**, which can be any non-empty string. We're using **AzDO** here. When prompted, sign in to your Azure DevOps organization. 
 
     ```
-    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey VSTS PartsUnlimited.Shared.1.0.0.nupkg
+    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey AzDO PartsUnlimited.Shared.1.0.0.nupkg
     ```
 1.  Switch to the web browser window displaying the Azure DevOps portal and, in the vertical navigational pane, select **Artifacts**.
-1.  On the **Artifacts* hub pane, click the dropdown list in the upper left corner and, in the list of feeds, select the **PartsUnlimitedShared** entry.
+1.  On the **Artifacts** hub pane, click the dropdown list in the upper left corner and, in the list of feeds, select the **PartsUnlimitedShared** entry.
 
     > **Note**: The **PartsUnlimitedShared** feed should include the newly published NuGet package. 
 
@@ -215,7 +215,7 @@ In this task, you will update a NuGet package.
 
 1.  Switch to the **Visual Studio** window that has the **PartsUnlimited.Shared** project open (containing the NuGet source project).
 1.  In the **Solution Explorer** pane, right-click the **PartsUnlimited.Shared** project node, in the right-click menu, select **Add** and, in the cascading menu, select **New Item**.
-1.  In the **Add New Item - PartsUnlimitedShared** dialog box, in the list of **Visual C# items**, ensure that the **Class** template is selected, in the **Name** textbox at the bottom of the dialog box, type "TaxService.cs**, and click **Add** to add the class. 
+1.  In the **Add New Item - PartsUnlimitedShared** dialog box, in the list of **Visual C# items**, ensure that the **Class** template is selected, in the **Name** textbox at the bottom of the dialog box, type **"TaxService.cs"**, and click **Add** to add the class. 
 
     > **Note**: We will pretend that tax calculation will be consolidated into this shared class and managed centrally so that other teams can simply work with the NuGet package.
 
@@ -251,7 +251,7 @@ In this task, you will update a NuGet package.
     > **Note**: The published artifact version number is changed to reflect the package version update.
 
     ```
-    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey VSTS PartsUnlimited.Shared.1.1.0.nupkg
+    ./nuget.exe push -source "PartsUnlimitedShared" -ApiKey AzDO PartsUnlimited.Shared.1.1.0.nupkg
     ```
 
 1.  Switch to the web browser window displaying the Azure DevOps portal with the **PartsUnlimitedShared 1.0.0** artifact pane.
