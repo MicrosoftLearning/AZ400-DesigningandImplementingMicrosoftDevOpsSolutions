@@ -148,7 +148,7 @@ In this task, you will add a YAML build definition to the existing project.
 
     > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
-1.  Change `trigger` to **master**.
+1.  Change `trigger` to **master** (only if needed).
 
     > **Note**: Review in Repos if your repository has **master** or **main** branch, new repos will be having **main** by default.
 
