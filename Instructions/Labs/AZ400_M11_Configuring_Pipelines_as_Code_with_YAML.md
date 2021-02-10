@@ -163,7 +163,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 #### Task 3: Add continuous delivery to the YAML definition
 
-In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task.
+In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task (the one created by you will be called **PartsUnlimited(1)** ).
 
 > **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
 
