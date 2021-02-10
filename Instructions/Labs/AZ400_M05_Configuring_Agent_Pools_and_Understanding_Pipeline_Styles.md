@@ -122,7 +122,7 @@ In this task, you will convert a classic pipeline into a YAML pipeline
 
     > **Note**: For more information regarding this functionality, refer to [Replacing "View YAML"](https://devblogs.microsoft.com/devops/replacing-view-yaml/)
 
-1.  On the lab computer, start Visual Studio Code and use it to open the file **build.yml**. The file should have the following content:
+1.  On the lab computer, start Visual Studio Code and use it to open the file **PartsUnlimitedE2E.yml**. The file should have the following content:
 
     ```yaml
     name: $(date:yyyyMMdd)$(rev:.r)
