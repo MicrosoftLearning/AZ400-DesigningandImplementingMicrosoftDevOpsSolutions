@@ -179,7 +179,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       - job: Build
     ```
 
-1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces. 
+1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces (it should be placed with same identation as ```job: Deploy```). 
 
     > **Note**: This way, everything starting with the `pool` section becomes part of the `job: Build`. 
 
@@ -248,55 +248,55 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     stages:
     - stage: Build
-    jobs:
-    - job: Build
+      jobs:
+      - job: Build
         pool:
-        vmImage: 'vs2017-win2016'
+            vmImage: 'vs2017-win2016'
 
         variables:
-        solution: '**/*.sln'
-        buildPlatform: 'Any CPU'
-        buildConfiguration: 'Release'
+            solution: '**/*.sln'
+            buildPlatform: 'Any CPU'
+            buildConfiguration: 'Release'
 
         steps:
         - task: NuGetToolInstaller@1
 
         - task: NuGetCommand@2
-        inputs:
+          inputs:
             restoreSolution: '$(solution)'
 
         - task: VSBuild@1
-        inputs:
+          inputs:
             solution: '$(solution)'
             msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
 
         - task: VSTest@2
-        inputs:
+          inputs:
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
 
         - task: PublishBuildArtifacts@1
-        inputs:
+          inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
             ArtifactName: 'drop'
             publishLocation: 'Container'
 
     - stage: Deploy
-    jobs:
-    - job: Deploy
+      jobs:
+      - job: Deploy
         pool:
-        vmImage: 'vs2017-win2016'
+            vmImage: 'vs2017-win2016'
         steps:
         - task: DownloadBuildArtifacts@0
-        inputs:
+          inputs:
             buildType: 'current'
             downloadType: 'single'
             downloadPath: '$(System.ArtifactsDirectory)'
             artifactName: 'drop'
         - task: AzureRmWebAppDeployment@4
-        inputs:
+          inputs:
             ConnectionType: 'AzureRM'
             azureSubscription: 'YOUR-AZURE-SUBSCRIPTION'
             appType: 'webApp'
