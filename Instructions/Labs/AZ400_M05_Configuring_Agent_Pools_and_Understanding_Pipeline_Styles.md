@@ -64,7 +64,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
 1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Configuring Agent Pools and Understanding Pipeline Styles**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
 1.  On the **Choose a template** page, click the **PartsUnlimited** template, and then click **Select Template**.
-1.  Back on the **Create New Project** page, select the checkbox below the **ARM Outputs** label, and click **Create Project**
+1.  Click **Create Project**
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
 
