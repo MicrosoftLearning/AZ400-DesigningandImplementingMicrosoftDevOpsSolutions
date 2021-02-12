@@ -116,7 +116,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
 In this exercise, you will configure CI/CD Pipelines as code with YAML in Azure DevOps.
 
-#### Task 1: Modify the existing pipeline
+#### Task 1: Delete the existing pipeline
 
 In this task, you will delete the existing pipeline.
 
@@ -125,14 +125,9 @@ In this task, you will delete the existing pipeline.
     > **Note**: Before configuring YAML pipelines, you will disable the existing build pipeline.
 
 1.  On the **Pipelines** pane, select the **PartsUnlimited** entry. 
-1.  In the upper right corner of the **PartsUnlimited** blade, click  **Edit**.
-1.  Delete the trigger for master by deleting the following:
+1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**.
+1.  Write **PartsUnlimited** and click **Delete**.    
 
-    ```yaml
-    trigger:
-    - master
-    ```
-1. Click on **Save** and **Save** again.
 #### Task 2: Add a YAML build definition
 
 In this task, you will add a YAML build definition to the existing project.
