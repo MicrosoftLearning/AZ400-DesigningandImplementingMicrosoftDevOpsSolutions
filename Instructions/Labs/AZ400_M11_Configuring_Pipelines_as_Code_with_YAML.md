@@ -140,9 +140,9 @@ In this task, you will add a YAML build definition to the existing project.
 
 1.  On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
 1.  On the **Select a repository** pane, click **PartsUnlimited**.
-1.  On the **Configure your pipeline** pane, click **ASP.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
+1.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
 
-    > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
+    > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
 1.  Change `trigger` to **master** (only if needed).
 
