@@ -126,7 +126,8 @@ In this task, you will delete the existing pipeline.
 
 1.  On the **Pipelines** pane, select the **PartsUnlimited** entry. 
 1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**.
-1.  Write **PartsUnlimited** and click **Delete**.    
+1.  Write **PartsUnlimited** and click **Delete**.
+1.  In the vertical navigational pane, select the **Repos > Files**. Make sure you are in the **master** branch (dropdown on top of **Files** window), on the **azure-pipelines.yml** file, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**. Commit the change on the master branch by clicking on **Commit** (leaving default options).
 
 #### Task 2: Add a YAML build definition
 
