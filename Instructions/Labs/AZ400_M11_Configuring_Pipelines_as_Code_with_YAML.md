@@ -134,7 +134,7 @@ In this task, you will delete the existing pipeline.
 In this task, you will add a YAML build definition to the existing project.
 
 1.  Navigate back to the **Pipelines** pane in of the **Pipelines** hub. 
-1.  In the upper right corner of the **Pipelines** pane, click **New pipeline**. 
+1.  In the **Create your first Pipeline** window, click **Create pipeline**. 
 
     > **Note**: We will use the wizard to automatically create the YAML definition based on our project.
 
