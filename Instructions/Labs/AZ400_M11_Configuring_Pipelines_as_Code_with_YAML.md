@@ -159,12 +159,12 @@ In this task, you will add a YAML build definition to the existing project.
 
 #### Task 3: Add continuous delivery to the YAML definition
 
-In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task (the one created by you will be called **PartsUnlimited(1)** ).
+In this task, you will add continuous delivery to the YAML-based definition of the pipeline you created in the previous task.
 
 > **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
 
 1.  On the pipeline run pane, click the ellipsis symbol in the upper right corner and, in the dropdown menu, click **Edit pipeline**.
-1.  On the pane displaying the content of the **azure-pipelines-1.yaml** file, in line **8**, following the `trigger` section, add the following content to define the **Build** stage in the YAML pipeline. 
+1.  On the pane displaying the content of the **azure-pipelines.yaml** file, in line **8**, following the `trigger` section, add the following content to define the **Build** stage in the YAML pipeline. 
 
     > **Note**: You can define whatever stages you need to better organize and track pipeline progress.
 
@@ -181,7 +181,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
 1.  At the bottom of the file, add the configuration below to define the second stage.
 
-    ```
+    ```yaml
     - stage: Deploy
       jobs:
       - job: Deploy
