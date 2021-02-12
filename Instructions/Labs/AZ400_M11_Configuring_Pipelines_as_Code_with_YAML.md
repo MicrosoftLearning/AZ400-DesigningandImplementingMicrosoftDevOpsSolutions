@@ -144,9 +144,9 @@ In this task, you will add a YAML build definition to the existing project.
 
     > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
-1.  Change `trigger` to **master** (only if needed).
+1.  Make sure  `trigger` is **master**.
 
-    > **Note**: Review in Repos if your repository has **master** or **main** branch, new repos will be having **main** by default.
+    > **Note**: Review in Repos if your repository has **master** or **main** branch, organizations could choose default branch name for new repos: [Change the default branch](https://docs.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?view=azure-devops#choosing-a-name). 
 
 1.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'vs2017-win2016'`.
 1.  On the **Review your pipeline YAML** pane, click **Save and run**.
