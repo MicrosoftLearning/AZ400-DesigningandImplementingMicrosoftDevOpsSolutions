@@ -141,7 +141,7 @@ In this task, you will track and review the new build job.
 
     > **Note**: You also have easy access to the pipeline editor, the ability to queue a new build, and download the artifacts of this build.
 
-### Task 3: Invoking a continuous integration build
+#### Task 3: Invoking a continuous integration build
 
 In this task, you will trigger a continuous integration build.
 
