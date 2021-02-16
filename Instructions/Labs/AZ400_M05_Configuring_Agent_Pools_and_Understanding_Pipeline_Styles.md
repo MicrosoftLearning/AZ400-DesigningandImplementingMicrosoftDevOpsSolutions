@@ -150,7 +150,11 @@ In this task, you will prepare your lab environment for deployment of an image t
     > **Note**: This file defines the content of the image. You can customize its configuration and, effectively, affect the image provisioning time by modifying the **provisioners** section.
 
 1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\helpers** directory and open the **GenerateResourcesAndImage.ps1** file in Notepad. 
-1.  In Notepad displaying content of the **GenerateResourcesAndImage.ps1** file, in the line containing the command `New-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $storageAccountName -Location $AzureLocation -SkuName "Standard_LRS"``, replace `"Standard_LRS"` with `"Premium_LRS"`, save the change, and close the file.
+1.  In Notepad displaying content of the **GenerateResourcesAndImage.ps1** file, in the line containing the command
+    ```powershell
+    New-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $storageAccountName -Location $AzureLocation -SkuName "Standard_LRS"
+    ```
+    replace `"Standard_LRS"` with `"Premium_LRS"`, save the change, and close the file.
 
     > **Note**: This change is intended to accelerate image provisioning.
 
@@ -615,7 +619,7 @@ hd', where `az400m05l05xrg001` represents the storage account name.
 1.  On the lab computer, switch to the **Administrator: Windows PowerShell ISE** window and, from its script pane, run the following to set the variables required for the Azure VM deployment by using an Azure Resource Manager template (replace the `<resource_group_name>` placeholder with the name of the resource group you identified earlier in this task, the `<storage_account_name>` placeholder with the name of the storage account you identified earlier in this task, and the `<image_url>` placeholder with the name of the image URL you identified earlier in this task):
 
     ```powershell
-    $rgName = `<resource_group_name>'
+    $rgName = '<resource_group_name>'
     $storageAccountName = '<storage_account_name>'
     $imageUrl = '<image_url>'
     ```
