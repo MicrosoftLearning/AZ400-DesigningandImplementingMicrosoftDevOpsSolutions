@@ -175,7 +175,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       - job: Build
     ```
 
-1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces (it should be placed with same identation as ```job: Deploy```). 
+1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces (it should be placed with same identation as ```job: Build```). 
 
     > **Note**: This way, everything starting with the `pool` section becomes part of the `job: Build`. 
 
