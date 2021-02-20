@@ -24,7 +24,7 @@ After you complete this lab, you will be able to:
 
 ## Lab duration
 
--   Estimated time: **90 minutes**
+-   Estimated time: **45 minutes**
 
 ## Instructions
 
@@ -48,15 +48,6 @@ Find the taskbar on your Windows 10 desktop. The taskbar contains the icons for 
 
 If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
-#### Prepare an Azure subscription
-
--   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
-
-#### Set up a GitHub account
-
-Follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account).
-
 ### Exercise 0: Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisite for the lab, which consists of the preconfigured Parts Unlimited team project based on an Azure DevOps Demo Generator template.
@@ -73,411 +64,11 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
 1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Configuring Agent Pools and Understanding Pipeline Styles**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
 1.  On the **Choose a template** page, click the **PartsUnlimited** template, and then click **Select Template**.
-1.  Back on the **Create New Project** page, select the checkbox below the **ARM Outputs** label, and click **Create Project**
+1.  Click **Create Project**
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
 
 1.  On the **Create New Project** page, click **Navigate to project**.
-
-#### Task 2: Install Visual Studio Code
-
-In this task, you will install Visual Studio Code. If you have already implemented these prerequisites, you can proceed directly to the next task.
-
-1.  If you don't have Visual Studio Code installed yet, from the web browser window, navigate to the [Visual Studio Code download page](https://code.visualstudio.com/), download it, and install it. 
-
-#### Task 3: Prepare the lab environment for image deployment
-
-In this task, you will prepare your lab environment for deployment of an image that will be used to provision a self-hosted agent.
-
-> **Note**: The location of the self-hosted agent and its configuration is highly dependent on your requirements. In this exercise, you will use for this purpose an Azure VM that is based on the same image that is used for Microsoft-hosted agents. The images are available from the [Virtual Environments GitHub repository](https://github.com/actions/virtual-environments). You will also find there images for GitHub Actions hosted runners.
-
-1.  On the lab computer, start a web browser, navigate to [GitHub](https://github.com) and sign into your GitHub account.
-1.  In the web browser displaying your GitHub account, in the upper right corner, click the round icon representing your profile and, in the dropdown menu, click **Settings**.
-1.  On the **Public profile** page, in the vertical menu on the left, click **Developer settings**.
-1.  On the **GitHub Apps** page, in the vertical menu on the left, click **Personal access token**.
-1.  On the **Personal access token** page, in the upper right corner, click **Generate new token**.
-1.  On the **New personal access token** page, in the **Note** text box, type **az400m05l05a lab**, in the **Select scopes** section, select the **read:packages** checkbox, and click **Generate token**.
-1.  On the **Personal access token** page, identify the newly generated token and record its value. You will need it later in this task.
-
-    > **Note**: Make sure to record the personal access token at this point. You will not be able to retrieve its value once you navigate away from the current page. 
-
-1.  On the lab computer, start Windows PowerShell ISE as administrator and, from the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install Chocolatey:
-
-    ```powershell
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-    ```
-
-1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install git:
-
-    ```powershell
-    choco install git -params '"/GitOnlyOnPath"' -y
-    ```
-
-1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install packer:
-
-    ```powershell
-    choco install packer -y
-    ```
-
-1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install Azure CLI:
-
-    ```powershell
-    Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
-    ```
-
-1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install PowerShell (when prompted for confirmation to proceed, click **Yes to All**):
-
-    ```powershell
-    Install-Module -Name Az
-    ```
-
-1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to sign in to sign in to your Azure subscription (when prompted for credentials, authenticate with a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription):
-
-    ```powershell
-    Add-AzAccount
-    ```
-
-1.  From the console pane of the **Administrator: Windows PowerShell ISE** window, run the following to install git:
-
-    ```powershell
-    New-Item -Type Directory -Path 'C:\Labfiles' -Force
-    Set-Location c:\Labfiles
-    git clone https://github.com/actions/virtual-environments.git virtual-environments -q
-    ```
-
-1.  On the lab computer, start File Explorer and navigate to the **C:\\Labfiles\\virtual-environments\\images\\win** directory, open the **windows2019.json** file in Notepad, and review its content.
-
-    > **Note**: This file defines the content of the image. You can customize its configuration and, effectively, affect the image provisioning time by modifying the **provisioners** section.
-
-1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\helpers** directory and open the **GenerateResourcesAndImage.ps1** file in Notepad. 
-1.  In Notepad displaying content of the **GenerateResourcesAndImage.ps1** file, in the line containing the command `New-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $storageAccountName -Location $AzureLocation -SkuName "Standard_LRS"``, replace `"Standard_LRS"` with `"Premium_LRS"`, save the change, and close the file.
-
-    > **Note**: This change is intended to accelerate image provisioning.
-
-1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\images\\win** directory, open the **windows2016.json** file in Notepad, paste the following content, replace the existing content, save the changes, and close the file.
-
-    > **Note**: These changes are intended strictly to accelerate image provisioning in this particular lab scenario. In general, you should adjust the image to match your requirements. 
-
-    ```json
-    {
-        "variables": {
-            "client_id": "{{env `ARM_CLIENT_ID`}}",
-            "client_secret": "{{env `ARM_CLIENT_SECRET`}}",
-            "subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
-            "tenant_id": "{{env `ARM_TENANT_ID`}}",
-            "object_id": "{{env `ARM_OBJECT_ID`}}",
-            "resource_group": "{{env `ARM_RESOURCE_GROUP`}}",
-            "storage_account": "{{env `ARM_STORAGE_ACCOUNT`}}",
-            "temp_resource_group_name": "{{env `TEMP_RESOURCE_GROUP_NAME`}}",
-            "location": "{{env `ARM_RESOURCE_LOCATION`}}",
-            "virtual_network_name": "{{env `VNET_NAME`}}",
-            "virtual_network_resource_group_name": "{{env `VNET_RESOURCE_GROUP`}}",
-            "virtual_network_subnet_name": "{{env `VNET_SUBNET`}}",
-            "private_virtual_network_with_public_ip": "{{env `PRIVATE_VIRTUAL_NETWORK_WITH_PUBLIC_IP`}}",
-            "vm_size": "Standard_D8s_v3",
-            "run_scan_antivirus": "false",
-            "root_folder": "C:",
-            "toolset_json_path": "{{env `TEMP`}}\\toolset.json",
-            "image_folder": "C:\\image",
-            "imagedata_file": "C:\\imagedata.json",
-            "helper_script_folder": "C:\\Program Files\\WindowsPowerShell\\Modules\\",
-            "psmodules_root_folder": "C:\\Modules",
-            "install_user": "installer",
-            "install_password": null,
-            "capture_name_prefix": "packer",
-            "image_version": "dev",
-            "image_os": "win16"
-        },
-        "sensitive-variables": [
-            "install_password",
-            "client_secret"
-        ],
-        "builders": [
-            {
-                "name": "vhd",
-                "type": "azure-arm",
-                "client_id": "{{user `client_id`}}",
-                "client_secret": "{{user `client_secret`}}",
-                "subscription_id": "{{user `subscription_id`}}",
-                "object_id": "{{user `object_id`}}",
-                "tenant_id": "{{user `tenant_id`}}",
-                "os_disk_size_gb": "256",
-                "location": "{{user `location`}}",
-                "vm_size": "{{user `vm_size`}}",
-                "resource_group_name": "{{user `resource_group`}}",
-                "storage_account": "{{user `storage_account`}}",
-                "temp_resource_group_name": "{{user `temp_resource_group_name`}}",
-                "capture_container_name": "images",
-                "capture_name_prefix": "{{user `capture_name_prefix`}}",
-                "virtual_network_name": "{{user `virtual_network_name`}}",
-                "virtual_network_resource_group_name": "{{user `virtual_network_resource_group_name`}}",
-                "virtual_network_subnet_name": "{{user `virtual_network_subnet_name`}}",
-                "private_virtual_network_with_public_ip": "{{user `private_virtual_network_with_public_ip`}}",
-                "os_type": "Windows",
-                "image_publisher": "MicrosoftWindowsServer",
-                "image_offer": "WindowsServer",
-                "image_sku": "2016-Datacenter",
-                "communicator": "winrm",
-                "winrm_use_ssl": "true",
-                "winrm_insecure": "true",
-                "winrm_username": "packer"
-            }
-        ],
-        "provisioners": [
-            {
-                "type": "powershell",
-                "inline": [
-                    "New-Item -Path {{user `image_folder`}} -ItemType Directory -Force"
-                ]
-            },
-            {
-                "type": "file",
-                "source": "{{ template_dir }}/scripts/ImageHelpers",
-                "destination": "{{user `helper_script_folder`}}"
-            },
-            {
-                "type": "file",
-                "source": "{{ template_dir }}/scripts/SoftwareReport",
-                "destination": "{{user `image_folder`}}"
-            },
-            {
-                "type": "file",
-                "source": "{{ template_dir }}/post-generation",
-                "destination": "C:/"
-            },
-            {
-                "type": "file",
-                "source": "{{ template_dir }}/scripts/Tests",
-                "destination": "{{user `image_folder`}}"
-            },
-            {
-                "type": "file",
-                "source": "{{template_dir}}/toolsets/toolset-2016.json",
-                "destination": "{{user `toolset_json_path`}}"
-            },
-            {
-                "type": "windows-shell",
-                "inline": [
-                    "net user {{user `install_user`}} {{user `install_password`}} /add /passwordchg:no /passwordreq:yes /active:yes /Y",
-                    "net localgroup Administrators {{user `install_user`}} /add",
-                    "winrm set winrm/config/service/auth @{Basic=\"true\"}",
-                    "winrm get winrm/config/service/auth"
-                ]
-            },
-            {
-                "type": "powershell",
-                "inline": [
-                    "if (-not ((net localgroup Administrators) -contains '{{user `install_user`}}')) { exit 1 }"
-                ]
-            },
-            {
-                "type": "powershell",
-                "environment_vars": [
-                    "ImageVersion={{user `image_version`}}",
-                    "TOOLSET_JSON_PATH={{user `toolset_json_path`}}",
-                    "PSMODULES_ROOT_FOLDER={{user `psmodules_root_folder`}}"
-                ],
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-PowerShellModules.ps1",
-                    "{{ template_dir }}/scripts/Installers/Initialize-VM.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-WebPlatformInstaller.ps1"
-                ],
-                "execution_policy": "unrestricted"
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Update-DotnetTLS.ps1"
-                ]
-            },
-            {
-                "type": "windows-restart",
-                "restart_timeout": "30m"
-            },
-            {
-                "type": "powershell",
-                "inline": [
-                    "setx ImageVersion {{user `image_version` }} /m",
-                    "setx ImageOS {{user `image_os` }} /m"
-                ]
-            },
-            {
-                "type": "powershell",
-                "environment_vars": [
-                    "IMAGE_VERSION={{user `image_version`}}",
-                    "IMAGEDATA_FILE={{user `imagedata_file`}}"
-                ],
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Update-ImageData.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-PowershellCore.ps1"
-                ]
-            },
-            {
-                "type": "windows-restart",
-                "restart_timeout": "30m"
-            },
-            {
-                "type": "powershell",
-                "valid_exit_codes": [
-                    0,
-                    3010
-                ],
-                "environment_vars": [
-                    "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
-                ],
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-VS.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-NET48.ps1"
-                ],
-                "elevated_user": "{{user `install_user`}}",
-                "elevated_password": "{{user `install_password`}}"
-            },
-                {
-                "type": "powershell",
-                "environment_vars": [
-                    "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
-                ],
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-Nuget.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-Vsix.ps1"
-                ]
-            },
-            {
-                "type": "windows-restart",
-                "restart_timeout": "30m"
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-NodeLts.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-7zip.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-Packer.ps1"
-                ]
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-OpenSSL.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-Git.ps1",
-                    "{{ template_dir }}/scripts/Installers/Install-GitHub-CLI.ps1"
-                ]
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Enable-DeveloperMode.ps1"
-                ],
-                "elevated_user": "{{user `install_user`}}",
-                "elevated_password": "{{user `install_password`}}"
-            },
-            {
-                "type": "windows-shell",
-                "inline": [
-                    "wmic product where \"name like '%%microsoft azure powershell%%'\" call uninstall /nointeractive"
-                ]
-            },
-            {
-                "type": "powershell",
-                "environment_vars": [
-                    "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
-                ],
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-Cmake.ps1"
-                ]
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Install-GitVersion.ps1"
-                ]
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Configure-DynamicPort.ps1"
-                ],
-                "elevated_user": "{{user `install_user`}}",
-                "elevated_password": "{{user `install_password`}}"
-            },
-            {
-                "type": "windows-restart",
-                "restart_timeout": "30m"
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Finalize-VM.ps1"
-                ]
-            },
-            {
-                "type": "windows-restart",
-                "restart_timeout": "30m"
-            },
-            {
-                "type": "powershell",
-                "scripts": [
-                    "{{ template_dir }}/scripts/Installers/Configure-Antivirus.ps1",
-                    "{{ template_dir }}/scripts/Installers/Disable-JITDebugger.ps1"
-                ]
-            },
-            {
-                "type": "powershell",
-                "inline": [
-                    "if( Test-Path $Env:SystemRoot\\System32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\System32\\Sysprep\\unattend.xml -Force}",
-                    "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
-                    "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
-                ]
-            }
-        ]
-    }
-    ```
-
-1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\images\\win\\scripts\\Installers** directory, open the **Install-VS.ps1** file in Notepad, locate the following section:
-
-    ```powershell
-    $workLoads = @(
-	"--allWorkloads --includeRecommended"
-	$requiredComponents
-	"--remove Component.CPython3.x64"
-    )
-    ```
-
-1.  In the Notepad window displaying the content of the **Install-VS.ps1** file, replace the section you identified in the previous step with the following content:
-
-    ```powershell
-    $workLoads = @(
-	"--add Microsoft.VisualStudio.Workload.NetWeb --add Component.GitHub.VisualStudio --includeRecommended"
-	"--remove Component.CPython3.x64"
-    )
-    ```
-
-    > **Note**: This change is intended strictly to accelerate image provisioning in this particular lab scenario. In general, you should adjust Visual Studio components to be installed to match your requirements. 
-
-1.  On the lab computer, in File Explorer, navigate to the **C:\\Labfiles\\virtual-environments\\images\\win\\scripts\\Tests** directory, open the **VisualStudio.Tests.ps1** file in Notepad, replace the line `$expectedComponents = Get-ToolsetContent | Select-Object -ExpandProperty visualStudio | Select-Object -ExpandProperty workloads` with `$expectedComponents = "Microsoft.VisualStudio.Workload.NetWeb"`, save the change, and close the file.
-
-    > **Note**: This change is intended strictly to accelerate image provisioning in this particular lab scenario. In general, you should adjust the testing to match your requirements. 
-
-1.  Switch back to the **Administrator: Windows PowerShell ISE** window and, from its console pane, run the following to import the Packer PowerShell module you will use to generate the operating system image you will use to provision the self-hosted agent:
-
-    ```powershell
-    Set-Location c:\Labfiles\virtual-environments
-    Import-Module .\helpers\GenerateResourcesAndImage.ps1
-    ```
-
-1.  From the script pane of the **Administrator: Windows PowerShell ISE** window, run the following to use the Packer PowerShell module to generate the operating system image you will use to provision the self-hosted agent (replace the `<Azure_region>` placeholder with the name of the Azure region into which you want to deploy the Azure VM and the `<GitHub_PAT>` placeholder with the value of the GitHub personal access token you generated earlier in this task):
-
-    ```powershell
-    $location = '<Azure_region>'
-    $githubPAT = '<GitHub_PAT>'
-    $random = (-join (((48..57)+(65..90)+(97..122)) * 80 | Get-Random -Count 6 |%{[char]$_})).ToLower()
-    $rgName = "az400m05$random-RG"
-    $subscriptionId = (Get-AzSubscription).SubscriptionId  
-    GenerateResourcesAndImage -SubscriptionId $subscriptionId -ResourceGroupName $rgName -ImageGenerationRepositoryRoot "$pwd" -ImageType 'Windows2016' -AzureLocation $location -GitHubFeedToken $githubPAT
-    ```
-
-1.  When prompted, sign in with the same user account you used earlier to authenticate to the Azure AD tenant associated with the Azure subscription.
-
-    > **Note**: Do not wait for the script to complete but instead proceed to the next exercise. Provisioning of the image might take about 60 minutes.
 
 ### Exercise 1: Author YAML-based Azure DevOps pipelines
 
@@ -512,7 +103,7 @@ In this task, you will convert a classic pipeline into a YAML pipeline
 
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. 
 1.  On the **Recent** tab of the **Pipelines** pane, click the **PartsUnlimitedE2E** entry. 
-1.  On the **Runs** tab of the **PartsUnlimitedE2E** pane, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **Export to YAML**. This will automatically download the **build.yml** file to your local **Downloads** folder.
+1.  On the **Runs** tab of the **PartsUnlimitedE2E** pane, in the upper right corner, click the vertical ellipsis (three vertical dots) symbol and, in the dropdown menu, click **Export to YAML**. This will automatically download the **PartsUnlimitedE2E.yml** file to your local **Downloads** folder.
 
     > **Note**: The **Export to YAML** feature replaces an older **View YAML** option available from the pipeline editor pane within the Azure DevOps portal, which was limited to viewing YAML content one job at a time. The new functionality leverages existing classic and YAML pipeline infrastructure, including YAML parsing library, which results in more accurate translation between the two. It supports the following pipeline components:
 
@@ -531,7 +122,7 @@ In this task, you will convert a classic pipeline into a YAML pipeline
 
     > **Note**: For more information regarding this functionality, refer to [Replacing "View YAML"](https://devblogs.microsoft.com/devops/replacing-view-yaml/)
 
-1.  On the lab computer, start Visual Studio Code and use it to open the file **build.yml**. The file should have the following content:
+1.  On the lab computer, start Visual Studio Code and use it to open the file **PartsUnlimitedE2E.yml**. The file should have the following content:
 
     ```yaml
     name: $(date:yyyyMMdd)$(rev:.r)
@@ -594,277 +185,18 @@ In this task, you will convert a classic pipeline into a YAML pipeline
 
 In this exercise, you will implement self-hosted Azure DevOps agent.
 
-> **Note**: Before you start this exercise, make sure that the image provisioning script you started at the beginning of the lab has successfully completed.
+#### Task 1: Configure an Azure DevOps self-hosting agent
 
-#### Task 1: Deploy an Azure VM-based self-hosted agent
+In this task, you will configure the LOD VM as an Azure DevOps self-hosting agent and use it to run a build pipeline.
 
-In this task, you will deploy an Azure VM that will be used to provision a self-hosted agent by using the custom image you generated at the beginning of this lab.
-
-1.  On the lab computer, switch to the **Administrator: Windows PowerShell ISE** window, review the output of the **GenerateResourcesAndImage** script you invoked at the beginning of this lab and identify the value of the storage account name by examining the first part of the **OSDiskUri** string, representing the full path to the generated vhd file.
-
-    > **Note**: The output should resemble the following value `OSDiskUri: https://az400m05l05xrg001.blob.core.windows.net/system/Microsoft.Compute/Images/images/packer-osDisk.40096600-7cac-47f4-8573-ffaa113c78b1.v
-hd', where `az400m05l05xrg001` represents the storage account name.
-
-1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that you used to provision the Azure VM in the previous task. 
-1.  In the Azure portal, search for and select the **Storage accounts** resource type and, on the **Storage accounts** blade, click the name of the storage account you identified earlier in this task. 
-1.  On the storage account blade, note the name of the resource group containing the storage account. You will need it later in this task.
-1.  On the storage account blade, in the vertical menu on the left side, in the **Blob service** section, click **Containers**.
-1.  On the Containers blade, click **+ Container**, on the **New container** blade, in the **Name** text box, type **disks**, ensure that the **Public access level** dropbox contains the **Private (no anonymous access)** entry, and click **Create**.
-1.  Back on the Containers blade, in the list of containers, click **images**, and, on the **images** blade, click the entry representing the newly generated image.
-1.  On the blade displaying the image properties, next to the **URL** entry, click the **Copy to clipboard** icon and paste the copied value to Notepad. You will need it in the next step. 
-1.  On the lab computer, switch to the **Administrator: Windows PowerShell ISE** window and, from its script pane, run the following to set the variables required for the Azure VM deployment by using an Azure Resource Manager template (replace the `<resource_group_name>` placeholder with the name of the resource group you identified earlier in this task, the `<storage_account_name>` placeholder with the name of the storage account you identified earlier in this task, and the `<image_url>` placeholder with the name of the image URL you identified earlier in this task):
-
-    ```powershell
-    $rgName = `<resource_group_name>'
-    $storageAccountName = '<storage_account_name>'
-    $imageUrl = '<image_url>'
-    ```
-
-1.  On the lab computer, switch to the File Explorer window and create a new file in the **C:\\Labfiles** folder named **az400m05-vm0.deployment.template.json** with the following content, save it, and close it. 
-
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-          "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_D2s_v3",
-            "metadata": {
-              "description": "Virtual machine size"
-            }
-          },
-          "adminUsername": {
-            "type": "string",
-            "metadata": {
-              "description": "Admin username"
-            }
-          },
-          "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-              "description": "Admin password"
-            }
-          },
-          "storageAccountName": {
-            "type": "string",
-            "metadata": {
-               "description": "storage account name"
-            }
-          },
-          "imageUrl": {
-            "type": "string",
-            "metadata": {
-               "description": "image Url"
-            }
-          },
-          "diskContainer": {
-            "type": "string",
-            "defaultValue": "disks",
-            "metadata": {
-              "description": "disk container"
-            }
-          }
-        },
-      "variables": {
-        "vmName": "az400m05-vm0",
-        "osType": "Windows",
-        "osDiskVhdName": "[concat('http://',parameters('storageAccountName'),'.blob.core.windows.net/',parameters('diskContainer'),'/',variables('vmName'),'-osDisk.vhd')]",
-        "nicName": "az400m05-vm0-nic0",
-        "virtualNetworkName": "az400m05-vnet0",
-        "publicIPAddressName": "az400m05-vm0-nic0-pip",
-        "nsgName": "az400m05-vm0-nic0-nsg",
-        "vnetIpPrefix": "10.0.0.0/22", 
-        "subnetIpPrefix": "10.0.0.0/24", 
-        "subnetName": "subnet0",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-        "computeApiVersion": "2018-06-01",
-        "networkApiVersion": "2018-08-01"
-      },
-        "resources": [
-            {
-                "name": "[variables('vmName')]",
-                "type": "Microsoft.Compute/virtualMachines",
-                "apiVersion": "[variables('computeApiVersion')]",
-                "location": "[resourceGroup().location]",
-                "dependsOn": [
-                    "[variables('nicName')]"
-                ],
-                "properties": {
-                    "osProfile": {
-                        "computerName": "[variables('vmName')]",
-                        "adminUsername": "[parameters('adminUsername')]",
-                        "adminPassword": "[parameters('adminPassword')]",
-                        "windowsConfiguration": {
-                            "provisionVmAgent": "true"
-                        }
-                    },
-                    "hardwareProfile": {
-                        "vmSize": "[parameters('vmSize')]"
-                    },
-                    "storageProfile": {
-                        "osDisk": {
-                            "name": "[concat(variables('vmName'),'-osDisk')]",
-                            "osType": "[variables('osType')]",
-                            "caching": "ReadWrite",
-                            "image": {
-                                "uri": "[parameters('imageUrl')]"
-                            },
-                            "vhd": {
-                                "uri": "[variables('osDiskVhdName')]"
-                            },
-                            "createOption": "fromImage"
-                        },
-                        "dataDisks": []
-                    },
-                    "networkProfile": {
-                        "networkInterfaces": [
-                            {
-                                "properties": {
-                                    "primary": true
-                                },
-                                "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "type": "Microsoft.Network/virtualNetworks",
-                "name": "[variables('virtualNetworkName')]",
-                "apiVersion": "[variables('networkApiVersion')]",
-                "location": "[resourceGroup().location]",
-                "comments": "Virtual Network",
-                "properties": {
-                    "addressSpace": {
-                        "addressPrefixes": [
-                            "[variables('vnetIpPrefix')]"
-                        ]
-                    },
-                    "subnets": [
-                        {
-                            "name": "[variables('subnetName')]",
-                            "properties": {
-                                "addressPrefix": "[variables('subnetIpPrefix')]"
-                            }
-                        }
-                    ]
-                }
-            },
-            {
-                "name": "[variables('nicName')]",
-                "type": "Microsoft.Network/networkInterfaces",
-                "apiVersion": "[variables('networkApiVersion')]",
-                "location": "[resourceGroup().location]",
-                "comments": "Primary NIC",
-                "dependsOn": [
-                    "[variables('publicIpAddressName')]",
-                    "[variables('nsgName')]",
-                    "[variables('virtualNetworkName')]"
-                ],
-                "properties": {
-                    "ipConfigurations": [
-                        {
-                            "name": "ipconfig1",
-                            "properties": {
-                                "subnet": {
-                                    "id": "[variables('subnetRef')]"
-                                },
-                                "privateIPAllocationMethod": "Dynamic",
-                                "publicIpAddress": {
-                                    "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
-                                }
-                            }
-                        }
-                    ],
-                    "networkSecurityGroup": {
-                        "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
-                    }
-                }
-            },
-            {
-                "name": "[variables('publicIpAddressName')]",
-                "type": "Microsoft.Network/publicIpAddresses",
-                "apiVersion": "[variables('networkApiVersion')]",
-                "location": "[resourceGroup().location]",
-                "comments": "Public IP for Primary NIC",
-                "properties": {
-                    "publicIpAllocationMethod": "Dynamic"
-                }
-            },
-            {
-                "name": "[variables('nsgName')]",
-                "type": "Microsoft.Network/networkSecurityGroups",
-                "apiVersion": "[variables('networkApiVersion')]",
-                "location": "[resourceGroup().location]",
-                "comments": "Network Security Group (NSG) for Primary NIC",
-                "properties": {
-                    "securityRules": [
-                        {
-                            "name": "default-allow-rdp",
-                            "properties": {
-                                "priority": 1000,
-                                "sourceAddressPrefix": "*",
-                                "protocol": "Tcp",
-                                "destinationPortRange": "3389",
-                                "access": "Allow",
-                                "direction": "Inbound",
-                                "sourcePortRange": "*",
-                                "destinationAddressPrefix": "*"
-                            }
-                        }
-                    ]
-                }
-            }
-        ],
-        "outputs": {}
-    }
-    ```
-
-1.  On the lab computer, in the File Explorer window and create a new file in the **C:\\Labfiles** folder named **az400m05-vm0.deployment.template.parameters.json** with the following content, save it, and close it. 
-
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "vmSize": {
-                "value": "Standard_D2s_v3"
-            },
-            "adminUsername": {
-                "value": "Student"
-            },
-            "adminPassword": {
-                "value": "Pa55w.rd1234"
-            }
-        }
-    }
-    ```    
-
-1.  From the script pane of the **Administrator: Windows PowerShell ISE** window, run the following to deploy an Azure VM that will be used to provision a self-hosted agent by using the custom image you generated at the beginning of this lab:
-
-    ```powershell
-    Set-Location -Path 'C:\Labfiles'
-    New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name az400m05-vm0-deployment -TemplateFile .\az400m05-vm0.deployment.template.json -TemplateParameterFile .\az400m05-vm0.deployment.template.parameters.json -storageAccountName $storageAccountName -imageUrl $imageUrl
-    ```
-
-    > **Note**: Wait for the provisioning process to complete. This should take about 5 minutes. 
-
-
-#### Task 2: Configure an Azure DevOps self-hosting agent
-
-In this task, you will configure the newly provisioned Azure VM as an Azure DevOps self-hosting agent and use it to run a build pipeline.
-
-1.  On the lab computer, switch to the web browser window displaying the Azure Portal, in the Azure portal, search for and select the **Virtual machines** resource type and, on the **Virtual machines** blade, click **az400m05-vm0**.
-1.  On the **az400m05-vm0** blade, click **Connect**, in the dropdown list, click **RDP**, on the **az400m05-vm0 \| Connect** blade, click **Download RDP File** and open the downloaded RDP file to connect to the **az400m05-vm0** Azure VM by using Remote Desktop. When prompted to sign in, provide the **Student** as the user name and **Pa55w.rd1234** as the password.
-1.  Within the Remote Desktop session to **az400m05-vm0**, start a web browser, navigate to [the Azure DevOps portal](https://dev.azure.com) and sign in by using the Microsoft account associated with your Azure DevOps organization.
-1.  In the Azure DevOps portal, close the **Get the agent** panel, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
+1.  Within the Lab Virtual machine (Lab VM) or your own computer, start a web browser, navigate to [the Azure DevOps portal](https://dev.azure.com) and sign in by using the Microsoft account associated with your Azure DevOps organization.
+1.  In the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, click the **Show all scopes** link and, specify the following settings and click **Create** (leave all others with their default values):
 
     | Setting | Value |
     | --- | --- |
     | Name | **Configuring Agent Pools and Understanding Pipeline Styles lab** |
-    | Scope | **Agent Pools** |
+    | Scope (custom defined) | **Agent Pools** (show more scopes option below if needed)|
     | Permissions | **Read and manage** |
 
 1.  On the **Success** pane, copy the value of the personal access token to Clipboard.
@@ -883,16 +215,15 @@ In this task, you will configure the newly provisioned Azure VM as an Azure DevO
 
     > **Note**: If you receive an error message at this point indicating that the current system settings prevent you from downloading the file, in the Internet Explorer window, in the upper right corner, click the gearwheel symbol designating the **Settings** menu header, in the dropdown menu, select **Internet Options**, in the **Internet Options** dialog box, click **Advanced**, on the **Advanced** tab, click **Reset**, in the **Reset Internet Explorer Settings** dialog box, click **Reset** again, click **Close**, and try the download again. 
 
-1.  Within the Remote Desktop session to **az400m05-vm0**, start Windows PowerShell as administrator and, from the **Administrator: Windows PowerShell** console, run the following to create the **C:\\agent** directory and extract the content of the downloaded archive into it:
+1.  Start Windows PowerShell as administrator and, from the **Administrator: Windows PowerShell** console, copy the **Create the agent** commands shown in **Get the agent** pane. Run the following script to create the **C:\\agent** directory and extract the content of the downloaded archive into it (make sure all commands run, click "enter" if last one did not). It will look similar to this (use the copied one for latest version): 
 
     ```powershell
-    New-Item -Type Directory -Path 'C:\agent'
-    Set-Location -Path 'C:\agent'
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-2.179.0.zip", "$PWD")
+    PS C:\> mkdir agent ; cd agent
+    PS C:\agent> Add-Type -AssemblyName System.IO.Compression.FileSystem ;
+    [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-[AGENT_VERSION].zip", "$PWD")
     ```
 
-1.  Within the Remote Desktop session to **az400m05-vm0**, from the **Administrator: Windows PowerShell** console, run the following to configure the agent:
+1.  Open the **Administrator: Windows PowerShell** console, run the following to configure the agent:
 
     ```powershell
     .\config.cmd
@@ -903,22 +234,16 @@ In this task, you will configure the newly provisioned Azure VM as an Azure DevO
     | Setting | Value |
     | ------- | ----- |
     | Enter server URL | the URL of your Azure DevOps organization, in the format **https://dev.azure.com/`<organization_name>`**, where `<organization_name>` represents the name of your Azure DevOps organization |
-    | Enter authentication type (press enter for PAT) | **Enter** key | 
-    | Enter personal access token | the access token you recorded earlier in this task |
+    | Enter authentication type (press enter for PAT) | **Enter** |
+    | Enter personal access token | The access token you recorded earlier in this task |
     | Enter agent pool (press enter for default) | **az400m05l05a-pool** |
     | Enter agent name | **az400m05-vm0** |
-    | Enter work folder (press enter for _work) | **C:\agent** |
+    | Enter work folder (press enter for _work) | **Enter** |
     | Enter Perform an unzip for tasks for each step. (press enter for N) | **Enter** |
-    | Enter run agent as service? (Y/N) (press enter for N) | **Enter** |
-    | Enter configure autologon and run agent on startup (Y/N) (press enter for N) | **Enter** |
+    | Enter run agent as service? (Y/N) (press enter for N) | **Y** |
+    | Enter User account to use for the service (press enter for NT AUTHORITY\NETWORK SERVICE) | **Enter** |
 
     > **Note**: You can run self-hosted agent as either a service or an interactive process. You might want to start with the interactive mode, since this simplifies verifying agent functionality. For production use, you should consider either running the agent as a service or as an interactive process with auto-logon enabled, since both persist their running state and ensure that the agent starts automatically if the operating system is restarted.
-
-1.  Within the Remote Desktop session to **az400m05-vm0**, from the **Administrator: Windows PowerShell** console, run the following to start the agent in the interactive mode:
-
-    ```powershell
-    .\run.cmd
-    ```
 
     > **Note**: Verify that the agent is reporting the **Listening for Jobs** status.
 
@@ -928,42 +253,17 @@ In this task, you will configure the newly provisioned Azure VM as an Azure DevO
 1.  In the browser window displaying the list of projects, click the tile representing your **Configuring Agent Pools and Understanding Pipeline Styles** project. 
 1.  On the **Configuring Agent Pools and Understanding Pipeline Styles** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. 
 1.  On the **Recent** tab of the **Pipelines** pane, select **PartsUnlimited** and, on the **PartsUnlimited** pane, select **Edit**.
-1.  On the **PartsUnlimited** edit pane, in the existing YAML-based pipeline, replace line **6** `vmImage: vs2017-win2016` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1.  On the **PartsUnlimited** edit pane, in the existing YAML-based pipeline, replace line **7** `vmImage: vs2017-win2016` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m05l05a-pool
     demands:
     - agent.name -equals az400m05-vm0
     ```
-
+1. For `Task: NugetInstaller@0`, click on **Settings (link that is displaying above the task in grey colour)**, modify **Advanced > NuGet Version > 4.0.0**  and click on **Add**. 
 1.  On the **PartsUnlimited** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline. 
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
 1.  On the **Recent** tab of the **Pipelines** pane, click the **PartsUnlimited** entry, on the **Runs** tab of the **PartsUnlimited** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion. 
-
-### Exercise 3: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges. 
-
->**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
-
-1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1.  List all resource groups created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m05')].name" --output tsv
-    ```
-
-1.  Delete all resource groups you created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m05')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 #### Review
 
