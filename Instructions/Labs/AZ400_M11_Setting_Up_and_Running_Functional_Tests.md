@@ -58,7 +58,7 @@ In this exercise, you will set up the prerequisites for the lab, which include t
 
 #### Task 1: Configure the team project
 
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
+In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Selenium** template.
 
 1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
@@ -124,8 +124,8 @@ In this task, you will configure a self-hosted agent by using the VM you deploye
     cd C:\AzAgent
     Config.cmd
     ```
-1.  In the **Administrator: Command Prompt** window, when prompted to **Enter server URL**, type **https://dev.azure.com/<your-DevOpsYour-organization-name>**, where **<your-DevOpsYour-organization-name>** represents the name of your Azure DevOps Organization, and press the **Enter** key.
-1.  In the **Administrator: Command Prompt** window, when prompted **Authentication type (press the for PAT)**, press the **Enter key**.
+1.  In the **Administrator: Command Prompt** window, when prompted to **Enter server URL**, type **https://dev.azure.com/ \<your-DevOps-organization-name\>**, where **\<your-DevOps-organization-name\>** represents the name of your Azure DevOps Organization, and press the **Enter** key.
+1.  In the **Administrator: Command Prompt** window, when prompted **Enter Authentication type (press enter for PAT)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter personal access token**, switch to the Azure DevOps portal, close the **Get the agent** panel, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, specify the following settings and click **Create** (leave all others with their default values):
 
