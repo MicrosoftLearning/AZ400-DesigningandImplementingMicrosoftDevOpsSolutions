@@ -98,7 +98,7 @@ Each new project is configured with a default team, which name matches the proje
 
 1.  Repeat the previous step to add **Sprint 2** and **Sprint 3**. The second sprint is our current iteration, and the third is in the near future.
 1.  Back on the **Boards** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
-1.  Click the ellipsis symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
+1.  Click the ellipsis (called "Actions" when hovering or "...") symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
 
     > **Note**: The default setting for all teams is to exclude sub-area paths. We will change it to include sub-areas so that the team gets visibility into all of the work items from all teams. Optionally, the management team could also choose to not include sub-areas, which automatically removes work items from their view as soon as they are assigned to one of the teams.
 
@@ -110,25 +110,23 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
 > **Note**: This task is designed to illustrate a variety of ways you can create different kinds of work items, as well as to demonstrate the breadth of features available on the platform. As a result, these steps should not be viewed as prescriptive guidance for project management. The features are intended to be flexible enough to fit your process needs, so explore and experiment as you go.
 
-1.  In the vertical navigational pane of the Azure DevOps portal, select the **Overview** icon and, in the list of the **Overview** items, select **Dashboards**.
-1.  By default it opens the  **Agile Planning and Portfolio Management with Azure Boards Team** (or project name) - **Overview** dashboard.
+1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, select **Work Items**.
  
     > **Note**: There are many ways to create work items in Azure DevOps, and we'll explore a few of them. Sometimes it's as simple as firing one off from a dashboard. 
 
-1.  Scroll to the bottom-right side of the dashboard (depends on the resolution of the browser), in the **New Work Item** section, in the **Enter title** textbox, type **Product training**, in the dropdown list below, select the **Epic** type, and then click **Create**.
-1.  On the **Product training** panel, in the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. 
-1.  On the **Product training** panel, next to the **Area** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **PUL-Web**. This will set the **Area** to **Agile Planning and Portfolio Management with Azure Boards\PUL-Web**. 
-1.  On the **Product training** panel, next to the **Iteration** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **Agile Planning and Portfolio Management with Azure Boards\Sprint 2**. 
-1.  Click **Save & Close** to finalize your changes. 
+1.  On the **Work Items** window, click on **+ New Work Item > Epic**.
+
+1.  In the **Enter title** textbox, type **Product training**. 
+1.  In the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. 
+1.  Next to the **Area** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **PUL-Web**. This will set the **Area** to **Agile Planning and Portfolio Management with Azure Boards\PUL-Web**. 
+1.  Next to the **Iteration** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **Agile Planning and Portfolio Management with Azure Boards\Sprint 2**. 
+1.  Click **Save** to finalize your changes. **Do not close it**.
 
     > **Note**: Ordinarily you would want to fill out as much information as possible, but this is sufficient for the purposes of this lab.
 
-1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, in the list of the **Boards** items, select **Work Items**.
-1.  On the **Work items** pane, locate and click the newly created **Product training** epic entry.
-
     > **Note**: The work item form includes all of the relevant work item settings. This includes details about who it's assigned to, its status across many parameters, and all the associated information and history for how it has been handled since creation. One of the key areas to focus on is the **Related Work**. We will explore one of the ways to add a feature to this epic. 
 
-1.  On the **Product training** pane, in the **Related work** section, select the **Add link** entry and, in the dropdown list, select **New item**.
+1.  In the **Related work** section, select the **Add link** entry and, in the dropdown list, select **New item**.
 1.  On the **Add link** panel, in the **Work item type** dropdown list, select **Feature**, in the **Title** textbox, type **Training dashboard** and click **OK**.
 
     > **Note**: On the **Training dashboard** panel, note that the assignment, **Area**, and **Iteration** are already set to the same values as the epic that the feature is based on. In addition, the feature is automatically linked to the parent item it was created from. 
@@ -140,8 +138,8 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: This will make it easy to add tasks and other work items to the features.
 
-1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis symbol in its upper right corner.
-1.  Click the ellipsis icon and, in the dropdown list, select **Add Product Backlog Item**.
+1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis (called "Actions" when hovering or "...") symbol in its upper right corner.
+1.  Click the ellipsis (called "Actions" when hovering or "...") icon and, in the dropdown list, select **Add Product Backlog Item**.
 1.  In the textbox of the new product backlog item, type **As a customer, I want to view new tutorials** and press the **Enter** key to save the entry. 
 
     > **Note**: This creates a new product backlog item (PBI) work item that is a child of the feature and shares its area and iteration.
@@ -168,7 +166,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: You can use the second plus sign directly left to the first backlog item to add a new task to it.
 
-1.  On the **Board** tab of the **PUL-Web** pane, in the upper left corner of the pane, click the second plus sign from the top, the one next to the first work item. This will display the **NEW TASK** panel.
+1.  On the **Backlog** tab of the **PUL-Web** pane, in the upper left corner of the pane, click the second plus sign from the top, the one next to the first work item. This will display the **NEW TASK** panel.
 1.  At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **Add page for most recent tutorials**. 
 1.  On the **NEW TASK** panel, in the **Remaining Work** textbox, type **5**.
 1.  On the **NEW TASK** panel, in the **Activity** dropdown list, select **Development**. 
@@ -327,8 +325,48 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1.  Back on the **Board** tab of the **Boards** panel, drag and drop the **Committed** work item onto the **QA Approved \| Doing** stage of the **Expedite** swimlane so that it gets recognized as having priority when QA bandwidth becomes available.
 
     > **Note**: If you would like to review a more sophisticated board with many more work items, on the **Board** tab of the **Boards** panel, in the upper left corner, select **PUL-Web** and, in the dropdown list of teams, select the **Agile Planning and Portfolio Management with Azure Boards Team**. This board provides a playground for you to experiment with and review the results.
+#### Task 5: Customize team process
 
-#### Task 5: Define dashboards
+In this task we'll create a custom Scrum-based process. The process will include a backlog item field designed to track to a proprietary PartsUnlimited ticket ID.
+
+In Azure DevOps, you customize your work tracking experience through a process. A process defines the building blocks of the work item tracking system as well as other sub-systems you access through Azure DevOps. Whenever you create a team project, you select the process which contains the building blocks you want for your project. Azure DevOps supports two process types. The first, the core system processes (Scrum, Agile, and CMMI) are read-only, so you cannot customize them. The second type, inherited processes, you create based on core system processes, with the option of customizing their settings. 
+
+All processes are shared within the same organization. That is, one or more team projects can reference a single process. Instead of customizing a single team project, you customize a process. Changes made to the process automatically update all team projects that reference that process. Once you've created an inherited process, you can customize it, create team projects based on it, and migrate existing team projects to reference it. The Git team project can't be customized until it's migrated to an inherited process.
+
+1.  On the Azure DevOps page, click the **Azure DevOps** logo in the top left corner to navigate to the account root page.
+1.  In the left bottom corner of the page, click **Organization settings**.
+1.  In the **Organization Settings** vertical menu, in the **Boards** section, select **Process**.
+1.  On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis (called "Actions" when hovering or "...") symbol and, in the dropdown menu, select **Create inherited process**.
+1.  In the **Create inherited process from Scrum** panel, in the **Process name (required)** textbox, type **Customized Scrum** and click **Create process**.
+1.  Back on the **All processes** pane, click the **Customized Scrum** entry. 
+
+    > **Note**: You may need to refresh the browser for the new process to become visible.
+
+1.  On the **All processes > Customized Scrum** pane, select **Product Backlog Item**.
+1.  On the **All processes > Customized Scrum > Product Backlog Item** pane, click **New field**.
+1.  On the **Add a field to Product Backlog Item** panel, on the **Definition** tab, in the **Create a field** section, in the **Name** textbox, type **PUL Ticket ID**.
+1.  On the **Add a field to Product Backlog Item** panel, click **Layout**. 
+1.  On the **Add a field to Product Backlog Item** panel, on the **Layout** tab, in the **Label** textbox, type **Ticket ID**, select the **Create a new group** option, in the **Group** textbox, type **PartsUnlimited**, and click **Add field**.
+
+    > **Note**: Now that the customized process has been configured, let's switch to the Agile Planning and Portfolio Management with Azure Boards project to use it. 
+
+1.  Return to the **All processes** root using the breadcrumb path at the top of the **All processes > Customized Scrum > Product Backlog Item** pane.
+1.  On the **All processes** pane, select the **Scrum** entry. 
+
+    > **Note**: Our current project uses **Scrum**.
+
+1.  On the **All processes > Scrum** pane, select the **Projects** tab.
+1.  In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis (called "Actions" when hovering or "...") symbol and then select **Change process**.
+1.  On the **Change the project process** pane, in the **Select a target process** dropdown list, select the **Customized Scrum** process, click **Save** and then click **Close**.
+1.  Click the **Azure DevOps** logo in the top left corner to return to the account root page.
+1.  On the **Projects** tab, select the entry representing the **Agile Planning and Portfolio Management with Azure Boards** project.
+1.  In the vertical menu on the left side of the **Agile Planning and Portfolio Management with Azure Boards** page, select **Boards** and ensure that the **Work Items** pane is displayed.
+1.  In the list of work items, click the first backlog item.
+1.  Verify that you now have the **Ticket ID** field under the **PartsUnlimited** group, which was defined during the process customization. You can treat this like any other text field.
+
+    > **Note**: Once the work item is saved, Azure DevOps will also save the new custom information so that it will be available for queries and through the rest of Azure DevOps.
+
+### Exercise 2 (optional) : Define dashboards
 
 In this task, you will step through the process of creating dashboards and their core components.
 
@@ -362,48 +400,6 @@ Dashboards allow teams to visualize status and monitor progress across the proje
 1.  On the **Configure Chart** panel, in the **Name** textbox, type **Web tasks - By assignment**, in the **Group by** dropdown list, select **Assigned To**, and click **OK** to save the changes.
 
     > **Note**: You can now add this chart to a dashboard.
-
-#### Task 6: Customize team process
-
-In this task we'll create a custom Scrum-based process. The process will include a backlog item field designed to track to a proprietary PartsUnlimited ticket ID.
-
-In Azure DevOps, you customize your work tracking experience through a process. A process defines the building blocks of the work item tracking system as well as other sub-systems you access through Azure DevOps. Whenever you create a team project, you select the process which contains the building blocks you want for your project. Azure DevOps supports two process types. The first, the core system processes (Scrum, Agile, and CMMI) are read-only, so you cannot customize them. The second type, inherited processes, you create based on core system processes, with the option of customizing their settings. 
-
-All processes are shared within the same organization. That is, one or more team projects can reference a single process. Instead of customizing a single team project, you customize a process. Changes made to the process automatically update all team projects that reference that process. Once you've created an inherited process, you can customize it, create team projects based on it, and migrate existing team projects to reference it. The Git team project can't be customized until it's migrated to an inherited process.
-
-1.  On the Azure DevOps page, click the **Azure DevOps** logo in the top left corner to navigate to the account root page.
-1.  In the left bottom corner of the page, click **Organization settings**.
-1.  In the **Organization Settings** vertical menu, in the **Boards** section, select **Process**.
-1.  On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis symbol and, in the dropdown menu, select **Create inherited process**.
-1.  In the **Create inherited process from Scrum** panel, in the **Process name (required)** textbox, type **Customized Scrum** and click **Create process**.
-1.  Back on the **All processes** pane, click the **Customized Scrum** entry. 
-
-    > **Note**: You may need to refresh the browser for the new process to become visible.
-
-1.  On the **All processes > Customized Scrum** pane, select **Product Backlog Item**.
-1.  On the **All processes > Customized Scrum > Product Backlog Item** pane, click **New field**.
-1.  On the **Add a field to Product Backlog Item** panel, on the **Definition** tab, in the **Create a field** section, in the **Name** textbox, type **PUL Ticket ID**.
-1.  On the **Add a field to Product Backlog Item** panel, click **Layout**. 
-1.  On the **Add a field to Product Backlog Item** panel, on the **Layout** tab, in the **Label** textbox, type **Ticket ID**, select the **Create a new group** option, in the **Group** textbox, type **PartsUnlimited**, and click **Add field**.
-
-    > **Note**: Now that the customized process has been configured, let's switch to the Agile Planning and Portfolio Management with Azure Boards project to use it. 
-
-1.  Return to the **All processes** root using the breadcrumb path at the top of the **All processes > Customized Scrum > Product Backlog Item** pane.
-1.  On the **All processes** pane, select the **Scrum** entry. 
-
-    > **Note**: Our current project uses **Scrum**.
-
-1.  On the **All processes > Scrum** pane, select the **Projects** tab.
-1.  In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis symbol and then select **Change process**.
-1.  On the **Change the project process** pane, in the **Select a target process** dropdown list, select the **Customized Scrum** process, click **Save** and then click **Close**.
-1.  Click the **Azure DevOps** logo in the top left corner to return to the account root page.
-1.  On the **Projects** tab, select the entry representing the **Agile Planning and Portfolio Management with Azure Boards** project.
-1.  In the vertical menu on the left side of the **Agile Planning and Portfolio Management with Azure Boards** page, select **Boards** and ensure that the **Work Items** pane is displayed.
-1.  In the list of work items, click the first backlog item.
-1.  Verify that you now have the **Ticket ID** field under the **PartsUnlimited** group, which was defined during the process customization. You can treat this like any other text field.
-
-    > **Note**: Once the work item is saved, Azure DevOps will also save the new custom information so that it will be available for queries and through the rest of Azure DevOps.
-
 #### Review
 
 In this lab you used Azure Boards to perform a number of common agile planning and portfolio management tasks, including management of teams, areas, iterations, work items, sprints and capacity, customizing Kanban boards, defining dashboards, and customizing team processes.
