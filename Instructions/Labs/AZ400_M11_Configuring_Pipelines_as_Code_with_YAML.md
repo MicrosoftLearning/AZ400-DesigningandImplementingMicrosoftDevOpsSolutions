@@ -126,26 +126,27 @@ In this task, you will delete the existing pipeline.
 
 1.  On the **Pipelines** pane, select the **PartsUnlimited** entry. 
 1.  In the upper right corner of the **PartsUnlimited** blade, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**.
-1.  Write **PartsUnlimited** and click **Delete**.    
+1.  Write **PartsUnlimited** and click **Delete**.
+1.  In the vertical navigational pane, select the **Repos > Files**. Make sure you are in the **master** branch (dropdown on top of **Files** window), on the **azure-pipelines.yml** file, click the vertical ellipsis symbol and, in the drop-down menu, select **Delete**. Commit the change on the master branch by clicking on **Commit** (leaving default options).
 
 #### Task 2: Add a YAML build definition
 
 In this task, you will add a YAML build definition to the existing project.
 
 1.  Navigate back to the **Pipelines** pane in of the **Pipelines** hub. 
-1.  In the upper right corner of the **Pipelines** pane, click **New pipeline**. 
+1.  In the **Create your first Pipeline** window, click **Create pipeline**. 
 
     > **Note**: We will use the wizard to automatically create the YAML definition based on our project.
 
 1.  On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
 1.  On the **Select a repository** pane, click **PartsUnlimited**.
-1.  On the **Configure your pipeline** pane, click **ASP.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
+1.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
 
-    > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
+    > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
-1.  Change `trigger` to **master**.
+1.  Make sure  `trigger` is **master**.
 
-    > **Note**: Review in Repos if your repository has **master** or **main** branch, new repos will be having **main** by default.
+    > **Note**: Review in Repos if your repository has **master** or **main** branch, organizations could choose default branch name for new repos: [Change the default branch](https://docs.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?view=azure-devops#choosing-a-name). 
 
 1.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'vs2017-win2016'`.
 1.  On the **Review your pipeline YAML** pane, click **Save and run**.
@@ -163,7 +164,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 > **Note**: Now that the build and test processes are successful, we can now add delivery to the YAML definition. 
 
 1.  On the pipeline run pane, click the ellipsis symbol in the upper right corner and, in the dropdown menu, click **Edit pipeline**.
-1.  On the pane displaying the content of the **azure-pipelines-1.yaml** file, in line **8**, following the `trigger` section, add the following content to define the **Build** stage in the YAML pipeline. 
+1.  On the pane displaying the content of the **azure-pipelines.yaml** file, in line **8**, following the `trigger` section, add the following content to define the **Build** stage in the YAML pipeline. 
 
     > **Note**: You can define whatever stages you need to better organize and track pipeline progress.
 
@@ -174,13 +175,13 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       - job: Build
     ```
 
-1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces. 
+1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces (it should be placed with same identation as ```job: Build```). 
 
     > **Note**: This way, everything starting with the `pool` section becomes part of the `job: Build`. 
 
 1.  At the bottom of the file, add the configuration below to define the second stage.
 
-    ```
+    ```yaml
     - stage: Deploy
       jobs:
       - job: Deploy
@@ -235,7 +236,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: This will automatically trigger a new build.
 
-1.  The pipeline will look similar to this example  (poiting to your own subscription and webapp):
+1.  The pipeline will look similar to this example  (**Reference your own subscription and webapp on last task**):
 
     ```
     trigger:
@@ -243,55 +244,55 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     stages:
     - stage: Build
-    jobs:
-    - job: Build
+      jobs:
+      - job: Build
         pool:
-        vmImage: 'vs2017-win2016'
+            vmImage: 'vs2017-win2016'
 
         variables:
-        solution: '**/*.sln'
-        buildPlatform: 'Any CPU'
-        buildConfiguration: 'Release'
+            solution: '**/*.sln'
+            buildPlatform: 'Any CPU'
+            buildConfiguration: 'Release'
 
         steps:
         - task: NuGetToolInstaller@1
 
         - task: NuGetCommand@2
-        inputs:
+          inputs:
             restoreSolution: '$(solution)'
 
         - task: VSBuild@1
-        inputs:
+          inputs:
             solution: '$(solution)'
             msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
 
         - task: VSTest@2
-        inputs:
+          inputs:
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
 
         - task: PublishBuildArtifacts@1
-        inputs:
+          inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
             ArtifactName: 'drop'
             publishLocation: 'Container'
 
     - stage: Deploy
-    jobs:
-    - job: Deploy
+      jobs:
+      - job: Deploy
         pool:
-        vmImage: 'vs2017-win2016'
+            vmImage: 'vs2017-win2016'
         steps:
         - task: DownloadBuildArtifacts@0
-        inputs:
+          inputs:
             buildType: 'current'
             downloadType: 'single'
             downloadPath: '$(System.ArtifactsDirectory)'
             artifactName: 'drop'
         - task: AzureRmWebAppDeployment@4
-        inputs:
+          inputs:
             ConnectionType: 'AzureRM'
             azureSubscription: 'YOUR-AZURE-SUBSCRIPTION'
             appType: 'webApp'
