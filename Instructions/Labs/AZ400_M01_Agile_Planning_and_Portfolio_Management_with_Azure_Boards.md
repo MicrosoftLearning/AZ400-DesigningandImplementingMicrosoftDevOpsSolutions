@@ -94,21 +94,41 @@ Each new project is configured with a default team, which name matches the proje
     > **Note**: Alternatively, you can access the project page directly by navigating to the [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Agile%20Planning%20and%20Portfolio%20Management%20with%20Azure%20Boards) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name. 
 
 1.  Click the cogwheel icon labeled **Project settings** located in the lower left corner of the page to open the **Project settings** page.
+
+    ![Project settings](images/m1/ex1_t1_s2_v1.png)
+
 1.  In the **General** section, select the **Teams** tab. There are already a few teams in this project, but you'll create a new one for this lab. Click **New Team**.
+
+    ![New Team](images/m1/ex1_t1_s3_v1.png)
+
 1.  On the **Create a new team** pane, in the **Team name** textbox, type **PUL-Web**, leave other settings with their default values, and click **Create**.
+
+    ![PUL-Web Team](images/m1/ex1_t1_s4_v1.png)
+
 1.  In the list of **Teams**, select the newly created team to view its details.
 
     > **Note**: By default, the new team has only you as its member. You can use this view to manage such functionality as team membership, notifications, and dashboards. 
 
-1.  Click **Iterations and Area Paths** link at the top of the **PUL-Web** page to start defining the schedule and scope of the team. 
-1.  At the top of the **Boards** pane, select the **Iterations** tab and then click **+ Select iteration(s)**. 
+1.  Click **Iterations and Area Paths** link at the top of the **PUL-Web** page to start defining the schedule and scope of the team.
+
+    ![Iterations and Area Paths](images/m1/ex1_t1_s6_v1.png)
+
+1.  At the top of the **Boards** pane, select the **Iterations** tab and then click **+ Select iteration(s)**.
+
+    ![Select iteration](images/m1/ex1_t1_s7_v1.png)
+
 1.  Select **Agile Planning and Portfolio Management with Azure Boards\Sprint 1** and click **Save and close**. Note that this first sprint has already passed. This is because the demo data generator is designed to build out project history so that this sprint occurs in the past.
 
     > **Note**: The new team will use the same iteration schedule that's already in place for the other teams, but you could create a custom one if that is more suitable for your organization.
 
 1.  Repeat the previous step to add **Sprint 2** and **Sprint 3**. The second sprint is our current iteration, and the third is in the near future.
+
+    ![Sprint 2 and 3 ](images/m1/ex1_t1_s9_v1.png)
+
 1.  Back on the **Boards** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
 1.  Click the ellipsis (called "Actions" when hovering or "...") symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
+
+    ![Include sub areas](images/m1/ex1_t1_s11_v1.png)
 
     > **Note**: The default setting for all teams is to exclude sub-area paths. We will change it to include sub-areas so that the team gets visibility into all of the work items from all teams. Optionally, the management team could also choose to not include sub-areas, which automatically removes work items from their view as soon as they are assigned to one of the teams.
 
@@ -126,11 +146,16 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
 1.  On the **Work Items** window, click on **+ New Work Item > Epic**.
 
+    ![Epic](images/m1/ex1_t2_s2_v1.png)
+
 1.  In the **Enter title** textbox, type **Product training**. 
 1.  In the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. 
 1.  Next to the **Area** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **PUL-Web**. This will set the **Area** to **Agile Planning and Portfolio Management with Azure Boards\PUL-Web**. 
 1.  Next to the **Iteration** entry, select the **Agile Planning and Portfolio Management with Azure Boards** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **Agile Planning and Portfolio Management with Azure Boards\Sprint 2**. 
 1.  Click **Save** to finalize your changes. **Do not close it**.
+
+    ![Save WIT](images/m1/ex1_t2_s7_v1.png)
+
 
     > **Note**: Ordinarily you would want to fill out as much information as possible, but this is sufficient for the purposes of this lab.
 
@@ -139,27 +164,43 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 1.  In the **Related work** section, select the **Add link** entry and, in the dropdown list, select **New item**.
 1.  On the **Add link** panel, in the **Work item type** dropdown list, select **Feature**, in the **Title** textbox, type **Training dashboard** and click **OK**.
 
+    ![Training dashboard](images/m1/ex1_t2_s9_v1.png)
+
     > **Note**: On the **Training dashboard** panel, note that the assignment, **Area**, and **Iteration** are already set to the same values as the epic that the feature is based on. In addition, the feature is automatically linked to the parent item it was created from. 
 
 1.  On the **Training dashboard** panel, click **Save & Close**.
+
+    ![Save & Close](images/m1/ex1_t2_s10_v1.png)
+
 1.  In the vertical navigational pane of the Azure DevOps portal, in the list of the **Boards** items, select **Boards**.
 1.  On the **Boards** panel, select the **PUL-Web boards** entry. This will open the board for that particular team.
+
+    ![PUL-Web boards](images/m1/ex1_t2_s12_v1.png)
+
 1.  On the **Boards** panel, in the upper right corner, select the **Backlog items** entry and, in the dropdown list, select **Features**. 
 
     > **Note**: This will make it easy to add tasks and other work items to the features.
 
 1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis (called "Actions" when hovering or "...") symbol in its upper right corner.
 1.  Click the ellipsis (called "Actions" when hovering or "...") icon and, in the dropdown list, select **Add Product Backlog Item**.
+
+    ![Add Product Backlog Item](images/m1/ex1_t2_s14_v1.png)
+
 1.  In the textbox of the new product backlog item, type **As a customer, I want to view new tutorials** and press the **Enter** key to save the entry. 
 
     > **Note**: This creates a new product backlog item (PBI) work item that is a child of the feature and shares its area and iteration.
 
 1.  Repeat the previous step to add two more PBIs designed to enable the customer to see their recently viewed tutorials and to request new tutorials named, respectively, **As a customer, I want to see tutorials I recently viewed** and **As a customer, I want to request new tutorials**.
+
+    ![Repeat](images/m1/ex1_t2_s17_v1.png)
+
 1.  On the **Boards** panel, in the upper right corner, select the **Features** entry and, in the dropdown list, select **Backlog items**.
 
     > **Note**: Backlog items have a state that defines where they are relative to being completed. While you could open and edit the work item using the form, it's easier to just drag cards on the board. 
 
 1.  On the **Board** tab of the **PUL-Web** panel, drag the first work item named **As a customer, I want to view new tutorials** from the **New** to **Approved** stage.
+
+    ![Repeat](images/m1/ex1_t2_s19_v1.png)
 
     > **Note**: You can also expand work item cards to get to conveniently editable details.
 
@@ -168,19 +209,29 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 1.  On the **Board** tab of the **PUL-Web** panel, drag the second work item named **As a customer, I want to see tutorials I recently viewed** from the **New** to the **Committed** stage.
 1.  On the **Board** tab of the **PUL-Web** panel, drag the third work item named **As a customer,  I want to request new tutorials** from the **New** to the **Done** stage.
 
+    ![move WIT](images/m1/ex1_t2_s23_v1.png)
+
     > **Note**: The task board is one view into the backlog. You can also use the tabular view.
 
 1.  On the **Board** tab of the **PUL-Web** pane, at the top of the pane, click **View as Backlog** to display the tabular form.
+
+    ![View as Backlog](images/m1/ex1_t2_s24_v1.png)
 
     > **Note**: You can use the plus sign directly under the **Backlog** tab label of the **PUL-Web** panel to view nested tasks under these work items. 
 
     > **Note**: You can use the second plus sign directly left to the first backlog item to add a new task to it.
 
 1.  On the **Backlog** tab of the **PUL-Web** pane, in the upper left corner of the pane, click the second plus sign from the top, the one next to the first work item. This will display the **NEW TASK** panel.
+
+    ![NEW TASK](images/m1/ex1_t2_s25_v1.png)
+
 1.  At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **Add page for most recent tutorials**. 
 1.  On the **NEW TASK** panel, in the **Remaining Work** textbox, type **5**.
 1.  On the **NEW TASK** panel, in the **Activity** dropdown list, select **Development**. 
 1.  On the **NEW TASK** panel, click **Save & Close**.
+
+    ![NEW TASK](images/m1/ex1_t2_s29_v1.png)
+
 1.  Repeat the last five steps to add another task named **Optimize data query for most recent tutorials**. Set its **Remaining Work** to **3** and its **Activity** to **Design**. Click **Save & Close** once completed.
 
 #### Task 3: Manage sprints and capacity
