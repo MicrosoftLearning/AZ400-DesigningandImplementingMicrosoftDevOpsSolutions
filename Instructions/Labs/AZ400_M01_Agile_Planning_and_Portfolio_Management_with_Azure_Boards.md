@@ -60,6 +60,9 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
     > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
+
+    ![Sign In](images/m1/ex0_t1_s2_v1.png)
+
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
 1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Agile Planning and Portfolio Management with Azure Boards**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
 1.  In the list of templates, locate the **PartsUnlimited** template and click **Select Template**.
@@ -68,11 +71,13 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  Back on the **Create New Project** page, click **Create Project**
 
-    ![Select template](images/m1/ex0_t1_s6_v1.png)
+    ![Create project](images/m1/ex0_t1_s6_v1.png)
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
 
 1.  On the **Create New Project** page, click **Navigate to project**.
+
+    ![Navigate to Project](images/m1/ex0_t1_s7_v1.png)
 
 ### Exercise 1: Manage Agile project
 
