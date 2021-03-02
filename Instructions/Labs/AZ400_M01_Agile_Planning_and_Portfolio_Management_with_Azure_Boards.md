@@ -247,6 +247,8 @@ The sprint backlog should contain all the information the team needs to successf
 1.  In the vertical navigational pane of the Azure DevOps portal, select the **Boards** icon and, in the list of the **Boards** items, select **Sprints**.
 1.  On the **Taskboard** tab of the **Sprints** view, in the toolbar, on the right hand side, select the **View options** symbol (directly to the left of the funnel icon) and, in the **View options** dropdown list, select the **Work details** entry.
 
+    ![Work details](images/m1/ex1_t3_s2_v1.png)
+
     > **Note**: The current sprint has a pretty limited scope. There are two tasks in the **To do** stage. At this point, neither task has been assigned. Both show a numeric value to the right of **Unassigned** entry representing the remaining work estimate. 
 
 1.  In the rectangle representing the **Add page for most recent tutorial**, click the **Unassigned** entry and, in the list of user accounts, select your account to assign the task to yourself.
@@ -266,8 +268,13 @@ The sprint backlog should contain all the information the team needs to successf
 
 1.  On the **Capacity** tab of the **Sprints** view, directly next to the entry representing your user account, in the **Days off** column, click the **0 days** entry. This will display a panel where you can set your days off.
 1.  In the displayed panel, use the calendar view to set your vacation to span five work days during the current sprint (within the next three weeks) and, once completed, click **OK**.
+
+    ![OK](images/m1/ex1_t3_s8_v1.png)
+
 1.  Back on the **Capacity** tab of the **Sprints** view, click **Save**.
 1.  Select the **Taskboard** tab of the **Sprints** view. 
+
+    ![Sprints](images/m1/ex1_t3_s10_v1.png)
 
     > **Note**: Note that the **Work details** panel has been updated to reflect your available bandwidth. The actual number displayed in the **Work details** panel might vary, but your total sprint capacity will be equal to the number of working days remaining till the end of the sprint, since you allocated 1 hour per day. Take a note of this value since you will use it in the upcoming steps.
 
@@ -275,11 +282,15 @@ The sprint backlog should contain all the information the team needs to successf
 
 1.  On the **Taskboard** tab of the **Sprints** view, in the rectangle representing the **Add page for most recent tutorial**, set the estimated number of hours to match your total capacity for this sprint, which you identified in the previous step.
 
+    ![Sprints](images/m1/ex1_t3_s11_v1.png)
+
     > **Note**: This automatically expands the **Development** and your personal capacities to their maximum. Since they're large enough to cover the assigned tasks, they stay green. However, the overall **Team** capacity is exceeded due to the additional 3 hours required by the **Optimize data query for most recent tutorials** task.
 
     > **Note**: One way to resolve this capacity issue would be to move the task to a future iteration. There are a few ways this could be done. You could, for example, open the task here and edit it within the panel providing access to the task details. Another approach would be to use the **Backlog** view, which provides an in-line menu option to move it. At this point though, don't move the task yet.
 
 1.  On the **Taskboard** tab of the **Sprints** view, in the toolbar, on the right hand side, select the **View options** symbol (directly to the left of the funnel icon) and, in the **View options** dropdown list, select the **People** entry.
+
+    ![Sprints](images/m1/ex1_t3_s12_v1.png)
 
     > **Note**: This adjusts your view such that you can review the progress of tasks by person instead of by backlog item.
 
@@ -291,6 +302,8 @@ The sprint backlog should contain all the information the team needs to successf
     > **Note**: This will color all cards green if they meet the rule criteria set directly below, in the **Rule criteria** section.
 
 1.  In the **Rule criteria** section, in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**. 
+
+    ![Sprints](images/m1/ex1_t3_s15_v1.png)
 
     > **Note**: This will set all cards assigned to **Development** activities green.
 
