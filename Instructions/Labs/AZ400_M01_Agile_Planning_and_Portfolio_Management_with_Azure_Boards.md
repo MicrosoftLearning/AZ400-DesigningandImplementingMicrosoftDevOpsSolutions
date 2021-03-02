@@ -334,7 +334,9 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     > **Note**: The team is emphasizing work done with data, so there is special attention paid to any task associated with accessing or storing data. 
 
-1.  On the **Settings** panel, select the **Tag colors** tab, click **+ Tag color**, in the **Tag** textbox, type **data** and leave the default color in place. 
+1.  On the **Settings** panel, select the **Tag colors** tab, click **+ Tag color**, in the **Tag** textbox, type **data** and leave the default color in place.
+
+    ![Tag colors](images/m1/ex1_t4_s3_v1.png)
 
     > **Note**: Whenever a backlog item or bug is tagged with **data**, that tag will be highlighted.
 
@@ -353,6 +355,8 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1.  Repeat the previous step to add the **ux** tag. 
 1.  On the **As a customer, I want to view new tutorials** panel, click **Save & Close**.
 
+    ![Save & Close](images/m1/ex1_t4_s11_v1.png)
+
     > **Note**: The two tags are now visible on the card, with the **data** tag highlighted in yellow as configured.
 
 1.  On the **Boards** panel, click the **Configure team settings** cogwheel icon (directly to the right of the funnel icon).
@@ -367,10 +371,14 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1.  On the **Settings** panel, on the **Columns** tab, drag and drop the newly created tab between **Committed** and **Done**.
 1.  On the **Settings** panel, click **Save and close**.
 
+    ![Save & Close](images/m1/ex1_t4_s16_v1.png)
+
     > **Note**: Verify that you now see the new stage in the workflow.
 
 1.  Drag the **As a customer, I want to see tutorials I recently viewed** work item from the **Committed** stage into the **QA Approved** stage.
 1.  Drag the **As a customer, I want to view new tutorials** work item from the **Done** stage into the **QA Approved** stage.
+
+    ![Warning](images/m1/ex1_t4_s18_v1.png)
 
     > **Note**: The stage now exceeds its **WIP** limit and is colored red as a warning.
 
@@ -387,6 +395,8 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1.  On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **Passes \*\*all\*\* tests**. 
 1.  On the **Settings** panel, click **Save and close**.
 
+    ![Save and close](images/m1/ex1_t4_s24_v1.png)
+
     > **Note**: The **QA Approved** stage now has **Doing** and **Done** columns. You can also click the informational symbol (with letter **i** in a circle) next to the column header to read the **Definition of done**.
 
 1.  On the **Boards** panel, click the **Configure team settings** cogwheel icon (directly to the right of the funnel icon).
@@ -396,6 +406,9 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1.  On the **Settings** panel, select the **Swimlanes** tab. 
 1.  On the **Swimlanes** tab, click **+ Swimlane**, directly under the **Swimlane name** label, in the **Name** textbox, type **Expedite**. 
 1.  On the **Settings** panel, click **Save and close**.
+
+    ![Save and close](images/m1/ex1_t4_s28_v1.png)
+
 1.  Back on the **Board** tab of the **Boards** panel, drag and drop the **Committed** work item onto the **QA Approved \| Doing** stage of the **Expedite** swimlane so that it gets recognized as having priority when QA bandwidth becomes available.
 
     > **Note**: If you would like to review a more sophisticated board with many more work items, on the **Board** tab of the **Boards** panel, in the upper left corner, select **PUL-Web** and, in the dropdown list of teams, select the **Agile Planning and Portfolio Management with Azure Boards Team**. This board provides a playground for you to experiment with and review the results.
