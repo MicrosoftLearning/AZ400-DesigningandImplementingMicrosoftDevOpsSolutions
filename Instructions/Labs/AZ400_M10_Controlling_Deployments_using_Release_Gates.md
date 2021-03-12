@@ -276,7 +276,7 @@ In this task, you will make a minor change in the application code, commit the u
     > **Note**: This indicates that there are active work items. These work items need to be closed in order to proceed further. Next sampling time will be after 5 minutes.
 
 1.  Open a new browser tab, navigate to the Azure DevOps portal, in the vertical navigational pane, select **Boards** and, in the **Boards** section, select **Queries**.
-1.  On the **Queries** pane of the **Boards** view, click the **All* tab.
+1.  On the **Queries** pane of the **Boards** view, click the **All** tab.
 1.  On the **All** tab of the **Queries** pane, in the **Shared Queries** section, click the **Bugs** entry, on the **Queries > Shared Queries > Bugs** pane, and click **Run query**. 
 1.  Verify that the query returns a work item titled **Disk out of space in Canary Environment** in the **New** state.
 
