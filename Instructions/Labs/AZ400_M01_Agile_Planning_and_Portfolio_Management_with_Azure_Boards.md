@@ -126,7 +126,7 @@ Each new project is configured with a default team, which name matches the proje
     ![Sprint 2 and 3 ](images/m1/3sprints_v1.png)
 
 1.  Back on the **Boards** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
-1.  Click the ellipsis (called "Actions" when hovering or "...") symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
+1.  Click the ellipsis symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**. 
 
     ![Include sub areas](images/m1/sub_areas_v1.png)
 
@@ -181,8 +181,8 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: This will make it easy to add tasks and other work items to the features.
 
-1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis (called "Actions" when hovering or "...") symbol in its upper right corner.
-1.  Click the ellipsis (called "Actions" when hovering or "...") icon and, in the dropdown list, select **Add Product Backlog Item**.
+1.  Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis  symbol in its upper right corner.
+1.  Click the ellipsis  icon and, in the dropdown list, select **Add Product Backlog Item**.
 
     ![Add Product Backlog Item](images/m1/add_pb_v1.png)
 
@@ -426,7 +426,7 @@ All processes are shared within the same organization. That is, one or more team
     ![Organization settings](images/m1/org_settings_v1.png)
 
 1.  In the **Organization Settings** vertical menu, in the **Boards** section, select **Process**.
-1.  On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis (called "Actions" when hovering or "...") symbol and, in the dropdown menu, select **Create inherited process**.
+1.  On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis symbol and, in the dropdown menu, select **Create inherited process**.
 
     ![Organization settings](images/m1/inherited_v1.png)
     
@@ -459,7 +459,7 @@ All processes are shared within the same organization. That is, one or more team
     > **Note**: Our current project uses **Scrum**.
 
 1.  On the **All processes > Scrum** pane, select the **Projects** tab.
-1.  In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis (called "Actions" when hovering or "...") symbol and then select **Change process**.
+1.  In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis  symbol and then select **Change process**.
 1.  On the **Change the project process** pane, in the **Select a target process** dropdown list, select the **Customized Scrum** process, click **Save** and then click **Close**.
 
     ![scrum](images/m1/custom_scrum_v1.png)
