@@ -437,12 +437,12 @@ All processes are shared within the same organization. That is, one or more team
 
 1.  On the **All processes > Customized Scrum** pane, select **Product Backlog Item**.
 
-    ![PBI](images/m1/pbi_v1.png)
+    ![PBI](images/m1/pbi_field_name_v1.png)
     
 1.  On the **All processes > Customized Scrum > Product Backlog Item** pane, click **New field**.
 1.  On the **Add a field to Product Backlog Item** panel, on the **Definition** tab, in the **Create a field** section, in the **Name** textbox, type **PUL Ticket ID**.
 
-    ![pbi_field_name](images/m1/pbi_field_name_v1.png)
+    ![pbi_field_name](images/m1/pbi_v1.png)
     
 1.  On the **Add a field to Product Backlog Item** panel, click **Layout**. 
 1.  On the **Add a field to Product Backlog Item** panel, on the **Layout** tab, in the **Label** textbox, type **Ticket ID**, select the **Create a new group** option, in the **Group** textbox, type **PartsUnlimited**, and click **Add field**.
