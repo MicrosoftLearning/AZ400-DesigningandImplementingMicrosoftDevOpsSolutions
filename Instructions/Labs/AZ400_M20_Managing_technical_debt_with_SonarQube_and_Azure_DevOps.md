@@ -231,6 +231,7 @@ In this task, you will create a pipeline by using the YAML editor.
 
     > **Note**: The YAML pipeline needs to be modified by following the remaining steps in this task. 
 
+1.  In the **NuggetCommand@2** task, replace `restoreSolution: 'SomeConsoleApplication.sln'` with `restoreSolution: '**\SomeConsoleApplication.sln'` to account for the fact that our solution is not located in the root of the repo.
 1.  In the **VSBuild@1** task, replace `solution: 'SomeConsoleApplication.sln'` with `solution: '**\SomeConsoleApplication.sln'` to account for the fact that our solution is not located in the root of the repo.
 1.  In the **SonarCloudPrepare@1** task, replace the value of the `myorga` placeholder in the `organization: 'myorga'` entry with the name of your SonarCloud organization.
 1.  In the **SonarCloudPrepare@1** task, replace the value of the `dotnet-framework-on-azdo` placeholder in the `projectKey: 'dotnet-framework-on-azdo'` entry with the name of your SonarCloud project key.
@@ -238,8 +239,13 @@ In this task, you will create a pipeline by using the YAML editor.
 1.  On the **Review your pipeline YAML** pane, click **Save and Run** and, on the **Save and run** pane, click **Save and run**.
 
     > **Note**: Skip the next task if you used the YAML editor in the previous task.
+1. Go to Project Settings > Overview, in visibility field change it to **Private**.
+    > **Note**: This last step is needed because of a change happening to public projects in February 2021, access to pipelines will need to be requested: https://devblogs.microsoft.com/devops/change-in-azure-pipelines-grant-for-public-projects/
+1. Go to Azure Pipelines > Pipelines and click in **Sonarexample** pipeline, open latest run. You will see it queued, **Cancel** the pending one, click **Yes**. Now click on **Run new** > **Run** to trigger a new run (this time pipeline will have the proper agents assigned for private projects).
 
-#### Task 3: Create a pipeline by using the classic editor 
+
+
+#### Task 3: Create a pipeline by using the classic editor
 
 In this task, you will create a pipeline by using the classic editor.
 
@@ -265,7 +271,9 @@ In this task, you will create a pipeline by using the classic editor.
     > **Note**: If this step is enabled, a summary of the analysis results will appear on the **Extensions** tab of the **Build Summary** page. However, this will delay the completion of the build until the processing on SonarCloud has finished.
 
 1.  On the build pipeline editor pane, click **Save & queue**, in the dropdown menu, click **Save & queue**, and, on the **Run pipeline** pane, click **Save and run**, and wait for the build to complete.
-1.  On the build run pane, review the content of the **Summary** tab and then click the **Extensions** tab header.
+
+#### Task 4: Check pipeline results
+1.  On the build run pane (either YAML or Classic one created before) , review the content of the **Summary** tab and then click the **Extensions** tab header.
 
     > **Note**: If you left the **Publish Quality Gate Result** task enabled, the **Extension** tab includes the summary of the SonarCloud analysis report.
 

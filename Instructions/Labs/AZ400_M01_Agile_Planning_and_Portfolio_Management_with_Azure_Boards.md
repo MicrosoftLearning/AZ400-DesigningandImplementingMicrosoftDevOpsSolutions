@@ -73,7 +73,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
     ![Create project](images/m1/create_project_v1.png)
 
-    > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
+    > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your Azure DevOps organization, delete the project, and try again.
 
 1.  On the **Create New Project** page, click **Navigate to project**.
 
