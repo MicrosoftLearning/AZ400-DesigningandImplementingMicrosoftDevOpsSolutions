@@ -48,7 +48,7 @@ Identify the applications that you'll use in this lab:
 
 If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account) to create one.
 
-### Exercise 1 : Create a DevOps starter template
+### Exercise 1 : Create a DevOps Starter project
 
 In this exercise, you will use DevOps Starter to facilitate provisioning of a number of resources, including: 
 
@@ -122,7 +122,7 @@ In this task, you will review the results of creating the DevOps Starter project
 1.  On the GitHub repository page, on the **Actions** tab, in the **All workflows** section, click the entry representing the most recent workflow run.
 1.  On the workflow run page, review the workflow status, as well as the listing of **Annotations** and **Artifacts**.
 1.  On the GitHub repository page, in the toolbar, click **Settings** and, on the **Settings** tab, click **Secrets**.
-1.  On the **Action secrets** pane, note the **AZURE_CREDENTIALS** entry, representing credentials necessary to access the target Azure subscription. 
+1.  On the **Action secrets** pane, note the **AZURE_CREDENTIALS** entry, representing the credentials necessary to access the target Azure subscription. 
 
 ### Exercise 2: Remove the Azure lab resources
 
