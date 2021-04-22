@@ -13,17 +13,17 @@ Azure Key Vault provides secure storage and management of sensitive data, such a
 
 In this lab, you will see how you can integrate Azure Key Vault with an Azure DevOps pipeline by using the following steps:
 
-- create an Azure Key vault to store a MySQL server password as a secret.
-- create an Azure service principal to provide access to secrets in the Azure Key vault.
+- create an Azure Key Vault to store a MySQL server password as a secret.
+- create an Azure service principal to provide access to secrets in the Azure Key Vault.
 - configure permissions to allow the service principal to read the secret.
-- configure pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+- configure pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
 -   Create an Azure Active Directory (Azure AD) service principal.
--   Create an Azure key vault.
+-   Create an Azure Key Vault.
 -   Track pull requests through the Azure DevOps pipeline.
 
 ## Lab duration
@@ -80,10 +80,10 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 ### Exercise 1: Integrate Azure Key Vault with Azure DevOps
 
-- create an Azure service principal that will provide access to secrets in an Azure Key vault.
-- create the Azure Key vault to store a MySQL server password as a secret.
+- create an Azure service principal that will provide access to secrets in an Azure Key Vault.
+- create the Azure Key Vault to store a MySQL server password as a secret.
 - configure permissions to allow the service principal to read the secret.
-- configure pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+- configure pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
 
 #### Task 1: Create a service principal 
 
@@ -91,7 +91,7 @@ In this task, you will create a service principal by using the Azure CLI.
 
 > **Note**: If you do already have a service principal, you can proceed directly to the next task.
 
-You will need a service principal to deploy an app to an Azure resource from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key vault. 
+You will need a service principal to deploy an app to an Azure resource from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key Vault. 
 
 A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page. You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. It is recommended that you use an existing service principal when you want to have a pre-defined set of permissions.
 
@@ -119,29 +119,29 @@ A service principal is automatically created by Azure Pipeline when you connect 
     > **Note**: Copy both values to a text file. You will need them later in this lab.
 
 
-#### Task 2: Create an Azure Key vault
+#### Task 2: Create an Azure Key Vault
 
-In this task, you will create an Azure Key vault by using the Azure portal.
+In this task, you will create an Azure Key Vault by using the Azure portal.
 
-For this lab scenario, we have an app that connects to a MySQL database. We intend to store the password for the MySQL database as a secret in the key vault.
+For this lab scenario, we have an app that connects to a MySQL database. We intend to store the password for the MySQL database as a secret in the Key Vault.
 
-1.  In the Azure portal, in the **Search resources, services, and docs** text box, type **Key vaults** and press the **Enter** key. 
-1.  On the **Key vaults** blade, click **+ Add**. 
-1.  On the **Basics** tab of the **Create key vault** blade, specify the following settings and click **Next: Access policy**:
+1.  In the Azure portal, in the **Search resources, services, and docs** text box, type **Key Vaults** and press the **Enter** key. 
+1.  On the **Key Vaults** blade, click **+ Add**. 
+1.  On the **Basics** tab of the **Create Key Vault** blade, specify the following settings and click **Next: Access policy**:
 
     | Setting | Value |
     | --- | --- |
     | Subscription | the name of the Azure subscription you are using in this lab |
     | Resource group | the name of a new resource group **az400m07l01-RG** |
-    | Key vault name | any unique valid name |
+    | Key Vault name | any unique valid name |
     | Region | an Azure region close to the location of your lab environment |
     | Pricing tier | **Standard** |
-    | Days to retain deleted vaults | **7** |
+    | Days to retain deleted Vaults | **7** |
     | Purge protection | **Disable purge protection** |
 
-1.  On the **Access policy** tab of the **Create key vault** blade, click **+ Add Access Policy** to setup a new policy.
+1.  On the **Access policy** tab of the **Create Key Vault** blade, click **+ Add Access Policy** to setup a new policy.
 
-    > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get) permissions to the service principal that you will be using for authentication in the pipeline. 
+    > **Note**: You need to secure access to your Key Vaults by allowing only authorized applications and users. To access the data from the Vault, you will need to provide read (Get) permissions to the service principal that you will be using for authentication in the pipeline. 
 
 1.  On the **Add access policy** blade, click the **None selected** link directly under the **Select principal** label. 
 1.  On the **Principal** blade, search for the security principal that you created in the previous exercise, select it, and then click **Select**. 
@@ -149,12 +149,12 @@ For this lab scenario, we have an app that connects to a MySQL database. We inte
     > **Note**: You can search by name or ID of the principal.
 
 1.  Back on the **Add access policy** blade, in the **Secret permissions** drop down list, select checkboxes next to the **Get** and **List** permissions and then click **Add**. 
-1.  Back on the **Access policy** tab of the **Create key vault** blade, click **Review + create** and, on the **Review + create** blade, click **Create**. 
+1.  Back on the **Access policy** tab of the **Create Key Vault** blade, click **Review + create** and, on the **Review + create** blade, click **Create**. 
 
-    > **Note**: Wait for the Azure Key vault to be provisioned. This should take less than 1 minute.
+    > **Note**: Wait for the Azure Key Vault to be provisioned. This should take less than 1 minute.
 
 1.  On the **Your deployment is complete** blade, click **Go to resource**.
-1.  On the Azure Key vault blade, in the vertical menu on the left side of the blade, in the **Settings** section, click **Secrets**. 
+1.  On the Azure Key Vault blade, in the vertical menu on the left side of the blade, in the **Settings** section, click **Secrets**. 
 1.  On the **Secrets** blade, click **Generate/Import**.
 1.  On the **Create a secret** blade, specify the following settings and click **Create** (leave others with their default values):
 
@@ -167,7 +167,7 @@ For this lab scenario, we have an app that connects to a MySQL database. We inte
 
 #### Task 3: Check the Azure Pipeline
 
-In this task, you will configure the Azure Pipeline to retrieve the secret from the Azure Key vault.
+In this task, you will configure the Azure Pipeline to retrieve the secret from the Azure Key Vault.
 
 1.  On your lab computer, start a web browser and navigate to the Azure DevOps project **Integrating Azure Key Vault with Azure DevOps** you created in the previous exercise.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
@@ -196,7 +196,7 @@ This will open another browser tab displaying the **Service connections** pane i
 1.  On the **New service connection** pane, click **Verify** to determine whether the information you provided is valid. 
 1.  Once you receive the **Verification Succeeded** response, in the **Service connection name** textbox, type **kv-service-connection** and click **Verify and Save**.
 1.  Switch back to the web browser  tab displaying the pipeline definition and the **Azure Key Vault** task.
-1.  With the **Azure Key Vault** task selected, on the **Azure Key Vault** pane, click the **Refresh** button, in the **Azure subscription** dropdown list, select the  **kv-service-connection** entry, in the **Key vault** dropdown list, select the entry representing the Azure Key vault you created in the first task, and, in the **Secrets filter** textbox, type **sqldbpassword**. Finally, expand the **Output Variables** section and, in the **Reference name** textbox, type **sqldbpassword**. 
+1.  With the **Azure Key Vault** task selected, on the **Azure Key Vault** pane, click the **Refresh** button, in the **Azure subscription** dropdown list, select the  **kv-service-connection** entry, in the **Key Vault** dropdown list, select the entry representing the Azure Key Vault you created in the first task, and, in the **Secrets filter** textbox, type **sqldbpassword**. Finally, expand the **Output Variables** section and, in the **Reference name** textbox, type **sqldbpassword**. 
 
     > **Note**: At runtime, Azure Pipelines will fetch the latest value of the secret and set it as the task variable **$(sqldbpassword)**. The tasks can consumed by the subsequent tasks by referencing that variable.  
 
@@ -206,7 +206,7 @@ This will open another browser tab displaying the **Service connections** pane i
     -webAppName $(webappName) -mySQLAdminLoginName "azureuser" -mySQLAdminLoginPassword $(sqldbpassword)
     ```
 
-    > **Note**: The **Override template parameters** content references the **sqldbpassword** variable to set the mySQL admin password. This will provision the MySQL database defined in the ARM template using the password that you have specified in the key vault. 
+    > **Note**: The **Override template parameters** content references the **sqldbpassword** variable to set the mySQL admin password. This will provision the MySQL database defined in the ARM template using the password that you have specified in the Key Vault. 
 
 1.  You may complete the pipeline definition by specifying the subscription (if need subscription used, click on **authorize** )and location for the task. **Repeat** the same for the last task in the pipeline **Azure App Service Deploy**.
 
@@ -243,7 +243,7 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 
 In this lab, you integrated Azure Key Vault with an Azure DevOps pipeline by using the following steps:
 
-- created an Azure Key vault to store a MySQL server password as a secret.
-- created an Azure service principal to provide access to secrets in the Azure Key vault.
+- created an Azure Key Vault to store a MySQL server password as a secret.
+- created an Azure service principal to provide access to secrets in the Azure Key Vault.
 - configured permissions to allow the service principal to read the secret.
-- configured pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+- configured pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
