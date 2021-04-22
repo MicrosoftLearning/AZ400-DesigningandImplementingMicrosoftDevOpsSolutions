@@ -210,7 +210,7 @@ This will open another browser tab displaying the **Service connections** pane i
 
 1.  You may complete the pipeline definition by specifying the subscription (if need subscription used, click on **authorize** )and location for the task. **Repeat** the same for the last task in the pipeline **Azure App Service Deploy**.
 
-1.  In the variables ta, modify the **resourcegroup** variable to **az400m07l01-RG**.
+1.  In the variables tab, modify the **resourcegroup** variable to **az400m07l01-RG**.
 
 1.  Finally, **Save** and click on **Create a new release** > **Create** (leave defaults) to start the deployment.
 
