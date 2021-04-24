@@ -15,7 +15,7 @@ In this lab, you will learn how to use an Azure DevOps CI/CD pipeline to build a
 
 After you complete this lab, you will be able to:
 
-- Build a custom Docker image by using an Azure DevOps hosted Linux agent
+- Build a custom Docker image by using an Microsoft hosted Linux agent
 - Push an image to Azure Container Registry
 - Deploy a Docker image as a container to Azure App Service by using Azure DevOps
 
@@ -49,7 +49,7 @@ Identify the applications that you'll use in this lab:
 
 If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 1: Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a team project based on an Azure DevOps Demo Generator template and Azure resources, including an Azure App Service web app, an Azure Container Registry instance, and an Azure SQL database. 
 
@@ -82,7 +82,6 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 - Azure SQL Database
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
-1.  In the web browser displaying the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1.  In the web browser displaying the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box. 
 1.  If prompted to select either **Bash** or **PowerShell**, select **Bash**. 
 
@@ -90,8 +89,17 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 
 1.  From the **Bash** session in the Cloud Shell pane, run the following to create variables representing the Azure region where you will deploy resources in this lab, the resource group containing these resources, as well as the names of these resources, including an Azure Container Registry instance, an Azure App Service plan name, an Azure web app name, an Azure SQL Database logical server name, and an Azure SQL database name:
 
+1.  From the Bash session in the Cloud Shell pane, run the following to create the resource group that will host Azure resources you deploy in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region, such as 'eastus', where you intend to deploy these resources):
+
     ```bash
-    LOCATION='<Azure_region>'
+    LOCATION=<Azure_region>
+    ```
+
+    >**Note**: You can identify Azure region names by running `az account list-locations -o table`
+
+1.  Run the following to create variables representing the names of Azure resources, including an Azure Container Registry instance, an Azure App Service plan name, an Azure web app name, an Azure SQL Database logical server name, and an Azure SQL database name:
+
+    ```bash
     RG_NAME='az400m1501a-RG'
     ACR_NAME=az400m151acr$RANDOM$RANDOM
     APP_SVC_PLAN='az400m1501a-app-svc-plan'
@@ -100,72 +108,25 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
     SQLDB_NAME='az400m15sqldb'
     ```
 
-    > **Note**: You can identify Azure region names by running `az account list-locations -o table`
+    >**Note**: You can identify Azure region names by running `az account list-locations -o table`
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create a resource group that will host an Azure Container Registry instance:
+1.  Run the following to create all resources required Azure resources required for this lab:
 
     ```bash
     az group create --name $RG_NAME --location $LOCATION
-    ```
-
-1.  From the Bash session in the Cloud Shell pane, run the following to create the Azure Container Registry instance:
-
-    ```bash
     az acr create --name $ACR_NAME --resource-group $RG_NAME --location $LOCATION --sku Standard --admin-enabled true
-    ```
-
-    >**Note**: Azure Container Registry name can consist of alphanumeric characters only and must be between 5 and 50 characters.
-
-    >**Note**: Wait for the provisioning process to complete. This might take about 2 minutes.
-
-1.  From the Bash session in the Cloud Shell pane, run the following to create an App Service plan for App Service for Linux:
-
-    ```bash
     az appservice plan create --name 'az400m1501a-app-svc-plan' --location $LOCATION --resource-group $RG_NAME --is-linux
-    ```
-
-    >**Note**: Wait for the provisioning process to complete. This might take about 2 minutes.
-
-1.  From the Bash session in the Cloud Shell pane, run the following to create a Docker container-based web app:
-
-    ```bash
     az webapp create --name $WEB_APP_NAME --resource-group $RG_NAME --plan $APP_SVC_PLAN --deployment-container-image-name elnably/dockerimagetest
-    ```
-
-    >**Note**: Wait for the provisioning process to complete. This might take about 2 minutes.
-
-1.  From the Bash session in the Cloud Shell pane, run the following to configure the web app with an Azure Container Registry-based image:
-
-    ```bash
     IMAGE_NAME=myhealth.web
     az webapp config container set --name $WEB_APP_NAME --resource-group $RG_NAME --docker-custom-image-name $IMAGE_NAME --docker-registry-server-url $ACR_NAME.azurecr.io/$IMAGE_NAME:latest --docker-registry-server-url https://$ACR_NAME.azurecr.io
-    ```
-
-1.  From the Bash session in the Cloud Shell pane, run the following to create an Azure SQL Database logical server:
-
-    ```bash
     az sql server create --name $SQLDB_SRV_NAME --resource-group $RG_NAME --location $LOCATION --admin-user sqladmin --admin-password Pa55w.rd1234
-    ```
-
-    >**Note**: Wait for the provisioning process to complete. This might take about 2 minutes.
-
-1.  From the Bash session in the Cloud Shell pane, run the following to create an Azure SQL Database instance:
-
-    ```bash
-    az sql db create --name $SQLDB_NAME --resource-group $RG_NAME --server $SQLDB_SRV_NAME --service-objective S0
-    ```
-
-    >**Note**: Wait for the provisioning process to complete. This might take about 2 minutes.
-
-1.  From the Bash session in the Cloud Shell pane, run the following to create a firewall rule for the Azure SQL Database logical server that allows access from Azure services:
-
-    ```bash
+    az sql db create --name $SQLDB_NAME --resource-group $RG_NAME --server $SQLDB_SRV_NAME --service-objective S0 --no-wait 
     az sql server firewall-rule create --name AllowAllAzure --resource-group $RG_NAME --server $SQLDB_SRV_NAME --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
     ```
 
-    >**Note**: Wait for the provisioning process to complete. This might take about 2 minutes.
+    >**Note**: Wait for the provisioning process to complete. This might take about 5 minutes.
 
-1.  From the Bash session in the Cloud Shell pane, run the following to configure a connection string of the newly created Azure web app (replace the $SQLDB_SRV_NAME and $SQLDB_NAME placeholders with the values of the names of the Azure SQL Database logical server and its database instance, respectively):
+1.  Run the following to configure a connection string of the newly created Azure web app (replace the $SQLDB_SRV_NAME and $SQLDB_NAME placeholders with the values of the names of the Azure SQL Database logical server and its database instance, respectively):
    
    ```bash
    CONNECTION_STRING="Data Source=tcp:$SQLDB_SRV_NAME.database.windows.net,1433;Initial Catalog=$SQLDB_NAME;User Id=sqladmin;Password=Pa55w.rd1234;"
@@ -184,7 +145,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
     >**Note**: Record the **Registry name**, **Login server**, and **password** entries (the registry names and the admin user name should match). You will need it later in this lab.
 
 
-### Exercise 1: Deploy a Docker container to Azure App Service web app by using Azure DevOps
+### Exercise 2: Deploy a Docker container to Azure App Service web app by using Azure DevOps
 
 In this exercise, you will deploy a Docker container to Azure App Service web app by using Azure DevOps.
 
@@ -286,6 +247,31 @@ In this exercise, you will trigger the build and release pipelines by using code
     >**Note**: This will automatically open a new web browser tab displaying the target web site.
 
 1.  Verify that the target web app displays the HealthClinic.biz web site, including the change that you applied to trigger the CI/CD pipeline.
+
+### Exercise 3: Remove the Azure lab resources
+
+In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges. 
+
+>**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+
+#### Task 1: Remove the Azure lab resources
+
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
+
+1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
+1.  List all resource groups created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m1501')].name" --output tsv
+    ```
+
+1.  Delete all resource groups you created throughout the labs of this module by running the following command:
+
+    ```sh
+    az group list --query "[?starts_with(name,'az400m1501')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 
