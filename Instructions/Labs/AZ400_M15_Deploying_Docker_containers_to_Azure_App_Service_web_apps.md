@@ -128,10 +128,10 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 
 1.  Run the following to configure a connection string of the newly created Azure web app (replace the $SQLDB_SRV_NAME and $SQLDB_NAME placeholders with the values of the names of the Azure SQL Database logical server and its database instance, respectively):
    
-   ```bash
-   CONNECTION_STRING="Data Source=tcp:$SQLDB_SRV_NAME.database.windows.net,1433;Initial Catalog=$SQLDB_NAME;User Id=sqladmin;Password=Pa55w.rd1234;"
-   az webapp config connection-string set --name $WEB_APP_NAME --resource-group $RG_NAME --connection-string-type SQLAzure --settings defaultConnection="$CONNECTION_STRING"
-   ```
+    ```bash
+    CONNECTION_STRING="Data Source=tcp:$SQLDB_SRV_NAME.database.windows.net,1433;Initial Catalog=$SQLDB_NAME;User Id=sqladmin;Password=Pa55w.rd1234;"
+    az webapp config connection-string set --name $WEB_APP_NAME --resource-group $RG_NAME --connection-string-type SQLAzure --settings defaultConnection="$CONNECTION_STRING"
+    ```
 
 1.  In the web browser displaying the Azure portal, close the Cloud Shell pane, navigate to the **Resource groups** blade, and, on the **Resource groups** blade, select the **az400m1501a-RG** entry.
 1.  On the **az400m1501a-RG** resource group blade, review the listing of its resources. 
@@ -172,7 +172,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
 
     >**Note**: This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
 
-1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab (**refresh the list if needed**).
+1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab (**refresh the list if needed** or type the name of the login server).
 1.  Repeat the previous two steps to configure the **Azure subscription** and **Azure Container Registry** settings in the **Build services**, and **Push services** tasks, but, this time, instead of selecting your Azure subscription, select the newly created service connection.
 1.  On the same **MHCDocker.build** pipeline pane, at the top of the pane, click the down-facing caret next to the **Save & queue** button, click **Save** to save the changes, and, when prompted again, click **Save**.
 
@@ -180,6 +180,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
 
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, in the **Pipelines** section, click **Releases**. 
 1.  On the **Pipelines / Releases** pane, ensure that the **MHCDocker.release** entry is selected and click **Edit**.
+1.  On the **All pipelines / MHCDocker.release** pane, in the rectangle representing the **Dev** stage of the deployment, click the **2 jobs, 2 tasks** link.
 
     >**Note**: The release pipeline consists of the following tasks
 
@@ -188,20 +189,14 @@ In this task, you will use the Azure DevOps project you generated in the previou
     | **Execute Azure SQL: DacpacTask** | deploys the dacpac artifact including the target schema and data to the Azure SQL database |
     | **Azure App Service deploy** | pulls the docker image generated during the build stage from the designated container registry and deploys the image to the Azure App Service web app |
 
-1.  On the **All pipelines / MHCDocker.release** pane, in the rectangle representing the **Dev** stage of the deployment, click the **2 jobs, 2 tasks** link.
-1.  On the **MHCDocker.release** pane, in the list of tasks of the pipeline, click the **Execute Azure SQL: DacpacTask** task, on the **Azure SQL Database deployment** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task.
-1.  On the **MHCDocker.release** pane, in the list of tasks of the pipeline, click the **Azure App Service deploy** task, on the **Azure App Service deploy** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task and, in the **App Service name** dropdown list, select the entry representing the Azure App Service web app you deployed earlier in this lab.
+1.  In the list of tasks of the pipeline, click the **Execute Azure SQL: DacpacTask** task, on the **Azure SQL Database deployment** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task.
+1.  In the list of tasks of the pipeline, click the **Azure App Service deploy** task, on the **Azure App Service deploy** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task and, in the **App Service name** dropdown list, select the entry representing the Azure App Service web app you deployed earlier in this lab.
 
     >**Note**: Next you will need to configure the agent pool information required for deployment.
 
-    | Agents | Agent specifications |
-    | ------ |----- |
-    | **DB deployment** | **vs2017-win2016** |
-    | **Web App deployment** | **ubuntu-16.04** |
-
-1.  On the **MHCDocker.release** pane, select the **DB deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **vs2017-win2016**.
-1.  On the **MHCDocker.release** pane, select the **Web App deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **ubuntu-16.04**.
-1.  On the **MHCDocker.release** pane, at the top of the pane, click the **Variables** header.
+1.  Select the **DB deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **vs2017-win2016**.
+1.  Select the **Web App deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **ubuntu-16.04**.
+1.  At the top of the pane, click the **Variables** header.
 1.  In the list of pipeline variables, set the values of the following variables:
 
     | Variable | Value |
@@ -212,7 +207,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
     | SQLadmin | **sqladmin** |
     | SQLserver | the name of the Azure SQL Database logical server you recorded in the previous exercise of this lab, including the **database.windows.net** suffix |
 
-1.  On the same **MHCDocker.release** pipeline pane, in the upper right corner of the pane, click the **Save** button to save the changes, and, when prompted again, click **Save**.
+1.  In the upper right corner of the pane, click the **Save** button to save the changes, and, when prompted again, click **Save**.
 
 #### Task 2: Trigger build and release pipelines by using code commit 
 
