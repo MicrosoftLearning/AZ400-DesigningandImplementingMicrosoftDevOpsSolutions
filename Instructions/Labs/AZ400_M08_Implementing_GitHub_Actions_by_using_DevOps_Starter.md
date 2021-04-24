@@ -129,6 +129,8 @@ In this task, you will review the results of creating the DevOps Starter project
 1.  On the GitHub repository page, in the toolbar, click **Actions**.
 1.  In the **All workflows** section, click the **Update Index.cshtml** entry.
 1.  In the **devops-starter-workflow.yml** section, monitor the progress of deployment and verify that it completed successfully.
+1.  Switch to the browser window displaying the DevOps Starter blade in the Azure portal and click the **Browse** link next to the **Application endpoint** entry.
+1.  In the newly opened web browser window, verify that the updated text representing the change you committed in the GitHub repo is displayed on the web app home page.
 
 ### Exercise 2: Remove the Azure lab resources
 
