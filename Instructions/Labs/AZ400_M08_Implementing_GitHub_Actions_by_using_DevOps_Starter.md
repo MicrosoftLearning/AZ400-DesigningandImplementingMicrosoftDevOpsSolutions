@@ -46,7 +46,7 @@ Identify the applications that you'll use in this lab:
 
 #### Prepare a GitHub account
 
-If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/signing-up-for-a-new-github-account) to create one.
+If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/join) to create one.
 
 ### Exercise 1 : Create a DevOps Starter project
 
@@ -65,7 +65,7 @@ In this exercise, you will use DevOps Starter to facilitate provisioning of a nu
 In this task, you will create an Azure DevOps Starter project that automatically sets up a GitHub repository, as well as creates and triggers a GitHub workflow that deploys an Azure web app, based on the content of the GitHub repository.
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has at least the Contributor role in the Azure subscription you are using in this lab.
-1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click **+ Add**.
+1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click either **+ Add**, **+ New**, or **+ Create**.
 1.  On the **Start fresh with a new application** page of the **DevOps Starter** blade, click the **here** link in the **Setting up DevOps starter with GitHub, click here** text. 
 
     > **Note**: This will display the **DevOps starter settings** blade. 
@@ -116,13 +116,19 @@ In this task, you will review the results of creating the DevOps Starter project
     - **Application** - containing the code of the sample web site
     - **ArmTemplates** - containing the Azure Resource Manager templates that the workflow uses to provision Azure resources
 
-1.  On the GitHub repository page, click **.github\workflows** and then, click the **devops-starter-workflow.yml** entry.
+1.  On the GitHub repository page, click **.github/workflows** and then, click the **devops-starter-workflow.yml** entry.
 1.  On the GitHub repository page displaying the content of the **devops-starter-workflow.yml**, review its content and note that it contains the **build**, **deploy**, and **Functional tests** job definitions.
 1.  On the GitHub repository page, in the toolbar, click **Actions**.
 1.  On the GitHub repository page, on the **Actions** tab, in the **All workflows** section, click the entry representing the most recent workflow run.
 1.  On the workflow run page, review the workflow status, as well as the listing of **Annotations** and **Artifacts**.
 1.  On the GitHub repository page, in the toolbar, click **Settings** and, on the **Settings** tab, click **Secrets**.
 1.  On the **Action secrets** pane, note the **AZURE_CREDENTIALS** entry, representing the credentials necessary to access the target Azure subscription. 
+1.  Navigate to the **az400m08l01/Application/aspnet-core-dotnet-core/Pages/Index.cshtml** GitHub repository page and, in the upper right corner, click the pencil icon to switch to the edit mode.
+1.  Change the line 20 to `<div class="description line-1"> GitHub Workflow has been successfully updated</div>`.
+1.  Scroll down to the bottom of the page and click **Commit changes**.
+1.  On the GitHub repository page, in the toolbar, click **Actions**.
+1.  In the **All workflows** section, click the **Update Index.cshtml** entry.
+1.  In the **devops-starter-workflow.yml** section, monitor the progress of deployment and verify that it completed successfully.
 
 ### Exercise 2: Remove the Azure lab resources
 
