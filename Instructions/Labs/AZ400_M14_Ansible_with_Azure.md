@@ -23,7 +23,7 @@ The lab will consist of the following high-level steps:
 
 - Installing and configuring Ansible on the Azure VM
 - Downloading Ansible configuration and sample playbook files
-- Creating and configuring a service principal in Azure AD
+- Creating and configuring a managed identity in Azure AD
 - Configuring Azure AD credentials and SSH for use with Ansible
 - Deploying an Azure VM by using an Ansible playbook
 - Configuring an Azure VM by using an Ansible playbook
@@ -34,7 +34,7 @@ After you complete this lab, you will be able to:
 
 - Install and configure Ansible on Azure VM
 - Download Ansible configuration and sample playbook files
-- Create and configure a service principal in Azure AD
+- Create and configure Azure Active Directory managed identity
 - Configure Azure AD credentials and SSH for use with Ansible
 - Deploy an Azure VM by using an Ansible playbook
 - Configure an Azure VM by using an Ansible playbook
@@ -130,7 +130,7 @@ In this task, you will install and configure Ansible on the Azure VM you deploye
     sudo apt-get update
     ```
 
-1.  Run the following to install Ansible and the required Azure modules (when prompted, type **y** and press the **Enter** key):
+1.  Run the following to install Ansible and the required Azure modules (whenever prompted for confirmation, type **y** and press the **Enter** key):
 
     ```bash
     sudo apt install python3-pip
@@ -144,9 +144,7 @@ In this task, you will install and configure Ansible on the Azure VM you deploye
     rm requirements-azure.txt
     ```
 
-    >**Note**: Disregard warnings regarding mismatched schema values.
-
-    >**Note**: Disregard the warning that ansible 3.3.0 does not provide the extra 'azure'.
+    >**Note**: Disregard any warnings.
 
 1.  Run the following to install the dnspython package to allow the Ansible playbooks to verify DNS names before deployment:
 
@@ -185,9 +183,9 @@ In this task, you will download from GitHub the Ansible configuration repository
     >**Note**: This repository contains playbooks for creating a wide range of resources, some of which we will use in the lab.
 
 
-#### Task 4: Create and configure Azure Active Directory service principal
+#### Task 4: Create and configure Azure Active Directory managed identity
 
-In this task, you will generate an Azure AD service principal in order to facilitate non-interactive authentication of Ansible, which is necessary to access Azure resources. You will also assign to the service principal the Contributor role on the resource group you created in the previous task.
+In this task, you will generate an Azure AD managed identity in order to facilitate non-interactive authentication of Ansible, which is necessary to access Azure resources. You will also assign to the managed identity the Contributor role on the resource group you created in the previous task.
 
 1.  In the Bash session in the Cloud Shell pane, within the SSH session to the newly deployed Azure VM, run the following to sign in to the Azure AD tenant associated with your Azure subscription:
 
@@ -199,31 +197,13 @@ In this task, you will generate an Azure AD service principal in order to facili
 
 1.  When prompted, sign in with credentials you are using in this lab and close the browser tab.
 
-1.  Switch back to the Bash session in the Cloud Shell pane. Within the SSH session to the Azure VM configured as the Ansible control node, run the following to generate a service principal:
+1.  Switch back to the Bash session in the Cloud Shell pane. Within the SSH session to the Azure VM configured as the Ansible control node, run the following to generate a system assigned managed identity:
 
 
     ```bash
-    ANSIBLESP=$(az ad sp create-for-rbac --name az400m14Ansible)
-    ```
-
-    >**Note**: Disregard any warnings following execution of the `az ad sp create-for-rbac` commmand.
-
-1.  Run the following to display properties of the newly generated a service principal:
-
-    ```bash
-    echo $ANSIBLESP | jq
-    ```
-
-1.  Review the output and record the values of the **appId**, **password**, and **tenant** properties. The output should be in the following format:
-
-    ```bash
-    {
-      "appId": "dad6dc75-5a50-4cda-923a-5159a775e67b",
-      "displayName": "az400m14Ansible",
-      "name": "http://az400m14Ansible",
-      "password": "aJww~e~ucsRIZzBu8zETIasdfAh39388qg3",
-      "tenant": "5958ce15-cf29-4d4e-a2ae-32b118d2242a"
-    }
+    RG1NAME=az400m14l03rg
+    VM1NAME=az400m1403vm1
+    az vm identity assign --resource-group $RG1NAME --name $VM1NAME
     ```
 
 1.  Run the following to identify the value of your subscription by running:
@@ -241,68 +221,19 @@ In this task, you will generate an Azure AD service principal in order to facili
 1.  Run the following to assign the Contributor role on the resource group you created earlier in this lab: 
 
     ```bash
-    APPID=$(echo $ANSIBLESP | jq '.appId' -r)
+    MIID=$(az resource list --name $VM1NAME --query [*].identity.principalId --out tsv)
 
-    RGNAME=az400m14l03arg
-    az role assignment create --assignee "$APPID" \
+az role assignment create --assignee $spID --role ‘Reader’ --scope /subscriptions/SUBID/resourceGroups/RG-NAME
+
+    RG2NAME=az400m14l03arg
+    az role assignment create --assignee "$MIID" \
     --role "$CONTRIBUTORID" \
-    --resource-group "$RGNAME"
+    --scope /subscriptions/$SUBSCRIPTIONID/resourceGroups/$RG2NAME
     ```
 
-#### Task 5: Configure Azure AD credentials and SSH for use with Ansible
+#### Task 5: Configure SSH for use with Ansible
 
-In this task, you will configure Azure access for Ansible and SSH for use with Ansible, with the former leveraging the Azure AD service principal you created in the previous task.
-
->**Note**: To allow remote management from designated Ansible control system, we can either create a credentials file or export the service principal details as Ansible environment variables. We will choose the first of these two options. The credentials will be stored in the **~/.azure/credentials** file. 
-
-1.  In the Bash session in the Cloud Shell pane, within the SSH session to the Azure VM configured as the Ansible control node, run the following to create the credentials file: 
-
-    ```bash
-    echo "[default]" > ~/.azure/credentials
-    ```
-
-1.  Run the following to append a new line containing the Azure subscription id you identified in the previous task to the Ansible credentials file: 
-
-    ```bash
-    echo subscription_id=$SUBSCRIPTIONID >> ~/.azure/credentials
-    ```
-
-1.  Run the following to append a new line containing the service principal id you identified in the previous task to the Ansible credentials file: 
-
-    ```bash
-    echo client_id=$APPID >> ~/.azure/credentials
-    ```
-1.  Run the following to append a new line containing the secret of the service principal id you identified in the previous task to the Ansible credentials file: 
-
-    ```bash
-    SECRET=$(echo $ANSIBLESP | jq '.password' -r)
-    echo secret=$SECRET >> ~/.azure/credentials
-    ```
-
-1.  Run the following to append a new line containing the id of the Azure AD tenant you identified in the previous task to the Ansible credentials file: 
-
-    ```bash
-    TENANT=$(echo $ANSIBLESP | jq '.tenant' -r)
-    echo tenant=$TENANT >> ~/.azure/credentials
-    ```
-
-1.  Run the following to verify the content of the Ansible credentials file: 
-
-    ```bash
-    cat  ~/.azure/credentials
-    ```
-
-    >**Note**: The output should resemble the following:
-
-    ```bash
-    [default]
-    subscription_id=d48583d3-e92c-23c8-a36e-f03a962ff1f0
-    client_id=dad6dc75-5a50-4cda-923a-5159a775e67b
-    secret=aJww~e~ucsRIZzBu8zETIasdfAh39388qg3
-    tenant=5958ce15-cf29-4d4e-a2ae-45b348d2242a
-    ```
-
-    >**Note**: Now you will create a public/private key pair for remote SSH connections and test their operations. 
+In this task, you will configure SSH for use with Ansible.
 
 1.  Run the following to generate the key pair (when prompted, press the **Enter** key three times to accept the default values of the locations of the files and not to set the passphrase):
 
@@ -381,7 +312,7 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     | Virtual network | **az400m1403aVNET** |
     | Subnet | **az400m1403aSubnet** |
 
-    >**Note**: The variables can be defined inside of playbooks or can be entered at runtime when invoking the `ansible-playbook` command by including the `--extra-vars` option. As the VM name, use only up to 15 lower case letters and numbers (no hyphens, underscore signs or upper case letters) and ensure it is globally unique, since the same name is used to generate the DNS name for the public IP address associated with the corresponding Azure VM. 
+    >**Note**: The variables can be defined inside of playbooks or can be entered at runtime when invoking the `ansible-playbook` command by including the `--extra-vars` option. As the VM name, use only up to 15 lower case letters and numbers (no hyphens, underscore signs or upper case letters) and ensure it is globally unique, since the same name is used to generate the storage account and the DNS name for the public IP address associated with the corresponding Azure VM. 
 
 1.  Run the following to create the virtual network and its subnet into which you will deploy an Azure VM by using an ansible playbook:
 
@@ -427,7 +358,7 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     plugin: azure_rm
     include_vm_resource_groups:
     - az400m14l03arg
-    auth_source: auto
+    auth_source: msi
 
     keyed_groups:
     - prefix: tag
