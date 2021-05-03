@@ -46,7 +46,7 @@ Identify the applications that you'll use in this lab:
 
 #### Prepare a GitHub account
 
-If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://docs.github.com/join) to create one.
+If you don't already have a GitHub account that you can use for this lab, follow instructions available at [Signing up for a new GitHub account](https://github.com/join) to create one.
 
 ### Exercise 1 : Create a DevOps Starter project
 
