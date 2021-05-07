@@ -135,7 +135,7 @@ In this task, you will install and configure Ansible on the Azure VM you deploye
     sudo apt-get update
     ```
 
-1.  Run the following to install Ansible and the required Azure modules (whenever prompted for confirmation, type **y** and press the **Enter** key):
+1.  Run the following to install Ansible and the required Azure modules (**make sure that you run the commands individually, line by line**, and, whenever you are prompted for confirmation, type **y** and press the **Enter** key):
 
     ```bash
     sudo apt install python3-pip
@@ -230,8 +230,6 @@ In this task, you will generate an Azure AD managed identity in order to facilit
     ```bash
     MIID=$(az resource list --name $VM1NAME --query [*].identity.principalId --out tsv)
 
-    az role assignment create --assignee $spID --role ‘Reader’ --scope /subscriptions/SUBID/resourceGroups/RG-NAME
-
     RG2NAME=az400m14l03arg
     az role assignment create --assignee "$MIID" \
     --role "$CONTRIBUTORID" \
@@ -300,12 +298,12 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     nano ~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/new_vm_web.yml
     ```
 
-1.  In the nano editor, change the value of `vm_size` entry from `Standard_A0` to `Standard_DS1_v2`.
-1.  If needed, change the name of the region in the `dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'` entry to the name of the Azure region you are targeting for deployment.
+1.  In the nano editor, if needed, change the name of the region in the `dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'` entry to the name of the Azure region you are targeting for deployment. 
 
     >**Note**: Make sure that this region matches the Azure region where you created the **az400m14l03rg** resource group.
 
-1.  Locate the SSH string towards the end of the file, in the `key_data` entry, delete the existing key value and replace it with the key value that you recorded earlier in this task. 
+1.  In the nano editor, change the value of `vm_size` entry from `Standard_A0` to `Standard_DS1_v2`.
+1.  In the nano editor, locate the SSH string towards the end of the file, in the `key_data` entry, delete the existing key value and replace it with the key value that you recorded earlier in this task. 
 
     >**Note**: Make sure that the value of `admin_username` entry that is included in the file matches the user name you used to sign in to the Azure VM hosting the Ansible control system (**azureuser**). The same user name must be used in the `path` entry of `ssh_public_keys` section.
 
