@@ -83,10 +83,15 @@ In this task, you will deploy an Azure VM by using Azure CLI and configure it as
 
     >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1.  From the Bash session in the Cloud Shell pane, run the following to create resource groups that will host the Azure VMs you deploy in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region where you intend to deploy resources in this lab):
+1.  From the Bash session in the Cloud Shell pane, run the following to specify the name of the Azure region that will host the resources you deploy in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region where you intend to deploy resources. Make sure that the name does not contain any spaces, e.g. `westeurope`):
 
     ```bash
     LOCATION=<Azure_region>
+    ```
+
+1.  From the Bash session in the Cloud Shell pane, run the following to create resource groups that will host the Azure VMs you deploy in this lab:
+
+    ```bash
     RG1NAME=az400m14l03rg
     az group create --name $RG1NAME --location $LOCATION
     RG2NAME=az400m14l03arg
@@ -144,7 +149,7 @@ In this task, you will install and configure Ansible on the Azure VM you deploye
     rm requirements-azure.txt
     ```
 
-    >**Note**: Disregard any warnings.
+    >**Note**: Disregard any warnings. If you encounter any errors, rerun the commands.
 
 1.  Run the following to install the dnspython package to allow the Ansible playbooks to verify DNS names before deployment:
 
@@ -193,6 +198,8 @@ In this task, you will generate an Azure AD managed identity in order to facilit
     az login
     ```
 
+    >**Note**: If the command fails, rerun the installation of Azure CLI.
+
 1.  Note the code displayed in the output of the previous command and switch to your lab computer. From your lab computer, open another tab in the browser window displaying the Azure portal, navigate to [the Microsoft Device Login page](https://microsoft.com/devicelogin) and, when prompted, enter the code and select **Next**.
 
 1.  When prompted, sign in with credentials you are using in this lab and close the browser tab.
@@ -223,7 +230,7 @@ In this task, you will generate an Azure AD managed identity in order to facilit
     ```bash
     MIID=$(az resource list --name $VM1NAME --query [*].identity.principalId --out tsv)
 
-az role assignment create --assignee $spID --role ‘Reader’ --scope /subscriptions/SUBID/resourceGroups/RG-NAME
+    az role assignment create --assignee $spID --role ‘Reader’ --scope /subscriptions/SUBID/resourceGroups/RG-NAME
 
     RG2NAME=az400m14l03arg
     az role assignment create --assignee "$MIID" \
@@ -235,7 +242,7 @@ az role assignment create --assignee $spID --role ‘Reader’ --scope /subscrip
 
 In this task, you will configure SSH for use with Ansible.
 
-1.  Run the following to generate the key pair (when prompted, press the **Enter** key three times to accept the default values of the locations of the files and not to set the passphrase):
+1.  In the Bash session in the Cloud Shell pane, within the SSH session to the newly deployed Azure VM, run the following to generate the key pair (when prompted, press the **Enter** key three times to accept the default values of the locations of the files and not to set the passphrase):
 
     ```bash
     ssh-keygen -t rsa
@@ -293,14 +300,14 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     nano ~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/new_vm_web.yml
     ```
 
-1.  In the nano editor, locate the SSH string towards the end of the file, in the `key_data` entry, delete the existing key value and replace it with the key value that you recorded earlier in this task. 
-
-    >**Note**: Make sure that the value of `admin_username` entry that is included in the file matches the user name you used to sign in to the Azure VM hosting the Ansible control system (**azureuser**). The same user name must be used in the `path` entry of `ssh_public_keys` section.
-
-1.  Change the value of `vm_size` entry from `Standard_A0` to `Standard_DS1_v2`.
+1.  In the nano editor, change the value of `vm_size` entry from `Standard_A0` to `Standard_DS1_v2`.
 1.  If needed, change the name of the region in the `dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'` entry to the name of the Azure region you are targeting for deployment.
 
     >**Note**: Make sure that this region matches the Azure region where you created the **az400m14l03rg** resource group.
+
+1.  Locate the SSH string towards the end of the file, in the `key_data` entry, delete the existing key value and replace it with the key value that you recorded earlier in this task. 
+
+    >**Note**: Make sure that the value of `admin_username` entry that is included in the file matches the user name you used to sign in to the Azure VM hosting the Ansible control system (**azureuser**). The same user name must be used in the `path` entry of `ssh_public_keys` section.
 
 1.  Within the Nano editor interface, press **ctrl + o** key combination, press the **Enter** key, and then press **ctrl + x** key combination to save the changes you made and close the file.
 
@@ -331,7 +338,7 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     --subnet-prefix 192.168.1.0/24
     ```
 
-1.  Run the following to deploy the sample ansible playbook that provisions an Azure VM (where the `<VM_name>` placeholder represents the unique VM name you chose):
+1.  Run the following to deploy the sample ansible playbook that provisions an Azure VM (**make sure to replace the `<VM_name>` with the unique VM name you chose**):
 
     ```bash
     sudo ansible-playbook ~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/new_vm_web.yml --extra-vars "vmname=<VM_name> resgrp=az400m14l03arg vnet=az400m1403aVNET subnet=az400m1403aSubnet"
@@ -395,7 +402,7 @@ In this task, you will run another Ansible playbook, this time to configure the 
 
 >**Note**: We will use the sample playbook **~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/httpd.yml**. We will use the variable **vmname** in order to modify the hosts parameter of the playbook that defines which host (out of the ones returned by the dynamic inventory script) the playbook will target. 
 
-1.  In the Bash session in the Cloud Shell pane, within the SSH session to the Azure VM configured as the Ansible control node, run the following to identify the public IP address of the newly deployed Azure VM (where the `<VM_name>` placeholder represents the name you assigned to the newly provisioned Azure VM):
+1.  In the Bash session in the Cloud Shell pane, within the SSH session to the Azure VM configured as the Ansible control node, run the following to identify the public IP address of the newly deployed Azure VM (**make sure to replace the `<VM_name>` placeholder with the name you assigned to the newly provisioned Azure VM**):
 
     ```bash
     RGNAME='az400m14l03arg'
