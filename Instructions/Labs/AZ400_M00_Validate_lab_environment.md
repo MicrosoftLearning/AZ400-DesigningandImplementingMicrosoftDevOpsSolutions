@@ -1,9 +1,13 @@
 ---
 lab:
     title: 'Lab 00: Validate lab environment'
+    module: 'Module 0: Welcome'
 ---
 
-## Lab Setup – Validate lab environment
+#Lab: Validate lab environment
+# Student lab manaual
+
+## Instructions
 
 1. Get a new Azure Pass promocode (valid for 30-days) from the instructor or other source.
 2. Use a private browser session to get a new Microsoft account (MSA) at account.microsoft.com or use an existing one.
