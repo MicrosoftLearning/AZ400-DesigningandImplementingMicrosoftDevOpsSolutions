@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Lab 00: Validate lab environment'
+    title: 'Lab: Validate lab environment'
     module: 'Module 0: Welcome'
 ---
 
