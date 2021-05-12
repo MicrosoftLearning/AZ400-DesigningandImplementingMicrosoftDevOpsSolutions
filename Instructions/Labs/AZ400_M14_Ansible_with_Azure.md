@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'Lab: Ansible with Azure'
     module: 'Module 14: Third party Infrastructure as Code Tools Available with Azure'
