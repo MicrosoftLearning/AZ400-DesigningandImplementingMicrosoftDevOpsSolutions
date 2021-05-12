@@ -4,7 +4,7 @@ lab:
     module: 'Module 0: Welcome'
 ---
 
-#Lab: Validate lab environment
+# Lab: Validate lab environment
 # Student lab manaual
 
 ## Instructions
