@@ -60,7 +60,12 @@ In this task, you will create an Azure DevOps Starter resource in your Azure sub
 
 1.  On your lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com) and sign in with the user account that has the Owner or Contributor role in the Azure subscription you will be using in this lab.
 1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click **+ Add**. 
-1.  On the **DevOps Starter** blade, on the **Start fresh with a new application** pane, select the **.NET** tile and click **Next**. 
+1.  On the **Start fresh with a new application** page of the **DevOps Starter** blade, click the **here** link in the **Setting up DevOps starter with GitHub, click here** text.
+
+    > **Note**: This will display the **DevOps starter settings** blade.
+
+1.  On the **DevOps starter settings** blade, select the **Azure DevOps** tile and click **Done**.
+1.  Back on the **DevOps Starter** blade, on the **Start fresh with a new application** pane, select the **.NET** tile and click **Next**. 
 1.  On the **DevOps Starter** blade, on the **Choose an application framework** pane, select the **ASP<nolink>.NET Core** tile, move the **Add a database** slider to the **On** position, and click **Next**. 
 1.  On the **DevOps Starter** blade, on the **Select an Azure service to deploy the application** pane, ensure that the **Windows Web App** tile is selected and click **Next**. 
 1.  On the **DevOps Starter** blade, on the **Almost there** pane, specify the following settings:
