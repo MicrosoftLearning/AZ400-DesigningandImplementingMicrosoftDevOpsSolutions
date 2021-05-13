@@ -124,7 +124,7 @@ In this task, you will review the results of creating the DevOps Starter project
 1.  On the GitHub repository page, in the toolbar, click **Settings** and, on the **Settings** tab, click **Secrets**.
 1.  On the **Action secrets** pane, note the **AZURE_CREDENTIALS** entry, representing the credentials necessary to access the target Azure subscription. 
 1.  Navigate to the **az400m08l01/Application/aspnet-core-dotnet-core/Pages/Index.cshtml** GitHub repository page and, in the upper right corner, click the pencil icon to switch to the edit mode.
-1.  Change the line 20 to `<div class="description line-1"> GitHub Workflow has been successfully updated</div>`.
+1.  Change the line 19 to `<div class="description line-1"> GitHub Workflow has been successfully updated</div>`.
 1.  Scroll down to the bottom of the page and click **Commit changes**.
 1.  On the GitHub repository page, in the toolbar, click **Actions**.
 1.  In the **All workflows** section, click the **Update Index.cshtml** entry.
