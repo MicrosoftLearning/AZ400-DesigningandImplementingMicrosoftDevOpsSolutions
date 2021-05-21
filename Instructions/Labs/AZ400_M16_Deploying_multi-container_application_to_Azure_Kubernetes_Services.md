@@ -100,10 +100,10 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
     LOCATION=<Azure_region>
     ```
 
-    > **Note**: possible locations can be found by running the following command, use the **Name** property on `<Azure_region>` : `az account list-locations -o table`
+    > **Note**: possible locations can be found by running the following command`<Azure_region>` : `az account list-locations -o table`, use the value with no spaces in the **Name** property.
 
     ```bash
-    VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
+    VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv); echo $VERSION
     ```
 
 1.  From the **Bash** session in the Cloud Shell pane, run the following to create a resource group that will host the AKS deployment:
