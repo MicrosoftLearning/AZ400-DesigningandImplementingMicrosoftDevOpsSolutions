@@ -11,20 +11,14 @@ lab:
 
 Azure Artifacts facilitate discovery, installation, and publishing NuGet, npm, and Maven packages in Azure DevOps. It's deeply integrated with other Azure DevOps features such as Build, making package management a seamless part of your existing workflows.
 
-In this lab, you will learn how to work with Azure Artifacts by using the following steps:
-
-- create and connect to a feed.
-- create and publish a NuGet package.
-- import a NuGet package.
-- update a NuGet package.
-
 ## Objectives
 
 After you complete this lab, you will be able to:
 
--   Create an Azure Active Directory (Azure AD) service principal.
--   Create an Azure key vault. 
--   Track pull requests through the Azure DevOps pipeline.
+-  Create and connect to a feed.
+-  Create and publish a NuGet package.
+-  Import a NuGet package.
+-  Update a NuGet package.
 
 ## Lab duration
 
