@@ -382,7 +382,7 @@ In this task, you will validate pull request integration between Azure DevOps an
     }
     ```
 
-1.  On the **Program.cs** pane, enable the **Create a pull request** checkbox and click **Commit**.
+1.  On the **Program.cs** pane, click **Commit**.
 1.  On the **Commit** pane, in the **Branch name** textbox, type **branch1**, select the **Create a pull request** checkbox, and click **Commit**.
 1.  In the Azure DevOps portal, in the vertical menu bar on the left side, in the **Repos** section, click **Pull requests**. 
 1.  On the **Overview** tab of the **Updated Program.cs** pane, monitor the progress of the build process to its completion. 
