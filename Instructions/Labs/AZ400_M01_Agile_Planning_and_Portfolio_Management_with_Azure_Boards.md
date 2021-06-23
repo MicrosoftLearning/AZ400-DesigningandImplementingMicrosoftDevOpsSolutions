@@ -212,7 +212,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: One convenient feature of the boards is that you can easily update key data in-line. It's a good practice to regularly update the **Remaining Work** estimate to reflect the amount of time expected for each task. Let's say you've reviewed the work for the **Add page for most recent tutorial** task and found that it will actually take longer than originally expected. 
 
-1.  On the **Taskboard** tab of the **Sprints** view, in the rectangle representing the **Add page for most recent tutorial**, set the estimated number of hours to match your total capacity for this sprint, which you identified in the previous step.
+1.  On the **Taskboard** tab of the **Sprints** view, in the square box representing the **Add page for most recent tutorial**, set the estimated number of hours to match your total capacity for this sprint, which you identified in the previous step.
 
     > **Note**: This automatically expands the **Development** and your personal capacities to their maximum. Since they're large enough to cover the assigned tasks, they stay green. However, the overall **Team** capacity is exceeded due to the additional 3 hours required by the **Optimize data query for most recent tutorials** task.
 
