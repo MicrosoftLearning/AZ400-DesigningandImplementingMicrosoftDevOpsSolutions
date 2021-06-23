@@ -214,7 +214,7 @@ This will open another browser tab displaying the **Service connections** pane i
 
 1.  Finally, **Save** and click on **Create a new release** > **Create** (leave defaults) to start the deployment.
 
-1. Make sure your pipeline runs succesfully and once finished, review the created resources by opening the resource group **az400m07l01-RG** in the Azure Portal (Azure SQL + App Service). Open the **App Service** and browse it **(Overview -> Browse)**, to see the published website.
+1. Make sure your pipeline runs successfully and once finished, review the created resources by opening the resource group **az400m07l01-RG** in the Azure Portal . Open the **App Service** and browse it **(Overview -> Browse)**, to see the published website.
 
 ### Exercise 2: Remove the Azure lab resources
 
