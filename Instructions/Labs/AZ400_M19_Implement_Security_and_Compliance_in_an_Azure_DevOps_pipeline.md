@@ -94,13 +94,13 @@ In this task, you will trigger a build within your Java code-based Azure DevOps 
 
 1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, in the vertical menu bar on the left side, click **Repos** and navigate to **WebGoat**.
 
-    > **Note**: As the project uses Maven to compile the project files, latest Maven release of 3.8.1 blocks HTTP artifactories. To successfully build the project, you will have to change the pom.xml file of the Project, to use HTTPS instead of HTTP. Perform below step for this purpose.
+    > **Note**: As the project uses Maven to compile the project files, the latest Maven release of 3.8.1 blocks HTTP artifactories. To successfully build the project, you will have to change the pom.xml file of the project, to use HTTPS instead of HTTP. Perform below steps for this purpose.
 
-1. Inside **webgoat-container** project file, identify the pom.xml file and click on **Edit** on the top right corner. Search for the section **pluginRepositories** inside the pom.xml file. Change the URL http://repository.apache.org/snapshots/ to https://repository.apache.org/snapshots/
+1. Inside the **webgoat-container** project file, identify the pom.xml file and click on **Edit** on the top right corner. Search for the section **pluginRepositories** inside the pom.xml file. Change the URL http://repository.apache.org/snapshots/ to https://repository.apache.org/snapshots/
 
 1. Once the **Commit** button is enabled after your edits, click on **Commit**.
 
-1. In the vertical menu bar on the left side, navigate to **Pipelines** section and click **Pipelines**. Observe the build, while it has automatically triggered due to the commit action performed in the previous step.
+1. In the vertical menu bar on the left side, navigate to the **Pipelines** section and click **Pipelines**. Observe the build, while it has been automatically triggered by the commit performed in the previous step.
 
 1.  On the build pane, on the **Summary** tab, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
 
