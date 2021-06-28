@@ -54,6 +54,8 @@ Identify the applications that you'll use in this lab:
 
 In this exercise, you will set up the prerequisites for the lab, which include cloning the Nerd Dinner application and configuring Docker Desktop.
 
+**NOTE You may receive a message telling you that your Visual Studio evaluation period has expired. You can create a new account using the login you used for your Azure account.**
+
 #### Task 1: Clone the Nerd Dinner application
 
 In this task, you will create a clone of the Nerd Dinner application and open it in Visual Studio.
