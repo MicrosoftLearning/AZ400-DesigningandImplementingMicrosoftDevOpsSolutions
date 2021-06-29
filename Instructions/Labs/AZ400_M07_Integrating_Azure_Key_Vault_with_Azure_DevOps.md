@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Integrating Azure Key Vault with Azure DevOps'
+    title: 'Lab 07: Integrating Azure Key Vault with Azure DevOps'
     module: 'Module 7: Managing Application Configuration and Secrets'
 ---
 
-# Lab: Integrating Azure Key Vault with Azure DevOps
+# Lab 07: Integrating Azure Key Vault with Azure DevOps
 # Student lab manual
 
 ## Lab overview
