@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Package Management with Azure Artifacts'
+    title: 'Lab 09: Package Management with Azure Artifacts'
     module: 'Module 9: Designing and Implementing a Dependency Management Strategy'
 ---
 
-# Lab: Package Management with Azure Artifacts
+# Lab 09: Package Management with Azure Artifacts
 # Student lab manual
 
 ## Lab overview
