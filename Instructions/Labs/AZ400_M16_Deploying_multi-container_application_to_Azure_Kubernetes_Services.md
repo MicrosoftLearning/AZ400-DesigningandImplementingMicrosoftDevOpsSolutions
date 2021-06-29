@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Deploying a multi-container application to Azure Kubernetes Services'
+    title: 'Lab 16: Deploying a multi-container application to Azure Kubernetes Services'
     module: 'Module 16: Create and Manage Kubernetes Service Infrastructure'
 ---
 
-# Lab: Deploying a multi-container application to Azure Kubernetes Services
+# Lab 16: Deploying a multi-container application to Azure Kubernetes Services
 # Student lab manual
 
 ## Lab overview
