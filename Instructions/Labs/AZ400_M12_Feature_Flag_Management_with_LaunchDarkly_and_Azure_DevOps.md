@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Feature Flag Management with LaunchDarkly and Azure DevOps'
+    title: 'Lab 12: Feature Flag Management with LaunchDarkly and Azure DevOps'
     module: 'Module 12: Implementing an Appropriate Deployment Pattern'
 ---
 
-# Lab: Feature Flag Management with LaunchDarkly and Azure DevOps
+# Lab 12: Feature Flag Management with LaunchDarkly and Azure DevOps
 # Student lab manual
 
 ## Lab overview
