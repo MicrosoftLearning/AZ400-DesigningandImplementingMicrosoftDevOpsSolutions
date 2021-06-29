@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Integration between Azure DevOps and Teams'
+    title: 'Lab 18: Integration between Azure DevOps and Teams'
     module: 'Module 18: Implementing System Feedback Mechanisms'
 ---
 
-# Lab: Integration between Azure DevOps and Teams
+# Lab 18: Integration between Azure DevOps and Teams
 # Student lab manual
 
 ## Lab overview
