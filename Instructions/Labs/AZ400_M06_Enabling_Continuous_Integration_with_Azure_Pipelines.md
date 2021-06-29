@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Enabling Continuous Integration with Azure Pipelines'
+    title: 'Lab 06a: Enabling Continuous Integration with Azure Pipelines'
     module: 'Module 6: Implementing Continuous Integration using Azure Pipelines'
 ---
 
-# Lab: Enabling Continuous Integration with Azure Pipelines
+# Lab 06a: Enabling Continuous Integration with Azure Pipelines
 # Student lab manual
 
 ## Lab overview
