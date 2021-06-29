@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Version Controlling with Git in Azure Repos'
+    title: 'Lab 02: Version Controlling with Git in Azure Repos'
     module: 'Module 2: Getting Started with Source Control'
 ---
 
-# Lab: Version Controlling with Git in Azure Repos
+# Lab 02: Version Controlling with Git in Azure Repos
 # Student lab manual
 
 ## Lab overview
