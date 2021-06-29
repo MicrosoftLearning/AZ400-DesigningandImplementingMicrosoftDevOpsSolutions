@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Integrating External Source Control with Azure Pipelines'
+    title: 'Lab 06b: Integrating External Source Control with Azure Pipelines'
     module: 'Module 6: Implementing Continuous Integration using Azure Pipelines'
 ---
 
-# Lab: Integrating External Source Control with Azure Pipelines
+# Lab 06b: Integrating External Source Control with Azure Pipelines
 # Student lab manual
 
 ## Lab overview
