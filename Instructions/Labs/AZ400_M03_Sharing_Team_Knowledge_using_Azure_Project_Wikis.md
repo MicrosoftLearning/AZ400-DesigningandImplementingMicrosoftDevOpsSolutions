@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Sharing Team Knowledge using Azure Project Wikis'
+    title: 'Lab 03: Sharing Team Knowledge using Azure Project Wikis'
     module: 'Module 3: Managing Technical Debt'
 ---
 
-# Lab: Sharing Team Knowledge using Azure Project Wikis
+# Lab 03: Sharing Team Knowledge using Azure Project Wikis
 # Student lab manual
 
 ## Lab overview
