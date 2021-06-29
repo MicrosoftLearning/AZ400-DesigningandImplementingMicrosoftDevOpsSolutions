@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Version Controlling with Git in Azure Repos'
+    title: 'Lab 04: Version Controlling with Git in Azure Repos'
     module: 'Module 4: Scaling Git for Enterprise DevOps'
 ---
 
-# Lab: Version Controlling with Git in Azure Repos
+# Lab 04: Version Controlling with Git in Azure Repos
 # Student lab manual
 
 ## Lab overview
