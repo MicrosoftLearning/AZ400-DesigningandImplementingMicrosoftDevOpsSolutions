@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Implementing GitHub Actions by using DevOps Starter'
+    title: 'Lab 08: Implementing GitHub Actions by using DevOps Starter'
     module: 'Module 8: Implementing Continuous Integration with GitHub Actions'
 ---
 
-# Lab: Implementing GitHub Actions by using DevOps Starter
+# Lab 08: Implementing GitHub Actions by using DevOps Starter
 # Student lab manual
 
 ## Lab overview
