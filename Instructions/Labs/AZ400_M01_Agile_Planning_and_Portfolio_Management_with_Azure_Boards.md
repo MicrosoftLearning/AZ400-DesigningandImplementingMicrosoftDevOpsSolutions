@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Agile Planning and Portfolio Management with Azure Boards'
+    title: 'Lab 01: Agile Planning and Portfolio Management with Azure Boards'
     module: 'Module 1: Planning for DevOps'
 ---
 
-# Lab: Agile Planning and Portfolio Management with Azure Boards
+# Lab 01: Agile Planning and Portfolio Management with Azure Boards
 # Student lab manual
 
 ## Lab overview
