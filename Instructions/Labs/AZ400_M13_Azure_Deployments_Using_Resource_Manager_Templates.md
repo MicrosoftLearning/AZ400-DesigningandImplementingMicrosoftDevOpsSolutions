@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Azure Deployments Using Resource Manager Templates'
+    title: 'Lab 13: Azure Deployments Using Resource Manager Templates'
     module: 'Module 13: Managing Infrastructure and Configuration using Azure Tools'
 ---
 
-# Lab: Azure Deployments Using Resource Manager Templates
+# Lab 13: Azure Deployments Using Resource Manager Templates
 # Student lab manual
 
 ## Lab overview
