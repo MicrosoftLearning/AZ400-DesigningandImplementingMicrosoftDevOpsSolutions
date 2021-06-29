@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Implement Security and Compliance in an Azure DevOps pipeline'
+    title: 'Lab 19: Implement Security and Compliance in an Azure DevOps pipeline'
     module: 'Module 19: Implementing Security in DevOps Projects'
 ---
 
-# Lab: Implement Security and Compliance in an Azure DevOps pipeline
+# Lab 19: Implement Security and Compliance in an Azure DevOps pipeline
 # Student lab manual
 
 ## Lab overview
