@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines'
+    title: 'Lab 14b: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines'
     module: 'Module 14: Third party Infrastructure as Code Tools Available with Azure'
 ---
 
-# Lab: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
+# Lab 14b: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
 # Student lab manual
 
 ## Lab overview
