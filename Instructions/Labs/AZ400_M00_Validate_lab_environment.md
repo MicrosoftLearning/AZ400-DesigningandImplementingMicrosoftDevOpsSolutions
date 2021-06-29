@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Validate lab environment'
+    title: 'Lab 00: Validate lab environment'
     module: 'Module 0: Welcome'
 ---
 
-# Lab: Validate lab environment
+# Lab 00: Validate lab environment
 # Student lab manaual
 
 ## Instructions
