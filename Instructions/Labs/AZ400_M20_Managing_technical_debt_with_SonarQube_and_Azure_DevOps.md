@@ -164,7 +164,7 @@ In this task, you will create a pipeline by using the YAML editor.
 1.  On the **Project settings** pane, in the vertical menu bar, in the **Pipelines** section, click **Service connections** and click **Create service connection**.
 1.  On the **New service connection** pane, select the **SonarCloud** option and click **Next**.
 1.  On the **New SonarCloud service connection** pane, in the **SonarCloud Token** textbox, paste the value of the token you recorded in the previous task, in the **Service connection name** textbox, type **SC** and click **Verify and save**. 
-1.  Switch back to the web browser tab displaying the **Where is your code?** pane.
+1.  Switch back to the web browser tab displaying the **Where is your code?** pane. If you have closed this tab, return to the **SonarExamples** pane in the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines** and then click **Create Pipeline**.
 1.  On the **Where is your code?** pane, click **Azure Repos Git**.
 1.  On the **Select a repository** pane, click **SonarExamples**. 
 1.  On the **Configure your pipeline** pane, click **.NET Desktop** YAML template.
