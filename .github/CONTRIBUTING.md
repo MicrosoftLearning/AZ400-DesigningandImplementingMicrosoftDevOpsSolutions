@@ -32,7 +32,7 @@ If you want to collaborate fixing an issue or proposing updates, please create a
 
 #### Creating a Pull Request
 
-You may be creating a Pull Request for existing issues or proposal. If the Pull Request is related to an existing issue, please link it by providing the **Issue** number on the **Fixes #[Issue-Number]** section of the Pull Request description. If the Pull Request is related to an issue that has not been reported yet, please report it, following the previously mentioned steps. 
+You may be creating a Pull Request for existing issues or proposal. If the Pull Request is related to an existing issue, please link it by providing the **Issue** number on the **Fixes #[Issue-Number]** section of the Pull Request description (replace "[]" too). If the Pull Request is related to an issue that has not been reported yet, please report it, following the previously mentioned steps. 
 
 If your Pull Request is related to a proposal, no **Issue** item needs to be created/referenced.
 
@@ -42,7 +42,7 @@ For the Pull Request title, use the following syntax:
 
 #### Creating/Updating screenshots
 
-The screenshot being used by some instructions are organized the following way, a folder located under `AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/images` with the module number. In the cases where modules have more than one lab, a suffix will be added to the module name folder to identify it with the related lab. Example: `m5-enablingci`
+The screenshot being used by some instructions are organized the following way, a folder located under `AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/images` with the lab number. 
 
 ![Github Repo showing images folder](images/image_folder_location.png)
 
