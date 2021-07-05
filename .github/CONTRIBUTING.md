@@ -14,13 +14,13 @@ It is strongly recommended that MCTs and Partners access these materials and in 
 
 To address general comments about the course and demos, or how to prepare for a course delivery, please use the existing MCT forums.
 
-## How can I collaborate
+## How can I collaborate?
 
 ### Reporting Issues
 
 You can open **Issues** from our public repository if you find any problems with the latest version of the lab instructions. Make sure to fill in information as specified by the template.
 
-- **Explain the problem** and include additional details to help maintainers reproduce the problem
+- **Explain the problem** and include additional details to help maintainers reproduce the problem.
 
 - **Use a clear and descriptive title** for the issue to identify the problem.
 - **Describe the exact steps which reproduce the problem** in as many details as possible.
@@ -57,7 +57,7 @@ For referencing and using the screenshot in the lab instructions, the image shou
 
 For example,
 
-`![Azure DevOps Generator website. Clik on "Sign In" option](images/m1/demo_signin_v1.png)`
+`![Azure DevOps Generator website. Click on "Sign In" option](images/m1/demo_signin_v1.png)`
 
 > **Note**: image could be resized using the following syntax example, modifying with to your needs: 
 `[<img src="images/m1/child_feature_v1.png" alt="Include Title 'Training Dashboard' and click 'OK' " width="500"/>]()`
