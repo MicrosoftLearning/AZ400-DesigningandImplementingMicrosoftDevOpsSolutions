@@ -260,7 +260,7 @@ In this task, you will update a NuGet package.
 
     > **Note**: NuGet is aware of our update, as indicated by the content of the **Updates** tab. 
 
-1.  In the **NuGet: PartsUnlimitedWebsite** pane, click the **Updates** tab, in the search textbox, type **PartsUnlimited.Shared** and, on the right-hand side of the pane, next to the **Version** ** Latest stable 1.1.0** dropdown list, click **Update** to install the new version. 
+1.  In the **NuGet: PartsUnlimitedWebsite** pane, click the **Updates** tab, in the search textbox, type **PartsUnlimited.Shared** and, on the right-hand side of the pane, next to the **Version: Latest stable 1.1.0** dropdown list, click **Update** to install the new version. 
 
     > **Note**: There may be many NuGet updates available, but you should only need to update **PartsUnlimited.Shared**. Note that it may take a little while for the package to become completely available for updating. If you get an error, wait a moment and try again.
 
