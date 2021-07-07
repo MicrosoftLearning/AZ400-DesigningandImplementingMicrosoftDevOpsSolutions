@@ -100,11 +100,11 @@ In this task, you will trigger a build within your Java code-based Azure DevOps 
 
     | Tasks | Usage |
     | ---- | ------ |
-    | ![npm](images/m19/npm.png) **npm** |  Installs and publishes npm packages required for the build |
-    | ![maven](images/m19/maven.png) **Maven** |  builds Java code with the provided pom xml file |
-    | ![whitesourcebolt](images/m19/whitesourcebolt.png) **WhiteSource Bolt** |  scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses |
-    | ![copy-files](images/m19/copy-files.png) **Copy Files** |  copies the resulting JAR files from the source to the destination folder using match patterns |
-    | ![publish-build-artifacts](images/m19/publish-build-artifacts.png) **Publish Build Artifacts** |  publishes the artifacts produced by the build |
+    | ![npm](images/lab19/npm.png) **npm** |  Installs and publishes npm packages required for the build |
+    | ![maven](images/lab19/maven.png) **Maven** |  builds Java code with the provided pom xml file |
+    | ![whitesourcebolt](images/lab19/whitesourcebolt.png) **WhiteSource Bolt** |  scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses |
+    | ![copy-files](images/lab19/copy-files.png) **Copy Files** |  copies the resulting JAR files from the source to the destination folder using match patterns |
+    | ![publish-build-artifacts](images/lab19/publish-build-artifacts.png) **Publish Build Artifacts** |  publishes the artifacts produced by the build |
     
 1.  Once the build completes, navigate back to the **Summary** tab and review **Tests and coverage** section. 
 
