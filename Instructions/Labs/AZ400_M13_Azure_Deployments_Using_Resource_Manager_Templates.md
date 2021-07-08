@@ -102,12 +102,11 @@ In this task, you will modify the templates you saved in the previous task such 
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[variables('storageAccountName')]",
         "location": "[parameters('location')]",
-        "apiVersion": "2018-07-01",
+        "apiVersion": "2021-04-01",
         "sku": {
            "name": "Standard_LRS"
         },
-        "kind": "Storage",
-        "properties": {}
+        "kind": "Storage"
       }
     ],
     ```
@@ -120,7 +119,7 @@ In this task, you will modify the templates you saved in the previous task such 
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[parameters('storageAccountName')]",
         "location": "[parameters('location')]",
-        "apiVersion": "2018-07-01",
+        "apiVersion": "2021-04-01",
         "sku": {
            "name": "Standard_LRS"
         },
@@ -140,7 +139,6 @@ In this task, you will modify the templates you saved in the previous task such 
       "subnetName": "Subnet",
       "subnetPrefix": "10.0.0.0/24",
       "virtualNetworkName": "MyVNET",
-      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
       "networkSecurityGroupName": "default-NSG"
     },
     ```
@@ -176,7 +174,7 @@ In this task, you will modify the templates you saved in the previous task such 
     }
     ```
 
-1. Last, update the template schema version from 2015-01-01 to 2019-04-01, by updating the first few lines in the template definition file as follows:
+1. Last, make sure schema version is 2019-04-01 (ignore warning/errors if shown in VS Code) :
 
     ```json
         {
@@ -196,38 +194,48 @@ In this task, you will modify the templates you saved in the previous task such 
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
+      "metadata": {
+        "_generator": {
+          "name": "bicep",
+          "version": "0.4.1.14562",
+          "templateHash": "8381960602397537918"
+        }
+      },
       "parameters": {
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-            "description": "Azure Storage account name."
-          }
-        },
         "location": {
           "type": "string",
           "defaultValue": "[resourceGroup().location]",
           "metadata": {
             "description": "Location for all resources."
           }
+        },
+        "storageAccountName": {
+          "type": "string",
+          "metadata": {
+            "description": "Azure Storage account name."
+          }
         }
+    
+      },
+      "functions": [],
+      "variables": {
       },
       "resources": [
         {
           "type": "Microsoft.Storage/storageAccounts",
+          "apiVersion": "2021-04-01",
           "name": "[parameters('storageAccountName')]",
-          "apiVersion": "2016-01-01",
           "location": "[parameters('location')]",
           "sku": {
             "name": "Standard_LRS"
           },
-          "kind": "Storage",
-          "properties": {}
+          "kind": "Storage"
         }
       ],
       "outputs": {
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+        "storageUri": {
+          "type": "string",
+          "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
         }
       }
     }
