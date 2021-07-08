@@ -343,12 +343,11 @@ In this task, you will modify the main template to reference the linked template
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
+      "apiVersion": "2021-04-01",
       "sku": {
         "name": "Standard_LRS"
       },
-      "kind": "Storage",
-      "properties": {}
+      "kind": "Storage"
     },
     ```
 
@@ -395,17 +394,20 @@ In this task, you will modify the main template to account for remaining depende
 
     ```json
     "dependsOn": [
-      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+    ]
     ```
 
     with
 
     ```json
-   "dependsOn": [
-     "linkedTemplate",
-     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-    ```
+    "dependsOn": [
+      
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+      "linkedTemplate"
+    ]
+      ```
 
 1.  In the resources section under the **Microsoft.Compute/virtualMachines** element, reconfigure the **properties/diagnosticsProfile/bootDiagnostics/storageUri** element to reflect the output value you defined in the linked storage template by replacing:
 
@@ -447,7 +449,7 @@ In this task, you will modify the main template to account for remaining depende
     ```
 
 1.  When prompted to provide the value for 'adminUsername', type **Student** and press the **Enter** key.
-1.  When prompted to provide the value for 'adminPassword', type **Pa55w.rd1234** and press the **Enter** key.
+1.  When prompted to provide the value for 'adminPassword', type **Pa55w.rd1234** and press the **Enter** key. (Password typing will not be shown)
 
 1.  If you receive errors when running the above command to deploy the template, try the following:
 
