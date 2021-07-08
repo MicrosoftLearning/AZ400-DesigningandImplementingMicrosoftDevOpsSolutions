@@ -264,7 +264,7 @@ In this task, you will upload the linked template you created in the previous ta
     # Provide the name of the closest Azure region in which you can provision Azure VMs
     $location = Read-Host -Prompt 'Enter the name of Azure region (i.e. centralus)'
     ```
-1. Second, copy and paste the following code into the same Cloud Shell session to create a blob storage container, upload the template file you created in the previous task, and generate a SAS token that you will reference in the main template to access the linked template:
+1. Second, copy and paste the following code into the same Cloud Shell session to create a blob storage container:
 
     ```powershell
     # This is a random string used to assign the name to the Azure storage account
