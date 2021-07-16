@@ -68,7 +68,7 @@ In this lab, you will create an Azure Resource manager template and modularize i
 In this task, you will use Visual Studio Code to create a Resource Manager template
 
 1.  From your lab computer, start Visual Studio Code, in Visual Studio Code, click the **File** top level menu, in the dropdown menu, select **Preferences**, in the cascading menu, select **Extensions**, in the **Search Extensions** textbox, type **Azure Resource Manager (ARM) Tools**, select the corresponding search result, and click **Install** to install the Azure Resource Manager Tools
-1.  In a web browser, connect to **https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json**. Copy the contents of the code window and past it into Visual Studio Code editor.
+1.  In a web browser, connect to **https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json**. Click on **Raw** option for the file. Copy the contents of the code window and paste it into Visual Studio Code editor.
 
     > **Note**: Rather than creating a template from scratch we will use one of the [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/) named **Deploy a simple Windows template VM**. The templates are downloadable the templates from GitHub - [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows).
 
@@ -174,7 +174,7 @@ In this task, you will modify the templates you saved in the previous task such 
     }
     ```
 
-1. Last, make sure schema version is 2019-04-01 (ignore warning/errors if shown in VS Code) :
+1. Last, make sure schema version is 2019-04-01 (ignore warnings/errors if shown in VS Code) :
 
     ```json
         {
