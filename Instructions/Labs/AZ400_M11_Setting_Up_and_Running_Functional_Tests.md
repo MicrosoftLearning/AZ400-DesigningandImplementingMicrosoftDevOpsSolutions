@@ -132,7 +132,9 @@ In this task, you will configure a self-hosted agent by using the VM you deploye
     | Setting | Value |
     | --- | --- |
     | Name | **Setting Up and Running Functional Tests lab** |
-    | Scopes | **Full access** |
+    | Scopes | **Custom Defined** |
+    | Scopes | Click **Show all scopes** (at the bottom of the window) |
+    | Scopes | **Agent Pools** - **Read & Manage** |
 
 1.  On the **Success** pane, copy the value of the personal access token to Clipboard.
 
