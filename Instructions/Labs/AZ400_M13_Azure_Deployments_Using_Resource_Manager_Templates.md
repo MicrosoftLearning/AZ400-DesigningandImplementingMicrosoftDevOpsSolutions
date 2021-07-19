@@ -68,9 +68,9 @@ In this lab, you will create an Azure Resource manager template and modularize i
 In this task, you will use Visual Studio Code to create a Resource Manager template
 
 1.  From your lab computer, start Visual Studio Code, in Visual Studio Code, click the **File** top level menu, in the dropdown menu, select **Preferences**, in the cascading menu, select **Extensions**, in the **Search Extensions** textbox, type **Azure Resource Manager (ARM) Tools**, select the corresponding search result, and click **Install** to install the Azure Resource Manager Tools
-1.  In a web browser, connect to **https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-windows/azuredeploy.json**. Copy the contents of the code window and past it into Visual Studio Code editor.
+1.  In a web browser, connect to **https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json**. Click on **Raw** option for the file. Copy the contents of the code window and paste it into Visual Studio Code editor.
 
-    > **Note**: Rather than creating a template from scratch we will use one of the [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/) named **Deploy a simple Windows template VM**. The templates are downloadable the templates from GitHub - [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows).
+    > **Note**: Rather than creating a template from scratch we will use one of the [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/) named **Deploy a simple Windows template VM**. The templates are downloadable the templates from GitHub - [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows).
 
 1.  On your lab computer, open File Explorer and create the following local folders that will serve to store templates:
 
@@ -102,12 +102,11 @@ In this task, you will modify the templates you saved in the previous task such 
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[variables('storageAccountName')]",
         "location": "[parameters('location')]",
-        "apiVersion": "2018-07-01",
+        "apiVersion": "2021-04-01",
         "sku": {
            "name": "Standard_LRS"
         },
-        "kind": "Storage",
-        "properties": {}
+        "kind": "Storage"
       }
     ],
     ```
@@ -120,7 +119,7 @@ In this task, you will modify the templates you saved in the previous task such 
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[parameters('storageAccountName')]",
         "location": "[parameters('location')]",
-        "apiVersion": "2018-07-01",
+        "apiVersion": "2021-04-01",
         "sku": {
            "name": "Standard_LRS"
         },
@@ -140,7 +139,6 @@ In this task, you will modify the templates you saved in the previous task such 
       "subnetName": "Subnet",
       "subnetPrefix": "10.0.0.0/24",
       "virtualNetworkName": "MyVNET",
-      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
       "networkSecurityGroupName": "default-NSG"
     },
     ```
@@ -176,7 +174,7 @@ In this task, you will modify the templates you saved in the previous task such 
     }
     ```
 
-1. Last, update the template schema version from 2015-01-01 to 2019-04-01, by updating the first few lines in the template definition file as follows:
+1. Last, make sure schema version is 2019-04-01 (ignore warnings/errors if shown in VS Code) :
 
     ```json
         {
@@ -196,38 +194,48 @@ In this task, you will modify the templates you saved in the previous task such 
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
+      "metadata": {
+        "_generator": {
+          "name": "bicep",
+          "version": "0.4.1.14562",
+          "templateHash": "8381960602397537918"
+        }
+      },
       "parameters": {
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-            "description": "Azure Storage account name."
-          }
-        },
         "location": {
           "type": "string",
           "defaultValue": "[resourceGroup().location]",
           "metadata": {
             "description": "Location for all resources."
           }
+        },
+        "storageAccountName": {
+          "type": "string",
+          "metadata": {
+            "description": "Azure Storage account name."
+          }
         }
+    
+      },
+      "functions": [],
+      "variables": {
       },
       "resources": [
         {
           "type": "Microsoft.Storage/storageAccounts",
+          "apiVersion": "2021-04-01",
           "name": "[parameters('storageAccountName')]",
-          "apiVersion": "2016-01-01",
           "location": "[parameters('location')]",
           "sku": {
             "name": "Standard_LRS"
           },
-          "kind": "Storage",
-          "properties": {}
+          "kind": "Storage"
         }
       ],
       "outputs": {
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+        "storageUri": {
+          "type": "string",
+          "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
         }
       }
     }
@@ -256,7 +264,7 @@ In this task, you will upload the linked template you created in the previous ta
     # Provide the name of the closest Azure region in which you can provision Azure VMs
     $location = Read-Host -Prompt 'Enter the name of Azure region (i.e. centralus)'
     ```
-1. Second, copy and paste the following code into the same Cloud Shell session to create a blob storage container, upload the template file you created in the previous task, and generate a SAS token that you will reference in the main template to access the linked template:
+1. Second, copy and paste the following code into the same Cloud Shell session to create a blob storage container:
 
     ```powershell
     # This is a random string used to assign the name to the Azure storage account
@@ -266,15 +274,9 @@ In this task, you will upload the linked template you created in the previous ta
 
     # The name of the Blob container to be created
     $containerName = 'linktempblobcntr' 
-    
-    # A completed linked template used in this lab
-    $linkedTemplateURL = "https://raw.githubusercontent.com/Microsoft/PartsUnlimited/master/Labfiles/AZ-400T05_Implementing_Application_Infrastructure/M01/storage.json" 
 
     # A file name used for downloading and uploading the linked template
     $fileName = 'storage.json' 
-    
-    # Download the lab linked template into in your Azure Cloud Shell home directory
-    Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$fileName" 
     
     # Create a resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location 
@@ -290,36 +292,40 @@ In this task, you will upload the linked template you created in the previous ta
     
     # Create a container
     New-AzureStorageContainer -Name $containerName -Context $context
-        
-    # Upload the linked template
-    Set-AzureStorageBlobContent `
-      -Container $containerName `
-      -File "$home/$fileName" `
-      -Blob $fileName `
-      -Context $context
-    
-    # Generate a SAS token. We set an expiry time of 24 hours, but you could have shorter values for increased security.
-    $templateURI = New-AzureStorageBlobSASToken `
-      -Context $context `
-      -Container $containerName `
-      -Blob $fileName `
-      -Permission r `
-      -ExpiryTime (Get-Date).AddHours(24.0) `
-      -FullUri
-    
-    "Resource Group Name: $resourceGroupName"
-    "Linked template URI with SAS token: $templateURI"
     ```
-    >**Note**: Make sure to record the final output generated by the script. You will need it later in the lab.
-    
-    >**Note**: The output values should resemble the following:
+  1. In the Cloud Shell pane, click the **Upload/download files** icon and, in the dropdown menu, click **Upload**. In the **Open** dialog box, navigate to and select **C:\\templates\\storage\\storage.json** and click **Open**.
 
-    ```
-    Resource Group Name: az400m13l01-RG
-    Linked template URI with SAS token: https://az400m13blob1677205310.blob.core.windows.net/linktempblobcntr/storage.json?sv=2018-03-28&sr=b&sig=B4hDLt9rFaWHZXToJlMwMjejAQGT7x0INdDR9bHBQnI%3D&se=2020-11-23T21%3A54%3A53Z&sp=r
-    ```
+      ```powershell
+      # Upload the linked template
+      Set-AzureStorageBlobContent `
+        -Container $containerName `
+        -File "$home/$fileName" `
+        -Blob $fileName `
+        -Context $context
 
-    >**Note**: For scenarios requiring increased level of security, you could generate a SAS token dynamically during main template deployment and assign the SAS token a shorter validity period.
+      # Generate a SAS token. We set an expiry time of 24 hours, but you could have shorter values for increased security.
+      $templateURI = New-AzureStorageBlobSASToken `
+        -Context $context `
+        -Container $containerName `
+        -Blob $fileName `
+        -Permission r `
+        -ExpiryTime (Get-Date).AddHours(24.0) `
+        -FullUri
+
+      "Resource Group Name: $resourceGroupName"
+      "Linked template URI with SAS token: $templateURI"
+      ```
+
+  >**Note**: Make sure to record the final output generated by the script. You will need it later in the lab.
+  
+  >**Note**: The output values should resemble the following:
+
+  ```
+      Resource Group Name: az400m13l01-RG
+      Linked template URI with SAS token: https://az400m13blob1677205310.blob.core.windows.net/linktempblobcntr/storage.json?sv=2018-03-28&sr=b&sig=B4hDLt9rFaWHZXToJlMwMjejAQGT7x0INdDR9bHBQnI%3D&se=2020-11-23T21%3A54%3A53Z&sp=r
+  ```
+
+  >**Note**: For scenarios requiring increased level of security, you could generate a SAS token dynamically during main template deployment and assign the SAS token a shorter validity period.
 
 1.  Close the Cloud Shell pane.
 
@@ -337,12 +343,11 @@ In this task, you will modify the main template to reference the linked template
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
+      "apiVersion": "2021-04-01",
       "sku": {
         "name": "Standard_LRS"
       },
-      "kind": "Storage",
-      "properties": {}
+      "kind": "Storage"
     },
     ```
 
@@ -366,7 +371,7 @@ In this task, you will modify the main template to reference the linked template
           }
        }
     },
-    ```    
+    ```
 
 1.  Review the following details in the main template:
 
@@ -389,17 +394,20 @@ In this task, you will modify the main template to account for remaining depende
 
     ```json
     "dependsOn": [
-      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+    ]
     ```
 
     with
 
     ```json
-   "dependsOn": [
-     "linkedTemplate",
-     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-    ```
+    "dependsOn": [
+      
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+      "linkedTemplate"
+    ]
+      ```
 
 1.  In the resources section under the **Microsoft.Compute/virtualMachines** element, reconfigure the **properties/diagnosticsProfile/bootDiagnostics/storageUri** element to reflect the output value you defined in the linked storage template by replacing:
 
@@ -441,7 +449,7 @@ In this task, you will modify the main template to account for remaining depende
     ```
 
 1.  When prompted to provide the value for 'adminUsername', type **Student** and press the **Enter** key.
-1.  When prompted to provide the value for 'adminPassword', type **Pa55w.rd1234** and press the **Enter** key.
+1.  When prompted to provide the value for 'adminPassword', type **Pa55w.rd1234** and press the **Enter** key. (Password typing will not be shown)
 
 1.  If you receive errors when running the above command to deploy the template, try the following:
 
