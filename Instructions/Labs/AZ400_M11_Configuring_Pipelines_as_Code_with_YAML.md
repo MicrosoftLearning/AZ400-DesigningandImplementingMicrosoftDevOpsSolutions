@@ -175,7 +175,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       - job: Build
     ```
 
-1.  Select the remaining content of the YAML file and press the **Tab** key twice to indent it four spaces (it should be placed with same identation as ```job: Build```). 
+1.  Select the remaining content of the YAML file and press the **Tab** key three times to indent it six spaces (it should be placed with same identation as ```job: Build```). 
 
     > **Note**: This way, everything starting with the `pool` section becomes part of the `job: Build`. 
 
@@ -203,7 +203,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: This will automatically add the deployment task to the YAML pipeline definition.
 
-1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces, so that it listed as a child of the **steps** task.
+1.  With the added task still selected in the editor, press the **Tab** key three times to indent it six spaces, so that it listed as a child of the **steps** task.
 
     > **Note**: The **packageForLinux** parameter is misleading in the context of this lab, but it is valid for Windows or Linux. 
 
@@ -222,7 +222,6 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 1.  Place the cursor on the first line under the **steps** node of the **deploy** stage.
 1.  On the **Tasks** pane, search for and select the **Download build artifacts** task.
 1.  Click **Add**.
-1.  With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces. 
 
     > **Note**: Here as well you may also want to add an empty line before and after to make it easier to read.
 
