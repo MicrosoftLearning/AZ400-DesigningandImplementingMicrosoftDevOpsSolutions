@@ -256,7 +256,7 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
     > **Note**: The sampling interval and timeout work together so that the gates will call their functions at suitable intervals and reject the deployment if they don't succeed during the same sampling interval within the timeout period. 
 
 1.  Close the **Post-deployment conditions** pane, by clicking the **x** mark in its upper right corner.
-1.  Back on the **PartsUnlimited-CD** pane, click **Save**, and in the **Save** dialog box, click **Save** again. 
+1.  Back on the **PartsUnlimited-CD** pane, click **Save**, and in the **Save** dialog box, click **Ok**. 
 
 
 ### Exercise 3: Test release gates
