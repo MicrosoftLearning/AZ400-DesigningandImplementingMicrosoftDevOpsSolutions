@@ -150,13 +150,6 @@ In this task, you will create a dashboard and add to it release-related widgets.
     | ------- | ----- |
     | Definition | **az400m10l02 - CD** |
 
-1.  Back on the dashboard pane, hover over the upper right corner of the rectangle representing the **Release Pipeline Overview** widget to reveal the ellipsis sign representing the **More actions** menu, click it, and, in the dropdown menu, click **Configure**.  
-1.  On the **Configuration** pane, specify the following settings (leave all others with their default values) and click **Save**.
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Release pipeline | **az400m10l02 - CD** |
-
 1.  Back on the dashboard pane, click **Refresh** to update the content displayed by the widgets.
 
     > **Note**: The links on widgets allow you to navigate directly to the corresponding panes in the Azure DevOps portal.
