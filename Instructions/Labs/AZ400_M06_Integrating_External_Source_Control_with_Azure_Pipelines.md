@@ -155,7 +155,7 @@ In this task, you will propose an invalid change and review the results of a bui
 
     > **Note**: This is an incorrect change that would result in invalid outcome.
 
-1.  Scroll to the bottom of the page, replace the default commit message with **Modifying the add function**, select **Create a new branch**, set its name to **addition-cleanup**, and click **Propose file change**.
+1.  Scroll to the bottom of the page, replace the default commit message with **Modifying the add function**, select **Create a new branch**, set its name to **addition-cleanup**, and click **Propose change**.
 1.  On the **Open a pull request** page, click **Create pull request** to initiate the process of getting your untested changes into production code. 
 
     > **Note**: Azure DevOps will detect the change and start the build pipeline. This will result in failed checks, triggering an update the GitHub UI. 
