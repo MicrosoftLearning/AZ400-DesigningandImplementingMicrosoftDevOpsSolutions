@@ -122,7 +122,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
     > **Note**: By default, the template will generate an Application Insights resource and attach it to the app service.
 
 1.  Back on the **Web App + SQL** blade, click the Application Insights entry.
-1.  On the **Application Insights** blade, with the **.NET** tab selected, in the **Collection level** section, select **Recommended**, on the **Application Insights** blade, in the **Profiler** section, select **On**, and click **Apply**.
+1.  On the **Application Insights** blade, under **Instrument your application**, with the **.NET** tab selected, in the **Collection level** section, select **Recommended**, on the **Application Insights** blade, in the **Profiler** section, select **On**, and click **Apply**.
 1.  Back on the **Web App + SQL** blade, click **Create**. 
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. 
@@ -267,7 +267,7 @@ In this task, you will use Application Insights to investigate performance of th
 
     > **Note**: After you've deployed your web app or web site to any server, you can set up tests to monitor its availability and responsiveness. Application Insights sends web requests to your application at regular intervals from points around the world. It alerts you if your application doesn't respond or responds slowly. 
 
-1.  On the **Availability** blade, in the toolbar, click **+ Add test**.
+1.  On the **Availability** blade, in the toolbar, click **+ Add Classic test**.
 1.  On the **Create test** blade, in the **Test name** textbox, type **Home page**, set the **URL** to the root of your App Service web app, and click **Create**.
 
     > **Note**: The test will not run immediately, so there won't be any data. If you check back later, you should see the availability data updated to reflect the tests against your live site. Don't wait for this now.
