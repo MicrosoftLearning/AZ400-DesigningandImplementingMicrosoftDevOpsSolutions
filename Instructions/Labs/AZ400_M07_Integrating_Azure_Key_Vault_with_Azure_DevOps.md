@@ -170,10 +170,10 @@ For this lab scenario, we have an app that connects to a MySQL database. We inte
 In this task, you will configure the Azure Pipeline to retrieve the secret from the Azure Key vault.
 
 1.  On your lab computer, start a web browser and navigate to the Azure DevOps project **Integrating Azure Key Vault with Azure DevOps** you created in the previous exercise.
-1.  In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
+1.  In the vertical navigational pane of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
 1.  On the **Pipelines** pane, click the entry representing the **SmartHotel-CouponManagement-CI** pipeline and, on the **SmartHotel-CouponManagement-CI** pane, click **Run Pipeline**.
 1.  On the **Run pipeline** pane, accept the default settings and click **Run** to trigger a build.
-1.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
+1.  In the vertical navigational pane of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
 1.  On the **SmartHotel-CouponManagement-CD** pane, click **Edit** in the upper right corner.
 1.  On the **All pipelines > SmartHotel-CouponManagement-CD** pane, select the **Task** tab and, in the dropdown menu, select **Dev**.
 
@@ -198,7 +198,7 @@ This will open another browser tab displaying the **Service connections** pane i
 1.  Switch back to the web browser  tab displaying the pipeline definition and the **Azure Key Vault** task.
 1.  With the **Azure Key Vault** task selected, on the **Azure Key Vault** pane, click the **Refresh** button, in the **Azure subscription** dropdown list, select the  **kv-service-connection** entry, in the **Key vault** dropdown list, select the entry representing the Azure Key vault you created in the first task, and, in the **Secrets filter** textbox, type **sqldbpassword**. Finally, expand the **Output Variables** section and, in the **Reference name** textbox, type **sqldbpassword**. 
 
-    > **Note**: At runtime, Azure Pipelines will fetch the latest value of the secret and set it as the task variable **$(sqldbpassword)**. The tasks can consumed by the subsequent tasks by referencing that variable.  
+    > **Note**: At runtime, Azure Pipelines will fetch the latest value of the secret and set it as the task variable **$(sqldbpassword)**. The tasks can be consumed by the subsequent tasks by referencing that variable.  
 
 1.  To verify this, select the next task, **Azure Deployment**, which deploys an ARM template and review the content of the **Override template parameters** textbox. 
 
