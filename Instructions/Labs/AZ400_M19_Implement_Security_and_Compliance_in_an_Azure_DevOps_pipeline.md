@@ -96,7 +96,6 @@ In this task, you will trigger a build within your Java code-based Azure DevOps 
 
     > **Note**: As the project uses Maven to compile the project files, the latest Maven release of 3.8.1 blocks HTTP artifactories. To successfully build the project, you will have to change the pom.xml file of the project, to use HTTPS instead of HTTP. Perform below steps for this purpose.
 
-1. Inside the **webgoat-container** project file, identify the pom.xml file and click on **Edit** on the top right corner. Search for the section **pluginRepositories** inside the pom.xml file. Change the URL http://repository.apache.org/snapshots/ to https://repository.apache.org/snapshots/
 
 1. Once the **Commit** button is enabled after your edits, click on **Commit**.
 
