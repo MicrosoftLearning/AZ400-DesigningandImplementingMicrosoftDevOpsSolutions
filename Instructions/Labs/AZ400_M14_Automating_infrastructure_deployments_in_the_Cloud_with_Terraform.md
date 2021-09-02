@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines'
+    title: 'Lab 14b: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines'
     module: 'Module 14: Third party Infrastructure as Code Tools Available with Azure'
 ---
 
-# Lab: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
+# Lab 14b: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
 # Student lab manual
 
 ## Lab overview
@@ -66,7 +66,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-1.  On the **Create New Project** page, in the **New Project Name** textbox, type *Automating infrastructure deployments with Terraform**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
+1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Automating infrastructure deployments with Terraform**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
 1.  In the list of templates, in the toolbar, click **DevOps Labs**, select the **Terraform** template and click **Select Template**.
 1.  Back on the **Create New Project** page, if prompted to install a missing extension, select the checkbox below the **Replace Tokens** and **Terraform** labels and click **Create Project**.
 
@@ -101,7 +101,7 @@ In this task, you will build your application and publish the required files as 
 1.  In the Azure DevOps portal, in the vertical menu bar at the left of the Azure DevOps portal, click **Pipelines**. Underneath, select **Pipelines**.
 1.  On the **Pipelines** pane, click **Terraform-CI** to select it and, on the **Terraform-CI** pane, click **Edit**.
 
-    > **Note**: This CI pipeline has tasks to compile the .Net Core project. The DotNet tasks in the pipeline will restore dependencies, build, test and publish the build output into a zip file (package), which can be deployed to a web application. In addition to the application build, we need to publish terraform files to build artifacts to make them available in CD pipeline. This is the reason for the **Copy files** task to copy Terraform file to Artifacts directory.
+    > **Note**: This CI pipeline has tasks to compile the .NET Core project. The DotNet tasks in the pipeline will restore dependencies, build, test and publish the build output into a zip file (package), which can be deployed to a web application. In addition to the application build, we need to publish terraform files to build artifacts to make them available in CD pipeline. This is the reason for the **Copy files** task to copy Terraform file to Artifacts directory.
 
 1.  Once you review the **Tasks** tab of the **Terraform-CI** pane, click the ellipsis symbol in the top right corner and, in the dropdown menu, click **Queue**.
 1.  On the **Run pipeline** pane, click **Run** to initiate the build. 
@@ -123,7 +123,7 @@ In this task, you will create Azure resources using Terraform as part of your de
 1.  In the list of tasks of the **Dev** stage, select the **Azure PowerShell** task. 
 1.  On the **Azure PowerShell** pane, in the **Azure Connection Type** dropdown list, select **Azure Resource Manager** and then, in the **Azure Subscription** dropdown list, select the newly created Azure service connection (the one under "Available Azure Service Connection").
 
-    > **Note**: To configure the Terraform [backend](https://www.terraform.io/docs/backends/), we need the access key to the Azure Storage account hosting the Terraform state. In this case, we are using Azure PowerShell task to retrieve the access key of the Azure Storage account provisioned in the previous task. By using `Write-Host "##vso[task.setvariable variable=storagekey]$key"`we are creating a pipeline variable that we will be able to use on later tasks.
+    > **Note**: To configure the Terraform [backend](https://www.terraform.io/docs/backends/), we need the access key to the Azure Storage account hosting the Terraform state. In this case, we are using Azure PowerShell task to retrieve the access key of the Azure Storage account provisioned in the previous task. By using `Write-Host "##vso[task.setvariable variable=storagekey]$key"` we are creating a pipeline variable that we will be able to use on later tasks.
 
 1.  In the list of tasks of the **Dev** stage, select the **Replace tokens in Terraform file** task.
 
@@ -178,7 +178,7 @@ In this exercise, you will remove the Azure resources provisioned in this lab to
 
 #### Task 1: Remove the Azure lab resources
 
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisione in this lab to eliminate unnecessary charges. 
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
 
 1.  In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1.  List all resource groups created throughout the labs of this module by running the following command:

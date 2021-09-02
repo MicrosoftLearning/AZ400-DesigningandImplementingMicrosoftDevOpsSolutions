@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Enabling Continuous Integration with Azure Pipelines'
+    title: 'Lab 06a: Enabling Continuous Integration with Azure Pipelines'
     module: 'Module 6: Implementing Continuous Integration using Azure Pipelines'
 ---
 
-# Lab: Enabling Continuous Integration with Azure Pipelines
+# Lab 06a: Enabling Continuous Integration with Azure Pipelines
 # Student lab manual
 
 ## Lab overview
@@ -110,16 +110,13 @@ In this task, you will create and configure a build pipeline by using a predefin
 
     > **Note**: This section includes a wide variety of options related to the build workflow. Note that you'll generally configure options for specific build tasks on the configuration views of the tasks themselves.
 
-1.  Select the **Retention** tab. Right-click the link **go to the project settings to configure** and select **Open link in new tab**.
-1.  Switch to the newly opened tab, review the **Settings** pane of the **Pipelines** section of the project settings, and close the tab.
-
-    > **Note**: These settings enable you to configure which pipeline runs are retained and for how long. 
-
 1.  Select the **History** tab. 
 
     > **Note**: At this point, the tab does not contain any entries, but it will show a history of changes you make to the build definition.
 
 1.  Select the **Save & Queue** tab header and, in the dropdown menu, select **Save & Queue** entry to save and queue a new build.
+
+    > **Note**: You can define the retention time for pipeline artifacts from **Project Settings** > **Settings** > **Retention policy**. These settings enable you to configure which pipeline runs are retained and for how long. 
 
 1.  In the **Run pipeline** pane, accept the default options and click **Save and run**. This will automatically display the **Summary** tab of the pipeline run job, with the **Queued** status.
 

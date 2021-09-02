@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Creating a Release Dashboard'
+    title: 'Lab 10b: Creating a Release Dashboard'
     module: 'Module 10: Designing a Release Strategy'
 ---
 
-# Lab: Creating a Release Dashboard
+# Lab 10b: Creating a Release Dashboard
 # Student lab manual
 
 ## Lab overview
@@ -60,9 +60,9 @@ In this task, you will create an Azure DevOps Starter resource in your Azure sub
 
 1.  On your lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com) and sign in with the user account that has the Owner or Contributor role in the Azure subscription you will be using in this lab.
 1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click **+ Add**. 
-1.  On the **DevOps Starter** blade, on the **Start fresh with a new application** pane, select the **.NET** tile and click **Next**. 
-1.  On the **DevOps Starter** blade, on the **Choose an application framework** pane, select the **ASP.NET Core** tile, move the **Add a database** slider to the **On** position, and click **Next**. 
-1.  On the **DevOps Starter** blade, on the **Select an Azure service to deploy the application** pane, ensure that the **Windows Web App** tile is selected and click **Next**. 
+1.  On the **DevOps Starter** blade, on the **Start fresh with a new application** pane, select the **.NET** tile and on the tops next to Setting up DevOps starter with GitHub, change settings, click **here** and select **Azure DevOps** , **Done** and **Next: Framework >**. 
+1.  On the **DevOps Starter** blade, on the **Choose an application framework** pane, select the **ASP<nolink>.NET Core** tile, move the **Add a database** slider to the **On** position, and click **Next: Service >**. 
+1.  On the **DevOps Starter** blade, on the **Select an Azure service to deploy the application** pane, ensure that the **Windows Web App** tile is selected and click **Next: Create >**. 
 1.  On the **DevOps Starter** blade, on the **Almost there** pane, specify the following settings:
 
     | Setting | Value |
@@ -87,7 +87,7 @@ In this task, you will create an Azure DevOps Starter resource in your Azure sub
     | Location | the name of the same Azure region that you chose for the location of the Azure web app |
     | Database Name | **az400m10l02-db** |
 
-1.  Back on the **DevOps Starter** blade, on the **Almost there** pane, click **Done**.
+1.  Back on the **DevOps Starter** blade, on the **Almost there** pane, click **Done** and then **Review+Create**.
 
     > **Note**: Wait for the deployment to complete. The provisioning of the **DevOps Starter** resource should take about 2 minutes.
 
@@ -134,7 +134,7 @@ In this task, you will create a dashboard and add to it release-related widgets.
     | Setting | Value |
     | ------- | ----- |
     | Build pipeline | **az400m10l02 - CI** |
-    | Linked release pipelines | **az400m10l02 - CD; **az400m10l02 - CD\dev** |
+    | Linked release pipelines | **az400m10l02 - CD; az400m10l02 - CD\dev** |
 
 1.  Back on the dashboard pane, hover over the upper right corner of the rectangle representing the **Release Health Overview** widget to reveal the ellipsis sign representing the **More actions** menu, click it, and, in the dropdown menu, click **Configure**.  
 1.  On the **Configuration** pane, specify the following settings (leave all others with their default values) and click **Save**.

@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Setting Up and Running Functional Tests'
+    title: 'Lab 11b: Setting Up and Running Functional Tests'
     module: 'Module 11: Implementing Continuous Deployment using Azure Pipelines'
 ---
 
-# Lab: Setting Up and Running Functional Tests
+# Lab 11b: Setting Up and Running Functional Tests
 # Student lab manual
 
 ## Lab overview
@@ -58,11 +58,11 @@ In this exercise, you will set up the prerequisites for the lab, which include t
 
 #### Task 1: Configure the team project
 
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
+In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Selenium** template.
 
 1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
-    > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
+    > **Note**: For more information on the site, see [What is the Azure DevOps Services Demo Generator?](https://docs.microsoft.com/en-us/azure/devops/demo-gen).
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
@@ -78,7 +78,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 In this task, you will provision an Azure VM running Windows Server 2016 along with SQL Express 2017, Chrome, and Firefox.
 
-1.  Click on the deploy to Azure button below. [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json). This will automatically redirect you to the **Custom deployment** blade in the Azure portal.
+1.  Click on the deploy to Azure button. [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json) This will automatically redirect you to the **Custom deployment** blade in the Azure portal.
 1.  If prompted, sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  On the **Custom deployment** blade, specify the following settings:
 
@@ -124,15 +124,17 @@ In this task, you will configure a self-hosted agent by using the VM you deploye
     cd C:\AzAgent
     Config.cmd
     ```
-1.  In the **Administrator: Command Prompt** window, when prompted to **Enter server URL**, type **https://dev.azure.com/<your-DevOpsYour-organization-name>**, where **<your-DevOpsYour-organization-name>** represents the name of your Azure DevOps Organization, and press the **Enter** key.
-1.  In the **Administrator: Command Prompt** window, when prompted **Authentication type (press the for PAT)**, press the **Enter key**.
+1.  In the **Administrator: Command Prompt** window, when prompted to **Enter server URL**, type **https://dev.azure.com/ \<your-DevOps-organization-name\>**, where **\<your-DevOps-organization-name\>** represents the name of your Azure DevOps Organization, and press the **Enter** key.
+1.  In the **Administrator: Command Prompt** window, when prompted **Enter Authentication type (press enter for PAT)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter personal access token**, switch to the Azure DevOps portal, close the **Get the agent** panel, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, specify the following settings and click **Create** (leave all others with their default values):
 
     | Setting | Value |
     | --- | --- |
     | Name | **Setting Up and Running Functional Tests lab** |
-    | Scopes | **Full access** |
+    | Scopes | **Custom Defined** |
+    | Scopes | Click **Show all scopes** (at the bottom of the window) |
+    | Scopes | **Agent Pools** - **Read & Manage** |
 
 1.  On the **Success** pane, copy the value of the personal access token to Clipboard.
 

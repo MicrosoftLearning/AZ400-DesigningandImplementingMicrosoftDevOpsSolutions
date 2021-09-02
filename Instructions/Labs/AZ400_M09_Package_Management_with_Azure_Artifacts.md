@@ -1,30 +1,24 @@
 ---
 lab:
-    title: 'Lab: Package Management with Azure Artifacts'
+    title: 'Lab 09: Package Management with Azure Artifacts'
     module: 'Module 9: Designing and Implementing a Dependency Management Strategy'
 ---
 
-# Lab: Package Management with Azure Artifacts
+# Lab 09: Package Management with Azure Artifacts
 # Student lab manual
 
 ## Lab overview
 
 Azure Artifacts facilitate discovery, installation, and publishing NuGet, npm, and Maven packages in Azure DevOps. It's deeply integrated with other Azure DevOps features such as Build, making package management a seamless part of your existing workflows.
 
-In this lab, you will learn how to work with Azure Artifacts by using the following steps:
-
-- create and connect to a feed.
-- create and publish a NuGet package.
-- import a NuGet package.
-- update a NuGet package.
-
 ## Objectives
 
 After you complete this lab, you will be able to:
 
--   Create an Azure Active Directory (Azure AD) service principal.
--   Create an Azure key vault. 
--   Track pull requests through the Azure DevOps pipeline.
+-  Create and connect to a feed.
+-  Create and publish a NuGet package.
+-  Import a NuGet package.
+-  Update a NuGet package.
 
 ## Lab duration
 
@@ -266,7 +260,7 @@ In this task, you will update a NuGet package.
 
     > **Note**: NuGet is aware of our update, as indicated by the content of the **Updates** tab. 
 
-1.  In the **NuGet: PartsUnlimitedWebsite** pane, click the **Updates** tab, in the search textbox, type **PartsUnlimited.Shared** and, on the right-hand side of the pane, next to the **Version** ** Latest stable 1.1.0** dropdown list, click **Update** to install the new version. 
+1.  In the **NuGet: PartsUnlimitedWebsite** pane, click the **Updates** tab, in the search textbox, type **PartsUnlimited.Shared** and, on the right-hand side of the pane, next to the **Version: Latest stable 1.1.0** dropdown list, click **Update** to install the new version. 
 
     > **Note**: There may be many NuGet updates available, but you should only need to update **PartsUnlimited.Shared**. Note that it may take a little while for the package to become completely available for updating. If you get an error, wait a moment and try again.
 

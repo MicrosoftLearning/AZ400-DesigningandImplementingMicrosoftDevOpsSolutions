@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Controlling Deployments using Release Gates'
+    title: 'Lab 10a: Controlling Deployments using Release Gates'
     module: 'Module 10: Designing a Release Strategy'
 ---
 
-# Lab: Controlling Deployments using Release Gates
+# Lab 10a: Controlling Deployments using Release Gates
 # Student lab manual
 
 ## Lab overview
@@ -244,7 +244,7 @@ In this task, you will configure pre-deployment gates.
 
 In this task, you will enable the post-deployment gate for the Canary Environment.
 
-1.  Back on the **All pipelines > PartsUnlimited-CD** pane, on the left edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
+1.  Back on the **All pipelines > PartsUnlimited-CD** pane, on the right edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 1.  On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
 1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the entry representing your Azure subscription (under Available Azure service), and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
 1.  On **Post-deployment conditions** pane, expand the **Evaluation options** and configure the following options:
@@ -276,7 +276,7 @@ In this task, you will make a minor change in the application code, commit the u
     > **Note**: This indicates that there are active work items. These work items need to be closed in order to proceed further. Next sampling time will be after 5 minutes.
 
 1.  Open a new browser tab, navigate to the Azure DevOps portal, in the vertical navigational pane, select **Boards** and, in the **Boards** section, select **Queries**.
-1.  On the **Queries** pane of the **Boards** view, click the **All* tab.
+1.  On the **Queries** pane of the **Boards** view, click the **All** tab.
 1.  On the **All** tab of the **Queries** pane, in the **Shared Queries** section, click the **Bugs** entry, on the **Queries > Shared Queries > Bugs** pane, and click **Run query**. 
 1.  Verify that the query returns a work item titled **Disk out of space in Canary Environment** in the **New** state.
 

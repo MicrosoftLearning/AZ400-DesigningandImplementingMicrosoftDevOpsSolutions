@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Integrating Azure Key Vault with Azure DevOps'
+    title: 'Lab 07: Integrating Azure Key Vault with Azure DevOps'
     module: 'Module 7: Managing Application Configuration and Secrets'
 ---
 
-# Lab: Integrating Azure Key Vault with Azure DevOps
+# Lab 07: Integrating Azure Key Vault with Azure DevOps
 # Student lab manual
 
 ## Lab overview
@@ -208,9 +208,13 @@ This will open another browser tab displaying the **Service connections** pane i
 
     > **Note**: The **Override template parameters** content references the **sqldbpassword** variable to set the mySQL admin password. This will provision the MySQL database defined in the ARM template using the password that you have specified in the key vault. 
 
-1.  You may complete the pipeline definition by specifying the subscription (if need subscription used, click on **authorize** )and location for the task. **Repeat** the same for the last task in the pipeline **Azure App Service Deploy**. 
+1.  You may complete the pipeline definition by specifying the subscription (if new subscription is used in the project, click on **Authorize** )and location for the task. **Repeat** the same for the last task in the pipeline **Azure App Service Deploy** (choose the subscription from the **Available Azure service connection** section in the dropdown). 
+
+    > **Note**: In the Azure subscription dropdown list, you will see **Available Azure service connections** for those susbcriptions that have already been authorized to be connected to Azure. If you select the authorized subscription again (from **Available Azure subscriptions** list) and try to **Authorize**, the process will fail.
 
 1.  Finally, **Save** and click on **Create a new release** > **Create** (leave defaults) to start the deployment.
+
+1. Make sure your pipeline runs successfully and once finished, review the created resources by opening the resource group **az400m07l01-RG** in the Azure Portal . Open the **App Service** and browse it **(Overview -> Browse)**, to see the published website.
 
 ### Exercise 2: Remove the Azure lab resources
 

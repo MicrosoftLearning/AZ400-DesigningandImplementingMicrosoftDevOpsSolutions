@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Integrating External Source Control with Azure Pipelines'
+    title: 'Lab 06b: Integrating External Source Control with Azure Pipelines'
     module: 'Module 6: Implementing Continuous Integration using Azure Pipelines'
 ---
 
-# Lab: Integrating External Source Control with Azure Pipelines
+# Lab 06b: Integrating External Source Control with Azure Pipelines
 # Student lab manual
 
 ## Lab overview
@@ -122,7 +122,7 @@ In this task, you will modify the YAML build definition in the forked GitHub rep
 1.  On the GitHub page displaying the content of the fork, locate and click the entry representing the file **azure-pipelines.yml**. This will automatically open the file and display its content. 
 1.  On the **master/calculator/azure-pipelines.yml** page, in the upper right corner of the pane displaying the file content, click the **Edit this file** icon in the shape of a pencil. 
 
-    > **Note**: Our project already contains tests written using Mocha so we just need to execute them in out pipeline. 
+    > **Note**: Our project already contains tests written using Mocha so we just need to execute them in our pipeline. 
 
 1.  To add the test run, add the `npm test` command directly below the `npm run build` command, with the same indentation. In addition, update the `displayName` entry to `'npm install, build, and test'` to clearly indicate what each task of the build is doing: 
 

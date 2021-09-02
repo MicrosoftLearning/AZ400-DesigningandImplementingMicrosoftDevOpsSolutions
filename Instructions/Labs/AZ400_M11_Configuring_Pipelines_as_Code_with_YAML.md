@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Configuring Pipelines as Code with YAML'
+    title: 'Lab 11a: Configuring Pipelines as Code with YAML'
     module: 'Module 11: Implementing Continuous Deployment using Azure Pipelines'
 ---
 
-# Lab: Configuring Pipelines as Code with YAML
+# Lab 11a: Configuring Pipelines as Code with YAML
 # Student lab manual
 
 ## Lab overview
@@ -57,7 +57,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
 
-    > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
+    > **Note**: For more information on the site, see [What is the Azure DevOps Services Demo Generator?](https://docs.microsoft.com/en-us/azure/devops/demo-gen).
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
@@ -140,22 +140,22 @@ In this task, you will add a YAML build definition to the existing project.
 
 1.  On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
 1.  On the **Select a repository** pane, click **PartsUnlimited**.
-1.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
+2.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
 
     > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
-1.  Make sure  `trigger` is **master**.
+3.  Make sure  `trigger` is **master**.
 
     > **Note**: Review in Repos if your repository has **master** or **main** branch, organizations could choose default branch name for new repos: [Change the default branch](https://docs.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?view=azure-devops#choosing-a-name). 
 
-1.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'vs2017-win2016'`.
-1.  On the **Review your pipeline YAML** pane, click **Save and run**.
-1.  On the **Save and run** pane, accept the default settings and click **Save and run**.
-1.  On the pipeline run pane, in the **Jobs** section, click **Job** and monitor its progress and verify that it completes successfully. 
+4.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'vs2017-win2016'`.
+5.  On the **Review your pipeline YAML** pane, click **Save and run**.
+6.  On the **Save and run** pane, accept the default settings and click **Save and run**.
+7.  On the pipeline run pane, in the **Jobs** section, click **Job** and monitor its progress and verify that it completes successfully. 
 
     > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
 
-1.  Return to the pipeline run pane, switch from the **Summary** tab to the **Tests** tab, and review test statistics.
+8.  Return to the pipeline run pane, switch from the **Summary** tab to the **Tests** tab, and review test statistics.
 
 #### Task 3: Add continuous delivery to the YAML definition
 

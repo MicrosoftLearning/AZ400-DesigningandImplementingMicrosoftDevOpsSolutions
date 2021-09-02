@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Deploying a multi-container application to Azure Kubernetes Services'
+    title: 'Lab 16: Deploying a multi-container application to Azure Kubernetes Services'
     module: 'Module 16: Create and Manage Kubernetes Service Infrastructure'
 ---
 
-# Lab: Deploying a multi-container application to Azure Kubernetes Services
+# Lab 16: Deploying a multi-container application to Azure Kubernetes Services
 # Student lab manual
 
 ## Lab overview
@@ -100,10 +100,10 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
     LOCATION=<Azure_region>
     ```
 
-    > **Note**: possible locations can be found by running the following command, use the **Name** property on `<Azure_region>` : `az account list-locations -o table`
+    > **Note**: possible locations can be found by running the following command`<Azure_region>` : `az account list-locations -o table`, use the value with no spaces in the **Name** property.
 
     ```bash
-    VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv)
+    VERSION=$(az aks get-versions --location $LOCATION --query 'orchestrators[-1].orchestratorVersion' --output tsv); echo $VERSION
     ```
 
 1.  From the **Bash** session in the Cloud Shell pane, run the following to create a resource group that will host the AKS deployment:
@@ -186,6 +186,7 @@ In this task, you will configure the build and release pipelines in the Azure De
 
 1.  On your lab computer, switch to the web browser window displaying the Azure DevOps portal with the **Deploying a multi-container application to AKS** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
 1.  On the **Pipelines** pane, click the entry representing the **MyHealth.AKS.build** pipeline and, on the **MyHealth.AKS.Build** pane, click **Edit**.
+1.  In the list of tasks of the pipeline, click the first **Replace Tokens (preview)** task, on the **Token pattern** dropdown list select ```__...__``` . 
 1.  In the list of tasks of the pipeline, click the **Run services** task, on the **Docker Compose** pane on the right side, in the **Azure subscription** dropdown list, 
 select the entry representing the Azure subscription you are using in this lab, and click **Authorize** to create the corresponding service connection. When prompted, sign in using the account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
 

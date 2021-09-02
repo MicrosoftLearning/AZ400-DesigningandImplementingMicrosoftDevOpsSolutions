@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Version Controlling with Git in Azure Repos'
+    title: 'Lab 04: Version Controlling with Git in Azure Repos'
     module: 'Module 4: Scaling Git for Enterprise DevOps'
 ---
 
-# Lab: Version Controlling with Git in Azure Repos
+# Lab 04: Version Controlling with Git in Azure Repos
 # Student lab manual
 
 ## Lab overview
@@ -52,6 +52,10 @@ Identify the applications that you'll use in this lab:
 #### Set up an Azure DevOps organization 
 
 If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+
+#### Note
+
+If you completed **Lab 02: Version Controlling with Git in Azure Repos**, you have already finished the steps in **Exercise 0: Configure the lab prerequisites** and **Exercise 1: Clone an existing repository** and can skip ahead to **Exercise 2: Manage branches from Azure DevOps**.
 
 ### Exercise 0: Configure the lab prerequisites
 

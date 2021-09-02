@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Configuring Agent Pools and Understanding Pipeline Styles'
+    title: 'Lab 05: Configuring Agent Pools and Understanding Pipeline Styles'
     module: 'Module 5: Configuring Azure Pipelines'
 ---
 
-# Lab: Configuring Agent Pools and Understanding Pipeline Styles
+# Lab 05: Configuring Agent Pools and Understanding Pipeline Styles
 # Student lab manual
 
 ## Lab overview
@@ -215,15 +215,17 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
 
     > **Note**: If you receive an error message at this point indicating that the current system settings prevent you from downloading the file, in the Internet Explorer window, in the upper right corner, click the gearwheel symbol designating the **Settings** menu header, in the dropdown menu, select **Internet Options**, in the **Internet Options** dialog box, click **Advanced**, on the **Advanced** tab, click **Reset**, in the **Reset Internet Explorer Settings** dialog box, click **Reset** again, click **Close**, and try the download again. 
 
-1.  Start Windows PowerShell as administrator and, from the **Administrator: Windows PowerShell** console, copy the **Create the agent** commands shown in **Get the agent** pane. Run the following script to create the **C:\\agent** directory and extract the content of the downloaded archive into it (make sure all commands run, click "enter" if last one did not). It will look similar to this (use the copied one for latest version): 
+1.  Start Windows PowerShell as administrator and in the **Administrator: Windows PowerShell** console run the following lines to create the **C:\\agent** directory and extract the content of the downloaded archive into it. 
 
     ```powershell
-    PS C:\> mkdir agent ; cd agent
-    PS C:\agent> Add-Type -AssemblyName System.IO.Compression.FileSystem ;
-    [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-[AGENT_VERSION].zip", "$PWD")
+    cd \
+    mkdir agent ; cd agent
+    $TARGET = Get-ChildItem "$Home\Downloads\vsts-agent-win-x64-*.zip"
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($TARGET, "$PWD")
     ```
 
-1.  Open the **Administrator: Windows PowerShell** console, run the following to configure the agent:
+1.  In the same **Administrator: Windows PowerShell** console, run the following to configure the agent:
 
     ```powershell
     .\config.cmd

@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Monitoring Application Performance with Application Insights'
+    title: 'Lab 17: Monitoring Application Performance with Application Insights'
     module: 'Module 17: Implementing Feedback for Development Teams'
 ---
 
-# Lab: Monitoring Application Performance with Application Insights
+# Lab 17: Monitoring Application Performance with Application Insights
 # Student lab manual
 
 ## Lab overview

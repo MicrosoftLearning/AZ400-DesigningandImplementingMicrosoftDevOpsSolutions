@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab: Implement Security and Compliance in an Azure DevOps pipeline'
+    title: 'Lab 19: Implement Security and Compliance in an Azure DevOps pipeline'
     module: 'Module 19: Implementing Security in DevOps Projects'
 ---
 
-# Lab: Implement Security and Compliance in an Azure DevOps pipeline
+# Lab 19: Implement Security and Compliance in an Azure DevOps pipeline
 # Student lab manual
 
 ## Lab overview
@@ -84,7 +84,7 @@ In this exercise, leverage WhiteSource Bolt to scan the project code for securit
 
 In this task, you will activate WhiteSource Bolt in the newly generated Azure Devops project.
 
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines** and, in the **Pipelines** section, click **WhiteSource Bolt**.
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, **in the vertical menu bar** at the far left of the Azure DevOps portal, click **Pipelines**  section and  **WhiteSource Bolt** option (in the vertical menu bar under "Deployment Groups" option).
 1.  On the **You're almost there** pane, provide your **Work Email** and **Company Name**, in the **Country** dropdown list, select the entry representing your country, and click *Get Started* button to start using the *Free* version of WhiteSource Bolt. This will automatically open a new browser tab displaying the **Get Started With Bolt** page. 
 1.  Switch back to the web browser tab displaying the Azure DevOps portal and verify that the **You are using a FREE version of WhiteSource Bolt** is displayed.
 
@@ -92,11 +92,19 @@ In this task, you will activate WhiteSource Bolt in the newly generated Azure De
 
 In this task, you will trigger a build within your Java code-based Azure DevOps project. You will use **WhiteSource Bolt** extension to identify vulnerable components present in this code.
 
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, in the vertical menu bar on the left side, in the **Pipelines** section, click **Pipelines**.
-1.  On the **Pipelines** pane, select the **WhiteSourceBolt** build definition, click **Run pipeline** and, on the **Run pipeline** pane, click **Run** to trigger a build.
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, in the vertical menu bar on the left side, click **Repos** and navigate to **WebGoat**.
+
+    > **Note**: As the project uses Maven to compile the project files, the latest Maven release of 3.8.1 blocks HTTP artifactories. To successfully build the project, you will have to change the pom.xml file of the project, to use HTTPS instead of HTTP. Perform below steps for this purpose.
+
+1. Inside the **webgoat-container** project file, identify the pom.xml file and click on **Edit** on the top right corner. Search for the section **pluginRepositories** inside the pom.xml file. Change the URL http://repository.apache.org/snapshots/ to https://repository.apache.org/snapshots/
+
+1. Once the **Commit** button is enabled after your edits, click on **Commit**.
+
+1. In the vertical menu bar on the left side, navigate to the **Pipelines** section and click **Pipelines**. Observe the build, while it has been automatically triggered by the commit performed in the previous step.
+
 1.  On the build pane, on the **Summary** tab, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
 
-    > **Note**: The build definition consists of the following tasks:
+    > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
 
     | Tasks | Usage |
     | ---- | ------ |
