@@ -89,10 +89,12 @@ In this task, you will examine the use of Terraform in provisioning Azure Resour
 
 1.  In the folder hierarchy of the **Terraform** repo, expand the **Terraform** folder and click **webapp.tf**.
 1.  On the **webapp.tf** review the content of the **webapp.tf** file and click **Edit**.
-1.  Add a new line following line 3 currently containing `backend "azurerm" {`, in the new line, enter the following text, click **Commit**, and, on the **Commit** pane, click **Commit** again.
+1.  Add a new line following line 11, enter the following text starting in the new line, click **Commit**, and, on the **Commit** pane, click **Commit** again.
 
     ```
-    features {}
+    provider "azurerm" {
+        features {} 
+    }
     ```
 
     > **Note**: **webapp.tf** is a terraform configuration file. Terraform uses its own file format, called HCL (Hashicorp Configuration Language), similar to YAML.
@@ -159,7 +161,7 @@ In this task, you will create Azure resources using Terraform as part of your de
 
 1.  In the list of tasks of the **Dev** stage, select the **Terraform: apply -auto-approve** task. 
 1.  On the **Terraform** pane, in the **Azure subscription** dropdown list, select the same Azure service connection you used previously. 
-1.  On the **Terraform** pane, in the **Additional command arguments** text box, replace the current entry with `-tfplan auto-approve`.
+1.  On the **Terraform** pane, in the **Additional command arguments** text box, replace the current entry with `-auto-approve tfplan`.
 
     > **Note**: This task will run the `terraform apply` command to deploy the resources. By default, it would also prompt for a confirmation to proceed. Since we are automating the deployment, the task includes the `auto-approve` parameter that eliminates the need for a confirmation. 
 
