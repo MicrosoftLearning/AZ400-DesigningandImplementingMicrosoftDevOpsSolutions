@@ -88,7 +88,12 @@ In this task, you will examine the use of Terraform in provisioning Azure Resour
     > **Note**: Make sure that you are now on the **terraform** branch and **Terraform** folder appears within the content of the repo. 
 
 1.  In the folder hierarchy of the **Terraform** repo, expand the **Terraform** folder and click **webapp.tf**.
-1.  Review the content of the **webapp.tf** file. 
+1.  On the **webapp.tf** review the content of the **webapp.tf** file and click **Edit**.
+1.  Add a new line following line 3 currently containing `backend "azurerm" {`, in the new line, enter the following text, click **Commit**, and, on the **Commit** pane, click **Commit** again.
+
+    ```
+    features {}
+    ```
 
     > **Note**: **webapp.tf** is a terraform configuration file. Terraform uses its own file format, called HCL (Hashicorp Configuration Language), similar to YAML.
 
@@ -103,7 +108,7 @@ In this task, you will build your application and publish the required files as 
 
     > **Note**: This CI pipeline has tasks to compile the .NET Core project. The DotNet tasks in the pipeline will restore dependencies, build, test and publish the build output into a zip file (package), which can be deployed to a web application. In addition to the application build, we need to publish terraform files to build artifacts to make them available in CD pipeline. This is the reason for the **Copy files** task to copy Terraform file to Artifacts directory.
 
-1.  Once you review the **Tasks** tab of the **Terraform-CI** pane, click the ellipsis symbol in the top right corner and, in the dropdown menu, click **Queue**.
+1.  Once you review the **Tasks** tab of the **Terraform-CI** pane, click **Queue** (you might first need to click the ellipsis symbol in the top right corner of the pane to display a drop-down menu).
 1.  On the **Run pipeline** pane, click **Run** to initiate the build. 
 1.  On the **Summary** tab of the build run pane, in the **Jobs** section, click **Agent job 1** and monitor the progress of the build process.
 1.  Once the build succeeds, switch back to the **Summary** tab of the build run pane, in the **Related** section, click the **1 published, 1 consumed** link. This will display the **Artifacts** pane.
@@ -132,7 +137,7 @@ In this task, you will create Azure resources using Terraform as part of your de
 1.  Terraform tool installer task is used to install  a specified version of Terraform from the Internet or the tools cache and prepends it to the PATH of the Azure Pipelines Agent (hosted or private).
 1.  In the list of tasks of the **Dev** stage, select and review the **Install Terraform** task. This task installs the Terraform version you designate.
 
-    > **Note**: The When running Terraform in automation, the focus is usually on the core plan/apply cycle, which consists of the following three stages:
+    > **Note**: The When running Terraform in automation, the focus is usually on the core plan/apply cycle, which typically consists of the following three stages:
 
     1.  Initializing the Terraform working directory.
     1.  Producing a plan for modifying current configuration to match the desired configuration.
@@ -148,11 +153,13 @@ In this task, you will create Azure resources using Terraform as part of your de
 
 1.  In the list of tasks of the **Dev** stage, select the **Terraform: plan** task.
 1.  On the **Terraform** pane, in the **Azure subscription** dropdown list, select the same Azure service connection you used previously. 
+1.  On the **Terraform** pane, in the **Additional command arguments** text box, enter `-out=tfplan`.
 
     > **Note**: The `terraform plan` command is used to create an execution plan. Terraform determines what actions are necessary to achieve the desired state specified in the configuration files. This allows you to review which changes are in scope, without actually having to apply them. For more information about `terraform plan` command, refer to [Terraform documentation](https://www.terraform.io/docs/commands/plan.html)
 
 1.  In the list of tasks of the **Dev** stage, select the **Terraform: apply -auto-approve** task. 
 1.  On the **Terraform** pane, in the **Azure subscription** dropdown list, select the same Azure service connection you used previously. 
+1.  On the **Terraform** pane, in the **Additional command arguments** text box, replace the current entry with `-tfplan auto-approve`.
 
     > **Note**: This task will run the `terraform apply` command to deploy the resources. By default, it would also prompt for a confirmation to proceed. Since we are automating the deployment, the task includes the `auto-approve` parameter that eliminates the need for a confirmation. 
 
