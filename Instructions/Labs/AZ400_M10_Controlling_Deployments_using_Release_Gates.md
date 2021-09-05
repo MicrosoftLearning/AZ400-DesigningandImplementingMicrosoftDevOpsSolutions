@@ -260,14 +260,13 @@ In this task, you will configure pre-deployment gates.
 
 1.  On the **Pre-deployment conditions** pane, select **On successful gates, ask for approvals** radio button.
 1.  Close the **Pre-deployment conditions** pane, by clicking the **x** mark in its upper right corner. **Save** the changes in the release pipeline.
-
 1.  For the **Query Work Items** gate to work, the **Project Build Service** requires Read permission for the Azure Board queries.
 1.  In the Azure DevOps portal, in the vertical navigational pane, hover the mouse pointer over **Boards** hold down the **Ctrl** key and click **Queries** to open a separate browser tab with the **Queries** pane.
 1.  On the **Queries** pane of the **Boards** view, click **All** to get a list of all queries.
 1.  Right-click the folder **Shared Queries** and select **Security...** to open the pane **Permissions for Shared Queries**.
 1.  On the **Permissions for Shared Queries** pane, into the field **Search for users or groups**, type or paste **Controlling Deployments using Release Gates Build Service** ([Project Name] Build Service) and click the one found identity.
 
-    > **Note**: The user **Controlling Deployments using Release Gates Build Service** has to be searched for like described above, it does not already appear as a member of the **Users** list. Don't confuse the user **Project Collection Build Service** with **Project Build Service**.
+    > **Note**: The user **Controlling Deployments using Release Gates Build Service** has to be searched for like described above, since it does not appear as a member of the **Users** list. Don't confuse the user **Project Collection Build Service** with **Project Build Service**.
 
 1.  Select the user **Controlling Deployments using Release Gates Build Service** in the **Users** list and on the right hand site set the **Read** permission to **Allow**.
 1.  Close the **Permissions for Shared Queries** pane, by clicking the **x** mark in its upper right corner.
@@ -279,7 +278,7 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
 
 1.  Back on the **All pipelines > PartsUnlimited-CD** pane, on the right edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 1.  On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
-1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the entry representing your Azure subscription (under Available Azure service), and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
+1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
 1.  On **Post-deployment conditions** pane, expand the **Evaluation options** and configure the following options:
 
 - Set the value of **Time between re-evaluation of gates** to **5 Minutes**.
@@ -298,11 +297,12 @@ In this exercise, you will test the release gates by updating the application, w
 
 #### Task 1: Update and deploy application after adding release gates
 
-In this task, you will make a minor change in the application code, commit the update to the repository, and track the build and release process.
+In this task, you will track the release process with the release gates enabled.
 
 1.  In the browser window displaying the Azure DevOps portal, in the vertical navigational pane, select **Releases**. 
-1.  Click on **Create release** and **Create** (leave defaults).
-1.  On the pane representing the most recent run, click the **Releases** tab and then click the **PartsUnlimited-CD/Release-2** entry and review the progress of the deployment to the **Canary Environment**. 
+1.  Click on **Create release** and then, on the **Create a new release** pane, click **Create**.
+1.  In the Azure DevOps portal, in the vertical navigational pane, in the **Pipelines** section, click **Releases**. 
+1.  On the **Releases** tab, click the **PartsUnlimited-CD/Release-2** entry and review the progress of the deployment to the **Canary Environment**. 
 1.  Click the oval shape representing the **Pre-deployment conditions** on the left edge of the rectangle representing the **Canary Environment** stage, which, at this point, might be labeled either **Evaluating gates** or **Pre-deployment gates failed**.
 1.  On the **Canary Environment** pane, note that the **Query Work Items** gate failed.
 
@@ -313,7 +313,7 @@ In this task, you will make a minor change in the application code, commit the u
 1.  On the **All** tab of the **Queries** pane, in the **Shared Queries** section, click the **Bugs** entry, on the **Queries > Shared Queries > Bugs** pane, and click **Run query**. 
 1.  Verify that the query returns a work item titled **Disk out of space in Canary Environment** in the **New** state.
 
-    > **Note**: Let's assuming that the infrastructure team has fixed the disk space issue. 
+    > **Note**: Let's assume that the infrastructure team has fixed the disk space issue. 
 
 1.  Click the **Disk out of space in Canary Environment** entry.
 1.  On the **Disk out of space in Canary Environment** pane, in the upper left corner, next to the **State** label, click **New**, in the dropdown list, click **Closed** and then click **Save**.
