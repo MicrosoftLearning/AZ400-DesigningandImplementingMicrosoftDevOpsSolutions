@@ -173,7 +173,8 @@ In this task, you will create two Azure web apps representing the **Canary** and
     | Setting | Value |
     | --- | --- |
     | Alert rule name | **PartsUnlimited_FailedRequests** |
-    | Severity | **Sev 3** |
+    | Severity | **Sev 2** |
+    | Automatically resolve alerts | cleared |
 
     > **Note**: Metric alert rules might take up to 10 minutes to activate.
 
@@ -323,7 +324,7 @@ In this task, you will track the release process with the release gates enabled.
 
     > **Note**: Once the evaluation is successful, you will see the request for pre-deployment approval. 
 
-1.  Click on **Approve** to deploy in Canary environment
+1.  Click **Approvers** and then click **Approve** to queue a deployment into the Canary environment
 
     > **Note**: Once the deployment to Canary environment is successful, we will see the post-deployment gates in action which uses Application Insights to detect presence of failed requests targeting the newly deployed application. 
 
@@ -333,7 +334,7 @@ In this task, you will track the release process with the release gates enabled.
     > **Note**: This part of web site is intentionally misconfigured, so it will trigger a failed request. 
 
 1.  Return to the home page of the PartsUnlimited web site, click **More** again, and repeat this step a few more times.
-1.  Validate that failed requests were detected by Application Insights by navigating to the Application Insights blade of the **Canary** web app page, and, on the Application Insights blade, click **Alerts**, and verify that the page lists one or more **Sev 3** alerts. 
+1.  Validate that failed requests were detected by Application Insights by navigating to the Application Insights blade of the **Canary** web app page, and, on the Application Insights blade, click **Alerts**, and verify that the page lists one or more **Sev 2** alerts. 
 
     > **Note**: Since there is an alert triggered by the exception, **Query Azure Monitor** gate will fail. This, in turn, will prevent deployment to the **Production** environment.
 
