@@ -148,7 +148,7 @@ In this task, you will integrate LaunchDarkly in your Web application.
 
     > **Note**: This will create an LdClient object with your environment-specific SDK key.
 
-1.  Repeat the previous step with to update the code of the **AccountController.cs** file. 
+1.  Switch to the tab displaying the content of the **AccountController.cs** file and replace the placeholder `__YourLaunchDarklySDKKey__` in the line `static LdClient client = new LdClient("__YourLaunchDarklySDKKey__");` with the LaunchDarkly account SDK key which you copied in previous task of this exercise. 
 
     > **Note**: The above changes will result in the **HomeController** starting by initializing a static LaunchDarkly client. The methods to view **MemberPortal** are modified to check if the Feature flag toggle in LaunchDarkly is On or Off. The **_Layout.cshtml** page checks the toggle value and renders the MemberPortal link if the flag is turned on. 
 
@@ -206,7 +206,7 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
     > **Note**: Make sure you copy the token. You will not be able to retrieve it once you leave the current page.
 
 1.  Switch back to the browser window displaying the Azure DevOps portal and, on the **LaunchDarkly** project pane, click **Project settings**. 
-1.  On the **Project details** pane, in the **Pipelines** section, click **Service connections** and then click **Create service connection**.
+1.  On the **Project details** pane, in the **Pipelines** section, click **Service connections** and then click **New service connection**.
 1.  On the **New service connection** pane, click **LaunchDarkly** and then click **Next**.
 1.  On the **New LaunchDarkly service connection** pane, in the **Access token** text box, paste the access token you retrieved earlier in this task, in the **Service connection name** text box, type **az-400 m12l01 LaunchDarkly**, and click **Save**.
 1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Boards** and, on the **Work items** pane, click the work item you assigned to yourself in the previous task.
@@ -226,7 +226,7 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
 
     > **Note**: Verify that the **Flag state** is set to **On**. This setting controls the state of the flag during release.
 
-1.  In the list of tasks, select the **Azure App Service Deploy** task, in the **Azure subscription** dropdown list, select the Azure subscription service connection you created previously. 
+1.  In the list of tasks, select the **Azure App Service Deploy** task, in the **Azure subscription** dropdown list, select the Azure subscription service connection you created previously and click **Save**.
 1.  In the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, specify the following settings and click **Create** (leave all others with their default values):
 
@@ -240,9 +240,9 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
     > **Note**: Make sure you copy the token. You will not be able to retrieve it once you close this pane. 
 
 1.  On the **Success** pane, click **Close**.
-1.  Navigate back to the **All pipelines / LaunchDarkly_CD** pane and click the **Variables** tab. 
+1.  Navigate back to the **All pipelines / LaunchDarkly_CD** pane, click **Edit**, and click the **Variables** tab. 
 1.  In the list of variables, set the value of **launchdarkly-pat** variable to the newly generated personal access token.
-1.  In the list of variables, set the value of **launchdarkly-project-name** variable to **LaunchDarkly**.
+1.  In the list of variables, set the value of **launchdarkly-project-name** variable to **LaunchDarkly** and click **Save**.
 
     > **Note**: This completes configuration of the release pipeline. 
 
