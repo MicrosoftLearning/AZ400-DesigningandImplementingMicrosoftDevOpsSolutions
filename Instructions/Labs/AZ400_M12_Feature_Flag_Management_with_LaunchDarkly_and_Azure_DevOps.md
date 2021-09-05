@@ -208,7 +208,7 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
 1.  Switch back to the browser window displaying the Azure DevOps portal and, on the **LaunchDarkly** project pane, click **Project settings**. 
 1.  On the **Project details** pane, in the **Pipelines** section, click **Service connections** and then click **Create service connection**.
 1.  On the **New service connection** pane, click **LaunchDarkly** and then click **Next**.
-1.  On the **New LaunchDarkly service connection** pane, in the **Access token** text box, paste the access token you retrieved earlier in this task, in the **Service connection name, type **az-400 m12l01 LaunchDarkly**, and click **Save**.
+1.  On the **New LaunchDarkly service connection** pane, in the **Access token** text box, paste the access token you retrieved earlier in this task, in the **Service connection name** text box, type **az-400 m12l01 LaunchDarkly**, and click **Save**.
 1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Boards** and, on the **Work items** pane, click the work item you assigned to yourself in the previous task.
 1.  On the **Implement FeatureFlag Management using LaunchDarkly** work item pane, select the **Launch Darkly** tab in the upper right corner. 
 1.  On the **LauchDarkly** tab, in the **Select a feature flag** section, select the **Member portal** feature flag.
