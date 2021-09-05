@@ -82,7 +82,9 @@ In this task, you will provision an Azure VM running Windows Server 2016 along w
 [hyperlink]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json
 1.  Click on the deploy to Azure button. [![Deploy to Azure][image]][hyperlink] This will automatically redirect you to the **Custom deployment** blade in the Azure portal.
 1.  If prompted, sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
-1.  On the **Custom deployment** blade, specify the following settings:
+1.  On the **Custom deployment** blade, select **Edit template**.
+1.  On the **Edit template** blade, locate the line `"https://raw.githubusercontent.com/microsoft/azuredevopslabs/master/labs/vstsextend/selenium/armtemplate/chrome_firefox_VSTSagent_IIS.ps1"`, replace it with `https://raw.githubusercontent.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/master/Allfiles/Labs/11b/chrome_firefox_VSTSagent_IIS.ps1`, and click **Save**.
+1.  Back on the **Custom deployment** blade, specify the following settings:
 
     | Setting | Value |
     | --- | --- |
@@ -126,7 +128,7 @@ In this task, you will configure a self-hosted agent by using the VM you deploye
     cd C:\AzAgent
     Config.cmd
     ```
-1.  In the **Administrator: Command Prompt** window, when prompted to **Enter server URL**, type **https://dev.azure.com/ \<your-DevOps-organization-name\>**, where **\<your-DevOps-organization-name\>** represents the name of your Azure DevOps Organization, and press the **Enter** key.
+1.  In the **Administrator: Command Prompt** window, when prompted to **Enter server URL**, type **https://dev.azure.com/\<your-DevOps-organization-name\>**, where **\<your-DevOps-organization-name\>** represents the name of your Azure DevOps Organization, and press the **Enter** key.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter Authentication type (press enter for PAT)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter personal access token**, switch to the Azure DevOps portal, close the **Get the agent** panel, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, specify the following settings and click **Create** (leave all others with their default values):
@@ -147,14 +149,14 @@ In this task, you will configure a self-hosted agent by using the VM you deploye
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter agent pool (press enter for default)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter agent name (press enter for az40011bvm)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter work folder (press enter for _work)**, press the **Enter key**.
-1.  In the **Administrator: Command Prompt** window, when prompted **Enter Perform an uszip for tasks for each step (press enter for N)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter run agent as service (Y/N) (press enter for N)**, press the **Enter key**.
 1.  In the **Administrator: Command Prompt** window, when prompted **Enter configure autologon and run agent on startup (Y/N) (press enter for N)**, press the **Enter key**.
 1.  Once the agent is registered, in the **Administrator: Command Prompt** window, type **run.cmd** and press the **Enter** to start the agent.
 
     > **Note**: You also need to install the Dac Framework which is used by the application you will be deploying later in the lab.
 
-1.  Within the Remote Desktop session to **az40011bvm**, start a web browser, navigate to the [Microsoft SQL Server Data-Tier Application Framework (18.2) download page](https://www.microsoft.com/en-us/download/details.aspx?id=58207&WT.mc_id=rss_alldownloads_extensions). This will automatically trigger the download.
+1.  Within the Remote Desktop session to **az40011bvm**, start another instance of the web browser, navigate to the [Microsoft SQL Server Data-Tier Application Framework (18.2) download page](https://www.microsoft.com/en-us/download/details.aspx?id=58207&WT.mc_id=rss_alldownloads_extensions) and click **Download**. 
+1.  On the **Choose the download you want**, select the **EN\x64\DacFramework.msi** checkbox and click **Next**. This will trigger automatic download of the **DacFramework.msi** file.
 1.  Once the download of the **DacFramework.msi** file completes, use it to run the installation of the Microsoft SQL Server Data-Tier Application Framework with the default settings.
 
 #### Task 2: Configure a release pipeline
