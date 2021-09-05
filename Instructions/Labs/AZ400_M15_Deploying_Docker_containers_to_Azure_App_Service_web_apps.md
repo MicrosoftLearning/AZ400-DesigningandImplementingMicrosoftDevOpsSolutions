@@ -92,7 +92,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 1.  From the Bash session in the Cloud Shell pane, run the following to create the resource group that will host Azure resources you deploy in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region, such as 'eastus', where you intend to deploy these resources):
 
     ```bash
-    LOCATION=<Azure_region>
+    LOCATION='<Azure_region>'
     ```
 
     >**Note**: You can identify Azure region names by running `az account list-locations -o table`
@@ -142,7 +142,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 1.  On the container registry blade, in the vertical menu on the left side, in the **Settings** section, click **Access keys**.
 1.  On the **Access keys** blade of the container registry instance, identify the values of the **Registry name**, **Login server**, **Admin user**, and **password** entries.
 
-    >**Note**: Record the **Registry name**, **Login server**, and **password** entries (the registry names and the admin user name should match). You will need it later in this lab.
+    >**Note**: Record the values of **Registry name**, **Login server**, and **password** (the registry names and the admin user name should match). You will need them later in this lab.
 
 
 ### Exercise 2: Deploy a Docker container to Azure App Service web app by using Azure DevOps
@@ -168,6 +168,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
     | **Push services** | pushes the **myhealth.web** image tagged with **$(Build.BuildId)** to container registry |
     | **Publish Artifact** | allows for sharing dacpac for database deployment through Azure DevOps artifacts |
 
+1.  On the **MHCDocker.build** pipeline pane, ensure that the **Pipeline** entry is selected and, in the **Agent Specifications** drop-down list, select **ubuntu-18.04**.
 1.  On the **MHCDocker.build** pipeline pane, in the list of tasks of the pipeline, click the **Run services** task, on the **Docker Compose** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure subscription you are using in this lab, and click **Authorize** to create the corresponding service connection. When prompted, sign in using the account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
 
     >**Note**: This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
