@@ -14,10 +14,14 @@ $ProgressPreference = "SilentlyContinue"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 ###################################################################################################
 
+#Set Execution Policy
+Set-ExecutionPolicy Unrestricted -Force
+
+#IIS installation
+Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature 
 
 # chrome
 $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
-
 
 # firefox
 
@@ -65,15 +69,3 @@ rm -Force $workdir\firefox*
 
 #copy geckodriver
 Invoke-WebRequest https://github.com/Microsoft/almvm/blob/master/labs/vstsextend/selenium/armtemplate/geckodriver.exe?raw=true -OutFile "C:\Program Files\Mozilla Firefox\geckodriver.exe"
-
-#Downlaod and extract VSTS windows agent
-mkdir C:\VSTSwinAgent ;
-Invoke-WebRequest https://vstsagentpackage.azureedge.net/agent/2.142.1/vsts-agent-win-x64-2.142.1.zip -OutFile C:\VSTSwinAgent\agent.zip
-#Start-Sleep -s 30
-Expand-Archive C:\VSTSwinAgent\agent.zip -DestinationPath C:\VSTSwinAgent
-
-#Set Execution Policy
-Set-ExecutionPolicy Unrestricted -Force
-
-#IIS installation
-Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature 
