@@ -97,7 +97,7 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 1.  From the **Bash** session in the Cloud Shell pane, run the following to identify the latest version of Kubernetes available in the Azure region you will be using in this lab ( **replace the `<Azure_region>` placeholder** with the name of the Azure region where you intend to deploy resources in this lab):
 
     ```bash
-    LOCATION=<Azure_region>
+    LOCATION='<Azure_region>'
     ```
 
     > **Note**: possible locations can be found by running the following command`<Azure_region>` : `az account list-locations -o table`, use the value with no spaces in the **Name** property.
@@ -184,13 +184,25 @@ In this task, you will use Azure CLI to perform deployment of the Azure resource
 
 In this task, you will configure the build and release pipelines in the Azure DevOps project you generated earlier in this lab, by mapping Azure resources, including the AKS cluster and Azure Container registry to the build and release definitions.
 
-1.  On your lab computer, switch to the web browser window displaying the Azure DevOps portal with the **Deploying a multi-container application to AKS** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
-1.  On the **Pipelines** pane, click the entry representing the **MyHealth.AKS.build** pipeline and, on the **MyHealth.AKS.Build** pane, click **Edit**.
-1.  In the list of tasks of the pipeline, click the first **Replace Tokens (preview)** task, on the **Token pattern** dropdown list select ```__...__``` . 
-1.  In the list of tasks of the pipeline, click the **Run services** task, on the **Docker Compose** pane on the right side, in the **Azure subscription** dropdown list, 
-select the entry representing the Azure subscription you are using in this lab, and click **Authorize** to create the corresponding service connection. When prompted, sign in using the account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+1.  On your lab computer, switch to the web browser window displaying the Azure DevOps portal with the **Deploying a multi-container application to AKS** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Repos**.
 
-    >**Note**: This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
+    >**Note**: You will first modify the references to the Docker image.
+
+1.  On the **Docker** repository pane, in the list of files, select **docker-compos.ci.build.yml**.
+1.  On the **docker-compos.ci.build.yml** pane, click **Edit**, replace line **5** that references the target Docker image with `image: az400mp/aspnetcore-build:1.0-2.0`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
+1.  On the **Docker** repository pane, in the list of files, naviagate to the **MyHealth.Web** folder and select **Dockerfile**.
+1.  On the **Dockerfile** pane, click **Edit**, replace line **1** that references the base Docker image with `FROM az400mp/aspnetcore1.0:1.0.4`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
+1.  In the web browser window displaying the Azure DevOps portal with the **Deploying a multi-container application to AKS** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
+
+    >**Note**: You will now modify the build pipeline.
+
+1.  On the **Pipelines** pane, click the entry representing the **MyHealth.AKS.build** pipeline and, on the **MyHealth.AKS.build** pane, click **Edit**.
+
+1.  On the **MyHealth.AKS.build** pipeline pane, ensure that the **Pipeline** entry is selected and, in the **Agent Specifications** drop-down list, select **ubuntu-18.04**.
+1.  In the list of tasks of the pipeline, click the **Replace tokens in appsettings.json** task, in the **Token pattern** dropdown list select ```__...__``` . 
+1.  In the list of tasks of the pipeline, click the **Run services** task, on the **Docker Compose** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure subscription you are using in this lab, and click **Authorize** to create the corresponding service connection. When prompted, sign in using the account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
+
+    >**Note**: Wait for the authorization process to complete. This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
 
 1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab (**Refresh the list if needed, typing out the ACR name does not work!**).
 1.  Repeat the previous two steps to configure the **Azure subscription** (next time do not Authorize again, use the created **Available Azure service connections** ) and **Azure Container Registry** settings in the **Build services**, **Push services**, and **Lock services** tasks, but instead of selecting your Azure subscription in this case, select the newly created service connection. 
@@ -214,7 +226,7 @@ select the entry representing the Azure subscription you are using in this lab, 
 1.  In the list of tasks of the **Dev** stage, within the **DB deployment** job section, select the **Execute Azure SQL: DacpacTask** task and, on the **Azure SQL Database deployment** pane on the right side, in the **Azure Subscription** dropdown list, select the entry representing the Azure service connection you created earlier in this task.
 1.  In the list of tasks of the **Dev** stage, in the **AKS deployment** job section, select the **Create Deployments & Services in AKS** task. 
 1.  On the **Kubectl** pane on the right side, in the **Azure Subscription** dropdown list, select the entry representing the same Azure service connection, in the **Resource group** dropdown list, select the **az400m16l01a-RG** entry, and in the **Kubernetes cluster** dropdown list, select the entry representing the AKS cluster you deployed earlier in this lab.
-1.  In the list of tasks of the **Dev** stage, in the **AKS deployment** job section, with the **Create Deployments & Services in AKS** task selected, the **Kubectl** pane on the right side, scroll down to and expand the **Secrets** section, in the **Azure subscription** dropdown list, select the entry representing the same Azure service connection, and, in the **Azure container registry** dropdown list, select the entry representing the Azure Container registry you created earlier in this lab.
+1.  In the list of tasks of the **Dev** stage, in the **AKS deployment** job section, with the **Create Deployments & Services in AKS** task selected, on the **Kubectl** pane on the right side, scroll down to and expand the **Secrets** section, in the **Azure subscription** dropdown list, select the entry representing the same Azure service connection, and, in the **Azure container registry** dropdown list, select the entry representing the Azure Container registry you created earlier in this lab.
 1.  Repeat the two previous steps for the **Update image in AKS** task.
 
     >**Note**: The **Create Deployments & Services in AKS** task will create the required deployments and services in AKS as per the configuration specified in **mhc-aks.yaml** file. The pod will pull the latest Docker image.
