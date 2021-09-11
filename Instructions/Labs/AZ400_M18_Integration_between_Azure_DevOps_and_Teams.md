@@ -71,9 +71,10 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
 1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-1.  On the **Create New Project** page, in the **New Project Name** textbox, type **Tailwind Traders**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
-1.  In the list of templates, select the **Tailwind Traders** template and click **Select Template**.
-1.  Back on the **Create New Project** page, if prompted to install a missing extension, select the checkbox below the **ARM Outputs** and click **Create Project**.
+1.  On the **Create New Project** page, click **Choose template**.
+1.  In the list of templates, in the toolbar, click **Private**, ensure that the **Local Drive** option is selected, click **Choose File**, in the **Open File**, navigate to the location of labfiles, in the **Allfiles\\18** folder, select **Tailwind Traders.zip**, click open, and then click **Submit**.
+1.  Back on the **Create New Project** page, in the **New Project Name** textbox, type **Tailwind Traders** and, in the **Select organization** dropdown list, select your Azure DevOps organization.
+1.  On the **Create New Project** page, select the **Yes, I want to fork this repository**, click **Authorize**, when prompted, authenticate using your GitHub credentials, click **Authorize azuredevops-generator-bot**, if prompted to install a missing extension, select the checkbox below the **ARM Outputs** and click **Create Project**.
 
     > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
 
