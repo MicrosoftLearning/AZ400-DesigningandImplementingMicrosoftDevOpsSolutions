@@ -9,7 +9,7 @@ lab:
 
 ## Lab overview
 
-In this lab, you will step through creation of a release dashboard and the use of REST API to retrieve Azure DevOps release data, which you can make this way available to your custom applications or dashboards. 
+In this lab, you will step through creation of a release dashboard and the use of REST API to retrieve Azure DevOps release data, which you can make this way available to your custom applications or dashboards.
 
 The lab leverages the Azure DevOps Starter resource, which automatically creates an Azure DevOps project that builds and deploys an application into Azure. 
 
@@ -56,10 +56,10 @@ In this exercise, you will create a release dashboard in an Azure DevOps organiz
 
 #### Task 1: Create an Azure DevOps Starter resource
 
-In this task, you will create an Azure DevOps Starter resource in your Azure subscription. This will automatically create a corresponding project in your Azure DevOps organization. 
+In this task, you will create an Azure DevOps Starter resource in your Azure subscription. This will automatically create a corresponding project in your Azure DevOps organization.
 
 1.  On your lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com) and sign in with the user account that has the Owner or Contributor role in the Azure subscription you will be using in this lab.
-1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click **+ Add**. 
+1.  In the Azure portal, search for and select the **DevOps Starter** resource type and, on the **DevOps Starter** blade, click **+ Create**. 
 1.  On the **DevOps Starter** blade, on the **Start fresh with a new application** pane, select the **.NET** tile and on the tops next to Setting up DevOps starter with GitHub, change settings, click **here** and select **Azure DevOps** , **Done** and **Next: Framework >**. 
 1.  On the **DevOps Starter** blade, on the **Choose an application framework** pane, select the **ASP<nolink>.NET Core** tile, move the **Add a database** slider to the **On** position, and click **Next: Service >**. 
 1.  On the **DevOps Starter** blade, on the **Select an Azure service to deploy the application** pane, ensure that the **Windows Web App** tile is selected and click **Next: Create >**. 
@@ -78,16 +78,16 @@ In this task, you will create an Azure DevOps Starter resource in your Azure sub
 
     | Setting | Value |
     | ------- | ----- |
-    | Create new Azure DevOps organization | **No** |
     | Resource group | **az400m10l02-rg** |
-    | Pricing tier | **S1 Standard** |
+    <!--| Pricing tier | **S1 Standard** |-->
+    | Pricing tier | **F1 Free** |
     | Application Insights Location | the name of the same Azure region that you chose for the location of the Azure web app |
     | Server name | any globally unique string between 3 and 63 characters consisting of letters, digits, and hyphens, starting and ending with either a letter or a digit |
     | Enter username | **dbadmin** |
     | Location | the name of the same Azure region that you chose for the location of the Azure web app |
     | Database Name | **az400m10l02-db** |
 
-1.  Back on the **DevOps Starter** blade, on the **Almost there** pane, click **Done** and then **Review+Create**.
+1.  Back on the **DevOps Starter** blade, on the **Almost there** pane, click **Done** and then **Review + Create**.
 
     > **Note**: Wait for the deployment to complete. The provisioning of the **DevOps Starter** resource should take about 2 minutes.
 
@@ -104,7 +104,7 @@ In this task, you will create several Azure DevOps releases, including one that 
 
     > **Note**: First, you will create a new release which will deploy successfully.
 
-1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Repos**, in the list of folders in the repository, navigate to the **Applications\\aspnet-core-dotnet-core\\Pages\\Shared** folder and click the **Index.chtml** entry. 
+1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Repos**, in the list of folders in the repository, navigate to the **Applications\\aspnet-core-dotnet-core\\Pages** folder and click the **Index.chtml** entry. 
 1.  On the **Index.chtml** pane, click **Edit**, in line **20**, replace `<div class="description line-2"> Your ASP.NET Core app is up and running on Azure</div>` with `<div class="description line-2"> Your ASP.NET Core app v1.1 is up and running on Azure</div>` click **Commit**, and, on the **Commit** pane, click **Commit** again. This will automatically trigger the build pipeline. 
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, click **Pipelines**.
 1.  On the **Recent** tab of the **Pipelines** pane, click the **az400m10l02-CI** entry, on the **Runs** tab of the **az400m10l02-CI** pane, select the most recent run, on the **Summary** tab of the run, in the **Jobs** section, click **Build** and monitor the job until its successful completion. 
@@ -113,7 +113,7 @@ In this task, you will create several Azure DevOps releases, including one that 
 
     > **Note**: Now, you will create a new release which deployment will fail. The failure will be caused by built-in assemblies test, which consider the change associated with the new release to be invalid.
 
-1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Repos**, in the list of folders in the repository, navigate to the **Applications\\aspnet-core-dotnet-core\\Pages\\Shared** folder and click the **Index.chtml** entry. 
+1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Repos**, in the list of folders in the repository, navigate to the **Applications\\aspnet-core-dotnet-core\\Pages** folder and click the **Index.chtml** entry. 
 1.  On the **Index.chtml** pane, click **Edit**, in line **4**, replace `    ViewData["Title"] = "Home Page - ASP.NET Core";` with `    ViewData["Title"] = "Home Page v1.2 - ASP.NET Core";` click **Commit**, and, on the **Commit** pane, click **Commit** again. This will automatically trigger the build pipeline. 
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, click **Pipelines**.
 1.  On the **Recent** tab of the **Pipelines** pane, click the **az400m10l02-CI** entry, on the **Runs** tab of the **az400m10l02-CI** pane, select the most recent run, on the **Summary** tab of the run, in the **Jobs** section, click **Build** and monitor the job until its successful completion. 
@@ -143,19 +143,12 @@ In this task, you will create a dashboard and add to it release-related widgets.
     | ------- | ----- |
     | Select release definition(s) | **az400m10l02 - CD** |
 
-1.  Back on the dashboard pane, hover over the upper right corner of the rectangle representing the **Release Health Details** widget to reveal the ellipsis sign representing the **More actions** menu, click it, and, in the dropdown menu, click **Configure**.  
-1.  On the **Configuration** pane, specify the following settings (leave all others with their default values) and click **Save**.
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Definition | **az400m10l02 - CD** |
-
 1.  Back on the dashboard pane, hover over the upper right corner of the rectangle representing the **Release Pipeline Overview** widget to reveal the ellipsis sign representing the **More actions** menu, click it, and, in the dropdown menu, click **Configure**.  
 1.  On the **Configuration** pane, specify the following settings (leave all others with their default values) and click **Save**.
 
     | Setting | Value |
     | ------- | ----- |
-    | Release pipeline | **az400m10l02 - CD** |
+    | Definition | **az400m10l02 - CD** |
 
 1.  Back on the dashboard pane, click **Refresh** to update the content displayed by the widgets.
 

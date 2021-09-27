@@ -92,7 +92,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 1.  From the Bash session in the Cloud Shell pane, run the following to create the resource group that will host Azure resources you deploy in this lab (replace the `<Azure_region>` placeholder with the name of the Azure region, such as 'eastus', where you intend to deploy these resources):
 
     ```bash
-    LOCATION=<Azure_region>
+    LOCATION='<Azure_region>'
     ```
 
     >**Note**: You can identify Azure region names by running `az account list-locations -o table`
@@ -142,7 +142,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 1.  On the container registry blade, in the vertical menu on the left side, in the **Settings** section, click **Access keys**.
 1.  On the **Access keys** blade of the container registry instance, identify the values of the **Registry name**, **Login server**, **Admin user**, and **password** entries.
 
-    >**Note**: Record the **Registry name**, **Login server**, and **password** entries (the registry names and the admin user name should match). You will need it later in this lab.
+    >**Note**: Record the values of **Registry name**, **Login server**, and **password** (the registry names and the admin user name should match). You will need them later in this lab.
 
 
 ### Exercise 2: Deploy a Docker container to Azure App Service web app by using Azure DevOps
@@ -153,9 +153,17 @@ In this exercise, you will deploy a Docker container to Azure App Service web ap
 
 In this task, you will use the Azure DevOps project you generated in the previous exercise in order to implement a CI/CD pipeline that builds and deploys a Docker container to an Azure App Service web app.
 
-1.  On your lab computer, switch to the web browser window displaying the Azure DevOps portal with the **Deploying Docker containers to Azure App Service web apps** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
+1.  On your lab computer, switch to the web browser window displaying the Azure DevOps portal with the **Deploying Docker containers to Azure App Service web apps** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Repos**.
 
-    >**Note**: You will first modify the build pipeline.
+    >**Note**: You will first modify the references to the Docker image.
+
+1.  On the **Docker** repository pane, in the list of files, select **docker-compos.ci.build.yml**.
+1.  On the **docker-compos.ci.build.yml** pane, click **Edit**, replace line **5** that references the target Docker image with `image: az400mp/aspnetcore-build:1.0-2.0`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
+1.  On the **Docker** repository pane, in the list of files, naviagate to the **MyHealth.Web** folder and select **Dockerfile**.
+1.  On the **Dockerfile** pane, click **Edit**, replace line **1** that references the base Docker image with `FROM az400mp/aspnetcore1.0:1.0.4`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
+1.  In the web browser window displaying the Azure DevOps portal with the **Deploying Docker containers to Azure App Service web apps** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
+
+    >**Note**: You will now modify the build pipeline.
 
 1.  On the **Pipelines** pane, click the entry representing the **MHCDocker.build** pipeline and, on the **MHCDocker.build** pane, click **Edit**.
 
@@ -168,6 +176,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
     | **Push services** | pushes the **myhealth.web** image tagged with **$(Build.BuildId)** to container registry |
     | **Publish Artifact** | allows for sharing dacpac for database deployment through Azure DevOps artifacts |
 
+1.  On the **MHCDocker.build** pipeline pane, ensure that the **Pipeline** entry is selected and, in the **Agent Specifications** drop-down list, select **ubuntu-18.04**.
 1.  On the **MHCDocker.build** pipeline pane, in the list of tasks of the pipeline, click the **Run services** task, on the **Docker Compose** pane on the right side, in the **Azure subscription** dropdown list, select the entry representing the Azure subscription you are using in this lab, and click **Authorize** to create the corresponding service connection. When prompted, sign in using the account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
 
     >**Note**: This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
@@ -195,7 +204,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
     >**Note**: Next you will need to configure the agent pool information required for deployment.
 
 1.  Select the **DB deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **vs2017-win2016**.
-1.  Select the **Web App deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **ubuntu-16.04**.
+1.  Select the **Web App deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **ubuntu-18.04**.
 1.  At the top of the pane, click the **Variables** header.
 1.  In the list of pipeline variables, set the values of the following variables:
 
@@ -207,7 +216,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
     | SQLadmin | **sqladmin** |
     | SQLserver | the name of the Azure SQL Database logical server you recorded in the previous exercise of this lab, including the **database.windows.net** suffix |
 
-1.  In the upper right corner of the pane, click the **Save** button to save the changes, and, when prompted again, click **Save**.
+1.  In the upper right corner of the pane, click the **Save** button to save the changes, and, when prompted again, click **OK**.
 
 #### Task 2: Trigger build and release pipelines by using code commit 
 
