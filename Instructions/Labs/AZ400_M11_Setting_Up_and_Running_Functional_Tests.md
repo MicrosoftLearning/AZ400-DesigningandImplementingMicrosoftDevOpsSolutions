@@ -78,7 +78,10 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 In this task, you will provision an Azure VM running Windows Server 2016 along with SQL Express 2017, Chrome, and Firefox.
 
-1.  Click on the deploy to Azure button [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json). This will automatically redirect you to the **Custom deployment** blade in the Azure portal.
+[1]: https://aka.ms/deploytoazurebutton
+[2]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json
+
+1.  Click on the deploy to Azure button [![alt text][1]][2]. This will automatically redirect you to the **Custom deployment** blade in the Azure portal.
 1.  If prompted, sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  On the **Custom deployment** blade, select **Edit template**.
 1.  On the **Edit template** blade, locate the line `"https://raw.githubusercontent.com/microsoft/azuredevopslabs/master/labs/vstsextend/selenium/armtemplate/chrome_firefox_VSTSagent_IIS.ps1"`, replace it with `https://raw.githubusercontent.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/master/Allfiles/Labs/11b/chrome_firefox_VSTSagent_IIS.ps1`, and click **Save**.
