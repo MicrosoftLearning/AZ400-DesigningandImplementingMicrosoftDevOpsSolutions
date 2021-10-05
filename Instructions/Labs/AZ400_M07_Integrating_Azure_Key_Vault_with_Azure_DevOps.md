@@ -239,7 +239,18 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
     az group list --query "[?starts_with(name,'az400m07l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
-    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+1.  List the resource group that was created by the pipeline.
+
+    ```sh
+    az group list --query "[?starts_with(name,'azurekeyvaultlab')].name" --output tsv
+    ```
+1.  Delete all resource group created by the pipeline:
+
+    ```sh
+    az group list --query "[?starts_with(name,'azurekeyvaultlab')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+    
+   >**Note**: The delete commands execute asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 #### Review
 
