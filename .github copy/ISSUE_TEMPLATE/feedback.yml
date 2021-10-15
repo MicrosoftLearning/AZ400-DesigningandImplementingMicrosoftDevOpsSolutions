@@ -3,7 +3,6 @@ description: File a feedback report
 title: "M00-LAB00: QUICK_DESCRIPTION"
 labels: ["feedback"]
 assignees:
-  - unaihuete93
 body:
   - type: markdown
     attributes:

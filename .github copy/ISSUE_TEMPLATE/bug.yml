@@ -3,7 +3,6 @@ description: File a bug report
 title: "M00-LAB00: QUICK_DESCRIPTION"
 labels: ["bug"]
 assignees:
-  - unaihuete93
 body:
   - type: markdown
     attributes:
