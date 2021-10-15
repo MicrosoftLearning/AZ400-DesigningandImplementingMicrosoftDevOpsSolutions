@@ -82,7 +82,7 @@ body:
     id: terms
     attributes:
       label: Do you want to help us? 👏
-      description: Create a pull request by following the instructions in [Contribution Guide](https://github.com/unaihuete-org/GitHub_Playground/blob/main/.github/CONTRIBUTING.md#how-can-i-collaborate)
+      description: Create a pull request by following the instructions in [Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#how-can-i-collaborate)
       options:
-        - label: I agree to follow this project's [Contribution Guide](https://github.com/unaihuete-org/GitHub_Playground/blob/main/.github/CONTRIBUTING.md#how-can-i-collaborate)
+        - label: I agree to follow this project's [Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#how-can-i-collaborate)
           required: true
