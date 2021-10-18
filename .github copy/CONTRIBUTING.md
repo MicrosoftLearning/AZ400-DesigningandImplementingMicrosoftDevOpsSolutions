@@ -42,9 +42,7 @@ For people that may not have enough experience forking and working with Git repo
 
 You may be creating a Pull Request for an existing issue or proposal. If the Pull Request is related to an existing issue, link it by providing the **Issue** number on the **Fixes #[Issue-Number]** section of the Pull Request description (replace "[]" too). 
 
-> ⚠️ If the Pull Request is related to an issue that has not been reported yet, please report it, following the [previously](https://github.com/unaihuete-org/GitHub_Playground/blob/main/.github/CONTRIBUTING.md#reporting-issues) mentioned steps. 
-
-If your Pull Request is related to a proposal, no **Issue** item needs to be created/referenced.
+> ⚠️ If the Pull Request is related to an issue that has not been reported yet, please report it, following the [previously](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#reporting-issues) mentioned steps. 
 
 For the Pull Request title, use the following syntax:
 
