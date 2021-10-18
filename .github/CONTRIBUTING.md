@@ -38,6 +38,10 @@ For people that may not have enough experience forking and working with Git repo
 
 
 
+https://user-images.githubusercontent.com/64772417/137773529-9cad5c7f-2841-4efc-965e-c2c727eb769f.mp4
+
+
+
 > ⚠️ This option is encouraged for people with no Git/GitHub experience, same process could be manually followed: [GitHub, working with forks](https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks)
 
 #### Creating a Pull Request
