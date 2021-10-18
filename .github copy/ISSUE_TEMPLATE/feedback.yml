@@ -1,0 +1,70 @@
+name: Feedback Report
+description: File a feedback report
+title: "M00-LAB00: QUICK_DESCRIPTION"
+labels: ["feedback"]
+assignees:
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Thanks for taking the time to fill out this feedback report!
+        
+        **Replace feedback name M00-LAB00:QUICK_DESCRIPTION, for example "M01-LAB01: My new feedback"**
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info 😉?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What should we change?
+      description: What should we change?
+      placeholder: Tell us your proposal!
+      value: PROPOSAL
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Lab
+      description: Lab name
+      options:
+        - Other
+        - Lab 00 Validate lab environment
+        - Lab 01 Agile Planning and Portfolio Management with Azure Boards
+        - Lab 02 Version Controlling with Git in Azure Repos
+        - Lab 03 Sharing Team Knowledge using Azure Project Wikis
+        - Lab 04 Version Controlling with Git in Azure Repos
+        - Lab 05 Configuring Agent Pools and Understanding Pipeline Styles
+        - Lab 06a Enabling Continuous Integration with Azure Pipelines
+        - Lab 06b Integrating External Source Control with Azure Pipelines
+        - Lab 07 Integrating Azure Key Vault with Azure DevOps
+        - Lab 08 Implementing GitHub Actions by using DevOps Starter
+        - Lab 09 Package Management with Azure Artifacts
+        - Lab 10a Controlling Deployments using Release Gates
+        - Lab 10b Creating a Release Dashboard
+        - Lab 11a Configuring Pipelines as Code with YAML
+        - Lab 11b Setting Up and Running Functional Tests
+        - Lab 12 Feature Flag Management with LaunchDarkly and Azure DevOps
+        - Lab 13 Azure Deployments Using Resource Manager Templates
+        - Lab 14a Ansible with Azure
+        - Lab 14b Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
+        - Lab 15 Deploying Docker containers to Azure App Service web apps
+        - Lab 16 Deploying a multi-container application to Azure Kubernetes Services
+        - Lab 17 Monitoring Application Performance with Application Insights
+        - Lab 18 Integration between Azure DevOps and Teams
+        - Lab 19 Implement Security and Compliance in an Azure DevOps pipeline
+        - Lab 20 Managing technical debt with SonarCloud and Azure DevOps 
+    validations:
+      required: true
+  - type: textarea
+    id: Screenshots
+    attributes:
+      label: Relevant screenshots
+      description: Please copy and paste any relevant screenshots 📸
+      value: paste here 😉 
+  
