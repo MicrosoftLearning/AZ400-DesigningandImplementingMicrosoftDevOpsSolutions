@@ -4,7 +4,8 @@
 
 **Link related Github Issue** 🢂 Fixes # . (Include issue number after #)
 
-## Checklist
+## Checklist 
+Mark completed with "x" between brackets, "[x]":
 - [ ] Has related GitHub Issue 💥 [Create Issue](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#reporting-issues) 📝
 - [ ] Tested it
 - [ ] Read the PR collaboration guide 👓 [Collaboration Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#pull-requests) 📝
