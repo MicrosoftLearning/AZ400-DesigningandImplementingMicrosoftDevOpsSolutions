@@ -16,6 +16,8 @@ To address general comments about the course and demos, or how to prepare for a 
 
 ## How can I collaborate?
 
+If you don't already have a GitHub account, [create one](https://github.com/join) . Identify any affiliations in your GitHub profile. 
+
 ### Reporting Issues
 
 You can open **Issues** from our public repository if you find any problems with the latest version of the lab instructions. Make sure to fill in information as specified by the issue templates (issue or feedback).
