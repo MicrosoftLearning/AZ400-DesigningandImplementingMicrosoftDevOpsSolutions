@@ -1,15 +1,14 @@
-name: Feedback Report
-description: File a feedback report
+name: Bug Report
+description: File a bug report
 title: "M00-LAB00: QUICK_DESCRIPTION"
-labels: ["feedback"]
-assignees:
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        # Thanks for taking the time to fill out this feedback report!
+        # Thanks for taking the time to fill out this bug report!
         
-        **Replace feedback name M00-LAB00:QUICK_DESCRIPTION, for example "M01-LAB01: My new feedback"**
+        **Replace issue name M00-LAB00:QUICK_DESCRIPTION, for example "M01-LAB01: My new issue"**
   - type: input
     id: contact
     attributes:
@@ -21,10 +20,20 @@ body:
   - type: textarea
     id: what-happened
     attributes:
-      label: What should we change?
-      description: What should we change?
-      placeholder: Tell us your proposal!
-      value: PROPOSAL
+      label: What happened?
+      description: What happened?
+      placeholder: Tell us what you see!
+      value: |
+        Exercise : 00
+        Task: 00
+        Step: 00
+        
+        Description of issue:
+
+        Repro steps:
+        1.
+        1.
+        1.
     validations:
       required: true
   - type: dropdown
@@ -58,7 +67,7 @@ body:
         - Lab 17 Monitoring Application Performance with Application Insights
         - Lab 18 Integration between Azure DevOps and Teams
         - Lab 19 Implement Security and Compliance in an Azure DevOps pipeline
-        - Lab 20 Managing technical debt with SonarCloud and Azure DevOps 
+        - Lab 20 Managing technical debt with SonarCloud and Azure DevOps
     validations:
       required: true
   - type: textarea
@@ -67,4 +76,11 @@ body:
       label: Relevant screenshots
       description: Please copy and paste any relevant screenshots 📸
       value: paste here 😉 
-  
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Do you want to help us? 👏
+      description: Create a pull request by following the instructions in [Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#how-can-i-collaborate)
+      options:
+        - label: I agree to follow this project's [Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#how-can-i-collaborate)
+          required: true
