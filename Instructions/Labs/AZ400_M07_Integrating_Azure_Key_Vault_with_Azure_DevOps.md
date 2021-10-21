@@ -171,16 +171,17 @@ In this task, you will configure the Azure Pipeline to retrieve the secret from 
 
 1.  On your lab computer, start a web browser and navigate to the Azure DevOps project **Integrating Azure Key Vault with Azure DevOps** you created in the previous exercise.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
-1.  On the **Pipelines** pane, click the entry representing the **SmartHotel-CouponManagement-CI** pipeline and, on the **SmartHotel-CouponManagement-CI** pane, click **Run Pipeline**.
-1.  On the **Run pipeline** pane, accept the default settings and click **Run** to trigger a build.
+1.  On the **Pipelines** pane, click the entry representing the **SmartHotel-CouponManagement-CI** pipeline. Click on **Edit**.
+1.  On the pipeline definition, modify the **Pipeline** > **Agent Specification** to **ubuntu 18.04**. Click **Save and Queue** > **Save and Run** to trigger a build.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
 1.  On the **SmartHotel-CouponManagement-CD** pane, click **Edit** in the upper right corner.
 1.  On the **All pipelines > SmartHotel-CouponManagement-CD** pane, select the **Task** tab and, in the dropdown menu, select **Dev**.
 
     > **Note**: The release definition for **Dev** stage has an **Azure Key Vault** task. This task downloads *Secrets* from an Azure Key Vault. You will need to point to the subscription and the Azure Key Vault resource created earlier in the lab.
 
-    > **Note**: You need to authorize the pipeline to deploy to Azure. Azure pipelines can automatically create a service connection with a new service principal, but we want to use the one we created earlier. 
+    > **Note**: You need to authorize the pipeline to deploy to Azure. Azure pipelines can automatically create a service connection with a new service principal, **but we want to use the one we created earlier**, as it has been authorized to read the secret. 
 
+1.  Select **Run on agent** and modify **Agent pool** field to **Azure Pipelines** and agent specification **ubuntu 18.04**.
 1.  Select the **Azure Key Vault** task and, on the right side, in the **Azure Key Vault** task properties, next to the **Azure subscription** label, click **Manage**. 
 This will open another browser tab displaying the **Service connections** pane in the Azure DevOps portal.
 1.  On the **Service connections** pane, click **New Service connection**. 
@@ -212,6 +213,7 @@ This will open another browser tab displaying the **Service connections** pane i
 
     > **Note**: In the Azure subscription dropdown list, you will see **Available Azure service connections** for those susbcriptions that have already been authorized to be connected to Azure. If you select the authorized subscription again (from **Available Azure subscriptions** list) and try to **Authorize**, the process will fail.
 
+1.  On the **Variables** tab, change the **resourcegroup** variable to plain text (click on lock) and write **az400m07l01-RG** in the value field.
 1.  Finally, **Save** and click on **Create a new release** > **Create** (leave defaults) to start the deployment.
 
 1. Make sure your pipeline runs successfully and once finished, review the created resources by opening the resource group **az400m07l01-RG** in the Azure Portal . Open the **App Service** and browse it **(Overview -> Browse)**, to see the published website.
