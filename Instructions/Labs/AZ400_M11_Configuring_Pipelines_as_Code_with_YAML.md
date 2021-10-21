@@ -81,73 +81,74 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'eastus').
 
-```bash
-RESOURCEGROUPNAME='az400m11l01-RG'
-LOCATION='<region>'
-az group create -n $RESOURCEGROUPNAME -l $LOCATION
-```
+    ```bash
+    RESOURCEGROUPNAME='az400m11l01-RG'
+    LOCATION='<region>'
+    az group create -n $RESOURCEGROUPNAME -l $LOCATION
+    ```
 
 1.  To create a Windows App service plan by running the following command:
 
-```bash
-SERVICEPLANNAME='az400l11a-sp1'
-az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
-```
-> **Note**: If the `az appservice plan create` command fails with an error message starting with `ModuleNotFoundError: No module named 'vsts_cd_manager'`, then run the following commands and then re-run the failed command.
+    ```bash
+    SERVICEPLANNAME='az400l11a-sp1'
+    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
+    ```
+    
+    > **Note**: If the `az appservice plan create` command fails with an error message starting with `ModuleNotFoundError: No module named 'vsts_cd_manager'`, then run the following commands and then re-run the failed command.
 
-```bash
-az extension remove -n appservice-kube
-az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
-```
+    ```bash
+    az extension remove -n appservice-kube
+    az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
+    ```
 
 1.  Create a web app with a unique name.
 
-```bash
-WEBAPPNAME=partsunlimited$RANDOM$RANDOM
-az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n $WEBAPPNAME
-```
+    ```bash
+    WEBAPPNAME=partsunlimited$RANDOM$RANDOM
+    az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n $WEBAPPNAME
+    ```
 
-> **Note**: Record the name of the web app. You will need it later in this lab.
+    > **Note**: Record the name of the web app. You will need it later in this lab.
 
 1.  Next, create an Azure SQL Server.
 
-```bash
-USERNAME="Student"
-SQLSERVERPASSWORD="Pa55w.rd1234"
-SERVERNAME="partsunlimitedserver$RANDOM"
+    ```bash
+    USERNAME="Student"
+    SQLSERVERPASSWORD="Pa55w.rd1234"
+    SERVERNAME="partsunlimitedserver$RANDOM"
 
-az sql server create --name $SERVERNAME --resource-group $RESOURCEGROUPNAME \
---location $LOCATION --admin-user $USERNAME --admin-password $SQLSERVERPASSWORD
-```
+    az sql server create --name $SERVERNAME --resource-group $RESOURCEGROUPNAME \
+    --location $LOCATION --admin-user $USERNAME --admin-password $SQLSERVERPASSWORD
+    ```
 
 1.  The web app needs to be able to access the SQL server, so we need to allow access to Azure resources in the SQL Server firewall rules.
 
-```bash
-STARTIP="0.0.0.0"
-ENDIP="0.0.0.0"
-az sql server firewall-rule create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME \
---name AllowAzureResources --start-ip-address $STARTIP --end-ip-address $ENDIP
-```
+    ```bash
+    STARTIP="0.0.0.0"
+    ENDIP="0.0.0.0"
+    az sql server firewall-rule create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME \
+    --name AllowAzureResources --start-ip-address $STARTIP --end-ip-address $ENDIP
+    ```
 
 1.  Now create a database within that server.
 
-```bash
-az sql db create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME --name PartsUnlimited \
---service-objective S0
-```
+    ```bash
+    az sql db create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME --name PartsUnlimited \
+    --service-objective S0
+    ```
 
 1.  The web app you created needs the database connection string in its configuration, so run the following commands to prepare and add it to the app settings of the web app.
 
-```bash
-CONNSTRING=$(az sql db show-connection-string --name PartsUnlimited --server $SERVERNAME \
---client ado.net --output tsv)
+    ```bash
+    CONNSTRING=$(az sql db show-connection-string --name PartsUnlimited --server $SERVERNAME \
+    --client ado.net --output tsv)
 
-CONNSTRING=${CONNSTRING//<username>/$USERNAME}
-CONNSTRING=${CONNSTRING//<password>/$SQLSERVERPASSWORD}
+    CONNSTRING=${CONNSTRING//<username>/$USERNAME}
+    CONNSTRING=${CONNSTRING//<password>/$SQLSERVERPASSWORD}
 
-az webapp config connection-string set --name $WEBAPPNAME --resource-group $RESOURCEGROUPNAME \
--t SQLAzure --settings "DefaultConnectionString=$CONNSTRING" 
-```
+    az webapp config connection-string set --name $WEBAPPNAME --resource-group $RESOURCEGROUPNAME \
+    -t SQLAzure --settings "DefaultConnectionString=$CONNSTRING" 
+    ```
 
 ### Exercise 1: Configure CI/CD Pipelines as Code with YAML in Azure DevOps
 
