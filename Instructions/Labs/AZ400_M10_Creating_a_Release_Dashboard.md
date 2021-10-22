@@ -79,7 +79,6 @@ In this task, you will create an Azure DevOps Starter resource in your Azure sub
     | Setting | Value |
     | ------- | ----- |
     | Resource group | **az400m10l02-rg** |
-    <!--| Pricing tier | **S1 Standard** |-->
     | Pricing tier | **F1 Free** |
     | Application Insights Location | the name of the same Azure region that you chose for the location of the Azure web app |
     | Server name | any globally unique string between 3 and 63 characters consisting of letters, digits, and hyphens, starting and ending with either a letter or a digit |
