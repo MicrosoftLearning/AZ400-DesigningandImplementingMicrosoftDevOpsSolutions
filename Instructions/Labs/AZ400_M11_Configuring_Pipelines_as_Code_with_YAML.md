@@ -84,14 +84,14 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
     ```bash
     RESOURCEGROUPNAME='az400m11l01-RG'
     LOCATION='<region>'
-    az group create -n $RESOURCEGROUPNAME -l $LOCATION
+    az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
 
 1.  To create a Windows App service plan by running the following command:
 
     ```bash
     SERVICEPLANNAME='az400l11a-sp1'
-    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
+    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
     ```
     
     > **Note**: If the `az appservice plan create` command fails with an error message starting with `ModuleNotFoundError: No module named 'vsts_cd_manager'`, then run the following commands and then re-run the failed command.
@@ -105,7 +105,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
     ```bash
     WEBAPPNAME=partsunlimited$RANDOM$RANDOM
-    az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n $WEBAPPNAME
+    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
     ```
 
     > **Note**: Record the name of the web app. You will need it later in this lab.
