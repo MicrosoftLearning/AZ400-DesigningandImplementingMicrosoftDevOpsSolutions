@@ -31,10 +31,10 @@ You can open **Issues** from our public repository if you find any problems with
 
 ### Pull Requests
 
-If you want to collaborate fixing an issue or proposing updates, please create a Pull Request.
+If you want to collaborate fixing an issue or proposing updates, please create a Pull Request (PR).
 
-#### Easy PRs using GitHub (not git knowledge needed)
-For people that may not have enough experience forking and working with Git repositories locally, here we explain an easy way of proposing PRs using GitHub website:
+#### Easy PRs using GitHub (no git/github knowledge needed)
+For people that may not have enough Git/GitHub experience (forking a repository and working with Git repositories locally), here we explain an easy way of proposing Pull Requests using GitHub website:
 
 
 
