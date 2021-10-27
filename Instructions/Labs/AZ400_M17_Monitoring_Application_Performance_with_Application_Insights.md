@@ -116,10 +116,10 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
     > **Note**: Record the name of the web app. You will need it later in this lab.
 
-1. Now is the time to create an Application Insights instance and connect it to our web application.
+1. Now is the time to create an Application Insights instance.
 
     ```bash
-    az monitor app-insights component create --app  $WEBAPPNAME \
+    az monitor app-insights component create --app $WEBAPPNAME \
         --location $LOCATION \
         --kind web --application-type web \
         --resource-group $RESOURCEGROUPNAME
@@ -127,7 +127,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
     > **Note**: If you got prompted with 'The command requires the extension application-insights. Do you want to install it now?', type Y and press enter.
 
-1. Now we need to connect our Application Insights to our web application.
+1. Let us connect the Application Insights to our web application.
 
     ```bash
     az monitor app-insights component connect-webapp --app $WEBAPPNAME \
