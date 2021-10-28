@@ -77,55 +77,100 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 #### Task 2: Create Azure resources
 
-In this task, you will create an Azure web app and an Azure SQL database by using the Azure portal.
+In this task, you will create an Azure web app and an Azure SQL database by using the cloud shell in Azure portal.
 
 > **Note**: This lab involves a deployment of the Parts Unlimited site to an Azure app service. To accommodate this requirement, you will need to spin up the necessary infrastructure. 
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
-1.  In the Azure portal, click the icon consisting of three horizontal lines in the upper left corner of the page and, in the hub menu and click **+ Create a resource**.
-1.  On the **New* blade, in the search text box, type **Web App + SQL** and press the **Enter** key.
-1.  On the **Web App + SQL**, click **Create**.
-1.  On the **Web App + SQL** blade, specify the following settings:
+1. In the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box.
+1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
+    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
-    | Setting | Value |
-    | --- | --- |
-    | App name | any valid, globally unique DNS host name |
-    | Subscription | the name of the Azure subscription you are using in this lab |
-    | Resource group | the name of a new resource group **az400m17l01a-RG** |
+1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'eastus').
 
-    > **Note**: Record the value of the App Service web app. You will need it later in the lab.
+    ```bash
+    RESOURCEGROUPNAME='az400m17l01a-RG'
+    LOCATION='<region>'
+    az group create --name $RESOURCEGROUPNAME --location $LOCATION
+    ```
 
-1.  Click **App Service plan/Location**, on the **App Service plan** blade, click **+ Create new**.
-1.  On the **New App Service Plan** blade, specify the following settings and click **OK**:
+1.  To create a Windows App service plan by running the following command:
 
-    | Setting | Value |
-    | --- | --- |
-    | App service plan | any valid name |
-    | Location| the name of the Azure region where you want to deploy resources you will be using in this lab |
-    | Pricing tier | **D1 Shared** |
+    ```bash
+    SERVICEPLANNAME='az400l17-sp'
+    az appservice plan create --resource-group $RESOURCEGROUPNAME \
+        --name $SERVICEPLANNAME --sku B3 
+    ```
+    > **Note**: If the `az appservice plan create` command fails with an error message starting with `ModuleNotFoundError: No module named 'vsts_cd_manager'`, then run the following commands and then re-run the failed command.
 
-1.  Back on the **Web App + SQL** blade, click **SQL Database** and **Create new Database**.
-1.  On the **SQL Database** blade, in the **Name** textbox, type **partsunlimited**.
-1.  On the **SQL Database** blade, click **Target server**.
-1.  On the **New server** blade, specify the following settings and click **Select** (leave all other settings with their default values):
+    ```bash
+    az extension remove --name appservice-kube
+    az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
+    ```
+1.  Create a web app with a unique name.
 
-    | Setting | Value |
-    | --- | --- |
-    | Server name | any valid, globally unique DNS host name |
-    | Server admin login | **sysadmin** |
-    | Password | **Pa55w.rd1234** |
-    | Location | the name of the Azure region that you chose for the App Service plan |
-    | Allow Azure services to access server | enabled |
+    ```bash
+    WEBAPPNAME=partsunlimited$RANDOM$RANDOM
+    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME 
+    ```
 
-1.  Back on the **SQL Database** blade, click **Select**.
+    > **Note**: Record the name of the web app. You will need it later in this lab.
 
-    > **Note**: By default, the template will generate an Application Insights resource and attach it to the app service.
+1. Now is the time to create an Application Insights instance.
 
-1.  Back on the **Web App + SQL** blade, click the Application Insights entry.
-1.  On the **Application Insights** blade, with the **.NET** tab selected, in the **Collection level** section, select **Recommended**, on the **Application Insights** blade, in the **Profiler** section, select **On**, and click **Apply**.
-1.  Back on the **Web App + SQL** blade, click **Create**. 
+    ```bash
+    az monitor app-insights component create --app $WEBAPPNAME \
+        --location $LOCATION \
+        --kind web --application-type web \
+        --resource-group $RESOURCEGROUPNAME
+    ```
 
-    > **Note**: Wait for the process to complete. This should take about 2 minutes. 
+    > **Note**: If you got prompted with 'The command requires the extension application-insights. Do you want to install it now?', type Y and press enter.
+
+1. Let us connect the Application Insights to our web application.
+
+    ```bash
+    az monitor app-insights component connect-webapp --app $WEBAPPNAME \
+        --resource-group $RESOURCEGROUPNAME --web-app $WEBAPPNAME
+    ```
+
+1.  Next, create an Azure SQL Server.
+
+    ```bash
+    USERNAME="Student"
+    SQLSERVERPASSWORD="Pa55w.rd1234"
+    SERVERNAME="partsunlimitedserver$RANDOM"
+    
+    az sql server create --name $SERVERNAME --resource-group $RESOURCEGROUPNAME \
+    --location $LOCATION --admin-user $USERNAME --admin-password $SQLSERVERPASSWORD
+    ```
+
+1.  The web app needs to be able to access the SQL server, so we need to allow access to Azure resources in the SQL Server firewall rules.
+
+    ```bash
+    STARTIP="0.0.0.0"
+    ENDIP="0.0.0.0"
+    az sql server firewall-rule create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME \
+    --name AllowAzureResources --start-ip-address $STARTIP --end-ip-address $ENDIP
+    ```
+
+1.  Now create a database within that server.
+
+    ```bash
+    az sql db create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME --name PartsUnlimited \
+    --service-objective S0
+    ```
+
+1.  The web app you created needs the database connection string in its configuration, so run the following commands to prepare and add it to the app settings of the web app.
+
+    ```bash
+    CONNSTRING=$(az sql db show-connection-string --name PartsUnlimited --server $SERVERNAME \
+    --client ado.net --output tsv)
+    CONNSTRING=${CONNSTRING//<username>/$USERNAME}
+    CONNSTRING=${CONNSTRING//<password>/$SQLSERVERPASSWORD}
+    az webapp config connection-string set --name $WEBAPPNAME --resource-group $RESOURCEGROUPNAME \
+    -t SQLAzure --settings "DefaultConnectionString=$CONNSTRING" 
+    ```
 
 ### Exercise 1: Monitor an Azure App Service web app by using Azure Application Insights
 
@@ -191,11 +236,6 @@ In this task, you will deploying a web app to Azure by using Azure DevOps pipeli
 1.  In the **Application settings** section, click **+ New application setting**.
 1.  On the **Add/Edit application setting** blade, in the **Name** textbox, type **Keys:ApplicationInsights:InstrumentationKey**, in the **Value** textbox, type the string of characters you copied into Clipboard and click **OK**.
 
-    > **Note**: As with the **Application Insights** key, we also need to configure the Azure SQL Database connection string expected by our application.
-
-1.  On the App Service web app **Configuration** blade, scroll down to the **Connection string** section and click **defaultConnection**.
-1.  On the **Add/Edit connection string** blade, in the **Name** textbox, replace **defaultConnection** with **DefaultConnectionString**, click **OK**, click **Save** to save the configuration settings, and, when prompted for confirmation, click **Continue**.
-
     > **Note**: Changes to the application settings and connection strings trigger restart of the web app.
 
 1.  Switch back to the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**, and, in the **Pipelines** section, click the entry representing your most recently run build pipeline.
@@ -222,6 +262,8 @@ In this task, you will generate traffic targeting the App Service web app you de
 
 1.  On the **Application Insights** configuration blade, click the **View Application Insights data** link.
 1.  Review the resulting **Application Insights** blade displaying charts presenting different characteristics of the collected data, including the traffic you generated and failed requests you triggered earlier in this task.
+
+    > **Note**: If you didn't see anything right away, just wait for a few minutes and refresh the page until the logs start to show up in the overview section.
 
 #### Task 3: Investigate application performance
 
