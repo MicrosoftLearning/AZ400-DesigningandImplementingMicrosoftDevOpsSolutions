@@ -98,6 +98,8 @@ In this task, you will create and configure a build pipeline by using a predefin
 
     > **Note**: Note that there are many options that should cover all of our mainstream scenarios. For our purposes here, we'll just build the project using the baseline ASP.NET template. The process for this build pipeline is easy to follow. After getting the source, Azure DevOps will use NuGet to restore any dependent packages. Then, the project will be built and tested. The results will then be published to the configured target.
 
+1.  Select the **Tasks** tab and modify the **Agent Specification** from window-2019 to vs2017-win2016, by selecting in the drop down.
+
 1.  Select the **Variables** tab and review its content.
 
     > **Note**: Here you can configure special parameters to be used during the build, such as the configuration or platform.
