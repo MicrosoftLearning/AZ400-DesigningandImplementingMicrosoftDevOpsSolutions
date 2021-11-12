@@ -155,7 +155,7 @@ In this task, you will create two Azure web apps representing the **Canary** and
 1.  In the Azure portal, navigate to the resource group **az400m10l01-RG** you created in the previous task.
 1.  In the list of resources, click the **Canary** web app. 
 1.  On the **Canary** web app page, in the vertical menu on the left, in the **Settings** section, click **Application Insights**.
-1.  On the **Application Insights** blade, click **Turn on Application Insights**.
+1. On the **Application Insights** blade, enable **Collect application monitoring data using Application Insights**.
 1.  In the **Change your resource** section, click the **Select existing resource** option, in the list of existing resources, select the newly created Application Insight resource, click **Apply** and, when prompted for confirmation, click **Yes**.
 1.  Wait until the change takes effect and, on the Application Insights blade, click the **View Application Insights data** link.
 
@@ -199,7 +199,7 @@ In this task, you will update release tasks.
 
     > **Note**: The canary environment has 2 tasks which, respectively, publish the package to Azure Web App and enable continuous monitoring of the application after deployment. 
 
-1.  On the **All pipelines > PartsUnlimited-CD** pane, ensure that the **Canary Environment** stage is selected. In the **Azure subscription** dropdown list, select your Azure subscription and click **Authorize**. If prompted, authenticate by using the user account with the Owner role in the Azure subscription.
+1. On the **All pipelines > PartsUnlimited-CD** pane, ensure that the **Canary Environment** stage is selected. In the **Azure subscription** dropdown list, select your Azure subscription, shown under **Available Azure Service connections**, and click **Authorize**. If prompted, authenticate by using the user account with the Owner role in the Azure subscription.
 1.  In the **App Service name** dropdown list, select the name of the **Canary** web app.
 
     > **Note**: You might need to click the **Refresh** button.
