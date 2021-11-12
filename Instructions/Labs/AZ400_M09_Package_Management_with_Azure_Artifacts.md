@@ -129,7 +129,7 @@ In this task, you will create and publish a NuGet package.
 
     > **Note**: We will now create a shared assembly that will be published as a NuGet package so that other teams can integrate it and stay up to date without having to work directly with the project source.
 
-1.  On the **Recent project templates** page of the **Create a new project** pane, use the search textbox to locate the **Class Library (.NET Framework)** template, select it, and click **Next**. 
+1. On the **Recent project templates** page of the **Create a new project** pane, use the search textbox to locate the **Class Library (.NET Framework)** template, select the option supporting C#, and click **Next**. 
 1.  On the **Class Library (.NET Framework)** page of the **Create a new project** pane, specify the following settings and click **Create**:
 
     | Setting | Value |
@@ -209,7 +209,7 @@ In this task, you will update a NuGet package.
 
 1.  Switch to the **Visual Studio** window that has the **PartsUnlimited.Shared** project open (containing the NuGet source project).
 1.  In the **Solution Explorer** pane, right-click the **PartsUnlimited.Shared** project node, in the right-click menu, select **Add** and, in the cascading menu, select **New Item**.
-1.  In the **Add New Item - PartsUnlimitedShared** dialog box, in the list of **Visual C# items**, ensure that the **Class** template is selected, in the **Name** textbox at the bottom of the dialog box, type **"TaxService.cs"**, and click **Add** to add the class. 
+1. In the **Add New Item - PartsUnlimitedShared** dialog box, in the list of **Visual C# items**, ensure that the **Class** template is selected, in the **Name** textbox at the bottom of the dialog box, type **TaxService.cs**, and click **Add** to add the class. 
 
     > **Note**: We will pretend that tax calculation will be consolidated into this shared class and managed centrally so that other teams can simply work with the NuGet package.
 
