@@ -197,7 +197,7 @@ In this task, you will manage the newly created project wiki.
 
 1.  On the **Project Design** pane, at the bottom left corner, click **+ New page**.
 1.  On the page editor pane, in the **Page title** text box, type **Project Design Overview**, click **Save**, and then click **Close**.
-1.  Back in the pane listing the pages within the **Project Design** project wiki, locate the **Project Design Overview** entry, select it with the mouse pointer, drag and drop it above the **Project Design** page entry. 
+1.  Back in the pane listing the pages within the **Project Design** project wiki, locate the **Project Design Overview** entry, select it with the mouse pointer, drag and drop it above the **Project Design** page entry, selecting **Move** when prompted. 
 1.  Verify that the **Project Design Overview** entry is listed as the top level page with the home icon designating it as the wiki home page.
 
 ## Review
