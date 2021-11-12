@@ -241,10 +241,11 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     | Enter agent pool (press enter for default) | **az400m05l05a-pool** |
     | Enter agent name | **az400m05-vm0** |
     | Enter work folder (press enter for _work) | **Enter** |
-    | Enter Perform an unzip for tasks for each step. (press enter for N) | **Enter** |
+    | (If Prompted)Enter Perform an unzip for tasks for each step. (press enter for N) | **Enter** |
     | Enter run agent as service? (Y/N) (press enter for N) | **Y** |
     | Enter User account to use for the service (press enter for NT AUTHORITY\NETWORK SERVICE) | **Enter** |
-
+    | Enter whether to prevent service starting immediately after configuration is finished? | **Enter** |
+    
     > **Note**: You can run self-hosted agent as either a service or an interactive process. You might want to start with the interactive mode, since this simplifies verifying agent functionality. For production use, you should consider either running the agent as a service or as an interactive process with auto-logon enabled, since both persist their running state and ensure that the agent starts automatically if the operating system is restarted.
 
     > **Note**: Verify that the agent is reporting the **Listening for Jobs** status.
@@ -255,12 +256,12 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
 1.  In the browser window displaying the list of projects, click the tile representing your **Configuring Agent Pools and Understanding Pipeline Styles** project. 
 1.  On the **Configuring Agent Pools and Understanding Pipeline Styles** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. 
 1.  On the **Recent** tab of the **Pipelines** pane, select **PartsUnlimited** and, on the **PartsUnlimited** pane, select **Edit**.
-1.  On the **PartsUnlimited** edit pane, in the existing YAML-based pipeline, replace line **7** `vmImage: vs2017-win2016` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1. On the **PartsUnlimited** edit pane, in the existing YAML-based pipeline, replace line **7** `vmImage: vs2017-win2016` with the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m05l05a-pool
     demands:
-    - agent.name -equals az400m05-vm0
+    - agent.name -equals az400m05-vm0:
     ```
 1. For `Task: NugetInstaller@0`, click on **Settings (link that is displaying above the task in grey colour)**, modify **Advanced > NuGet Version > 4.0.0**  and click on **Add**. 
 1.  On the **PartsUnlimited** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline. 
