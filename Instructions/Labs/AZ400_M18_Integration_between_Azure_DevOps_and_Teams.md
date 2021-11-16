@@ -222,6 +222,8 @@ In this task, you will use customize subscriptions to Azure Pipelines in Microso
 1.  In the **Azure Pipelines** **Add subscription** panel, in the **Build status** dropdown list, ensure that **[Any]** is selected and click **Submit**.
 1.  In the **Azure Pipelines** **Add subscription** panel, click **OK** to acknowledge the confirmation message.
 1.  In the **Azure Pipelines** **View subscriptions** panel, review the list of subscriptions and close the panel.
+1.  Switch to the web browser displaying the **Tailwind Traders** project in the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**, on the Pipelines pane, click the **Website-CI** entry, and, while on the Website-CI pane, click **Run Pipeline > Run**. 
+1. The Teams channel will post notifications about the failed execution of the pipeline (the pipeline has missing setup).
 
 
 ## Review
