@@ -89,7 +89,7 @@ In this task, you will examine the use of Terraform in provisioning Azure Resour
 
 1.  In the folder hierarchy of the **Terraform** repo, expand the **Terraform** folder and click **webapp.tf**.
 1.  On the **webapp.tf** review the content of the **webapp.tf** file and click **Edit**.
-1.  Add a new line following line 11, enter the following text starting in the new line, click **Commit**, and, on the **Commit** pane, click **Commit** again.
+1.  Add a new line following line 13, enter the following text starting in the new line, click **Commit**, and, on the **Commit** pane, click **Commit** again.
 
     ```
     provider "azurerm" {
