@@ -188,9 +188,9 @@ In this task, you will configure the build and release pipelines in the Azure De
 
     >**Note**: You will first modify the references to the Docker image.
 
-1.  On the **Docker** repository pane, in the list of files, select **docker-compos.ci.build.yml**.
-1.  On the **docker-compos.ci.build.yml** pane, click **Edit**, replace line **5** that references the target Docker image with `image: az400mp/aspnetcore-build:1.0-2.0`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
-1.  On the **Docker** repository pane, in the list of files, naviagate to the **MyHealth.Web** folder and select **Dockerfile**.
+1.  On the **AKS** repository pane, in the list of files, select **docker-compose.ci.build.yml**.
+1.  On the **docker-compose.ci.build.yml** pane, click **Edit**, replace line **5** that references the target Docker image with `image: az400mp/aspnetcore-build:1.0-2.0`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
+1.  On the **AKS** repository pane, in the list of files, navigate to the **src/MyHealth.Web** folder and select **Dockerfile**.
 1.  On the **Dockerfile** pane, click **Edit**, replace line **1** that references the base Docker image with `FROM az400mp/aspnetcore1.0:1.0.4`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
 1.  In the web browser window displaying the Azure DevOps portal with the **Deploying a multi-container application to AKS** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
 
@@ -204,7 +204,8 @@ In this task, you will configure the build and release pipelines in the Azure De
 
     >**Note**: Wait for the authorization process to complete. This step creates an Azure service connection, which defines and secures a connection to the target Azure subscription, using Service Principal Authentication (SPA). 
 
-1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab (**Refresh the list if needed, typing out the ACR name does not work!**).
+1.  In the list of tasks of the pipeline, with the **Run services** task selected, on the **Docker Compose** pane on the right side, in the **Azure Container Registry** dropdown list, select the entry representing the ACR instance you created earlier in this lab. 
+     >**Note**: **Refresh** the list if needed and choose previously created ACR. **If no option is shown, type the full ACR name: ACRNAME.azurecr.io**).
 1.  Repeat the previous two steps to configure the **Azure subscription** (next time do not Authorize again, use the created **Available Azure service connections** ) and **Azure Container Registry** settings in the **Build services**, **Push services**, and **Lock services** tasks, but instead of selecting your Azure subscription in this case, select the newly created service connection. 
 
     >**Note**: The pipeline consists of the following tasks
