@@ -190,7 +190,7 @@ In this exercise, you will implement self-hosted Azure DevOps agent.
 In this task, you will configure the LOD VM as an Azure DevOps self-hosting agent and use it to run a build pipeline.
 
 1.  Within the Lab Virtual machine (Lab VM) or your own computer, start a web browser, navigate to [the Azure DevOps portal](https://dev.azure.com) and sign in by using the Microsoft account associated with your Azure DevOps organization.
-1.  In the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
+1.  In the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, then click the **Security** in the dropdown menu, click **Personal access tokens**, on the **Personal Access Tokens** pane, and click **+ New Token**.
 1.  On the **Create a new personal access token** pane, click the **Show all scopes** link and, specify the following settings and click **Create** (leave all others with their default values):
 
     | Setting | Value |
