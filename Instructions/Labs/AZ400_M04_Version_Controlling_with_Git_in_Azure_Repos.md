@@ -154,7 +154,7 @@ In this task, you will create a branch by using the Azure DevOps portal and use 
 
     > **Note**: Alternatively, you can access the project page directly by navigating to the [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Version%20Controlling%20with%20Git%20in%20Azure%20Repos) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name. 
 
-1.  In the web browser window, navigate to the **Commits** pane of the project and select **Branches**.
+1.  In the web browser window, navigate to the **Repos** pane of the project and select **Branches**.
 1.  On the **Branches** pane, click **New branch**.
 1.  In the **Create a branch** panel, in the **Name** textbox, type **release**, ensure that **master** appears in the **Based on** dropdown list, in the **Work items to link** drop-down list, select one or more available work items, and click **Create**.
 1.  Switch to the **Visual Studio Code** window. 
@@ -174,7 +174,7 @@ In this task, you will use the Azure DevOps portal to delete and restore the bra
 1.  On the **All** tab of the **Branches** pane, in the **Search branch name** text box, type **release**. 
 1.  Review the **Deleted branches** section containing the entry representing the newly deleted branch. 
 1.  In the **Deleted branches** section, hover the mouse pointer over the **release** branch entry to reveal the ellipsis symbol on the right side.
-1.  Click the ellipsis, in the pop-up menu and select **Restore**.
+1.  Click the ellipsis, in the pop-up menu and select **Restore branch**.
 
     > **Note**: You can use this functionality to restore a deleted branch as long as you know its exact name.
 
