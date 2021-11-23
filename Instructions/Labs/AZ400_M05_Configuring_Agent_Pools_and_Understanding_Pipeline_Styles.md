@@ -106,17 +106,16 @@ In this task, you will convert a classic pipeline into a YAML pipeline
 1.  On the **Runs** tab of the **PartsUnlimitedE2E** pane, in the upper right corner, click the vertical ellipsis (three vertical dots) symbol and, in the dropdown menu, click **Export to YAML**. This will automatically download the **PartsUnlimitedE2E.yml** file to your local **Downloads** folder.
 
     > **Note**: The **Export to YAML** feature replaces an older **View YAML** option available from the pipeline editor pane within the Azure DevOps portal, which was limited to viewing YAML content one job at a time. The new functionality leverages existing classic and YAML pipeline infrastructure, including YAML parsing library, which results in more accurate translation between the two. It supports the following pipeline components:
-
-    - Single and multiple jobs
-    - Checkout options
-    - Execution plan parallelism
-    - Timeout and name metadata
-    - Demands
-    - Schedules and other triggers
-    - Pool selection, including jobs which differ from the default
-    - All tasks and all inputs, including optimizing for default inputs
-    - Job and step conditions
-    - Task group unrolling
+    > - Single and multiple jobs
+    > - Checkout options
+    > - Execution plan parallelism
+    > - Timeout and name metadata
+    > - Demands
+    > - Schedules and other triggers
+    > - Pool selection, including jobs which differ from the default
+    > - All tasks and all inputs, including optimizing for default inputs
+    > - Job and step conditions
+    > - Task group unrolling
 
     > **Note**: The only components not covered by the new functionality are variables and timezone translation. Variables defined in YAML override variables set in the user interface of the Azure DevOps portal. If the **Export to YAML** feature detects presence of Classic pipeline variables, they will be explicitly included in the comments within the newly generated YAML pipeline definition. Similarly, since cron schedules in YAML are expressed in UTC, while classic schedules rely on the organization’s timezone, their presence is also included in the comments.
 
