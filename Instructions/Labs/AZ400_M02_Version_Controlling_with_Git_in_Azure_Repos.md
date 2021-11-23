@@ -95,7 +95,7 @@ In this task, you will install and configure Git and Visual Studio Code, includi
     ```git
     git config --global credential.helper wincred
     ```
-1.  In the **TERMINAL** pane, run the following commands to configure a user name and email for Git commits (replace the placeholders in braces with your preferred user name and email):
+1.  In the **TERMINAL** pane, run the following commands to configure a user name and email for Git commits (replace the placeholders in braces with your preferred user name and email eliminating the < and > symbols):
 
     ```git
     git config --global user.name "<John Doe>"
