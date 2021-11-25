@@ -196,7 +196,7 @@ In this task, you will configure the build and release pipelines in the Azure De
 
     >**Note**: You will now modify the build pipeline.
 
-1.  On the **Pipelines** pane, click the entry representing the **MyHealth.AKS.build** pipeline and, on the **MyHealth.AKS.build** pane, click **Edit**.
+1.  On the **Pipelines** pane, under **All** option, click the entry representing the **MyHealth.AKS.build** pipeline and, on the **MyHealth.AKS.build** pane, click **Edit**.
 
 1.  On the **MyHealth.AKS.build** pipeline pane, ensure that the **Pipeline** entry is selected and, in the **Agent Specifications** drop-down list, select **ubuntu-18.04**.
 1.  In the list of tasks of the pipeline, click the **Replace tokens in appsettings.json** task, in the **Token pattern** dropdown list select ```__...__``` . 
@@ -219,7 +219,7 @@ In this task, you will configure the build and release pipelines in the Azure De
     | **Publish Build Artifacts** |  publishes **mhc-aks.yaml** & **myhealth.dacpac** files to the artifact drop location in Azure DevOps so that they can be used in the subsequent release |
 
     >**Note**: The **appsettings.json** file contains details of the database connection string used to connect to the Azure SQL database, which you created earlier in this lab. The **mhc-aks.yaml** manifest file contains configuration details of **deployments**, **services** and **pods** which will be deployed in Azure Kubernetes Service. For more information regarding deployment manifests, refer to [AKS Deployments and YAML manifests](https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#deployments-and-yaml-manifests)
-1.  In the list of the **Pipeline variables**, update the values of the **ACR** and **SQLserver** variables with the values you recorded at the end of the previous task, then click the down-facing caret next to the **Save & queue** button, click **Save** to save the changes, and, when prompted again, click **Save**.
+1.  In the list of the **Pipeline variables**, update the values of the **ACR** and **SQLserver** variables with the values you recorded at the end of the previous task (SQLPassword is **P2ssw0rd1234**, SQLuser is **sqladmin**, SQLdatabase is **mhcdb**), then click the down-facing caret next to the **Save & queue** button, click **Save** to save the changes, and, when prompted again, click **Save**.
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, in the **Pipelines** section, click **Releases**. 
 1.  On the **Pipelines / Releases** pane, select the **MyHealth.AKS.Release** entry and click **Edit**.
 1.  On the **All pipelines / MyHealth.AKS.Release** pane, in the rectangle representing the **Dev** stage of the deployment, click the **2 jobs, 3 tasks** link.
@@ -238,7 +238,7 @@ In this task, you will configure the build and release pipelines in the Azure De
 
 1.  On the **Tasks** pane of the **Dev** stage of the **MyHealth.AKS.Release** release pipeline, click the **Variables** tab. 
 1.  In the list of the **Pipeline variables**, update the value of the **ACR** variable to the Azure Container Registry name you recorded at the end of the previous task. 
-1.  In the list of the **Pipeline variables**, update the values of the **SQLserver** variable to the name of the logical server you recorded at the end of the previous task. 
+1.  In the list of the **Pipeline variables**, update the values of the **SQLserver** variable to the name of the logical server you recorded at the end of the previous task (SQLPassword is **P2ssw0rd1234**, SQLuser is **sqladmin**, SQLdatabase is **mhcdb**). 
 1.  In the upper right corner of the **All pipelines / MyHealth.AKS.Release** pane, click **Save**, and, when prompted, click **Save** again to save the changes.
 
     >**Note**: In the list of pipeline variables, **DatabaseName** is set to **mhcdb**, **SQLuser** is set to **sqladmin**, and **SQLpassword** is set to **P2ssw0rd1234**. If you entered different values when creating the Azure SQL database earlier in this lab, update the values of the variables accordingly.
@@ -248,7 +248,7 @@ In this task, you will configure the build and release pipelines in the Azure De
 In this task, you will trigger the build and release pipelines and validate their completion.
 
 1.  In the web browser window displaying the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, in the **Pipelines** section, click **Pipelines**. 
-1.  On the **Pipelines** pane, select the **MyHealth.AKS.build** pipeline, on the **MyHealth.AKS.build** pane, click **Run pipeline**, and, on the **Run pipeline** pane, click **Run**.
+1.  On the **Pipelines** pane, **All** option, select the **MyHealth.AKS.build** pipeline, on the **MyHealth.AKS.build** pane, click **Run pipeline**, and, on the **Run pipeline** pane, click **Run**.
 1.  On the build pipeline run pane, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
 
     >**Note**: The build will generate and push the Docker image to ACR. After the build completes, you can review the build summary. 
