@@ -91,7 +91,7 @@ In this task, you will configure the Azure Pipelines project based on the fork o
 
 1. In the Azure DevOps portal, click on **Pipelines** in the navigation panel on the left.
 
-1. Click on the **New pipeline** button at top right.
+1. Click on the **Create pipeline** button at top right.
 
 1.  On the **Select a repository** pane of the **Pipelines** view in the Azure DevOps portal, select the fork of the GitHub calculator repository you created in the previous task.
 
