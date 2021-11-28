@@ -228,13 +228,13 @@ In this task, you will deploying a web app to Azure by using Azure DevOps pipeli
 
 1.  Switch to the web browser displaying the Azure portal and navigate to the App Service web app you provisioned earlier in the lab. 
 1.  On the App Service web app blade, click in the vertical menu on the left side, in the **Settings** section, click **Configuration** tab.
-1.  In the list of **Application settings**, click the **APPINSIGHTS_INSTRUMENTATIONKEY** entry. 
+1. In the list of **Application settings**, click the **APPINSIGHTS_INSTRUMENTATIONKEY** entry. (If you don't see this entry, then select **Application Insights** under Settings and **Enable** Aplication Insights, and then select **Apply**.) 
 1.  On the **Add/Edit application setting** blade, copy the text in the **Value** textbox and click **Cancel**.
 
     > **Note**: This is the default setting added during the App Service web app deployment, which already contains the Application Insights ID. We need to add a new setting expected by our app, with a different name but the matching value. This is a specific requirement for our sample.
 
 1.  In the **Application settings** section, click **+ New application setting**.
-1.  On the **Add/Edit application setting** blade, in the **Name** textbox, type **Keys:ApplicationInsights:InstrumentationKey**, in the **Value** textbox, type the string of characters you copied into Clipboard and click **OK**.
+1. On the **Add/Edit application setting** blade, in the **Name** textbox, type **Keys:ApplicationInsights:InstrumentationKey**, in the **Value** textbox, type the string of characters you copied into Clipboard and click **OK**. Select **Save**.
 
     > **Note**: Changes to the application settings and connection strings trigger restart of the web app.
 
@@ -400,7 +400,7 @@ In this task, you will use Application Insights to investigate performance of th
 
 1.  On the **Alerts** blade, in the toolbar, click **+ New alert rule**.
 1.  On the **Create alert rule** blade, note that, in the **Scope** section, the current Application Insights resource will be selected by default. 
-1.  On the **Create alert rule** blade, in the **Condition** section, click **Select condition**.
+1.  On the **Create alert rule** blade, in the **Condition** section, click **Add condition**.
 1.  On the **Configure signal logic** blade, search for and select the **Failed requests** metric.
 1.  On the **Configure signal logic** blade, scroll down to the **Alert logic** section, ensure that **Threshold** is set to **Static** and set the **Threshold value** to **1**. 
 
