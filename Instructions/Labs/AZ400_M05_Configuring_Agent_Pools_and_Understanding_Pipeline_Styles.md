@@ -261,7 +261,7 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     ```yaml
     name: az400m05l05a-pool
     demands:
-    - agent.name -equals az400m05-vm0:
+    - agent.name -equals az400m05-vm0
     ```
 1. For `Task: NugetInstaller@0`, click on **Settings (link that is displaying above the task in grey colour)**, modify **Advanced > NuGet Version > 4.0.0**  and click on **Add**. 
 1.  On the **PartsUnlimited** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline. 
