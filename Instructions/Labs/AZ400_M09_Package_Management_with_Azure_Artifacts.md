@@ -77,7 +77,7 @@ In this task, you will configure Visual Studio to prepare for the lab.
     > **Note**: You can access the project page directly by navigating to the [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Package%20Management%20with%20Azure%20Artifacts](https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Package%20Management%20with%20Azure%20Artifacts) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name. 
 
 1.  In the vertical menu on the left side of the **Package Management with Azure Artifacts** pane, click **Repos**.
-1.  On the **Files** pane, click **Clone**, click **Clone in VS Code**, and, in the dropdown menu, select **Visual Studio**.
+1. On the **Files** pane, click **Clone**, select the drop-down arrow next to **Clone in VS Code**, and, in the dropdown menu, select **Visual Studio**.
 1.  If prompted whether to proceed, click **Open**. 
 1.  If prompted, sign in with the user account you used to set up your Azure DevOps organization.
 1.  Within the Visual Studio interface, in the **Azure DevOps** pop-up window, accept the default local path and click **Clone**. This will automatically import the project into Visual Studio and open a new web browser tab displaying the Migration Report page.
@@ -129,7 +129,7 @@ In this task, you will create and publish a NuGet package.
 
     > **Note**: We will now create a shared assembly that will be published as a NuGet package so that other teams can integrate it and stay up to date without having to work directly with the project source.
 
-1.  On the **Recent project templates** page of the **Create a new project** pane, use the search textbox to locate the **Class Library (.NET Framework)** template, select it, and click **Next**. 
+1. On the **Recent project templates** page of the **Create a new project** pane, use the search textbox to locate the **Class Library (.NET Framework)** template, select the template for C#, and click **Next**.
 1.  On the **Class Library (.NET Framework)** page of the **Create a new project** pane, specify the following settings and click **Create**:
 
     | Setting | Value |
@@ -209,7 +209,7 @@ In this task, you will update a NuGet package.
 
 1.  Switch to the **Visual Studio** window that has the **PartsUnlimited.Shared** project open (containing the NuGet source project).
 1.  In the **Solution Explorer** pane, right-click the **PartsUnlimited.Shared** project node, in the right-click menu, select **Add** and, in the cascading menu, select **New Item**.
-1.  In the **Add New Item - PartsUnlimitedShared** dialog box, in the list of **Visual C# items**, ensure that the **Class** template is selected, in the **Name** textbox at the bottom of the dialog box, type **"TaxService.cs"**, and click **Add** to add the class. 
+1. In the **Add New Item - PartsUnlimitedShared** dialog box, in the list of **Visual C# items**, ensure that the **Class** template is selected, in the **Name** textbox at the bottom of the dialog box, type **TaxService.cs**, and click **Add** to add the class. 
 
     > **Note**: We will pretend that tax calculation will be consolidated into this shared class and managed centrally so that other teams can simply work with the NuGet package.
 

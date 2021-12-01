@@ -89,13 +89,47 @@ In this task, you will examine the use of Terraform in provisioning Azure Resour
 
 1.  In the folder hierarchy of the **Terraform** repo, expand the **Terraform** folder and click **webapp.tf**.
 1.  On the **webapp.tf** review the content of the **webapp.tf** file and click **Edit**.
-1.  Add a new line following line 11, enter the following text starting in the new line, click **Commit**, and, on the **Commit** pane, click **Commit** again.
+1.  Add a new lines for the **provider** section, the file should like the following example:
 
     ```
+     terraform {
+      required_version = ">= 0.11" 
+      backend "azurerm" {
+      storage_account_name = "__terraformstorageaccount__"
+        container_name       = "terraform"
+        key                  = "terraform.tfstate"
+        access_key  ="__storagekey__"
+        }
+    }
     provider "azurerm" {
         features {} 
+      }
+
+    resource "azurerm_resource_group" "dev" {
+      name     = "PULTerraform"
+      location = "West Europe"
+    }
+
+    resource "azurerm_app_service_plan" "dev" {
+      name                = "__appserviceplan__"
+      location            = "${azurerm_resource_group.dev.location}"
+      resource_group_name = "${azurerm_resource_group.dev.name}"
+
+      sku {
+        tier = "Free"
+        size = "F1"
+      }
+    }
+
+    resource "azurerm_app_service" "dev" {
+      name                = "__appservicename__"
+      location            = "${azurerm_resource_group.dev.location}"
+      resource_group_name = "${azurerm_resource_group.dev.name}"
+      app_service_plan_id = "${azurerm_app_service_plan.dev.id}"
+
     }
     ```
+1.  Click **Commit**, and, on the **Commit** pane, click **Commit** again.
 
     > **Note**: **webapp.tf** is a terraform configuration file. Terraform uses its own file format, called HCL (Hashicorp Configuration Language), similar to YAML.
 

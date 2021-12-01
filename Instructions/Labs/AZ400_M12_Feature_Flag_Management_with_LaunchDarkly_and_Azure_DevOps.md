@@ -88,7 +88,7 @@ In this task, you will create a feature flag in LaunchDarkly
 
 1.  From your lab computer, start a web browser, navigate to the [LaunchDarkly web site](https://app.launchdarkly.com/), and sign in using your account. Your browser session will be redirected to the **Default Project** portal where you can create a feature flag. 
 1.  In the LaunchDarkly portal, in the vertical menu bar on the left, click **Feature flags**.
-1.  On the **Feature flags** pane, click **+ FLAG**.
+1. On the **Feature flags** pane, click **Create FLAG**.
 1.  On the **Create a feature flag** pane, in the **Name** text box, type **Member portal** and click the **SAVE FLAG** button.
 
     > **Note**: You've created a flag named **Member Portal**. Let's assume that you want to use this flag to determine the visibility of the **Member Portal** feature in your ASP.NET MVC web app. 
@@ -113,11 +113,11 @@ In this task, you will integrate LaunchDarkly in your Web application.
     > **Note**: In case the repo is empty, in the **Import a repository** section, select **Import**, on the **Import a Git repository** pane, in the **Clone URL** text box, enter `https://github.com/hsachinraj/PartsUnlimited.git`, and click **Import**.
 
 1.  On the **Files** pane, click **Clone**.
-1.  On the **Clone Repository** pane, in the **IDE** drop-down list, select **Visual Studio**. If prompted, select **Open Microsoft Visual Studio Web Protocol Handler Selector**. This will automatically launch Visual Studio. 
+1. On the **Clone Repository** pane, in the **IDE** drop-down list, select **Visual Studio**. If prompted, select **Open Microsoft Visual Studio Web Protocol Handler Selector**. This will automatically launch Visual Studio. Sign in using the Microsoft account associated with your Azure DevOps subscription. 
 1.  Within the Visual Studio window, in the **Azure DevOps** dialog box, click **Clone** and, if prompted, sign in using the Microsoft account associated with your Azure DevOps subscription. 
 1.  Within the Visual Studio window, click the top level **Git** menu, click **Local repositories**, click **Folder**, in the **Select Folder**, navigate to the local folder into which you cloned the LaunchDarkly repository, and click **Select Folder**.
 1.  Within the Visual Studio window, click the top level **View** menu and, in the dropdown menu, click **Git Changes**. 
-1.  Within the Visual Studio window, at the top of the **Git Changes** pane, in the **master** dropdown list, click the down-pointing arrow head, in the drop-down dialog box, click **Remotes**, and, in the list of remote branches, select **origin/launch-darkly**. 
+1. Within the Visual Studio window, at the top of the **Git Changes** pane, in the **master** dropdown list, click the down-pointing arrow head, in the drop-down dialog box, click **Remotes**, and, in the list of remote branches, select **origin/launch-darkly**. Select **Check out**. 
 
     > **Note**: This will automatically check out the **launch-darkly** branch. 
 
@@ -180,18 +180,18 @@ In this task, you will integrate LaunchDarkly in your Web application.
 
     > **Note**: Similarly in **AccountController.cs** we have added LaunchDarkly code to **Login()** method which is responsible to show Login page once you click on **Member portal** icon. If the flag in LaunchDarkly is false, an HttpNotFound error will be returned for the Login page.
 
-1.  In the Visual Studio window, click **Save All** and click **IIS Express** to launch the application locally. 
+1. In the Visual Studio window, click **Save All** and click **IIS Express** to launch the application locally. If the **IIS Express** option isn't available, select the **Browser Link** option from the toolbar and select **Browser Link Dashboard**. From the dashboard select **View in browser**. 
 1.  Verify that the **Member portal** link no longer appears in the web browser displaying the Parts Unlimited website, since the **MemberPortal** flag is, at this point, turned off .
 
     > **Note**: This implements the feature flag control using LaunchDarkly. You could now manually enable the toggle from the LaunchDarkly portal manually. However, in this lab, we will configure it via Azure DevOps Release pipeline using the LaunchDarkly extension. To include feature flags as part of the release process, we will associate this change with an Azure DevOps work item. 
 
 1.  Close the web browser window displaying the web application interface.
 1.  In the Visual Studio window, if needed, click the top level **View** menu and, in the dropdown menu, click **Team Explorer**.
-1.  In the **Team Explorer** pane, on the **Home** page, click **Work Items**.
+1. In the **Team Explorer** pane, on the **Home** page, click **Work Items**. Select the link to view new hub if prompted.
 1.  In the **Team Explorer** pane, on the **Work Items** page, note the single work item associated with this branch, including the work item ID. 
 1.  Double-click the entry representing the work item. This will automatically open another web browser tab, displaying the work item in the Azure DevOps portal. 
 1.  On the work item pane, verify that work item is assigned to you. 
-1.  Switch back to the Visual Studio window, navigate to the **Git Changes** pane, in the **Enter a message** textbox, type **Integated LaunchDarkly #<work\_item\_ID>**, where **<work\_item\_ID>** represents the ID you noted earlier, click the down-pointing arrow head next to the **Commit All** button, and, in the dropdown list, click **Commit All and Push**. 
+1. Switch back to the Visual Studio window, navigate to the **Git Changes** pane, in the **Enter a message** textbox, type **Integated LaunchDarkly #<work\_item\_ID>**, where **<work\_item\_ID>** represents the ID you noted earlier, click the down-pointing arrow head next to the **Commit All** button, and, in the dropdown list, click **Commit All and Push**. If the **Commit All** is greyed out you can select the up arrow to perform the push. 
 
 #### Task 3: Automatically rollout LaunchDarkly feature flags during release
 
@@ -206,7 +206,7 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
     > **Note**: Make sure you copy the token. You will not be able to retrieve it once you leave the current page.
 
 1.  Switch back to the browser window displaying the Azure DevOps portal and, on the **LaunchDarkly** project pane, click **Project settings**. 
-1.  On the **Project details** pane, in the **Pipelines** section, click **Service connections** and then click **New service connection**.
+1. On the **Project details** pane, in the **Pipelines** section, click **Service connections** and then click **Create service connection**.
 1.  On the **New service connection** pane, click **LaunchDarkly** and then click **Next**.
 1.  On the **New LaunchDarkly service connection** pane, in the **Access token** text box, paste the access token you retrieved earlier in this task, in the **Service connection name** text box, type **az-400 m12l01 LaunchDarkly**, and click **Save**.
 1.  In the Azure DevOps portal, in the vertical menu on the left side, click **Boards** and, on the **Work items** pane, click the work item you assigned to yourself in the previous task.
@@ -247,7 +247,7 @@ In this task, you will configure automatic roll out of the LaunchDarkly feature 
     > **Note**: This completes configuration of the release pipeline. 
 
 1.  In the Azure DevOps portal, in the vertical menu bar on the left side, in the **Pipelines** section, select **Pipelines**.
-1.  On the **Pipelines** pane, click the entry representing the **LaunchDarkly-CI** build pipeline, on the **LaunchDarkly-CI** pane, click **Run pipeline*, and, on the **Run pipeline** pane, click **Run**.
+1. On the **Pipelines** pane, click the entry representing the **LaunchDarkly-CI** build pipeline, on the **LaunchDarkly-CI** pane, click **Run pipeline**, and, on the **Run pipeline** pane, click **Run**.
 
     > **Note**: This CI pipeline compiles .Net Core project. Once the build completes successfully a release would be triggered to deploy app and rollout feature flag in LaunchDarkly.
 

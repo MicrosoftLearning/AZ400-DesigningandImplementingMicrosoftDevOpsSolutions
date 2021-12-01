@@ -292,22 +292,22 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     ```
 
 1.  Record the output, including the username at the end of the output string. 
-1.  Run the following to open the **new_vm_web.yml** file in the Nano text editor:
+1.  Run the following to open the **new_vm_web.yml** file in the Code text editor:
 
     ```bash
-    nano ~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/new_vm_web.yml
+    code ~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/new_vm_web.yml
     ```
 
-1.  In the nano editor, if needed, change the name of the region in the `dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'` entry to the name of the Azure region you are targeting for deployment. 
+1.  In the Code editor, if needed, change the name of the region in the `dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'` entry to the name of the Azure region you are targeting for deployment. 
 
     >**Note**: Make sure that this region matches the Azure region where you created the **az400m14l03rg** resource group.
 
-1.  In the nano editor, change the value of `vm_size` entry from `Standard_A0` to `Standard_DS1_v2`.
-1.  In the nano editor, locate the SSH string towards the end of the file, in the `key_data` entry, delete the existing key value and replace it with the key value that you recorded earlier in this task. 
+1.  In the Code editor, change the value of `vm_size` entry from `Standard_A0` to `Standard_DS1_v2`.
+1.  In the Code editor, locate the SSH string towards the end of the file, in the `key_data` entry, delete the existing key value and replace it with the key value that you recorded earlier in this task. 
 
     >**Note**: Make sure that the value of `admin_username` entry that is included in the file matches the user name you used to sign in to the Azure VM hosting the Ansible control system (**azureuser**). The same user name must be used in the `path` entry of `ssh_public_keys` section.
 
-1.  Within the Nano editor interface, press **ctrl + o** key combination, press the **Enter** key, and then press **ctrl + x** key combination to save the changes you made and close the file.
+1.  Within the Code editor interface, click the **...** on the top right, and select **Save**.
 
     >**Note**: Next, you will deploy an Azure VM into the resource group created at the beginning of the lab. Use the following values for the deployment: 
 
@@ -351,13 +351,13 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
 
     >**Note**: Wait for the deployment to complete. This might take about 3 minutes. 
 
-1.  Run the following to create a new file named **myazure_rm.yml** and open it in the Nano text editor:
+1.  Run the following to create a new file named **myazure_rm.yml** and open it in the Code text editor:
 
     ```bash
-    nano ./myazure_rm.yml
+    code ./myazure_rm.yml
     ```
 
-1.  Within the Nano editor interface, paste the following content:
+1.  Within the Code editor interface, paste the following content:
 
     ```bash
     plugin: azure_rm
@@ -370,7 +370,7 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
       key: tags
     ```
 
-1.  Within the Nano editor interface, press **ctrl + o** key combination, press the **Enter** key, and then press **ctrl + x** key combination to save the changes you made and close the file.
+1.  Within the Code editor interface, click the **...** on the top right, and select **Save**.
 1.  Back in the Bash session in the Cloud Shell pane, within the SSH session to the Azure VM configured as the Ansible control node, run the following to perform a ping test, verifying that the dynamic inventory file includes the newly deployed Azure VM:
 
     ```bash
