@@ -178,22 +178,29 @@ In this task, you will add a YAML build definition to the existing project.
 
 1.  On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
 1.  On the **Select a repository** pane, click **PartsUnlimited**.
-2.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
+1.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
 
     > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
 
-3.  Make sure  `trigger` is **master**.
+1.  Make sure  `trigger` is **master**.
 
     > **Note**: Review in Repos if your repository has **master** or **main** branch, organizations could choose default branch name for new repos: [Change the default branch](https://docs.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?view=azure-devops#choosing-a-name). 
 
-4.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'vs2017-win2016'`.
-5.  On the **Review your pipeline YAML** pane, click **Save and run**.
-6.  On the **Save and run** pane, accept the default settings and click **Save and run**.
-7.  On the pipeline run pane, in the **Jobs** section, click **Job** and monitor its progress and verify that it completes successfully. 
+1.  On the **Review your pipeline YAML** pane, in line **10**, replace `vmImage: 'windows-latest'` with `vmImage: 'windows-2019'`.
+1.  Remove the **VSTest@2** task:
+    ```yaml
+    - task: VSTest@2
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+    ```
+1.  On the **Review your pipeline YAML** pane, click **Save and run**.
+1.  On the **Save and run** pane, accept the default settings and click **Save and run**.
+1.  On the pipeline run pane, in the **Jobs** section, click **Job** and monitor its progress and verify that it completes successfully. 
 
     > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
 
-8.  Return to the pipeline run pane, switch from the **Summary** tab to the **Tests** tab, and review test statistics.
+1.  Return to the pipeline run pane, switch from the **Summary** tab to the **Tests** tab, and review test statistics.
 
 #### Task 3: Add continuous delivery to the YAML definition
 
@@ -285,7 +292,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       jobs:
       - job: Build
         pool:
-            vmImage: 'vs2017-win2016'
+            vmImage: 'windows-2019'
 
         variables:
             solution: '**/*.sln'
@@ -306,11 +313,6 @@ In this task, you will add continuous delivery to the YAML-based definition of t
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
 
-        - task: VSTest@2
-          inputs:
-            platform: '$(buildPlatform)'
-            configuration: '$(buildConfiguration)'
-
         - task: PublishBuildArtifacts@1
           inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -321,7 +323,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       jobs:
       - job: Deploy
         pool:
-            vmImage: 'vs2017-win2016'
+            vmImage: 'windows-2019'
         steps:
         - task: DownloadBuildArtifacts@0
           inputs:
