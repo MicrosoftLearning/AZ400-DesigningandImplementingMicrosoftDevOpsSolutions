@@ -80,10 +80,12 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
     >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'eastus').
-
+    
+    ```bash
+    LOCATION='<region>'
+    ```
     ```bash
     RESOURCEGROUPNAME='az400m11l01-RG'
-    LOCATION='<region>'
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
 
