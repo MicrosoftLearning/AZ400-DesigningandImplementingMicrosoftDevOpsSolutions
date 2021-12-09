@@ -82,5 +82,5 @@ body:
       label: Do you want to help us? 👏
       description: GitHub/Git uses Pull Requests (PR) to propose and collaborate on changes to a repository. **No git/github experience?** Follow the [video in the Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#easy-prs-using-github-no-gitgithub-knowledge-needed)
       options:
-        - label: Create a Pull Requestt by following this project's [Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#how-can-i-collaborate)
+        - label: Create a Pull Request by following this project's [Contribution Guide](https://github.com/MicrosoftLearning/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/blob/master/.github/CONTRIBUTING.md#how-can-i-collaborate)
           required: false
