@@ -130,7 +130,7 @@ In this task, you will convert a classic pipeline into a YAML pipeline
       displayName: Phase 1
       cancelTimeoutInMinutes: 1
       pool:
-        vmImage: vs2017-win2016
+        vmImage: windows-2019
       steps:
       - checkout: self
       - task: NuGetInstaller@0
@@ -142,7 +142,7 @@ In this task, you will convert a classic pipeline into a YAML pipeline
         name: VSBuild_2
         displayName: Build solution
         inputs:
-          vsVersion: 15.0
+          vsVersion: '17.0'
           msbuildArgs: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.stagingDirectory)" /p:IncludeServerNameInBuildInfo=True /p:GenerateBuildInfoConfigFile=true /p:BuildSymbolStorePath="$(SymbolPath)" /p:ReferencePath="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\Pex"
           platform: $(BuildPlatform)
           configuration: $(BuildConfiguration)
@@ -260,7 +260,7 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
 1.  In the browser window displaying the list of projects, click the tile representing your **Configuring Agent Pools and Understanding Pipeline Styles** project. 
 1.  On the **Configuring Agent Pools and Understanding Pipeline Styles** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. 
 1.  On the **Recent** tab of the **Pipelines** pane, select **PartsUnlimited** and, on the **PartsUnlimited** pane, select **Edit**.
-1.  On the **PartsUnlimited** edit pane, in the existing YAML-based pipeline, replace line **7** `vmImage: vs2017-win2016` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1.  On the **PartsUnlimited** edit pane, in the existing YAML-based pipeline, replace line **7** `vmImage: windows-2019` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m05l05a-pool
