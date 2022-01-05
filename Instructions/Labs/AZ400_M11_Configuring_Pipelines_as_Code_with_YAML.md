@@ -182,7 +182,7 @@ In this task, you will add a YAML build definition to the existing project.
 1.  On the **Select a repository** pane, click **PartsUnlimited**.
 1.  On the **Configure your pipeline** pane, click **ASP<nolink>.NET** to use this template as the starting point for your pipeline. This will open the **Review your pipeline YAML** pane.
 
-    > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Visual Studio 2017.
+    > **Note**: The pipeline definition will be saved as a file named **azure-pipelines.yml** in the root of the repository. The file will contain the steps required to build and test a typical ASP<nolink>.NET solution. You can also customize the build as needed. In this scenario, you will update the **pool** to enforce the use of a VM running Windows 2019.
 
 1.  Make sure  `trigger` is **master**.
 
@@ -201,8 +201,6 @@ In this task, you will add a YAML build definition to the existing project.
 1.  On the pipeline run pane, in the **Jobs** section, click **Job** and monitor its progress and verify that it completes successfully. 
 
     > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
-
-1.  Return to the pipeline run pane, switch from the **Summary** tab to the **Tests** tab, and review test statistics.
 
 #### Task 3: Add continuous delivery to the YAML definition
 
@@ -233,7 +231,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       jobs:
       - job: Deploy
         pool:
-          vmImage: 'vs2017-win2016'
+          vmImage: 'windows-2019'
         steps:
     ```
 
@@ -256,7 +254,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: By default, these two stages run independently. As a result, the build output from the first stage might not be available to the second stage without additional changes. To implement these changes, we will use one task to publish the build output at the end of the build stage and another to download it in the beginning of the deploy stage. 
 
-1.  Place the cursor on a blank line at the end of the build stage to add another task. (right below  `task: VSTest@2` )
+1.  Place the cursor on a blank line at the end of the build stage to add another task. (right below  `task: VSBuild@1` )
 1.  On the **Tasks** pane, search for and select the **Publish build artifacts** task. 
 1.  On the **Publish build artifacts** pane, accept the default settings and click **Add**. 
 
