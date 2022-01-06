@@ -203,7 +203,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
 
     >**Note**: Next you will need to configure the agent pool information required for deployment.
 
-1.  Select the **DB deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **vs2017-win2016**.
+1.  Select the **DB deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **windows-2019**.
 1.  Select the **Web App deployment** job, on the **Agent job** pane on the right side, in the **Agent pool** dropdown list, select **Azure Pipelines** and, next, in the **Agent Specification** dropdown list, select **ubuntu-18.04**.
 1.  At the top of the pane, click the **Variables** header.
 1.  In the list of pipeline variables, set the values of the following variables:
