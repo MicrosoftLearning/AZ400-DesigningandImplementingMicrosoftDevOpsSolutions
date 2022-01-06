@@ -126,7 +126,7 @@ In this task, you will create an Azure Key vault by using the Azure portal.
 For this lab scenario, we have an app that connects to a MySQL database. We intend to store the password for the MySQL database as a secret in the key vault.
 
 1.  In the Azure portal, in the **Search resources, services, and docs** text box, type **Key vaults** and press the **Enter** key. 
-1.  On the **Key vaults** blade, click **+ Add**. 
+1.  On the **Key vaults** blade, click **+ Create**. 
 1.  On the **Basics** tab of the **Create key vault** blade, specify the following settings and click **Next: Access policy**:
 
     | Setting | Value |
@@ -172,7 +172,6 @@ In this task, you will configure the Azure Pipeline to retrieve the secret from 
 1.  On your lab computer, start a web browser and navigate to the Azure DevOps project **Integrating Azure Key Vault with Azure DevOps** you created in the previous exercise.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
 1.  On the **Pipelines** pane, click the entry representing the **SmartHotel-CouponManagement-CI** pipeline. Click on **Edit**.
-1.  On the pipeline definition, modify the **Pipeline** > **Agent Specification** to **ubuntu 18.04**. Click **Save and Queue** > **Save and Run** to trigger a build.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
 1.  On the **SmartHotel-CouponManagement-CD** pane, click **Edit** in the upper right corner.
 1.  On the **All pipelines > SmartHotel-CouponManagement-CD** pane, select the **Task** tab and, in the dropdown menu, select **Dev**.
