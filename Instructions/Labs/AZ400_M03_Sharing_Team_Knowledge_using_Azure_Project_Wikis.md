@@ -79,7 +79,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 > **Note**: If your published wiki corresponds to a product version, you can publish new branches as you release new versions of your product. 
 
 1.  On you lab computer, in the Azure DevOps portal displaying the **Sharing Team Knowledge using Azure Project Wikis** project, in the vertical menu on the left side, in the **Overview** section, click **Wiki** and review the existing content. 
-1.  In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **TailwindTraders-Website** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
+1.  In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **TailwindTraders-Website** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **master**, and review the content of the main branch.
 1.  To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **Documents** folder and its **Images** subfolder, in the **Images** subfolder, locate the **Website.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **More**, and, in the dropdown menu, click **Download** to download the **Website.png** file to the local **Downloads** folder on your lab computer. 
 
     >**Note**: You will use this image in the next exercise of this lab.
@@ -91,7 +91,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
     | ------- | ----- |
     | Repository | **TailwindTraders-Website** |
     | Branch | **main** |
-    | Folder | **/Documents** |
+    | Folder | **/** |
     | Wiki name | **Tailwind Traders (Documents)** |
 
     >**Note**: This will automatically display the content of the **README** file.
@@ -103,8 +103,8 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
 In this task, you will manage content of the wiki you published in the previous task.
 
-1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **main** branch, in the repo folder hierarchy, select the **Documents** folder, in the upper right corner, click **+ New** and, in the dropdown menu, click **File**. 
-1.  In the **New file** panel, in the **New file name**, after the **/Documents/** prefix, type **.order**, and click **Create**.
+1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **master** branch, in the repo folder hierarchy, select the **Documents** folder, in the upper right corner, click **+ New** and, in the dropdown menu, click **File**. 
+1.  In the **New file** panel, in the **New file name**, after the **/** prefix, type **.order**, and click **Create**.
 1.  On the **Contents** tab of the **.order** pane, type the following and click **Commit**.
 
     ```text
@@ -117,7 +117,7 @@ In this task, you will manage content of the wiki you published in the previous 
 
     >**Note**: The order of wiki content should match the sequence of files and folders listed in the **.order** file.
 
-1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **main** branch, in the listing of files, under **Documents**, select **GitHubActions.md**, and on the **GitHubActions.md** pane, click **Edit**. 
+1.  In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **master** branch, in the listing of files, under **Documents**, select **GitHubActions.md**, and on the **GitHubActions.md** pane, click **Edit**. 
 1.  On the **GitHubActions.md** pane, directly below the `#GitHub Actions` header, add the following markdown element referencing one of the images within the **Documents** folder:
 
     ```
