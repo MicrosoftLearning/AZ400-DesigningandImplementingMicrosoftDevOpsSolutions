@@ -172,7 +172,7 @@ In this task, you will configure the Azure Pipeline to retrieve the secret from 
 1.  On your lab computer, start a web browser and navigate to the Azure DevOps project **Integrating Azure Key Vault with Azure DevOps** you created in the previous exercise.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
 1.  On the **Pipelines** pane, click the entry representing the **SmartHotel-CouponManagement-CI** pipeline. Click on **Edit**.
-2.   On the pipeline definition, make sure  the **Pipeline** > **Agent Specification** is **ubuntu 18.04**. Click **Save and Queue** > **Save and Run** to trigger a build.
+2.   On the pipeline definition, make sure  the **Pipeline** > **Agent Specification** is **ubuntu 18.04**. Click **Save and Queue** > **Queue** > **Run** to trigger a build.
 3.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
 4.  On the **SmartHotel-CouponManagement-CD** pane, click **Edit** in the upper right corner.
 5.  On the **All pipelines > SmartHotel-CouponManagement-CD** pane, select the **Task** tab and, in the dropdown menu, select **Dev**.
