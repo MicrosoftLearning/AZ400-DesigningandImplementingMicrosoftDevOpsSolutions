@@ -93,7 +93,7 @@ In this task, you will create a service principal by using the Azure CLI.
 
 You will need a service principal to deploy an app to an Azure resource from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key vault. 
 
-A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page. You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. It is recommended that you use an existing service principal when you want to have a pre-defined set of permissions.
+A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page. You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. It is recommended that you use an existing service principal when you want to have a pre-bdefined set of permissions.
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  In the Azure portal, click the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
@@ -172,9 +172,10 @@ In this task, you will configure the Azure Pipeline to retrieve the secret from 
 1.  On your lab computer, start a web browser and navigate to the Azure DevOps project **Integrating Azure Key Vault with Azure DevOps** you created in the previous exercise.
 1.  In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines** and verify that the **Pipelines** pane is displayed.
 1.  On the **Pipelines** pane, click the entry representing the **SmartHotel-CouponManagement-CI** pipeline. Click on **Edit**.
-1.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
-1.  On the **SmartHotel-CouponManagement-CD** pane, click **Edit** in the upper right corner.
-1.  On the **All pipelines > SmartHotel-CouponManagement-CD** pane, select the **Task** tab and, in the dropdown menu, select **Dev**.
+2.   On the pipeline definition, make sure  the **Pipeline** > **Agent Specification** is **ubuntu 18.04**. Click **Save and Queue** > **Save and Run** to trigger a build.
+3.  In the vertical navigational pane of the of the Azure DevOps portal, in the **Pipelines** section, select **Releases**. 
+4.  On the **SmartHotel-CouponManagement-CD** pane, click **Edit** in the upper right corner.
+5.  On the **All pipelines > SmartHotel-CouponManagement-CD** pane, select the **Task** tab and, in the dropdown menu, select **Dev**.
 
     > **Note**: The release definition for **Dev** stage has an **Azure Key Vault** task. This task downloads *Secrets* from an Azure Key Vault. You will need to point to the subscription and the Azure Key Vault resource created earlier in the lab.
 
