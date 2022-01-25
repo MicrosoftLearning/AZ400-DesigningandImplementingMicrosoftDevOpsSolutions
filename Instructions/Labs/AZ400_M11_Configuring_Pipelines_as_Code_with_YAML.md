@@ -282,6 +282,8 @@ In this task, you will add continuous delivery to the YAML-based definition of t
     > **Note**: This will automatically trigger a new build.
 
 1.  The pipeline will look similar to this example  (**Reference your own subscription and webapp on last task**):
+    
+     > **Note**: The indentation needs to be  correct to make it work, copy and pasting may modify it.
 
     ```
     trigger:
