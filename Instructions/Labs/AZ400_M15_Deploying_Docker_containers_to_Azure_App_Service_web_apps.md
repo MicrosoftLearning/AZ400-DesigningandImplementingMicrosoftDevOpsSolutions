@@ -159,7 +159,7 @@ In this task, you will use the Azure DevOps project you generated in the previou
 
 1.  On the **Docker** repository pane, in the list of files, select **docker-compose.ci.build.yml**.
 1.  On the **docker-compose.ci.build.yml** pane, click **Edit**, replace line **5** that references the target Docker image with `image: az400mp/aspnetcore-build:1.0-2.0`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
-1.  On the **Docker** repository pane, in the list of files, navigate to the **MyHealth.Web** folder and select **Dockerfile**.
+1.  On the **Docker** repository pane, in the list of files, navigate to the **src/MyHealth.Web** folder and select **Dockerfile**.
 1.  On the **Dockerfile** pane, click **Edit**, replace line **1** that references the base Docker image with `FROM az400mp/aspnetcore1.0:1.0.4`, select **Commit** and, when prompted for confirmation, click **Commit** again. 
 1.  In the web browser window displaying the Azure DevOps portal with the **Deploying Docker containers to Azure App Service web apps** project open, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**.
 
