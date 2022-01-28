@@ -238,7 +238,8 @@ In this task, you will configure the build and release pipelines in the Azure De
 
 1.  On the **Tasks** pane of the **Dev** stage of the **MyHealth.AKS.Release** release pipeline, click the **Variables** tab. 
 1.  In the list of the **Pipeline variables**, update the value of the **ACR** variable to the Azure Container Registry name you recorded at the end of the previous task. 
-1.  In the list of the **Pipeline variables**, update the values of the **SQLserver** variable to the name of the logical server you recorded at the end of the previous task (SQLPassword is **P2ssw0rd1234**, SQLuser is **sqladmin**). 
+1.  In the list of the **Pipeline variables**, update the values of the **SQLserver** variable to the name of the logical server you recorded at the end of the previous task (SQLPassword is **P2ssw0rd1234**, SQLuser is **sqladmin**, DatabaseName is **mhcdb**). 
+
 1.  In the upper right corner of the **All pipelines / MyHealth.AKS.Release** pane, click **Save**, and, when prompted, click **Save** again to save the changes.
 
     >**Note**: In the list of pipeline variables, **DatabaseName** is set to **mhcdb**, **SQLuser** is set to **sqladmin**, and **SQLpassword** is set to **P2ssw0rd1234**. If you entered different values when creating the Azure SQL database earlier in this lab, update the values of the variables accordingly.
