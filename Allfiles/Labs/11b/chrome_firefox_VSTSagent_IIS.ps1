@@ -63,9 +63,5 @@ Start-Process -FilePath "$workdir\firefox.exe" -ArgumentList "/S"
 
 Start-Sleep -s 35
 
-# Remove the installer
-
-rm -Force $workdir\firefox*
-
 #copy geckodriver
 Invoke-WebRequest https://github.com/Microsoft/almvm/blob/master/labs/vstsextend/selenium/armtemplate/geckodriver.exe?raw=true -OutFile "C:\Program Files\Mozilla Firefox\geckodriver.exe"
