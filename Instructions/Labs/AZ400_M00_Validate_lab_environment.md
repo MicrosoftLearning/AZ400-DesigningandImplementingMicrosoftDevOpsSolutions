@@ -11,7 +11,7 @@ lab:
 
 1. Get a new **Azure Pass promocode** (valid for 30 days) from the instructor or other source.
 2. Use a private browser session to get a new **Microsoft Account (MSA)** at [Microsoft account](https://account.microsoft.com) or use an existing one.
-3. Using the same browser session, go to [Microsoft Azure Pass](https://www.microsoftazurepass.com) to redeem your Azure Pass using your Microsoft Account (MSA). Fore details, see [Redeem a Microsoft Azure Pass](https://www.microsoftazurepass.com/Home/HowTo?Length=5). Follow the instructions for redemption. 
+3. Using the same browser session, go to [Microsoft Azure Pass](https://www.microsoftazurepass.com) to redeem your Azure Pass using your Microsoft Account (MSA). For details, see [Redeem a Microsoft Azure Pass](https://www.microsoftazurepass.com/Home/HowTo?Length=5). Follow the instructions for redemption. 
 4. Using the same browser session, go to [Microsoft Azure](https://portal.azure.com), then search at the top of the portal screen for **Azure DevOps**. In the resulting page, click **Azure DevOps organizations**. 
 5. Next, click on the link labelled **My Azure DevOps Organizations** or navigate directly to [My Information](https://aex.dev.azure.com).
 6. On the **We need a few more details** page, select **Continue**.
