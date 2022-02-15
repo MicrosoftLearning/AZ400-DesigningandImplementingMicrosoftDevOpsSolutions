@@ -135,10 +135,6 @@ In this task, you will track and review the new build job.
 
     > **Note**: The summary view provides overview details about the build, including details about commits, tests, and artifacts.
 
-3.  Select the **Tests** tab to review tests for this build. 
-
-    > **Note**: You also have easy access to the pipeline editor, the ability to queue a new build, and download the artifacts of this build.
-
 #### Task 3: Invoking a continuous integration build
 
 In this task, you will trigger a continuous integration build.
