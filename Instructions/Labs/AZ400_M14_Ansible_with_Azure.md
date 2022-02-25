@@ -134,7 +134,7 @@ In this task, you will install and configure Ansible on the Azure VM you deploye
     ```bash
     sudo apt-get update
     ```
-1.  Run the following commends to add and install VSCode (whenever you are prompted for confirmation, type **y** and press the **Enter** key):
+1.  Run the following commands to add and install VSCode (whenever you are prompted for confirmation, type **y** and press the **Enter** key):
     ```
     sudo apt-get install wget
     ```
