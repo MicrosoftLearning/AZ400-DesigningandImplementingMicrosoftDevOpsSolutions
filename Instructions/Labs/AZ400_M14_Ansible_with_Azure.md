@@ -134,6 +134,25 @@ In this task, you will install and configure Ansible on the Azure VM you deploye
     ```bash
     sudo apt-get update
     ```
+1.  Run the following commends to add and install VSCode (whenever you are prompted for confirmation, type **y** and press the **Enter** key):
+    ```
+    sudo apt-get install wget
+    ```
+    ```
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+    ```
+    ```
+    sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+    sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+    ```
+    ```
+    rm -f packages.microsoft.gpg
+    ```
+    ```
+    sudo apt update
+    sudo apt install apt-transport-https
+    sudo apt install code
+    ```
 
 1.  Run the following to install Ansible and the required Azure modules (**make sure that you run the commands individually, line by line**, and, whenever you are prompted for confirmation, type **y** and press the **Enter** key):
 
