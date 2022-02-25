@@ -123,7 +123,7 @@ In this task, you will review the results of creating the DevOps Starter project
 1.  On the workflow run page, review the workflow status, as well as the listing of **Annotations** and **Artifacts**.
 1.  On the GitHub repository page, in the toolbar, click **Settings** and, on the **Settings** tab, click **Secrets**.
 1.  On the **Action secrets** pane, note the **AZURE_CREDENTIALS** entry, representing the credentials necessary to access the target Azure subscription. 
-1.  Navigate to the **az400m08l01/Application/SampleWebAppplication/Views/Home/Index.cshtml** GitHub repository page and, in the upper right corner, click the pencil icon to switch to the edit mode.
+1.  Navigate to the **az400m08l01/Application/SampleWebApplication/Views/Home/Index.cshtml** GitHub repository page and, in the upper right corner, click the pencil icon to switch to the edit mode.
 1.  Change the line 17 to `<div class="description line-1"> GitHub Workflow has been successfully updated</div>`.
 1.  Scroll down to the bottom of the page and click **Commit changes**.
 1.  On the GitHub repository page, in the toolbar, click **Actions**.
