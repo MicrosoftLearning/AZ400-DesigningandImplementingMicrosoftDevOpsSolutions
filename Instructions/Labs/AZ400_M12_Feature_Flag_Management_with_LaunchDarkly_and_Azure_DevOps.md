@@ -86,7 +86,7 @@ In this exercise, you will configure feature flags in Azure DevOps by using Laun
 
 In this task, you will create a feature flag in LaunchDarkly
 
-1.  From your lab computer, start a web browser, navigate to the [LaunchDarkly web site](https://app.launchdarkly.com/), and sign in using your account. Your browser session will be redirected to the **Default Project** portal where you can create a feature flag. 
+1.  From your lab computer, start a web browser, navigate to the [LaunchDarkly web site](https://app.launchdarkly.com/), and create a user account. Your browser session will be redirected to the **Default Project** portal where you can create a feature flag. 
 1.  In the LaunchDarkly portal, in the vertical menu bar on the left, click **Feature flags**.
 1. On the **Feature flags** pane, click **Create FLAG**.
 1.  On the **Create a feature flag** pane, in the **Name** text box, type **Member portal** and click the **SAVE FLAG** button.
