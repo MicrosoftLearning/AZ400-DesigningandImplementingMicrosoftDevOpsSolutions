@@ -142,7 +142,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 1.  On the container registry blade, in the vertical menu on the left side, in the **Settings** section, click **Access keys**.
 1.  On the **Access keys** blade of the container registry instance, identify the values of the **Registry name**, **Login server**, **Admin user**, and **password** entries.
 
-    >**Note**: Record the values of **Registry name**, **Login server**, and **password** (the registry names and the admin user name should match). You will need them later in this lab.
+    >**Note**: Record the values of **Registry name** and **Login server** (the registry names and the admin user name should match). You will need them later in this lab.
 
 
 ### Exercise 2: Deploy a Docker container to Azure App Service web app by using Azure DevOps
