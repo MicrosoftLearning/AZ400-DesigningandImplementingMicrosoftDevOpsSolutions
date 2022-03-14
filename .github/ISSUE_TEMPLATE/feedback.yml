@@ -36,28 +36,29 @@ body:
         - Lab 00 Validate lab environment
         - Lab 01 Agile Planning and Portfolio Management with Azure Boards
         - Lab 02 Version Controlling with Git in Azure Repos
-        - Lab 03 Sharing Team Knowledge using Azure Project Wikis
-        - Lab 04 Version Controlling with Git in Azure Repos
-        - Lab 05 Configuring Agent Pools and Understanding Pipeline Styles
-        - Lab 06a Enabling Continuous Integration with Azure Pipelines
-        - Lab 06b Integrating External Source Control with Azure Pipelines
+        - Lab 03: Version Controlling with Git in Azure Repos
+        - Lab 04: Configuring Agent Pools and Understanding Pipeline Styles
+        - Lab 05: Enabling Continuous Integration with Azure Pipelines
+        - Lab 06: Implementing GitHub Actions by using DevOps Starter
+        - Lab 07: Integrating External Source Control with Azure Pipelines
         - Lab 07 Integrating Azure Key Vault with Azure DevOps
-        - Lab 08 Implementing GitHub Actions by using DevOps Starter
-        - Lab 09 Package Management with Azure Artifacts
-        - Lab 10a Controlling Deployments using Release Gates
-        - Lab 10b Creating a Release Dashboard
-        - Lab 11a Configuring Pipelines as Code with YAML
-        - Lab 11b Setting Up and Running Functional Tests
-        - Lab 12 Feature Flag Management with LaunchDarkly and Azure DevOps
-        - Lab 13 Azure Deployments Using Resource Manager Templates
-        - Lab 14a Ansible with Azure
-        - Lab 14b Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
-        - Lab 15 Deploying Docker containers to Azure App Service web apps
-        - Lab 16 Deploying a multi-container application to Azure Kubernetes Services
-        - Lab 17 Monitoring Application Performance with Application Insights
-        - Lab 18 Integration between Azure DevOps and Teams
-        - Lab 19 Implement Security and Compliance in an Azure DevOps pipeline
-        - Lab 20 Managing technical debt with SonarCloud and Azure DevOps 
+        - Lab 08: Controlling Deployments using Release Gates
+        - Lab 09: Creating a Release Dashboard
+        - Lab 10: Feature Flag Management with LaunchDarkly and Azure DevOps
+        - Lab 11: Configuring Pipelines as Code with YAML
+        - Lab 12: Integrating Azure Key Vault with Azure DevOps
+        - Lab 13: Setting Up and Running Functional Tests
+        - Lab 14: Ansible with Azure
+        - Lab 15: Automating infrastructure deployments in the Cloud with Terraform and Azure Pipelines
+        - Lab 16: Azure Deployments Using Resource Manager Templates
+        - Lab 17: Package Management with Azure Artifacts
+        - Lab 18: Deploying Docker containers to Azure App Service web apps
+        - Lab 19: Deploying a multi-container application to Azure Kubernetes Services
+        - Lab 20: Integration between Azure DevOps and Teams
+        - Lab 21: Monitoring Application Performance with Application Insights
+        - Lab 22: Sharing Team Knowledge using Azure Project Wikis
+        - Lab 23: Implement Security and Compliance in an Azure DevOps pipeline
+        - Lab 24: Managing technical debt with SonarCloud and Azure DevOps 
     validations:
       required: true
   - type: textarea
