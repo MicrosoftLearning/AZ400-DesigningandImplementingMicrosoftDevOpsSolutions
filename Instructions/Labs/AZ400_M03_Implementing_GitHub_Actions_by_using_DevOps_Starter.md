@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 06: Implementing GitHub Actions by using DevOps Starter'
-    module: 'Module 3: Implement CI with Azure Pipelines and GitHub Actions'
+    title: 'Lab 07: Implementing GitHub Actions by using DevOps Starter'
+    module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Lab 06: Implementing GitHub Actions by using DevOps Starter
+# Lab 07: Implementing GitHub Actions by using DevOps Starter
 # Student lab manual
 
 ## Lab overview

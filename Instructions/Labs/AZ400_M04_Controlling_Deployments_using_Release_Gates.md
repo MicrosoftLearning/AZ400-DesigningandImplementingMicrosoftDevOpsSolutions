@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 08: Controlling Deployments using Release Gates'
+    title: 'Lab 09: Controlling Deployments using Release Gates'
     module: 'Module 04: Design and implement a release strategy'
 ---
 
-# Lab 08: Controlling Deployments using Release Gates
+# Lab 09: Controlling Deployments using Release Gates
 # Student lab manual
 
 ## Lab overview

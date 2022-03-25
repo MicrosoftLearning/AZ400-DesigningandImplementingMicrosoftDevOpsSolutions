@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab 01: Agile Planning and Portfolio Management with Azure Boards'
-    module: 'Module 1: Get started on a DevOps transformation journey'
+    module: 'Module 01: Get started on a DevOps transformation journey'
 ---
 
 # Lab 01: Agile Planning and Portfolio Management with Azure Boards

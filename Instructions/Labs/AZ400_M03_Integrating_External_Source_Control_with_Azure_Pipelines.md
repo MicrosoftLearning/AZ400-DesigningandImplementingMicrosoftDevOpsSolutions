@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 07: Integrating External Source Control with Azure Pipelines'
-    module: 'Module 3: Implement CI with Azure Pipelines and GitHub Actions'
+    title: 'Lab 08: Integrating External Source Control with Azure Pipelines'
+    module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Lab 07: Integrating External Source Control with Azure Pipelines
+# Lab 08: Integrating External Source Control with Azure Pipelines
 # Student lab manual
 
 ## Lab overview

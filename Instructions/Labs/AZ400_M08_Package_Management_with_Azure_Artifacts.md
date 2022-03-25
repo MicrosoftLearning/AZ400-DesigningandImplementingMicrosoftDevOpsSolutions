@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab 17: Package Management with Azure Artifacts'
-    module: 'Module 07: Design and implement a dependency management strategy'
+    module: 'Module 08: Design and implement a dependency management strategy'
 ---
 
 # Lab 17: Package Management with Azure Artifacts

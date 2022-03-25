@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Lab 23: Implement Security and Compliance in an Azure DevOps pipeline'
-    module: 'Module 10: Implement security and validate code bases for compliance'
+    title: 'Lab 15: Implement Security and Compliance in an Azure DevOps pipeline'
+    module: 'Module 07: Implement security and validate code bases for compliance'
 ---
 
-# Lab 23: Implement Security and Compliance in an Azure DevOps pipeline
+# Lab 15: Implement Security and Compliance in an Azure DevOps pipeline
 # Student lab manual
 
 ## Lab overview
 
 In this lab, you will use **WhiteSource Bolt with Azure DevOps** to automatically detect vulnerable open source components, outdated libraries, and license compliance issues in your code. You will leverage WebGoat, an intentionally insecure web application, maintained by OWASP designed to illustrate common web application security issues.
 
-[WhiteSource](https://www.whitesourcesoftware.com/) is the leader in continuous open source software security and compliance management. WhiteSource integrates into your build process, irrespective of your programming languages, build tools, or development environments. It works automatically, continuously, and silently in the background, checking the security, licensing, and quality of your open source components against WhiteSource constantly-updated deﬁnitive database of open source repositories.
+[WhiteSource](https://www.whitesourcesoftware.com/) is the leader in continuous open source software security and compliance management. WhiteSource integrates into your build process, irrespective of your programming languages, build tools, or development environments. It works automatically, continuously, and silently in the background, checking the security, licensing, and quality of your open source components against WhiteSource constantly-updated definitive database of open source repositories.
 
 WhiteSource provides WhiteSource Bolt, a lightweight open source security and management solution developed specifically for integration with Azure DevOps and Azure DevOps Server. Note that WhiteSource Bolt works per project and does not offer real-time alert capabilities, which requires **Full platform**, generally recommended for larger development teams that want to automate their open source management throughout the entire software development lifecycle (from the repositories to post-deployment stages) and across all projects and products.
 
@@ -99,11 +99,11 @@ In this task, you will trigger a build within your Java code-based Azure DevOps 
 
     | Tasks | Usage |
     | ---- | ------ |
-    | ![npm](images/m19/npm.png) **npm** |  Installs and publishes npm packages required for the build |
-    | ![maven](images/m19/maven.png) **Maven** |  builds Java code with the provided pom xml file |
-    | ![whitesourcebolt](images/m19/whitesourcebolt.png) **WhiteSource Bolt** |  scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses |
-    | ![copy-files](images/m19/copy-files.png) **Copy Files** |  copies the resulting JAR files from the source to the destination folder using match patterns |
-    | ![publish-build-artifacts](images/m19/publish-build-artifacts.png) **Publish Build Artifacts** |  publishes the artifacts produced by the build |
+    | ![npm](images/m07/npm.png) **npm** |  Installs and publishes npm packages required for the build |
+    | ![maven](images/m07/maven.png) **Maven** |  builds Java code with the provided pom xml file |
+    | ![whitesourcebolt](images/m07/whitesourcebolt.png) **WhiteSource Bolt** |  scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses |
+    | ![copy-files](images/m07/copy-files.png) **Copy Files** |  copies the resulting JAR files from the source to the destination folder using match patterns |
+    | ![publish-build-artifacts](images/m07/publish-build-artifacts.png) **Publish Build Artifacts** |  publishes the artifacts produced by the build |
     
 1.  Once the build completes, navigate back to the **Summary** tab and review **Tests and coverage** section. 
 

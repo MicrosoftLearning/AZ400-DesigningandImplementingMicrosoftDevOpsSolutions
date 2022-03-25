@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 22: Sharing Team Knowledge using Azure Project Wikis'
+    title: 'Lab 20: Sharing Team Knowledge using Azure Project Wikis'
     module: 'Module 09: Implement continuous feedback'
 ---
 
-# Lab 22: Sharing Team Knowledge using Azure Project Wikis
+# Lab 20: Sharing Team Knowledge using Azure Project Wikis
 # Student lab manual
 
 ## Lab overview

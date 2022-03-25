@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 16: Azure Deployments Using Resource Manager Templates'
+    title: 'Lab 14: Deployments using Azure Resource Manager templates'
     module: 'Module 06: Manage infrastructure as code using Azure, DSC, and third-party tools'
 ---
 
-# Lab 16: Azure Deployments Using Resource Manager Templates
+# Lab 14: Deployments using Azure Resource Manager templates
 # Student lab manual
 
 ## Lab overview

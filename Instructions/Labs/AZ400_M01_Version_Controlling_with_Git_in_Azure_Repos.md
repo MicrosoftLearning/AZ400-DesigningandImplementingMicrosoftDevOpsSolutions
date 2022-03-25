@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab 02: Version Controlling with Git in Azure Repos'
-    module: 'Module 1: Get started on a DevOps transformation journey'
+    module: 'Module 01: Get started on a DevOps transformation journey'
 ---
 
 # Lab 02: Version Controlling with Git in Azure Repos
