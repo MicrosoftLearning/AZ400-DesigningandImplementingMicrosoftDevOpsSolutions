@@ -101,14 +101,6 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
 
-1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal (replace the `<service-principal-name>` with any unique string of characters consisting of letters and digits):
-
-    ```
-    az ad sp create-for-rbac --name <service-principal-name> --role Contributor
-    ```
-
-    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
-
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes: 
 
     ```
@@ -118,6 +110,13 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
     > **Note**: Copy both values to a text file. You will need them later in this lab.
 
+1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal (replace the `<service-principal-name>` with any unique string of characters consisting of letters and digits, and replace `<subscription-id>` with the ID you discovered in the previous step):
+
+    ```
+    az ad sp create-for-rbac --name <service-principal-name> --role Contributor --scopes /subscriptions/<subscription-id>
+    ```
+
+    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
 
 #### Task 2: Create an Azure Key vault
 
