@@ -132,6 +132,7 @@ In this task, you will create two Azure web apps representing the **Canary** and
      ```
 
     > **Note**: Record the name of the Canary web app. You will need it later in this lab.
+    > Known bugs at https://github.com/Azure/azure-cli-extensions/issues/4490 and https://github.com/Azure/azure-cli-extensions/issues/4561 may cause errors in above commands. Workaround : "You should uninstall the extension with "az extension remove -n appservice-kube" and install the latest version (public preview) with "az extension add -n appservice-kube". You may have to upgrade your CLI version as well"
 
 1.  Wait for the provisioning process to complete and close the **Cloud Shell** pane. 
 
