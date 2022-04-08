@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Lab 03: Version Controlling with Git in Azure Repos'
-    module: 'Module 02: Work with Git for enterprise DevOps'
+    module: 'Module 02: Development for enterprise DevOps'
 ---
 
 # Lab 03: Version Controlling with Git in Azure Repos
