@@ -104,7 +104,8 @@ A service principal is automatically created by Azure Pipeline when you connect 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal (replace the `<service-principal-name>` with any unique string of characters consisting of letters and digits):
 
     ```
-    az ad sp create-for-rbac --name <service-principal-name> --role Contributor
+    SUB_ID=$(az account show --query id --output tsv)
+    az ad sp create-for-rbac --name <service-principal-name> --role contributor --scope /subscriptions/$SUB_ID
     ```
 
     > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
