@@ -166,7 +166,7 @@ In this task, you will create Azure resources using Terraform as part of your de
 
     > **Note**: To configure the Terraform [backend](https://www.terraform.io/docs/backends/), we need the access key to the Azure Storage account hosting the Terraform state. In this case, we are using Azure PowerShell task to retrieve the access key of the Azure Storage account provisioned in the previous task. By using `Write-Host "##vso[task.setvariable variable=storagekey]$key"` we are creating a pipeline variable that we will be able to use on later tasks.
 
-1.  In the list of tasks of the **Dev** stage, select the **Replace tokens in Terraform file** task.
+1.  In the list of tasks of the **Dev** stage, select the **Replace tokens in Terraform file** task. Update the **Token Pattern** property of the task to be `__...__` to match the tokens in the **webapp.tf** file.
 
     > **Note**: If you carefully reviewed the **webapp.tf** file, you should have noticed a few values suffixed and prefixed with **__**, such as `__terraformstorageaccount__`. The **Replace Tokens** task will replace those values with the variable values defined in the release pipeline.
      
