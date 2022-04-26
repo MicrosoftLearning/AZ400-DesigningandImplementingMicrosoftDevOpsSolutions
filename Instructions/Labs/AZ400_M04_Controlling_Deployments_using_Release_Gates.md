@@ -161,19 +161,19 @@ In this task, you will create two Azure web apps representing the **Canary** and
 
     > **Note**: You will create monitor alerts here, which you will use in later part of this lab. 
 
-1.  On the Application Insights resource blade, in the **Monitoring** section, click **Alerts** and then click **+ New alert rule**.
+1.  On the Application Insights resource blade, in the **Monitoring** section, click **Alerts** and then click **Create > Alert rule**.
 1.  On the **Create alert rule** blade, in the **Condition** section, click the **Add condition** link. 
-1.  On the **Configure signal logic** blade, in the **Search by signal name** textbox, type **Failed Requests** and select it. 
+1.  On the **Select a signal** blade, in the **Search by signal name** textbox, type **Failed Requests** and select it. 
 1.  On the **Configure signal logic** blade, in the **Alert logic** section, leave the **Threshold** set to **Static**, in the **Threshold value** textbox, type **0**, and click on **Done**.
 
     > **Note**: The rule will generate an alert whenever the number of failed requests is greater than 0 within the last 5 minutes. 
 
-1.  Back on the **Create alert rule** pane, in the **Alert rule details** specify the following settings and click **Create alert rule** (leave others with their default values):
+1.  Back on the **Create alert rule** pane, go to  **Details** specify the following settings and fill in information  (leave others with their default values)and clikc **Review + Create>Create**:
 
     | Setting | Value |
     | --- | --- |
     | Alert rule name | **PartsUnlimited_FailedRequests** |
-    | Severity | **Sev 2** |
+    | Severity | **2- Warning** |
     | Automatically resolve alerts | cleared |
 
     > **Note**: Metric alert rules might take up to 10 minutes to activate.
@@ -206,6 +206,7 @@ In this task, you will update release tasks.
 
 1.  In the **Resource Group name for Application Insights** dropdown list, select the **az400m10l01-RG** entry.
 1.  In the **Application Insights resource name** dropdown list, select the name of the **Canary** Application Insights resource, which should match the name of the **Canary** web app. 
+1.  In the **Agent Phase** for **Canary Environment**, right click on **Enable Continuous Monitoring** and **Disable selected task(s)**
 1.  On the **All pipelines > PartsUnlimited-CD** pane, click the **Tasks** tab and, in the dropdown list, select **Production**.
 1.  With the **Production** stage selected, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **Canary Environment** stage, shown under **Available Azure Service connections**, as we already created the service connection before when authorizing the subscription use.
 1. In the **App Service name** dropdown list, select the name of the **Prod** web app.
@@ -241,7 +242,7 @@ In this task, you will configure pre-deployment gates.
 
     > **Note**: Based on the value of the **Upper threshold** setting, if this query returns any active bug work Item, the release gate will fail.
 
-1.  On the **Pre-deployment conditions** pane, leave the value of the **Delay before evaluation** setting at **5 Minutes**. 
+1.  On the **Pre-deployment conditions** pane, leave the value of the **Delay before evaluation** setting at **0 Minutes**. 
 
     > **Note**: **Delay before evaluation** represents the time before the added gates are evaluated for the first time. If no gates are added, then the deployments wait for the duration before proceeding. To allow gate functions to initialize and stabilize (it may take some time for it to begin returning accurate results), we configure a delay before the results are evaluated and used to determine if the deployment should be approved or rejected.
 
@@ -279,7 +280,7 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
 
 1.  Back on the **All pipelines > PartsUnlimited-CD** pane, on the right edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 1.  On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
-1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
+1.  On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the **service connection** entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m10l01-RG** entry.
 1.  On **Post-deployment conditions** pane, expand the **Evaluation options** and configure the following options:
 
 - Set the value of **Time between re-evaluation of gates** to **5 Minutes**.
