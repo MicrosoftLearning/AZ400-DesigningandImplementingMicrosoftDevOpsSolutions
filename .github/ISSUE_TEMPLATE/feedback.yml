@@ -8,7 +8,7 @@ body:
       value: |
         # Thanks for taking the time to fill out this feedback report!
         
-        **Replace feedback name M00-LAB00:QUICK_DESCRIPTION, for example "M01-LAB01: My new feedback"**
+        **Replace feedback name LAB00:QUICK_DESCRIPTION, for example "LAB01: My new feedback"**
   - type: input
     id: contact
     attributes:
