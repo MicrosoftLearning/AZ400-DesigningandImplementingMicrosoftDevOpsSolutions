@@ -89,7 +89,7 @@ In this task, you will examine the use of Terraform in provisioning Azure Resour
 
 1.  In the folder hierarchy of the **Terraform** repo, expand the **Terraform** folder and click **webapp.tf**.
 1.  On the **webapp.tf** review the content of the **webapp.tf** file and click **Edit**.
-1.  Add a new lines for the **provider** section, the file should like the following example:
+1.  The file should look like the following example:
 
     ```
      terraform {
