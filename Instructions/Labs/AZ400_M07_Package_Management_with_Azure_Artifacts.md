@@ -195,8 +195,6 @@ In this task, you will import a NuGet package.
 1.  In the **Solution Explorer** pane, right-click the **References** node under the **PartsUnlimitedWebsite** project and, in the right-click menu, select **Manage NuGet Packages**. This will open the **NuGet: PartsUnlimitedWebsite** tab in the central pane of the window.
 1.  In the **NuGet: PartsUnlimitedWebsite** pane, click the **Browse** tab and, in the **Package source** drop-down list in the upper right corner of the pane, select **PartsUnlimitedShared**. 
 
-    > **Note**: The list of packages will consist only of the single package you just added.
-
 1.  Select the package and, in the **PartsUnlimited.Shared** pane, click **Install** to add it to the project.
 1.  When prompted, in the **Preview Changes** dialog box, click **OK**.
 1.  Press **Ctrl+Shift+B** to build the project and verify that the build completed successfully. 
@@ -262,7 +260,8 @@ In this task, you will update a NuGet package.
 
 1.  In the **NuGet: PartsUnlimitedWebsite** pane, click the **Updates** tab, in the search textbox, type **PartsUnlimited.Shared** and, on the right-hand side of the pane, next to the **Version: Latest stable 1.1.0** dropdown list, click **Update** to install the new version. 
 
-    > **Note**: There may be many NuGet updates available, but you should only need to update **PartsUnlimited.Shared**. Note that it may take a little while for the package to become completely available for updating. If you get an error, wait a moment and try again.
+    > **Note**: There may be many NuGet updates available, but you should only need to update **PartsUnlimited.Shared**. Note that it may take a little while for the package to become completely available for updating. If you get an error, wait a moment and try again. You can also try clearing the NuGet cache : VS –> Tools –> Nuget Package Manager –> Package manager Settings –> General.
+    
 
 1.  When prompted, in the **Preview Changes** dialog box, click **OK**.
 1.  Press the **F5** key to build and run the site. Verify that it works as expected.
