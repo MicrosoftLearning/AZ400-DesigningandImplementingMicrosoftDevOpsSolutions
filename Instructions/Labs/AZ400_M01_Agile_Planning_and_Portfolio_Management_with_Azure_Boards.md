@@ -252,7 +252,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: The current sprint has a pretty limited scope. There are two tasks in the **To do** stage. At this point, neither task has been assigned. Both show a numeric value to the right of **Unassigned** entry representing the remaining work estimate. 
 
-1.  In the rectangle representing the **Add page for most recent tutorial**, click the **Unassigned** entry and, in the list of user accounts, select your account to assign the task to yourself.
+1.  In the rectangle representing the **Add page for most recent tutorials**, click the **Unassigned** entry and, in the list of user accounts, select your account to assign the task to yourself.
 1.  Assign the **Add page for most recent tutorial** task to yourself. 
 
     > **Note**: This automatically updates the **Work By: Assigned To** section of the **Work details** pane.
@@ -279,9 +279,9 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: Note that the **Work details** panel has been updated to reflect your available bandwidth. The actual number displayed in the **Work details** panel might vary, but your total sprint capacity will be equal to the number of working days remaining till the end of the sprint, since you allocated 1 hour per day. Take a note of this value since you will use it in the upcoming steps.
 
-    > **Note**: One convenient feature of the boards is that you can easily update key data in-line. It's a good practice to regularly update the **Remaining Work** estimate to reflect the amount of time expected for each task. Let's say you've reviewed the work for the **Add page for most recent tutorial** task and found that it will actually take longer than originally expected. 
+    > **Note**: One convenient feature of the boards is that you can easily update key data in-line. It's a good practice to regularly update the **Remaining Work** estimate to reflect the amount of time expected for each task. Let's say you've reviewed the work for the **Add page for most recent tutorials** task and found that it will actually take longer than originally expected. 
 
-1.  On the **Taskboard** tab of the **Sprints** view, in the square box representing the **Add page for most recent tutorial**, set the estimated number of hours to match your total capacity for this sprint, which you identified in the previous step.
+1.  On the **Taskboard** tab of the **Sprints** view, in the square box representing the **Add page for most recent tutorials**, set the estimated number of hours to match your total capacity for this sprint, which you identified in the previous step.
 
     ![Review the "Work details" section information, team´s assigned time is bigger than capacity.](images/m1/over_capacity_v1.png)
 
