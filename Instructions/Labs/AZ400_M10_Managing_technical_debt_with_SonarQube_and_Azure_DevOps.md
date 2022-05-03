@@ -130,8 +130,8 @@ In this task, you will install and configure the SonarCloud Azure DevOps extensi
 1.  On the **Analyze with Azure Pipelines** page, in the **Install our extension** section, click **Continue**.
 
     > **Note**: You can skip extension creation if you have already installed it. 
-1.  On the **Add a new Sonarcloud Service Endpoint**, follow the steps mentioned on your Azure DevOps project, give the name **SonarSC** to the service connection, **check** the box for granting access to all pipelines and click **Verify and save**. Back on Sonarcloud website, clik on **continue**.
-1.  On the **Analyze with Azure Pipelines** page, in the **Configure Azure Pipelines** section, click **.NET**. This will display a sequence of steps required to **Prepare Analysis Configuration**, **Run Code Analysis**, and **Publish Quality Gate Result**. You will need this instructions for the pipeline definition. 
+1.  On the **Add a new Sonarcloud Service Endpoint**, follow the steps mentioned on your Azure DevOps project, give the name **SonarSC** to the service connection, **check** the box for granting access to all pipelines and click **Verify and save**. Back on Sonarcloud website, click on **continue**.
+1.  On the **Analyze with Azure Pipelines** page, in the **Configure Azure Pipelines** section, click **.NET**. This will display a sequence of steps required to **Prepare Analysis Configuration**, **Run Code Analysis**, and **Publish Quality Gate Result**. You will need these instructions for the pipeline definition. 
 
     > **Note**: Review the listing of steps to accomplish each of these objectives. You will implement them in the subsequent tasks.
 
@@ -150,7 +150,7 @@ In this task, you will begin creating the build pipeline for our project.
 
 1. Switch to the web browser window displaying the **SonarExamples** pane in the Azure DevOps portal. Go to **Project settings** and change **Visibility** to private and **Save**.
 
-    > **Note**: We need to change because we have pipelines enabled only for private projects.
+    > **Note**: This need to be done if you followed the steps in Mod 00 to setup a parallel job for private projects only and your organization currently has no jobs available for public project.
 
 #### Task 2: Create a pipeline by using the YAML editor
 
