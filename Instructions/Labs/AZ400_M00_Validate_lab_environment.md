@@ -9,7 +9,7 @@ lab:
 
 ## Instructions
 
-    > **Note**: Start at step 4, if you do already have a **personal Microsoft Account** setup and an active Microsoft Azure Pass subscription linked to that account.
+> **Note**: Start at step 4, if you do already have a **personal Microsoft Account** setup and an active Microsoft Azure Pass subscription linked to that account.
 
 1. Get a new **Azure Pass promocode** from the instructor or other source.
 2. Use a private browser session to get a new **personal Microsoft Account (MSA)** at [https://account.microsoft.com](https://account.microsoft.com).
