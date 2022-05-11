@@ -62,9 +62,9 @@ In this task, you will fork a GitHub repo and install Azure Pipelines in your Gi
 
     > **Note**: You have the option to specify repositories to include, but for the purposes of this lab, just include all of them. Note that Azure DevOps requires the listed set of permissions to fulfill its services.
 
-7. If prompted, authenticate with your GitHub password to continue.
-8. When prompted, on the **Setup your Azure Pipelines project** page, in the **Select your Azure DevOps organization** dropdown list, select your Azure DevOps account and click **Create a new project**.
-9. When prompted, on the **Setup your Azure Pipelines project** page, in the **Project name** textbox, type **Integrating External Source Control with Azure Pipelines**, leave the **Project visibility** set to **Private**, and click **Continue**.
+7.  If prompted, authenticate with your GitHub password to continue.
+8.  When prompted, on the **Setup your Azure Pipelines project** page, firstly, click **Switch Directories** and ensure 'Default Directory' is selected. Then, in the **Select your Azure DevOps organization** dropdown list, select your Azure DevOps account and click **Create a new project**.
+9.  When prompted, on the **Setup your Azure Pipelines project** page, in the **Project name** textbox, type **Integrating External Source Control with Azure Pipelines**, leave the **Project visibility** set to **Private**, and click **Continue**.
 10. On the **Azure Pipelines by Microsoft would like permission to** page, click **Authorize Azure Pipelines**.
 
 #### Task 2: Configuring your Azure Pipelines project

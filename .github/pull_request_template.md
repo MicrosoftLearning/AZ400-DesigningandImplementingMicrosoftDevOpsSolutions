@@ -1,4 +1,4 @@
-**Replace issue name M00-LAB00:QUICK_DESCRIPTION, for example "M01-LAB01: My new issue" (or same name as linked Issue)**
+**Replace issue name LAB00:QUICK_DESCRIPTION, for example "LAB01: My new issue" (or same name as linked Issue)**
 
 ## Related Issue
 
