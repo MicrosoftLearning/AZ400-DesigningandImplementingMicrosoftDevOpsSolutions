@@ -22,16 +22,16 @@ lab:
 
 YAML-based pipelines allow you to fully implement CI/CD as code, in which pipeline definitions reside in the same repository as the code that is part of your Azure DevOps project. YAML-based pipelines support a wide range of features that are part of the classic pipelines, such as pull requests, code reviews, history, branching, and templates.
 
-Regardless of the choice of the pipeline style, to build your code or deploy your solution by using Azure Pipelines, you need an agent. An agent hosts compute resources that runs one job at a time. Jobs can be run directly on the host machine of the agent or in a container. You have an option to run your jobs using Microsoft-hosted agents, which are managed for you, or implementing a self-hosted agent that you set up and manage on your own.
+Regardless of the choice of the pipeline style, to build your code or deploy your solution by using Azure Pipelines, you need an agent. An agent hosts compute resources that run one job at a time. Jobs can be run directly on the host machine of the agent or in a container. You have an option to run your jobs using Microsoft-hosted agents, which are managed for you, or implementing a self-hosted agent that you set up and manage on your own.
 
-In this lab, you will step through the process of converting a classic pipeline into a YAML-based one and running it first by using a Microsoft-hosted agent and then performing the equivalent task by using a self-hosted agent.
+In this lab, you'll step through converting a classic pipeline into a YAML-based one and running it first by using a Microsoft-hosted agent and then performing the equivalent task using a self-hosted agent.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- implement YAML-based pipelines
-- implement self-hosted agents
+- Implement YAML-based pipelines
+- Implement self-hosted agents
 
 ## Estimated timing: 45 minutes
 
@@ -59,9 +59,9 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1. On the **Create New Project** page, click **Navigate to project**.
 
-### Exercise 1: Author YAML-based Azure DevOps pipelines
+### Exercise 1: Author YAML-based Azure Pipelines
 
-In this exercise, you will convert a classic Azure DevOps pipeline into a YAML-based one.
+In this exercise, you will convert a classic Azure Pipeline into a YAML-based one.
 
 #### Task 1: Create an Azure DevOps YAML pipeline
 
