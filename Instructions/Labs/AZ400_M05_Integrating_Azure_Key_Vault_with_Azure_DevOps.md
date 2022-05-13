@@ -20,22 +20,22 @@ lab:
 
 ## Lab overview
 
-Azure Key Vault provides secure storage and management of sensitive data, such as keys, passwords, and certificates. Azure Key Vault includes supports for hardware security modules, as well as a range of encryption algorithms and key lengths. By using Azure Key Vault, you can minimize the possibility of disclosing sensitive data through source code, which is a common mistake made by developers. Access to Azure Key Vault requires proper authentication and authorization, supporting fine grained permissions to its content.
+Azure Key Vault provides secure storage and management of sensitive data, such as keys, passwords, and certificates. Azure Key Vault includes supports for hardware security modules and a range of encryption algorithms and key lengths. Using Azure Key Vault can minimize the possibility of disclosing sensitive data through source code, which is a common mistake made by developers. Access to Azure Key Vault requires proper authentication and authorization, supporting fine-grained permissions to its content.
 
-In this lab, you will see how you can integrate Azure Key Vault with an Azure DevOps pipeline by using the following steps:
+In this lab, you'll see how you can integrate Azure Key Vault with an Azure Pipeline by using the following steps:
 
-- create an Azure Key vault to store a MySQL server password as a secret.
-- create an Azure service principal to provide access to secrets in the Azure Key vault.
-- configure permissions to allow the service principal to read the secret.
-- configure pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+- Create an Azure Key Vault to store a MySQL server password as a secret.
+- Create an Azure service principal to provide access to secrets in the Azure Key Vault.
+- Configure permissions to allow the service principal to read the secret.
+- Configure pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
 - Create an Azure Active Directory (Azure AD) service principal.
-- Create an Azure key vault.
-- Track pull requests through the Azure DevOps pipeline.
+- Create an Azure Key Vault.
+- Tracks pull requests through the Azure Pipeline.
 
 ## Estimated timing: 40 minutes
 
@@ -229,9 +229,9 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 
 ## Review
 
-In this lab, you integrated Azure Key Vault with an Azure DevOps pipeline by using the following steps:
+In this lab, you integrated Azure Key Vault with an Azure Pipeline by using the following steps:
 
-- Created an Azure Key vault to store a MySQL server password as a secret.
-- Created an Azure service principal to provide access to secrets in the Azure Key vault.
+- Created an Azure Key Vault to store a MySQL server password as a secret.
+- Created an Azure service principal to provide access to secrets in the Azure Key Vault.
 - Configured permissions to allow the service principal to read the secret.
-- Configured pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+- Configured pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.

@@ -14,27 +14,27 @@ lab:
 
 - Microsoft Teams. This will be installed as part of prerequisites for this lab.
 
-- Set up an Office 365 subscription. Create a free trial subscription from [Microsoft Teams sign up page](https://teams.microsoft.com/start).
+- Set up a Microsoft 365 subscription. Create a free trial subscription from [Microsoft Teams sign-up page](https://teams.microsoft.com/start).
 
-> **Note**: Your Office 365 subscription and the Azure DevOps organization must share the same Azure Active Directory (Azure AD) tenant.
+> **Note**: Your Microsoft 365 subscription and the Azure DevOps organization must share the same Azure Active Directory (Azure AD) tenant.
 
 ## Lab overview
 
-**[Microsoft Teams](https://teams.microsoft.com/start)** is a hub for teamwork in Office 365. It allows you to manage and use all your team's chats, meetings, files, and apps together in one place. It provides software development teams with a hub for teams, conversations, content and tools from across Office 365 and Azure DevOps.
+**[Microsoft Teams](https://teams.microsoft.com/start)** is a hub for teamwork in Microsoft 365. It allows you to manage and use all your team's chats, meetings, files, and apps together in one place. It provides software development teams with a hub for teams, conversations, content, and tools from across Microsoft 365 and Azure DevOps.
 
-In this lab, you will implement integration scenarios between Azure DevOps services and Microsoft Teams.
+In this lab, you'll implement integration scenarios between Azure DevOps and Microsoft Teams.
 
-> **Note**: **Azure DevOps Services** integration with Microsoft Teams provides a comprehensive chat and collaborative experience across the development cycle. Teams can easily stay informed of important activities in your Azure DevOps team projects with notifications and alerts on work items, pull requests, code commits, as well as build and release events.
+> **Note**: **Azure DevOps Services** integration with Microsoft Teams provides a comprehensive chat and collaborative experience across the development cycle. Teams can easily stay informed of important activities in your Azure DevOps team projects with notifications and alerts on work items, pull requests, code commits, and build and release events.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Integrate Microsoft Teams with Azure DevOps
-- Integrate Azure DevOps Kanban boards and Dashboards in Teams
-- Integrate Azure Pipelines with Microsoft Teams
-- Install the Azure Pipelines app in Microsoft Teams
-- Subscribe for Azure Pipelines notifications
+- Integrate Microsoft Teams with Azure DevOps.
+- Integrate Azure DevOps Kanban boards and Dashboards in Teams.
+- Integrate Azure Pipelines with Microsoft Teams.
+- Install the Azure Pipelines app in Microsoft Teams.
+- Subscribe for Azure Pipelines notifications.
 
 ## Estimated timing: 60 minutes
 
@@ -72,7 +72,7 @@ In this task, you will create a team in Microsoft Teams.
 
     > **Note**: Alternatively, you can use a web browser and navigate to the [Microsoft Teams launch page](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home)
 
-1. When prompted to sign in, sign in with a user account that is part of the Office 365 subscription and has access to your Azure DevOps organization.
+1. When prompted to sign in, sign in with a user account that is part of the Microsoft 365 subscription and has access to your Azure DevOps organization.
 1. In Microsoft Teams, in the toolbar on the left side of the page, click **Teams** and then, at the bottom of the teams list, click **Join or create a team**.
 
     >**Note**: A team is a collection of people who gather together around a common goal.
@@ -175,7 +175,7 @@ In this task, you will subscribe to the Azure Pipeline notifications in Microsof
 1. In the **Azure Pipelines Sign in** pane, click **Sign in**.
 1. If prompted to grant **Service hooks (read and write)**, **Build (build an execute)**, **Release (read, write, execute, and manage)**, **Project and team (read)**, **Identity picker (read)**, and **Teams Integration** permissions, click **Accept** and then click **Close**.
 
-    >**Note**: Now you can run the `@azure pipelines subscribe [pipeline url]` command to subscribe to an Azure DevOps pipeline.
+    >**Note**: Now you can run the `@azure pipelines subscribe [pipeline url]` command to subscribe to an Azure Pipeline.
 
 1. Switch to the web browser displaying the **Tailwind Traders** project in the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**, on the **Pipelines** pane, click the **Website-CI** entry, and, while on the **Website-CI** pane, in the web browser window, copy its URL into Clipboard.
 

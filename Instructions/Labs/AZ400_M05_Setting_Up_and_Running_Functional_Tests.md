@@ -20,18 +20,18 @@ lab:
 
 ## Lab overview
 
-[Selenium](http://www.seleniumhq.org/) is a portable open source software-testing framework for web applications. It has the capability to operate on almost every operating system. It supports all modern browsers and multiple languages including .NET (C#), Java.
+[Selenium](http://www.seleniumhq.org/) is a portable open source software-testing framework for web applications. It can operate on almost every operating system. It supports all modern browsers and multiple languages, including .NET (C#) and Java.
 
-In this lab, you will learn how to execute Selenium test cases on a C# web application, as part of the Azure DevOps Release pipeline.
+This lab will teach you how to execute Selenium test cases on a C# web application as part of the Azure DevOps Release pipeline.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Configure a self-hosted Azure DevOps agent
-- Configure release pipeline
-- Trigger build and release
-- Run tests in Chrome and Firefox
+- Configure a self-hosted Azure DevOps agent.
+- Configure the release pipeline.
+- Trigger build and release.
+- Run tests in Chrome and Firefox.
 
 ## Estimated timing: 60 minutes
 

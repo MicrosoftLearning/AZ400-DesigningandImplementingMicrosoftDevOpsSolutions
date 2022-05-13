@@ -20,16 +20,16 @@ lab:
 
 ## Lab overview
 
-In this lab, you will step through creation of a release dashboard and the use of REST API to retrieve Azure DevOps release data, which you can make this way available to your custom applications or dashboards.
+In this lab, you'll step through creating a release dashboard and using REST API to retrieve Azure DevOps release data, which you can make available to your custom applications or dashboards.
 
-The lab leverages the Azure DevOps Starter resource, which automatically creates an Azure DevOps project that builds and deploys an application into Azure.
+The lab uses the Azure DevOps Starter resource, which automatically creates an Azure DevOps project that builds and deploys an application into Azure.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- create a release dashboard
-- use REST API to query release information
+- Create a release dashboard.
+- Use REST API to query release information.
 
 ## Estimated timing: 45 minutes
 

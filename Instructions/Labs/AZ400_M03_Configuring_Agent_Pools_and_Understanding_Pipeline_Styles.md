@@ -30,8 +30,8 @@ In this lab, you'll step through converting a classic pipeline into a YAML-based
 
 After you complete this lab, you will be able to:
 
-- Implement YAML-based pipelines
-- Implement self-hosted agents
+- Implement YAML-based pipelines.
+- Implement self-hosted agents.
 
 ## Estimated timing: 45 minutes
 

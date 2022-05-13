@@ -20,20 +20,20 @@ lab:
 
 ## Lab overview
 
-In this lab, you will learn how to implement a GitHub Action workflow that deploys an Azure web app by using DevOps Starter.
+In this lab, you'll learn how to implement a GitHub Action workflow that deploys an Azure web app using DevOps Starter.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Implement a GitHub Action workflow by using DevOps Starter
-- Explain the basic characteristics of GitHub Action workflows
+- Implement a GitHub Action workflow by using DevOps Starter.
+- Explain the basic characteristics of GitHub Action workflows.
 
 ## Estimated timing: 30 minutes
 
 ## Instructions
 
-### Exercise 1 : Create a DevOps Starter project
+### Exercise 1: Create a DevOps Starter project
 
 In this exercise, you will use DevOps Starter to facilitate provisioning of a number of resources, including:
 

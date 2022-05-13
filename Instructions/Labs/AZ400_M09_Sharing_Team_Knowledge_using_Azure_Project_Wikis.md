@@ -16,15 +16,15 @@ lab:
 
 ## Lab overview
 
-In this lab, you will create and configure wiki in an Azure DevOps, including managing markdown content and creating a Mermaid diagram.
+In this lab, you'll create and configure a wiki in Azure DevOps, including managing markdown content and creating a Mermaid diagram.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Create a wiki in an Azure Project
-- Add and edit markdown
-- Create a Mermaid diagram
+- Create a wiki in an Azure Project.
+- Add and edit markdown.
+- Create a Mermaid diagram.
 
 ## Estimated timing: 45 minutes
 
@@ -52,7 +52,7 @@ In this task, you will use Azure DevOps Demo Generator to generate a new project
 
 1. On the **Create New Project** page, click **Navigate to project**.
 
-### Exercise 1: Publish code as wiki
+### Exercise 1: Publish code as a wiki
 
 In this exercise, you will step through publishing an Azure DevOps repository as wiki and managing the published wiki.
 

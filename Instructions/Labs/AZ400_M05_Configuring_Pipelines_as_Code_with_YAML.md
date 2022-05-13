@@ -20,13 +20,13 @@ lab:
 
 ## Lab overview
 
-Many teams prefer to define their build and release pipelines using YAML. This allows them to access the same pipeline features as those using the visual designer, but with a markup file that can be managed like any other source file. YAML build definitions can be added to a project by simply adding the corresponding files to the root of the repository. Azure DevOps also provides default templates for popular project types, as well as a YAML designer to simplify the process of defining build and release tasks.
+Many teams prefer to define their build and release pipelines using YAML. This allows them to access the same pipeline features as those using the visual designer but with a markup file that can be managed like any other source file. YAML build definitions can be added to a project by simply adding the corresponding files to the repository's root. Azure DevOps also provides default templates for popular project types and a YAML designer to simplify the process of defining build and release tasks.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- configure CI/CD pipelines as code with YAML in Azure DevOps
+- Configure CI/CD pipelines as code with YAML in Azure DevOps.
 
 ## Estimated timing: 60 minutes
 

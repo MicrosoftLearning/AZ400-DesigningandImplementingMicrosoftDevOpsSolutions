@@ -20,19 +20,19 @@ lab:
 
 ## Lab overview
 
-Application Insights is an extensible Application Performance Management (APM) service for web developers on multiple platforms. You can use it to monitor your live web applications. It automatically detects performance anomalies, includes powerful analytics tools to help you diagnose issues, and helps you continuously improve performance and usability. It works for apps on a wide variety of platforms including .NET, Node.js and Java EE, hosted on-premises, hybrid, or any public cloud. It integrates with your DevOps process with connection points available in a variety of development tools. It also allows you to monitor and analyze telemetry from mobile apps through integration with Visual Studio App Center.
+Application Insights is an extensible Application Performance Management (APM) service for web developers on multiple platforms. You can use it to monitor your live web applications. It automatically detects performance anomalies, includes powerful analytics tools to help you diagnose issues, and helps you continuously improve performance and usability. It works for apps on various platforms, including .NET, Node.js, and Java EE, hosted on-premises, hybrid, or any public cloud. It integrates with your DevOps process with connection points available in various development tools. It also allows you to monitor and analyze telemetry from mobile apps through integration with Visual Studio App Center.
 
-In this lab, you'll learn about how you can add Application Insights to an existing web application, as well as how to monitor the application via the Azure portal.
+In this lab, you'll learn about how you can add Application Insights to an existing web application and how to monitor the application via the Azure portal.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Deploy Azure App Service web apps
-- Generate and monitor Azure web app application traffic by using Application Insights
-- Investigate Azure web app performance by using Application Insights
-- Track Azure web app usage by using Application Insights
-- Create Azure web app alerts by using Application Insights
+- Deploy Azure App Service web apps.
+- Generate and monitor Azure web app application traffic by using Application Insights.
+- Investigate Azure web app performance by using Application Insights.
+- Track Azure web app usage by using Application Insights.
+- Create Azure web app alerts by using Application Insights.
 
 ## Estimated timing: 60 minutes
 
@@ -159,13 +159,13 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
     -t SQLAzure --settings "DefaultConnectionString=$CONNSTRING" 
     ```
 
-### Exercise 1: Monitor an Azure App Service web app by using Azure Application Insights
+### Exercise 1: Monitor an Azure App Service web app using Azure Application Insights
 
-In this exercise, you will deploy a web app to Azure App Service by using Azure DevOps pipelines, generate traffic targeting the web app, and use Application Insights to review the web traffic, investigate application performance, track application usage, and configure alerting.
+In this exercise, you will deploy a web app to Azure App Service by using Azure Pipelines, generate traffic targeting the web app, and use Application Insights to review the web traffic, investigate application performance, track application usage, and configure alerting.
 
 #### Task 1: Deploy a web app to Azure App Service by using Azure DevOps
 
-In this task, you will deploying a web app to Azure by using Azure DevOps pipelines.
+In this task, you will deploying a web app to Azure by using Azure Pipelines.
 
 > **Note**: The sample project we are using in this lab includes a continuous integration build, which we will use without modifications. There is also a continuous delivery release pipeline that will require minor changes before it is ready for deployment to the Azure resources you implemented in the previous task.
 
@@ -447,4 +447,4 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 
 ## Review
 
-In this exercise, you deployed a web app to Azure App Service by using Azure DevOps pipelines, generated traffic targeting the web app, and used Application Insights to review the web traffic, investigate application performance, track application usage, and configure alerting.
+In this exercise, you deployed a web app to Azure App Service by using Azure Pipelines, generated traffic targeting the web app, and used Application Insights to review the web traffic, investigate application performance, track application usage, and configure alerting.

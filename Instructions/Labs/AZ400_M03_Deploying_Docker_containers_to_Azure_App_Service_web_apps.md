@@ -26,9 +26,9 @@ In this lab, you will learn how to use an Azure DevOps CI/CD pipeline to build a
 
 After you complete this lab, you will be able to:
 
-- Build a custom Docker image by using an Microsoft hosted Linux agent
-- Push an image to Azure Container Registry
-- Deploy a Docker image as a container to Azure App Service by using Azure DevOps
+- Build a custom Docker image by using an Microsoft hosted Linux agent.
+- Push an image to Azure Container Registry.
+- Deploy a Docker image as a container to Azure App Service by using Azure DevOps.
 
 ## Estimated timing: 60 minutes
 
@@ -129,7 +129,7 @@ In this task, you will use Azure Cloud Shell to create Azure resources required 
 
     >**Note**: Record the values of **Registry name** and **Login server** (the registry names and the admin user name should match). You will need them later in this lab.
 
-### Exercise 2: Deploy a Docker container to Azure App Service web app by using Azure DevOps
+### Exercise 2: Deploy a Docker container to Azure App Service web app using Azure DevOps
 
 In this exercise, you will deploy a Docker container to Azure App Service web app by using Azure DevOps.
 

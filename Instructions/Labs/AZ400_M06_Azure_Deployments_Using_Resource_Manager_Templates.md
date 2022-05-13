@@ -22,18 +22,18 @@ lab:
 
 ## Lab overview
 
-In this lab, you will create an Azure Resource Manager (ARM) template and modularize it by using the linked template concept. You will then modify the main deployment template to call the linked template and updated dependencies, and finally deploy the templates to Azure.
+In this lab, you'll create an Azure Resource Manager (ARM) template and modularize it using the linked template concept. You'll then modify the main deployment template to call the linked template and updated dependencies and finally deploy the templates to Azure.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Create Resource Manager template
-- Create a Linked template for storage resources
-- Upload Linked Template to Azure Blob Storage and generate SAS token
-- Modify the main template to call Linked template
-- Modify main template to update dependencies
-- Deploy resources to Azure using linked templates
+- Create a Resource Manager template.
+- Create a Linked template for storage resources.
+- Upload Linked Template to Azure Blob Storage and generate SAS token.
+- Modify the main template to call the Linked template.
+- Modify the main template to update dependencies.
+- Deploy resources to Azure using linked templates.
 
 ## Estimated timing: 60 minutes
 
