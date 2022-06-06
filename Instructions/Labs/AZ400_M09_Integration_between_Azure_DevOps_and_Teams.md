@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 18: Integration between Azure DevOps and Teams'
+    title: 'Lab 19: Integration between Azure DevOps and Teams'
     module: 'Module 09: Implement continuous feedback'
 ---
 
-# Lab 18: Integration between Azure DevOps and Teams
+# Lab 19: Integration between Azure DevOps and Teams
 
 # Student lab manual
 

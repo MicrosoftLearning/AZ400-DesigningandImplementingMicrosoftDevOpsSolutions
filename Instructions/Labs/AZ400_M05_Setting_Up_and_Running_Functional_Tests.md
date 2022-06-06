@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 13: Setting Up and Running Functional Tests'
+    title: 'Lab 12: Setting Up and Running Functional Tests'
     module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# Lab 13: Setting Up and Running Functional Tests
+# Lab 12: Setting Up and Running Functional Tests
 
 # Student lab manual
 
