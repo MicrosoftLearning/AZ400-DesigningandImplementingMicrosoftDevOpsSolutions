@@ -317,7 +317,7 @@ In this task, you will create an Azure VM hosting a web server by using an Ansib
     code ~/PartsUnlimitedMRP/Labfiles/AZ-400T05-ImplemntgAppInfra/Labfiles/ansible/new_vm_web.yml
     ```
 
-1.  In the Code editor, if needed, change the name of the region in the `dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'` entry to the name of the Azure region you are targeting for deployment. 
+1.  In the Code editor, if needed, change the name of the region in the <!-- {% raw %}) -->`dnsname: '{{ vmname }}.westeurope.cloudapp.azure.com'`<!-- {% endraw %}) --> entry to the name of the Azure region you are targeting for deployment. 
 
     >**Note**: Make sure that this region matches the Azure region where you created the **az400m14l03rg** resource group.
 
