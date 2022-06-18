@@ -8,7 +8,8 @@ lab:
 
 # Student lab manual
 
-## Lab requirements
+## Lab requirementsd
+test =ing
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/en-us/azure/devops/server/compatibility?view=azure-devops#web-portal-supported-browsers)
 
