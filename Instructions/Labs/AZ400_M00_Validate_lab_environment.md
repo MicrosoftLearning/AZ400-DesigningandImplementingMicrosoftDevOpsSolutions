@@ -5,6 +5,7 @@ lab:
 ---
 
 # Lab 00: Validate lab environment
+
 # Student lab manual
 
 ## Instructions
