@@ -98,7 +98,7 @@ In this task, you will create several Azure DevOps releases, including one that 
     > **Note**: Now, you will create a new release which deployment will fail. The failure will be caused by built-in assemblies test, which consider the change associated with the new release to be invalid.
 
 1. In the Azure DevOps portal, in the vertical menu on the left side, click **Repos**, in the list of folders in the repository, navigate to the **Applications\\aspnet-core-dotnet-core\\Pages** folder and click the **Index.cshtml** entry.
-1. On the **Index.cshtml** pane, click **Edit**, in line **4**, replace `ViewData["Title"] = "Home Page - ASP.NET Core";` with `ViewData["Title"] = "Home Page v1.2 - ASP.NET Core";` click **Commit**, and, on the **Commit** pane, click **Commit** again. This will automatically trigger the build pipeline.
+1. On the **Index.cshtml** pane, click **Edit**. In line **4**, replace `ViewData["Title"] = "Home Page - ASP.NET Core";` with `ViewData["Title"] = "Home Page v1.2 - ASP.NET Core";`. Click **Commit**. On the **Commit** pane, click **Commit** again. This will automatically trigger the build pipeline.
 1. In the Azure DevOps portal, in the vertical navigational pane on the left side, click **Pipelines**.
 1. On the **Recent** tab of the **Pipelines** pane, click the **az400m10l02-CI** entry, on the **Runs** tab of the **az400m10l02-CI** pane, select the most recent run, on the **Summary** tab of the run, in the **Jobs** section, click **Build** and monitor the job until its successful completion.
 1. Once the job completes, in the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Releases**.
