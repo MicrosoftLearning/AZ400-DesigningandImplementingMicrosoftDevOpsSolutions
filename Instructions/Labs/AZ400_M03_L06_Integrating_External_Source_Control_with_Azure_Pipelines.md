@@ -169,7 +169,7 @@ In this task, you will correct the invalid changes introduced in the pull reques
     > **Note**: It appears that the changes were made by someone who didn't realize that the plus signs before each variable were necessary to coerce those variables to their number representations. By removing them, JavaScript interpreted the middle plus sign as the string concatenation operator, which explains why 21 + 21 = 2121 in the failed test.
 
 1. On the **Modifying the add function #1** GitHub page, click the ellipsis symbol directly under the **Review changes** button and, in the drop-down menu, click **Edit file**.
-1. Revert the original changes by adding the plus signs in front of the **a** and **b** variables, resulting in 'add':      function(a,b) { return +a + +b },`. In addition, include a comment on the preceding line stating`// Using + operator to type cast variables as integers in order to prevent string concatenation`.
+1. Revert the original changes by adding the plus signs in front of the **a** and **b** variables, resulting in `'add':      function(a,b) { return +a + +b },`. In addition, include a comment on the preceding line stating `// Using + operator to type cast variables as integers in order to prevent string concatenation`.
 1. Scroll to the bottom of the page, replace the default commit message with **Fixing the add function**, ensure that the option to **Commit directly to the addition-cleanup branch** is selected, and click **Commit changes**.
 1. On the **Modifying the add function #1** GitHub page, select the **Conversation** tab.
 
