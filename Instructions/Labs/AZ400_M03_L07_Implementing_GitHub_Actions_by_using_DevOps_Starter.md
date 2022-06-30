@@ -116,17 +116,18 @@ In this task, you will review the results of creating the DevOps Starter project
 1. In the **All workflows** section, click the **Update Index.cshtml** entry.
 1. In the **devops-starter-workflow.yml** section, monitor the progress of deployment and verify that it completed successfully.
      > **Note**: If the **action using "azure/CLI@1" fails**, commit the following change to the **devops-starter-workflow.yml** file (change the default azure cli version) and verify it completes successfully:
-
-       ```
-       - name: Deploy ARM Template
-          uses: azure/CLI@v1
-          continue-on-error: false
-          with:
-            azcliversion: 2.29.2
-            inlineScript: |
-              az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
-              az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./ArmTemplates/windows-webapp-     template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}"   appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
-       ```
+     > <!-- {% raw %}) -->
+     > ```
+     >     - name: Deploy ARM Template
+     >       uses: azure/CLI@v1
+     >       continue-on-error: false
+     >       with:
+     >         azcliversion: 2.29.2
+     >         inlineScript: |
+     >           az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
+     >           az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./ArmTemplates/windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}" appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
+     > ```
+     > <!-- {% endraw %}) -->
 
 1. Switch to the browser window displaying the DevOps Starter blade in the Azure portal and click the **Browse** link next to the **Application endpoint** entry.
 1. In the newly opened web browser window, verify that the updated text representing the change you committed in the GitHub repo is displayed on the web app home page.
