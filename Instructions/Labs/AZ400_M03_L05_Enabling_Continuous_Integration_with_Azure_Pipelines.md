@@ -75,7 +75,7 @@ In this task, you will create and configure a build pipeline by using a predefin
 
     > **Note**: The default option for build pipelines involves the use of YAML. For this lab, you will use the classic editor.
 
-1. On the **Where is your code>?** pane, click the **Use the classic editor** link at the bottom of the page.
+1. On the **Where is your code?** pane, click the **Use the classic editor** link at the bottom of the page.
 
     > **Note**: You need to start by configuring the source repository. Every major platform is available, but the default options are all we need here. This build will use the **master** branch of the **PartsUnlimited** repo.
 
