@@ -145,7 +145,7 @@ In this task, you will create two Azure web apps representing the **Canary** and
 
     > **Note**: The rule will generate an alert whenever the number of failed requests is greater than 0 within the last 5 minutes.
 
-1.  Back on the **Create alert rule** pane, go to  **Details** specify the following settings and fill in information  (leave others with their default values)and clikc **Review + Create>Create**:
+1.  Back on the **Create alert rule** pane, go to  **Details** specify the following settings and fill in information  (leave others with their default values)and click **Review + Create>Create**:
 
     | Setting | Value |
     | --- | --- |
