@@ -296,7 +296,7 @@ In this task, you will use Application Insights to investigate performance of th
 
     > **Note**: After you've deployed your web app or web site to any server, you can set up tests to monitor its availability and responsiveness. Application Insights sends web requests to your application at regular intervals from points around the world. It alerts you if your application doesn't respond or responds slowly.
 
-1. On the **Availability** blade, in the toolbar, click **+ Add test**.
+1. On the **Availability** blade, in the toolbar, click **+ Add Classic test**.
 1. On the **Create test** blade, in the **Test name** textbox, type **Home page**, set the **URL** to the root of your App Service web app, and click **Create**.
 
     > **Note**: The test will not run immediately, so there won't be any data. If you check back later, you should see the availability data updated to reflect the tests against your live site. Don't wait for this now.
