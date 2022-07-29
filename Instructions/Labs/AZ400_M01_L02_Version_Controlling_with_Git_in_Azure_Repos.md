@@ -168,7 +168,7 @@ In this task, you will use Visual Studio Code to commit changes.
 In this task, you will use the Azure DevOps portal to review commits.
 
 1. Switch to the web browser window displaying the Azure DevOps interface.
-1. In the vertical navigational pane of the of the Azure DevOps portal, in the **Repos** section, select **Commits**.
+1. In the vertical navigational pane of the Azure DevOps portal, in the **Repos** section, select **Commits**.
 1. Verify that your commit appears at the top of list.
 
 #### Task 3: Stage changes
