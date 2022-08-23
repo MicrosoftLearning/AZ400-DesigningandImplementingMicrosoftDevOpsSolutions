@@ -1,3 +1,4 @@
+//comment
 name: '$(Date:yyyyMMdd)$(Rev:.rr)'
 jobs:
   - job: build_markdown_content
