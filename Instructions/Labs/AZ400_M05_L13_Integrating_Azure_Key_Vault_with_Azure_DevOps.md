@@ -165,7 +165,7 @@ In this task, you will configure the Azure Pipeline to retrieve the secret from 
 
     > **Note**: You need to authorize the pipeline to deploy to Azure. Azure pipelines can automatically create a service connection with a new service principal, **but we want to use the one we created earlier**, as it has been authorized to read the secret.
 
-1. Select **Run on agent** and modify **Agent pool** field to **Azure Pipelines** and agent specification **ubuntu 18.04**.
+1. Select **Run on agent** and modify **Agent pool** field to **Azure Pipelines** and agent specification **ubuntu 20.04**.
 1. Select the **Azure Key Vault** task and, on the right side, in the **Azure Key Vault** task properties, next to the **Azure subscription** label, click **Manage**.
 This will open another browser tab displaying the **Service connections** pane in the Azure DevOps portal.
 1. On the **Service connections** pane, click **New Service connection**.
