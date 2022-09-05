@@ -74,15 +74,15 @@ In this exercise, leverage Mend Bolt to scan the project code for security vulne
 
 In this task, you will activate Mend Bolt in the newly generated Azure Devops project.
 
-1. On your lab computer, in the web browser window displaying the Azure DevOps portal with the **Mend Bolt** project open, **in the vertical menu bar** at the far left of the Azure DevOps portal, click **Pipelines**  section and  **Mend Bolt** option (in the vertical menu bar under "Deployment Groups" option).
-1. On the **You're almost there** pane, provide your **Work Email** and **Company Name**, in the **Country** dropdown list, select the entry representing your country, and click *Get Started* button to start using the *Free* version of Mend Bolt. This will automatically open a new browser tab displaying the **Get Started With Bolt** page.
-1. Switch back to the web browser tab displaying the Azure DevOps portal and verify that the **You are using a FREE version of Mend Bolt** is displayed.
+1. On your lab computer, in the web browser window displaying the Azure DevOps portal with the **Mend Bolt** project open, click **Azure DevOps** at the top left of the Azure DevOps portal, click **Organization settings** at the bottom left, in the left pane scroll down and select **Mend** under Extensions.
+1. On the **Create a Mend Bolt account for FREE to activate the extension** pane, provide your **First Name**, **Last Name**, **Work Email** and **Company Name**, in the **Country** dropdown list, select the entry representing your country, and click **CREATE ACCOUNT** button to start using Mend Bolt. This will automatically open a new browser tab displaying the HomePage of **MEND**.
+1. Switch back to the web browser tab displaying the Azure DevOps portal and verify that the **Thank you for using Mend Bolt** is displayed.
 
 #### Task 2: Trigger a build
 
 In this task, you will trigger a build within your Java code-based Azure DevOps project. You will use **Mend Bolt** extension to identify vulnerable components present in this code.
 
-1. On your lab computer, in the vertical menu bar on the left side, navigate to the **Pipelines** section, click **WhileSourceBolt**, click **Run pipeline** and then, on the **Run pipeline** pane, click **Run**.
+1. On your lab computer, navigate to **Mend Bolt** project and in the vertical menu bar on the left side, navigate to the **Pipelines** section, click **WhileSourceBolt**, click **Run pipeline** and then, on the **Run pipeline** pane, click **Run**.
 1. On the **Summary** tab of the build pane, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
 
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
