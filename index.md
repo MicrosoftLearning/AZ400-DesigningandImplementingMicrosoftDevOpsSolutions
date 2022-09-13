@@ -3,7 +3,7 @@ title: Online Hosted Instructions
 permalink: index.html
 layout: home
 ---
-
+# This is demonstration
 # Content Directory
 
 Hyperlinks to each of the lab exercises are listed below.
