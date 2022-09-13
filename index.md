@@ -4,6 +4,7 @@ permalink: index.html
 layout: home
 ---
 # This is demonstration
+# Updated in test branch
 # Content Directory
 
 Hyperlinks to each of the lab exercises are listed below.
