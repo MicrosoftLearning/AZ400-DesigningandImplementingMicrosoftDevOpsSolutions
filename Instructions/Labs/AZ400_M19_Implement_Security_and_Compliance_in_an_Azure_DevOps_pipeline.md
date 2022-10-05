@@ -26,8 +26,8 @@ Azure DevOps integration with Mend Bolt will enable you to:
 
 After you complete this lab, you will be able to:
 
-- Activate WhiteSource Bolt
-- Run a build pipeline and review WhiteSource security and compliance report
+- Activate Mend Bolt
+- Run a build pipeline and review Mend security and compliance report
 
 ## Lab duration
 
@@ -56,71 +56,84 @@ If you don't already have an Azure DevOps organization that you can use for this
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [Parts Unlimited MRP GitHub repository](https://www.github.com/microsoft/partsunlimitedmrp).
+In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://dev.azure.com/unhueteb/_git/eshopweb-az400).
 
-#### Task 1: Create and configure the team project
+#### Task 1: (Only if first time) Create and configure the team project
 
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the [WhiteSource-Bolt template](https://azuredevopsdemogenerator.azurewebsites.net/?name=WhiteSource-Bolt&templateid=77362)
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
-1.  On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab. 
+1.  On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
 
-    > **Note**: For more information on the site, see https://docs.microsoft.com/en-us/azure/devops/demo-gen.
+    ![Create Project](images/create-project.png)
 
-1.  Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
-1.  If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-1.  On the **Create New Project** page, in the **New Project Name** textbox, type **WhiteSource Bolt**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
-1.  In the list of templates, in the toolbar, click **DevOps Labs**, select the **WhiteSource Bolt** template and click **Select Template**.
-1.  Back on the **Create New Project** page, if prompted to install a missing extension, select the checkbox below the **WhiteSource Bolt** and click **Create Project**.
+#### Task 2: (only if first time) Import eShopOnWeb Git Repository
 
-    > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1.  On the **Create New Project** page, click **Navigate to project**.
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://dev.azure.com/unhueteb/_git/eshopweb-az400  and click **Import**: 
 
-### Exercise 1: Implement Security and Compliance in an Azure DevOps pipeline by using WhiteSource Bolt
+    ![Import Repository](images/import-repo.png)
 
-In this exercise, leverage WhiteSource Bolt to scan the project code for security vulnerabilities and licensing compliance issues, and view the resulting report.
+1.  The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
+    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 6 website used on the lab scenarios.
 
-#### Task 1: Activate WhiteSource Bolt
+### Exercise 1: Implement Security and Compliance in an Azure DevOps pipeline by using Mend Bolt
+
+In this exercise, leverage Mend Bolt to scan the project code for security vulnerabilities and licensing compliance issues, and view the resulting report.
+
+#### Task 1: Activate Mend Bolt extension
 
 In this task, you will activate WhiteSource Bolt in the newly generated Azure Devops project.
 
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **WhiteSource Bolt** project open, **in the vertical menu bar** at the far left of the Azure DevOps portal, click **Pipelines**  section and  **WhiteSource Bolt** option (in the vertical menu bar under "Deployment Groups" option).
-1.  On the **You're almost there** pane, provide your **Work Email** and **Company Name**, in the **Country** dropdown list, select the entry representing your country, and click *Get Started* button to start using the *Free* version of WhiteSource Bolt. This will automatically open a new browser tab displaying the **Get Started With Bolt** page. 
-1.  Switch back to the web browser tab displaying the Azure DevOps portal and verify that the **You are using a FREE version of WhiteSource Bolt** is displayed.
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **eShopOnWeb** project open, clikc on the marketplace icon > **Browse Marketplace**. 
 
-#### Task 2: Trigger a build
+    ![Browse Marketplace](images/browse-marketplace.png)
 
-In this task, you will trigger a build within your Java code-based Azure DevOps project. You will use **WhiteSource Bolt** extension to identify vulnerable components present in this code.
+1.  On the MarketPlace, search for **Mend Bolt (formerly WhiteSource)** and open it. Mend Bolt is the free version of the previously known Whitesource tool, which scans all your projects and detects open source components, their license and known vulnerabilities.
 
-1.  On your lab computer, in the vertical menu bar on the left side, navigate to the **Pipelines** section, click **WhileSourceBolt**, click **Run pipeline** and then, on the **Run pipeline** pane, click **Run**.
-1.  On the **Summary** tab of the build pane, in the **Jobs** section, click **Phase 1** and monitor the progress of the build process.
+1.  On the **Mend Bolt (formerly WhiteSource)** page, clikc on **Get it for free**.
 
+    ![Get Mend Bolt](images/mend-bolt.png)
+
+1.  On the next page, select the desired Azure DevOps organization and **Install**. **Proceed to organization** once installed. 
+
+1.  In your Azure DevOps navigate to **Organization Settings** and select **Mend** under **Extensions**. Provide your Work Email, Company Name and other details and click **Create Account** button to start using the Free version.
+
+    ![Get Mend Account](images/mend-account.png)
+
+
+#### Task 2: Create and Trigger a build
+
+In this task, you will create and trigger a CI build pipeline within  Azure DevOps project. You will use **Mend Bolt** extension to identify vulnerable OSS components present in this code.
+
+1.  On your lab computer, in the vertical menu bar on the left side, navigate to the **Pipelines>Pipelines** section, click **Create Pipeline**.
+
+1.  On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
+
+1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/main-ci-mend.yml** and click **Continue**.
+
+    ![Select Pipeline](images/select-pipeline.png)
+
+1.  Review the pipeline and click on **Run**. It will take a few minutes to run succesfully.
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
+    - **DotnetCLI** task for restoring, building, testing and publishing the dotnet project.
+    - **Whitesource** task (still keeps the old name), to run the Mend tool analysis of OSS libraries.
+    - **Publish Artifacts** the agents running this pipeline will upload the published web project.
 
-    | Tasks | Usage |
-    | ---- | ------ |
-    | ![npm](images/m19/npm.png) **npm** |  Installs and publishes npm packages required for the build |
-    | ![maven](images/m19/maven.png) **Maven** |  builds Java code with the provided pom xml file |
-    | ![whitesourcebolt](images/m19/whitesourcebolt.png) **WhiteSource Bolt** |  scans the code in the provided working directory/root directory to detect security vulnerabilities, problematic open source licenses |
-    | ![copy-files](images/m19/copy-files.png) **Copy Files** |  copies the resulting JAR files from the source to the destination folder using match patterns |
-    | ![publish-build-artifacts](images/m19/publish-build-artifacts.png) **Publish Build Artifacts** |  publishes the artifacts produced by the build |
-    
-1.  Once the build completes, navigate back to the **Summary** tab and review **Tests and coverage** section. 
+1.  While the pipeline is executing, lets rename it to identity it easier (as the project may be used for multiple labs). Go to **Pipelines/Pipelines** section in Azure DevOps project, click on the executing Pipeline name (it will get a default name), and look for **Rename/move** option. Rename to **main-ci-mend** and click **Save**.
 
-#### Task 3: Analyze Reports
+    ![Rename Pipeline](images/rename-pipeline.png)
 
-In this task, you will review the WhiteSource Bolt build report. 
+1.  Once the pipeline execution has finished, you can review the results. Open the latest execution for  **main-ci-mend** pipeline. The summary tab will show the logs of the execution, together with related details such as the repository version(commit) used, trigger type, published artifacts, test coverage, etc.
 
-1.  On the build pane, click the **WhiteSource Bolt Build Report** tab header and wait for the report to fully render. 
-1.  While on the **WhiteSource Bolt Build Report** tab, verify that WhiteSource Bolt automatically detected Open Source components in the software including transitive dependencies and their respective licenses.
-1.  While on the **WhiteSource Bolt Build Report** tab, review the Security dashboard, displaying the vulnerabilities discovered during the build.
+1. On the **Mend Bolt**, you can review the OSS security analysis. It will show you details around the inventory used, vulnerabilities found (and how to solve them), and an interesting report around library related Licenses. Take some time to review the report.
 
-    > **Note**: The report displays the list of all vulnerable open source components, including **Vulnerability Score**, **Vulnerable Libraries**, and **Severity Distribution**. You can identify the opensource license distribution by leveraging a detailed view of all components and links to their metadata and licensed references.
-
-1.  While on the **WhiteSource Bolt Build Report** tab, scroll down to the **Outdated Libraries** section and review its content.
-
-    > **Note**: WhiteSource Bolt tracks outdated libraries in the project, providing library details, links to newer versions, and remediation recommendations.
+    ![Mend Results](images/mend-results.png)
 
 ## Review
 
-In this lab, you will use **WhiteSource Bolt with Azure DevOps** to automatically detect vulnerable open source components, outdated libraries, and license compliance issues in your code.
+In this lab, you will use **Mend Bolt with Azure DevOps** to automatically detect vulnerable open source components, outdated libraries, and license compliance issues in your code.
