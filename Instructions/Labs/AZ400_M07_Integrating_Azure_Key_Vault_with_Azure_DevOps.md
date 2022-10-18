@@ -60,7 +60,7 @@ If you don't already have an Azure DevOps organization that you can use for this
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://dev.azure.com/unhueteb/_git/eshopweb-az400).
 
-#### Task 1: (Only if first time) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
@@ -68,7 +68,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
     ![Create Project](images/create-project.png)
 
-#### Task 2: (only if first time) Import eShopOnWeb Git Repository
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
@@ -89,7 +89,7 @@ Setup CI YAML pipeline for:
 -  Create an Azure Container Registry to keep the container images
 - Use Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images.
 
-#### Task 1: Create a service principal 
+#### Task 1: (skip if done) Create a service principal 
 
 In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
 - Deploy resources on your azure subscription
@@ -125,6 +125,23 @@ A service principal is automatically created by Azure Pipeline when you connect 
     ```
 
     > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
+
+1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings>Service Connections (under Pipelines)** and **New Service Connection**.
+
+    ![New Service Connection](images/new-service-connection.png)
+
+1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
+
+1. The choose **Service principal (manual)** and click on **Next**.
+
+1. Fill in the empty fields using the information gathered during previous steps:
+    - Subscription Id and Name
+    - Service Principal Id (or clientId), Key (or Password) and TenantId.
+    - In **Service connection name** type **azure subs**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription. 
+
+    ![Azure Service Connection](images/azure-service-connection.png)
+
+1. Click on **Verify and Save**.
 
 #### Task 2: Setup and Run CI pipeline
 
