@@ -361,7 +361,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
     > **Note**: Verify that you now see the new stage in the workflow.
 
 1. Drag the **As a customer, I want to see tutorials I recently viewed** work item from the **Committed** stage into the **QA Approved** stage.
-1. Drag the **As a customer, I want to view new tutorials** work item from the **QA Approved** stage into the **Done** stage.
+1. Drag the **As a customer, I want to view new tutorials** work item from the **Approved** stage into the **QA Approved** stage.
 
     ![The stage now exceeds its **WIP** limit and is colored red as a warning next to "QA Approved" column](images/m1/wip_limit_v1.png)
 
