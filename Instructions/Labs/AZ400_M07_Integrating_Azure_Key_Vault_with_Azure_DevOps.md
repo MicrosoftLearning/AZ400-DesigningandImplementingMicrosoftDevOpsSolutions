@@ -83,36 +83,29 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 6 website used on the lab scenarios.
 
-### Exercise 1: Integrate Azure Key Vault with Azure DevOps
+### Exercise 1: Setup CI pipeline to build eShopOnWeb container 
 
-- create an Azure service principal that will provide access to secrets in an Azure Key vault.
-- create the Azure Key vault to store a MySQL server password as a secret.
-- configure permissions to allow the service principal to read the secret.
-- configure pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+Setup CI YAML pipeline for:
+-  Create an Azure Container Registry to keep the container images
+- Use Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images.
 
 #### Task 1: Create a service principal 
 
-In this task, you will create a service principal by using the Azure CLI. 
+In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
+- Deploy resources on your azure subscription
+- Have read access on the later created Key Vault secrets.
 
 > **Note**: If you do already have a service principal, you can proceed directly to the next task.
 
-You will need a service principal to deploy an app to an Azure resource from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key vault. 
+You will need a service principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key vault. 
 
-A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page. You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. It is recommended that you use an existing service principal when you want to have a pre-bdefined set of permissions.
+A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page (automatic option). You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. 
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  In the Azure portal, click the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
 1.  If prompted to select either **Bash** or **PowerShell**, select **Bash**. 
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
-
-1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal (replace the `<service-principal-name>` with any unique string of characters consisting of letters and digits):
-
-    ```
-    az ad sp create-for-rbac --name <service-principal-name>
-    ```
-
-    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes: 
 
@@ -123,7 +116,29 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
     > **Note**: Copy both values to a text file. You will need them later in this lab.
 
+1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal (replace the **myServicePrincipalName** with any unique string of characters consisting of letters and digits) and **mySubscriptionID** with your Azure subscriptionId :
 
+    ```
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
+
+#### Task 2: Setup and Run CI pipeline
+
+In this task, you will import an existing CI YAML pipeline definition, modify and run it. It will create a new Azure Container Registry (ACR) and build/publish the eShopOnWeb container images.
+
+From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines>Pipelines** and click on **Create Pipeline**.
+
+1.  On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
+
+1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/main-ci-containers-compose.yml** and click **Continue**.
+
+    ![Select Pipeline](images/select-ci-container-compose.png)
+
+1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **att-az400-ewebshop-NAME** and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId. 
 #### Task 2: Create an Azure Key vault
 
 In this task, you will create an Azure Key vault by using the Azure portal.
