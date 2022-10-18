@@ -156,6 +156,19 @@ From the lab computer, start a web browser, navigate to the Azure DevOps **eShop
     ![Select Pipeline](images/select-ci-container-compose.png)
 
 1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **att-az400-ewebshop-NAME** and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId. 
+
+1. Click on **Save and Run** and wait for the pipeline to execute succesfully.
+
+    > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
+    - **AzureResourceManagerTemplateDeployment** uses **bicep** to deploy an Azure Container Registry.
+    - **PowerShell** task take the bicep output (acr login server) and creates pipeline variable.
+    - **DockerCompose** task builds and pushes the container images for eShopOnWeb.
+
+1. Once the execution is finished, on the Azure Portal and defined Resource Group, you should find an Azure Container Registry with the created container images **eshoppublicapi** and **eshopwebmvc**. You will only use **eshopwebmvc** on the deploy phase.
+
+    ![Container Images in ACR](images/azure-container-registry.png)
+
+
 #### Task 2: Create an Azure Key vault
 
 In this task, you will create an Azure Key vault by using the Azure portal.
