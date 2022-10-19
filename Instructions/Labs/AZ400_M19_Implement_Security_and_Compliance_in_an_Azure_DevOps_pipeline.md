@@ -95,13 +95,15 @@ In this task, you will activate WhiteSource Bolt in the newly generated Azure De
 
 1.  On the MarketPlace, search for **Mend Bolt (formerly WhiteSource)** and open it. Mend Bolt is the free version of the previously known Whitesource tool, which scans all your projects and detects open source components, their license and known vulnerabilities.
 
+    > Warning: make sure you select the Mend **Bolt** option (the **free** one)!
+
 1.  On the **Mend Bolt (formerly WhiteSource)** page, clikc on **Get it for free**.
 
     ![Get Mend Bolt](images/mend-bolt.png)
 
 1.  On the next page, select the desired Azure DevOps organization and **Install**. **Proceed to organization** once installed. 
 
-1.  In your Azure DevOps navigate to **Organization Settings** and select **Mend** under **Extensions**. Provide your Work Email, Company Name and other details and click **Create Account** button to start using the Free version.
+1.  In your Azure DevOps navigate to **Organization Settings** and select **Mend** under **Extensions**. Provide your Work Email (**your lab personal account**, e.g. using AZ400learner@outlook.com instead of student@microsoft.com ), Company Name and other details and click **Create Account** button to start using the Free version.
 
     ![Get Mend Account](images/mend-account.png)
 
@@ -110,7 +112,7 @@ In this task, you will activate WhiteSource Bolt in the newly generated Azure De
 
 In this task, you will create and trigger a CI build pipeline within  Azure DevOps project. You will use **Mend Bolt** extension to identify vulnerable OSS components present in this code.
 
-1.  On your lab computer, in the vertical menu bar on the left side, navigate to the **Pipelines>Pipelines** section, click **Create Pipeline**.
+1.  On your lab computer, from the **eShopOnWeb** Azure DevOps project, in the vertical menu bar on the left side, navigate to the **Pipelines>Pipelines** section, click **Create Pipeline**.
 
 1.  On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
