@@ -124,22 +124,22 @@ For this lab scenario, we have an app that connects to a MySQL database. We inte
     | Days to retain deleted vaults | **7** |
     | Purge protection | **Disable purge protection** |
 
-1. On the **Access policy** tab of the **Create key vault** blade, click **+ Add Access Policy** to setup a new policy.
+1. On the **Access policy** tab of the **Create key vault** blade, click **+ Create** to setup a new policy.
 
     > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get) permissions to the service principal that you will be using for authentication in the pipeline.
 
-1. On the **Add access policy** blade, click the **None selected** link directly under the **Select principal** label.
+1. On the **Create an access policy** blade, click the **None selected** link directly under the **Select principal** label.
 1. On the **Principal** blade, search for the security principal that you created in the previous exercise, select it, and then click **Select**.
 
     > **Note**: You can search by name or ID of the principal.
 
-1. Back on the **Add access policy** blade, in the **Secret permissions** drop down list, select checkboxes next to the **Get** and **List** permissions and then click **Add**.
+1. Back on the **Create an access policy** blade, in the **Secret permissions** drop down list, select checkboxes next to the **Get** and **List** permissions and then click **Add**.
 1. Back on the **Access policy** tab of the **Create key vault** blade, click **Review + create** and, on the **Review + create** blade, click **Create**.
 
     > **Note**: Wait for the Azure Key vault to be provisioned. This should take less than 1 minute.
 
 1. On the **Your deployment is complete** blade, click **Go to resource**.
-1. On the Azure Key vault blade, in the vertical menu on the left side of the blade, in the **Settings** section, click **Secrets**.
+1. On the Azure Key vault blade, in the vertical menu on the left side of the blade, in the **Objects** section, click **Secrets**.
 1. On the **Secrets** blade, click **Generate/Import**.
 1. On the **Create a secret** blade, specify the following settings and click **Create** (leave others with their default values):
 
