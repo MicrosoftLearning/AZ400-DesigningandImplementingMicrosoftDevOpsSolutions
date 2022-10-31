@@ -86,8 +86,8 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 ### Exercise 1: Setup CI pipeline to build eShopOnWeb container 
 
 Setup CI YAML pipeline for:
--  Create an Azure Container Registry to keep the container images
-- Use Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images.
+- Create an Azure Container Registry to keep the container images
+- Use Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images. Only **eshopwebmvc** container will be deployed.
 
 #### Task 1: (skip if done) Create a service principal 
 
@@ -147,11 +147,11 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 In this task, you will import an existing CI YAML pipeline definition, modify and run it. It will create a new Azure Container Registry (ACR) and build/publish the eShopOnWeb container images.
 
-1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines>Pipelines** and click on **Create Pipeline**.
+1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines>Pipelines** and click on **Create Pipeline** (or **New pipeline**).
 
 1.  On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/main-ci-containers-compose.yml** and click on **Continue**.
+1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-ci-dockercompose.yml** and click on **Continue**.
 
     ![Select Pipeline](images/select-ci-container-compose.png)
 
@@ -162,16 +162,16 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
     - **AzureResourceManagerTemplateDeployment** uses **bicep** to deploy an Azure Container Registry.
     - **PowerShell** task take the bicep output (acr login server) and creates pipeline variable.
-    - **DockerCompose** task builds and pushes the container images for eShopOnWeb.
+    - **DockerCompose** task builds and pushes the container images for eShopOnWeb to the Azure Container Registry .
 
-1. Your pipeline will take a name based on the project name. Lets rename it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **main-ci-docker-compose** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the elipsis and **Rename/Remove** option. Name it **eshoponweb-ci-dockercompose** and click on **Save**.
 
 
-1. Once the execution is finished, on the Azure Portal and defined Resource Group, you should find an Azure Container Registry (ACR) with the created container images **eshoppublicapi** and **eshopwebmvc**. You will only use **eshopwebmvc** on the deploy phase.
+1. Once the execution is finished, on the Azure Portal, open previously defined Resource Group, and you should find an Azure Container Registry (ACR) with the created container images **eshoppublicapi** and **eshopwebmvc**. You will only use **eshopwebmvc** on the deploy phase.
 
     ![Container Images in ACR](images/azure-container-registry.png)
 
-1. Click on **Access Keys** and copy the **password** value, it will be used in the following task, as we will keep it in Azure Key Vault.
+1. Click on **Access Keys** and copy the **password** value, it will be used in the following task, as we will keep it as a secret  in Azure Key Vault.
 
     ![ACR password](images/acr-password.png)
 
@@ -201,7 +201,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pull a
     > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get/List) permissions to the previously created service principal that you will be using for authentication in the pipeline. 
 
     1. On the **Permission** blade, check **Get** and **List** permissions below **Secret Permission**. Click on **Next**.
-    1. on the **Principal** blade, search for the previosly created Service Principal, either using the Id or Name given. Click on **Next** and **Next** again.
+    1. on the **Principal** blade, search for the **previosly created Service Principal**, either using the Id or Name given. Click on **Next** and **Next** again.
     1. On the **Review + create** blade, click on **Create**
 
 1. Back on the **Create a Key Vault** blade, click on **Review + Create > Create**
@@ -217,7 +217,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pull a
     | --- | --- |
     | Upload options | **Manual** |
     | Name | **acr-secret** |
-    | Value | ACR access password from previous task |
+    | Value | ACR access password copied in previous task |
 
 
 #### Task 3: Create a Variable Group connected to Azure Key Vault
@@ -250,7 +250,7 @@ In this task, you will import a CD pipeline, customize it and run it for deployi
 
 1.  On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/main-cd-web-aci.yml** and click on **Continue**.
+1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-cd-aci.yml** and click on **Continue**.
 
 1. In the YAML pipeline definition, customize:
 
@@ -265,6 +265,8 @@ In this task, you will import a CD pipeline, customize it and run it for deployi
     - **Resources** : it is prepared to automatically trigger based on CI pipeline completion. It also download the repository for the bicep file.
     - **Variables (for Deploy stage)** connecs to the variable gorup to consume the Azure Key Vault secret **acr-secret**
     - **AzureResourceManagerTemplateDeployment** deploys the Azure Container Instance (ACI) using bicep template and provides the ACR login parameters to allow ACI to download the previously created container image from Azure Container Registry (ACR).
+
+1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the elipsis and **Rename/Remove** option. Name it **eshoponweb-cd-aci** and click on **Save**.
 
 ### Exercise 2: Remove the Azure lab resources
 
@@ -283,6 +285,6 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 In this lab, you integrated Azure Key Vault with an Azure DevOps pipeline by using the following steps:
 
 
-- created an Azure service principal to provide access to secrets in the Azure Key vault and authenticate deployment to Azure from Azure DevOps.
-- run 2 YAML pipelines imported from a Git repository.
-- configured pipeline to retrieve the password from the Azure Key vault using ADO Variable Group and use it on subsequent tasks.
+- Created an Azure service principal to provide access to secrets in the Azure Key vault and authenticate deployment to Azure from Azure DevOps.
+- Run 2 YAML pipelines imported from a Git repository.
+- Configured pipeline to retrieve the password from the Azure Key vault using ADO Variable Group and use it on subsequent tasks.
