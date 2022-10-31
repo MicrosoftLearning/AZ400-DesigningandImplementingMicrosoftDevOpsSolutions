@@ -116,7 +116,7 @@ In this task, you will create and trigger a CI build pipeline within  Azure DevO
 
 1.  On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/main-ci-mend.yml** and click **Continue**.
+1.  On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-ci-mend.yml** and click **Continue**.
 
     ![Select Pipeline](images/select-pipeline.png)
 
@@ -126,13 +126,13 @@ In this task, you will create and trigger a CI build pipeline within  Azure DevO
     - **Whitesource** task (still keeps the old name), to run the Mend tool analysis of OSS libraries.
     - **Publish Artifacts** the agents running this pipeline will upload the published web project.
 
-1.  While the pipeline is executing, lets rename it to identity it easier (as the project may be used for multiple labs). Go to **Pipelines/Pipelines** section in Azure DevOps project, click on the executing Pipeline name (it will get a default name), and look for **Rename/move** option. Rename to **main-ci-mend** and click **Save**.
+1.  While the pipeline is executing, lets **rename** it to identify it easier (as the project may be used for multiple labs). Go to **Pipelines/Pipelines** section in Azure DevOps project, click on the executing Pipeline name (it will get a default name), and look for **Rename/move** option on the elipsis icon. Rename it to **eshoponweb-ci-mend** and click **Save**.
 
     ![Rename Pipeline](images/rename-pipeline.png)
 
-1.  Once the pipeline execution has finished, you can review the results. Open the latest execution for  **main-ci-mend** pipeline. The summary tab will show the logs of the execution, together with related details such as the repository version(commit) used, trigger type, published artifacts, test coverage, etc.
+1.  Once the pipeline execution has finished, you can review the results. Open the latest execution for  **eshoponweb-ci-mend** pipeline. The summary tab will show the logs of the execution, together with related details such as the repository version(commit) used, trigger type, published artifacts, test coverage, etc.
 
-1. On the **Mend Bolt**, you can review the OSS security analysis. It will show you details around the inventory used, vulnerabilities found (and how to solve them), and an interesting report around library related Licenses. Take some time to review the report.
+1. On the **Mend Bolt** tab, you can review the OSS security analysis. It will show you details around the inventory used, vulnerabilities found (and how to solve them), and an interesting report around library related Licenses. Take some time to review the report.
 
     ![Mend Results](images/mend-results.png)
 
