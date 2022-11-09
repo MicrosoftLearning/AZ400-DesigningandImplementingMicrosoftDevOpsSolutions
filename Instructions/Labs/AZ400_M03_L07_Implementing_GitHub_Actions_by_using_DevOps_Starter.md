@@ -76,10 +76,9 @@ In this task, you will create an Azure DevOps Starter project that automatically
     | Repository | **az400m08l01** |
     | Subscription | the name of the Azure subscription you are using for this lab |
     | Web app name | any valid, globally unique host name in the **azurewebsites.net** DNS namespace |
-    | Location | the name of any Azure region in which you can provision an Azure web app. **East US** recommended |
+    | Location | the name of any Azure region in which you can provision an Azure web app. |
 
-   > **Note**: Some **Location** may fail due to unavailable resources . **East US** recommended.
-   > **Note**: Wait for the provisioning to complete. This should take about 1 minute.
+  > **Note**: Wait for the provisioning to complete. This should take about 1 minute.
 
 1. On the **Deploy_DevOps_Project_az400m08l01 \| Overview** blade, click **Go to Resource**.
 1. On the **az400m08l01** blade, on the **GitHub Workflow** tile, click **Authorize**.
