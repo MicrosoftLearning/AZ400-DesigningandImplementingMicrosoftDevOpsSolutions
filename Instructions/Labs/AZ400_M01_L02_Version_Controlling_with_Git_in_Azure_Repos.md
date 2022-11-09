@@ -176,7 +176,12 @@ In this task, you will use the Azure DevOps portal to review commits.
 In this task, you will explore the use of staging changes by using Visual Studio Code. Staging changes allows you to selectively add certain files to a commit while passing over the changes made in other files.
 
 1. Switch back to the **Visual Studio Code** window.
-1. Update the open **CartItem.cs** class by changing the first comment to `//My second change` and saving the file.
+1. Update the open **CartItem.cs** class by changing the first comment the following, and saving the file.
+
+```csharp
+    //My second change
+```
+
 1. In the Visual Studio Code window, switch back the **EXPLORER** tab, navigate to the **/PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Models/Category.cs** file and select it. This will automatically display its content in the details pane.
 1. Add to the **Category.cs** file right above the `public int CategoryId { get; set; }` entry an extra line containing the following comment and save the file.
 
