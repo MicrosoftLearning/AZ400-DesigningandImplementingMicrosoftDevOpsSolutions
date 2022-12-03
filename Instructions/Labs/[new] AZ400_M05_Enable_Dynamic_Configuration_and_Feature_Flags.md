@@ -57,17 +57,13 @@ In this exercise, you will set up the prerequisites for the lab, which consist o
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
-1.  On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
-
-    ![Create Project](images/create-project.png)
+1.  On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
 
 #### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
 1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**: 
-
-    ![Import Repository](images/import-repo.png)
 
 1.  The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines
@@ -84,7 +80,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 ### Exercise 1: (skip if done) Import and run CI/CD Pipelines
 
-In this exericise, you will import and run the CI pipeline, configure the service connection with your AzureSubscription and then import and run the CD pipeline.
+In this exericise, you will import and run the CI pipeline, configure the service connection with your Azure Subscription and then import and run the CD pipeline.
 
 #### Task 1: Import and run the CI pieline
 
@@ -100,17 +96,11 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 
 1. Select **Existing Azure Pipelines YAML File**
 
-    ![Select Existing Azure Pipelines YAML File](images/%5Bnew%5Dappconfig/existing-pipeline.jpg)
-
 1. Select the **/.ado/eshoponweb-ci.yml** file then click on **Continue**
-
-    ![Select the .ado/eshoponweb-ci.yml file](images/%5Bnew%5Dappconfig/select-ci-yaml-file.jpg)
 
 1. Click the **Run** button to run the pipeline
 
 1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the elipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
-
-    ![Select the .ado/eshoponweb-ci.yml file](images/%5Bnew%5Dappconfig/rename-ci-pipeline.jpg)
 
 #### Task 2: Manage the service connection
 
@@ -166,7 +156,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 #### Task 3: Import and run the CD pipeline
 
-1. Go to Pipelines/Pipelines
+1. Go to **Pipelines>Pipelines**
 
 1. Click on **New pipeline** button
 
@@ -176,28 +166,22 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 1. Select **Existing Azure Pipelines YAML File**
 
-    ![Select Existing Azure Pipelines YAML File](images/%5Bnew%5Dappconfig/existing-pipeline.jpg)
-
-1. Select the **.ado/eshoponweb-ci.yml** file then click on **Continue**
-
-    ![Select the .ado/eshoponweb-ci.yml file](images/%5Bnew%5Dappconfig/select-cd-yaml-file.jpg)
+1. Select the **/.ado/eshoponweb-ci.yml** file then click on **Continue**
 
 1. In the YAML pipeline definition, customize:
-- YOUR-SUBSCRIPTION-ID with your Azure subscription id.
-- az400eshop-NAME replace NAME to make it globally unique.
-- AZ400-EWebShop-NAME with the resource group name defined before in the lab.
+- **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
+- **az400eshop-NAME** replace NAME to make it globally unique.
+- **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
 
 1. Click on **Save and Run** and wait for the pipeline to execute succesfully.
 
     > **Note**: The deployment may take a few minutes to complete.
 
     The CD definition consists of the following tasks:
-    - **Resources** : it is prepared to automatically trigger based on CI pipeline completion. It also download the repository for the bicep file.
-    - **AzureResourceManagerTemplateDeployment** deploys the Azure Web App using bicep template.
+    - **Resources**: it is prepared to automatically trigger based on CI pipeline completion. It also downloads the repository for the bicep file.
+    - **AzureResourceManagerTemplateDeployment**: Deploys the Azure Web App using bicep template.
 
 1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-cd-webapp-code** and click on **Save**.
-
-![Select the .ado/eshoponweb-cd.yml file](images/%5Bnew%5Dappconfig/rename-cd-pipeline.jpg)
 
 ### Exercise 2: Manage Azure App Configuration
 
