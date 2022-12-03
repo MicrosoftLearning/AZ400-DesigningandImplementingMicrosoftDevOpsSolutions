@@ -124,7 +124,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute: 
 
-    ```
+    ```sh
     subscriptionName=$(az account show --query name --output tsv)
     subscriptionId=$(az account show --query id --output tsv)
     echo $subscriptionName
@@ -135,7 +135,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal:
 
-    ```
+    ```sh
     az ad sp create-for-rbac --name sp-az400 --role contributor --scopes /subscriptions/$subscriptionId
     ```
 
