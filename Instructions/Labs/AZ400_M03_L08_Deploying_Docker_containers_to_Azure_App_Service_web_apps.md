@@ -44,11 +44,11 @@ Identify the applications that you'll use in this lab:
 #### Prepare an Azure subscription
 
 -   Identify an existing Azure subscription or create a new one.
--   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/roles/manage-roles-portal#view-my-roles).
+-   Verify that you have a Microsoft account or an Azure AD account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription. For details, refer to [List Azure role assignments using the Azure portal](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) and [View and assign administrator roles in Azure Active Directory](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
 #### Set up an Azure DevOps organization
 
-If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 ### Exercise 0: Configure the lab prerequisites
 
@@ -90,7 +90,7 @@ You can create a connection from Azure Pipelines to external and remote services
 In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
 - Deploy resources on your azure subscription
 - Push the docker image to Azure Container Registry
-- Add a role assignment to allow Azure App Service pull the docker image from Azure COntainer Registry
+- Add a role assignment to allow Azure App Service pull the docker image from Azure Container Registry
 
 > **Note**: If you do already have a service principal, you can proceed directly to the next task.
 
@@ -138,7 +138,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 ### Exercise 2: Import and run the CI pipeline
 
-In this exericise, you will import and run the CI pipeline.
+In this exercise, you will import and run the CI pipeline.
 
 #### Task 1: Import and run the CI pipeline
 
@@ -166,7 +166,7 @@ In this exericise, you will import and run the CI pipeline.
     - **Resources**: It downloads the repository filest will be used in the followinf tasks.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure Container Registry using bicep template.
     - **PowerShell**: Retrieve the **ACR Login Server** value from the previous task's output and create a new parameter **acrLoginServer**
-    - [**Docker**](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the docker image and create two tags (Latest and current BuildID)
+    - [**Docker**](https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the docker image and create two tags (Latest and current BuildID)
     - **Docker - Push**: Push the images to Azure Container Registry
 
 1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci-docker** and click on **Save**.
@@ -179,7 +179,7 @@ In this exercise, you will configure the service connection with your Azure Subs
 
 #### Task 1: Add a new role assignment
 
-In this task, you will add a new role assignment to allow Azure App Service pull the docker image from Azure COntainer Registry.
+In this task, you will add a new role assignment to allow Azure App Service pull the docker image from Azure Container Registry.
 
 1. Navigate to the [**Azure Portal**](https://portal.azure.com).
 1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
