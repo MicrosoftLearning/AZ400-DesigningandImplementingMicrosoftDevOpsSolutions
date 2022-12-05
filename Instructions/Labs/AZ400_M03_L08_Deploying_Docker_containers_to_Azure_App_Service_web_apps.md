@@ -118,7 +118,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal:
 
     ```
-    az ad sp create-for-rbac --name sp-az400 --role contributor --scopes /subscriptions/$subscriptionId
+    az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
     ```
 
     > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
@@ -188,7 +188,7 @@ In this task, you will add a new role assignment to allow Azure App Service pull
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute: 
 
     ```sh
-    spId=$(az ad sp list --display-name sp-az400 --query "[].id" --output tsv)
+    spId=$(az ad sp list --display-name sp-az400-azdo --query "[].id" --output tsv)
     echo $spId
     roleName=$(az role definition list --name "User Access Administrator" --query [0].name --output tsv)
     echo $roleName
