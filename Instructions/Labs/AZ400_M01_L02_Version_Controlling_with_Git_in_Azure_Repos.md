@@ -164,7 +164,7 @@ In this task, you will use Visual Studio Code to commit changes.
 
     ![First commit](images/first-commit.png)
 
-1. If prompted whether x    you would like to automatically stage your changes and commit them directly, click **Always**.
+1. If prompted whether you would like to automatically stage your changes and commit them directly, click **Always**.
 
     > **Note**: We will discuss **staging** later in the lab.
 
