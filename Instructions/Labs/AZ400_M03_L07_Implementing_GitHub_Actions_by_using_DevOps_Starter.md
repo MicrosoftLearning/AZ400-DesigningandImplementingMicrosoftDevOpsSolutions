@@ -44,11 +44,11 @@ The repository is organized the following way:
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 6 website used on the lab scenarios.
 
-#### Task 1: Create a private repository in GitHub and import eShopOnWeb
+#### Task 1: Create a public repository in GitHub and import eShopOnWeb
 
-In this task, you will create an empty private GitHub repository and import the existing [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) repository.
+In this task, you will create an empty public GitHub repository and import the existing [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) repository.
 
-1. From the lab computer, start a web browser, navigate to the [GitHub website](https://github.com/), log in using your account and click on **New** to create new repository.
+1. From the lab computer, start a web browser, navigate to the [GitHub website](https://github.com/), sign in using your account and click on **New** to create new repository.
 
     ![Create Repository](images/github-new.png)
  
@@ -74,16 +74,16 @@ In this task, you will create an empty private GitHub repository and import the 
 
 ### Exercise 1: Setup your GitHub Repository and Azure access
 
-In this exercise, you will create an Azure Service Principal to authorize GitHub accessing you Azure subscription. You will also setup the GitHub workflow that will build, test and deploy your website to Azure. 
+In this exercise, you will create an Azure Service Principal to authorize GitHub accessing your Azure subscription from GitHub Actions. You will also setup the GitHub workflow that will build, test and deploy your website to Azure. 
 
 #### Task 1: Create an Azure Service Principal and save it as GitHub secret
 
 In this task, you will create the Azure Service Principal used by GitHub to deploy the desired resources. As an alternative, you could also use [OpenID connect in Azure](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure), as a secretless authentication mechanism.
 
-1. On your lab computer, in a browser window open the Azure Portal (https://portal.azure.com/).
+1. On your lab computer, in a browser window, open the Azure Portal (https://portal.azure.com/).
 1. In the portal, look for **Resource Groups** and click on it.
 1. Click on **+ Create** to create a new Resource Group for the exercise.
-1. on the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshopeonweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**. 
+1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshopeonweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**. 
 1. In the Azure Portal, open the **Cloud Shell** (next to the search bar).
 
     > NOTE: if this is the first time you open the Cloud Shell, you need to configure the [persistent storage](https://learn.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#create-new-storage)
@@ -94,7 +94,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 
     > NOTE: this command will create a Service Principal with Contributor access to the Resource Group created before. This way we make sure GitHub Actions will only have the permissions needed to interact only with this Resource Group (not the rest of the subscription)
 
-1. The command will output a JSON object, you will keep it as a GitHub secret for the workflow, copy it. The JSON contains the identifiers used to authenticate against Azure in the name of an application (service principal).
+1. The command will output a JSON object, you will later keep it as a GitHub secret for the workflow, copy it. The JSON contains the identifiers used to authenticate against Azure in the name of an Azure AD application identity (service principal).
 
     ```JSON
         {
@@ -109,7 +109,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
 1. On the repository page, go to **Settings**, click on **Secrets > Actions**. Click on **New repository secret**
     - Name : **AZURE_CREDENTIALS**
-    - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name)
+    - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
 
 1. Click on **Add secret**. Now GitHub Actions will be able to reference the service principal, using the repository secret.
 
@@ -136,12 +136,12 @@ In this task, you will modify the given GitHub workflow and execute it to deploy
  
 In this task, you will review the GitHub workflow execution:
 
-1. 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-1. On the repository page, go to **Actions**, you will the workflow setup before executing. Click on it. 
+1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
+1. On the repository page, go to **Actions**, you will see the workflow setup before executing. Click on it. 
 
     ![GitHub workflow in progress](images/gh-actions.png)
 
-1. Wait for the workflow to execute. From the **Summary** you can see the two workflow jobs, status and Artifacts retained from the execution. 
+1. Wait for the workflow to finish. From the **Summary** you can see the two workflow jobs, the status and Artifacts retained from the execution. You can click in each job to review logs. 
 
     ![Succesfull workflow](images/gh-action-success.png)
 
@@ -174,25 +174,25 @@ In this task, you will use GitHub environments to ask for manual approval before
 
 1. Workflow will follow the **deploy** job execution and finish.
 
-#### Task 1: Remove the Azure lab resources
+### Exercise 2: Remove the Azure lab resources
 
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
+In this exercise, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
 
 1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
 1. List all resource groups created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m08l01')].name" --output tsv
+    az group list --query "[?starts_with(name,'rg-az400-eshopeonweb')].name" --output tsv
     ```
 
 1. Delete all resource groups you created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m08l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'rg-az400-eshopeonweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 
-In this lab, you implemented a GitHub Action workflow that deploys an Azure web app by using DevOps Starter.
+In this lab, you implemented a GitHub Action workflow that deploys an Azure Web App.
