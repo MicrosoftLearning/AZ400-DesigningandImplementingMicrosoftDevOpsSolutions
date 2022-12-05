@@ -11,20 +11,19 @@ lab:
 
 Azure Key Vault provides secure storage and management of sensitive data, such as keys, passwords, and certificates. Azure Key Vault includes supports for hardware security modules, as well as a range of encryption algorithms and key lengths. By using Azure Key Vault, you can minimize the possibility of disclosing sensitive data through source code, which is a common mistake made by developers. Access to Azure Key Vault requires proper authentication and authorization, supporting fine grained permissions to its content.
 
-In this lab, you will see how you can integrate Azure Key Vault with an Azure DevOps pipeline by using the following steps:
+In this lab, you will see how you can integrate Azure Key Vault with an Azure Pipelines by using the following steps:
 
-- create an Azure Key vault to store a MySQL server password as a secret.
-- create an Azure service principal to provide access to secrets in the Azure Key vault.
-- configure permissions to allow the service principal to read the secret.
-- configure pipeline to retrieve the password from the Azure Key vault and pass it on to subsequent tasks.
+- create an Azure Key vault to store a ACR password as a secret.
+- create an Azure Service Principal to provide access to secrets in the Azure Key Vault.
+- configure permissions to allow the Service Principal to read the secret.
+- configure pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
--   Create an Azure Active Directory (Azure AD) service principal.
--   Create an Azure key vault. 
--   Track pull requests through the Azure DevOps pipeline.
+-   Create an Azure Active Directory (Azure AD) Service Principal.
+-   Create an Azure Key Vault. 
 
 ## Lab duration
 
@@ -58,7 +57,7 @@ If you don't already have an Azure DevOps organization that you can use for this
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://dev.azure.com/unhueteb/_git/eshopweb-az400).
+In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
 #### Task 1: (skip if done) Create and configure the team project
 
@@ -86,20 +85,20 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 ### Exercise 1: Setup CI pipeline to build eShopOnWeb container 
 
 Setup CI YAML pipeline for:
-- Create an Azure Container Registry to keep the container images
-- Use Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images. Only **eshopwebmvc** container will be deployed.
+- Creating an Azure Container Registry to keep the container images
+- Using Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images. Only **eshopwebmvc** container will be deployed.
 
-#### Task 1: (skip if done) Create a service principal 
+#### Task 1: (skip if done) Create a Service Principal 
 
-In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
-- Deploy resources on your azure subscription
+In this task, you will create a Service Principal by using the Azure CLI, which will allow Azure DevOps to:
+- Deploy resources on your Azure subscription
 - Have read access on the later created Key Vault secrets.
 
-> **Note**: If you do already have a service principal, you can proceed directly to the next task.
+> **Note**: If you do already have a Service Principal, you can proceed directly to the next task.
 
-You will need a service principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key vault. 
+You will need a Service Principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key Vault. 
 
-A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page (automatic option). You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. 
+A Service Principal is automatically created by Azure Pipelines, when you connect to an Azure subscription from inside a pipeline definition or when you create a new Service Connection from the project settings page (automatic option). You can also manually create the Service Principal from the portal or using Azure CLI and re-use it across projects. 
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 1.  In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
@@ -116,7 +115,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
     > **Note**: Copy both values to a text file. You will need them later in this lab.
 
-1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal (replace the **myServicePrincipalName** with any unique string of characters consisting of letters and digits) and **mySubscriptionID** with your Azure subscriptionId :
+1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a Service Principal (replace the **myServicePrincipalName** with any unique string of characters consisting of letters and digits) and **mySubscriptionID** with your Azure subscriptionId :
 
     ```
     az ad sp create-for-rbac --name myServicePrincipalName \
@@ -132,7 +131,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
 
-1. The choose **Service principal (manual)** and click on **Next**.
+1. The choose **Service Principal (manual)** and click on **Next**.
 
 1. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name
@@ -242,7 +241,7 @@ In this task, you will create a Variable Group in Azure DevOps that will retriev
 
     ![Variable Group create](images/vg-create.png)
 
-#### Task 4: Setup CD Pipeline to deploy container in ACI
+#### Task 4: Setup CD Pipeline to deploy container in Azure Container Instance(ACI)
 
 In this task, you will import a CD pipeline, customize it and run it for deploying the container image created before in a Azure Container Instance.
 
