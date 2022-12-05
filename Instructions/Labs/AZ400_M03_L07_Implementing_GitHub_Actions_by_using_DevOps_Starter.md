@@ -145,6 +145,10 @@ In this task, you will review the GitHub workflow execution:
 
     ![Succesfull workflow](images/gh-action-success.png)
 
+1. In a browser window, go back to the Azure Portal (https://portal.azure.com/). Open the resource group created before. You will see that the GitHub Action, using a bicep template, has created an Azure App Service Plan + App Service. You can see the published website opening the App Service and clicking **Browse**.
+
+    ![Browse WebApp](images/browse-webapp.png)
+
 #### (OPTIONAL) Task 4: Add manual approval pre-deploy using GitHub Environments
 
 In this task, you will use GitHub environments to ask for manual approval before executing the actions defined on the deploy job of your workflow.
@@ -168,7 +172,7 @@ In this task, you will use GitHub environments to ask for manual approval before
 
     ![approval](images/gh-approve.png)
 
-1. Workflow will follow the **deploy** job execution. 
+1. Workflow will follow the **deploy** job execution and finish.
 
 #### Task 1: Remove the Azure lab resources
 
