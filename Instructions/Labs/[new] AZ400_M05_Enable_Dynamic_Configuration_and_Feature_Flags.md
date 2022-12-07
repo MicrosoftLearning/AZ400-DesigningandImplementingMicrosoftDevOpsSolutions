@@ -1,10 +1,10 @@
 ---
 lab:
-    title: '[new] Enable Dynamic Configuration and Feature Flags'
+    title: 'Enable Dynamic Configuration and Feature Flags'
     module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# [new] Enable Dynamic Configuration and Feature Flags
+# Enable Dynamic Configuration and Feature Flags
 
 # Student lab manual
 
@@ -20,7 +20,7 @@ lab:
 
 ## Lab overview
 
-[Azure App Configuration](https://learn.microsoft.com/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. Modern programs, especially programs running in a cloud, generally have many components that are distributed in nature. Spreading configuration settings across these components can lead to hard-to-troubleshoot errors during an application deployment. Use App Configuration to store all the settings for your application and secure their accesses in one place.
+[Azure App Configuration](https://learn.microsoft.com/azure/azure-app-configuration/overview) provides a service to manage application settings and feature flags centrally. Modern programs, especially those running in a cloud, generally have many distributed components. Spreading configuration settings across these components can lead to hard-to-troubleshoot errors during application deployment. Use App Configuration to store all the settings for your application and secure their accesses in one place.
 
 ## Objectives
 
