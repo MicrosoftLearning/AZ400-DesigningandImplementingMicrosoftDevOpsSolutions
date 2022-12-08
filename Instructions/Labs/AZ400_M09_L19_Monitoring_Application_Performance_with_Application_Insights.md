@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 18: Monitoring Application Performance with Application Insights'
+    title: 'Monitoring Application Performance with Application Insights'
     module: 'Module 09: Implement continuous feedback'
 ---
 
-# Lab 18: Monitoring Application Performance with Application Insights
+# Monitoring Application Performance with Application Insights
 
 # Student lab manual
 

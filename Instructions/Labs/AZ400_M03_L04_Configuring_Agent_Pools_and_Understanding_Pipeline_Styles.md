@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 04: Configuring Agent Pools and Understanding Pipeline Styles'
+    title: 'Configuring Agent Pools and Understanding Pipeline Styles'
     module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Lab 04: Configuring Agent Pools and Understanding Pipeline Styles
+# Configuring Agent Pools and Understanding Pipeline Styles
 
 # Student lab manual
 

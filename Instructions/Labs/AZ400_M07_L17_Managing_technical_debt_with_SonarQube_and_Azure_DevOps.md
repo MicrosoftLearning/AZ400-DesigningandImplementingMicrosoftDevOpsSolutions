@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 16: Managing technical debt with SonarCloud and Azure DevOps'
+    title: 'Managing technical debt with SonarCloud and Azure DevOps'
     module: 'Module 07: Implement security and validate code bases for compliance'
 ---
 
-# Lab 16: Managing technical debt with SonarCloud and Azure DevOps
+# Managing technical debt with SonarCloud and Azure DevOps
 
 # Student lab manual
 

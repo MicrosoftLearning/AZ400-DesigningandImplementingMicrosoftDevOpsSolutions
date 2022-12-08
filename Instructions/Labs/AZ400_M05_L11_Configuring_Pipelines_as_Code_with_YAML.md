@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 11: Configuring Pipelines as Code with YAML'
+    title: 'Configuring Pipelines as Code with YAML'
     module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# Lab 11: Configuring Pipelines as Code with YAML
+# Configuring Pipelines as Code with YAML
 
 # Student lab manual
 

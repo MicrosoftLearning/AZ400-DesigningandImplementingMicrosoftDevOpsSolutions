@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 10: Creating a Release Dashboard'
+    title: 'Creating a Release Dashboard'
     module: 'Module 04: Design and implement a release strategy'
 ---
 
-# Lab 10: Creating a Release Dashboard
+# Creating a Release Dashboard
 
 # Student lab manual
 

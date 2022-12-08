@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 08: Deploying Docker containers to Azure App Service web apps'
+    title: 'Deploying Docker containers to Azure App Service web apps'
     module: 'Module 03: Create and manage containers using Docker and Kubernetes'
 ---
 
-# Lab 08: Deploying Docker containers to Azure App Service web apps
+# Deploying Docker containers to Azure App Service web apps
 
 # Student lab manual
 

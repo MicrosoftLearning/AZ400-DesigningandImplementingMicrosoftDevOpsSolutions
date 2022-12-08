@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Lab 02: Version Controlling with Git in Azure Repos'
-    module: 'Module 01: Get started on a DevOps transformation journey'
+    title: 'Version Controlling with Git in Azure Repos'
+    module: 'Module 02: Work with Azure Repos and GitHub'
 ---
 
-# Lab 02: Version Controlling with Git in Azure Repos
+# Version Controlling with Git in Azure Repos
 
 # Student lab manual
 
