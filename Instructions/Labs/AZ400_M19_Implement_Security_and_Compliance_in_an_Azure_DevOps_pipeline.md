@@ -35,25 +35,6 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Before you start
-
-#### Sign in to the lab virtual machine
-
-Ensure that you're signed in to your Windows 10 computer by using the following credentials:
-    
--   Username: **Student**
--   Password: **Pa55w.rd**
-
-#### Review applications required for this lab
-
-Identify the applications that you'll use in this lab:
-    
--   Microsoft Edge
-
-#### Set up an Azure DevOps organization. 
-
-If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-
 ### Exercise 0: Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://dev.azure.com/unhueteb/_git/eshopweb-az400).
