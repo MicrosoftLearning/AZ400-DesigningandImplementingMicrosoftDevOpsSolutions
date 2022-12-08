@@ -37,13 +37,6 @@ After you complete this lab, you will be able to:
 
 ### Before you start
 
-#### Sign in to the lab virtual machine
-
-Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
-    
--   Username: **Student**
--   Password: **Pa55w.rd**
-
 #### Review applications required for this lab
 
 Identify the applications that you'll use in this lab:
