@@ -38,13 +38,6 @@ After you complete this lab, you will be able to:
 
 ### Before you start
 
-#### Sign in to the lab virtual machine
-
-Ensure that you're signed in to your Windows 10 virtual machine by using the following credentials:
-    
--   Username: **Student**
--   Password: **Pa55w.rd**
-
 #### Review applications required for this lab
 
 Identify the applications that you'll use in this lab:
@@ -257,7 +250,7 @@ In this task, you will import and run the CI pipeline.
 
 Congratulations! In this exercise, you deployed a website using custom docker image.
 
-### Exercise 3: Remove the Azure lab resources
+### Exercise 4: Remove the Azure lab resources
 
 In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
 
