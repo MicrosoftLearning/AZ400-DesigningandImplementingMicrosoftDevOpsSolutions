@@ -415,7 +415,7 @@ In this task, you will use Application Insights to investigate performance of th
 
 ### Exercise 2: Remove the Azure lab resources
 
-In this exercise, you will remove the Azure resources provisione in this lab to eliminate unexpected charges.
+In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
 
 >**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
 

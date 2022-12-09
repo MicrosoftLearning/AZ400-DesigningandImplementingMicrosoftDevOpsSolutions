@@ -59,7 +59,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**: 
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
 
     ![Import Repository](images/import-repo.png)
 
@@ -332,8 +332,8 @@ For simplicity we will work directly on the web browser repo editor (working dir
 
 In this task, you will use the Azure DevOps portal to test the policy and create your first Pull Request.
 
-1. In the vertical navigational pane of the of the Azure DevOps portal, in the **Repos>Files**, make sure the **main** branch is selected (drowpdown above shown content).
-1. To make sure policies are working, try making a change and commiting it on the **main** branch, navigate to the **/eShopOnWeb/src/Web/Program.cs** file and select it. This will automatically display its content in the details pane.
+1. In the vertical navigational pane of the of the Azure DevOps portal, in the **Repos>Files**, make sure the **main** branch is selected (dropdown above shown content).
+1. To make sure policies are working, try making a change and committing it on the **main** branch, navigate to the **/eShopOnWeb/src/Web/Program.cs** file and select it. This will automatically display its content in the details pane.
 1. On the first line add the following comment:
 
     ```csharp
@@ -375,11 +375,11 @@ In this task, you will use the Azure DevOps portal to create a Pull Request, usi
 1. Next,  open the **Files** tab to review the proposed changes. In a more complete Pull Request,  you would be able to review files one by one (marked as reviewed) and open comments for lines that may not be clear (hovering the mouse over the line number gives you an option to post a comment).
 1. Go back to the **Overview** tab, and on the top-right click on **Approve**. All the requirements will change to green. Now you can click on **Complete**.
 1. On the **Complete Pull Request** tab, multiple options will be given before completing the merge:
-    - **Merge Type**: 4 merge types are offered, you can review them [here](https://learn.microsoft.com/en-us/azure/devops/repos/git/complete-pull-requests?view=azure-devops&tabs=browser#complete-a-pull-request) or observing the given animations. Choose **Merge (no fast forward)**.
+    - **Merge Type**: 4 merge types are offered, you can review them [here](https://learn.microsoft.com/azure/devops/repos/git/complete-pull-requests?view=azure-devops&tabs=browser#complete-a-pull-request) or observing the given animations. Choose **Merge (no fast forward)**.
     - **Post-complete options**:
         - Check **Complete associated work item...**. It will move associated PBI to **Done** state.
     
-1. Click on **Complete Merge**
+2. Click on **Complete Merge**
         
 #### Task 7: Applying tags
 

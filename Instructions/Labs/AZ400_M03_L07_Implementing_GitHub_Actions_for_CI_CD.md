@@ -83,7 +83,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 1. On your lab computer, in a browser window, open the Azure Portal (https://portal.azure.com/).
 1. In the portal, look for **Resource Groups** and click on it.
 1. Click on **+ Create** to create a new Resource Group for the exercise.
-1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshopeonweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**. 
+1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshopeonweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**.
 1. In the Azure Portal, open the **Cloud Shell** (next to the search bar).
 
     > NOTE: if this is the first time you open the Cloud Shell, you need to configure the [persistent storage](https://learn.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#create-new-storage)
@@ -118,30 +118,30 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 In this task, you will modify the given GitHub workflow and execute it to deploy the solution in your own subscription.
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-1. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. This worflow defines the CI/CD process for the given .NET 6 website code.
+1. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. This workflow defines the CI/CD process for the given .NET 6 website code.
 
 1. Uncomment the **on** section (delete "#"). The workflow triggers with every push to the main branch and also offers manual triggering ("workflow_dispatch").
 
-1. In the **env** section, make the following changes: 
+1. In the **env** section, make the following changes:
     - Replace **NAME** in **RESOURCE-GROUP** variable. It should be the same resource group created in previous steps.
-    - (Optional) You can choose your closest [azure region](https://azure.microsoft.com/en-gb/explore/global-infrastructure/geographies/#geographies) for **LOCATION**. For example, "eastus", "eastasia", "westus", etc. 
-    - Replace **YOUR-SUBS-ID** in **SUBSCRIPTION-ID**. 
-    - Replace **NAME** in **WEBAPP-NAME** with some unique alias. It will be used to create a globally unique website using Azure App Service. 
+    - (Optional) You can choose your closest [azure region](https://azure.microsoft.com/en-gb/explore/global-infrastructure/geographies/#geographies) for **LOCATION**. For example, "eastus", "eastasia", "westus", etc.
+    - Replace **YOUR-SUBS-ID** in **SUBSCRIPTION-ID**.
+    - Replace **NAME** in **WEBAPP-NAME** with some unique alias. It will be used to create a globally unique website using Azure App Service.
 
 1. Read the workflow carefully, comments are provided to help understand.
 
 1. Click on **Start Commit** and **Commit Changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
 
-#### Task 3: Review GitHub Workflkow execution
+#### Task 3: Review GitHub Workflow execution
  
 In this task, you will review the GitHub workflow execution:
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-1. On the repository page, go to **Actions**, you will see the workflow setup before executing. Click on it. 
+1. On the repository page, go to **Actions**, you will see the workflow setup before executing. Click on it.
 
     ![GitHub workflow in progress](images/gh-actions.png)
 
-1. Wait for the workflow to finish. From the **Summary** you can see the two workflow jobs, the status and Artifacts retained from the execution. You can click in each job to review logs. 
+1. Wait for the workflow to finish. From the **Summary** you can see the two workflow jobs, the status and Artifacts retained from the execution. You can click in each job to review logs.
 
     ![Succesfull workflow](images/gh-action-success.png)
 
@@ -154,7 +154,7 @@ In this task, you will review the GitHub workflow execution:
 In this task, you will use GitHub environments to ask for manual approval before executing the actions defined on the deploy job of your workflow.
 
 1. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**.
-1. In the **deploy** job section, you can find a reference to an **enviroment** called **Development**. GitHub used [environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) add protection rules (and secrets) for your targets. 
+1. In the **deploy** job section, you can find a reference to an **enviroment** called **Development**. GitHub used [environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) add protection rules (and secrets) for your targets.
 
 1. On the repository page, go to **Settings**, open **Environments** and click **New environment**.
 

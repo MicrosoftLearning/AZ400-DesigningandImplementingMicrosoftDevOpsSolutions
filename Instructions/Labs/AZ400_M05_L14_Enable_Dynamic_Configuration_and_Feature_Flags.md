@@ -29,9 +29,7 @@ After you complete this lab, you will be able to:
 - Enable dynamic configuration
 - Manage feature flags
 
-## Lab duration
-
--   Estimated time: **60 minutes**
+## Estimated timing: 60 minutes
 
 ## Instructions
 
@@ -49,7 +47,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**: 
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
 
 1.  The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines
@@ -68,7 +66,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 In this exercise, you will import and run the CI pipeline, configure the service connection with your Azure Subscription and then import and run the CD pipeline.
 
-#### Task 1: Import and run the CI pieline
+#### Task 1: Import and run the CI pipeline
 
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
@@ -86,7 +84,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 
 1. Click the **Run** button to run the pipeline
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the elipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
 
 #### Task 2: Manage the service connection
 
@@ -100,10 +98,10 @@ In this task, you will create a service principal by using the Azure CLI, which 
 
 You will need a service principal to deploy  Azure resources from Azure Pipelines.
 
-A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page (automatic option). You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects. 
+A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page (automatic option). You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects.
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
-1.  In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
+1.  In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
 1.  If prompted to select either **Bash** or **PowerShell**, select **Bash**. 
 
    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
@@ -159,7 +157,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 - **az400eshop-NAME** replace NAME to make it globally unique.
 - **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
 
-1. Click on **Save and Run** and wait for the pipeline to execute succesfully.
+1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
     > **Note**: The deployment may take a few minutes to complete.
 
@@ -192,7 +190,7 @@ If you want to know how to implement this in your application, please take a loo
 
 1. Go to the Web App deployed using the pipeline (it should be named **az400-webapp-NAME**).
 1. In the **Settings** section, click on **Identity** then switch status to **On** in the **System Assigned** section, click **save>yes** and wait a few seconds for the operation to finish.
-1. Go back to the App Configuration service and click on **Acceess control** then **Add role assignment**.
+1. Go back to the App Configuration service and click on **Access control** then **Add role assignment**.
 1. In the **Role** section, select **App Configuration Data Reader**
 1. In the **Members** section, check **Manage Identity** then select the managed identity of your Web App (they should have the same name).
 1. Click on **Review and assign**

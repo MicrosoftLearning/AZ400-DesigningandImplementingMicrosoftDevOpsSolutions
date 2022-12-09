@@ -36,9 +36,7 @@ After you complete this lab, you will be able to:
 - Activate Mend Bolt
 - Run a build pipeline and review Mend security and compliance report
 
-## Lab duration
-
--   Estimated time: **45 minutes**
+## Estimated timing: 45 minutes
 
 ## Instructions
 
@@ -58,7 +56,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1.  On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**: 
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**:
 
     ![Import Repository](images/import-repo.png)
 
@@ -77,7 +75,7 @@ In this exercise, leverage Mend Bolt to scan the project code for security vulne
 
 In this task, you will activate WhiteSource Bolt in the newly generated Azure Devops project.
 
-1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **eShopOnWeb** project open, click on the marketplace icon > **Browse Marketplace**. 
+1.  On your lab computer, in the web browser window displaying the Azure DevOps portal with the **eShopOnWeb** project open, click on the marketplace icon > **Browse Marketplace**.
 
     ![Browse Marketplace](images/browse-marketplace.png)
 
@@ -89,7 +87,7 @@ In this task, you will activate WhiteSource Bolt in the newly generated Azure De
 
     ![Get Mend Bolt](images/mend-bolt.png)
 
-1.  On the next page, select the desired Azure DevOps organization and **Install**. **Proceed to organization** once installed. 
+1.  On the next page, select the desired Azure DevOps organization and **Install**. **Proceed to organization** once installed.
 
 1.  In your Azure DevOps navigate to **Organization Settings** and select **Mend** under **Extensions**. Provide your Work Email (**your lab personal account**, e.g. using AZ400learner@outlook.com instead of student@microsoft.com ), Company Name and other details and click **Create Account** button to start using the Free version.
 

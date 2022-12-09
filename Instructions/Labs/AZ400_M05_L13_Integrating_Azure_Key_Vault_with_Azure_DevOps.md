@@ -32,11 +32,9 @@ In this lab, you will see how you can integrate Azure Key Vault with an Azure Pi
 After you complete this lab, you will be able to:
 
 -   Create an Azure Active Directory (Azure AD) Service Principal.
--   Create an Azure Key Vault. 
+-   Create an Azure Key Vault.
 
-## Lab duration
-
--   Estimated time: **40 minutes**
+## Estimated timing: 40 minutes
 
 ## Instructions
 
@@ -56,7 +54,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**: 
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
 
     ![Import Repository](images/import-repo.png)
 
@@ -67,13 +65,13 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 6 website used on the lab scenarios.
 
-### Exercise 1: Setup CI pipeline to build eShopOnWeb container 
+### Exercise 1: Setup CI pipeline to build eShopOnWeb container
 
 Setup CI YAML pipeline for:
 - Creating an Azure Container Registry to keep the container images
 - Using Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images. Only **eshopwebmvc** container will be deployed.
 
-#### Task 1: (skip if done) Create a Service Principal 
+#### Task 1: (skip if done) Create a Service Principal
 
 In this task, you will create a Service Principal by using the Azure CLI, which will allow Azure DevOps to:
 - Deploy resources on your Azure subscription
@@ -81,17 +79,17 @@ In this task, you will create a Service Principal by using the Azure CLI, which 
 
 > **Note**: If you do already have a Service Principal, you can proceed directly to the next task.
 
-You will need a Service Principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key Vault. 
+You will need a Service Principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key Vault.
 
-A Service Principal is automatically created by Azure Pipelines, when you connect to an Azure subscription from inside a pipeline definition or when you create a new Service Connection from the project settings page (automatic option). You can also manually create the Service Principal from the portal or using Azure CLI and re-use it across projects. 
+A Service Principal is automatically created by Azure Pipelines, when you connect to an Azure subscription from inside a pipeline definition or when you create a new Service Connection from the project settings page (automatic option). You can also manually create the Service Principal from the portal or using Azure CLI and re-use it across projects.
 
 1.  From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
-1.  In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page. 
-1.  If prompted to select either **Bash** or **PowerShell**, select **Bash**. 
+1.  In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
+1.  If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**. 
+   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
-1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes: 
+1.  From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes:
 
     ```
     az account show --query id --output tsv
@@ -121,7 +119,7 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 1. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name
     - Service Principal Id (or clientId), Key (or Password) and TenantId.
-    - In **Service connection name** type **azure subs**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription. 
+    - In **Service connection name** type **azure subs**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
 
     ![Azure Service Connection](images/azure-service-connection.png)
 
@@ -139,9 +137,9 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
 
     ![Select Pipeline](images/select-ci-container-compose.png)
 
-1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **AZ400-EWebShop-NAME** and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId. 
+1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **AZ400-EWebShop-NAME** and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId.
 
-1. Click on **Save and Run** and wait for the pipeline to execute succesfully.
+1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
     - **AzureResourceManagerTemplateDeployment** uses **bicep** to deploy an Azure Container Registry.
@@ -185,7 +183,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pull a
     > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get/List) permissions to the previously created service principal that you will be using for authentication in the pipeline. 
 
     1. On the **Permission** blade, check **Get** and **List** permissions below **Secret Permission**. Click on **Next**.
-    1. on the **Principal** blade, search for the **previosly created Service Principal**, either using the Id or Name given. Click on **Next** and **Next** again.
+    1. on the **Principal** blade, search for the **previously created Service Principal**, either using the Id or Name given. Click on **Next** and **Next** again.
     1. On the **Review + create** blade, click on **Create**
 
 1. Back on the **Create a Key Vault** blade, click on **Review + Create > Create**
@@ -193,7 +191,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pull a
     > **Note**: Wait for the Azure Key vault to be provisioned. This should take less than 1 minute.
 
 1.  On the **Your deployment is complete** blade, click on **Go to resource**.
-1.  On the Azure Key vault blade, in the vertical menu on the left side of the blade, in the **Objects** section, click on **Secrets**. 
+1.  On the Azure Key vault blade, in the vertical menu on the left side of the blade, in the **Objects** section, click on **Secrets**.
 1.  On the **Secrets** blade, click on **Generate/Import**.
 1.  On the **Create a secret** blade, specify the following settings and click on **Create** (leave others with their default values):
 
@@ -243,28 +241,28 @@ In this task, you will import a CD pipeline, customize it and run it for deployi
     - **YOUR-ACR.azurecr.io** and **ACR-USERNAME** with your ACR login server (both need the ACR name, can be reviewed on the ACR>Access Keys).
     - **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
 
-1. Click on **Save and Run** and wait for the pipeline to execute succesfully.
+1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
     > **Note**: The deployment may take a few minutes to complete. The CD definition consists of the following tasks:
     - **Resources** : it is prepared to automatically trigger based on CI pipeline completion. It also download the repository for the bicep file.
-    - **Variables (for Deploy stage)** connecs to the variable gorup to consume the Azure Key Vault secret **acr-secret**
+    - **Variables (for Deploy stage)** connects to the variable group to consume the Azure Key Vault secret **acr-secret**
     - **AzureResourceManagerTemplateDeployment** deploys the Azure Container Instance (ACI) using bicep template and provides the ACR login parameters to allow ACI to download the previously created container image from Azure Container Registry (ACR).
 
-1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the elipsis and **Rename/Remove** option. Name it **eshoponweb-cd-aci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-cd-aci** and click on **Save**.
 
 ### Exercise 2: Remove the Azure lab resources
 
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges. 
+In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
 
 >**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
 
 #### Task 1: Remove the Azure lab resources
 
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges. 
+In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
 
 1.  In the Azure portal, open the created Resource Group and click on **Delete resource group**.
 
-#### Review
+## Review
 
 In this lab, you integrated Azure Key Vault with an Azure DevOps pipeline by using the following steps:
 

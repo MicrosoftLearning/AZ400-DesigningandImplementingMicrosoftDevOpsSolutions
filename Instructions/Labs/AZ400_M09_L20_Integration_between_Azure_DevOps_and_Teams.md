@@ -121,8 +121,8 @@ Click the down facing arrowhead directly to the right of the **Open** button and
     Add subscription
     ```
 
-1. Click on **Add subscription**. From the dropdown, select **works item created** from the list of events and click **Next**. Leave defaults and click **Submit**. click **OK** and close. A message will be posted in the channel with details about the newly added susbcription.
-1. Switch to the web browser displaying the **Tailwind Traders** project in the Azure DevOps portal, click on **Boards > Work items**. Click on **New work item** and choose **User Story** on the dropdown. Give a title to the userstory, something like **Test Azure Boards integration with Teams** and **Save**. The Teams channel we recently set up will post a notification/card with information about the created user story.
+1. Click on **Add subscription**. From the dropdown, select **works item created** from the list of events and click **Next**. Leave defaults and click **Submit**. click **OK** and close. A message will be posted in the channel with details about the newly added subscription.
+1. Switch to the web browser displaying the **Tailwind Traders** project in the Azure DevOps portal, click on **Boards > Work items**. Click on **New work item** and choose **User Story** on the dropdown. Give a title to the user story, something like **Test Azure Boards integration with Teams** and **Save**. The Teams channel we recently set up will post a notification/card with information about the created user story.
 
 #### Task 2: Add Azure Boards Kanban boards to Microsoft Teams
 
@@ -211,7 +211,7 @@ In this task, you will use customize subscriptions to Azure Pipelines in Microso
 1. In the **Azure Pipelines** **Add subscription** panel, click **OK** to acknowledge the confirmation message.
 1. In the **Azure Pipelines** **View subscriptions** panel, review the list of subscriptions and close the panel.
 1. Switch to the web browser displaying the **Tailwind Traders** project in the Azure DevOps portal, in the vertical menu bar at the far left of the Azure DevOps portal, click **Pipelines**, on the Pipelines pane, click the **Website-CI** entry, and, while on the Website-CI pane, click **Run Pipeline > Run**.
-1. The Teams channel will post notifications about the failed execution of the pipeline, as an expected behaviour (the pipeline has missing setup).
+1. The Teams channel will post notifications about the failed execution of the pipeline, as an expected behavior (the pipeline has missing setup).
 
 ## Review
 

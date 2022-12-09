@@ -68,7 +68,7 @@ In this task, you will create an **eShopOnWeb_ReleaseGates** Azure DevOps projec
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1.  On your lab computer, in a browser window open your Azure DevOps organization and the previoulsy created **eShopOnWeb_ReleaseGates** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**: 
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb_ReleaseGates** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**:
 
     ![Import Repository](images/import-repo.png)
 
@@ -167,9 +167,9 @@ In this task, you will create two Azure web apps representing the **Canary** and
 
 ### Exercise 1: Configure the build pipeline
 
-In this exercise, you will prepare the release artifact (web deploy zip package) for the .NET 6 eShopOnWeb web application source code. 
+In this exercise, you will prepare the release artifact (web deploy zip package) for the .NET 6 eShopOnWeb web application source code.
 
-1. From the [Azure DevOps portal](https://dev.azure.com), navigate to the **eShopOnWeb_ReleaseGates** project you created earlier in this lab. 
+1. From the [Azure DevOps portal](https://dev.azure.com), navigate to the **eShopOnWeb_ReleaseGates** project you created earlier in this lab.
 1. From within the Project, navigate to **Pipelines**.
 1. Click **Create Pipelines**.
 1. From the **Where is your Code** step, select **Azure Repos(Git)**.
@@ -182,9 +182,8 @@ In this exercise, you will prepare the release artifact (web deploy zip package)
 1. Click on the **Build** Status line to navigate to the detailed **Running Job** window. 
 1. Wait for all steps to be completed successfully (green checkmarks). This should take around 2-3min on average.
 1. Once the Build Pipeline Job completed successfully, validate the Build Artifacts. From the Job Status page, navigate to the **Summary** tab. Under **Related**, it shows **2 published**. Select this link. 
-1. From the **Artifacts** page appearing, see **>Bicep** and **>WebSite**. 
+1. From the **Artifacts** page appearing, see **>Bicep** and **>WebSite**.
 1. Open **WebSite**. Notice **BlazorAdmin.zip** and **Web.zip**. We will use the **Web.zip** artifact in our upcoming Release Pipeline.
-
 
 ### Exercise 2: Configure the release pipeline
 
@@ -203,7 +202,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 
     > **Note**: The pipeline now contains two stages named **Canary** and **Production**.
 
-1. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eShopOnWeb_ReleaseGates** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact. 
+1. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eShopOnWeb_ReleaseGates** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact.
 1. From the **Artifact** rectangle, notice the **Continuous Integration Trigger** (lightning bolt) appearing. Click it to open the **Continuous deployment trigger** settings. Click the continuous deployment trigger to toggle the switch to enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
 1. Within the **Canary Environments** stage, click the **1 job, 2 tasks** label and review the tasks within this stage.
 
@@ -220,7 +219,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/**/*.zip" to "$(System.DefaultWorkingDirectory)/**/Web.zip"** 
 1. On the **All pipelines > New Release Pipeline** pane, click **Save** and, in the **Save** dialog box, click **OK**.
 
-You have now successfully configured the Release Pipeline. 
+You have now successfully configured the Release Pipeline.
 
 1. In the browser window displaying the **EshopOnWeb_ReleaseGates** project, in the vertical navigational pane, in the **Pipelines** section, click **Pipelines**.
 1. On the **Pipelines** pane, click the entry representing **eShopOnWeb_ReleaseGates** build pipeline and then, on the **eShopOnWeb_ReleaseGates** pane, click on **Run Pipeline**.
@@ -248,12 +247,12 @@ In this task, you will configure pre-deployment gates.
 1. On the **All pipelines > New Release Pipeline** pane, on the left edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Pre-deployment conditions**.
 1. On **Pre-deployment conditions** pane, set the **Pre-deployment approvals** slider to **Enabled** and, in the **Approvers** text box, type and select your Azure DevOps account name.
 
-    > **Note**: In a real-life scenario, this should be a DevOps Team name alias instead of your own name. 
+    > **Note**: In a real-life scenario, this should be a DevOps Team name alias instead of your own name.
 
-1. **Save** the pre-approval settings and close the popup window. 
-1. Click **Create Release** and confirm by pressing the **Create** button from the popup window. 
+1. **Save** the pre-approval settings and close the popup window.
+1. Click **Create Release** and confirm by pressing the **Create** button from the popup window.
 1. Notice the green confirmation message, saying "Release-2" has been created. Click the link of "Release-2" to navigate to its details.
-1. Notice the **Canary** Stage is in a **Pending Approval** state. Click the **Approve** button. This sets off the Canary Stage again. 
+1. Notice the **Canary** Stage is in a **Pending Approval** state. Click the **Approve** button. This sets off the Canary Stage again.
 
 #### Task 2: Configure post-deployment gates for Azure Monitor
 
@@ -268,7 +267,7 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
 - Severity: **Sev0, Sev1, Sev2, Sev3, Sev4**
 - Time Range: **Past Hour**
 - Alert State: **Acknowledged, New**
-- Monitor Condition: **Fired** 
+- Monitor Condition: **Fired**
 
 1.  On **Post-deployment conditions** pane, expand the **Evaluation options** and configure the following options:
 
@@ -289,17 +288,17 @@ In this exercise, you will test the release gates by updating the application, w
 
 In this task, you will track the release process with the release gates enabled.
 
-1. From the Azure Portal, in the "Search resources, services and docs" field, enter **Alerts** to open the Alerts Service of Azure Monitor. 
-1. Notice there should be at least **1 Alert** with **Severity 2 - Warning** showing up in the list. This got trigger when you validated the website in the previous exercise. 
+1. From the Azure Portal, in the "Search resources, services and docs" field, enter **Alerts** to open the Alerts Service of Azure Monitor.
+1. Notice there should be at least **1 Alert** with **Severity 2 - Warning** showing up in the list. This got trigger when you validated the website in the previous exercise.
 
     > ** Note:** If no Alert shows up yet, wait another few minutes. Speeding up Alerts is possible by navigating to the Canary-URL again from a browser.
 
-1. Return back to the Azure DevOps Portal, open the **EShopOnWeb-Release Gates** Project. Navigate to **Pipelines**, select **Releases** and select the **New Release Pipeline**. 
-1. Click the **Create Release** button. 
-1. Wait for the Release pipeline to kick off, and **approve** the Canary Stage release action. 
+1. Return back to the Azure DevOps Portal, open the **EShopOnWeb-Release Gates** Project. Navigate to **Pipelines**, select **Releases** and select the **New Release Pipeline**.
+1. Click the **Create Release** button.
+1. Wait for the Release pipeline to kick off, and **approve** the Canary Stage release action.
 1. Wait for the Canary release Stage to complete successfully. Notice how the **Post-deployment Gates** is switching to an **Evaluation Gates** status.  Click the **Evaluation Gates** icon.
-1. For the **Query Azure Monitor Alerts**, notice an initial failed state. 
-1. Let the Release pipeline in a pending state for the next 5 minutes. After the 5 minutes did pass, notice the 2nd evaluation failing again. 
+1. For the **Query Azure Monitor Alerts**, notice an initial failed state.
+1. Let the Release pipeline in a pending state for the next 5 minutes. After the 5 minutes did pass, notice the 2nd evaluation failing again.
 1. This is expected behavior, since there is an Application Insights Alerts triggered for the Canary Web App.
 
     > **Note**: Since there is an alert triggered by the exception, **Query Azure Monitor** gate will fail. This, in turn, will prevent deployment to the **Production** environment.
