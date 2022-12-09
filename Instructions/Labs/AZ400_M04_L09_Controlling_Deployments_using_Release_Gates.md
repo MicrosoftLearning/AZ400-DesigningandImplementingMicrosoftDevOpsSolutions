@@ -201,7 +201,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. From the **Stage** window appearing, update the default "Stage 1" Stage Name to **Canary**. Close the popup window by using the **X** button. You are now in the graphical editor of the Release Pipeline, showing the Canary Stage.
 1. Hover the mouse over the Canary Stage, and click the **Clone** button, to copy the Canary Stage to an additional Stage. Name this Stage **Production**.
 
-    > **Note**: The pipeline now contains two stages named **Canary ** and **Production**.
+    > **Note**: The pipeline now contains two stages named **Canary** and **Production**.
 
 1. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eShopOnWeb_ReleaseGates** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact. 
 1. From the **Artifact** rectangle, notice the **Continuous Integration Trigger** (lightning bolt) appearing. Click it to open the **Continuous deployment trigger** settings. Click the continuous deployment trigger to toggle the switch to enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
