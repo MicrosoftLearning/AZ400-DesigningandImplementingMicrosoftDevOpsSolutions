@@ -210,7 +210,9 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     ![Click on "+" to create Task](images/m1/new_task_v1.png)
 
-1. At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **Add page for most recent tutorials**.
+1. At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **
+
+s**.
 1. On the **NEW TASK** panel, in the **Remaining Work** textbox, type **5**.
 1. On the **NEW TASK** panel, in the **Activity** dropdown list, select **Development**.
 1. On the **NEW TASK** panel, click **Save & Close**.
@@ -237,9 +239,6 @@ The sprint backlog should contain all the information the team needs to successf
     > **Note**: The current sprint has a pretty limited scope. There are two tasks in the **To do** stage. At this point, neither task has been assigned. Both show a numeric value to the right of **Unassigned** entry representing the remaining work estimate.
 
 1.  In the rectangle representing the **Add page for most recent tutorials**, click the **Unassigned** entry and, in the list of user accounts, select your account to assign the task to yourself.
-1.  Assign the **Add page for most recent tutorial** task to yourself.
-
-    > **Note**: This automatically updates the **Work By: Assigned To** section of the **Work details** pane.
 
 1. Select the **Capacity** tab of the **Sprints** view.
 
