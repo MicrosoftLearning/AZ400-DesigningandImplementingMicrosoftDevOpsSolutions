@@ -171,7 +171,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: 'AZURE SUBSCRIPTION(1)(b21d8ae2-9432-7a59-a1e0-27fb2ea7f9f4)'
+        azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
         appType: 'webApp'
         WebAppName: 'eshoponWebYAML369825031'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
@@ -298,7 +298,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: 'PETENDER PDTDEMOWORLD SUBSCRIPTION(1)(b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4)'
+        azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
         appType: 'webApp'
         WebAppName: 'eshoponWebYAML369825031'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
@@ -386,7 +386,7 @@ the resulting YAML snippet should look like this now, reflecting the **Deploy St
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'PETENDER PDTDEMOWORLD SUBSCRIPTION(1)(b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4)'
+              azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
               appType: 'webApp'
               WebAppName: 'eshoponWebYAML369825031'
               packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
