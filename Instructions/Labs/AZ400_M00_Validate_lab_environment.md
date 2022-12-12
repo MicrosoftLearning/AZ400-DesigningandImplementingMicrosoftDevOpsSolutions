@@ -34,4 +34,3 @@ lab:
 18. Toggle the switch to **On** for **Allow public projects**
     > Note: Extensions used in some labs might require a public project to allow using the free version.
 19. **Wait at least 3 hours before using the CI/CD capabilities** so that the new settings are reflected in the backend. Otherwise, you will still see the message *"No hosted parallelism has been purchased or granted"*.
-20. OPTIONAL: you can validate these new settings have been successfully applied by creating and triggering a build pipeline. To do this either talk to the instructor or create a demo project into the newly created organization with billing enabled, using [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net).
