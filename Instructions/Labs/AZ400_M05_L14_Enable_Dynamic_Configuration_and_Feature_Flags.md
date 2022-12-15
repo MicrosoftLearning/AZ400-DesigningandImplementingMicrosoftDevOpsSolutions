@@ -140,6 +140,8 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 #### Task 3: Import and run the CD pipeline
 
+Let's import the CD pipeline named [eshoponweb-cd-webapp-code.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-cd-webapp-code.yml).
+
 1. Go to **Pipelines>Pipelines**
 
 1. Click on **New pipeline** button
@@ -150,7 +152,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
 1. Select **Existing Azure Pipelines YAML File**
 
-1. Select the **/.ado/eshoponweb-ci.yml** file then click on **Continue**
+1. Select the **/.ado/eshoponweb-cd-webapp-code.yml** file then click on **Continue**
 
 1. In the YAML pipeline definition, customize:
 - **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
