@@ -153,7 +153,7 @@ In this exercise, you will import and run the CI pipeline.
     - [**Docker**](https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the docker image and create two tags (Latest and current BuildID)
     - **Docker - Push**: Push the images to Azure Container Registry
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci-docker** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci-docker** and click on **Save**.
 
 1. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container-NAME**). Make sure that the **eshoponweb/web** was created and contains two tags (one of them is **Latest**).
 
@@ -215,7 +215,7 @@ In this task, you will import and run the CI pipeline.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure App Service using bicep template.
     - **AzureResourceManagerTemplateDeployment**: Add role assignment using Bicep
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
 
     > **Note 1**: The use of the **/.azure/bicep/webapp-docker.bicep** template creates an app service plan, a web app with system assigned managed identity enabled, and references the docker image pushed previously: **${acr.properties.loginServer}/eshoponweb/web:latest**.
 
