@@ -80,7 +80,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **src** folder contains the .NET 6 website used on the lab scenarios.
 
 
-#### Task 2: Create two Azure web apps
+#### Task 3: Create two Azure web apps
 
 In this task, you will create two Azure web apps representing the **Canary** and **Production** environments, into which you'll deploy the application via Azure Pipelines.
 
@@ -119,7 +119,7 @@ In this task, you will create two Azure web apps representing the **Canary** and
 
 1. Wait for the Web App Services Resources provisioning process to complete and close the **Cloud Shell** pane.
 
-#### Task 3: Configure an Application Insights resource
+#### Task 4: Configure an Application Insights resource
 
 1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the page to search for **Application Insights** and, in the list of results, select **Application Insights**.
 1. On the **Application Insights** blade, select **+ Create**.
