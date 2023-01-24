@@ -83,7 +83,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 1. On your lab computer, in a browser window, open the Azure Portal (https://portal.azure.com/).
 1. In the portal, look for **Resource Groups** and click on it.
 1. Click on **+ Create** to create a new Resource Group for the exercise.
-1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshopeonweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**.
+1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshoponweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**.
 1. In the Azure Portal, open the **Cloud Shell** (next to the search bar).
 
     > NOTE: if this is the first time you open the Cloud Shell, you need to configure the [persistent storage](https://learn.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#create-new-storage)
@@ -182,13 +182,13 @@ In this exercise, you will use Azure Cloud Shell to remove the Azure resources p
 1. List all resource groups created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'rg-az400-eshopeonweb')].name" --output tsv
+    az group list --query "[?starts_with(name,'rg-az400-eshoponweb')].name" --output tsv
     ```
 
 1. Delete all resource groups you created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'rg-az400-eshopeonweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'rg-az400-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
