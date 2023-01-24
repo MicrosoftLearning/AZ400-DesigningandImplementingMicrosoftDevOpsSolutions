@@ -132,7 +132,7 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     | Enter agent pool (press enter for default) | **az400m05l05a-pool** |
     | Enter agent name | **az400m05-vm0** |
     | Enter work folder (press enter for _work) | **Enter** |
-    | **(Only if shown)** Enter Perform an unzip for tasks for each step. (press enter for N) | **Enter** |
+    | **(Only if shown)** Enter Perform an unzip for tasks for each step. (press enter for N) | **WARNING**: only press **Enter** if the message is shown|
     | Enter run agent as service? (Y/N) (press enter for N) | **Y** |
     | enter enable SERVICE_SID_TYPE_UNRESTRICTED (Y/N) (press enter for N) | **Y** |
     | Enter User account to use for the service (press enter for NT AUTHORITY\NETWORK SERVICE) | **Enter** |
@@ -153,6 +153,9 @@ In this task, you will configure the LOD VM as an Azure DevOps self-hosting agen
     demands:
     - agent.name -equals az400m05-vm0
     ```
+    > **WARNING**: Be careful with copy/paste, make sure you have same indentation shown above.
+
+
 1. For `Task: NugetToolInstaller@0`, click on **Settings (link that is displaying above the task in grey colour)**, modify **Version of NuGet.exe to install** > **4.0.0**  and click on **Add**.
 1.  On the **PartsUnlimited** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline.
 1.  In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
