@@ -210,9 +210,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     ![Click on "+" to create Task](images/m1/new_task_v1.png)
 
-1. At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **
-
-s**.
+1. At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **Add page for most recent tutorials**.
 1. On the **NEW TASK** panel, in the **Remaining Work** textbox, type **5**.
 1. On the **NEW TASK** panel, in the **Activity** dropdown list, select **Development**.
 1. On the **NEW TASK** panel, click **Save & Close**.
