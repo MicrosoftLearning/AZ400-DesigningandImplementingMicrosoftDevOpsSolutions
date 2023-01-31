@@ -147,7 +147,7 @@ In this exercise, you will import and run the CI pipeline.
     > **Note**: The deployment may take a few minutes to complete.
 
     The CI definition consists of the following tasks:
-    - **Resources**: It downloads the repository filest will be used in the followinf tasks.
+    - **Resources**: It downloads the repository files that will be used in the following tasks.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure Container Registry using bicep template.
     - **PowerShell**: Retrieve the **ACR Login Server** value from the previous task's output and create a new parameter **acrLoginServer**
     - [**Docker**](https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the docker image and create two tags (Latest and current BuildID)
