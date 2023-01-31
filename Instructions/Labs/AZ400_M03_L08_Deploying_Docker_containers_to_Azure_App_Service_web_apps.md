@@ -211,17 +211,15 @@ In this task, you will import and run the CI pipeline.
     > **Note**: The deployment may take a few minutes to complete.
 
     The CI definition consists of the following tasks:
-    - **Resources**: It downloads the repository filest will be used in the followinf tasks.
+    - **Resources**: It downloads the repository files that will be used in the following tasks.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure App Service using bicep template.
     - **AzureResourceManagerTemplateDeployment**: Add role assignment using Bicep
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and hover on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
 
     > **Note 1**: The use of the **/.azure/bicep/webapp-docker.bicep** template creates an app service plan, a web app with system assigned managed identity enabled, and references the docker image pushed previously: **${acr.properties.loginServer}/eshoponweb/web:latest**.
 
     > **Note 2**: The use of the **/.azure/bicep/webapp-to-acr-roleassignment.bicep** template creates a new role assignment for the web app with AcrPull role to be able to retreive the docker image. This could be done in the first template, but since the role assignment can take some time to propagate, it's a good idea to do both tasks separately.
-
-    > **Note 3**: 
 
 #### Task 3: Test the solution
 
