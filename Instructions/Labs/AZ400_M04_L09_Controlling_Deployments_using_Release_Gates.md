@@ -146,7 +146,7 @@ In this task, you will create two Azure web apps representing the **Canary** and
     > **Note**: You will create monitor alerts here, which you will use in later part of this lab.
 1. From the same **Settings** / **Application Insights** menu option, select **View Application Insight Data**. This redirects you to the Application Insights blade in the Azure Portal.
 1.  On the Application Insights resource blade, in the **Monitoring** section, click **Alerts** and then click **Create > Alert rule**.
-1.  On the **Select a signal** blade, in the **Search by signal name** textbox, type **Failed Requests** and select it. 
+1.  On the **Select a signal** blade, in the **Search by signal name** textbox, type **Requests** and select it. 
 1.  On the **Create an Alert Rule** blade, in the **Condition** section, leave the **Threshold** set to **Static**, validate the other default settings as follows:
 - Aggregation Type: Count
 - Operator: Greater Than
