@@ -112,9 +112,9 @@ Each new project is configured with a default team, which name matches the proje
     ![Do the same for Sprint 2 and 3, make sure they are created for "PUL-Web" team](images/m1/3sprints_v1.png)
 
 1. Back on the **Boards** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
-1. Click the ellipsis symbol next to the **default area** entry and, in the dropdown list, select **Include sub areas**.
+1. Click the ellipsis symbol (...) next to the **default area** entry and, in the dropdown list, select **Include sub areas**.
 
-    ![In the "Areas" tab, clik on the ellipsis icon for "PUL-Web" area and select "Include sub areas"](images/m1/sub_areas_v1.png)
+    ![In the "Areas" tab, clik on the ellipsis icon (...) for "PUL-Web" area and select "Include sub areas"](images/m1/sub_areas_v1.png)
 
     > **Note**: The default setting for all teams is to exclude sub-area paths. We will change it to include sub-areas so that the team gets visibility into all of the work items from all teams. Optionally, the management team could also choose to not include sub-areas, which automatically removes work items from their view as soon as they are assigned to one of the teams.
 
@@ -166,8 +166,8 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: This will make it easy to add tasks and other work items to the features.
 
-1. Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis  symbol in its upper right corner.
-1. Click the ellipsis  icon and, in the dropdown list, select **Add Product Backlog Item**.
+1. Hover with the mouse pointer over the rectangle representing the **Training dashboard** feature. This will reveal the ellipsis symbol (...) in its upper right corner.
+1. Click the ellipsis (...) icon and, in the dropdown list, select **Add Product Backlog Item**.
 
     ![Click on the ellipis for "Training dashboard" feature and click "Add Product Backlog Item"](images/m1/add_pb_v1.png)
 
@@ -409,9 +409,9 @@ All processes are shared within the same organization. That is, one or more team
     ![Click on the top left "Azure DevOps" icon first and click "Organization settings"](images/m1/org_settings_v1.png)
 
 1. In the **Organization Settings** vertical menu, in the **Boards** section, select **Process**.
-1. On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis symbol and, in the dropdown menu, select **Create inherited process**.
+1. On the **All processes** pane, to the right of the **Scrum** entry, select the ellipsis symbol (...) and, in the dropdown menu, select **Create inherited process**.
 
-    ![In the "Organization settings" window, "Process" option, look for "Scrum" process and click on ellipsis and "Create inherited process"](images/m1/inherited_v1.png)
+    ![In the "Organization settings" window, "Process" option, look for "Scrum" process and click on ellipsis (...) and "Create inherited process"](images/m1/inherited_v1.png)
 
 1. In the **Create inherited process from Scrum** panel, in the **Process name (required)** textbox, type **Customized Scrum** and click **Create process**.
 1. Back on the **All processes** pane, click the **Customized Scrum** entry.
@@ -442,7 +442,7 @@ All processes are shared within the same organization. That is, one or more team
     > **Note**: Our current project uses **Scrum**.
 
 1. On the **All processes > Scrum** pane, select the **Projects** tab.
-1. In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis  symbol and then select **Change process**.
+1. In the list of projects, in the row containing the **Agile Planning and Portfolio Management with Azure Boards** entry, select the ellipsis symbol (...) and then select **Change process**.
 1. On the **Change the project process** pane, in the **Select a target process** dropdown list, select the **Customized Scrum** process, click **Save** and then click **Close**.
 
     ![On the "Change the project process" pane, in the "Select a target process" dropdown list, select the "Customized Scrum" process, click "Save" and then click "Close"](images/m1/custom_scrum_v1.png)
