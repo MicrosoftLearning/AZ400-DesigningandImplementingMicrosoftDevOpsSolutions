@@ -35,5 +35,3 @@ jobs:
           pathtoPublish: '$(Build.SourcesDirectory)/out/'
           artifactName: 'Lab Files'
 
-
-
