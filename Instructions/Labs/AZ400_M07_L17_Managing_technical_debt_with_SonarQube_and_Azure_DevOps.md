@@ -94,7 +94,7 @@ In this task, you will generate an Azure DevOps personal access token that will 
      | Name | **Managing technical debt with SonarCloud and Azure DevOps lab** |
      | Scopes | **Custom defined** |
      | Scope | **Code** |
-     | Permissions | **Read & write** |
+     | Permissions | **Full** |
 
 1. On the **Success** pane, copy the value of the personal access token to Clipboard.
 
@@ -281,10 +281,12 @@ In this task, you will validate pull request integration between Azure DevOps an
     ![Commit PR](images/sonar-pr-commit.png)
 
 1. On the **New pull request** pane, select **Create**.
-1. On the **Overview** tab of the **Updated Program.cs** pane, monitor the progress of the build process to its completion.
-1. The pipeline will be successful but if you review the most recent Sonarcloud report, you will see the quality gate for the Pull Request has failed. We will add a blocker to do not allow merging PRs that do not meet the quality gate condition. 
+1. On the **Overview** tab of the **Updated Program.cs** pane, monitor the progress of the build process to its completion. 
+1. The pipeline will be successful, but 1 optional check will fail.
+1. Sonarcloud will also decorate your PR with comments for your recent not recommended practises. You can also review the full report in Sonarcloud for details.
 
     ![PR quality gate failed](images/pr-qg-failed.png)
+    ![Sonarcloud decorator](images/sonar-decorator.png)
 
 
 
@@ -302,7 +304,7 @@ In this task, you will configure blocking of pull requests in response to failin
 1. On the **main** pane, scroll down to the **Status Checks** section and click **+**.
 1. On the **Add status policy** pane, in the **Status to check** dropdown list, select the **SonarCloud/quality gate** entry, ensure that the **Policy requirement** option is set to **Required**, and click **Save**
 
-    > **Note**: At this point, users will not be able to merge pull request until the Code Quality check is successful. This, in turn, requires that all issues identified by SonarCloud have been either fixed or marked as **confirmed** or **resolved** in the corresponding SonarCloud project.
+    > **Note**: At this point, users **will not be able to merge pull request until the Code Quality check is successful**. This, in turn, requires that all issues identified by SonarCloud have been either fixed or marked as **confirmed** or **resolved** in the corresponding SonarCloud project.
 
 ## Review
 
