@@ -228,6 +228,16 @@ In this task, you will modify the main template to reference the template module
 1. From a **Bash** session in the Cloud Shell pane, run the following to perform a deployment by using a newly uploaded template:
 
    ```bash
+   az deployment group what-if --name az400m13l01deployment --resource-group az400m13l01-RG --template-file main.bicep
+   ```
+
+1. When prompted to provide the value for 'adminUsername', type **Student** and press the **Enter** key.
+1. When prompted to provide the value for 'adminPassword', type **Pa55w.rd1234** and press the **Enter** key. (Password typing will not be shown)
+1. Review the result of this command which validates your deployment and let's you know if there is any errors in your templates. This is very valuable especially when deploying templates with many resources and in business critical cloud environments.
+
+1. From a **Bash** session in the Cloud Shell pane, run the following to perform a deployment by using a newly uploaded template:
+
+   ```bash
    az deployment group create --name az400m13l01deployment --resource-group az400m13l01-RG --template-file main.bicep
    ```
 
