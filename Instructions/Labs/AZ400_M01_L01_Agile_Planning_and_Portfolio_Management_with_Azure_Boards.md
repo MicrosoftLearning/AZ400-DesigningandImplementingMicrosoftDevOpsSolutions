@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'eShopOnWeb'
+    title: 'Agile Planning and Portfolio Management with Azure Boards'
     module: 'Module 01: Get started on a DevOps transformation journey'
 ---
 
-# eShopOnWeb
+# Agile Planning and Portfolio Management with Azure Boards
 
 # Student lab manual
 
