@@ -105,9 +105,11 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
             (...)
         }
     ```
-
-1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-1. On the repository page, go to **Settings**, click on **Secrets > Actions**. Click on **New repository secret**
+1. Before navigating away run the following command to register the resource provider for Azure App Services in your subscription to prevent facing issues while deploying the app:
+    `az provider register --namespace 'Microsoft.Web'`
+     
+3. In a browser window, go back to your **eShopOnWeb** GitHub repository.
+4. On the repository page, go to **Settings**, click on **Secrets > Actions**. Click on **New repository secret**
     - Name : **AZURE_CREDENTIALS**
     - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
 
