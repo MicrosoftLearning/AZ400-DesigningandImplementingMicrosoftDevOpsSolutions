@@ -92,9 +92,9 @@ Each new project is configured with a default team, which name matches the proje
 
  ![In the "interations" tab, click on "Edit"](images/m1/EShop-WEB-edit_iteration_v1.png)
 
-    > **Note**: Specify the Start Date as the first work day of last week, and specify Friday in 3 weeks from the Start Date as the End Date. This follows the best practice of having 3-week Sprints.
+    > **Note**: Specify the Start Date as the first work day of last week, and count 3 full work weeks for each sprint. For example, if March 6 is the first work day of the sprint, it goes until March 24th. Sprint 2 starts on March 27, which is 3 weeks out from March 6.
 
-1. Repeat the previous step to add **Sprint 2** and **Sprint 3**. The second sprint is our current iteration, reflecting the working days of the current week, and the third is reflecting the dates of next week.
+1. Repeat the previous step to add **Sprint 2** and **Sprint 3**. You could say that we are currently in the 2nd week of the first sprint.
 
     ![Do the same for Sprint 2 and 3, make sure they are created for "EShop-Web" team](images/m1/EShop-WEB-3sprints_v1.png)
 
