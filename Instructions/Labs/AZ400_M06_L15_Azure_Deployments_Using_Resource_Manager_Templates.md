@@ -182,6 +182,7 @@ In this task, you will modify the main template to reference the template module
      name: 'linkedTemplate'
      params: {
        location: location
+       storageAccountName: storageAccountName
      }
    }
    ```
@@ -228,7 +229,7 @@ In this task, you will modify the main template to reference the template module
 1. From a **Bash** session in the Cloud Shell pane, run the following to perform a deployment by using a newly uploaded template:
 
    ```bash
-   az deployment group what-if --name az400m13l01deployment --resource-group az400m13l01-RG --template-file main.bicep
+   az deployment group what-if --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
    ```
 
 1. When prompted to provide the value for 'adminUsername', type **Student** and press the **Enter** key.
@@ -238,7 +239,16 @@ In this task, you will modify the main template to reference the template module
 1. From a **Bash** session in the Cloud Shell pane, run the following to perform a deployment by using a newly uploaded template:
 
    ```bash
-   az deployment group create --name az400m13l01deployment --resource-group az400m13l01-RG --template-file main.bicep
+   LOCATION='<region>'
+   ```
+   > **Note**: replace the name of the region with a region close to your location. If you do not know what locations are available, run the `az account list-locations -o table` command.
+  
+   ```bash
+   az group create --name az400m06l15deployment --location $LOCATION
+   ```
+
+   ```bash   
+   az deployment group create --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
    ```
 
 1. When prompted to provide the value for 'adminUsername', type **Student** and press the **Enter** key.
@@ -251,7 +261,7 @@ In this task, you will modify the main template to reference the template module
 
 > **Note**: As a next step, you could now modularize the remaining resource definitions in the main deployment template, such as the network and virtual machine resource definitions.
 
-> **Note**: If you are not planning on using the deployed resources, you should delete them to avoid associated charges. You can do so simply by deleting the resource group **az400m13l01-RG**.
+> **Note**: If you are not planning on using the deployed resources, you should delete them to avoid associated charges. You can do so simply by deleting the resource group **az400m06l15-RG**.
 
 ### Exercise 2: Remove the Azure lab resources
 
@@ -267,13 +277,13 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 1. List all resource groups created throughout the labs of this module by running the following command:
 
    ```bash
-   az group list --query "[?starts_with(name,'az400m13l01-RG')].name" --output tsv
+   az group list --query "[?starts_with(name,'az400m06l15-RG')].name" --output tsv
    ```
 
 1. Delete all resource groups you created throughout the labs of this module by running the following command:
 
    ```bash
-   az group list --query "[?starts_with(name,'az400m13l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+   az group list --query "[?starts_with(name,'az400m06l15-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
    ```
 
    > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
