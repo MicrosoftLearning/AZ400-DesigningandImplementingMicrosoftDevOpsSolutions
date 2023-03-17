@@ -8,7 +8,7 @@ lab:
 
 # Student lab manual
 
-## Instructions
+## Instructions to create an Azure DevOps Organization (you only have to do this once)
 
 > **Note**: Start at step 4, if you do already have a **personal Microsoft Account** setup and an active Microsoft Azure Pass subscription linked to that account.
 
@@ -34,3 +34,36 @@ lab:
 18. Toggle the switch to **On** for **Allow public projects**
     > Note: Extensions used in some labs might require a public project to allow using the free version.
 19. **Wait at least 3 hours before using the CI/CD capabilities** so that the new settings are reflected in the backend. Otherwise, you will still see the message *"No hosted parallelism has been purchased or granted"*.
+
+## Instructions to create the sample Azure DevOps Project (you only have to do this once)
+
+### Exercise 0: Configure the lab prerequisites
+
+> **Note**: make sure you completed the steps to create your Azure DevOps Organization before continuing with these steps.
+
+In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb). 
+
+#### Task 1:  Create and configure the team project
+
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
+
+1.  On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
+
+    ![Create Project](images/create-project.png)
+
+#### Task 2:  Import eShopOnWeb Git Repository
+
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
+
+1.  On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**:
+
+    ![Import Repository](images/import-repo.png)
+
+1.  The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
+    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 6 website used on the lab scenarios.
+
+You have now completed the necessary prerequisite steps to continue with the different individual labs for this AZ-400 course. 
