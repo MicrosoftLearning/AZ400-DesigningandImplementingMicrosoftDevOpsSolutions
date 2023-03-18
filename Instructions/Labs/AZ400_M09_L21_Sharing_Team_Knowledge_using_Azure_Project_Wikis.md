@@ -12,7 +12,9 @@ lab:
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/en-us/azure/devops/server/compatibility?view=azure-devops#web-portal-supported-browsers)
 
-- **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+- **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [AZ-400 Lab Prerequisites](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
+
+- **Set up the sample EShopOnWeb Project:** If you don't already have the sample EShopOnWeb Project that you can use for this lab, create one by following the instructions available at [AZ-400 Lab Prerequisites](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
 
 ## Lab overview
 
@@ -32,25 +34,7 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, you will set up the prerequisites for the lab, which consist of the preconfigured **Tailwind Traders** team project based on an Azure DevOps Demo Generator template and a team created in Microsoft Teams.
-
-#### Task 1: Configure the team project
-
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Tailwind Traders** template.
-
-1. On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is prepopulated with content (work items, repos, etc.) required for the lab.
-
-    > **Note**: For more information on the site, see <https://docs.microsoft.com/en-us/azure/devops/demo-gen>.
-
-1. Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
-1. If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-1. On the **Create New Project** page, in the **New Project Name** textbox, type **Sharing Team Knowledge using Azure Project Wikis**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
-1. In the list of templates, select the **Tailwind Traders** template and click **Select Template**.
-1. Back on the **Create New Project** page, if prompted to install a missing extension, select the checkbox below the **ARM Outputs** and click **Create Project**.
-
-    > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your Azure DevOps organization, delete the project, and try again.
-
-1. On the **Create New Project** page, click **Navigate to project**.
+In this exercise, we want to remind you about validating the lab prerequisites, having both an Azure DevOps Organization ready, as well as having created the EShopOnWeb project. See the instructions above for more details.
 
 ### Exercise 1: Publish code as a wiki
 
@@ -64,53 +48,78 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
 > **Note**: If your published wiki corresponds to a product version, you can publish new branches as you release new versions of your product.
 
-1. In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **TailwindTraders-Website** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
-1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **Documents** folder and its **Images** subfolder, in the **Images** subfolder, locate the **Website.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **More**, and, in the dropdown menu, click **Download** to download the **Website.png** file to the local **Downloads** folder on your lab computer.
+1. In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **EShopOnWeb** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
+1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **src** folder and brows to **Web-> wwwroot -> images** subfolder. In the **Images** subfolder, locate the **brand.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **Download** to download the **brand.png** file to the local **Downloads** folder on your lab computer.
 
     >**Note**: You will use this image in the next exercise of this lab.
 
-1. In the vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, select **Publish code as wiki*.
+1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **EShopOnWeb** Repo title on top of the folder structure. **Select the elipsis (3 dots)**, Choose **New / Folder**, and provide **Documents** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **READ.ME** as New File name. 
+1. Confirm the creation of the folder and the file by **pressing the Create button**.
+1. The READ.ME file will open in the built-in view mode. Since this is stored 'as code', you need to **Commit** the changes by clicking the **Commit** button. In the Commit window, confirm once more by pressing **Commit**.
+
+1. In the Azure DevOps vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, select **Publish code as wiki*.
 1. On the **Publish code as wiki** pane, specify the following settings and click **Publish**.
 
     | Setting | Value |
     | ------- | ----- |
-    | Repository | **TailwindTraders-Website** |
+    | Repository | **EShopOnWeb** |
     | Branch | **main** |
     | Folder | **/Documents** |
-    | Wiki name | **Tailwind Traders (Documents)** |
+    | Wiki name | **EShopOnWeb (Documents)** |
 
-    >**Note**: This will automatically display the content of the **GitHubAction.md** file.
+    >**Note**: This will automatically open the Wiki section, and publish **the editor**, where you can provide a Wiki page title, as well as adding the actual content. Notice you are encouraged to use MarkDown format, but make use of the ribbon to help you with some of the MarkDown layout syntax.
 
-1. Review the content of  **GitHubActions** file and note the overall structure of the wiki, matching the structure of the underlying repo.
+1. In the Wiki Page **Title** field, enter "Welcome to our Online Retail Store!"
+
+1. In the body of the Wiki Page, paste in the following text:
+
+```
+##Welcome to Our Online Retail Store!
+At our online retail store, we offer a **wide range of products** to meet the **needs of our customers**. Our selection includes everything from *clothing and accessories to electronics, home decor, and more*.
+
+We pride ourselves on providing a seamless shopping experience for our customers. Our website offers the following benefits:
+1. user-friendly,
+1. and easy to navigate, 
+1. allowing you to find what you're looking for,
+1. quickly and easily. 
+
+We also offer a range of **_payment and shipping options_** to make your shopping experience as convenient as possible.
+
+### about the team
+Our team is dedicated to providing exceptional customer service. If you have any questions or concerns, our knowledgeable and friendly support team is always available to assist you. We also offer a hassle-free return policy, so if you're not completely satisfied with your purchase, you can easily return it for a refund or exchange.
+
+### Physical Stores
+|Location|Area|Hours|
+|--|--|--|
+| New Orleans | Home and DIY  |07.30am-09.30pm  |
+| Seattle | Gardening | 10.00am-08.30pm  |
+| New York | Furniture Specialists  | 10.00am-09.00pm |
+
+## Our Store Qualities
+- We're committed to providing high-quality products
+- Our products are offered at affordable prices 
+- We work with reputable suppliers and manufacturers 
+- We ensure that our products meet our strict standards for quality and durability. 
+- Plus, we regularly offer sales and discounts to help you save even more.
+
+#Summary
+Thank you for choosing our online retail store for your shopping needs. We look forward to serving you!
+```
+
+1. This sample text gives you an overview of several of the common MarkDown syntax features, ranging from Title and subtitles (##), bold (**), italic (*), how to create tables, and more. 
+
+1. Once finished, **press** the Save button in the upper right corner.
+
+1. **Refresh** your browser, or select any other DevOps portal option and return to the Wiki section. Notice you are now presented with the **EshopOnWeb (Documents)** Wiki, as well as having the **Welcome to our Online Retail Store** as **HomePage** of the Wiki.
 
 #### Task 2: Manage content of a published wiki
 
 In this task, you will manage content of the wiki you published in the previous task.
 
-1. In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **main** branch, in the repo folder hierarchy, select the **Documents** folder, in the upper right corner, click **+ New** and, in the dropdown menu, click **File**.
-1. In the **New file** panel, in the **New file name**, after the **/Documents/** prefix, type **.order**, and click **Create**.
-1. On the **Contents** tab of the **.order** pane, type the following and click **Commit**.
+1. In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **EShopOnWeb** repo and **main** branch, in the repo folder hierarchy, select the **Documents** folder, and select the **Welcome-to-our-Online-Retail-Store!.md** file. 
+1. Notice how the MarkDown format is visible here as raw text format, allowing you to continue editing the file content from here as well. 
 
-    ```text
-    GitHubActions
-    Images
-    ```
-
-1. On the **Commit** pane, click **Commit**.
-1. In the vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, verify that **Tailwind Traders (Documents)** appears in the upper section of the pane, and review the ordering of wiki content.
-
-    >**Note**: The order of wiki content should match the sequence of files and folders listed in the **.order** file.
-
-1. In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **TailwindTraders-Website** repo and **main** branch, in the listing of files, under **Documents**, select **GitHubActions.md**, and on the **GitHubActions.md** pane, click **Edit**.
-1. On the **GitHubActions.md** pane, directly below the `#GitHub Actions` header, add the following markdown element referencing one of the images within the **Documents** folder:
-
-    ```
-    ![Tailwind Traders Website](Images/Website.png)
-    ```
-
-1. On the **GitHubActions.md** pane, click **Commit** and, on the **Commit** pane, click **Commit**.
-1. On the **Preview** tab of the **GitHubActions.md** pane, verify that the image is being displayed.
-1. In the vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, verify that **Tailwind Traders (Documents)** appears in the upper section of the pane, and that the content of the **GitHubActions** pane includes the newly referenced image.
+> **Note**: Since the Wiki source files are handled as source code, remember all practices from traditional source control (Clone, Pull Requests, Approvals and more), can now also be applied to Wiki pages. 
 
 ### Exercise 2: Create and manage a project wiki
 
@@ -122,7 +131,7 @@ In this exercise, you will step through creating and managing a project wiki.
 
 In this task, you will create a project wiki and add to it a Mermaid diagram and an image.
 
-1. On your lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **Sharing Team Knowledge using Azure Project Wikis** project,  with the content of the **Tailwind Traders (Documents)** wiki selected, at the top of the pane, click the **Tailwind Traders (Documents)** dropdown list header, and, in the drop down list, select **Create new project wiki**.
+1. On your lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **EShopOnweb** project,  with the content of the **EShopOnWeb (Documents)** wiki selected, at the top of the pane, click the **EShopOnWeb (Documents)** dropdown list header (the arrow down icon), and, in the drop down list, select **Create new project wiki**.
 1. In the **Page title** text box, type **Project Design**.
 1. Place the cursor in the body of the page, click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 1**. This will automatically add the hash character (**#**) at the beginning of the line.
 1. Directly after the newly added **#** character, type **Authentication and Authorization** and press the **Enter** key.
@@ -160,7 +169,7 @@ In this task, you will create a project wiki and add to it a Mermaid diagram and
 1. In the **Save page** dialog box, type **Authentication and authorization section with the OAuth 2.0 Mermaid diagram** and click **Save**.
 1. On the **Project Design** editor pane, place the cursor at the end of the Mermaid element you added earlier in this task, press the **Enter** key to add an extra line, click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 2**. This will automatically add the double hash character (**##**) at the beginning of the line.
 1. Directly after the newly added **##** character, type **User Interface** and press the **Enter** key.
-1. On the **Project Design** editor pane, in the toolbar, click the paper clip icon representing the **Insert a file** action, in the **Open** dialog box, navigate to the **Downloads** folder, select the **Website.png** file you downloaded in the previous exercise, and click **Open**.
+1. On the **Project Design** editor pane, in the toolbar, click the paper clip icon representing the **Insert a file** action, in the **Open** dialog box, navigate to the **Downloads** folder, select the **Brand.png** file you downloaded in the previous exercise, and click **Open**.
 1. Back on the **Project Design** editor pane, review the preview pane and verify that the image is properly displayed.
 1. In the upper right corner of the editor pane, click the down-facing caret next to the **Save** button and, in the dropdown menu, click **Save with revision message**.
 1. In the **Save page** dialog box, type **User Interface section with the Tailwind Traders image** and click **Save**.
@@ -172,7 +181,7 @@ In this task, you will manage the newly created project wiki.
 
 >**Note**: You will start by reverting the most recent change to the wiki page.
 
-1. On you lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **Sharing Team Knowledge using Azure Project Wikis** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
+1. On you lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **EShopOnWeb** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
 1. On the **Revisions** pane, click the entry representing the most recent change.
 1. On the resulting pane, review the comparison between the previous and the current version of the document, click **Revert**, when prompted for the confirmation, click **Revert** again, and then click **Browse Page**.
 1. Back on the **Project Design** pane, verify that the change was successfully reverted.
@@ -182,6 +191,7 @@ In this task, you will manage the newly created project wiki.
 1. On the **Project Design** pane, at the bottom left corner, click **+ New page**.
 1. On the page editor pane, in the **Page title** text box, type **Project Design Overview**, click **Save**, and then click **Close**.
 1. Back in the pane listing the pages within the **Project Design** project wiki, locate the **Project Design Overview** entry, select it with the mouse pointer, drag and drop it above the **Project Design** page entry.
+1. Confirm the changes by pressing the **Move** button in the appearing window.
 1. Verify that the **Project Design Overview** entry is listed as the top level page with the home icon designating it as the wiki home page.
 
 ## Review
