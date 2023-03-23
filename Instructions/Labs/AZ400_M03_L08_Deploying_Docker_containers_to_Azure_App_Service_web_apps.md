@@ -140,7 +140,7 @@ In this exercise, you will import and run the CI pipeline.
 
 1. In the YAML pipeline definition, customize:
 - **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
-- **rg-az400-container-NAME** with the resource group name defined before in the lab.
+- **rg-az400-container-NAME** with the resource group name that will be created by the pipeline (it can be an existing resource group too).
 
 1. Click on **Save and Run** and wait for the pipeline to execute succesfully.
 
