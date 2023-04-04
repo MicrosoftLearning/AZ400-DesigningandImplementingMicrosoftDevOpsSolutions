@@ -96,7 +96,7 @@ In this task, you will modify the templates you saved in the previous task such 
    }
    ```
 
-2. Next, remove all the variables definitions:
+1. Next, remove all the variables definitions:
 
    ```bicep
    var storageAccountName = 'bootdiags${uniqueString(resourceGroup().id)}'
@@ -120,7 +120,7 @@ In this task, you will modify the templates you saved in the previous task such 
    var maaEndpoint = substring('emptyString', 0, 0)
    ```
 
-3. Next, remove all parameter values except location and add the following parameter code, resulting in the following outcome:
+1. Next, remove all parameter values except location and add the following parameter code, resulting in the following outcome:
 
    ```bicep
    @description('Location for all resources.')
@@ -130,13 +130,13 @@ In this task, you will modify the templates you saved in the previous task such 
    param storageAccountName string
    ```
 
-4. Next, at the end of the file, remove the current output and add a new one called storageURI output value. Modify the output so it looks like the below.
+1. Next, at the end of the file, remove the current output and add a new one called storageURI output value. Modify the output so it looks like the below.
 
    ```bicep
    output storageURI string = storageAccount.properties.primaryEndpoints.blob
    ```
 
-5. Save the storage.bicep template module. The storage template should now look as follows:
+1. Save the storage.bicep template module. The storage template should now look as follows:
 
    ```bicep
    @description('Location for all resources.')
@@ -205,7 +205,7 @@ In this task, you will modify the main template to reference the template module
     ```
  > Note: Check for indetation after changes done
     
-7.  Review the following details in the main template:
+6.  Review the following details in the main template:
 
    - A module in the main template is used to link to another template.
    - The module has a symbolic name called storageModule. This name is used for configuring any dependencies.
@@ -215,7 +215,7 @@ In this task, you will modify the main template to reference the template module
 
 > **Note**: With Azure ARM Templates, you would have used a storage account to upload the linked template to make it easier for others to use them. With Azure Bicep modules, you have the option to upload them to Azure Bicep Module registry which has both public and private registry options. More information can be found on the [Azure Bicep documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/modules#file-in-registry).
 
-6. Save the template.
+7. Save the template.
 
 #### Task 4: Deploy resources to Azure by using template modules
 
