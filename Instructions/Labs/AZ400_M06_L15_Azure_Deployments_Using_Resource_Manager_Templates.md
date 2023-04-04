@@ -96,7 +96,7 @@ In this task, you will modify the templates you saved in the previous task such 
    }
    ```
 
-1. Next, remove all the variables definitions:
+2. Next, remove all the variables definitions:
 
    ```bicep
    var storageAccountName = 'bootdiags${uniqueString(resourceGroup().id)}'
@@ -120,7 +120,7 @@ In this task, you will modify the templates you saved in the previous task such 
    var maaEndpoint = substring('emptyString', 0, 0)
    ```
 
-1. Next, remove all parameter values except location and add the following parameter code, resulting in the following outcome:
+3. Next, remove all parameter values except location and add the following parameter code, resulting in the following outcome:
 
    ```bicep
    @description('Location for all resources.')
@@ -130,13 +130,13 @@ In this task, you will modify the templates you saved in the previous task such 
    param storageAccountName string
    ```
 
-1. Next, at the end of the file, remove the current output and add a new one called storageURI output value. Modify the output so it looks like the below.
+4. Next, at the end of the file, remove the current output and add a new one called storageURI output value. Modify the output so it looks like the below.
 
    ```bicep
    output storageURI string = storageAccount.properties.primaryEndpoints.blob
    ```
 
-1. Save the storage.bicep template module. The storage template should now look as follows:
+5. Save the storage.bicep template module. The storage template should now look as follows:
 
    ```bicep
    @description('Location for all resources.')
@@ -162,7 +162,7 @@ In this task, you will modify the templates you saved in the previous task such 
 In this task, you will modify the main template to reference the template module you created in the previous task.
 
 1. In Visual Studio Code, click the **File** top level menu, in the dropdown menu, select **Open File**, in the Open File dialog box, navigate to **C:\\templates\\main.bicep**, select it, and click **Open**.
-1. In the **main.bicep** file, in the resource section remove the storage resource element
+2. In the **main.bicep** file, in the resource section remove the storage resource element
 
    ```bicep
    resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
@@ -175,7 +175,7 @@ In this task, you will modify the main template to reference the template module
    }
    ```
 
-1. Next, add the following code directly in the same location where the newly deleted storage resource element was:
+3. Next, add the following code directly in the same location where the newly deleted storage resource element was:
 
    ```bicep
    module storageModule './storage.bicep' = {
@@ -187,7 +187,7 @@ In this task, you will modify the main template to reference the template module
    }
    ```
 
-1. We also need to modify the reference to the storage account blob URI in our virtual machine resource to use the output of the module instead. Find the virtual machine resource and replace the diagnosticsProfile section with the following:
+4. We also need to modify the reference to the storage account blob URI in our virtual machine resource to use the output of the module instead. Find the virtual machine resource and replace the diagnosticsProfile section with the following:
 
    ```bicep
    diagnosticsProfile: {
@@ -198,7 +198,14 @@ In this task, you will modify the main template to reference the template module
    }
    ```
 
-1. Review the following details in the main template:
+5. We need to make changes in **securityprofile** available under **resource vm**. The changes will be from **(securityProfileJson : json('null'))** to **(securityProfileJson : null)** . So the final code will look like:
+
+    ```bicep
+    securityProfile: ((securityType == 'TrustedLaunch') ? securityProfileJson : null)
+    ```
+ > Note: Check for indetation after changes done
+    
+7.  Review the following details in the main template:
 
    - A module in the main template is used to link to another template.
    - The module has a symbolic name called storageModule. This name is used for configuring any dependencies.
@@ -208,9 +215,9 @@ In this task, you will modify the main template to reference the template module
 
 > **Note**: With Azure ARM Templates, you would have used a storage account to upload the linked template to make it easier for others to use them. With Azure Bicep modules, you have the option to upload them to Azure Bicep Module registry which has both public and private registry options. More information can be found on the [Azure Bicep documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/modules#file-in-registry).
 
-1. Save the template.
+6. Save the template.
 
-#### Task 5: Deploy resources to Azure by using template modules
+#### Task 4: Deploy resources to Azure by using template modules
 
 > **Note**: You can deploy templates in several ways, such as using Azure CLI installed locally or from the Azure Cloud Shell or from a CI/CD pipeline. In this lab, you will use Azure CLI from the Azure Cloud Shell.
 
@@ -244,7 +251,7 @@ In this task, you will modify the main template to reference the template module
    > **Note**: replace the name of the region with a region close to your location. If you do not know what locations are available, run the `az account list-locations -o table` command.
   
    ```bash
-   az group create --name az400m06l15deployment --location $LOCATION
+   az group create --name az400m06l15-RG --location $LOCATION
    ```
 
    ```bash   
