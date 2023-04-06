@@ -210,7 +210,7 @@ In this task, you will modify the main template to reference the template module
 
 1. Save the template.
 
-#### Task 5: Deploy resources to Azure by using template modules
+#### Task 4: Deploy resources to Azure by using template modules
 
 > **Note**: You can deploy templates in several ways, such as using Azure CLI installed locally or from the Azure Cloud Shell or from a CI/CD pipeline. In this lab, you will use Azure CLI from the Azure Cloud Shell.
 
@@ -244,7 +244,7 @@ In this task, you will modify the main template to reference the template module
    > **Note**: replace the name of the region with a region close to your location. If you do not know what locations are available, run the `az account list-locations -o table` command.
   
    ```bash
-   az group create --name az400m06l15deployment --location $LOCATION
+   az group create --name az400m06l15-RG --location $LOCATION
    ```
 
    ```bash   
