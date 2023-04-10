@@ -57,7 +57,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 ### Exercise 1: Include build validation as part of a Pull Request
 
-In this exercice, you will include build validation to validate a Pull Request.
+In this exercise, you will include build validation to validate a Pull Request.
 
 #### Task 1: Import the YAML build definition
 
@@ -152,7 +152,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 
 #### Task 2: Enable Continuous Integration
 
-The default build pipeline definition doesn't enable Conitnuous Integration.
+The default build pipeline definition doesn't enable Continuous Integration.
 
 1. Now, you need to replace the **Trigger** and **Resources** sections with the following code:
 
