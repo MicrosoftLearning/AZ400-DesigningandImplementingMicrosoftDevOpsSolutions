@@ -41,7 +41,7 @@ lab:
 
 > **Note**: make sure you completed the steps to create your Azure DevOps Organization before continuing with these steps.
 
-In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb). 
+In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
 #### Task 1:  Create and configure the team project
 
