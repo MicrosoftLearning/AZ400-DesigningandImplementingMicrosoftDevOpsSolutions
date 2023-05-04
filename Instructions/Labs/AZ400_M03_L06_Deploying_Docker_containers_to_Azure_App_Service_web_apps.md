@@ -174,7 +174,7 @@ In this task, you will add a new role assignment to allow Azure App Service pull
     ```sh
     spId=$(az ad sp list --display-name sp-az400-azdo --query "[].id" --output tsv)
     echo $spId
-    roleName=$(az role definition list --name "User Access Administrator" --query [0].name --output tsv)
+    roleName=$(az role definition list --name "User Access Administrator" --query "[0].name" --output tsv)
     echo $roleName
     ```
 
