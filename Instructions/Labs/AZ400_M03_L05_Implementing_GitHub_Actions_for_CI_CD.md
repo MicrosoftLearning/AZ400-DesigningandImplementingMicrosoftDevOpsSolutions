@@ -92,9 +92,10 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
+    > NOTE: Make sure this is typed or pasted as a single line!
     > NOTE: this command will create a Service Principal with Contributor access to the Resource Group created before. This way we make sure GitHub Actions will only have the permissions needed to interact only with this Resource Group (not the rest of the subscription)
 
-1. The command will output a JSON object, you will later keep it as a GitHub secret for the workflow, copy it. The JSON contains the identifiers used to authenticate against Azure in the name of an Azure AD application identity (service principal).
+1. The command will output a JSON object, you will later use it as a GitHub secret for the workflow. Copy the JSON. The JSON contains the identifiers used to authenticate against Azure in the name of an Azure AD application identity (service principal).
 
     ```JSON
         {
@@ -107,7 +108,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
     ```
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-1. On the repository page, go to **Settings**, click on **Secrets > Actions**. Click on **New repository secret**
+1. On the repository page, go to **Settings**, click on **Secrets and variables > Actions**. Click on **New repository secret**
     - Name : **AZURE_CREDENTIALS**
     - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
 
