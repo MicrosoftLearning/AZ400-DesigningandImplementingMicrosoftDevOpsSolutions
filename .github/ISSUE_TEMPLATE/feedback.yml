@@ -36,24 +36,21 @@ body:
         - Lab 00 Validate lab environment
         - Lab 01 Agile planning and portfolio management with Azure Boards
         - Lab 02 Version controlling with Git in Azure Repos
-        - Lab 03 Version controlling with Git in Azure Repos
-        - Lab 04 Configuring agent pools and understanding pipeline styles
-        - Lab 05 Enabling continuous integration with Azure Pipelines
-        - Lab 06 Integrating external source control with Azure Pipelines
-        - Lab 07 Implementing GitHub Actions by using DevOps Starter
-        - Lab 08 Deploying Docker Containers to Azure App Service web apps
-        - Lab 09 Control Deployments using Release Gates
-        - Lab 10 Creating a release dashboard
-        - Lab 11 Configuring pipelines as code with YAML
-        - Lab 12 Setting up and running functional tests
-        - Lab 13 Integrate Azure Key Vault with Azure DevOps
-        - Lab 14 Azure deployments using Azure Resource Manager templates
-        - Lab 15 Implement security and compliance in Azure DevOps Pipelines
-        - Lab 16 Managing technical debt with SonarQube and Azure DevOps
-        - Lab 17 Package management with Azure Artifacts
-        - Lab 18 Monitoring application performance with Application Insights
-        - Lab 19 Integration between Azure DevOps and Microsoft Teams
-        - Lab 20 Sharing Team Knowledge using Azure Project Wikis
+        - Lab 03 Configuring agent pools and understanding pipeline styles
+        - Lab 04 Enabling continuous integration with Azure Pipelines
+        - Lab 05 Implementing GitHub Actions by using DevOps Starter
+        - Lab 06 Deploying Docker Containers to Azure App Service web apps
+        - Lab 07 Control Deployments using Release Gates
+        - Lab 08 Configuring pipelines as code with YAML
+        - Lab 09 Setting up and running functional tests
+        - Lab 10 Integrate Azure Key Vault with Azure DevOps
+        - Lab 11 Enable Dynamic Configuration and Feature Flags
+        - Lab 12 Deployments using Azure Bicep templates
+        - Lab 13 Implement security and compliance in Azure DevOps Pipelines
+        - Lab 14 Managing technical debt with SonarQube and Azure DevOps
+        - Lab 15 Package management with Azure Artifacts
+        - Lab 16 Monitoring application performance with Application Insights
+        - Lab 17 Sharing Team Knowledge using Azure Project Wikis
     validations:
       required: true
   - type: textarea
