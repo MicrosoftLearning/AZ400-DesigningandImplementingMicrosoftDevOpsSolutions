@@ -129,15 +129,15 @@ cd c:\EShopOnWeb\EShopOnWeb.Shared
 ```
 run the following to create a **.nupkg** file from the project.
 
-    > **Note**: This is a shortcut to package the NuGet bits for deployment. NuGet is highly customizable. To learn more, refer to the [NuGet package creation page](https://docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflow).
+> **Note**: This is a shortcut to package the NuGet bits for deployment. NuGet is highly customizable. To learn more, refer to the [NuGet package creation page](https://docs.microsoft.com/en-us/nuget/create-packages/overview-and-workflow).
 
-    ```
-    .\nuget.exe pack ./EShopOnWeb.Shared.csproj
-    ```
+```
+.\nuget.exe pack ./EShopOnWeb.Shared.csproj
+```
 
-    > **Note**: Disregard any warnings displayed in the **Administrator: Windows PowerShell** window.
+> **Note**: Disregard any warnings displayed in the **Administrator: Windows PowerShell** window.
 
-    > **Note**: NuGet builds a minimal package based on the information it is able to identify from the project. For example, note that the name is **EShopOnWeb.Shared.1.0.0.nupkg**. That version number was retrieved from the assembly.
+> **Note**: NuGet builds a minimal package based on the information it is able to identify from the project. For example, note that the name is **EShopOnWeb.Shared.1.0.0.nupkg**. That version number was retrieved from the assembly.
 
 1. After the successful creation of the package, run the following to publish the package to the **EShopOnWebShared** feed:
 
@@ -208,7 +208,7 @@ Let's consider this package an "approved" package for our DevOps team to reuse, 
  ```
 .\nuget.exe push -source "EShopOnWebShared" -ApiKey AzDO c:\EShopOnWeb\EShopOnWeb.Shared\HelloWorld\HelloWorld.nupkg
 ```
-    > **Note**:  This results in an error message:
+> **Note**:  This results in an error message:
 
 ```
 Response status code does not indicate success: 409 (Conflict - 'HelloWorld 1.3.0.17' cannot be published to the feed because it exists in at least one of the feed's upstream sources. Publishing this copy would prevent you from using 'HelloWorld 1.3.0.17' from 'NuGet Gallery'. For more information, see https://go.microsoft.com/fwlink/?linkid=864880 (DevOps Activity ID: AE08BE89-C2FA-4FF7-89B7-90805C88972C)).
