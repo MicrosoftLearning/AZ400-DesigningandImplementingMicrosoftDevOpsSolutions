@@ -145,7 +145,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 1. In the vertical navigation pane of the Azure DevOps portal, in the list of the **Boards** items, select **Boards**.
 1. On the **Boards** panel, select the **EShop-WEB boards** entry. This will open the board for that particular team.
 
-    ![ In "Boards>Boards" window, select "EShop-WEB boards"](images/m1/9.png)
+    ![ In "Boards>Boards" window, select "EShop-WEB boards"](images/m1/EShop-WEB-_boards_v1.png)
 
 1. On the **Boards** panel, in the upper right corner, select the **Backlog items** entry and, in the dropdown list, select **Features**.
 
