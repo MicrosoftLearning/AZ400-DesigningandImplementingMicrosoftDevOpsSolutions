@@ -383,7 +383,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
 #### Task 5: Customize team process
 
-In this task we'll create a custom Scrum-based process. The process will include a backlog item field designed to track to a proprietary PartsUnlimited ticket ID.
+In this task we'll create a custom Scrum-based process. The process will include a backlog item field designed to track to a proprietary eShopOnWeb ticket ID.
 
 In Azure DevOps, you customize your work tracking experience through a process. A process defines the building blocks of the work item tracking system as well as other sub-systems you access through Azure DevOps. Whenever you create a team project, you select the process which contains the building blocks you want for your project. Azure DevOps supports two process types. The first, the core system processes (Scrum, Agile, and CMMI) are read-only, so you cannot customize them. The second type, inherited processes, you create based on core system processes, with the option of customizing their settings.
 
@@ -434,9 +434,9 @@ All processes are shared within the same organization. That is, one or more team
 18. On the **Projects** tab, select the entry representing the **eShopOnWeb** project.
 19. In the vertical menu on the left side of the **eShopOnWeb** page, select **Boards** and ensure that the **Work Items** pane is displayed.
 20. In the list of work items, click the first backlog item.
-21. Verify that you now have the **Ticket ID** field under the **PartsUnlimited** group, which was defined during the process customization. You can treat this like any other text field.
+21. Verify that you now have the **Ticket ID** field under the **eShopOnWeb** group, which was defined during the process customization. You can treat this like any other text field.
 
-    ![Verify that you now have the "Ticket ID" field under the "PartsUnlimited" group, which was defined during the process customization. You can treat this like any other text field.](images/m1/EShop-WEB-verify_v1.png)
+    ![Verify that you now have the "Ticket ID" field under the "eShopOnWeb" group, which was defined during the process customization. You can treat this like any other text field.](images/m1/EShop-WEB-verify_v1.png)
 
     > **Note**: Once the work item is saved, Azure DevOps will also save the new custom information so that it will be available for queries and through the rest of Azure DevOps.
 
