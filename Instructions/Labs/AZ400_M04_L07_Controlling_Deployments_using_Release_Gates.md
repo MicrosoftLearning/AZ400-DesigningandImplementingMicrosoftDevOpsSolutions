@@ -207,7 +207,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
     > **Note**: The pipeline now contains two stages named **Canary** and **Production**.
 
 7. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eShopOnWeb** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact.
-8. From the **Artifact** rectangle, notice the **Continuous Integration Trigger** (lightning bolt) appearing. Click it to open the **Continuous deployment trigger** settings. Click the continuous deployment trigger to toggle the switch to enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
+8. From the **Artifacts** rectangle, notice the **Continuous deployment trigger** (lightning bolt). Click it to open the **Continuous deployment trigger** settings. Click **Disabled** to toggle the switch and enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
 9. Within the **Canary Environments** stage, click the **1 job, 2 tasks** label and review the tasks within this stage.
 
     > **Note**: The canary environment has 1 task which, respectively, publishes the artifact package to Azure Web App.
