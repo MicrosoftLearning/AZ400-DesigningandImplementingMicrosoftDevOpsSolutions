@@ -229,9 +229,9 @@ When you created the Azure DevOps Artifacts Package Feed, by design, it allows f
 5. This results in a list of all HelloWorld packages with the different versions available.
 6. Click the **left arrow key** to return to the **EShopOnWebShared** Feed.
 7. Click the cogwheel to open **Feed Settings**. Within the Feed Settings page, select **Upstream Sources**.
-8. Notice the different Upstream Package Managers for different development languages. Select **Nuget.org** from the list. Press the **Delete** button, Followed by pressing the **Save** button.
+8. Notice the different Upstream Package Managers for different development languages. Select **NuGet Gallery** from the list. Press the **Delete** button, followed by pressing the **Save** button.
 
-9. With these saved changed, it will be possible to upload the **HelloWorld** package using the NuGet.exe from the PowerShell Window, by relaunching the following command:
+9. With these saved changes, it will be possible to upload the **HelloWorld** package using the NuGet.exe from the PowerShell Window, by relaunching the following command:
 
     ```text
      .\nuget.exe push -source "EShopOnWebShared" -ApiKey AzDO c:\EShopOnWeb\EShopOnWeb.Shared\HelloWorld\HelloWorld.nupkg
