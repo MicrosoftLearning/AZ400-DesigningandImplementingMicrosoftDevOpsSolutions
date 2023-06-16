@@ -157,7 +157,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 
 #### Task 3: Importing an Open-Source NuGet package to the Azure DevOps Package Feed
 
-Besides developing your own packages, why not using the Open Source Nuget (https://www.nuget.org) DotNet Package library? With a few million packages available, there will always be something useful for your application.
+Besides developing your own packages, why not using the Open Source NuGet (https://www.nuget.org) DotNet Package library? With a few million packages available, there will always be something useful for your application.
 
 In this task, we will use a generic "Hello World" sample package, but you can use the same approach for other packages in the library.
 
@@ -224,14 +224,14 @@ When you created the Azure DevOps Artifacts Package Feed, by design, it allows f
 
 1. Navigate to the Azure DevOps Portal, browse to **Artifacts**, and select the **EShopOnWebShared** Feed.
 2. Click **Search Upstream Sources**
-3. In the **Go to an Upstream Package** window, select **Nuget** as Package Type, and enter **HelloWorld** in the search field.
+3. In the **Go to an Upstream Package** window, select **NuGet** as Package Type, and enter **HelloWorld** in the search field.
 4. Confirm by pressing the **Search** button.
 5. This results in a list of all HelloWorld packages with the different versions available.
 6. Click the **left arrow key** to return to the **EShopOnWebShared** Feed.
 7. Click the cogwheel to open **Feed Settings**. Within the Feed Settings page, select **Upstream Sources**.
-8. Notice the different Upstream Package Managers for different development languages. Select **Nuget.org** from the list. Press the **Delete** button, Followed by pressing the **Save** button.
+8. Notice the different Upstream Package Managers for different development languages. Select **NuGet Gallery** from the list. Press the **Delete** button, followed by pressing the **Save** button.
 
-9. With these saved changed, it will be possible to upload the **HelloWorld** package using the Nuget.exe from the PowerShell Window, by relaunching the following command:
+9. With these saved changes, it will be possible to upload the **HelloWorld** package using the NuGet.exe from the PowerShell Window, by relaunching the following command:
 
     ```text
      .\nuget.exe push -source "EShopOnWebShared" -ApiKey AzDO c:\EShopOnWeb\EShopOnWeb.Shared\HelloWorld\HelloWorld.nupkg
@@ -249,9 +249,9 @@ When you created the Azure DevOps Artifacts Package Feed, by design, it allows f
     ```
 
 10. From the Azure DevOps Portal, **refresh** the Artifacts Package Feed page. The list of packages shows both the **EShopOnWeb.Shared** custom-developed package, as well as the **HelloWorld** public sourced package.
-11. From the Visual Studio **EShopOnWeb.Shared** Solution, right-click the **EShopOnWeb.Shared** Project, and select **Manage Nuget Packages** from the context menu.
-12. From the Nuget Package Manager window, validate the **Package Source** is set to **EShopOnWebShared**.
-13. Click **Browse**, and wait for the list of Nuget Packages to load.
+11. From the Visual Studio **EShopOnWeb.Shared** Solution, right-click the **EShopOnWeb.Shared** Project, and select **Manage NuGet Packages** from the context menu.
+12. From the NuGet Package Manager window, validate the **Package Source** is set to **EShopOnWebShared**.
+13. Click **Browse**, and wait for the list of NuGet Packages to load.
 14. This list will also show both the **EShopOnWeb.Shared** custom-developed package, as well as the **HelloWorld** public sourced package.
 
 ## Review
