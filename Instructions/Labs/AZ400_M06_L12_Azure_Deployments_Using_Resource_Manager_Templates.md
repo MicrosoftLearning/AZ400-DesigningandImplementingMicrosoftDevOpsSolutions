@@ -206,7 +206,7 @@ In this task, you will modify the main template to reference the template module
    - A relative path is used for your template module.
    - Use parameters to pass values from the main template to the template modules.
 
-    > **Note**: With Azure ARM Templates, you would have used a storage account to upload the linked template to make it easier for others to use them. With Azure Bicep modules, you have the option to upload them to Azure Bicep Module registry which has both public and private registry options. More information can be found on the [Azure Bicep documentation](https://learn.microsoft.com/azure/azure-resource-manager/bicep/modules).
+   > **Note**: With Azure ARM Templates, you would have used a storage account to upload the linked template to make it easier for others to use them. With Azure Bicep modules, you have the option to upload them to Azure Bicep Module registry which has both public and private registry options. More information can be found on the [Azure Bicep documentation](https://learn.microsoft.com/azure/azure-resource-manager/bicep/modules).
 
 6. Save the template.
 
@@ -229,6 +229,16 @@ In this task, you will modify the main template to reference the template module
 6. From a **Bash** session in the Cloud Shell pane, run the following to perform a deployment by using a newly uploaded template:
 
    ```bash
+   LOCATION='<region>'
+   ```
+
+   > **Note**: replace the name of the region with a region close to your location. If you do not know what locations are available, run the `az account list-locations -o table` command.
+
+   ```bash
+   az group create --name az400m06l15-RG --location $LOCATION
+   ```
+
+   ```bash
    az deployment group what-if --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
    ```
 
@@ -238,19 +248,9 @@ In this task, you will modify the main template to reference the template module
 
 10. From a **Bash** session in the Cloud Shell pane, run the following to perform a deployment by using a newly uploaded template:
 
-       ```bash
-       LOCATION='<region>'
-       ```
-
-       > **Note**: replace the name of the region with a region close to your location. If you do not know what locations are available, run the `az account list-locations -o table` command.
-
-       ```bash
-       az group create --name az400m06l15-RG --location $LOCATION
-       ```
-
-       ```bash
-       az deployment group create --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
-       ```
+    ```bash
+    az deployment group create --name az400m06l15deployment --resource-group az400m06l15-RG --template-file main.bicep
+    ```
 
 11. When prompted to provide the value for 'adminUsername', type **Student** and press the **Enter** key.
 12. When prompted to provide the value for 'adminPassword', type **Pa55w.rd1234** and press the **Enter** key. (Password typing will not be shown)
