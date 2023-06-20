@@ -71,7 +71,7 @@ In this exercise, you will import and run the CI pipeline, configure the service
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
 1. Go to **Pipelines>Pipelines**.
-2. Click on **Create Pipeline** button.
+2. Click on **Create Pipeline** button (if there are no pipelines) or **New pipeline** button (if there are already created pipelines).
 3. Select **Azure Repos Git (Yaml)**.
 4. Select the **eShopOnWeb** repository.
 5. Select **Existing Azure Pipelines YAML File**.
