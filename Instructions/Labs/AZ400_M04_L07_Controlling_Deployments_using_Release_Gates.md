@@ -102,6 +102,8 @@ In this task, you will add a YAML build definition to the existing project.
 
     > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
 
+10. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci** and click on **Save**.
+
 ### Exercise 2: Creating the necessary Azure Resources for the Release Pipeline
 
 #### Task 1: Create two Azure web apps
@@ -202,40 +204,41 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 3. From the **Select a template** window, **choose** **Azure App Service Deployment** (Deploy your application to Azure App Service. Choose from Web App on Windows, Linux, containers, Function Apps, or WebJobs) under the **Featured** list of templates.
 4. Click **Apply**.
 5. From the **Stage** window appearing, update the default "Stage 1" Stage Name to **Canary**. Close the popup window by using the **X** button. You are now in the graphical editor of the Release Pipeline, showing the Canary Stage.
-6. Hover the mouse over the Canary Stage, and click the **Clone** button, to copy the Canary Stage to an additional Stage. Name this Stage **Production**.
+6. On the top of the page, rename the current pipeline from **New release pipeline** to **eshoponweb-cd**.
+7. Hover the mouse over the Canary Stage, and click the **Clone** button, to copy the Canary Stage to an additional Stage. Name this Stage **Production**.
 
     > **Note**: The pipeline now contains two stages named **Canary** and **Production**.
 
-7. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eShopOnWeb** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact.
-8. From the **Artifacts** rectangle, notice the **Continuous deployment trigger** (lightning bolt). Click it to open the **Continuous deployment trigger** settings. Click **Disabled** to toggle the switch and enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
-9. Within the **Canary Environments** stage, click the **1 job, 2 tasks** label and review the tasks within this stage.
+8. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eshoponweb-ci** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact.
+9. From the **Artifacts** rectangle, notice the **Continuous deployment trigger** (lightning bolt). Click it to open the **Continuous deployment trigger** settings. Click **Disabled** to toggle the switch and enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
+10. Within the **Canary Environments** stage, click the **1 job, 2 tasks** label and review the tasks within this stage.
 
     > **Note**: The canary environment has 1 task which, respectively, publishes the artifact package to Azure Web App.
 
-10. On the **All pipelines > New Release Pipeline** pane, ensure that the **Canary** stage is selected. In the **Azure subscription** dropdown list, select your Azure subscription and click **Authorize**. If prompted, authenticate by using the user account with the Owner role in the Azure subscription.
-11. Confirm the App Type is set to "Web App on Windows". Next, in the **App Service name** dropdown list, select the name of the **Canary** web app.
-12. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
+11. On the **All pipelines > eshoponweb-cd** pane, ensure that the **Canary** stage is selected. In the **Azure subscription** dropdown list, select your Azure subscription and click **Authorize**. If prompted, authenticate by using the user account with the Owner role in the Azure subscription.
+12. Confirm the App Type is set to "Web App on Windows". Next, in the **App Service name** dropdown list, select the name of the **Canary** web app.
+13. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
 
     > notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
 
-13. On the **All pipelines > New Release Pipeline** pane, navigate to the **Pipeline** tab, and this time, within the **Production** Stage, click the **1 job, 2 tasks** label. Similar to the Canary stage earlier, complete the pipeline settings. Under the Tasks tab / Production Deployment process, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **Canary Environment** stage, shown under **Available Azure Service connections**, as we already created the service connection before when authorizing the subscription use.
-14. In the **App Service name** dropdown list, select the name of the **Prod** web app.
-15. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
-16. On the **All pipelines > New Release Pipeline** pane, click **Save** and, in the **Save** dialog box, click **OK**.
+14. On the **All pipelines > eshoponweb-cd** pane, navigate to the **Pipeline** tab, and this time, within the **Production** Stage, click the **1 job, 2 tasks** label. Similar to the Canary stage earlier, complete the pipeline settings. Under the Tasks tab / Production Deployment process, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **Canary Environment** stage, shown under **Available Azure Service connections**, as we already created the service connection before when authorizing the subscription use.
+15. In the **App Service name** dropdown list, select the name of the **Prod** web app.
+16. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
+17. On the **All pipelines > eshoponweb-cd** pane, click **Save** and, in the **Save** dialog box, click **OK**.
 
-You have now successfully configured the Release Pipeline.
+    You have now successfully configured the Release Pipeline.
 
-1. In the browser window displaying the **eShopOnWeb** project, in the vertical navigational pane, in the **Pipelines** section, click **Pipelines**.
-2. On the **Pipelines** pane, click the entry representing **eShopOnWeb** build pipeline and then, on the **eShopOnWeb** pane, click on **Run Pipeline**.
-3. On the **Run pipeline** pane, accept the default settings and click **Run** to trigger the pipeline. **Wait for the build pipeline to finish**.
+18. In the browser window displaying the **eShopOnWeb** project, in the vertical navigational pane, in the **Pipelines** section, click **Pipelines**.
+19. On the **Pipelines** pane, click the entry representing **eshoponweb-ci** build pipeline and then click on **Run Pipeline**.
+20. On the **Run pipeline** pane, accept the default settings and click **Run** to trigger the pipeline. **Wait for the build pipeline to finish**.
 
     > **Note**: After the build succeeds, the release will be triggered automatically and the application will be deployed to both the environments. Validate the release actions, once the build pipeline completed successfully.
 
-4. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **eShopOnWeb** pane, click the entry representing the most recent release.
-5. On the **eShopOnWeb > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully.
-6. Switch to the Azure portal interface, navigate to the resource group **az400m04l09-RG**, in the list of resources, click the **Canary** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
-7. Switch back to the Azure portal interface, this time navigating  to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
-8. Close the web browser tab displaying the **EShopOnWeb** web site.
+21. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **eshoponweb-cd** pane, click the entry representing the most recent release.
+22. On the **eshoponweb-cd > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully.
+23. Switch to the Azure portal interface, navigate to the resource group **az400m04l09-RG**, in the list of resources, click the **Canary** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
+24. Switch back to the Azure portal interface, this time navigating  to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
+25. Close the web browser tab displaying the **EShopOnWeb** web site.
 
     > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Quality Gates as part of a more advanced  Release pipeline.
 
@@ -247,8 +250,8 @@ In this exercise, you will set up Quality Gates in the release pipeline.
 
 In this task, you will configure pre-deployment gates.
 
-1. Switch to the web browser window displaying the Azure DevOps portal, and open the **eShopOnWeb** project. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **New Release Pipeline** pane, click **Edit**.
-2. On the **All pipelines > New Release Pipeline** pane, on the left edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Pre-deployment conditions**.
+1. Switch to the web browser window displaying the Azure DevOps portal, and open the **eShopOnWeb** project. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **eshoponweb-cd** pane, click **Edit**.
+2. On the **All pipelines > eshoponweb-cd** pane, on the left edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Pre-deployment conditions**.
 3. On **Pre-deployment conditions** pane, set the **Pre-deployment approvals** slider to **Enabled** and, in the **Approvers** text box, type and select your Azure DevOps account name.
 
     > **Note**: In a real-life scenario, this should be a DevOps Team name alias instead of your own name.
@@ -262,7 +265,7 @@ In this task, you will configure pre-deployment gates.
 
 In this task, you will enable the post-deployment gate for the Canary Environment.
 
-1. Back on the **All pipelines > New Release Pipeline** pane, on the right edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
+1. Back on the **All pipelines > eshoponweb-cd** pane, on the right edge of the rectangle representing the **Canary Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 2. On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
 3. On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the **service connection** entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m04l09-RG** entry.
 4. On the **Post-deployment conditions** pane, expand the **Advanced** section and configure the following options:
@@ -282,7 +285,7 @@ In this task, you will enable the post-deployment gate for the Canary Environmen
     > **Note**: The sampling interval and timeout work together so that the gates will call their functions at suitable intervals and reject the deployment if they don't succeed during the same sampling interval within the timeout period.
 
 6. Close the **Post-deployment conditions** pane, by clicking the **x** mark in its upper right corner.
-7. Back on the **New Release Pipeline** pane, click **Save**, and in the **Save** dialog box, click **OK**.
+7. Back on the **eshoponweb-cd** pane, click **Save**, and in the **Save** dialog box, click **OK**.
 
 ### Exercise 5: Test release gates
 
@@ -301,7 +304,7 @@ In this task, you will first generate some alerts for the Canary Web App, follow
 
     > **Note:** If no Alert shows up yet, wait another few minutes.
 
-7. Return back to the Azure DevOps Portal, open the **EShopOnWeb-Release Gates** Project. Navigate to **Pipelines**, select **Releases** and select the **New Release Pipeline**.
+7. Return back to the Azure DevOps Portal, open the **EShopOnWeb** Project. Navigate to **Pipelines**, select **Releases** and select the **eshoponweb-cd**.
 8. Click the **Create Release** button.
 9. Wait for the Release pipeline to kick off, and **approve** the Canary Stage release action.
 10. Wait for the Canary release Stage to complete successfully. Notice how the **Post-deployment Gates** is switching to an **Evaluation Gates** status.  Click the **Evaluation Gates** icon.
