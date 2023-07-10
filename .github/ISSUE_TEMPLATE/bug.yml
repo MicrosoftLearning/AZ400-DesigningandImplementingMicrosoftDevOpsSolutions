@@ -1,6 +1,6 @@
 name: Bug Report
 description: File a bug report
-title: "M00-LAB00: QUICK_DESCRIPTION"
+title: "M00-LABNAME: QUICK_DESCRIPTION"
 labels: ["bug"]
 body:
   - type: markdown
@@ -8,7 +8,7 @@ body:
       value: |
         # Thanks for taking the time to fill out this bug report!
         
-        **Replace issue name LAB00:QUICK_DESCRIPTION, for example "LAB01: My new issue"**
+        **Replace issue name M00-LABNAME: QUICK_DESCRIPTION"**
   - type: input
     id: contact
     attributes:
@@ -43,24 +43,24 @@ body:
       description: Lab name
       options:
         - Other
-        - Lab 00 Validate lab environment
-        - Lab 01 Agile planning and portfolio management with Azure Boards
-        - Lab 02 Version controlling with Git in Azure Repos
-        - Lab 03 Configuring agent pools and understanding pipeline styles
-        - Lab 04 Enabling continuous integration with Azure Pipelines
-        - Lab 05 Implementing GitHub Actions by using DevOps Starter
-        - Lab 06 Deploying Docker Containers to Azure App Service web apps
-        - Lab 07 Control Deployments using Release Gates
-        - Lab 08 Configuring pipelines as code with YAML
-        - Lab 09 Setting up and running functional tests
-        - Lab 10 Integrate Azure Key Vault with Azure DevOps
-        - Lab 11 Enable Dynamic Configuration and Feature Flags
-        - Lab 12 Deployments using Azure Bicep templates
-        - Lab 13 Implement security and compliance in Azure DevOps Pipelines
-        - Lab 14 Managing technical debt with SonarQube and Azure DevOps
-        - Lab 15 Package management with Azure Artifacts
-        - Lab 16 Monitoring application performance with Application Insights
-        - Lab 17 Sharing Team Knowledge using Azure Project Wikis
+        - Validate lab environment
+        - Agile planning and portfolio management with Azure Boards
+        - Version controlling with Git in Azure Repos
+        - Configuring agent pools and understanding pipeline styles
+        - Enabling continuous integration with Azure Pipelines
+        - Implementing GitHub Actions by using DevOps Starter
+        - Deploying Docker Containers to Azure App Service web apps
+        - Control Deployments using Release Gates
+        - Configuring pipelines as code with YAML
+        - Setting up and running functional tests
+        - Integrate Azure Key Vault with Azure DevOps
+        - Enable Dynamic Configuration and Feature Flags
+        - Deployments using Azure Bicep templates
+        - Implement security and compliance in Azure DevOps Pipelines
+        - Managing technical debt with SonarQube and Azure DevOps
+        - Package management with Azure Artifacts
+        - Monitoring application performance with Application Insights
+        - Sharing Team Knowledge using Azure Project Wikis
     validations:
       required: true
   - type: textarea
