@@ -113,7 +113,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 8. The choose **Service principal (manual)** and click on **Next**.
 9. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name.
-    - Service Principal Id (or clientId), Key (or Password) and TenantId.
+    - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
     - In **Service connection name** type **azure-connection**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
 
 10. Click on **Verify and Save**.
@@ -126,12 +126,12 @@ In this exercise, you will import and run the CI pipeline.
 
 1. Go to **Pipelines>Pipelines**
 2. Click on **New pipeline** button
-3. Select **Azure Repos Git (Yaml)**
+3. Select **Azure Repos Git (YAML)**
 4. Select the **eShopOnWeb** repository
 5. Select **Existing Azure Pipelines YAML File**
 6. Select the **/.ado/eshoponweb-ci-docker.yml** file then click on **Continue**
 7. In the YAML pipeline definition, customize:
-   - **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
+   - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
    - **rg-az400-container-NAME** with the resource group name that will be created by the pipeline (it can be an existing resource group too).
 
 8. Click on **Save and Run** and wait for the pipeline to execute successfully.
@@ -147,7 +147,7 @@ In this exercise, you will import and run the CI pipeline.
 
 9. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci-docker** and click on **Save**.
 
-10. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container-NAME**). Make sure that the **eshoponweb/web** was created and contains two tags (one of them is **Latest**).
+10. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container-NAME**). On the left-hand side click **Repositories** under **Services** and make sure that the repository **eshoponweb/web** was created. When you click the repository link, you should see two tags (one of them is **latest**), these are the pushed images. If you don't see this, check the status of your pipeline.
 
 ### Exercise 3: Import and run the CD pipeline
 
@@ -179,23 +179,23 @@ You should now see the JSON output which confirms the success of the command run
 
 #### Task 2: Import and run the CD pipeline
 
-In this task, you will import and run the CI pipeline.
+In this task, you will import and run the CD pipeline.
 
 1. Go to **Pipelines>Pipelines**
 2. Click on **New pipeline** button
-3. Select **Azure Repos Git (Yaml)**
+3. Select **Azure Repos Git (YAML)**
 4. Select the **eShopOnWeb** repository
 5. Select **Existing Azure Pipelines YAML File**
 6. Select the **/.ado/eshoponweb-cd-webapp-docker.yml** file then click on **Continue**
 7. In the YAML pipeline definition, customize:
-   - **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
+   - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
    - **rg-az400-container-NAME** with the resource group name defined before in the lab.
 
 8. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
     > **Note**: The deployment may take a few minutes to complete.
 
-    The CI definition consists of the following tasks:
+    The CD definition consists of the following tasks:
     - **Resources**: It downloads the repository files that will be used in the following tasks.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure App Service using bicep template.
     - **AzureResourceManagerTemplateDeployment**: Add role assignment using Bicep
@@ -208,11 +208,11 @@ In this task, you will import and run the CI pipeline.
 
 #### Task 3: Test the solution
 
-1. In the Azure Portal, navigate to the recently created Resource Group, you should now see three resources (Ap Service, App Service Plan and Container Registry).
+1. In the Azure Portal, navigate to the recently created Resource Group, you should now see three resources (App Service, App Service Plan and Container Registry).
 
 1. Navigate to the App Service, then click **Browse**, this will take you to the website.
 
-Congratulations! In this exercise, you deployed a website using custom docker image.
+Congratulations! In this exercise, you deployed a website using a custom docker image.
 
 ### Exercise 4: Remove the Azure lab resources
 
