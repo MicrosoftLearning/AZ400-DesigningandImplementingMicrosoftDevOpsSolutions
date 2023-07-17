@@ -74,8 +74,8 @@ You can create a connection from Azure Pipelines to external and remote services
 In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
 
 - Deploy resources on your azure subscription.
-- Push the docker image to Azure Container Registry.
-- Add a role assignment to allow Azure App Service pull the docker image from Azure Container Registry.
+- Push the Docker image to Azure Container Registry.
+- Add a role assignment to allow Azure App Service pull the Docker image from Azure Container Registry.
 
 > **Note**: If you do already have a service principal, you can proceed directly to the next task.
 
@@ -128,7 +128,7 @@ In this exercise, you will import and run the CI pipeline.
 2. Click on **New pipeline** button
 3. Select **Azure Repos Git (YAML)**
 4. Select the **eShopOnWeb** repository
-5. Select **Existing Azure Pipelines YAML File**
+5. Select **Existing Azure Pipelines YAML file**
 6. Select the **/.ado/eshoponweb-ci-docker.yml** file then click on **Continue**
 7. In the YAML pipeline definition, customize:
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
@@ -142,7 +142,7 @@ In this exercise, you will import and run the CI pipeline.
     - **Resources**: It downloads the repository files that will be used in the following tasks.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure Container Registry using bicep template.
     - **PowerShell**: Retrieve the **ACR Login Server** value from the previous task's output and create a new parameter **acrLoginServer**
-    - [**Docker**](https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the docker image and create two tags (Latest and current BuildID)
+    - [**Docker**](https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the Docker image and create two tags (Latest and current BuildID)
     - **Docker - Push**: Push the images to Azure Container Registry
 
 9. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci-docker** and click on **Save**.
@@ -155,7 +155,7 @@ In this exercise, you will configure the service connection with your Azure Subs
 
 #### Task 1: Add a new role assignment
 
-In this task, you will add a new role assignment to allow Azure App Service pull the docker image from Azure Container Registry.
+In this task, you will add a new role assignment to allow Azure App Service pull the Docker image from Azure Container Registry.
 
 1. Navigate to the [**Azure Portal**](https://portal.azure.com).
 2. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
@@ -202,9 +202,9 @@ In this task, you will import and run the CD pipeline.
 
 9. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and hover on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
 
-    > **Note 1**: The use of the **/.azure/bicep/webapp-docker.bicep** template creates an app service plan, a web app with system assigned managed identity enabled, and references the docker image pushed previously: **${acr.properties.loginServer}/eshoponweb/web:latest**.
+    > **Note 1**: The use of the **/.azure/bicep/webapp-docker.bicep** template creates an app service plan, a web app with system assigned managed identity enabled, and references the Docker image pushed previously: **${acr.properties.loginServer}/eshoponweb/web:latest**.
 
-    > **Note 2**: The use of the **/.azure/bicep/webapp-to-acr-roleassignment.bicep** template creates a new role assignment for the web app with AcrPull role to be able to retrieve the docker image. This could be done in the first template, but since the role assignment can take some time to propagate, it's a good idea to do both tasks separately.
+    > **Note 2**: The use of the **/.azure/bicep/webapp-to-acr-roleassignment.bicep** template creates a new role assignment for the web app with AcrPull role to be able to retrieve the Docker image. This could be done in the first template, but since the role assignment can take some time to propagate, it's a good idea to do both tasks separately.
 
 #### Task 3: Test the solution
 
@@ -212,7 +212,7 @@ In this task, you will import and run the CD pipeline.
 
 1. Navigate to the App Service, then click **Browse**, this will take you to the website.
 
-Congratulations! In this exercise, you deployed a website using a custom docker image.
+Congratulations! In this exercise, you deployed a website using a custom Docker image.
 
 ### Exercise 4: Remove the Azure lab resources
 
