@@ -22,7 +22,7 @@ Azure Key Vault provides secure storage and management of sensitive data, such a
 
 In this lab, you will see how you can integrate Azure Key Vault with an Azure Pipelines by using the following steps:
 
-- Create an Azure Key vault to store a ACR password as a secret.
+- Create an Azure Key Vault to store a ACR password as a secret.
 - Create an Azure Service Principal to provide access to secrets in the Azure Key Vault.
 - Configure permissions to allow the Service Principal to read the secret.
 - Configure pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
@@ -120,7 +120,7 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 
 9. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name.
-    - Service Principal Id (or clientId), Key (or Password) and TenantId.
+    - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
     - In **Service connection name** type **azure subs**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
 
     ![Azure Service Connection](images/azure-service-connection.png)
@@ -158,15 +158,15 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
 
     ![ACR password](images/acr-password.png)
 
-#### Task 2: Create an Azure Key vault
+#### Task 2: Create an Azure Key Vault
 
-In this task, you will create an Azure Key vault by using the Azure portal.
+In this task, you will create an Azure Key Vault by using the Azure portal.
 
-For this lab scenario, we will have a Azure Container Instance (ACI) that pull and runs a container image stored in Azure Container Registry (ACR). We intend to store the password for the ACR as a secret in the key vault.
+For this lab scenario, we will have a Azure Container Instance (ACI) that pulls and runs a container image stored in Azure Container Registry (ACR). We intend to store the password for the ACR as a secret in the key vault.
 
 1. In the Azure portal, in the **Search resources, services, and docs** text box, type **Key vault** and press the **Enter** key.
 2. Select **Key vault** blade, click on **Create>Key Vault**.
-3. On the **Basics** tab of the **Create key vault** blade, specify the following settings and click on **Next**:
+3. On the **Basics** tab of the **Create a key vault** blade, specify the following settings and click on **Next**:
 
     | Setting | Value |
     | --- | --- |
@@ -178,20 +178,20 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pull a
     | Days to retain deleted vaults | **7** |
     | Purge protection | **Disable purge protection** |
 
-4. On the **Access policy** tab of the **Create key vault** blade, on the **Access Policy** section, click on **+ Create** to setup a new policy.
+4. On the **Access configuration** tab of the **Create a key vault** blade, select **Vault access policy** and then in the **Access policies** section, click on **+ Create** to setup a new policy.
 
     > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get/List) permissions to the previously created service principal that you will be using for authentication in the pipeline. 
 
-    1. On the **Permission** blade, check **Get** and **List** permissions below **Secret Permission**. Click on **Next**.
-    2. on the **Principal** blade, search for the **previously created Service Principal**, either using the Id or Name given. Click on **Next** and **Next** again.
+    1. On the **Permission** blade, below **Secret permissions**, check **Get** and **List** permissions. Click on **Next**.
+    2. On the **Principal** blade, search for the **previously created Service Principal**, either by using the Id or Name given, and select it from the list. Click on **Next**, **Next**, **Create** (access policy).
     3. On the **Review + create** blade, click on **Create**
 
-5. Back on the **Create a Key Vault** blade, click on **Review + Create > Create**
+5. Back on the **Create a key vault** blade, click on **Review + Create > Create**
 
-    > **Note**: Wait for the Azure Key vault to be provisioned. This should take less than 1 minute.
+    > **Note**: Wait for the Azure Key Vault to be provisioned. This should take less than 1 minute.
 
 6. On the **Your deployment is complete** blade, click on **Go to resource**.
-7. On the Azure Key vault blade, in the vertical menu on the left side of the blade, in the **Objects** section, click on **Secrets**.
+7. On the Azure Key Vault (ewebshop-kv-NAME) blade, in the vertical menu on the left side of the blade, in the **Objects** section, click on **Secrets**.
 8. On the **Secrets** blade, click on **Generate/Import**.
 9. On the **Create a secret** blade, specify the following settings and click on **Create** (leave others with their default values):
 
@@ -203,7 +203,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pull a
 
 #### Task 3: Create a Variable Group connected to Azure Key Vault
 
-In this task, you will create a Variable Group in Azure DevOps that will retrieve the ACR password secret from Key Vault using the Service Connection (Service Principal)
+In this task, you will create a Variable Group in Azure DevOps that will retrieve the ACR password secret from Key Vault using the Service Connection (Service Principal).
 
 1. On your lab computer, start a web browser and navigate to the Azure DevOps project **eShopOnWeb**.
 
@@ -214,7 +214,7 @@ In this task, you will create a Variable Group in Azure DevOps that will retriev
     | Setting | Value |
     | --- | --- |
     | Variable Group Name | **eshopweb-vg** |
-    | Link secrets from Azure KV ... | **enable** |
+    | Link secrets from an Azure Key Vault | **enable** |
     | Azure subscription | **Available Azure service connection > Azure subs** |
     | Key vault name | Your key vault name|
 
@@ -223,9 +223,9 @@ In this task, you will create a Variable Group in Azure DevOps that will retriev
 
     ![Variable Group create](images/vg-create.png)
 
-#### Task 4: Setup CD Pipeline to deploy container in Azure Container Instance(ACI)
+#### Task 4: Setup CD Pipeline to deploy container in Azure Container Instance (ACI)
 
-In this task, you will import a CD pipeline, customize it and run it for deploying the container image created before in a Azure Container Instance.
+In this task, you will import a CD pipeline, customize it, and run it for deploying the container image created before in a Azure Container Instance.
 
 1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines>Pipelines** and click on **New Pipeline**.
 
@@ -265,6 +265,6 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 
 In this lab, you integrated Azure Key Vault with an Azure DevOps pipeline by using the following steps:
 
-- Created an Azure service principal to provide access to secrets in the Azure Key vault and authenticate deployment to Azure from Azure DevOps.
-- Run 2 YAML pipelines imported from a Git repository.
-- Configured pipeline to retrieve the password from the Azure Key vault using ADO Variable Group and use it on subsequent tasks.
+- Created an Azure service principal to provide access to an Azure Key Vault secret and authenticate deployment to Azure from Azure DevOps.
+- Ran two YAML pipelines imported from a Git repository.
+- Configured one pipeline to retrieve the password from Azure Key Vault using a Variable Group and use it on subsequent tasks.
