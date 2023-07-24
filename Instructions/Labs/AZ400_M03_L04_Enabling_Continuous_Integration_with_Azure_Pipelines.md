@@ -54,7 +54,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
     - **.azure** folder contains Bicep & ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder contains YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 6 website used in the lab scenarios.
+    - **src** folder contains the .NET website used in the lab scenarios.
 
 ### Exercise 1: Include build validation as part of a Pull Request
 
