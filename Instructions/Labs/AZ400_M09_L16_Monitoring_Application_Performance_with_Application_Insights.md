@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Monitoring Application Performance with Application Insights'
+    title: 'Monitoring Application Performance with Azure Load Testing'
     module: 'Module 09: Implement continuous feedback'
 ---
 
-# Monitoring Application Performance with Application Insights
+# Monitoring Application Performance with Application Insights and Azure Load Testing
 
 ## Student lab manual
 
@@ -20,19 +20,21 @@ lab:
 
 ## Lab overview
 
-Application Insights is an extensible Application Performance Management (APM) service for web developers on multiple platforms. You can use it to monitor your live web applications. It automatically detects performance anomalies, includes powerful analytics tools to help you diagnose issues, and helps you continuously improve performance and usability. It works for apps on various platforms, including .NET, Node.js, and Java EE, hosted on-premises, hybrid, or any public cloud. It integrates with your DevOps process with connection points available in various development tools. It also allows you to monitor and analyze telemetry from mobile apps through integration with Visual Studio App Center.
+**Azure Load Testing** is a fully managed load-testing service that enables you to generate high-scale load. The service simulates traffic for your applications, regardless of where they're hosted. Developers, testers, and quality assurance (QA) engineers can use it to optimize application performance, scalability, or capacity.
+Quickly create a load test for your web application by using a URL, and without prior knowledge of testing tools. Azure Load Testing abstracts the complexity and infrastructure to run your load test at scale.
+For more advanced load testing scenarios, you can create a load test by reusing an existing Apache JMeter test script, a popular open-source load and performance tool. For example, your test plan might consist of multiple application requests, you want to call non-HTTP endpoints, or you're using input data and parameters to make the test more dynamic.
 
-In this lab, you'll learn about how you can add Application Insights to an existing web application and how to monitor the application via the Azure portal.
+In this lab, you'll learn about how you can use Azure Load Testing to simulate performance testing against a live-running web application with different load scenarios. Lastly, you'll learn how to integrate Azure Load Testing into your CI/CD pipelines. 
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
 - Deploy Azure App Service web apps.
-- Generate and monitor Azure web app application traffic by using Application Insights.
-- Investigate Azure web app performance by using Application Insights.
-- Track Azure web app usage by using Application Insights.
-- Create Azure web app alerts by using Application Insights.
+- Compose and Run a YAML-based CI/CD pipeline.
+- Deploy Azure Load Testing.
+- Investigate Azure web app performance by using Azure Load Testing.
+- Integrate Azure Load Testing into your CI/CD pipelines.
 
 ## Estimated timing: 60 minutes
 
@@ -40,31 +42,34 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, you will set up the prerequisites for the lab, which consist of the pre-configured Parts Unlimited team project based on an Azure DevOps Demo Generator template and Azure resources, including an Azure web app and an Azure SQL database.
+In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1: Configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
-In this task, you will use Azure DevOps Demo Generator to generate a new project based on the **Parts Unlimited** template.
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
-1. On your lab computer, start a web browser and navigate to [Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net). This utility site will automate the process of creating a new Azure DevOps project within your account that is pre-populated with content (work items, repos, etc.) required for the lab.
+1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
 
-    > **Note**: For more information on the site, see <https://docs.microsoft.com/en-us/azure/devops/demo-gen>.
+    ![Create Project](images/create-project.png)
 
-2. Click **Sign in** and sign in using the Microsoft account associated with your Azure DevOps subscription.
-3. If required, on the **Azure DevOps Demo Generator** page, click **Accept** to accept the permission requests for accessing your Azure DevOps subscription.
-4. On the **Create New Project** page, in the **New Project Name** textbox, type **Monitoring Application Performance**, in the **Select organization** dropdown list, select your Azure DevOps organization, and then click **Choose template**.
-5. In the list of templates, select the **PartsUnlimited** template and click **Select Template**.
-6. Back on the **Create New Project** page, click **Create Project**
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
-    > **Note**: Wait for the process to complete. This should take about 2 minutes. In case the process fails, navigate to your DevOps organization, delete the project, and try again.
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-7. On the **Create New Project** page, click **Navigate to project**.
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
+
+    ![Import Repository](images/import-repo.png)
+
+2. The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
+    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 6 website used on the lab scenarios.
 
 #### Task 2: Create Azure resources
 
-In this task, you will create an Azure web app and an Azure SQL database by using the cloud shell in Azure portal.
-
-> **Note**: This lab involves a deployment of the Parts Unlimited site to an Azure app service. To accommodate this requirement, you will need to spin up the necessary infrastructure.
+In this task, you will create an Azure web app by using the cloud shell in Azure portal.
 
 1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
 2. In the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box.
@@ -74,7 +79,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 4. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'eastus').
 
     ```bash
-    RESOURCEGROUPNAME='az400m17l01a-RG'
+    RESOURCEGROUPNAME='az400m09l16-RG'
     LOCATION='<region>'
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
@@ -82,7 +87,7 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 5. To create a Windows App service plan by running the following command:
 
     ```bash
-    SERVICEPLANNAME='az400l17-sp'
+    SERVICEPLANNAME='az400l16-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
         --name $SERVICEPLANNAME --sku B3 
     ```
@@ -96,324 +101,399 @@ In this task, you will create an Azure web app and an Azure SQL database by usin
 
     > **Note**: Record the name of the web app. You will need it later in this lab.
 
-7. Now is the time to create an Application Insights instance.
+### Exercise 1: Configure CI/CD Pipelines as Code with YAML in Azure DevOps
 
-    ```bash
-    az monitor app-insights component create --app $WEBAPPNAME \
-        --location $LOCATION \
-        --kind web --application-type web \
-        --resource-group $RESOURCEGROUPNAME
-    ```
+In this exercise, you will configure CI/CD Pipelines as code with YAML in Azure DevOps.
 
-    > **Note**: If you got prompted with 'The command requires the extension application-insights. Do you want to install it now?', type Y and press enter.
+#### Task 1: Add a YAML build and deploy definition
 
-8. Let us connect the Application Insights to our web application.
+In this task, you will add a YAML build definition to the existing project.
 
-    ```bash
-    az monitor app-insights component connect-webapp --app $WEBAPPNAME \
-        --resource-group $RESOURCEGROUPNAME --web-app $WEBAPPNAME
-    ```
+1. Navigate back to the **Pipelines** pane in of the **Pipelines** hub.
+2. In the **Create your first Pipeline** window, click **Create pipeline**.
 
-9. Next, create an Azure SQL Server.
+    > **Note**: We will use the wizard to create a new YAML Pipeline definition based on our project.
 
-    ```bash
-    USERNAME="Student"
-    SQLSERVERPASSWORD="Pa55w.rd1234"
-    SERVERNAME="partsunlimitedserver$RANDOM"
+3. On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
+4. On the **Select a repository** pane, click **eShopOnWeb**.
+5. On the **Configure your pipeline** pane, scroll down and select **Starter Pipeline**.
+6. **Select** all lines from the Starter Pipeline, and delete them.
+7. **Copy** the full template pipeline from below, knowing you will need to make parameter modifications **before saving** the changes:
+
+```
+#Template Pipeline for CI/CD 
+# trigger:
+# - main
+
+resources:
+  repositories:
+    - repository: self
+      trigger: none
+
+stages:
+- stage: Build
+  displayName: Build .Net Core Solution
+  jobs:
+  - job: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Restore
+      inputs:
+        command: 'restore'
+        projects: '**/*.sln'
+        feedsToUse: 'select'
+
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: 'build'
+        projects: '**/*.sln'
     
-    az sql server create --name $SERVERNAME --resource-group $RESOURCEGROUPNAME \
-    --location $LOCATION --admin-user $USERNAME --admin-password $SQLSERVERPASSWORD
+    - task: DotNetCoreCLI@2
+      displayName: Publish
+      inputs:
+        command: 'publish'
+        publishWebProjects: true
+        arguments: '-o $(Build.ArtifactStagingDirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Artifacts ADO - Website
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: Website
+    
+- stage: Deploy
+  displayName: Deploy to an Azure Web App
+  jobs:
+  - job: Deploy
+    pool:
+      vmImage: 'windows-2019'
+    steps:
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'Website'
+        downloadPath: '$(Build.ArtifactStagingDirectory)'
+
+```
+4. Set the cursor on a new line at the end of the YAML definition (line 69).
+
+    > **Note**: This will be the location where new tasks are added.
+
+5. In the list of tasks on the right side of the code pane, search for and select the **Azure App Service Deploy** task.
+6. In the **Azure App Service deploy** pane, specify the following settings and click **Add**:
+
+    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
+    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab.
+    - in the **Package or folder** text box, **update** the Default Value to `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
+7. Confirm the settings from the Assistant pane by clicking the **Add** button.
+
+    > **Note**: This will automatically add the deployment task to the YAML pipeline definition.
+
+8. The snippet of code added to the editor should look similar to below, reflecting your name for the azureSubscription and WebappName parameters:
+
+> **Note**: The **packageForLinux** parameter is misleading in the context of this lab, but it is valid for Windows or Linux.
+
+    ```yaml
+        - task: AzureRmWebAppDeployment@4
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+            appType: 'webApp'
+            WebAppName: 'eshoponWebYAML369825031'
+            packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+    ```
+9. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the master branch.
+
+    > **Note**: Since our original CI-YAML was not configured to automatically trigger a new build, we have to initiate this one manually.
+
+10. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again.
+11. Open the **EShopOnWeb_MultiStageYAML** Pipeline and click **Run Pipeline**.
+12. Confirm the **Run** from the appearing pane.
+13. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
+14. Wait for the pipeline to kick off and wait until it completes the Build Stage successfully.
+15. Once the Deploy Stage wants to start, you are prompted with **Permissions Needed**, as well as an orange bar saying:
+
+    ```text
+    This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
     ```
 
-10. The web app needs to be able to access the SQL server, so we need to allow access to Azure resources in the SQL Server firewall rules.
+16. Click on **View**
+17. From the **Waiting for Review** pane, click **Permit**.
+18. Validate the message in the **Permit popup** window, and confirm by clicking **Permit**.
+19. This sets off the Deploy Stage. Wait for this to complete successfully.
 
-    ```bash
-    STARTIP="0.0.0.0"
-    ENDIP="0.0.0.0"
-    az sql server firewall-rule create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME \
-    --name AllowAzureResources --start-ip-address $STARTIP --end-ip-address $ENDIP
-    ```
+#### Task 2: Review the deployed site
 
-11. Now create a database within that server.
+1. Switch back to web browser window displaying the Azure portal and navigate to the blade displaying the properties of the Azure web app.
+2. On the Azure web app blade, click **Overview** and, on the overview blade, click **Browse** to open your site in a new web browser tab.
+3. Verify that the deployed site loads as expected in the new browser tab, showing the EShopOnWeb E-commerce website.
 
-    ```bash
-    az sql db create --server $SERVERNAME --resource-group $RESOURCEGROUPNAME --name PartsUnlimited \
-    --service-objective S0
-    ```
+### Exercise 2: Deploy and Setup Azure Load Testing
 
-12. The web app you created needs the database connection string in its configuration, so run the following commands to prepare and add it to the app settings of the web app.
+In this exercise, you will deploy an Azure Load Testing Resource in Azure, and configure different Load Testing scenarios for your live-running Azure App Service.
+
+#### Task 1: Deploy Azure Load Testing
 
-    ```bash
-    CONNSTRING=$(az sql db show-connection-string --name PartsUnlimited --server $SERVERNAME \
-    --client ado.net --output tsv)
-    CONNSTRING=${CONNSTRING//<username>/$USERNAME}
-    CONNSTRING=${CONNSTRING//<password>/$SQLSERVERPASSWORD}
-    az webapp config connection-string set --name $WEBAPPNAME --resource-group $RESOURCEGROUPNAME \
-    -t SQLAzure --settings "DefaultConnectionString=$CONNSTRING" 
-    ```
+In this task, you will deploy an Azure Load Testing Resource into your Azure subscription.
 
-### Exercise 1: Monitor an Azure App Service web app using Azure Application Insights
+1. From the Azure Portal (https://portal.azure.com), navigate to **Create Azure Resource**.
+2. In the 'Search Services and marketplace' search field, enter **Azure Load Testing**.
+3. Select **Azure Load Testing** (published by Microsoft), from the search results.
+4. From the Azure Load Testing Page, click **Create** to start the deployment process.
+5. From the 'Create a Load Testing Resource' page, provide the necessary details for the resource deployment:
+- **Subscription**: select your Azure Subscription
+- **Resource Group**: select the Resource Group you used for deploying the Web App Service in the earlier exercise
+- **Name**: EShopOnWebLoadTesting
+- **Region**: Select a region that is close to your region
 
-In this exercise, you will deploy a web app to Azure App Service by using Azure Pipelines, generate traffic targeting the web app, and use Application Insights to review the web traffic, investigate application performance, track application usage, and configure alerting.
+    > **Note**: Azure Load Testing service is not available in all Azure Regions.
 
-#### Task 1: Deploy a web app to Azure App Service by using Azure DevOps
+6. Click **Review and Create**, to have your settings validated.
+7. Click **Create** to confirm, and get the Azure Load Testing resource deployed.
+8. You are switched to the 'Deployment is in progress' page. Wait for a few minutes, until the deployment completes successfully.
+9. Click **Go to Resource** from the deployment progress page, to navigate to the **EShopOnWebLoadTesting** Azure Load Testing resource. 
 
-In this task, you will deploying a web app to Azure by using Azure Pipelines.
+    > **Note**: If you closed the blade or closed the Azure Portal during the deployment of the Azure Load Testing Resource, you can find it again from the Azure Portal Search field, or from the Resources / Recent list of resources. 
 
-> **Note**: The sample project we are using in this lab includes a continuous integration build, which we will use without modifications. There is also a continuous delivery release pipeline that will require minor changes before it is ready for deployment to the Azure resources you implemented in the previous task.
+#### Task 2: Create Azure Load Testing tests
 
-1. Switch to the web browser window displaying the **Monitoring Application Performance** project in the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**, and, in the **Pipelines** section, select **Releases**.
-2. In the list of release pipelines, on the **PartsUnlimitedE2E** pane, click **Edit**.
-3. On the **All pipelines > PartsUnlimitedE2E** pane, click the rectangle representing the **Dev** stage, on the **Dev** pane, click **Delete**, and, in the **Delete stage** dialog box, click **Confirm**.
-4. Back on the **All pipelines > PartsUnlimitedE2E** pane, click the rectangle representing the **QA** stage, on the **QA** pane, click **Delete**, and, in the **Delete stage** dialog box, click **Confirm**.
-5. Back on the **All pipelines > PartsUnlimitedE2E** pane, in the rectangle representing the **Production** stage, click the **1 job, 1 task** link.
-6. On the pane displaying the list of tasks of the **Production*** stage, click the entry representing the **Azure App Service Deploy** task.
-7. On the **Azure App Service deploy** pane, in the **Azure subscription** dropdown list, select the entry representing the Azure subscription you are using in this lab, and click **Authorize** to create the corresponding service connection. When prompted, sign in using the account with the Owner role in the Azure subscription and the Global Administrator role in the Azure AD tenant associated with the Azure subscription.
-8. With the **Tasks** tab of the **All pipelines > PartsUnlimitedE2E** pane active, click the **Pipeline** tab header to return to the diagram of the pipeline.
-9. In the diagram, click the **Pre-deployment condition** oval symbol on the left side of the rectangle representing the **Production** stage.
-10. On the **Pre-deployment condition** pane, in the **Select trigger** section, select **After release**.
+In this task, you will create different Azure Load Testing tests, using different load configuration settings. 
 
-    > **Note**: This will invoke the release pipeline after the project's build pipeline succeeds.
-
-11. With the **Pipeline** tab of the **All pipelines > PartsUnlimitedE2E** pane active, click the **Variables** tab header.
-12. In the list of variables, set the value of the **WebsiteName** variable to match the name of the Azure App Service web app you created earlier in this lab.
-13. In the upper right corner of the pane, click **Save**, and, when prompted, in the **Save** dialog box, click **OK** again.
-
-    > **Note**: Now that the release pipeline is in place, we can expect that any commits to the master branch will trigger the build and release pipelines.
-
-14. In the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, click **Repos**.
-15. On the **Files** pane, navigate to and select the **PartsUnlimited-aspnet45/src/PartsUnlimitedWebsite/Web.config** file.
-
-    > **Note**: This application already has configuration settings for the Application Insights key and for a SQL connection.
-
-16. On the **Web.config** pane, review the lines referencing the Application Insights key and for a SQL connection:
-
-    ```xml
-    <add key="Keys:ApplicationInsights:InstrumentationKey" value="0839cc6f-b99b-44b1-9d74-4e408b7aee29" />
-    ```
-
-    ```xml
-    <connectionStrings>
-       <add name="DefaultConnectionString" connectionString="Server=(localdb)\mssqllocaldb;Database=PartsUnlimitedWebsite;Integrated Security=True;" providerName="System.Data.SqlClient" />
-    </connectionStrings>
-    ```
-
-    > **Note**: You will modify values of these settings in the Azure portal following the deployment to represent the Azure Application Insights and the Azure SQL Database you deployed earlier in the lab.
-
-    > **Note**: Now trigger the build and release processes without modifying any relevant code, by simply adding an empty line to the end of the file
-
-17. On the **Web.config** pane, click **Edit**, add an empty line to the end of the file, click **Commit** and, on the **Commit** pane, click **Commit** again.
-
-    > **Note**: A new build will begin and ultimately result in a deployment to Azure. Do not wait for its completion, but instead proceed to the next step.
-
-18. Switch to the web browser displaying the Azure portal and navigate to the App Service web app you provisioned earlier in the lab.
-19. On the App Service web app blade, click in the vertical menu on the left side, in the **Settings** section, click **Configuration** tab.
-20. In the list of **Application settings**, click the **APPINSIGHTS_INSTRUMENTATIONKEY** entry. (If you don't see this entry, then select **Application Insights** under Settings and **Enable** Aplication Insights, and then select **Apply**.)
-21. On the **Add/Edit application setting** blade, copy the text in the **Value** textbox and click **Cancel**.
-
-    > **Note**: This is the default setting added during the App Service web app deployment, which already contains the Application Insights ID. We need to add a new setting expected by our app, with a different name but the matching value. This is a specific requirement for our sample.
-
-22. In the **Application settings** section, click **+ New application setting**.
-23. On the **Add/Edit application setting** blade, in the **Name** textbox, type **Keys:ApplicationInsights:InstrumentationKey**, in the **Value** textbox, type the string of characters you copied into Clipboard and click **OK**. Select **Save**.
-
-    > **Note**: Changes to the application settings and connection strings trigger restart of the web app.
-
-24. Switch back to the web browser window displaying the Azure DevOps portal, in the vertical navigational pane, select the **Pipelines**, and, in the **Pipelines** section, click the entry representing your most recently run build pipeline.
-25. If the build has not yet completed, track it through until it does, then, in the vertical navigational pane, in the **Pipelines** section, click **Releases**, on the **PartsUnlimitedE2E** pane, click **Release-1** and follow the release pipeline to its completion.
-26. Switch to the web browser window displaying the Azure portal and, on the **App Service web app** blade, in the vertical menu bar on the left side, click **Overview**.
-27. On the right side, in the **Essentials** section, click the **URL** link. This will automatically open another web browser tab displaying the **Parts Unlimited**
-web site.
-28. Verify that the **Parts Unlimited** web site loads as expected.
-
-#### Task 2: Generate and review application traffic
-
-In this task, you will generate traffic targeting the App Service web app you deployed in the previous task and review the data collected by Application Insights resource associated with the web app.
-
-1. In the web browser window displaying the **Parts Unlimited** web site, navigate through its pages to generate some traffic.
-2. On the **Parts Unlimited** web site, click the **Brakes** menu item.
-3. In the URL textbox at the top of the browser window, append **1** to the end of the URL string and press **Enter**, effectively setting the **CategoryId** parameter to **11**.
-
-    > **Note**: This will trigger a server error since that category does not exist. Refresh the page a few times to generate more errors.
-
-4. Return to the web browser tab displaying the Azure portal.
-5. In the web browser tab displaying the Azure portal, on the **App Service** web app blade, in the vertical menu bar on the left, in the **Settings** section, click the **Application Insights** entry to display the **Application Insights** configuration blade.
-
-    > **Note**: This blade includes settings that allow you to integrate Application Insights with different types of apps. While the default experience produces a wealth of data for tracking and monitoring apps, the API provides support for more specialized scenarios and custom event tracking.
-
-6. On the **Application Insights** configuration blade, click the **View Application Insights data** link.
-7. Review the resulting **Application Insights** blade displaying charts presenting different characteristics of the collected data, including the traffic you generated and failed requests you triggered earlier in this task.
-
-    > **Note**: If you didn't see anything right away, just wait for a few minutes and refresh the page until the logs start to show up in the overview section.
-
-#### Task 3: Investigate application performance
-
-In this task, you will use Application Insights to investigate performance of the App Service web app.
-
-1. On the **Application Insights** blade, in the vertical menu on the left side, in the **Investigate** section, click **Application map**.
-
-    > **Note**: Application Map helps you spot performance bottlenecks or failure hotspots across all components of your distributed application. Each node on the map represents an application component or its dependencies, as well as health KPI and alerts status. You can click through from any component to more detailed diagnostics, such as Application Insights events. If your app uses Azure services, you can also click through to Azure diagnostics related to those services, such as SQL Database Advisor recommendations.
-
-2. On the **Application Insights** blade, in the vertical menu on the left side, in the **Investigate** section, click **Smart Detection**.
-
-    > **Note**: Smart Detection automatically warns you of potential performance problems in your web application. It performs proactive analysis of the telemetry that your app sends to Application Insights. If there is a sudden rise in failure rates, or abnormal patterns in client or server performance, you get an alert. This feature needs no configuration. It operates if your application sends enough telemetry. However, there won't be any data in there yet since our app has just deployed.
-
-3. On the **Application Insights** blade, in the vertical menu on the left side, in the **Investigate** section, click **Live Metrics**.
-
-    > **Note**: Live Metrics Stream enables you to probe the beating heart of your live, in-production web application. You can select and filter metrics and performance counters to watch in real time, without any impact to your service. You can also inspect stack traces from sample failed requests and exceptions.
-
-4. Return to the web browser displaying the **Parts Unlimited** web site, navigate through its pages to generate some traffic, including a few server errors.
-5. Return to the web browser displaying the Azure portal to watch the live traffic as it arrives.
-6. On the **Application Insights** blade, in the vertical menu on the left side, in the **Investigate** section, click **Transaction search**.
-
-    > **Note**: Transaction search provides a flexible interface to locate the exact telemetry you need to answer questions.
-
-7. On the **Transaction search** blade, click **See all data in the last 24 hours**.
-
-    > **Note**: The results include all telemetry data, which can be filtered down by multiple properties.
-
-8. On the **Transaction search** blade, in the middle of the blade, right above the list of results, click **Grouped results**.
-
-    > **Note**: These results are grouped based common properties.
-
-9. On the **Transaction search** blade, in the middle of the blade, right above the list of results, click **Results** to return to the original view, listing all results.
-10. At the top of the **Transaction search** blade, click **Event types = All selected**, in the dropdown list, clear the **Select all** checkbox, and, in the list of event types, select the **Exception** checkbox.
-
-    > **Note**: There should be some exceptions representing the errors you generated earlier.
-
-11. In the list of results, click one of them. This will display the **End-to-end transaction details** blade, providing a full timeline view of the exception within the context of its request.
-12. At the bottom of the **End-to-end transaction details** blade, click **View all telemetry**.
-
-    > **Note**: The **Telemetry** view provides the same data but in a different format. On the right hand side of the **End-to-end transaction details** blade, you can also review the details of the exception itself, such as its properties and call stack.
-
-13. Close the **End-to-end transaction details** blade and back on the **Transaction search** blade, in the vertical menu on the left side, in the **Investigate** section, click **Availability**.
-
-    > **Note**: After you've deployed your web app or web site to any server, you can set up tests to monitor its availability and responsiveness. Application Insights sends web requests to your application at regular intervals from points around the world. It alerts you if your application doesn't respond or responds slowly.
-
-14. On the **Availability** blade, in the toolbar, click **+ Add Classic test**.
-15. On the **Create test** blade, in the **Test name** textbox, type **Home page**, set the **URL** to the root of your App Service web app, and click **Create**.
-
-    > **Note**: The test will not run immediately, so there won't be any data. If you check back later, you should see the availability data updated to reflect the tests against your live site. Don't wait for this now.
-
-16. On the **Availability** blade, in the vertical menu on the left side, in the **Investigate** section, click **Failures**.
-
-    > **Note**: The Failures view aggregates all exception reports into a single dashboard. From here, you can easily locate relevant data based on such filters as dependencies or exceptions.
-
-17. On the **Failures** blade, in the upper right corner, in the **Top 3 response codes** list, click the link representing the number of **500** errors.
-
-    > **Note**: This will present a list of exceptions matching this HTTP response code. Selecting the suggested exception will lead to the same exception view you reviewed earlier.
-
-18. On the **Failures** blade, in the vertical menu on the left side, in the **Investigate** section, click **Performance**.
-
-    > **Note**: The Performance view provides a dashboard that simplifies the details of application performance based on the collected telemetry.
-
-19. On the **Performance** blade, in the vertical menu on the left side, in the **Monitoring** section, click **Metrics**.
-
-    > **Note**: Metrics in Application Insights are measured values and counts of events that are sent in telemetry from your application. They help you detect performance issues and watch trends in how your application is being used. There's a wide range of standard metrics, and you can also create your own custom metrics and events.
-
-20. On the **Metrics** blade, in the filter section, click **Select metric** and, in the dropdown list, select **Server requests**.
-
-    > **Note**: You can also segment your data using splitting.
-
-21. At the top of the newly displayed chart, click **Apply splitting** and, in the resulting filter, in the **Select values** dropdown list, select **Operation name**.
-
-    > **Note**: This will split the server requests based on pages they reference, represented by different colors in the chart.
-
-#### Task 4: Track application usage
-
-> **Note**: Application Insights provides a broad set of features to track application usage.
-
-1. On the **Metrics** blade, in the vertical menu on the left side, in the **Usage** section, click **Users**.
-
-    > **Note**: While there aren't many users of our application yet, some data will be available.
-
-2. On the **Users** blade, below the main chart, click **View More Insights**. This will display additional data, extending the blade downwards.
-3. Scroll down to review details about the geographies, operating systems, and browsers.
-
-    > **Note**: You can also drill into user-specific data to gain a better understanding of the user-specific usage patterns.
-
-4. On the **Users** blade, in the vertical menu on the left side, in the **Usage** section, click **Events**.
-5. On the **Events** blade, below the main chart, click **View More Insights**.
-
-    > **Note**: The display will include a range of built-in events raised so far based on site usage. You can programmatically add custom events with custom data to meet your needs.
-
-6. On the **Events** blade, in the vertical menu on the left side, in the **Usage** section, click **Funnels**.
-
-    > **Note**: Understanding the customer experience is of the utmost importance to your business. If the usage of your application involves multiple steps, you need to know if most customers are following the intended process. The progression through a series of steps in a web application is known as a funnel. You can use Azure Application Insights Funnels to gain insights into your users, and monitor step-by-step conversion rates.
-
-7. On the **Funnels** blade, in the vertical menu on the left side, in the **Usage** section, click **User Flows**.
-
-    > **Note**: The User Flows tool starts from an initial page view, custom event, or exception that you specify. Given this initial event, User Flows shows the events that happened before and afterwards during the corresponding user sessions. Lines of varying thickness show how many times each path was followed by users. The **Session Started** nodes represent the beginning of a session. **Session Ended** nodes show how many users didn't generate page views or custom events after the preceding node, corresponding likely to users leaving your site.
-
-8. On the **User Flows** blade, click **Select an event**, on the **Edit** pane, in the **Initial Event** dropdown list, in the **Page Views** section, select **Home Page - Parts Unlimited** entry, and then click **Create Graph**.
-
-9. On the **User Flows** blade, in the vertical menu on the left side, in the **Usage** section, click **Retention**.
-
-    > **Note**: The retention feature in Application Insights helps you analyze how many users return to your app, and how often they perform particular tasks or achieve goals. For example, if you run a game site, you could compare the numbers of users who return to the site after losing a game with the number who return after winning. This knowledge can help you improve both your user experience and your business strategy.
-
-    > **Note**: The User Retention Analysis experience was transitioned to Azure Workbooks
-
-10. On the **Retention** blade, click **Retention Analysis Workbook**, review the **Overall Retention** chart, and close the blade.
-11. On the **Retention** blade, in the vertical menu on the left side, in the **Usage** section, click **Impact**.
-
-    > **Note**: Impact analyzes how web site properties, such as load times, influence conversion rates for various parts of your app. To put it more precisely, it discovers how any dimension of a page view, custom event, or request affects page views or custom events.
-
-    > **Note**: The Impact Analysis experience was transitioned to Azure Workbooks
-
-12. On the **Impact** blade, click **Impact Analysis Workbook**, on the **Impact** blade, in the **Selected event** dropdown list, in the **Page Views** section, select **Home Page - Parts Unlimited**, in the **Impacting event**, select **Browse Product - Parts Unlimited**, review the results, and close the blade.
-13. On the **Impact** blade, in the vertical menu on the left side, in the **Usage** section, click **Cohorts**.
-
-    > **Note**: A cohort is a set of users, sessions, events, or operations that have something in common. In Application Insights, cohorts are defined by an analytics query. In cases where you have to analyze a specific set of users or events repeatedly, cohorts can give you more flexibility to express exactly the set you're interested in. Cohorts are used in ways similar to filters, but cohort definitions are built from custom analytics queries, so they're much more adaptable and complex. Unlike filters, you can save cohorts so other members of your team can reuse them.
-
-14. On the **Cohorts** blade, in the vertical menu on the left side, in the **Usage** section, click **More**.
-
-    > **Note**: This blade includes a variety of reports and templates for review.
-
-15. On the **More \| Gallery** blade, in the **Usage** section, click **Analysis of Page Views** and review the content of the corresponding blade.
-
-    > **Note**: This particular report offers insight regarding the page views. There are many other reports available by default, and you can customize and save new ones.
-
-#### Task 5: Configure web app alerts
-
-1. While on the **More \| Gallery** blade, in the vertical menu on the left side, in the **Monitoring** section, click **Alerts**.
-
-    > **Note**: Alerts enable you to set triggers that perform actions when Application Insights measurements reach specified conditions.
-
-2. On the **Alerts** blade, in the toolbar, click **+ New alert rule**.
-3. On the **Create alert rule** blade, note that, in the **Scope** section, the current Application Insights resource will be selected by default.
-4. On the **Create alert rule** blade, in the **Condition** section, click **Add condition**.
-5. On the **Configure signal logic** blade, search for and select the **Failed requests** metric.
-6. On the **Configure signal logic** blade, scroll down to the **Alert logic** section, ensure that **Threshold** is set to **Static** and set the **Threshold value** to **1**.
-
-    > **Note**: This will trigger the alert once a second failed request is reported. By default, the conditions will be evaluated every minute and based on the aggregation of measurements over the past 5 minutes.
-
-7. On the **Configure signal logic** blade, click **Done**.
-
-    > **Note**: Now that the condition is created, we need to define an **Action Group** for it to execute.
-
-8. Back on the **Create alert rule** blade, in the **Action** section, click **Select action group** and then, on the **Select an action group to attach to this alert rule, click**+ Create action group**.
-9. On the **Basics** tab of the **Create action group** blade, specify the following settings and click **Next: Notifications >**:
-
-    | Setting | Value |
-    | --- | --- |
-    | Subscription | the name of the Azure subscription you are using in this lab |
-    | Resource group | the name of a new resource group **az400m17l01b-RG** |
-    | Action group name | **az400m17-action-group** |
-    | Display name | **az400m17-ag** |
-
-10. On the **Notifications** tab of the **Create action group** blade, in the **Notification type** dropdown list, select **Email/SMS message/Push/Voice**. This will open the **Email/SMS message/Push/Voice** blade.
-11. On the **Email/SMS message/Push/Voice** blade, select the **Email** checkbox, in the **Email** textbox, type your email address, and click **OK**.
-12. Back on the **Notifications** tab of the **Create action group** blade, in the **Name** textbox, type **email** and click **Next: Actions >**:
-13. On the **Actions** tab of the **Create action group** blade, select the **Action type** dropdown list, review the available options without making any changes, and click **Review + create**.
-14. On the **Review + create** tab of the **Create action group** blade, click **Create**
-15. Back on the **Create alert rule** blade, in the **Alert rule details** section, in the **Alert rule name** textbox, type **az400m17 lab alert rule**, review the remaining alert rule settings without modifying them, and click **Create alert rule**.
-16. Switch to the web browser window displaying the **Parts Unlimited** web site, on the **Parts Unlimited** web site, click the **Brakes** menu item.
-17. In the URL textbox at the top of the browser window, append **1** to the end of the URL string and press **Enter**, effectively setting the **CategoryId** parameter to **11**.
-
-    > **Note**: This will trigger a server error since that category does not exist. Refresh the page a few times to generate more errors.
-
-18. After about five minutes, check your email account to verify that you have received an email indicating that the alert you defined was triggered.
-
-### Exercise 2: Remove the Azure lab resources
+10. From within the **EShopOnWebLoadTesting** Azure Load Testing Resource blade, notice the **Get Started with a quick test**, and click the **Quick Test** button.
+11. Complete the following parameters and settings to create a load test:
+- **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (EShopOnWeb...azurewebsites.net), **including https://**
+- **Specify Load**: Virtual Users
+- **Number of Virtual Users**: 50
+- **Test Duration (Seconds)**: 120
+- **Ramp-up time (Seconds)**:  0
+12. Confirm the configuration of the test, by clicking **Run Test**.
+13. The test will run for about 2 minutes. 
+14. With the test running, navigate back to the **EShopOnWebLoadTesting** Azure Load Testing Resource page, and navigate to **Tests**, select **Tests** and see a test **Get_eshoponweb...**
+15. From the top menu, click **Create**, **Create a quick test**, to create a 2nd Load test.
+16. Complete the following parameters and settings to create another load test:
+- **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (EShopOnWeb...azurewebsites.net), **including https://**
+- **Specify Load**: Requests per Second (RPS)
+- **Requests per second (RPS)**: 100
+- **Response time (milliseconds)**: 500
+- **Test Duration (seconds)**: 120
+- **Ramp-up time (Seconds)**:  0
+17. Confirm the configuration of the test, by clicking **Run Test**.
+18. The test will run for about 2 minutes.
+
+#### Task 3: Validate Azure Load Testing results
+
+In this task, you will validate the outcome of an Azure Load Testing TestRun. 
+
+With both quick tests complete, let's make a few changes to them, and validate the results.
+
+19. From the **EShopOnWebLoadTesting** Resource blade, navigate to **Tests**, and select the first Get_eshoponwebyaml... test. Click **Edit** from the top menu.
+20. Here, the portal allows you to change the **Test Name** from the default generated one, to a more descriptive one. It also allows you to still make changes to any of the parameters defined earlier.
+21. From the **Edit test** blade, navigate to the **Test Plan** tab. 
+22. This is where you can manage the **Apache JMeter** load testing script file, which is what Azure Load Testing is using as a framework. Notice the file **quick_test.jmx**. Select this file to **Open** it on the lab virtual machine. From the popup window, select **Visual Studio Code** as the editor to open the file.
+23. Notice the XML-language structure of the file.
+
+    > Note: For additional information and understanding the more advanced syntax of Apache JMeter, check the following [Azure Load Testing - Jmeter](https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-and-run-load-test-with-jmeter-script) link.
+
+24. Back in the **Tests** view, showing both tests, select either of them, to open a more detailed view, by **clicking** on one of the tests. This redirects you to the more detailed test page. From here, you can validate the details of the actual runs, by selecting the **TestRun_mm/dd/yy-hh:hh** from the resulting list.
+25. From the detailed **TestRun** page, identify the actual outcome of the Azure Load Testing simulation. Some of the values are:
+- Load / Total Requests
+- Duration
+- Response Time (shows the outcome in seconds, reflecting the 90th percentile response time - this means that, for 90% of the requests, the response time will be within the given results)
+- Throughput in requests per second
+26. More below, several of these values are represented using dashboard graph line and chart views.
+27. Take a few minutes to **compare the results** of both simulated tests with each other, and **identify the impact** of more users on the App Service performance.
+
+### Exercise 2: Automate a Load Test with CI/CD in Azure DevOps Pipelines
+
+Get started with automating load tests in Azure Load Testing by adding it to a CI/CD pipeline. After running a load test in the Azure portal, you export the configuration files, and configure a CI/CD pipeline in Azure Pipelines (similar capability exists for GitHub Actions).
+
+After you complete this exercise, you have a CI/CD workflow that is configured to run a load test with Azure Load Testing.
+
+#### Task 1: Identify ADO Service Connection Details
+
+In this task, you will grant the required permissions to the Azure DevOps Service Connection's Service Principal.
+
+1. From the **Azure DevOps Portal**(https://dev.azure.com), navigate to the **EShopOnWeb** Project.
+2. From the down left corner, select **Project Settings**.
+3. Under the **Pipelines** section, select **Service Connections**.
+4. Notice the Service Connection, having the name of your Azure Subscription you used to deploy Azure Resources at the start of the lab exercise.
+5. **Select the Service Connection**. From the **Overview** tab, navigate to **Details** and select **Manage Service Principal**.
+6. This redirects you to the Azure Portal, from where it opens the **Service Principal** details for the identity object.
+7. Copy the **Display Name** value (formatted like Name_of_ADO_Organization_EShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4) aside, as you will need this in the next steps.
+
+#### Task 2: Grant Service Principal Permissions
+
+Azure Load Testing uses Azure RBAC to grant permissions for performing specific activities on your load testing resource. To run a load test from your CI/CD pipeline, you grant the **Load Test Contributor** role to the service principal.
+
+1. In the **Azure portal**, go to your **Azure Load Testing** resource.
+2. Select **Access control (IAM)** > Add > Add role assignment.
+3. In the **Role tab**, select **Load Test Contributor** in the list of job function roles.
+4. In the **Members tab**, select **Select members**, and then use the **display name** you copied previously to search the service principal.
+5. Select the **service principal**, and then select **Select**.
+6. In the **Review + assign tab**, select **Review + assign** to add the role assignment.
+
+You can now use the service connection in your Azure Pipelines workflow definition to access your Azure load testing resource.
+
+#### Task 3: Export load test input files and Import to Azure DevOps Source Control
+
+To run a load test with Azure Load Testing in a CI/CD workflow, you need to add the load test configuration settings and any input files in your source control repository. If you have an existing load test, you can download the configuration settings and all input files from the Azure portal.
+
+Perform the following steps to download the input files for an existing load testing in the Azure portal:
+
+1. In the **Azure portal**, go to your **Azure Load Testing** resource.
+2. On the left pane, select **Tests** to view the list of load tests, and then select **your test**.
+3. Selecting the **ellipsis (...)** next to the test run you're working with, and then select **Download input file**.
+4. The browser downloads a zipped folder that contains the load test input files.
+5. Use any zip tool to extract the input files. The folder contains the following files:
+
+- *config.yaml*: the load test YAML configuration file. You reference this file in the CI/CD workflow definition.
+- *quick_test.jmx*: the JMeter test script
+
+6. Commit all extracted input files to your source control repository. To do this, navigate to the **Azure DevOps Portal**(https://dev.azure.com), and navigate to the **EShopOnWeb** DevOps Project. 
+7. Select **Repos**. In the source code folder structure, notice the **tests** subfolder. Notice the ellipsis (...), and select **New > Folder**.
+8. specify **jmeter** as folder name, and **placeholder.txt** for the file name (Note: a Folder cannot be created as empty)
+9. Click **Commit** to confirm the creation of the placeholder file and jmeter folder.
+10. From the **Folder structure**, navigate to the new created **jmeter** subfolder. Click the **ellipsis(...)** and select **Upload File(s)**.
+11. Using the **Browse** option, navigate to the location of the extracted zip-file, and select both **config.yaml** and **quick_test.jmx**.
+12. Click **Commit** to confirm the file upload into source control.
+
+#### Task 4: Update the CI/CD workflow YAML definition file
+
+In this task, you will import the Azure Load Testing - Azure DevOps Marketplace extension, as well as updating the existing CI/CD pipeline with the AzureLoadTest task.
+
+1. To create and run a load test, the Azure Pipelines workflow definition uses the **Azure Load Testing task extension** from the Azure DevOps Marketplace. Open the [Azure Load Testing task extension](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) in the Azure DevOps Marketplace, and select **Get it free**.
+2. Select your Azure DevOps organization, and then select **Install** to install the extension.
+3. From within the Azure DevOps Portal and Project, navigate to **Pipelines** and select the pipeline created at the start of this exercise. Click **Edit**.
+4. In the YAML script, navigate to **line 56** and press ENTER/RETURN, to add a new empty line. (this is right before the Deploy Stage of the YAML file).
+5. At line 57, select the Tasks Assistant to the right-hand side, and search for **Azure Load Testing**.
+6. Complete the graphical pane with the correct settings of your scenario:
+- Azure Subscription: Select the subscription which runs your Azure Resources
+- Load Test File: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml' 
+- Load Test Resource Group: The Resource Group which holds your Azure Load Testing Resources
+- Load Test Resource Name: ESHopOnWebLoadTesting
+- Load Test Run Name: ado_run
+- Load Test Run Description: load testing from ADO
+7. Confirm the injection of the parameters as a snippet of YAML by clicking **Add**
+8. If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.  
+9. The below sample snippet shows what the YAML code should look like
+```
+     - task: AzureLoadTest@1
+      inputs:
+        azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
+        loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
+        resourceGroup: 'az400m05l11-RG'
+        loadTestResource: 'EShopOnWebLoadTesting'
+        loadTestRunName: 'ado_run'
+        loadTestRunDescription: 'load testing from ADO'
+```
+10. below the inserted YAML snippet, add a new empty line by pressing ENTER/RETURN. 
+11. below this empty line, add a snippet for the Publish task, showing the results of the Azure Load testing task during the pipeline run:
+
+```
+    - publish: $(System.DefaultWorkingDirectory)/loadTest
+      artifact: loadTestResults
+```
+12.  If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.  
+13. With both snippets added to the CI/CD pipeline, **Save** the changes. 
+14. Once saved, click **Run** to trigger the pipeline.
+15. Confirm the branch (main) and click the **Run** button to start the pipeline run.
+16. From the pipeline status page, click the **Build** stage to open the verbose logging details of the different tasks in the pipeline.
+17. Wait for the pipeline to kick off the Build Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline. 
+18. While the task is running, browse to the **Azure Load Testing** in the Azure Portal, and see how the pipeline creates a new RunTest, named **adoloadtest1**. You can select it to show the outcome values of the TestRun job.
+19. Navigate back to the Azure DevOps CI/CD Pipeline Run view, where the **AzureLoadTest task** completed successfully. From the verbose logging output, the resulting values of the load test will be visible as well:
+
+```
+Task         : Azure Load Testing
+Description  : Automate performance regression testing with Azure Load Testing
+Version      : 1.2.30
+Author       : Microsoft Corporation
+Help         : https://docs.microsoft.com/azure/load-testing/tutorial-cicd-azure-pipelines#azure-load-testing-task
+==============================================================================
+Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
+Uploaded test plan for the test
+Creating and running a testRun for the test
+View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m05l11-rg%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
+TestRun completed
+
+-------------------Summary ---------------
+TestRun start time: Mon Jul 24 2023 21:46:26 GMT+0000 (Coordinated Universal Time)
+TestRun end time: Mon Jul 24 2023 21:51:50 GMT+0000 (Coordinated Universal Time)
+Virtual Users: 50
+TestStatus: DONE
+
+------------------Client-side metrics------------
+
+Homepage
+response time 		 : avg=1359ms min=59ms med=539ms max=16629ms p(90)=3127ms p(95)=5478ms p(99)=13878ms
+requests per sec 	 : avg=37
+total requests 		 : 4500
+total errors 		 : 0
+total error rate 	 : 0
+Finishing: AzureLoadTest
+
+```
+20. You have now performed an automated Load Test as part of a pipeline run. In the last task, you will specify conditions for failure, meaning, we will not allow our deploy Stage to start, if the performance of the web app is below a certain threshold. 
+
+#### Task 5 : Add failure/success criteria to Load Testing Pipeline
+
+In this task, You'll use load test fail criteria to get alerted (have a failed pipeline run as result) when the application doesn't meet your quality requirements.
+
+1. From Azure DevOps, navigate to the EShopOnWeb Project, and open **Repos**.
+2. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
+3. Open the Load Testing *config.yaml** file. Click **Edit** to allow editing of the file.
+4. At the end of the file, add the following snippet of code:
+
+```
+failureCriteria:
+  - avg(response_time_ms) > 300
+  - percentage(error) > 50
+```
+5. Save the changes to the config.yaml by clicking **Commit** and Commit once more.
+6. Navigate back to **Pipelines** and run the **EShopOnWeb** pipeline again. After a few minutes, it will complete the run with a **failed** status for the **AzureLoadTest** task. 
+7. Open the verbose logging view for the pipeline, and validate the details of the **AzureLoadtest**. A similar sample output is below:
+
+```
+Creating and running a testRun for the test
+View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m05l11-rg%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
+TestRun completed
+
+-------------------Summary ---------------
+TestRun start time: Mon Jul 24 2023 23:00:31 GMT+0000 (Coordinated Universal Time)
+TestRun end time: Mon Jul 24 2023 23:06:02 GMT+0000 (Coordinated Universal Time)
+Virtual Users: 50
+TestStatus: DONE
+
+-------------------Test Criteria ---------------
+Results			 :1 Pass 1 Fail
+
+Criteria					 :Actual Value	      Result
+avg(response_time_ms) > 300                       1355.29               FAILED
+percentage(error) > 50                                                  PASSED
+
+
+------------------Client-side metrics------------
+
+Homepage
+response time 		 : avg=1355ms min=58ms med=666ms max=16524ms p(90)=2472ms p(95)=5819ms p(99)=13657ms
+requests per sec 	 : avg=37
+total requests 		 : 4531
+total errors 		 : 0
+total error rate 	 : 0
+##[error]TestResult: FAILED
+Finishing: AzureLoadTest
+```
+
+8. Notice how the last line of the Load testing output says **##[error]TestResult: FAILED**; since we defined a **FailCriteria** having an avg response time of > 300, or having an error percentage of > 20, now seeing an avg response time which is more than 300, the task will be flagged as failed. 
+
+    > Note: Imagine in a real-life scenario, you would validate the performance of your App Service, and if the performance is below a certain treshold - typically meaning there is more load on the Web App, you could trigger a new deployment to an additional Azure App Service. As we can't control the response time for Azure lab environments, we decided to revert the logic to guarantee the failure.
+
+9.  The FAILED status of the pipeline task, actually reflects a SUCCESS of the Azure Load Testing requirement criteria validation.
+
+### Exercise 3: Remove the Azure lab resources
 
 In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
 
@@ -427,17 +507,17 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 2. List all resource groups created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m17l01')].name" --output tsv
+    az group list --query "[?starts_with(name,'az400m16l01')].name" --output tsv
     ```
 
 3. Delete all resource groups you created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m17l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'az400m16l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 
-In this exercise, you deployed a web app to Azure App Service by using Azure Pipelines, generated traffic targeting the web app, and used Application Insights to review the web traffic, investigate application performance, track application usage, and configure alerting.
+In this exercise, you deployed a web app to Azure App Service by using Azure Pipelines, as well as deploying an Azure Load Testing Resource with TestRuns. Next, you integrated the Jmeter load testing config.yaml file to Azure DevOps Repos source control, and extending your CI/CD pipeline with the Azure Load Testing. In the last exercise, you learned how to define the success criteria of the LoadTest.
