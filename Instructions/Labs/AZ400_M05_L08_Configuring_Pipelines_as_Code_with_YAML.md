@@ -206,7 +206,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
     > **Note**: Here as well you may also want to add an empty line before and after to make it easier to read.
 
-16. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the master branch.
+16. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the main branch.
 
     > **Note**: Since our original CI-YAML was not configured to automatically trigger a new build, we have to initiate this one manually.
 
