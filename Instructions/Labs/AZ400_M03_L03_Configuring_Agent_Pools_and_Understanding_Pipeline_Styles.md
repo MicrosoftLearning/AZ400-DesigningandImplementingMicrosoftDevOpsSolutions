@@ -83,7 +83,7 @@ In this task, you will create a template-based Azure DevOps YAML pipeline.
 - Dotnet Build
 - Dotnet Publish
 
-9. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**. 
+9. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
 
     > Note: we are just creating the pipeline definition for now, without running it. You will first set up an Azure DevOps agent pool and run the pipeline in a later exercise. 
 
