@@ -72,11 +72,18 @@ In this task, you will create a template-based Azure DevOps YAML pipeline.
 2. On the **Recent** tab of the **Pipelines** pane, click **New pipeline**.
 3. On the **Where is your code?** pane, click **Azure Repos Git**.
 4. On the **Select a repository** pane, click **EShopOnWeb**.
-5. On the **Configure your pipeline** pane, click **ASP.NET**(Build and test ASP.NET Projects).
+5. On the **Configure your pipeline** pane, click **Existing Azure Pipelines YAML File**.
+6. On the **Select an existing YAML file**, select **main** for the Branch, and **/.ado/eshoponweb-ci-pr.yml** for the Path.
+7. Click **Continue**.
+8. On the **Review your pipeline YAML** pane, review the sample pipeline. This is a rather straight-forward .NET application Build pipeline, which does the following:
+- A single Stage: Build
+- A single Job: Build
+- 3 tasks within the Build Job:
+- Dotnet Restore
+- Dotnet Build
+- Dotnet Publish
 
-    > Note: do not select ASP.NET Core (.NET Framework) or the .NET Desktop, although they look identical to the ASP.NET
-
-6. On the **Review your pipeline YAML** pane, review the sample pipeline, click the down-facing caret symbol next to the **Run** button, click **Save**. 
+9. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
 
     > Note: we are just creating the pipeline definition for now, without running it. You will first set up an Azure DevOps agent pool and run the pipeline in a later exercise. 
 
@@ -89,7 +96,9 @@ In this exercise, you will implement a self-hosted Azure DevOps agent.
 In this task, you will configure your lab Virtual Machine as an Azure DevOps self-hosting agent and use it to run a build pipeline.
 
 1. Within the Lab Virtual machine (Lab VM) or your own computer, start a web browser, navigate to [the Azure DevOps portal](https://dev.azure.com) and sign in by using the Microsoft account associated with your Azure DevOps organization. 
-> **Note**: The Lab Virtual machine should have all necessary prerequisite software installed. If you are installing on your own computer, you will need to install Visual Studio 2022 Community Edition and the .NET SDKs necessary to build the demo project.
+
+  > **Note**: The Lab Virtual machine should have all necessary prerequisite software installed. If you are installing on your own computer, you will need to install Visual Studio 2022 Community Edition and the .NET SDKs necessary to build the demo project.
+
 2. In the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, depending on whether or not you have preview features turned on, you should either see a **Security** or **Personal access tokens** item in the menu, if you see **Security**, click on that, then select **Personal access tokens**. On the **Personal Access Tokens** pane, and click **+ New Token**.
 3. On the **Create a new personal access token** pane, click the **Show all scopes** link and, specify the following settings and click **Create** (leave all others with their default values):
 
@@ -154,7 +163,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 19. In the browser window displaying the list of projects, click the tile representing your **Configuring Agent Pools and Understanding Pipeline Styles** project.
 20. On the **EShopOnWeb** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
 21. On the **Recent** tab of the **Pipelines** pane, select **EShopOnWeb** and, on the **EShopOnWeb** pane, select **Edit**.
-22. On the **EShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line  `vmImage: windows-2019` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+22. On the **EShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: ubuntu-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m03l03a-pool
@@ -164,10 +173,9 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 
     > **WARNING**: Be careful with copy/paste, make sure you have same indentation shown above.
 
-23. For `Task: NugetToolInstaller@0`, click on **Settings (link that is displaying above the task in grey color)**, modify **Version of NuGet.exe to install** > **6.6.1**  and click on **Add**.
-24. On the **EShopOnWeb** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline.
-25. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
-26. On the **Recent** tab of the **Pipelines** pane, click the **EShopOnWeb** entry, on the **Runs** tab of the **EShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
+23. On the **EShopOnWeb** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline.
+24. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
+25. On the **Recent** tab of the **Pipelines** pane, click the **EShopOnWeb** entry, on the **Runs** tab of the **EShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
 
 ## Review
 
