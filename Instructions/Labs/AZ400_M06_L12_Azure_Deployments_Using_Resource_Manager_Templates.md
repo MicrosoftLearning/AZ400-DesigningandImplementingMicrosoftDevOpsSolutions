@@ -10,8 +10,6 @@ lab:
 
 ## Lab requirements
 
-## Lab requirements
-
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
@@ -57,7 +55,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
     ![Import Repository](images/import-repo.png)
 
-1. The repository is organized the following way:
+2. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
     - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
@@ -73,10 +71,10 @@ In this lab, you will review an Azure Bicep template and simplify it using a reu
 In this task, you will use Visual Studio Code to create an Azure Bicep template
 
 1. In the browser tab you have your Azure DevOps project open, navigate to **Repos** and **Files**. Open the `.azure\bicep` folder and find the `simple-windows-vm.bicep` file.
-   
+
    ![Simple-windows-vm.bicep file](./images/m06/browsebicepfile.png)
 
-1. Review the template to get a better understanding of its structure. There are some parameters with types, default values and validation, some variables, and quite a few resources with these types:
+2. Review the template to get a better understanding of its structure. There are some parameters with types, default values and validation, some variables, and quite a few resources with these types:
 
    - Microsoft.Storage/storageAccounts
    - Microsoft.Network/publicIPAddresses
@@ -84,17 +82,17 @@ In this task, you will use Visual Studio Code to create an Azure Bicep template
    - Microsoft.Network/networkInterfaces
    - Microsoft.Compute/virtualMachines
 
-1. Pay attention to how simple the resource definitions are and the ability to implicitly reference symbolic names instead of explicit `dependsOn` throughout the template. 
+3. Pay attention to how simple the resource definitions are and the ability to implicitly reference symbolic names instead of explicit `dependsOn` throughout the template.
 
 #### Task 2: Create a bicep module for storage resources
 
 In this task, you will create a storage template module **storage.bicep** which will create a storage account only and will be imported by the main template. The storage template module needs to pass a value back to the main template, **main.bicep**, and this value will be defined in the outputs element of the storage template module.
 
 1. First we need to remove the storage resource from our main template. From the top right corner of your browser window click the **Edit** button:
-   
+
    ![Edit button](./images/m06/edit.png)
 
-1. Now delete the storage resource:
+2. Now delete the storage resource:
 
    ```bicep
    resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
@@ -107,15 +105,15 @@ In this task, you will create a storage template module **storage.bicep** which 
    }
    ```
 
-1. Commit the file, however, we're not done with it yet.
+3. Commit the file, however, we're not done with it yet.
 
    ![Commiting the file](./images/m06/commit.png)
 
-1. Next, hover your mouse over the bicep folder and click the elipsis icon, then select **New**, and **File**. Enter **storage.bicep** for the name and click **Create**.
+4. Next, hover your mouse over the bicep folder and click the ellipsis icon, then select **New**, and **File**. Enter **storage.bicep** for the name and click **Create**.
 
    ![New file menu](./images/m06/newfile.png)
 
-1. Now copy the following code snippet into the file and commit your changes:
+5. Now copy the following code snippet into the file and commit your changes:
 
    ```bicep
    @description('Location for all resources.')
@@ -142,7 +140,7 @@ In this task, you will modify the main template to reference the template module
 
 1. Navigate back to the `simple-windows-vm.bicep` file and click on the **Edit** button once again.
 
-1. Next, add the following code after the variables:
+2. Next, add the following code after the variables:
 
    ```bicep
    module storageModule './storage.bicep' = {
@@ -154,7 +152,7 @@ In this task, you will modify the main template to reference the template module
    }
    ```
 
-1. We also need to modify the reference to the storage account blob URI in our virtual machine resource to use the output of the module instead. Find the virtual machine resource and replace the diagnosticsProfile section with the following:
+3. We also need to modify the reference to the storage account blob URI in our virtual machine resource to use the output of the module instead. Find the virtual machine resource and replace the diagnosticsProfile section with the following:
 
    ```bicep
    diagnosticsProfile: {
@@ -165,7 +163,7 @@ In this task, you will modify the main template to reference the template module
    }
    ```
 
-1. Review the following details in the main template:
+4. Review the following details in the main template:
 
    - A module in the main template is used to link to another template.
    - The module has a symbolic name called `storageModule`. This name is used for configuring any dependencies.
@@ -173,27 +171,28 @@ In this task, you will modify the main template to reference the template module
    - A relative path is used for your template module.
    - Use parameters to pass values from the main template to the template modules.
 
-1. Commit the template.
+5. Commit the template.
 
 #### Task 4: Deploy resources to Azure by YAML pipelines
+
 1. Navigate back to the **Pipelines** pane in of the **Pipelines** hub.
-1. In the **Create your first Pipeline** window, click **Create pipeline**.
+2. In the **Create your first Pipeline** window, click **Create pipeline**.
 
     > **Note**: We will use the wizard to create a new YAML Pipeline definition based on our project.
 
-1. On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
-1. On the **Select a repository** pane, click **eShopOnWeb_MultiStageYAML**.
-1. On the **Configure your pipeline** pane, scroll down and select **Existing Azure Pipelines YAML File**.
-1. In the **Selecting an existing YAML File** blade, specify the following parameters:
+3. On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
+4. On the **Select a repository** pane, click **eShopOnWeb_MultiStageYAML**.
+5. On the **Configure your pipeline** pane, scroll down and select **Existing Azure Pipelines YAML File**.
+6. In the **Selecting an existing YAML File** blade, specify the following parameters:
    - Branch: **main**
    - Path: **.ado/eshoponweb-cd-windows-cm.yml**
-1. Click **Continue** to save these settings.
-1. In the variables section, choose a name for your resource group, set the desired location and replace the value of the service connection with one of your existing service connections you created earlier.
-1. Click the **Save and run** button from the top right corder and when the commit dialog appeared, click **Save and run** again.
+7. Click **Continue** to save these settings.
+8. In the variables section, choose a name for your resource group, set the desired location and replace the value of the service connection with one of your existing service connections you created earlier.
+9. Click the **Save and run** button from the top right corder and when the commit dialog appeared, click **Save and run** again.
 
    ![Save and running the YAML pipeline after making changes](./images/m06/saveandrun.png)
 
-1. Wait for the deploymemnt to finish and review the results.
+10. Wait for the deploymemnt to finish and review the results.
    ![Successful resource deployment to Azure using YAML pipelines](./images/m06/deploy.png)
 
 #### Task 1: Remove the Azure lab resources
@@ -201,8 +200,7 @@ In this task, you will modify the main template to reference the template module
 In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
 
 1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command (replace the resource gruop name with what you chose):
+2. Delete all resource groups you created throughout the labs of this module by running the following command (replace the resource group name with what you chose):
 
    ```bash
    az group list --query "[?starts_with(name,'AZ400-EWebShop-NAME')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
