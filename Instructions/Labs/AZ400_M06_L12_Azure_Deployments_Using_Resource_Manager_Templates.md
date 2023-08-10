@@ -240,7 +240,7 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
     > **Note**: We will use the wizard to create a new YAML Pipeline definition based on our project.
 
 1. On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
-1. On the **Select a repository** pane, click **eShopOnWeb_MultiStageYAML**.
+1. On the **Select a repository** pane, click **EShopOnWeb**.
 1. On the **Configure your pipeline** pane, scroll down and select **Existing Azure Pipelines YAML File**.
 1. In the **Selecting an existing YAML File** blade, specify the following parameters:
    - Branch: **main**
