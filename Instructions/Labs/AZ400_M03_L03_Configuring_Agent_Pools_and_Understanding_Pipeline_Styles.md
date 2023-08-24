@@ -168,7 +168,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
     ```yaml
     name: az400m03l03a-pool
     demands:
-    - agent.name -equals az400m03-vm0
+    - Agent.Name -equals az400m03-vm0
     ```
 
     > **WARNING**: Be careful with copy/paste, make sure you have same indentation shown above.
