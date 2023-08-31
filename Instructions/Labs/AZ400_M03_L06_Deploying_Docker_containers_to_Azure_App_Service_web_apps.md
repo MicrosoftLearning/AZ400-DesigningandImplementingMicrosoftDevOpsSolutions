@@ -194,6 +194,8 @@ In this task, you will import and run the CD pipeline.
 8. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
     > **Note**: The deployment may take a few minutes to complete.
+    
+    > **Important**: If you receive the error message "TF402455: Pushes to this branch are not permitted; you must use a pull request to update this branch.", you need to uncheck the "Require a minimum number of reviewers" Branch protection rule enabled in the previous labs.
 
     The CD definition consists of the following tasks:
     - **Resources**: It downloads the repository files that will be used in the following tasks.
