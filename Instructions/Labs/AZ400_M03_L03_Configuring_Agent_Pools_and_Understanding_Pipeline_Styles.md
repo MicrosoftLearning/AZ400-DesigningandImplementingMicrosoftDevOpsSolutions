@@ -177,6 +177,12 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 24. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
 25. On the **Recent** tab of the **Pipelines** pane, click the **EShopOnWeb** entry, on the **Runs** tab of the **EShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
 
+### Exercise 3: Remove the resources used in the lab
+
+1. Stop and remove the agent service by running .config.cmd remove from the command prompt.
+2. Delete the agent pool.
+3. Revoke the PAT token.
+
 ## Review
 
 In this lab, you learned how to implement and use self-hosted agents with YAML pipelines.
