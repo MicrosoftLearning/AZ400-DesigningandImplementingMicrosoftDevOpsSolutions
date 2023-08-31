@@ -314,7 +314,9 @@ In this task, you will first generate some alerts for the Canary Web App, follow
 
     > **Note**: Since there is an alert triggered by the exception, **Query Azure Monitor** gate will fail. This, in turn, will prevent deployment to the **Production** environment.
 
-14. Wait another 3 minutes and validate the status of the Release Gates again. As it is now +8 minutes after the initial Release Gates got checked, and it's been more than 8 minutes since the initial Application Insight Alert got triggered with action "Fired", it should result in a successful Release Gate, having allowed the deployment of the Production Release Stage as well.
+14. Wait a couple of minutes and validate the status of the Release Gates again. Within a few minutes after the initial Release Gates got checked, and since the initial Application Insight Alert got triggered with the action "Fired", it should result in a successful Release Gate, allowing the deployment of the Production Release Stage.
+
+    > **Note:** If your gate fails, close the alert.
 
 ### Exercise 6: Remove the Azure lab resources
 
