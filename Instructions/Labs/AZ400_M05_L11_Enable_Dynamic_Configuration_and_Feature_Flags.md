@@ -172,7 +172,7 @@ If you want to know how to implement this in your application, please take a loo
     - Your Azure Subscription.
     - The Resource Group created previously (it should be named **AZ400-EWebShop-NAME**).
     - The location.
-    - A unique like **appcs-NAME-REGION** for example.
+    - A unique name like **appcs-NAME-REGION** for example.
     - Select the **Free** pricing tier.
 3. Click on **Review + create** then **Create**.
 4. After creating the App Configuration service, go to **Overview** and copy/save the value of the **Endpoint**.
