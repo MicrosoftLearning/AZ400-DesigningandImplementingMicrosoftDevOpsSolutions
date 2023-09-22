@@ -158,6 +158,9 @@ In this task, you will use GitHub environments to ask for manual approval before
 
 3. On the repository page, go to **Settings**, open **Environments** and click **New environment**.
 4. Give it **Development** name and click on **Configure Environment**.
+
+    > NOTE: If an environment called **Development** already exists in the **Environments** list, open its configuration by clicking on the environment name.  
+    
 5. In the **Configure Development** tab, check the option **Required Reviewers** and your GitHub account as a reviewer. Click on **Save protection rules**.
 6. Now lets test the protection rule. On the repository page, go to **Actions**, click on **eShopOnWeb Build and Test** workflow and click on **Run workflow>Run workflow** to execute manually.
 
