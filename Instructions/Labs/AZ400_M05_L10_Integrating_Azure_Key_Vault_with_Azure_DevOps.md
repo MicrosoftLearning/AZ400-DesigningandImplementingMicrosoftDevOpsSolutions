@@ -31,7 +31,7 @@ In this lab, you will see how you can integrate Azure Key Vault with an Azure Pi
 
 After you complete this lab, you will be able to:
 
-- Create an Azure Active Directory (Azure AD) Service Principal.
+- Create a Microsoft Entra service principal.
 - Create an Azure Key Vault.
 
 ## Estimated timing: 40 minutes
@@ -85,7 +85,7 @@ You will need a Service Principal to deploy  Azure resources from Azure Pipeline
 
 A Service Principal is automatically created by Azure Pipelines, when you connect to an Azure subscription from inside a pipeline definition or when you create a new Service Connection from the project settings page (automatic option). You can also manually create the Service Principal from the portal or using Azure CLI and re-use it across projects.
 
-1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Azure AD tenant associated with this subscription.
+1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Microsoft Entra tenant associated with this subscription.
 2. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
 3. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
