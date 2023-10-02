@@ -98,21 +98,23 @@ In this task, you will use the Azure DevOps portal to create a Pull Request, usi
 
 1. Navigate to the **Repos** section in the eShopOnWeb navigation and click **Branches**.
 2. Create a new branch named **Feature01** based on the **main** branch.
-3. Click **Feature01* and navigate to the **/eShopOnWeb/src/Web/Program.cs** file as part of the **Feature01** branch and make the following change on the first line:
+3. Click **Feature01** and navigate to the **/eShopOnWeb/src/Web/Program.cs** file as part of the **Feature01** branch
+4. Click the **Edit** button in the top-right
+5. Make the following change on the first line:
 
     ```csharp
     // Testing my PR
     ```
 
-4. Click on **Commit > Commit** (leave default commit message).
-5. A message will pop-up, proposing to create a Pull Request (as your **Feature01** branch is now ahead in changes, compared to **main**). Click on **Create a Pull Request**.
-6. In the **New pull request** tab, leave defaults and click on **Create**.
-7. The Pull Request will show some pending requirements, based on the policies applied to the target **main** branch.
+6. Click on **Commit > Commit** (leave default commit message).
+7. A message will pop-up, proposing to create a Pull Request (as your **Feature01** branch is now ahead in changes, compared to **main**). Click on **Create a Pull Request**.
+8. In the **New pull request** tab, leave defaults and click on **Create**.
+9. The Pull Request will show some pending requirements, based on the policies applied to the target **main** branch.
     - At least 1 user should review and approve the changes.
     - Build validation, you will see that the build **eshoponweb-ci-pr** was triggered automatically
 
-8. After all validations are successful, on the top-right click on **Approve**. Now from the **Set auto-complete** dropdown you can click on **Complete**.
-9. On the **Complete Pull Request** tab, click on **Complete Merge**
+10. After all validations are successful, on the top-right click on **Approve**. Now from the **Set auto-complete** dropdown you can click on **Complete**.
+11. On the **Complete Pull Request** tab, click on **Complete Merge**
 
 ### Exercise 2: Configure CI Pipeline as Code with YAML
 
@@ -143,7 +145,9 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 
 The default build pipeline definition doesn't enable Continuous Integration.
 
-1. Now, you need to replace the **trigger: none** code with the following code:
+1. Click the **Edit** button in the top-right
+
+2. Now, you need to replace the **# trigger:** and **# - main** lines with the following code:
 
     ```YAML
     trigger:
@@ -159,15 +163,15 @@ The default build pipeline definition doesn't enable Continuous Integration.
 
     Since you enabled Branch Policies, you need to pass by a Pull Request in order to update your code.
 
-2. Click the **Save** button (not **Save and run**) to save the pipeline definition.
-3. Select **Create a new branch for this commit**
-4. Keep the default branch name and **Start a pull request** checked.
-5. Click on **Save**
-6. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
-7. Go to **Repos > Pull Requests**
-8. Click on the existing pull request
-9. After all validations are successful, on the top-right click on **Approve**. Now you can click on **Complete**.
-10. On the **Complete Pull Request** tab, Click on **Complete Merge**
+3. Click the **Save** button (not **Save and run**) to save the pipeline definition.
+4. Select **Create a new branch for this commit**
+5. Keep the default branch name and **Start a pull request** checked.
+6. Click on **Save**
+7. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
+8. Go to **Repos > Pull Requests**
+9. Click on the **"Update eshoponweb-ci.yml for Azure Pipelines"** pull request 
+10. After all validations are successful, on the top-right click on **Approve**. Now you can click on **Complete**.
+11. On the **Complete Pull Request** tab, Click on **Complete Merge**
 
 #### Task 3: Test the CI pipeline
 
@@ -176,22 +180,23 @@ In this task, you will create a Pull Request, using a new branch to merge a chan
 1. Navigate to the **Repos** section
 2. Create a new branch named **Feature02** based on the **main** branch
 3. Click the new **Feature02** branch
-4. Navigate to the **/eShopOnWeb/src/Web/Program.cs** file and remove the first line:
+4. Navigate to the **/eShopOnWeb/src/Web/Program.cs** file and click **Edit** in the top-right
+5. Remove the first line:
 
     ```csharp
     // Testing my PR
     ```
 
-5. Click on **Commit > Commit** (leave default commit message).
-6. A message will pop-up, proposing to create a Pull Request (as your **Feature02** branch is now ahead in changes, compared to **main**).
-7. Click on **Create a Pull Request**.
-8. In the **New pull request** tab, leave defaults and click on **Create**.
-9. The Pull Request will show some pending requirements, based on the policies applied to the target **main** branch.
-10. After all validations are successful, on the top-right click on **Approve**. Now from the **Set auto-complete** dropdown you can click on **Complete**.
-11. On the **Complete Pull Request** tab, Click on **Complete Merge**
-12. Go back to **Pipelines>Pipelines**, you will notice that the build **eshoponweb-ci** was triggered automatically after the code was merged.
-13. Click on the **eshoponweb-ci** build then select the last run.
-14. After its successful execution, click on **Related > Published** to check the published artifacts:
+6. Click on **Commit > Commit** (leave default commit message).
+7. A message will pop-up, proposing to create a Pull Request (as your **Feature02** branch is now ahead in changes, compared to **main**).
+8. Click on **Create a Pull Request**.
+9. In the **New pull request** tab, leave defaults and click on **Create**.
+10. The Pull Request will show some pending requirements, based on the policies applied to the target **main** branch.
+11. After all validations are successful, on the top-right click on **Approve**. Now from the **Set auto-complete** dropdown you can click on **Complete**.
+12. On the **Complete Pull Request** tab, Click on **Complete Merge**
+13. Go back to **Pipelines>Pipelines**, you will notice that the build **eshoponweb-ci** was triggered automatically after the code was merged.
+14. Click on the **eshoponweb-ci** build then select the last run.
+15. After its successful execution, click on **Related > Published** to check the published artifacts:
     - Bicep: the infrastructure artifact.
     - Website: the app artifact.
 
