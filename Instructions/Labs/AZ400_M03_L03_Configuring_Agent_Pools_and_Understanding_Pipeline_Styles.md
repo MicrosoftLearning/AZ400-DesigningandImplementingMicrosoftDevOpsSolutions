@@ -179,7 +179,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 
 ### Exercise 3: Remove the resources used in the lab
 
-1. Stop and remove the agent service by running .config.cmd remove from the command prompt.
+1. Stop and remove the agent service by running `.\config.cmd remove` from the command prompt.
 2. Delete the agent pool.
 3. Revoke the PAT token.
 
