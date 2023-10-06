@@ -233,7 +233,6 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 1. Click on **Verify and Save**.
 
 #### Task 2: Deploy resources to Azure by YAML pipelines
->>>>>>> Stashed changes
 1. Navigate back to the **Pipelines** pane in of the **Pipelines** hub.
 1. In the **Create your first Pipeline** window, click **Create pipeline**.
 
