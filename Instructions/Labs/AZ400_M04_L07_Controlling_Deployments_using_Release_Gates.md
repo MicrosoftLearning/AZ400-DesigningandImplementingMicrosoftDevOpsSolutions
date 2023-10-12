@@ -211,7 +211,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 
 8. On the **Pipeline** tab, select the **Add an Artifact** rectangle, and select the **eshoponweb-ci** in the **Source (build pipeline)** field. Click **Add** to confirm the selection of the artifact.
 9. From the **Artifacts** rectangle, notice the **Continuous deployment trigger** (lightning bolt). Click it to open the **Continuous deployment trigger** settings. Click **Disabled** to toggle the switch and enable it. Leave all other settings at default and close the **Continuous deployment trigger** pane, by clicking the **x** mark in its upper right corner.
-10. Within the **DevTest Environments** stage, click the **1 job, 2 tasks** label and review the tasks within this stage.
+10. Within the **DevTest Environments** stage, click the **1 job, 1 task** label and review the tasks within this stage.
 
     > **Note**: The DevTest environment has 1 task which, respectively, publishes the artifact package to Azure Web App.
 
@@ -221,7 +221,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 
     > notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
 
-14. On the **All pipelines > eshoponweb-cd** pane, navigate to the **Pipeline** tab, and this time, within the **Production** Stage, click the **1 job, 2 tasks** label. Similar to the DevTest stage earlier, complete the pipeline settings. Under the Tasks tab / Production Deployment process, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **DevTest Environment** stage, shown under **Available Azure Service connections**, as we already created the service connection before when authorizing the subscription use.
+14. On the **All pipelines > eshoponweb-cd** pane, navigate to the **Pipeline** tab, and this time, within the **Production** Stage, click the **1 job, 1 task** label. Similar to the DevTest stage earlier, complete the pipeline settings. Under the Tasks tab / Production Deployment process, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **DevTest Environment** stage, shown under **Available Azure Service connections**, as we already created the service connection before when authorizing the subscription use.
 15. In the **App Service name** dropdown list, select the name of the **Prod** web app.
 16. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
 17. On the **All pipelines > eshoponweb-cd** pane, click **Save** and, in the **Save** dialog box, click **OK**.
