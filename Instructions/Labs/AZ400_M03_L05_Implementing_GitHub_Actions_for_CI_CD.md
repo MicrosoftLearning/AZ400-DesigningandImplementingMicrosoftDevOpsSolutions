@@ -42,7 +42,7 @@ The repository is organized the following way:
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
     - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 6 website used on the lab scenarios.
+    - **src** folder contains the .NET 7 website used on the lab scenarios.
 
 #### Task 1: Create a public repository in GitHub and import eShopOnWeb
 
@@ -121,7 +121,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 In this task, you will modify the given GitHub workflow and execute it to deploy the solution in your own subscription.
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-2. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. This workflow defines the CI/CD process for the given .NET 6 website code.
+2. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. This workflow defines the CI/CD process for the given .NET 7 website code.
 3. Uncomment the **on** section (delete "#"). The workflow triggers with every push to the main branch and also offers manual triggering ("workflow_dispatch").
 4. In the **env** section, make the following changes:
     - Replace **NAME** in **RESOURCE-GROUP** variable. It should be the same resource group created in previous steps.

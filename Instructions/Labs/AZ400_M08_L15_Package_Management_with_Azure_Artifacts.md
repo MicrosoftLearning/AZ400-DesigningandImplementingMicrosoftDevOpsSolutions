@@ -106,7 +106,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 
     Leave the setting **Place solution and project in the same directory** enabled.
 
-4. Click Next. Accept **.NET 6.0 (Long Term Support)** as Framework option.
+4. Click Next. Accept **.NET 7.0** as Framework option.
 5. Confirm the project creation by pressing the **Create** button.
 6. Within the Visual Studio interface, in the **Solution Explorer** pane, right-click **Class1.cs**, in the right-click menu, select **Delete**, and, when prompted for confirmation, click **OK**.
 7. Press **Ctrl+Shift+B** or **Right-click on the EShopOnWeb.Shared Project** and select **Build** to build the project.
