@@ -136,7 +136,7 @@ In this task, you will install and configure the SonarCloud Azure DevOps extensi
 
     > **Note**: Next, within the newly created organization, you will create a SonarCloud project that will mirror the Azure DevOps project **SonarExamples**.
 
-11. On the **Analyze projects - Select repositories** page, in the list of Azure DevOps projects, select the checkbox next to the **eshoponweb / eshoponweb ** entry and click **Set up**.
+11. On the **Analyze projects - Select repositories** page, in the list of Azure DevOps projects, select the checkbox next to the **eshoponweb / eshoponweb** entry and click **Set up**.
 12. On the **Choose your Analysis Method** page, click **With Azure DevOps Pipelines** tile.
 
     ![With Azure DevOps Pipelines ](images/sonar-setup.png)
