@@ -114,9 +114,11 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 
     ![New Service Connection](images/new-service-connection.png)
 
+    > **Note**: If there are no Service Connections previously created on the page, the service connection creation button is located in the center of the page and has the label **Create service connection**
+
 7. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
 
-8. The choose **Service Principal (manual)** and click on **Next**.
+8. Then choose **Service Principal (manual)** and click on **Next**.
 
 9. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name.
