@@ -80,7 +80,7 @@ Let's start by importing the build pipeline named [eshoponweb-ci-pr.yml](https:/
     - **DotNet Publish**: Publishes the application and its dependencies to a folder for deployment to a hosting system. In this case, it's **Build.ArtifactStagingDirectory**.
 
 7. Click the **Save** button to save the pipeline definition
-8. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci-pr** and click on **Save**.
+8. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci-pr** and click on **Save**.
 
 #### Task 2: Branch Policies
 
@@ -167,7 +167,7 @@ The default build pipeline definition doesn't enable Continuous Integration.
 4. Select **Create a new branch for this commit**
 5. Keep the default branch name and **Start a pull request** checked.
 6. Click on **Save**
-7. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
+7. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci** and click on **Save**.
 8. Go to **Repos > Pull Requests**
 9. Click on the **"Update eshoponweb-ci.yml for Azure Pipelines"** pull request 
 10. After all validations are successful, on the top-right click on **Approve**. Now you can click on **Complete**.
