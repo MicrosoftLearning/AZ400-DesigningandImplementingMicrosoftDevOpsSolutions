@@ -172,7 +172,7 @@ In this task, you will add a new role assignment to allow Azure App Service pull
 5. After getting the service principal ID and the role name, let's create the role assignment by running this command (replace **rg-az400-container-NAME** with your resource group name)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --resource-group "rg-az400-container-NAME"
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**g-az400-container-NAME**
     ```
 
 You should now see the JSON output which confirms the success of the command run.
