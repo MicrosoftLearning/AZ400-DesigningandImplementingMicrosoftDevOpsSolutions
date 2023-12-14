@@ -177,7 +177,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
     ![Yaml pool syntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
 23. On the **EShopOnWeb** edit pane, in the upper right corner of the pane, click **Save and Run**. This will automatically trigger the build based on this pipeline.
-24. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
+24. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run. 
 25. On the **Recent** tab of the **Pipelines** pane, click the **EShopOnWeb** entry, on the **Runs** tab of the **EShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
 
 ### Exercise 3: Remove the resources used in the lab
