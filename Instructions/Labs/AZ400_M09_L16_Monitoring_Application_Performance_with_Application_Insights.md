@@ -95,7 +95,7 @@ In this task, you will create an Azure web app by using the cloud shell in Azure
 6. Create a web app with a unique name.
 
     ```bash
-    WEBAPPNAME=partsunlimited$RANDOM$RANDOM
+    WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
     az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME 
     ```
 
@@ -110,7 +110,7 @@ In this exercise, you will configure CI/CD Pipelines as code with YAML in Azure 
 In this task, you will add a YAML build definition to the existing project.
 
 1. Navigate back to the **Pipelines** pane in of the **Pipelines** hub.
-2. In the **Create your first Pipeline** window, click **Create pipeline**.
+2. Click **New pipeline** (or Create Pipeline if this is the first one you create).
 
     > **Note**: We will use the wizard to create a new YAML Pipeline definition based on our project.
 
@@ -179,21 +179,22 @@ stages:
         downloadPath: '$(Build.ArtifactStagingDirectory)'
 
 ```
-4. Set the cursor on a new line at the end of the YAML definition (line 69).
+8. Set the cursor on a new line at the end of the YAML definition. **Make sure you position the cursor at the indentation of the previous task level**.
 
     > **Note**: This will be the location where new tasks are added.
 
-5. In the list of tasks on the right side of the code pane, search for and select the **Azure App Service Deploy** task.
-6. In the **Azure App Service deploy** pane, specify the following settings and click **Add**:
+9. Click **Show Assistant** from the right hand side of the portal. In the list of tasks, search for and select the **Azure App Service Deploy** task.
+10. In the **Azure App Service deploy** pane, specify the following settings and click **Add**:
 
-    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
-    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab.
+    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, - if needed (only when this is your first pipeline you create) click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
+    - Validate **App Service Type** points to Web App on Windows.
+    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab (**az400eshoponweb...).
     - in the **Package or folder** text box, **update** the Default Value to `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-7. Confirm the settings from the Assistant pane by clicking the **Add** button.
+11. Confirm the settings from the Assistant pane by clicking the **Add** button.
 
     > **Note**: This will automatically add the deployment task to the YAML pipeline definition.
 
-8. The snippet of code added to the editor should look similar to below, reflecting your name for the azureSubscription and WebappName parameters:
+12. The snippet of code added to the editor should look similar to below, reflecting your name for the azureSubscription and WebappName parameters:
 
 > **Note**: The **packageForLinux** parameter is misleading in the context of this lab, but it is valid for Windows or Linux.
 
@@ -203,28 +204,38 @@ stages:
             ConnectionType: 'AzureRM'
             azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
             appType: 'webApp'
-            WebAppName: 'eshoponWebYAML369825031'
+            WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
     ```
-9. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the master branch.
+13. Before saving the updates to the yml-file, give it a more clear name. On top of the yaml-editor window, it shows **EShopOnweb/azure-pipelines-#.yml**. (where # is a number, typically 1 but could be different in your setup.) Select **that filename**, and rename it to **m09l16-pipeline.yml**
+
+14. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the master branch.
 
     > **Note**: Since our original CI-YAML was not configured to automatically trigger a new build, we have to initiate this one manually.
 
-10. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again.
-11. Open the **EShopOnWeb_MultiStageYAML** Pipeline and click **Run Pipeline**.
-12. Confirm the **Run** from the appearing pane.
-13. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
-14. Wait for the pipeline to kick off and wait until it completes the Build Stage successfully.
-15. Once the Deploy Stage wants to start, you are prompted with **Permissions Needed**, as well as an orange bar saying:
+15. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again. Next, select **All** to open all pipeline definitions, not just the Recent ones.
+
+(Note: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **EShopOnWeb (#)** sequence name for the pipeline) as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file) 
+
+![](images/m3/eshoponweb-m9l16-pipeline.png)
+
+11. Confirm to run this pipeline by clicking **Run** from the appearing pane and confirm by clicking **Run** once more.
+12. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
+13. Wait for the pipeline to kick off. 
+
+16. **Ignore** any Warnings showing up during the Build Stage. Wait until it completes the Build Stage successfully. (You can select the actual Build stage to see more details from the logs.)
+
+17. Once the Deploy Stage wants to start, you are prompted with **Permissions Needed**, as well as an orange bar saying:
 
     ```text
     This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
     ```
 
-16. Click on **View**
-17. From the **Waiting for Review** pane, click **Permit**.
-18. Validate the message in the **Permit popup** window, and confirm by clicking **Permit**.
-19. This sets off the Deploy Stage. Wait for this to complete successfully.
+18. Click on **View**
+19. From the **Waiting for Review** pane, click **Permit**.
+20. Validate the message in the **Permit popup** window, and confirm by clicking **Permit**.
+21. This sets off the Deploy Stage. 
+Wait for this to complete successfully.
 
 #### Task 2: Review the deployed site
 
@@ -263,26 +274,26 @@ In this task, you will deploy an Azure Load Testing Resource into your Azure sub
 
 In this task, you will create different Azure Load Testing tests, using different load configuration settings. 
 
-10. From within the **EShopOnWebLoadTesting** Azure Load Testing Resource blade, notice the **Get Started with a quick test**, and click the **Quick Test** button.
-11. Complete the following parameters and settings to create a load test:
-- **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (EShopOnWeb...azurewebsites.net), **including https://**
+1. From within the **EShopOnWebLoadTesting** Azure Load Testing Resource blade, navigate to **Tests**. Click the **+Create** menu option, and select **Create a URL-based test**. 
+2. Complete the following parameters and settings to create a load test:
+- **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (az400eshoponweb...azurewebsites.net), **including https://**
 - **Specify Load**: Virtual Users
 - **Number of Virtual Users**: 50
-- **Test Duration (Seconds)**: 120
-- **Ramp-up time (Seconds)**:  0
-12. Confirm the configuration of the test, by clicking **Run Test**.
-13. The test will run for about 2 minutes. 
-14. With the test running, navigate back to the **EShopOnWebLoadTesting** Azure Load Testing Resource page, and navigate to **Tests**, select **Tests** and see a test **Get_eshoponweb...**
-15. From the top menu, click **Create**, **Create a quick test**, to create a 2nd Load test.
-16. Complete the following parameters and settings to create another load test:
+- **Test Duration (minutes)**: 5
+- **Ramp-up time (minutes)**:  1
+3. Confirm the configuration of the test, by clicking **Review and Create**,  (Don't make any changes in the other tabs). Click **Create** once more.
+4. This kicks off the Load Testing tests, which will run The test will run for 5 minutes. 
+5. With the test running, navigate back to the **EShopOnWebLoadTesting** Azure Load Testing Resource page, and navigate to **Tests**, select **Tests** and see a test **Get_eshoponweb...**
+6. From the top menu, click **Create**, **Create a URL-based test**, to create a 2nd Load test.
+7. Complete the following parameters and settings to create another load test:
 - **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (EShopOnWeb...azurewebsites.net), **including https://**
 - **Specify Load**: Requests per Second (RPS)
 - **Requests per second (RPS)**: 100
 - **Response time (milliseconds)**: 500
-- **Test Duration (seconds)**: 120
-- **Ramp-up time (Seconds)**:  0
-17. Confirm the configuration of the test, by clicking **Run Test**.
-18. The test will run for about 2 minutes.
+- **Test Duration (minutes)**: 5
+- **Ramp-up time (minutes)**:  1
+8. Confirm the configuration of the test, by clicking **Review + create**, and **Create** once more.
+9. The test will run for about 5 minutes.
 
 #### Task 3: Validate Azure Load Testing results
 
@@ -290,22 +301,14 @@ In this task, you will validate the outcome of an Azure Load Testing TestRun.
 
 With both quick tests complete, let's make a few changes to them, and validate the results.
 
-19. From the **EShopOnWebLoadTesting** Resource blade, navigate to **Tests**, and select the first Get_eshoponwebyaml... test. Click **Edit** from the top menu.
-20. Here, the portal allows you to change the **Test Name** from the default generated one, to a more descriptive one. It also allows you to still make changes to any of the parameters defined earlier.
-21. From the **Edit test** blade, navigate to the **Test Plan** tab. 
-22. This is where you can manage the **Apache JMeter** load testing script file, which is what Azure Load Testing is using as a framework. Notice the file **quick_test.jmx**. Select this file to **Open** it on the lab virtual machine. From the popup window, select **Visual Studio Code** as the editor to open the file.
-23. Notice the XML-language structure of the file.
-
-    > Note: For additional information and understanding the more advanced syntax of Apache JMeter, check the following [Azure Load Testing - Jmeter](https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-and-run-load-test-with-jmeter-script) link.
-
-24. Back in the **Tests** view, showing both tests, select either of them, to open a more detailed view, by **clicking** on one of the tests. This redirects you to the more detailed test page. From here, you can validate the details of the actual runs, by selecting the **TestRun_mm/dd/yy-hh:hh** from the resulting list.
-25. From the detailed **TestRun** page, identify the actual outcome of the Azure Load Testing simulation. Some of the values are:
+1. From **Azure Load Testing**, navigate to **Tests**. Select either of the test definitions, to open a more detailed view, by **clicking** on one of the tests. This redirects you to the more detailed test page. From here, you can validate the details of the actual runs, by selecting the **TestRun_mm/dd/yy-hh:hh** from the resulting list.
+2. From the detailed **TestRun** page, identify the actual outcome of the Azure Load Testing simulation. Some of the values are:
 - Load / Total Requests
 - Duration
 - Response Time (shows the outcome in seconds, reflecting the 90th percentile response time - this means that, for 90% of the requests, the response time will be within the given results)
 - Throughput in requests per second
-26. More below, several of these values are represented using dashboard graph line and chart views.
-27. Take a few minutes to **compare the results** of both simulated tests with each other, and **identify the impact** of more users on the App Service performance.
+3. More below, several of these values are represented using dashboard graph line and chart views.
+4. Take a few minutes to **compare the results** of both simulated tests with each other, and **identify the impact** of more users on the App Service performance.
 
 ### Exercise 2: Automate a Load Test with CI/CD in Azure DevOps Pipelines
 
