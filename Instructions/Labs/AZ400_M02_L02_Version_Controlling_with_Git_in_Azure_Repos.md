@@ -391,6 +391,24 @@ The product team has decided that the current version of the site should be rele
 
     > **Note**: You have now tagged the repository at this release (the latest commit gets linked to the tag). You could tag commits for a variety of reasons and Azure DevOps offers the flexibility to edit and delete them, as well as manage their permissions.
 
+### Exercise 5: Remove Branch Policies
+
+When going through the different course labs in the order they are presented, the branch policy configured during this lab will block exercises in future labs. Therefore, we want you to remove the configured branch policies.
+
+1. From the Azure DevOps **EShopOnWeb** Project view, navigate to **Repos** and select **Branches**. Select the **Mine** tab of the **Branches** pane.
+2. On the **Mine** tab of the **Branches** pane, hover the mouse pointer over the **main** branch entry to reveal the ellipsis symbol (the ...) on the right side.
+3. Click the ellipsis and, in the pop-up menu, select **Branch Policies**.
+
+    ![Policy Settings](images/policy-settings.png)
+
+4. On the **main** tab of the repository settings, disable the option for **Require minimum number of reviewers**.
+5. On the **main** tab of the repository settings, disable the option for **Check for linked work items**.
+
+    ![Branch Policies](images/branch-policies.png)
+
+6. You have now disabled/removed the branch policies for the main branch.
+    
+
 ## Review
 
 In this lab, you used the Azure DevOps portal to manage branches and repositories.

@@ -69,7 +69,8 @@ In this exercise, you will create an application lifecycle build pipeline, using
 In this task, you will create a template-based Azure DevOps YAML pipeline.
 
 1. From the web browser displaying the Azure DevOps portal with the **EShopOnWeb** project open, in the vertical navigational pane on the left side, click **Pipelines**.
-2. On the **Recent** tab of the **Pipelines** pane, click **New pipeline**.
+2. Click the **Create Pipeline** button - if you don't have any other pipelines created yet or click **New pipeline** to create an additional new one. 
+
 3. On the **Where is your code?** pane, click **Azure Repos Git**.
 4. On the **Select a repository** pane, click **EShopOnWeb**.
 5. On the **Configure your pipeline** pane, click **Existing Azure Pipelines YAML File**.
@@ -160,10 +161,10 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 16. Switch to the browser window displaying the Azure DevOps portal and close the **Get the agent** pane.
 17. Back on the **Agents** tab of the **az400m03l03a-pool** pane, note that the newly configured agent is listed with the **Online** status.
 18. In the web browser window displaying the Azure DevOps portal, in the upper left corner, click the **Azure DevOps** label.
-19. In the browser window displaying the list of projects, click the tile representing your **Configuring Agent Pools and Understanding Pipeline Styles** project.
+19. From the list of projects, click the tile representing your **EShopOnWeb** project.
 20. On the **EShopOnWeb** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
 21. On the **Recent** tab of the **Pipelines** pane, select **EShopOnWeb** and, on the **EShopOnWeb** pane, select **Edit**.
-22. On the **EShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: ubuntu-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+22. On the **EShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: windows-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m03l03a-pool
@@ -173,8 +174,10 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 
     > **WARNING**: Be careful with copy/paste, make sure you have same indentation shown above.
 
-23. On the **EShopOnWeb** edit pane, in the upper right corner of the pane, click **Save** and, on the **Save** pane, click **Save** again. This will automatically trigger the build based on this pipeline.
-24. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
+    ![Yaml pool syntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
+
+23. On the **EShopOnWeb** edit pane, in the upper right corner of the pane, click **Save and Run**. This will automatically trigger the build based on this pipeline.
+24. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run. 
 25. On the **Recent** tab of the **Pipelines** pane, click the **EShopOnWeb** entry, on the **Runs** tab of the **EShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
 
 ### Exercise 3: Remove the resources used in the lab
@@ -182,6 +185,9 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 1. Stop and remove the agent service by running `.\config.cmd remove` from the command prompt.
 2. Delete the agent pool.
 3. Revoke the PAT token.
+4. Revert the changes in the **eshoponweb-ci-pr.yml** file by navigating to it from Repos/.ado/eshoponweb-ci-pr.yml, selecting **Edit** and removing lines 13-15 (the agent pool snippet), and changing back to  `vmImage: windows-latest` as it was originally. (This is because you will use the same sample pipeline file in a future lab exercise.) 
+
+![Revert pipeline pool back to vmImage settings](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
 ## Review
 
