@@ -163,6 +163,8 @@ In this task, you will add a new role assignment to allow Azure App Service pull
 4. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute:
 
     ```sh
+    subscriptionId=$(az account show --query id --output tsv)
+    echo $subscriptionId
     spId=$(az ad sp list --display-name sp-az400-azdo --query "[].id" --output tsv)
     echo $spId
     roleName=$(az role definition list --name "User Access Administrator" --query "[0].name" --output tsv)
@@ -172,7 +174,7 @@ In this task, you will add a new role assignment to allow Azure App Service pull
 5. After getting the service principal ID and the role name, let's create the role assignment by running this command (replace **rg-az400-container-NAME** with your resource group name)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**g-az400-container-NAME**
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/rg-az400-container-NAME
     ```
 
 You should now see the JSON output which confirms the success of the command run.
@@ -194,8 +196,8 @@ In this task, you will import and run the CD pipeline.
 8. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
     > **Note**: The deployment may take a few minutes to complete.
-    
-    > **Important**: If you receive the error message "TF402455: Pushes to this branch are not permitted; you must use a pull request to update this branch.", you need to uncheck the "Require a minimum number of reviewers" Branch protection rule enabled in the previous labs.
+
+    > **Important**: If you receive the error message "TF402455: Pushes to this branch are not permitted; you must use a pull request to update this branch.", you need to uncheck the "Require a minimum number of reviewers" Branch protection rule and/or "Build Validation" policy enabled in the previous labs.
 
     The CD definition consists of the following tasks:
     - **Resources**: It downloads the repository files that will be used in the following tasks.

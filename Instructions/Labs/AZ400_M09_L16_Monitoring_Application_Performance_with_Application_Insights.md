@@ -24,7 +24,7 @@ lab:
 Quickly create a load test for your web application by using a URL, and without prior knowledge of testing tools. Azure Load Testing abstracts the complexity and infrastructure to run your load test at scale.
 For more advanced load testing scenarios, you can create a load test by reusing an existing Apache JMeter test script, a popular open-source load and performance tool. For example, your test plan might consist of multiple application requests, you want to call non-HTTP endpoints, or you're using input data and parameters to make the test more dynamic.
 
-In this lab, you'll learn about how you can use Azure Load Testing to simulate performance testing against a live-running web application with different load scenarios. Lastly, you'll learn how to integrate Azure Load Testing into your CI/CD pipelines. 
+In this lab, you'll learn about how you can use Azure Load Testing to simulate performance testing against a live-running web application with different load scenarios. Lastly, you'll learn how to integrate Azure Load Testing into your CI/CD pipelines.
 
 ## Objectives
 
@@ -89,14 +89,14 @@ In this task, you will create an Azure web app by using the cloud shell in Azure
     ```bash
     SERVICEPLANNAME='az400l16-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
-        --name $SERVICEPLANNAME --sku B3 
+        --name $SERVICEPLANNAME --sku B3
     ```
 
 6. Create a web app with a unique name.
 
     ```bash
     WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
-    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME 
+    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
     ```
 
     > **Note**: Record the name of the web app. You will need it later in this lab.
@@ -121,7 +121,7 @@ In this task, you will add a YAML build definition to the existing project.
 7. **Copy** the full template pipeline from below, knowing you will need to make parameter modifications **before saving** the changes:
 
 ```
-#Template Pipeline for CI/CD 
+#Template Pipeline for CI/CD
 # trigger:
 # - main
 
@@ -150,20 +150,20 @@ stages:
       inputs:
         command: 'build'
         projects: '**/*.sln'
-    
+
     - task: DotNetCoreCLI@2
       displayName: Publish
       inputs:
         command: 'publish'
         publishWebProjects: true
         arguments: '-o $(Build.ArtifactStagingDirectory)'
-    
+
     - task: PublishBuildArtifacts@1
       displayName: Publish Artifacts ADO - Website
       inputs:
         pathToPublish: '$(Build.ArtifactStagingDirectory)'
         artifactName: Website
-    
+
 - stage: Deploy
   displayName: Deploy to an Azure Web App
   jobs:
@@ -198,15 +198,16 @@ stages:
 
 > **Note**: The **packageForLinux** parameter is misleading in the context of this lab, but it is valid for Windows or Linux.
 
-    ```yaml
-        - task: AzureRmWebAppDeployment@4
-          inputs:
-            ConnectionType: 'AzureRM'
-            azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
-            appType: 'webApp'
-            WebAppName: 'az400eshoponWeb369825031'
-            packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-    ```
+```yaml
+    - task: AzureRmWebAppDeployment@4
+        inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+        appType: 'webApp'
+        WebAppName: 'az400eshoponWeb369825031'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+```
+
 13. Before saving the updates to the yml-file, give it a more clear name. On top of the yaml-editor window, it shows **EShopOnweb/azure-pipelines-#.yml**. (where # is a number, typically 1 but could be different in your setup.) Select **that filename**, and rename it to **m09l16-pipeline.yml**
 
 14. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the master branch.
@@ -215,13 +216,13 @@ stages:
 
 15. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again. Next, select **All** to open all pipeline definitions, not just the Recent ones.
 
-(Note: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **EShopOnWeb (#)** sequence name for the pipeline) as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file) 
+(Note: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **EShopOnWeb (#)** sequence name for the pipeline) as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file)
 
 ![](images/m3/eshoponweb-m9l16-pipeline.png)
 
 11. Confirm to run this pipeline by clicking **Run** from the appearing pane and confirm by clicking **Run** once more.
 12. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
-13. Wait for the pipeline to kick off. 
+13. Wait for the pipeline to kick off.
 
 16. **Ignore** any Warnings showing up during the Build Stage. Wait until it completes the Build Stage successfully. (You can select the actual Build stage to see more details from the logs.)
 
@@ -234,7 +235,7 @@ stages:
 18. Click on **View**
 19. From the **Waiting for Review** pane, click **Permit**.
 20. Validate the message in the **Permit popup** window, and confirm by clicking **Permit**.
-21. This sets off the Deploy Stage. 
+21. This sets off the Deploy Stage.
 Wait for this to complete successfully.
 
 #### Task 2: Review the deployed site
@@ -266,15 +267,15 @@ In this task, you will deploy an Azure Load Testing Resource into your Azure sub
 6. Click **Review and Create**, to have your settings validated.
 7. Click **Create** to confirm, and get the Azure Load Testing resource deployed.
 8. You are switched to the 'Deployment is in progress' page. Wait for a few minutes, until the deployment completes successfully.
-9. Click **Go to Resource** from the deployment progress page, to navigate to the **EShopOnWebLoadTesting** Azure Load Testing resource. 
+9. Click **Go to Resource** from the deployment progress page, to navigate to the **EShopOnWebLoadTesting** Azure Load Testing resource.
 
-    > **Note**: If you closed the blade or closed the Azure Portal during the deployment of the Azure Load Testing Resource, you can find it again from the Azure Portal Search field, or from the Resources / Recent list of resources. 
+    > **Note**: If you closed the blade or closed the Azure Portal during the deployment of the Azure Load Testing Resource, you can find it again from the Azure Portal Search field, or from the Resources / Recent list of resources.
 
 #### Task 2: Create Azure Load Testing tests
 
-In this task, you will create different Azure Load Testing tests, using different load configuration settings. 
+In this task, you will create different Azure Load Testing tests, using different load configuration settings.
 
-1. From within the **EShopOnWebLoadTesting** Azure Load Testing Resource blade, navigate to **Tests**. Click the **+Create** menu option, and select **Create a URL-based test**. 
+1. From within the **EShopOnWebLoadTesting** Azure Load Testing Resource blade, navigate to **Tests**. Click the **+Create** menu option, and select **Create a URL-based test**.
 2. Complete the following parameters and settings to create a load test:
 - **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (az400eshoponweb...azurewebsites.net), **including https://**
 - **Specify Load**: Virtual Users
@@ -282,7 +283,7 @@ In this task, you will create different Azure Load Testing tests, using differen
 - **Test Duration (minutes)**: 5
 - **Ramp-up time (minutes)**:  1
 3. Confirm the configuration of the test, by clicking **Review and Create**,  (Don't make any changes in the other tabs). Click **Create** once more.
-4. This kicks off the Load Testing tests, which will run The test will run for 5 minutes. 
+4. This kicks off the Load Testing tests, which will run The test will run for 5 minutes.
 5. With the test running, navigate back to the **EShopOnWebLoadTesting** Azure Load Testing Resource page, and navigate to **Tests**, select **Tests** and see a test **Get_eshoponweb...**
 6. From the top menu, click **Create**, **Create a URL-based test**, to create a 2nd Load test.
 7. Complete the following parameters and settings to create another load test:
@@ -297,7 +298,7 @@ In this task, you will create different Azure Load Testing tests, using differen
 
 #### Task 3: Validate Azure Load Testing results
 
-In this task, you will validate the outcome of an Azure Load Testing TestRun. 
+In this task, you will validate the outcome of an Azure Load Testing TestRun.
 
 With both quick tests complete, let's make a few changes to them, and validate the results.
 
@@ -356,7 +357,7 @@ Perform the following steps to download the input files for an existing load tes
 - *config.yaml*: the load test YAML configuration file. You reference this file in the CI/CD workflow definition.
 - *quick_test.jmx*: the JMeter test script
 
-6. Commit all extracted input files to your source control repository. To do this, navigate to the **Azure DevOps Portal**(https://dev.azure.com), and navigate to the **EShopOnWeb** DevOps Project. 
+6. Commit all extracted input files to your source control repository. To do this, navigate to the **Azure DevOps Portal**(https://dev.azure.com), and navigate to the **EShopOnWeb** DevOps Project.
 7. Select **Repos**. In the source code folder structure, notice the **tests** subfolder. Notice the ellipsis (...), and select **New > Folder**.
 8. specify **jmeter** as folder name, and **placeholder.txt** for the file name (Note: a Folder cannot be created as empty)
 9. Click **Commit** to confirm the creation of the placeholder file and jmeter folder.
@@ -375,15 +376,16 @@ In this task, you will import the Azure Load Testing - Azure DevOps Marketplace 
 5. At line 57, select the Tasks Assistant to the right-hand side, and search for **Azure Load Testing**.
 6. Complete the graphical pane with the correct settings of your scenario:
 - Azure Subscription: Select the subscription which runs your Azure Resources
-- Load Test File: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml' 
+- Load Test File: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
 - Load Test Resource Group: The Resource Group which holds your Azure Load Testing Resources
 - Load Test Resource Name: ESHopOnWebLoadTesting
 - Load Test Run Name: ado_run
 - Load Test Run Description: load testing from ADO
 7. Confirm the injection of the parameters as a snippet of YAML by clicking **Add**
-8. If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.  
+8. If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.
 9. The below sample snippet shows what the YAML code should look like
-```
+
+```yaml
      - task: AzureLoadTest@1
       inputs:
         azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
@@ -393,19 +395,19 @@ In this task, you will import the Azure Load Testing - Azure DevOps Marketplace 
         loadTestRunName: 'ado_run'
         loadTestRunDescription: 'load testing from ADO'
 ```
-10. below the inserted YAML snippet, add a new empty line by pressing ENTER/RETURN. 
+10. below the inserted YAML snippet, add a new empty line by pressing ENTER/RETURN.
 11. below this empty line, add a snippet for the Publish task, showing the results of the Azure Load testing task during the pipeline run:
 
-```
+```yaml
     - publish: $(System.DefaultWorkingDirectory)/loadTest
       artifact: loadTestResults
 ```
-12.  If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.  
-13. With both snippets added to the CI/CD pipeline, **Save** the changes. 
+12.  If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.
+13. With both snippets added to the CI/CD pipeline, **Save** the changes.
 14. Once saved, click **Run** to trigger the pipeline.
 15. Confirm the branch (main) and click the **Run** button to start the pipeline run.
 16. From the pipeline status page, click the **Build** stage to open the verbose logging details of the different tasks in the pipeline.
-17. Wait for the pipeline to kick off the Build Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline. 
+17. Wait for the pipeline to kick off the Build Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline.
 18. While the task is running, browse to the **Azure Load Testing** in the Azure Portal, and see how the pipeline creates a new RunTest, named **adoloadtest1**. You can select it to show the outcome values of the TestRun job.
 19. Navigate back to the Azure DevOps CI/CD Pipeline Run view, where the **AzureLoadTest task** completed successfully. From the verbose logging output, the resulting values of the load test will be visible as well:
 
@@ -437,9 +439,8 @@ total requests 		 : 4500
 total errors 		 : 0
 total error rate 	 : 0
 Finishing: AzureLoadTest
-
 ```
-20. You have now performed an automated Load Test as part of a pipeline run. In the last task, you will specify conditions for failure, meaning, we will not allow our deploy Stage to start, if the performance of the web app is below a certain threshold. 
+20. You have now performed an automated Load Test as part of a pipeline run. In the last task, you will specify conditions for failure, meaning, we will not allow our deploy Stage to start, if the performance of the web app is below a certain threshold.
 
 #### Task 5 : Add failure/success criteria to Load Testing Pipeline
 
@@ -447,16 +448,16 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 
 1. From Azure DevOps, navigate to the EShopOnWeb Project, and open **Repos**.
 2. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
-3. Open the Load Testing *config.yaml** file. Click **Edit** to allow editing of the file.
-4. At the end of the file, add the following snippet of code:
+3. Open the Load Testing **config.yaml** file. Click **Edit** to allow editing of the file.
+4. Replace `failureCriteria: []` with the following snippet of code:
 
-```
+```yaml
 failureCriteria:
   - avg(response_time_ms) > 300
   - percentage(error) > 50
 ```
 5. Save the changes to the config.yaml by clicking **Commit** and Commit once more.
-6. Navigate back to **Pipelines** and run the **EShopOnWeb** pipeline again. After a few minutes, it will complete the run with a **failed** status for the **AzureLoadTest** task. 
+6. Navigate back to **Pipelines** and run the **EShopOnWeb** pipeline again. After a few minutes, it will complete the run with a **failed** status for the **AzureLoadTest** task.
 7. Open the verbose logging view for the pipeline, and validate the details of the **AzureLoadtest**. A similar sample output is below:
 
 ```
@@ -490,7 +491,7 @@ total error rate 	 : 0
 Finishing: AzureLoadTest
 ```
 
-8. Notice how the last line of the Load testing output says **##[error]TestResult: FAILED**; since we defined a **FailCriteria** having an avg response time of > 300, or having an error percentage of > 20, now seeing an avg response time which is more than 300, the task will be flagged as failed. 
+8. Notice how the last line of the Load testing output says **##[error]TestResult: FAILED**; since we defined a **FailCriteria** having an avg response time of > 300, or having an error percentage of > 20, now seeing an avg response time which is more than 300, the task will be flagged as failed.
 
     > Note: Imagine in a real-life scenario, you would validate the performance of your App Service, and if the performance is below a certain treshold - typically meaning there is more load on the Web App, you could trigger a new deployment to an additional Azure App Service. As we can't control the response time for Azure lab environments, we decided to revert the logic to guarantee the failure.
 
@@ -510,13 +511,13 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 2. List all resource groups created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m16l01')].name" --output tsv
+    az group list --query "[?starts_with(name,'az400m09l16')].name" --output tsv
     ```
 
 3. Delete all resource groups you created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m16l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'az400m09l16')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
