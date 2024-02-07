@@ -4,7 +4,7 @@ lab:
     module: 'Module 09: Implement continuous feedback'
 ---
 
-# Monitoring Application Performance with Application Insights and Azure Load Testing
+# Monitoring Application Performance with Azure Load Testing
 
 ## Student lab manual
 
