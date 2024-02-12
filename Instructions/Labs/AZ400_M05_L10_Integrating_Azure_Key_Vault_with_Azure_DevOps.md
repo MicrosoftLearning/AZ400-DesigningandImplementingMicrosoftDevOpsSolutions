@@ -145,6 +145,8 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
 
 5. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
+    > **Important**: If you see the message "This pipeline needs permission to access resources before this run can continue to Docker Compose to ACI", click on View, Permit and Permit again. This is needed to allow the pipeline to create the resource.
+
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
     - **AzureResourceManagerTemplateDeployment** uses **bicep** to deploy an Azure Container Registry.
     - **PowerShell** task take the bicep output (acr login server) and creates pipeline variable.
