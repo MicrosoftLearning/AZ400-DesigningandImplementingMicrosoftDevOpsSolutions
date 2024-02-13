@@ -141,9 +141,11 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
 
     ![Select Pipeline](images/select-ci-container-compose.png)
 
-1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **AZ400-EWebShop-NAME** and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId.
+1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **AZ400-EWebShop-NAME** with a unique value and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId.
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
+
+    > **Important**: If you see the message "This pipeline needs permission to access resources before this run can continue to Docker Compose to ACI", click on View, Permit and Permit again. This is needed to allow the pipeline to create the resource.
 
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
     - **AzureResourceManagerTemplateDeployment** uses **bicep** to deploy an Azure Container Registry.
