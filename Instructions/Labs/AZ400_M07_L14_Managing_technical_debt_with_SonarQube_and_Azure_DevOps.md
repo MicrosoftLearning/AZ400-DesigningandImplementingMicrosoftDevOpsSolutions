@@ -181,7 +181,7 @@ In this task, you will check pipeline results.
 
 1. Verify that the report does not include the Quality Gate results and note the reason for its absence.
 
-    > **Note**: To be able to see the Quality gate result, after running he first report we need to set **New Code Definition**. This way, subsequent pipeline runs will include Quality Gate results. **The default quality gate will make sure there is no new vulnerability/bug in the code, ignoring previously existing ones. You can create your own custom quality gates.**
+    > **Note**: To be able to see the Quality gate result, after running the first report we need to set **New Code Definition**. This way, subsequent pipeline runs will include Quality Gate results. **The default quality gate will make sure there is no new vulnerability/bug in the code, ignoring previously existing ones. You can create your own custom quality gates.**
 
 1. Click on **Set New Code Definition** and select **Previous version**.
 

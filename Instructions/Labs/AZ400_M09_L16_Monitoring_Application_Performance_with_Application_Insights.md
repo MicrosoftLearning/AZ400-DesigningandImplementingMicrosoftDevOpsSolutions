@@ -89,14 +89,14 @@ In this task, you will create an Azure web app by using the cloud shell in Azure
     ```bash
     SERVICEPLANNAME='az400l16-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
-        --name $SERVICEPLANNAME --sku B3 
+        --name $SERVICEPLANNAME --sku B3
     ```
 
 1. Create a web app with a unique name.
 
     ```bash
     WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
-    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME 
+    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
     ```
 
     > **Note**: Record the name of the web app. You will need it later in this lab.
@@ -122,15 +122,15 @@ In this task, you will add a YAML build definition to the existing project.
 
     ```yml
     
-    #Template Pipeline for CI/CD 
+    #Template Pipeline for CI/CD
     # trigger:
     # - main
-    
+
     resources:
       repositories:
         - repository: self
           trigger: none
-    
+
     stages:
     - stage: Build
       displayName: Build .Net Core Solution
@@ -145,26 +145,26 @@ In this task, you will add a YAML build definition to the existing project.
             command: 'restore'
             projects: '**/*.sln'
             feedsToUse: 'select'
-    
+
         - task: DotNetCoreCLI@2
           displayName: Build
           inputs:
             command: 'build'
             projects: '**/*.sln'
-        
+
         - task: DotNetCoreCLI@2
           displayName: Publish
           inputs:
             command: 'publish'
             publishWebProjects: true
             arguments: '-o $(Build.ArtifactStagingDirectory)'
-        
+
         - task: PublishBuildArtifacts@1
           displayName: Publish Artifacts ADO - Website
           inputs:
             pathToPublish: '$(Build.ArtifactStagingDirectory)'
             artifactName: Website
-        
+
     - stage: Deploy
       displayName: Deploy to an Azure Web App
       jobs:
@@ -178,7 +178,7 @@ In this task, you will add a YAML build definition to the existing project.
             downloadType: 'single'
             artifactName: 'Website'
             downloadPath: '$(Build.ArtifactStagingDirectory)'
-    
+
     ```
 
 1. Set the cursor on a new line at the end of the YAML definition. **Make sure you position the cursor at the indentation of the previous task level**.
@@ -218,7 +218,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 1. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again. Next, select **All** to open all pipeline definitions, not just the Recent ones.
 
-    > **Note**: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **EShopOnWeb (#)** sequence name for the pipeline) as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file
+    > **Note**: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **EShopOnWeb (#)** sequence name for the pipeline as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file).
 
     ![Screenshot of Azure Pipelines showing eShopOnWeb runs](images/m3/eshoponweb-m9l16-pipeline.png)
 
@@ -301,7 +301,7 @@ In this task, you will create different Azure Load Testing tests, using differen
 
 #### Task 3: Validate Azure Load Testing results
 
-In this task, you will validate the outcome of an Azure Load Testing TestRun. 
+In this task, you will validate the outcome of an Azure Load Testing TestRun.
 
 With both quick tests complete, let's make a few changes to them, and validate the results.
 
@@ -325,7 +325,7 @@ After you complete this exercise, you have a CI/CD workflow that is configured t
 
 In this task, you will grant the required permissions to the Azure DevOps Service Connection's Service Principal.
 
-1. From the **Azure DevOps Portal**(https://dev.azure.com), navigate to the **EShopOnWeb** Project.
+1. From the **Azure DevOps Portal**(<https://dev.azure.com>), navigate to the **EShopOnWeb** Project.
 1. From the down left corner, select **Project Settings**.
 1. Under the **Pipelines** section, select **Service Connections**.
 1. Notice the Service Connection, having the name of your Azure Subscription you used to deploy Azure Resources at the start of the lab exercise.
@@ -387,7 +387,7 @@ In this task, you will import the Azure Load Testing - Azure DevOps Marketplace 
    - Load Test Run Description: load testing from ADO
 
 1. Confirm the injection of the parameters as a snippet of YAML by clicking **Add**
-1. If the indentation of the YAML snippet is giving errors (red squickly lines), fix them by adding 2 spaces or tab to position the snippet correctly.  
+1. If the indentation of the YAML snippet is giving errors (red squiggly lines), fix them by adding 2 spaces or tab to position the snippet correctly.  
 1. The below sample snippet shows what the YAML code should look like
 
     ```yml
@@ -414,7 +414,7 @@ In this task, you will import the Azure Load Testing - Azure DevOps Marketplace 
 1. Once saved, click **Run** to trigger the pipeline.
 1. Confirm the branch (main) and click the **Run** button to start the pipeline run.
 1. From the pipeline status page, click the **Build** stage to open the verbose logging details of the different tasks in the pipeline.
-1. Wait for the pipeline to kick off the Build Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline. 
+1. Wait for the pipeline to kick off the Build Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline.
 1. While the task is running, browse to the **Azure Load Testing** in the Azure Portal, and see how the pipeline creates a new RunTest, named **adoloadtest1**. You can select it to show the outcome values of the TestRun job.
 1. Navigate back to the Azure DevOps CI/CD Pipeline Run view, where the **AzureLoadTest task** completed successfully. From the verbose logging output, the resulting values of the load test will be visible as well:
 

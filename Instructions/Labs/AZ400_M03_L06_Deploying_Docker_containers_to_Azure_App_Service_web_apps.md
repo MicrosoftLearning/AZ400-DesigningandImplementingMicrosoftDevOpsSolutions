@@ -163,6 +163,8 @@ In this task, you will add a new role assignment to allow Azure App Service pull
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute:
 
     ```sh
+    subscriptionId=$(az account show --query id --output tsv)
+    echo $subscriptionId
     spId=$(az ad sp list --display-name sp-az400-azdo --query "[].id" --output tsv)
     echo $spId
     roleName=$(az role definition list --name "User Access Administrator" --query "[0].name" --output tsv)
