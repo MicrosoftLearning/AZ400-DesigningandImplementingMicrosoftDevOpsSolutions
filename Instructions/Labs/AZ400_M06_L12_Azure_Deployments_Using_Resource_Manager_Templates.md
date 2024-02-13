@@ -58,7 +58,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 7 website used on the lab scenarios.
 
@@ -233,13 +233,14 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 1. Click on **Verify and Save**.
 
 #### Task 2: Deploy resources to Azure by YAML pipelines
+
 1. Navigate back to the **Pipelines** pane in of the **Pipelines** hub.
 1. In the **Create your first Pipeline** window, click **Create pipeline**.
 
     > **Note**: We will use the wizard to create a new YAML Pipeline definition based on our project.
 
 1. On the **Where is your code?** pane, click **Azure Repos Git (YAML)** option.
-1. On the **Select a repository** pane, click **EShopOnWeb**.
+1. On the **Select a repository** pane, click **eShopOnWeb**.
 1. On the **Configure your pipeline** pane, scroll down and select **Existing Azure Pipelines YAML File**.
 1. In the **Selecting an existing YAML File** blade, specify the following parameters:
    - Branch: **main**
@@ -250,7 +251,7 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 
    ![Save and running the YAML pipeline after making changes](./images/m06/saveandrun.png)
 
-1. Wait for the deploymemnt to finish and review the results.
+1. Wait for the deployment to finish and review the results.
    ![Successful resource deployment to Azure using YAML pipelines](./images/m06/deploy.png)
 
 #### Task 3: Remove the Azure lab resources

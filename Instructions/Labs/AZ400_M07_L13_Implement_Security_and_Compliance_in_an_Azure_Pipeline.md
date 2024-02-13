@@ -60,10 +60,10 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
     ![Import Repository](images/import-repo.png)
 
-2. The repository is organized the following way:
+1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 7 website used on the lab scenarios.
 
@@ -79,17 +79,17 @@ In this task, you will activate WhiteSource Bolt in the newly generated Azure De
 
     ![Browse Marketplace](images/browse-marketplace.png)
 
-2. On the MarketPlace, search for **Mend Bolt (formerly WhiteSource)** and open it. Mend Bolt is the free version of the previously known WhiteSource tool, which scans all your projects and detects open source components, their license and known vulnerabilities.
+1. On the MarketPlace, search for **Mend Bolt (formerly WhiteSource)** and open it. Mend Bolt is the free version of the previously known WhiteSource tool, which scans all your projects and detects open source components, their license and known vulnerabilities.
 
     > Warning: make sure you select the Mend **Bolt** option (the **free** one)!
 
-3. On the **Mend Bolt (formerly WhiteSource)** page, click on **Get it for free**.
+1. On the **Mend Bolt (formerly WhiteSource)** page, click on **Get it for free**.
 
     ![Get Mend Bolt](images/mend-bolt.png)
 
-4. On the next page, select the desired Azure DevOps organization and **Install**. **Proceed to organization** once installed.
+1. On the next page, select the desired Azure DevOps organization and **Install**. **Proceed to organization** once installed.
 
-5. In your Azure DevOps navigate to **Organization Settings** and select **Mend** under **Extensions**. Provide your Work Email (**your lab personal account**, e.g. using AZ400learner@outlook.com instead of student@microsoft.com ), Company Name and other details and click **Create Account** button to start using the Free version.
+1. In your Azure DevOps navigate to **Organization Settings** and select **Mend** under **Extensions**. Provide your Work Email (**your lab personal account**, e.g. using <AZ400learner@outlook.com> instead of <student@microsoft.com> ), Company Name and other details and click **Create Account** button to start using the Free version.
 
     ![Get Mend Account](images/mend-account.png)
 
@@ -99,25 +99,25 @@ In this task, you will create and trigger a CI build pipeline within  Azure DevO
 
 1. On your lab computer, from the **eShopOnWeb** Azure DevOps project, in the vertical menu bar on the left side, navigate to the **Pipelines>Pipelines** section, click **Create Pipeline** (or **New Pipeline**).
 
-2. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
+1. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-3. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-ci-mend.yml** and click **Continue**.
+1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-ci-mend.yml** and click **Continue**.
 
     ![Select Pipeline](images/select-pipeline.png)
 
-4. Review the pipeline and click on **Run**. It will take a few minutes to run successfully.
+1. Review the pipeline and click on **Run**. It will take a few minutes to run successfully.
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
     - **DotnetCLI** task for restoring, building, testing and publishing the dotnet project.
     - **Whitesource** task (still keeps the old name), to run the Mend tool analysis of OSS libraries.
     - **Publish Artifacts** the agents running this pipeline will upload the published web project.
 
-5. While the pipeline is executing, lets **rename** it to identify it easier (as the project may be used for multiple labs). Go to **Pipelines/Pipelines** section in Azure DevOps project, click on the executing Pipeline name (it will get a default name), and look for **Rename/move** option on the ellipsis icon. Rename it to **eshoponweb-ci-mend** and click **Save**.
+1. While the pipeline is executing, lets **rename** it to identify it easier (as the project may be used for multiple labs). Go to **Pipelines/Pipelines** section in Azure DevOps project, click on the executing Pipeline name (it will get a default name), and look for **Rename/move** option on the ellipsis icon. Rename it to **eshoponweb-ci-mend** and click **Save**.
 
     ![Rename Pipeline](images/rename-pipeline.png)
 
-6. Once the pipeline execution has finished, you can review the results. Open the latest execution for  **eshoponweb-ci-mend** pipeline. The summary tab will show the logs of the execution, together with related details such as the repository version(commit) used, trigger type, published artifacts, test coverage, etc.
+1. Once the pipeline execution has finished, you can review the results. Open the latest execution for  **eshoponweb-ci-mend** pipeline. The summary tab will show the logs of the execution, together with related details such as the repository version(commit) used, trigger type, published artifacts, test coverage, etc.
 
-7. On the **Mend Bolt** tab, you can review the OSS security analysis. It will show you details around the inventory used, vulnerabilities found (and how to solve them), and an interesting report around library related Licenses. Take some time to review the report.
+1. On the **Mend Bolt** tab, you can review the OSS security analysis. It will show you details around the inventory used, vulnerabilities found (and how to solve them), and an interesting report around library related Licenses. Take some time to review the report.
 
     ![Mend Results](images/mend-results.png)
 
