@@ -458,7 +458,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 1. From Azure DevOps, navigate to the EShopOnWeb Project, and open **Repos**.
 1. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
 1. Open the Load Testing *config.yaml** file. Click **Edit** to allow editing of the file.
-1. At the end of the file, add the following snippet of code:
+1. Replace `failureCriteria: []` with the following snippet of code:
 
     ```text
     failureCriteria:
@@ -522,13 +522,13 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
 1. List all resource groups created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m16l01')].name" --output tsv
+    az group list --query "[?starts_with(name,'az400m09l16')].name" --output tsv
     ```
 
 1. Delete all resource groups you created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'az400m16l01')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'az400m09l16')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
