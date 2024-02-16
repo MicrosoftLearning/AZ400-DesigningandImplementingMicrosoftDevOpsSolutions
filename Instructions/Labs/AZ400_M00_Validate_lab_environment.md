@@ -10,12 +10,13 @@ lab:
 
 ## Instructions to create an Azure DevOps Organization (you only have to do this once)
 
-### Start here if you don't have an Azure subscription:
+### Start here if you don't have an Azure subscription
+
 1. Get a new **Azure Pass promocode** from the instructor or other source.
 1. Use a private browser session to get a new **personal Microsoft Account (MSA)** at [https://account.microsoft.com](https://account.microsoft.com).
 1. Using the same browser session, go to [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com) to redeem your Azure Pass using your Microsoft Account (MSA). For details, see [Redeem a Microsoft Azure Pass](https://www.microsoftazurepass.com/Home/HowTo?Length=5). Follow the instructions for redemption.
 
-### Start here if you have an Azure subscription:
+### Start here if you have an Azure subscription
 
 1. Open a browser and navigate to [https://portal.azure.com](https://portal.azure.com), then search at the top of the Azure portal screen for **Azure DevOps**. In the resulting page, click **Azure DevOps organizations**.
 1. Next, click on the link labelled **My Azure DevOps Organizations** or navigate directly to [https://aex.dev.azure.com](https://aex.dev.azure.com).
@@ -57,7 +58,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
     - Advanced: Version Control: **Git**
     - Advanced: Work Item Process: **Scrum**
 
-2. Click **Create**.
+1. Click **Create**.
 
     ![Create Project](images/create-project.png)
 
@@ -65,15 +66,15 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click **Import**:
 
     ![Import Repository](images/import-repo.png)
 
-2. The repository is organized the following way:
+1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 7 website used on the lab scenarios.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
 You have now completed the necessary prerequisite steps to continue with the different individual labs for this AZ-400 course.

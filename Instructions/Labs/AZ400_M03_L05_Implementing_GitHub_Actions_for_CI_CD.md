@@ -40,7 +40,7 @@ In this exercise, you will import the existing [eShopOnWeb](https://github.com/M
 The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **.azure** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 7 website used on the lab scenarios.
 
@@ -52,22 +52,22 @@ In this task, you will create an empty public GitHub repository and import the e
 
     ![Create Repository](images/github-new.png)
 
-2. On the **Create a new repository** page, click on **Import a repository** link (below the page title).
+1. On the **Create a new repository** page, click on **Import a repository** link (below the page title).
 
-    > NOTE: you can also open the import website directly at https://github.com/new/import
+    > NOTE: you can also open the import website directly at <https://github.com/new/import>
 
-3. On the **Import your project to GitHub** page:
+1. On the **Import your project to GitHub** page:
 
     | Field | Value |
     | --- | --- |
-    | Your old repository’s clone URL| https://github.com/MicrosoftLearning/eShopOnWeb |
+    | Your old repository’s clone URL| <https://github.com/MicrosoftLearning/eShopOnWeb> |
     | Owner | Your account alias |
     | Repository Name | eShopOnWeb |
     | Privacy | **Public** |
 
-4. Click on **Begin Import** and wait for your repository to be ready.
+1. Click on **Begin Import** and wait for your repository to be ready.
 
-5. On the repository page, go to **Settings**, click on **Actions > General** and choose the option **Allow all actions and reusable workflows**. Click on **Save**.
+1. On the repository page, go to **Settings**, click on **Actions > General** and choose the option **Allow all actions and reusable workflows**. Click on **Save**.
 
     ![Enable GitHub Actions](images/enable-actions.png)
 
@@ -80,21 +80,21 @@ In this exercise, you will create an Azure Service Principal to authorize GitHub
 In this task, you will create the Azure Service Principal used by GitHub to deploy the desired resources. As an alternative, you could also use [OpenID connect in Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure), as a secretless authentication mechanism.
 
 1. On your lab computer, in a browser window, open the Azure Portal (https://portal.azure.com/).
-2. In the portal, look for **Resource Groups** and click on it.
-3. Click on **+ Create** to create a new Resource Group for the exercise.
-4. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-az400-eshoponweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**.
-5. In the Azure Portal, open the **Cloud Shell** (next to the search bar).
+1. In the portal, look for **Resource Groups** and click on it.
+1. Click on **+ Create** to create a new Resource Group for the exercise.
+1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-eshoponweb-NAME** (replace NAME for some unique alias). Click on **Review+Create > Create**.
+1. In the Azure Portal, open the **Cloud Shell** (next to the search bar).
 
     > NOTE: if this is the first time you open the Cloud Shell, you need to configure the [persistent storage](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)
 
-6. Make sure the terminal is running in **Bash** mode and execute the following command, replacing **SUBSCRIPTION-ID** and **RESOURCE-GROUP** with your own identifiers (both can be found on the **Overview** page of the Resource Group):
+1. Make sure the terminal is running in **Bash** mode and execute the following command, replacing **SUBSCRIPTION-ID** and **RESOURCE-GROUP** with your own identifiers (both can be found on the **Overview** page of the Resource Group):
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
     > NOTE: Make sure this is typed or pasted as a single line!
     > NOTE: this command will create a Service Principal with Contributor access to the Resource Group created before. This way we make sure GitHub Actions will only have the permissions needed to interact only with this Resource Group (not the rest of the subscription)
 
-7. The command will output a JSON object, you will later use it as a GitHub secret for the workflow. Copy the JSON. The JSON contains the identifiers used to authenticate against Azure in the name of a Microsoft Entra identity (service principal).
+1. The command will output a JSON object, you will later use it as a GitHub secret for the workflow. Copy the JSON. The JSON contains the identifiers used to authenticate against Azure in the name of a Microsoft Entra identity (service principal).
 
     ```JSON
         {
@@ -105,47 +105,50 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
             (...)
         }
     ```
-8. You also need to run the following command to register the resource provider for the **Azure App Service** you will deploy later:
+
+1. You also need to run the following command to register the resource provider for the **Azure App Service** you will deploy later:
+
    ```bash
    az provider register --namespace Microsoft.Web
-   ``` 
-10. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-11. On the repository page, go to **Settings**, click on **Secrets and variables > Actions**. Click on **New repository secret**
+   ```
+
+1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
+1. On the repository page, go to **Settings**, click on **Secrets and variables > Actions**. Click on **New repository secret**
     - Name : **AZURE_CREDENTIALS**
     - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
 
-12. Click on **Add secret**. Now GitHub Actions will be able to reference the service principal, using the repository secret.
+1. Click on **Add secret**. Now GitHub Actions will be able to reference the service principal, using the repository secret.
 
 #### Task 2: Modify and execute the GitHub workflow
 
 In this task, you will modify the given GitHub workflow and execute it to deploy the solution in your own subscription.
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-2. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. This workflow defines the CI/CD process for the given .NET 7 website code.
-3. Uncomment the **on** section (delete "#"). The workflow triggers with every push to the main branch and also offers manual triggering ("workflow_dispatch").
-4. In the **env** section, make the following changes:
+1. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. This workflow defines the CI/CD process for the given .NET 7 website code.
+1. Uncomment the **on** section (delete "#"). The workflow triggers with every push to the main branch and also offers manual triggering ("workflow_dispatch").
+1. In the **env** section, make the following changes:
     - Replace **NAME** in **RESOURCE-GROUP** variable. It should be the same resource group created in previous steps.
     - (Optional) You can choose your closest [azure region](https://azure.microsoft.com/explore/global-infrastructure/geographies) for **LOCATION**. For example, "eastus", "eastasia", "westus", etc.
     - Replace **YOUR-SUBS-ID** in **SUBSCRIPTION-ID**.
     - Replace **NAME** in **WEBAPP-NAME** with some unique alias. It will be used to create a globally unique website using Azure App Service.
-5. Read the workflow carefully, comments are provided to help understand.
+1. Read the workflow carefully, comments are provided to help understand.
 
-6. Click on **Start Commit** and **Commit Changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
+1. Click on **Start Commit** and **Commit Changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
 
 #### Task 3: Review GitHub Workflow execution
 
 In this task, you will review the GitHub workflow execution:
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
-2. On the repository page, go to **Actions**, you will see the workflow setup before executing. Click on it.
+1. On the repository page, go to **Actions**, you will see the workflow setup before executing. Click on it.
 
     ![GitHub workflow in progress](images/gh-actions.png)
 
-3. Wait for the workflow to finish. From the **Summary** you can see the two workflow jobs, the status and Artifacts retained from the execution. You can click in each job to review logs.
+1. Wait for the workflow to finish. From the **Summary** you can see the two workflow jobs, the status and Artifacts retained from the execution. You can click in each job to review logs.
 
     ![Successful workflow](images/gh-action-success.png)
 
-4. In a browser window, go back to the Azure Portal (https://portal.azure.com/). Open the resource group created before. You will see that the GitHub Action, using a bicep template, has created an Azure App Service Plan + App Service. You can see the published website opening the App Service and clicking **Browse**.
+1. In a browser window, go back to the Azure Portal (<https://portal.azure.com/>). Open the resource group created before. You will see that the GitHub Action, using a bicep template, has created an Azure App Service Plan + App Service. You can see the published website opening the App Service and clicking **Browse**.
 
     ![Browse WebApp](images/browse-webapp.png)
 
@@ -154,41 +157,41 @@ In this task, you will review the GitHub workflow execution:
 In this task, you will use GitHub environments to ask for manual approval before executing the actions defined on the deploy job of your workflow.
 
 1. On the repository page, go to **Code** and open the following file: **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**.
-2. In the **deploy** job section, you can find a reference to an **enviroment** called **Development**. GitHub used [environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) add protection rules (and secrets) for your targets.
+1. In the **deploy** job section, you can find a reference to an **environment** called **Development**. GitHub used [environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) add protection rules (and secrets) for your targets.
 
-3. On the repository page, go to **Settings**, open **Environments** and click **New environment**.
-4. Give it **Development** name and click on **Configure Environment**.
+1. On the repository page, go to **Settings**, open **Environments** and click **New environment**.
+1. Give it **Development** name and click on **Configure Environment**.
 
     > NOTE: If an environment called **Development** already exists in the **Environments** list, open its configuration by clicking on the environment name.  
-    
-5. In the **Configure Development** tab, check the option **Required Reviewers** and your GitHub account as a reviewer. Click on **Save protection rules**.
-6. Now lets test the protection rule. On the repository page, go to **Actions**, click on **eShopOnWeb Build and Test** workflow and click on **Run workflow>Run workflow** to execute manually.
+
+1. In the **Configure Development** tab, check the option **Required Reviewers** and your GitHub account as a reviewer. Click on **Save protection rules**.
+1. Now lets test the protection rule. On the repository page, go to **Actions**, click on **eShopOnWeb Build and Test** workflow and click on **Run workflow>Run workflow** to execute manually.
 
     ![manual trigger workflow](images/gh-manual-run.png)
 
-7. Click on the started execution of the workflow and wait for **buildandtest** job to finish. You will see a review request when **deploy** job is reached.
+1. Click on the started execution of the workflow and wait for **buildandtest** job to finish. You will see a review request when **deploy** job is reached.
 
-8. Click on **Review deployments**, check **Development** and click on **Approve and deploy**.
+1. Click on **Review deployments**, check **Development** and click on **Approve and deploy**.
 
     ![approval](images/gh-approve.png)
 
-9. Workflow will follow the **deploy** job execution and finish.
+1. Workflow will follow the **deploy** job execution and finish.
 
 ### Exercise 2: Remove the Azure lab resources
 
 In this exercise, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
 
 1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-2. List all resource groups created throughout the labs of this module by running the following command:
+1. List all resource groups created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'rg-az400-eshoponweb')].name" --output tsv
+    az group list --query "[?starts_with(name,'rg-eshoponweb')].name" --output tsv
     ```
 
-3. Delete all resource groups you created throughout the labs of this module by running the following command:
+1. Delete all resource groups you created throughout the labs of this module by running the following command:
 
     ```sh
-    az group list --query "[?starts_with(name,'rg-az400-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    az group list --query "[?starts_with(name,'rg-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
     >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.

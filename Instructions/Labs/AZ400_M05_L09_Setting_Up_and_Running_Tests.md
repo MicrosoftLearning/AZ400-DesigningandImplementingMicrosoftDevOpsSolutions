@@ -48,12 +48,12 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **.azure** folder contains Bicep & ARM infrastructure as code templates used in some lab scenarios.
+    - **infra** folder contains Bicep & ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder contains YAML GitHub workflow definitions.
     - **src** folder contains the .NET website used in the lab scenarios.
 
@@ -115,7 +115,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
     > **Functional Tests** are written from the perspective of the user, and verify the correctness of the system based on its requirements. Unlike integration tests that are written from the perspective of the developer, to verify that some components of the system work correctly together.
 
-16. Click **Save**, on the **Save** pane, click **Save** again to commit the changes directly into the main branch.
+1. Click **Save**, on the **Save** pane, click **Save** again to commit the changes directly into the main branch.
 
 #### Task 4: Check the tests summary
 
