@@ -58,7 +58,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
 
     ![Import Repository](images/import-repo.png)
 
@@ -67,13 +67,13 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
     - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 7 website used on the lab scenarios.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-### Exercise 1: Configure Sonarcloud Setup
+### Exercise 1: Configure SonarCloud Setup
 
 #### Task 1: Change your Azure DevOps Project to Public
 
-In this task you will change the visibility of your Azure DevOps project to public, as Sonarcloud is free for public ADO projects.
+In this task you will change the visibility of your Azure DevOps project to public, as SonarCloud is free for public ADO projects.
 
 1. On the lab computer, in the web browser window displaying the Azure DevOps portal, open your **eShopOnWeb** project, and click on **Project Settings** (bottom left corner). Change **Visibility** to **Public**. Click **Save**
 

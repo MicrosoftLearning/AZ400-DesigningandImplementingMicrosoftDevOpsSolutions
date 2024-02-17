@@ -74,12 +74,12 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
     ![Import Repository](images/import-repo.png)
 
-2. The repository is organized the following way:
+1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
     - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 7 website used on the lab scenarios.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
 #### Task 3: (skip if already done) Configure CI Pipeline as Code with YAML in Azure DevOps
 
