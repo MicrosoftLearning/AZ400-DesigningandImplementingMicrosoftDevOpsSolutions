@@ -218,7 +218,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 1. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again. Next, select **All** to open all pipeline definitions, not just the Recent ones.
 
-    > **Note**: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **EShopOnWeb (#)** sequence name for the pipeline as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file).
+    > **Note**: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **eShopOnWeb (#)** sequence name for the pipeline as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file).
 
     ![Screenshot of Azure Pipelines showing eShopOnWeb runs](images/m3/eshoponweb-m9l16-pipeline.png)
 
@@ -243,7 +243,7 @@ In this task, you will add a YAML build definition to the existing project.
 
 1. Switch back to web browser window displaying the Azure portal and navigate to the blade displaying the properties of the Azure web app.
 1. On the Azure web app blade, click **Overview** and, on the overview blade, click **Browse** to open your site in a new web browser tab.
-1. Verify that the deployed site loads as expected in the new browser tab, showing the EShopOnWeb E-commerce website.
+1. Verify that the deployed site loads as expected in the new browser tab, showing the eShopOnWeb E-commerce website.
 
 ### Exercise 2: Deploy and Setup Azure Load Testing
 
@@ -260,7 +260,7 @@ In this task, you will deploy an Azure Load Testing Resource into your Azure sub
 1. From the 'Create a Load Testing Resource' page, provide the necessary details for the resource deployment:
    - **Subscription**: select your Azure Subscription
    - **Resource Group**: select the Resource Group you used for deploying the Web App Service in the earlier exercise
-   - **Name**: EShopOnWebLoadTesting
+   - **Name**: eShopOnWebLoadTesting
    - **Region**: Select a region that is close to your region
 
     > **Note**: Azure Load Testing service is not available in all Azure Regions.
@@ -268,7 +268,7 @@ In this task, you will deploy an Azure Load Testing Resource into your Azure sub
 1. Click **Review and Create**, to have your settings validated.
 1. Click **Create** to confirm, and get the Azure Load Testing resource deployed.
 1. You are switched to the 'Deployment is in progress' page. Wait for a few minutes, until the deployment completes successfully.
-1. Click **Go to Resource** from the deployment progress page, to navigate to the **EShopOnWebLoadTesting** Azure Load Testing resource.
+1. Click **Go to Resource** from the deployment progress page, to navigate to the **eShopOnWebLoadTesting** Azure Load Testing resource.
 
     > **Note**: If you closed the blade or closed the Azure Portal during the deployment of the Azure Load Testing Resource, you can find it again from the Azure Portal Search field, or from the Resources / Recent list of resources.
 
@@ -276,7 +276,7 @@ In this task, you will deploy an Azure Load Testing Resource into your Azure sub
 
 In this task, you will create different Azure Load Testing tests, using different load configuration settings.
 
-1. From within the **EShopOnWebLoadTesting** Azure Load Testing Resource blade, navigate to **Tests**. Click the **+Create** menu option, and select **Create a URL-based test**.
+1. From within the **eShopOnWebLoadTesting** Azure Load Testing Resource blade, navigate to **Tests**. Click the **+Create** menu option, and select **Create a URL-based test**.
 1. Complete the following parameters and settings to create a load test:
    - **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (az400eshoponweb...azurewebsites.net), **including https://**
    - **Specify Load**: Virtual Users
@@ -286,10 +286,10 @@ In this task, you will create different Azure Load Testing tests, using differen
 
 1. Confirm the configuration of the test, by clicking **Review and Create**,  (Don't make any changes in the other tabs). Click **Create** once more.
 1. This kicks off the Load Testing tests, which will run The test will run for 5 minutes.
-1. With the test running, navigate back to the **EShopOnWebLoadTesting** Azure Load Testing Resource page, and navigate to **Tests**, select **Tests** and see a test **Get_eshoponweb...**
+1. With the test running, navigate back to the **eShopOnWebLoadTesting** Azure Load Testing Resource page, and navigate to **Tests**, select **Tests** and see a test **Get_eshoponweb...**
 1. From the top menu, click **Create**, **Create a URL-based test**, to create a 2nd Load test.
 1. Complete the following parameters and settings to create another load test:
-   - **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (EShopOnWeb...azurewebsites.net), **including https://**
+   - **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (eShopOnWeb...azurewebsites.net), **including https://**
    - **Specify Load**: Requests per Second (RPS)
    - **Requests per second (RPS)**: 100
    - **Response time (milliseconds)**: 500
@@ -325,13 +325,13 @@ After you complete this exercise, you have a CI/CD workflow that is configured t
 
 In this task, you will grant the required permissions to the Azure DevOps Service Connection's Service Principal.
 
-1. From the **Azure DevOps Portal**(<https://dev.azure.com>), navigate to the **EShopOnWeb** Project.
+1. From the **Azure DevOps Portal**(<https://dev.azure.com>), navigate to the **eShopOnWeb** Project.
 1. From the down left corner, select **Project Settings**.
 1. Under the **Pipelines** section, select **Service Connections**.
 1. Notice the Service Connection, having the name of your Azure Subscription you used to deploy Azure Resources at the start of the lab exercise.
 1. **Select the Service Connection**. From the **Overview** tab, navigate to **Details** and select **Manage Service Principal**.
 1. This redirects you to the Azure Portal, from where it opens the **Service Principal** details for the identity object.
-1. Copy the **Display Name** value (formatted like Name_of_ADO_Organization_EShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4) aside, as you will need this in the next steps.
+1. Copy the **Display Name** value (formatted like Name_of_ADO_Organization_eShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4) aside, as you will need this in the next steps.
 
 #### Task 2: Grant Service Principal Permissions
 
@@ -361,7 +361,7 @@ Perform the following steps to download the input files for an existing load tes
    - *config.yaml*: the load test YAML configuration file. You reference this file in the CI/CD workflow definition.
    - *quick_test.jmx*: the JMeter test script
 
-1. Commit all extracted input files to your source control repository. To do this, navigate to the **Azure DevOps Portal**(<https://dev.azure.com>), and navigate to the **EShopOnWeb** DevOps Project.
+1. Commit all extracted input files to your source control repository. To do this, navigate to the **Azure DevOps Portal**(<https://dev.azure.com>), and navigate to the **eShopOnWeb** DevOps Project.
 1. Select **Repos**. In the source code folder structure, notice the **tests** subfolder. Notice the ellipsis (...), and select **New > Folder**.
 1. specify **jmeter** as folder name, and **placeholder.txt** for the file name (Note: a Folder cannot be created as empty)
 1. Click **Commit** to confirm the creation of the placeholder file and jmeter folder.
@@ -396,7 +396,7 @@ In this task, you will import the Azure Load Testing - Azure DevOps Marketplace 
             azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
             resourceGroup: 'az400m05l11-RG'
-            loadTestResource: 'EShopOnWebLoadTesting'
+            loadTestResource: 'eShopOnWebLoadTesting'
             loadTestRunName: 'ado_run'
             loadTestRunDescription: 'load testing from ADO'
     ```
@@ -455,7 +455,7 @@ In this task, you will import the Azure Load Testing - Azure DevOps Marketplace 
 
 In this task, You'll use load test fail criteria to get alerted (have a failed pipeline run as result) when the application doesn't meet your quality requirements.
 
-1. From Azure DevOps, navigate to the EShopOnWeb Project, and open **Repos**.
+1. From Azure DevOps, navigate to the eShopOnWeb Project, and open **Repos**.
 1. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
 1. Open the Load Testing *config.yaml** file. Click **Edit** to allow editing of the file.
 1. Replace `failureCriteria: []` with the following snippet of code:
@@ -467,7 +467,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
     ```
 
 1. Save the changes to the config.yaml by clicking **Commit** and Commit once more.
-1. Navigate back to **Pipelines** and run the **EShopOnWeb** pipeline again. After a few minutes, it will complete the run with a **failed** status for the **AzureLoadTest** task.
+1. Navigate back to **Pipelines** and run the **eShopOnWeb** pipeline again. After a few minutes, it will complete the run with a **failed** status for the **AzureLoadTest** task.
 1. Open the verbose logging view for the pipeline, and validate the details of the **AzureLoadtest**. A similar sample output is below:
 
     ```text

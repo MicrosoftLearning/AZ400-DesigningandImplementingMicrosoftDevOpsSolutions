@@ -59,15 +59,15 @@ In this task, you will create a new team and configure its area and iterations.
 
 Each new project is configured with a default team, which name matches the project name. You have the option of creating additional teams. Each team can be granted access to a suite of Agile tools and team assets. The ability to create multiple teams gives you the flexibility to choose the proper balance between autonomy and collaboration across the enterprise.
 
-1. Verify that the web browser displays your Azure DevOps organization with the **EShopOnWeb** project you generated in the previous exercise.
+1. Verify that the web browser displays your Azure DevOps organization with the **eShopOnWeb** project you generated in the previous exercise.
 
-    > **Note**: Alternatively, you can access the project page directly by navigating to the [<https://dev.azure.com/>`<your-Azure-DevOps-account-name>`/EShopOnWeb) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name.
+    > **Note**: Alternatively, you can access the project page directly by navigating to the [<https://dev.azure.com/>`<your-Azure-DevOps-account-name>`/eShopOnWeb) URL, where the `<your-Azure-DevOps-account-name>` placeholder, represents your account name.
 
 1. Click the cogwheel icon labeled **Project settings** located in the lower left corner of the page to open the **Project settings** page.
 
     ![Azure DevOps project window. Click on "Project settings" option](images/m1/project_settings_v1.png)
 
-1. In the **General** section, select the **Teams** tab. There is already a default team in this project, **EShopOnWeb Team** but you'll create a new one for this lab. Click **New Team**.
+1. In the **General** section, select the **Teams** tab. There is already a default team in this project, **eShopOnWeb Team** but you'll create a new one for this lab. Click **New Team**.
 
     ![In project settings window, "Teams" tab, click on "New Team"](images/m1/new_team_v1.png)
 
@@ -87,7 +87,7 @@ Each new project is configured with a default team, which name matches the proje
 
     ![In the "iterations" tab, click on "Select Iteration"](images/m1/EShop-WEB-select_iteration_v1.png)
 
-1. Select **EShopOnWeb\Sprint 1** and click **Save and close**. Note that this first sprint will show up in the list of iterations, but the Dates are not set yet.
+1. Select **eShopOnWeb\Sprint 1** and click **Save and close**. Note that this first sprint will show up in the list of iterations, but the Dates are not set yet.
 1. Select **Sprint 1** and click the **ellipsis (...)**. From the context menu, select **Edit**.
 
      ![In the "iterations" tab, click on "Edit"](images/m1/EShop-WEB-edit_iteration_v1.png)
@@ -100,7 +100,7 @@ Each new project is configured with a default team, which name matches the proje
 
 1. Still in the **Project Settings / Boards / Team Configuration** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
 
-![From Areas, select EShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
+![From Areas, select eShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
 
 1. Click the ellipsis symbol (...) next to the **default area** entry and, in the dropdown list, select **Include sub areas**.
 
@@ -420,7 +420,7 @@ All processes are shared within the same organization. That is, one or more team
     ![On the "Add a field to Product Backlog Item" panel, on the "Definition" tab, in the "Create a field" section, in the "Name" textbox, type "EShop Ticket ID"](images/m1/EShop-WEB-pbi_v1.png)
 
 1. On the **Add a field to Product Backlog Item** panel, click **Layout**.
-1. On the **Add a field to Product Backlog Item** panel, on the **Layout** tab, in the **Label** textbox, type **Ticket ID**, select the **Create a new group** option, in the **Group** textbox, type **EShopOnWeb**, and click **Add field**.
+1. On the **Add a field to Product Backlog Item** panel, on the **Layout** tab, in the **Label** textbox, type **Ticket ID**, select the **Create a new group** option, in the **Group** textbox, type **eShopOnWeb**, and click **Add field**.
 
     ![On the "Add a field to Product Backlog Item" panel, on the "Layout" tab make sure the information has been included and click "Add Field"](images/m1/EShop-WEB-pbi_field_layout_v1.png)
 

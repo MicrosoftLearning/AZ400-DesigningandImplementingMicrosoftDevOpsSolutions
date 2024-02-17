@@ -240,7 +240,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. On the **eshoponweb-cd > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully.
 1. Switch to the Azure portal interface, navigate to the resource group **az400m04l09-RG**, in the list of resources, click the **DevTest** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
 1. Switch back to the Azure portal interface, this time navigating  to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
-1. Close the web browser tab displaying the **EShopOnWeb** web site.
+1. Close the web browser tab displaying the **eShopOnWeb** web site.
 
     > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Quality Gates as part of a more advanced  Release pipeline.
 
@@ -298,7 +298,7 @@ In this exercise, you will test the release gates by updating the application, w
 In this task, you will first generate some alerts for the DevTest Web App, followed by tracking the release process with the release gates enabled.
 
 1. From the Azure Portal, browse to the **DevTest Web App** Resource deployed earlier.
-1. From the Overview pane, notice the **URL** field showing the Hyperlink of the web application. Click this link, which redirects you to the EShopOnWeb web application in the browser.
+1. From the Overview pane, notice the **URL** field showing the Hyperlink of the web application. Click this link, which redirects you to the eShopOnWeb web application in the browser.
 1. To simulate a **Failed Request**, add **/discount** to the URL, which will result in an error message, since that page does not exist. Refresh this page several times to generate multiple events.
 1. From the Azure Portal, in the "Search resources, services and docs" field, enter **Application Insights** and select the **DevTest-AppInsights** Resource created in the previous exercise. Next, navigate to **Alerts**.
 1. There should be at least **1** new alert in the list of results, having a **Severity 2** enter **Alerts** to open the Alerts Service of Azure Monitor.
@@ -306,7 +306,7 @@ In this task, you will first generate some alerts for the DevTest Web App, follo
 
     > **Note:** If no Alert shows up yet, wait another few minutes.
 
-1. Return back to the Azure DevOps Portal, open the **EShopOnWeb** Project. Navigate to **Pipelines**, select **Releases** and select the **eshoponweb-cd**.
+1. Return back to the Azure DevOps Portal, open the **eShopOnWeb** Project. Navigate to **Pipelines**, select **Releases** and select the **eshoponweb-cd**.
 1. Click the **Create Release** button.
 1. Wait for the Release pipeline to kick off, and **approve** the DevTest Stage release action.
 1. Wait for the DevTest release Stage to complete successfully. Notice how the **Post-deployment Gates** is switching to an **Evaluation Gates** status.  Click the **Evaluation Gates** icon.
