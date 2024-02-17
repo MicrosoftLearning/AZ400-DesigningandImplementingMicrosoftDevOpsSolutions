@@ -211,7 +211,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
     > **Note**: Since our original CI-YAML was not configured to automatically trigger a new build, we have to initiate this one manually.
 
 1. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again.
-1. Open the **EShopOnWeb_MultiStageYAML** Pipeline and click **Run Pipeline**.
+1. Open the **eShopOnWeb_MultiStageYAML** Pipeline and click **Run Pipeline**.
 1. Confirm the **Run** from the appearing pane.
 1. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
 1. Wait for the pipeline to kick off and wait until it completes the Build Stage successfully.
@@ -312,7 +312,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
 1. Switch back to web browser window displaying the Azure portal and navigate to the blade displaying the properties of the Azure web app.
 1. On the Azure web app blade, click **Overview** and, on the overview blade, click **Browse** to open your site in a new web browser tab.
-1. Verify that the deployed site loads as expected in the new browser tab, showing the EShopOnWeb E-commerce website.
+1. Verify that the deployed site loads as expected in the new browser tab, showing the eShopOnWeb E-commerce website.
 
 ### Exercise 2: Configure Environment settings for CI/CD Pipelines as Code with YAML in Azure DevOps
 
@@ -322,7 +322,7 @@ In this exercise, you will add approvals to a YAML-based Pipeline in Azure DevOp
 
 YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure DevOps Classic Release Pipelines. However, some similarities can be configured for YAML Pipelines-as-Code using **Environments**. In this task, you will use this mechanism to configure approvals for the Build Stage.
 
-1. From the Azure DevOps Project **EShopOnWeb_MultiStageYAML**, navigate to **Pipelines**.
+1. From the Azure DevOps Project **eShopOnWeb_MultiStageYAML**, navigate to **Pipelines**.
 1. Under the Pipelines Menu to the left, select **Environments**.
 1. Click **Create Environment**.
 1. In the **New Environment** pane, add a Name for the Environment, called **approvals**.

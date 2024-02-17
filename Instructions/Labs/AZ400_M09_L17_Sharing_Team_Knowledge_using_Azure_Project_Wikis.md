@@ -14,7 +14,7 @@ lab:
 
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [AZ-400 Lab Prerequisites](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
 
-- **Set up the sample EShopOnWeb Project:** If you don't already have the sample EShopOnWeb Project that you can use for this lab, create one by following the instructions available at [AZ-400 Lab Prerequisites](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
+- **Set up the sample eShopOnWeb Project:** If you don't already have the sample eShopOnWeb Project that you can use for this lab, create one by following the instructions available at [AZ-400 Lab Prerequisites](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
 
 ## Lab overview
 
@@ -34,7 +34,7 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, we want to remind you about validating the lab prerequisites, having both an Azure DevOps Organization ready, as well as having created the EShopOnWeb project. See the instructions above for more details.
+In this exercise, we want to remind you about validating the lab prerequisites, having both an Azure DevOps Organization ready, as well as having created the eShopOnWeb project. See the instructions above for more details.
 
 ### Exercise 1: Publish code as a wiki
 
@@ -48,12 +48,12 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
 > **Note**: If your published wiki corresponds to a product version, you can publish new branches as you release new versions of your product.
 
-1. In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **EShopOnWeb** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
+1. In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **eShopOnWeb** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
 1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **src** folder and brows to **Web-> wwwroot -> images** subfolder. In the **Images** subfolder, locate the **brand.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **Download** to download the **brand.png** file to the local **Downloads** folder on your lab computer.
 
     >**Note**: You will use this image in the next exercise of this lab.
 
-1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **EShopOnWeb** Repo title on top of the folder structure. **Select the ellipsis (3 dots)**, Choose **New / Folder**, and provide **Documents** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **READ.ME** as New File name.
+1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **eShopOnWeb** Repo title on top of the folder structure. **Select the ellipsis (3 dots)**, Choose **New / Folder**, and provide **Documents** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **READ.ME** as New File name.
 1. Confirm the creation of the folder and the file by **pressing the Create button**.
 1. The READ.ME file will open in the built-in view mode. Since this is stored 'as code', you need to **Commit** the changes by clicking the **Commit** button. In the Commit window, confirm once more by pressing **Commit**.
 1. In the Azure DevOps vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, select **Publish code as wiki*.
@@ -61,10 +61,10 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
     | Setting | Value |
     | ------- | ----- |
-    | Repository | **EShopOnWeb** |
+    | Repository | **eShopOnWeb** |
     | Branch | **main** |
     | Folder | **/Documents** |
-    | Wiki name | **EShopOnWeb (Documents)** |
+    | Wiki name | **eShopOnWeb (Documents)** |
 
     >**Note**: This will automatically open the Wiki section, and publish **the editor**, where you can provide a Wiki page title, as well as adding the actual content. Notice you are encouraged to use MarkDown format, but make use of the ribbon to help you with some of the MarkDown layout syntax.
 
@@ -115,7 +115,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
 In this task, you will manage content of the wiki you published in the previous task.
 
-1. In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **EShopOnWeb** repo and **main** branch, in the repo folder hierarchy, select the **Documents** folder, and select the **Welcome-to-our-Online-Retail-Store!.md** file.
+1. In the vertical menu on the left side, click **Repos**, ensure that the dropdown menu in the upper section of the **Files** pane displays the **eShopOnWeb** repo and **main** branch, in the repo folder hierarchy, select the **Documents** folder, and select the **Welcome-to-our-Online-Retail-Store!.md** file.
 1. Notice how the MarkDown format is visible here as raw text format, allowing you to continue editing the file content from here as well.
 
 > **Note**: Since the Wiki source files are handled as source code, remember all practices from traditional source control (Clone, Pull Requests, Approvals and more), can now also be applied to Wiki pages.
@@ -130,7 +130,7 @@ In this exercise, you will step through creating and managing a project wiki.
 
 In this task, you will create a project wiki and add to it a Mermaid diagram and an image.
 
-1. On your lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **EShopOnweb** project,  with the content of the **EShopOnWeb (Documents)** wiki selected, at the top of the pane, click the **EShopOnWeb (Documents)** dropdown list header (the arrow down icon), and, in the drop down list, select **Create new project wiki**.
+1. On your lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **EShopOnweb** project,  with the content of the **eShopOnWeb (Documents)** wiki selected, at the top of the pane, click the **eShopOnWeb (Documents)** dropdown list header (the arrow down icon), and, in the drop down list, select **Create new project wiki**.
 1. In the **Page title** text box, type **Project Design**.
 1. Place the cursor in the body of the page, click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 1**. This will automatically add the hash character (**#**) at the beginning of the line.
 1. Directly after the newly added **#** character, type **Authentication and Authorization** and press the **Enter** key.
@@ -179,7 +179,7 @@ In this task, you will manage the newly created project wiki.
 
 >**Note**: You will start by reverting the most recent change to the wiki page.
 
-1. On you lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **EShopOnWeb** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
+1. On you lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **eShopOnWeb** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
 1. On the **Revisions** pane, click the entry representing the most recent change.
 1. On the resulting pane, review the comparison between the previous and the current version of the document, click **Revert**, when prompted for the confirmation, click **Revert** again, and then click **Browse Page**.
 1. Back on the **Project Design** pane, verify that the change was successfully reverted.

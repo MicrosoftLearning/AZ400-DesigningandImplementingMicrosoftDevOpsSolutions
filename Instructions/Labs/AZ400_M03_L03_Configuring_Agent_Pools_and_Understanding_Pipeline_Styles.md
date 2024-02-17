@@ -68,11 +68,11 @@ In this exercise, you will create an application lifecycle build pipeline, using
 
 In this task, you will create a template-based Azure DevOps YAML pipeline.
 
-1. From the web browser displaying the Azure DevOps portal with the **EShopOnWeb** project open, in the vertical navigational pane on the left side, click **Pipelines**.
+1. From the web browser displaying the Azure DevOps portal with the **eShopOnWeb** project open, in the vertical navigational pane on the left side, click **Pipelines**.
 1. Click the **Create Pipeline** button - if you don't have any other pipelines created yet or click **New pipeline** to create an additional new one.
 
 1. On the **Where is your code?** pane, click **Azure Repos Git**.
-1. On the **Select a repository** pane, click **EShopOnWeb**.
+1. On the **Select a repository** pane, click **eShopOnWeb**.
 1. On the **Configure your pipeline** pane, click **Existing Azure Pipelines YAML File**.
 1. On the **Select an existing YAML file**, select **main** for the Branch, and **/.ado/eshoponweb-ci-pr.yml** for the Path.
 1. Click **Continue**.
@@ -106,7 +106,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 
     | Setting | Value |
     | --- | --- |
-    | Name | **EShopOnWeb** |
+    | Name | **eShopOnWeb** |
     | Scope (custom defined) | **Agent Pools** (show more scopes option below if needed)|
     | Permissions | **Read and manage** |
 
@@ -162,10 +162,10 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 1. Switch to the browser window displaying the Azure DevOps portal and close the **Get the agent** pane.
 1. Back on the **Agents** tab of the **az400m03l03a-pool** pane, note that the newly configured agent is listed with the **Online** status.
 1. In the web browser window displaying the Azure DevOps portal, in the upper left corner, click the **Azure DevOps** label.
-1. From the list of projects, click the tile representing your **EShopOnWeb** project.
-1. On the **EShopOnWeb** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
-1. On the **Recent** tab of the **Pipelines** pane, select **EShopOnWeb** and, on the **EShopOnWeb** pane, select **Edit**.
-1. On the **EShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: windows-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1. From the list of projects, click the tile representing your **eShopOnWeb** project.
+1. On the **eShopOnWeb** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
+1. On the **Recent** tab of the **Pipelines** pane, select **eShopOnWeb** and, on the **eShopOnWeb** pane, select **Edit**.
+1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: windows-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m03l03a-pool
@@ -177,9 +177,9 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 
     ![Yaml pool syntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
-1. On the **EShopOnWeb** edit pane, in the upper right corner of the pane, click **Save and Run**. This will automatically trigger the build based on this pipeline.
+1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Save and Run**. This will automatically trigger the build based on this pipeline.
 1. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run. 
-1. On the **Recent** tab of the **Pipelines** pane, click the **EShopOnWeb** entry, on the **Runs** tab of the **EShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
+1. On the **Recent** tab of the **Pipelines** pane, click the **eShopOnWeb** entry, on the **Runs** tab of the **eShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
 
 ### Exercise 3: Remove the resources used in the lab
 
