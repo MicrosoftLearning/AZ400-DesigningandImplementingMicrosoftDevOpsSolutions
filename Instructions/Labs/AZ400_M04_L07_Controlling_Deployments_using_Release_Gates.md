@@ -74,21 +74,12 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
    ![Import Repository](images/import-repo.png)
 
-<<<<<<< Updated upstream
 1. The repository is organized the following way:
-    - **.ado** folder contains Azure DevOps YAML pipelines.
-    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
-    - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 8 website used on the lab scenarios.
-=======
-2. The repository is organized the following way:
    - **.ado** folder contains Azure DevOps YAML pipelines.
    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
    - **.github** folder container YAML GitHub workflow definitions.
-   - **src** folder contains the .NET 7 website used on the lab scenarios.
->>>>>>> Stashed changes
+   - **src** folder contains the .NET 8 website used on the lab scenarios.
 
 #### Task 3: (skip if already done) Configure CI Pipeline as Code with YAML in Azure DevOps
 
@@ -232,7 +223,9 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
 
    > notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
+
 1. Open the **Application and Configuration Settings** pane and enter `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` in the **App settings** box.
+
 1. On the **All pipelines > eshoponweb-cd** pane, navigate to the **Pipeline** tab, and this time, within the **Production** Stage, click the **1 job, 1 task** label. Similar to the DevTest stage earlier, complete the pipeline settings. Under the Tasks tab / Production Deployment process, in the **Azure subscription** dropdown list, select the Azure subscription you used for the **DevTest Environment** stage, shown under **Available Azure Service connections**, as we already created the service connection before when authorizing the subscription use.
 1. In the **App Service name** dropdown list, select the name of the **Prod** web app.
 1. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
@@ -250,13 +243,13 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **eshoponweb-cd** pane, click the entry representing the most recent release.
 1. On the **eshoponweb-cd > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully.
 1. Switch to the Azure portal interface, navigate to the resource group **az400m04l09-RG**, in the list of resources, click the **DevTest** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
-<<<<<<< Updated upstream
-1. Switch back to the Azure portal interface, this time navigating  to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
-1. Close the web browser tab displaying the **eShopOnWeb** web site.
-=======
+   <<<<<<< Updated upstream
+1. Switch back to the Azure portal interface, this time navigating to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
+1. # Close the web browser tab displaying the **eShopOnWeb** web site.
 1. Switch back to the Azure portal interface, this time navigating to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
 1. Close the web browser tab displaying the **EShopOnWeb** web site.
->>>>>>> Stashed changes
+
+   > > > > > > > Stashed changes
 
    > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Quality Gates as part of a more advanced Release pipeline.
 
