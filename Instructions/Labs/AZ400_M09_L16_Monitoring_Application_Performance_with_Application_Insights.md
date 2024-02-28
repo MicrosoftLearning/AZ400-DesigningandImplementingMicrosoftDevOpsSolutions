@@ -185,6 +185,58 @@ In this task, you will add a YAML build definition to the existing project.
 
     > **Note**: This will be the location where new tasks are added.
 
+1. Click **Show Assistant** from the right hand side of the portal. In the list of tasks, search for and select the **Azure App Service Settings** task.
+1. In the **Azure App Service Settings** pane, specify the following settings and click **Add**:
+
+    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, - if needed (only when this is your first pipeline you create) click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
+    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab (**az400eshoponweb...).
+    - in the **Resource group** dropdown list, select the name of the resource group you created earlier from CloudShell (az400m09l16-RG).
+    - in the **App Setting** text box, insert the following json:
+    ```JSON
+    [
+    {
+        "name": "UseOnlyInMemoryDatabase",
+        "value": "true",
+        "slotSetting": false
+    },
+    {
+        "name": "ASPNETCORE_ENVIRONMENT ",
+        "value": "Development",
+        "slotSetting": false
+    }
+    ]
+    ```
+1. Confirm the settings from the Assistant pane by clicking the **Add** button.
+
+    > **Note**: This will automatically add the setting of configuration app settings on the Web App.
+
+1. The snippet of code added to the editor should look similar to below, reflecting your name for the azureSubscription, WebappName parameters, Resource Group and the new App Settings:
+    ```yml
+
+        - task: AzureAppServiceSettings@1
+          inputs:
+          azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+          appName: 'az400eshoponWeb369825031'
+          resourceGroupName: 'az400m09l16-RG'
+          appSettings: |
+            [
+             {
+             "name": "UseOnlyInMemoryDatabase",
+             "value": "true",
+             "slotSetting": false
+             },
+             {
+             "name": "ASPNETCORE_ENVIRONMENT ",
+             "value": "Development",
+             "slotSetting": false
+             }
+            ]
+    ```
+
+1. Set the cursor on a new line at the end of the YAML definition. **Make sure you position the cursor at the indentation of the previous task level**.
+
+    > **Note**: This will be the location where new tasks are added.
+
 1. Click **Show Assistant** from the right hand side of the portal. In the list of tasks, search for and select the **Azure App Service Deploy** task.
 1. In the **Azure App Service deploy** pane, specify the following settings and click **Add**:
 
