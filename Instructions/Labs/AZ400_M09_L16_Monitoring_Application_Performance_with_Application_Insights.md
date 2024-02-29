@@ -192,6 +192,7 @@ In this task, you will add a YAML build definition to the existing project.
     - Validate **App Service Type** points to Web App on Windows.
     - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab (**az400eshoponweb...).
     - in the **Package or folder** text box, **update** the Default Value to `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
+    - Expand **Application and Configuration Settings** and add the value `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
 1. Confirm the settings from the Assistant pane by clicking the **Add** button.
 
     > **Note**: This will automatically add the deployment task to the YAML pipeline definition.
@@ -206,6 +207,7 @@ In this task, you will add a YAML build definition to the existing project.
             appType: 'webApp'
             WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+            AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
     ```
 
     > **Note**: The **packageForLinux** parameter is misleading in the context of this lab, but it is valid for Windows or Linux.
