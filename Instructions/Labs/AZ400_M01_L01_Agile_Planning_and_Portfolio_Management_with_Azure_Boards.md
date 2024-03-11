@@ -125,7 +125,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
     ![In the "Boards">"Work Items" window, click on "New work item" >Epic](images/m1/EShop-WEB-create_epic_v1.png)
 
 1. In the **Enter title** textbox, type **Product training**.
-1. In the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself.
+1. In the upper left corner, select the **Unassigned** entry and, in the dropdown list, select your user account in order to assign the new work item to yourself. If your name doesn't appear to start with, begin typing your name and click **Search**.
 1. Next to the **Area** entry, select the **eShopOnWeb** entry and, in the dropdown list, select **EShop-WEB**. This will set the **Area** to **eShopOnWeb\EShop-WEB**.
 1. Next to the **Iteration** entry, select the **eShopOnWeb** entry and, in the dropdown list, select **Sprint 2**. This will set the **Iteration** to **eShopOnWeb\Sprint 2**.
 1. Click **Save** to finalize your changes. **Do not close it**.
