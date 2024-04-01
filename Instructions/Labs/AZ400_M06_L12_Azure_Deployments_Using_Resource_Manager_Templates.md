@@ -70,7 +70,7 @@ In this lab, you will review an Azure Bicep template and simplify it using a reu
 
 In this task, you will use Visual Studio Code to create an Azure Bicep template
 
-1. In the browser tab you have your Azure DevOps project open, navigate to **Repos** and **Files**. Open the `.azure\bicep` folder and find the `simple-windows-vm.bicep` file.
+1. In the browser tab you have your Azure DevOps project open, navigate to **Repos** and **Files**. Open the `infra` folder and find the `simple-windows-vm.bicep` file.
 
    ![Simple-windows-vm.bicep file](./images/m06/browsebicepfile.png)
 
