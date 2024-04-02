@@ -125,7 +125,7 @@ In this exercise, you will import and run the CI pipeline.
 #### Task 1: Import and run the CI pipeline
 
 1. Go to **Pipelines>Pipelines**
-1. Click on **New pipeline** button
+1. Click on **New pipeline** button (or **Create Pipeline** if you don't have other pipelines previously created)
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
 1. Select **Existing Azure Pipelines YAML file**
@@ -171,10 +171,10 @@ In this task, you will add a new role assignment to allow Azure App Service pull
     echo $roleName
     ```
 
-1. After getting the service principal ID and the role name, let's create the role assignment by running this command (replace **rg-az400-container-NAME** with your resource group name)
+1. After getting the service principal ID and the role name, let's create the role assignment by running this command (replace **&lt;rg-az400-container-NAME&gt;** with your resource group name)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**rg-az400-container-NAME**
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/<rg-az400-container-NAME>
     ```
 
 You should now see the JSON output which confirms the success of the command run.
