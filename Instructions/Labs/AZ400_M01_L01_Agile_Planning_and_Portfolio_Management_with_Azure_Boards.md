@@ -232,7 +232,7 @@ The sprint backlog should contain all the information the team needs to successf
 
 1. Select the **Capacity** tab of the **Sprints** view.
 
-![Sprint Capacity View](images/m1/EShop-WEB-capacity_v1.png)
+    ![Sprint Capacity View](images/m1/EShop-WEB-capacity_v1.png)
 
     > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
 
