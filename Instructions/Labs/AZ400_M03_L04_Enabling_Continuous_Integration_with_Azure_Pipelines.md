@@ -71,7 +71,7 @@ Let's start by importing the build pipeline named [eshoponweb-ci-pr.yml](https:/
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
 1. Select **Existing Azure Pipelines YAML File**
-1. Select the **/.ado/eshoponweb-ci-pr.yml** file then click on **Continue**
+1. Select the **main** branch and the **/.ado/eshoponweb-ci-pr.yml** file, then click on **Continue**
 
     The build definition consists of the following tasks:
     - **DotNet Restore**: With NuGet Package Restore you can install all your project's dependency without having to store them in source control.
