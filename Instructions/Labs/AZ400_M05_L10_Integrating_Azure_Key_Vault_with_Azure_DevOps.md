@@ -13,7 +13,7 @@ lab:
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
-
+**
 - Identify an existing Azure subscription or create a new one.
 
 ## Lab overview
@@ -235,7 +235,7 @@ In this task, you will import a CD pipeline, customize it, and run it for deploy
 
 1. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Select branch **main**, provide the following path **/.ado/eshoponweb-cd-aci.yml** and click on **Continue**.
+1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Select branch: **main**, provide the following path **/.ado/eshoponweb-cd-aci.yml** and click on **Continue**.
 
 1. In the YAML pipeline definition, customize:
 
