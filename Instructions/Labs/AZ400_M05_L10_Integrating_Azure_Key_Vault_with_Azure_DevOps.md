@@ -235,7 +235,7 @@ In this task, you will import a CD pipeline, customize it, and run it for deploy
 
 1. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-cd-aci.yml** and click on **Continue**.
+1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Select branch **main**, provide the following path **/.ado/eshoponweb-cd-aci.yml** and click on **Continue**.
 
 1. In the YAML pipeline definition, customize:
 
