@@ -240,7 +240,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: This represents 1 hour of development work per day. Note that you can add additional activities per user in the case they do more than just development.
 
-![Set Development Capacity for a user](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+    ![Set Development Capacity for a user](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
 
     > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
 
