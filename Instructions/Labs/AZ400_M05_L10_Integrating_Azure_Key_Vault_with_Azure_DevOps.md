@@ -137,7 +137,7 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
 
 1. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
-1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Provide the following path **/.ado/eshoponweb-ci-dockercompose.yml** and click on **Continue**.
+1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Select branch: **main**, provide the following path **/.ado/eshoponweb-ci-dockercompose.yml** and click on **Continue**.
 
     ![Select Pipeline](images/select-ci-container-compose.png)
 
