@@ -129,7 +129,7 @@ In this exercise, you will import and run the CI pipeline.
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
 1. Select **Existing Azure Pipelines YAML file**
-1. Select the **/.ado/eshoponweb-ci-docker.yml** file then click on **Continue**
+1. Select the **main** branch and the **/.ado/eshoponweb-ci-docker.yml** file, then click on **Continue**
 1. In the YAML pipeline definition, customize:
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
    - **rg-az400-container-NAME** with the resource group name that will be created by the pipeline (it can be an existing resource group too).
@@ -188,7 +188,7 @@ In this task, you will import and run the CD pipeline.
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
 1. Select **Existing Azure Pipelines YAML File**
-1. Select the **/.ado/eshoponweb-cd-webapp-docker.yml** file then click on **Continue**
+1. Select the **main** branch and the **/.ado/eshoponweb-cd-webapp-docker.yml** file, then click on **Continue**
 1. In the YAML pipeline definition, customize:
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
    - **rg-az400-container-NAME** with the resource group name defined before in the lab.
