@@ -100,7 +100,7 @@ Each new project is configured with a default team, which name matches the proje
 
 1. Still in the **Project Settings / Boards / Team Configuration** pane, at the top of the pane, select the **Areas** tab. You will find there an automatically generated area with the name matching the name of the team.
 
-![From Areas, select eShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
+    ![From Areas, select eShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
 
 1. Click the ellipsis symbol (...) next to the **default area** entry and, in the dropdown list, select **Include sub areas**.
 
@@ -145,7 +145,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
 1. Click **Add link** to save the Child item. On the (New Feature) **Training dashboard** panel, click **Save & Close**.
 
-![Epic with Linked Child Item](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
+    ![Epic with Linked Child Item](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
 1. In the vertical navigation pane of the Azure DevOps portal, in the list of the **Boards** items, select **Boards**.
 1. On the **Boards** panel, select the **EShop-WEB boards** entry. This will open the board for that particular team.
@@ -376,7 +376,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     > **Note**: The **QA Approved** stage now has **Doing** and **Done** columns. You can also click the informational symbol (with letter **i** in a circle) next to the column header to read the **Definition of done**.
 
-![Split Columns for QA Approved](images/m1/EShop-WEB-qa_2columns_v1.png)
+    ![Split Columns for QA Approved](images/m1/EShop-WEB-qa_2columns_v1.png)
 
 1. On the **Boards** panel, click the **Configure boards settings** cogwheel icon (directly to the right of the funnel icon).
 
