@@ -137,7 +137,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
     > **Note**: The work item form includes all of the relevant work item settings. This includes details about who it's assigned to, its status across many parameters, and all the associated information and history for how it has been handled since creation. One of the key areas to focus on is the **Related Work**. We will explore one of the ways to add a feature to this epic.
 
 1. In the **Related work** section on the lower right-side, select the **Add link** entry and, in the dropdown list, select **New item**.
-1. On the **Add link** panel, in the **Link Type** dropdown list, select **Child**. Next, in the **Work item type** dropdown list, select **Feature**, in the **Title** textbox, type **Training dashboard** and click **OK**.
+1. On the **Add link** panel, in the **Link Type** dropdown list, select **Child**. Next, in the **Work item type** dropdown list, select **Feature**, in the **Title** textbox, type **Training dashboard**.
 
     ![Include Title "Training Dashboard" and click "OK"](images/m1/EShop-WEB-create_child_feature.png)
 
@@ -232,7 +232,7 @@ The sprint backlog should contain all the information the team needs to successf
 
 1. Select the **Capacity** tab of the **Sprints** view.
 
-![Sprint Capacity View](images/m1/EShop-WEB-capacity_v1.png)
+    ![Sprint Capacity View](images/m1/EShop-WEB-capacity_v1.png)
 
     > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
 
@@ -240,7 +240,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: This represents 1 hour of development work per day. Note that you can add additional activities per user in the case they do more than just development.
 
-![Set Development Capacity for a user](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+    ![Set Development Capacity for a user](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
 
     > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
 
