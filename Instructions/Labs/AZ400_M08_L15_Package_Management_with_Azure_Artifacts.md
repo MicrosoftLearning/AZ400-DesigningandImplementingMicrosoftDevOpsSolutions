@@ -110,7 +110,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 
     Check the checkbox to **Place solution and project in the same directory**.
 
-1. Click Next. Accept **.NET 8.0** as Framework option.
+1. Click Next. Accept **.NET 8** as Framework option.
 1. Confirm the project creation by pressing the **Create** button.
 1. Within the Visual Studio interface, in the **Solution Explorer** pane, right-click **Class1.cs**, in the right-click menu, select **Delete**, and, when prompted for confirmation, click **OK**.
 1. Press **Ctrl+Shift+B** or **Right-click on the EShopOnWeb.Shared Project** and select **Build** to build the project.
