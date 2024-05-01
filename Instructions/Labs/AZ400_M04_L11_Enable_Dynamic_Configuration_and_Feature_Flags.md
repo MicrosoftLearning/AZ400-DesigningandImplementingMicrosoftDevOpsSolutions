@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Enable Dynamic Configuration and Feature Flags'
-    module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+    module: 'Module 04: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
 # Enable Dynamic Configuration and Feature Flags

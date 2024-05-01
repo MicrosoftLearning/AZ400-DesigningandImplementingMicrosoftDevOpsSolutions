@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Agile Planning and Portfolio Management with Azure Boards'
-    module: 'Module 01: Get started on a DevOps transformation journey'
+    title: 'Agile plan and portfolio management with Azure Boards'
+    module: 'Module 01: Implement development for enterprise DevOps'
 ---
 
-# Agile Planning and Portfolio Management with Azure Boards
+# Agile plan and portfolio management with Azure Boards
 
 # Student lab manual
 
@@ -112,7 +112,7 @@ Each new project is configured with a default team, which name matches the proje
 
 In this task, you will step through common work item management tasks.
 
-Work items play a prominent role in Azure DevOps. Whether describing work to be done, impediments to release, test definitions, or other key items, work items are the workhorse of modern projects. In this task you'll focus on using various work items to set up the plan to extend the Parts Unlimited site with a product training section. While it can be daunting to build out such a substantial part of a company's offering, Azure DevOps and the Scrum process make it very manageable.
+Work items play a prominent role in Azure DevOps. Whether describing work to be done, impediments to release, test definitions, or other key items, work items are the workhorse of modern projects. In this task you'll focus on using various work items to set up the plan to extend the eShopOnWeb site with a product training section. While it can be daunting to build out such a substantial part of a company's offering, Azure DevOps and the Scrum process make it very manageable.
 
 > **Note**: This task is designed to illustrate a variety of ways you can create different kinds of work items, as well as to demonstrate the breadth of features available on the platform. As a result, these steps should not be viewed as prescriptive guidance for project management. The features are intended to be flexible enough to fit your process needs, so explore and experiment as you go.
 

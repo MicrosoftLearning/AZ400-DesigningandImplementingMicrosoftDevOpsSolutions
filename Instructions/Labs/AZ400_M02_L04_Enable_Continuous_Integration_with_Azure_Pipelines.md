@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Enabling Continuous Integration with Azure Pipelines'
-    module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
+    title: 'Enable Continuous Integration with Azure Pipelines'
+    module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Enabling Continuous Integration with Azure Pipelines
+# Enable Continuous Integration with Azure Pipelines
 
 ## Student lab manual
 

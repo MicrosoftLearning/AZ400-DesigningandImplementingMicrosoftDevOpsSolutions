@@ -1,7 +1,7 @@
 ---
 lab:
   title: "Deployments using Azure Bicep templates"
-  module: "Module 06: Manage infrastructure as code using Azure and DSC"
+  module: "Module 05: Manage infrastructure as code using Azure and DSC"
 ---
 
 # Deployments using Azure Bicep templates

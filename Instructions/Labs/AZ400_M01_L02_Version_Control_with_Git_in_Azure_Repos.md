@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Version Controlling with Git in Azure Repos'
-    module: 'Module 02: Work with Azure Repos and GitHub'
+    title: 'Version Control with Git in Azure Repos'
+    module: 'Module 01: Implement development for enterprise DevOps'
 ---
 
-# Version Controlling with Git in Azure Repos
+# Version Control with Git in Azure Repos
 
 ## Student lab manual
 

@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Setting Up and Running Tests'
-    module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+  title: 'Set up and run functional tests'
+  module: "Module 03: Design and implement a release strategy"
 ---
 
-# Setting Up and Running Tests
+# Set up and run functional tests
 
 ## Student lab manual
 

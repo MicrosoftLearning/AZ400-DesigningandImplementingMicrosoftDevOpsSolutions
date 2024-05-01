@@ -4,7 +4,9 @@ demo:
     module: 'Set up your own environment'
 ---
 
-# Setup lab environment
+# Validate lab environment
+
+## Student lab manual
 
 ## Instructions to create an Azure DevOps Organization (you only have to do this once)
 
@@ -28,22 +30,23 @@ demo:
 1. At the **Organization settings** screen click **Billing** (opening this screen takes a few seconds).
 1. Click **Setup billing** and on the right-hand side of the screen select the **Azure Pass - Sponsorship** subscription and click **Save** to link the subscription with the organization.
 1. Once the screen shows the linked Azure Subscription ID at the top, change the number of **Paid parallel jobs** for **MS Hosted CI/CD** from 0 to **1**. Then click the **SAVE** button at the bottom.
+1. In **Organization Settings**, go to section **Pipelines** and click **Settings**.
+1. Toggle the switch to **Off** for **Disable creation of classic build pipelines** and **Disable creation of classic release pipelines**
+    > Note: The **Disable creation of classic release pipelines** switch sets to **On** hides classic release pipeline creation options such as the **Release** menu in the **Pipeline** section of DevOps projects.
 1. In **Organization Settings**, go to section **Security** and click **Policies**.
-1. Toggle the switch to **On** for **Third-party application access via OAuth**
-    > Note: The OAuth setting helps enable tools such as the DemoDevOpsGenerator to register extensions. Without this, several labs may fail due to a lack of the required extensions.
 1. Toggle the switch to **On** for **Allow public projects**
     > Note: Extensions used in some labs might require a public project to allow using the free version.
 1. **Wait at least 3 hours before using the CI/CD capabilities** so that the new settings are reflected in the backend. Otherwise, you will still see the message *"No hosted parallelism has been purchased or granted"*.
 
 ## Instructions to create the sample Azure DevOps Project (you only have to do this once)
 
-### Configure the lab prerequisites
+### Exercise 0: Configure the lab prerequisites
 
 > **Note**: make sure you completed the steps to create your Azure DevOps Organization before continuing with these steps.
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Create and configure the team project
+#### Task 1:  Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
@@ -53,21 +56,23 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
     - Advanced: Version Control: **Git**
     - Advanced: Work Item Process: **Scrum**
 
-2. Click **Create**.
+1. Click **Create**.
 
     ![Create Project](images/create-project.png)
 
-#### Import eShopOnWeb Git Repository
+#### Task 2:  Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click **Import**:
 
     ![Import Repository](images/import-repo.png)
 
-2. The repository is organized the following way:
+1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
     - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
     - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 8 website used on the lab scenarios.
+
+You have now completed the necessary prerequisite steps to continue with the different individual labs for this AZ-400 course.
