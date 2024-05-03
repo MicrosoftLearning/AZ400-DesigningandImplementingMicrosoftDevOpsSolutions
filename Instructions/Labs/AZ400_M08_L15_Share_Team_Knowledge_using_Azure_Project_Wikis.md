@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Sharing Team Knowledge using Azure Project Wikis'
-    module: 'Module 09: Implement continuous feedback'
+    title: 'Share team knowledge using Azure Project Wiki'
+    module: 'Module 08: Implement continuous feedback'
 ---
 
-# Sharing Team Knowledge using Azure Project Wikis
+# Share team knowledge using Azure Project Wiki
 
 ## Student lab manual
 
@@ -170,7 +170,7 @@ In this task, you will create a project wiki and add to it a Mermaid diagram and
 1. On the **Project Design** editor pane, in the toolbar, click the paper clip icon representing the **Insert a file** action, in the **Open** dialog box, navigate to the **Downloads** folder, select the **Brand.png** file you downloaded in the previous exercise, and click **Open**.
 1. Back on the **Project Design** editor pane, review the preview pane and verify that the image is properly displayed.
 1. In the upper right corner of the editor pane, click the down-facing caret next to the **Save** button and, in the dropdown menu, click **Save with revision message**.
-1. In the **Save page** dialog box, type **User Interface section with the Tailwind Traders image** and click **Save**.
+1. In the **Save page** dialog box, type **User Interface section with the eShopOnWeb image** and click **Save**.
 1. Back on the editor pane, in the upper right corner, click **Close**.
 
 #### Task 2: Manage a project wiki

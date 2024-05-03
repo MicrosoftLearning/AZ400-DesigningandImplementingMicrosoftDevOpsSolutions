@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Integrating Azure Key Vault with Azure DevOps'
-    module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
+    title: 'Integrate Azure Key Vault with Azure DevOps'
+    module: 'Module 04: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# Integrating Azure Key Vault with Azure DevOps
+# Integrate Azure Key Vault with Azure DevOps
 
 ## Student lab manual
 

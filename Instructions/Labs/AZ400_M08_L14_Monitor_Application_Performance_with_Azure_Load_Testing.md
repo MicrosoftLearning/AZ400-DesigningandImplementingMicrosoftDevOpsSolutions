@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Monitoring Application Performance with Azure Load Testing'
-    module: 'Module 09: Implement continuous feedback'
+    title: 'Monitor Application Performance with Azure Load Testing'
+    module: 'Module 08: Implement continuous feedback'
 ---
 
-# Monitoring Application Performance with Azure Load Testing
+# Monitor Application Performance with Azure Load Testing
 
 ## Student lab manual
 

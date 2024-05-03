@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Deploying Docker containers to Azure App Service web apps'
-    module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
+    title: 'Deploy Docker containers to Azure App Service web apps'
+    module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Deploying Docker containers to Azure App Service web apps
+# Deploy Docker containers to Azure App Service web apps
 
 ## Student lab manual
 

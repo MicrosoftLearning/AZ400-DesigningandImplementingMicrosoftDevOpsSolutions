@@ -1,10 +1,10 @@
 ---
 lab:
-  title: "Controlling Deployments using Classic Release Gates"
-  module: "Module 04: Design and implement a release strategy"
+  title: "Control Deployments using Release Gates"
+  module: "Module 03: Design and implement a release strategy"
 ---
 
-# Controlling Deployments using Classic Release Gates
+# Control Deployments using Release Gates
 
 ## Student lab manual
 

@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Implementing GitHub Actions for CI/CD'
-    module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
+    title: 'Implement GitHub Actions for CI/CD'
+    module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Implementing GitHub Actions for CI/CD
+# Implement GitHub Actions for CI/CD
 
 ## Student lab manual
 
