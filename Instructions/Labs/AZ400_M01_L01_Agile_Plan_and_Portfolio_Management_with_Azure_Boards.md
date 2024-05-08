@@ -29,7 +29,7 @@ After you complete this lab, you will be able to:
 - Define dashboards.
 - Customize team process.
 
-## Estimated timing: 90 minutes
+## Estimated timing: 60 minutes
 
 ## Instructions
 
@@ -349,7 +349,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
     ![On the "Settings" panel, clikc "Save & Close"](images/m1/EShop-WEB-qa_column_v1.png)
 
 1. On the **Settings** panel, select the **Columns** tab again. Notice the ellipsis next to the **QA Approved** column you created. Select **Move right** twice, so that the QA Approved column gets positioned in-between **Committed** and **Done**.
-1. On the **Settings** panel, click **Save amd close**.
+1. On the **Settings** panel, click **Save and close**.
 
 1. On the **Boards portal**, the **QA Approved** column is now visible in the Kanban board view.
 1. Drag the **As a customer, I want to see tutorials I recently viewed** work item from the **Committed** stage into the **QA Approved** stage.
