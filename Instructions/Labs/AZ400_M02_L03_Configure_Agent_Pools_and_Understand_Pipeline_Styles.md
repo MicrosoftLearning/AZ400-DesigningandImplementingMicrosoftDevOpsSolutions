@@ -165,7 +165,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 1. From the list of projects, click the tile representing your **eShopOnWeb** project.
 1. On the **eShopOnWeb** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
 1. On the **Recent** tab of the **Pipelines** pane, select **eShopOnWeb** and, on the **eShopOnWeb** pane, select **Edit**.
-1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: windows-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: ubuntu-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     name: az400m03l03a-pool
@@ -173,11 +173,11 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
     - Agent.Name -equals az400m03-vm0
     ```
 
-    > **WARNING**: Be careful with copy/paste, make sure you have same indentation shown above.
+    > **WARNING**: Be careful with copy/paste, make sure you have the same indentation shown above.
 
     ![Yaml pool syntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
-1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Save and Run**. This will automatically trigger the build based on this pipeline.
+1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Validate and save**. This will automatically trigger the build based on this pipeline.
 1. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run. 
 1. On the **Recent** tab of the **Pipelines** pane, click the **eShopOnWeb** entry, on the **Runs** tab of the **eShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
 
@@ -186,7 +186,7 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 1. Stop and remove the agent service by running `.\config.cmd remove` from the command prompt.
 1. Delete the agent pool.
 1. Revoke the PAT token.
-1. Revert the changes in the **eshoponweb-ci-pr.yml** file by navigating to it from Repos/.ado/eshoponweb-ci-pr.yml, selecting **Edit** and removing lines 13-15 (the agent pool snippet), and changing back to  `vmImage: windows-latest` as it was originally. (This is because you will use the same sample pipeline file in a future lab exercise.)
+1. Revert the changes in the **eshoponweb-ci-pr.yml** file by navigating to it from Repos/.ado/eshoponweb-ci-pr.yml, selecting **Edit** and removing lines 13-15 (the agent pool snippet), and changing back to  `vmImage: ubuntu-latest` as it was originally. (This is because you will use the same sample pipeline file in a future lab exercise.)
 
 ![Revert pipeline pool back to vmImage settings](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
