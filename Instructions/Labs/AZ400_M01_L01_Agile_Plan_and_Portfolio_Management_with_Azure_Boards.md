@@ -228,7 +228,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: The current sprint has a pretty limited scope. There are two tasks in the **To do** stage. At this point, neither task has been assigned. Both show a numeric value to the right of **Unassigned** entry representing the remaining work estimate.
 
-1. Within the **ToDo** Column, notice the Task Item **Add page for most recent tutorials**, replace the **Unassigned** entry with your user account, then select your account to assign the task to yourself.
+1. Within the **ToDo** Column, notice the Task Item **Add page for most recent tutorials**, click the **Unassigned** entry and, in the list of user accounts, select your account to assign the task to yourself.
 
 1. Select the **Capacity** tab of the **Sprints** view.
 
