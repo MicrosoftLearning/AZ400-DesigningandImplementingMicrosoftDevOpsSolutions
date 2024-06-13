@@ -127,7 +127,7 @@ In this task, you will step through the process of cloning a Git repository by u
     > **Note**: To see all relevant commands, you can start by typing **Git**.
 
 1. In the **Provide repository URL or pick a repository source** text box, paste the repo clone URL you copied earlier in this task and press the **Enter** key.
-1. Within the **Select Folder** dialog box, navigate to the C: drive, create a new folder named **Git**, select it, and then click **Select Repository Location**.
+1. Within the **Select Folder** dialog box, navigate to the C: drive, create a new folder named **Git**, select it, and then click **Select as Repository Destination**.
 1. When prompted, log in to your Azure DevOps account.
 1. After the cloning process completes, once prompted, in the Visual Studio Code, click **Open** to open the cloned repository.
 
@@ -255,8 +255,8 @@ In this task, you will create a branch by using Visual Studio Code.
 
     ![Create branch](images/create-branch.png)
 
+1. In the **Select a ref to create the branch from** textbox, select **main** as the reference branch.
 1. In the **Branch name** textbox, type **dev** to specify the new branch and press **Enter**.
-1. In the **Select a ref to create the 'dev' branch from** textbox, select **main** as the reference branch.
 
     > **Note**: At this point, you are automatically switched to the **dev** branch.
 

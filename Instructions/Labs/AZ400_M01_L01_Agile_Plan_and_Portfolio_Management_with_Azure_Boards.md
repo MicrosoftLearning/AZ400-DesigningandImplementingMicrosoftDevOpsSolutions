@@ -143,7 +143,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: On the **Training dashboard** panel, note that the assignment, **Area**, and **Iteration** are already set to the same values as the epic that the feature is based on. In addition, the feature is automatically linked to the parent item it was created from.
 
-1. Click **Add link** to save the Child item. On the (New Feature) **Training dashboard** panel, click **Save & Close**.
+1. Click **OK** to save the Child item. On the (New Feature) **Training dashboard** panel, click **Save & Close**.
 
     ![Epic with Linked Child Item](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
@@ -182,7 +182,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
     > **Note**: You can also expand work item cards to get to conveniently editable details.
 
 1. Hover with the mouse pointer over the rectangle representing the work item you moved to the **Approved** stage. This will reveal the down facing caret symbol.
-1. Click the down facing caret symbol to expand the work item card, select the **Unassigned** entry, and in the list of user accounts, select your account to assign the moved PBI to yourself.
+1. Click the down facing caret symbol to expand the work item card, replace the **Unassigned** entry with your name, then select your account to assign the moved PBI to yourself.
 1. On the **Board** tab of the **EShop-WEB** panel, drag the second work item named **As a customer, I want to see tutorials I recently viewed** from the **New** to the **Committed** stage.
 1. On the **Board** tab of the **EShop-WEB** panel, drag the third work item named **As a customer,  I want to request new tutorials** from the **New** to the **Done** stage.
 
@@ -198,7 +198,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     > **Note**: You can use the second plus sign directly left to the first backlog item to add a new task to it.
 
-1. On the **Backlog** tab of the **EShop-WEB** pane, in the upper left corner of the pane, click the second plus sign from the top, the one next to the first work item. This will display the **NEW TASK** panel.
+1. On the **Backlog** tab of the **EShop-WEB** pane, in the upper left corner of the pane, click the plus sign next to the first work item. This will display the **NEW TASK** panel.
 
     ![Click on "+" to create Task](images/m1/new_task_v1.png)
 
@@ -228,7 +228,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: The current sprint has a pretty limited scope. There are two tasks in the **To do** stage. At this point, neither task has been assigned. Both show a numeric value to the right of **Unassigned** entry representing the remaining work estimate.
 
-1. Within the **ToDo** Column, notice the Task Item **Add page for most recent tutorials**, click the **Unassigned** entry and, in the list of user accounts, select your account to assign the task to yourself.
+1. Within the **ToDo** Column, notice the Task Item **Add page for most recent tutorials**, replace the **Unassigned** entry with your user account, then select your account to assign the task to yourself.
 
 1. Select the **Capacity** tab of the **Sprints** view.
 
@@ -236,7 +236,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
 
-1. On the **Capacity** tab of the **Sprints** view, click **+Add User** and select your user account. For this user, set the **Activity** field to **Development** and, in the **Capacity per day** textbox, type **1**.
+1. On the **Capacity** tab of the **Sprints** view, For your user account, set the **Activity** field to **Development** and, in the **Capacity per day** textbox, type **1**. Then click **Save**.
 
     > **Note**: This represents 1 hour of development work per day. Note that you can add additional activities per user in the case they do more than just development.
 
@@ -266,7 +266,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: One way to resolve this capacity issue would be to move the task to a future iteration. There are a few ways this could be done. You could, for example, open the task here and edit it within the panel providing access to the task details. Another approach would be to use the **Backlog** view, which provides an in-line menu option to move it. At this point though, don't move the task yet.
 
-1. On the **Taskboard** tab of the **Sprints** view, in the toolbar, on the right hand side, select the **View options** symbol (directly to the left of the funnel icon) and, in the **View options** dropdown list, select the **Assigned To=** entry.
+1. On the **Taskboard** tab of the **Sprints** view, in the toolbar, on the right hand side, select the **View options** symbol (directly to the left of the funnel icon) and, in the **View options** dropdown list, select the **People** entry.
 
     > **Note**: This adjusts your view such that you can review the progress of tasks by person instead of by backlog item.
 
@@ -277,7 +277,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: This will color all cards green if they meet the rule criteria set directly below, in the **Rule criteria** section.
 
-1. In the **Rule criteria** section, in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
+1. In the **Rule criteria** section, select **+ Add new clause**, then in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
 
     !["Settings" window, make sure all fields have mentioned information](images/m1/EShop-WEB-styles_v1.png)
 
@@ -349,9 +349,9 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
     ![On the "Settings" panel, clikc "Save & Close"](images/m1/EShop-WEB-qa_column_v1.png)
 
 1. On the **Settings** panel, select the **Columns** tab again. Notice the ellipsis next to the **QA Approved** column you created. Select **Move right** twice, so that the QA Approved column gets positioned in-between **Committed** and **Done**.
-1. On the **Settings** panel, click **Save**.
+1. On the **Settings** panel, click **Save and close**.
 
-1. **Refresh** the **Boards portal**, so the **QA Approved** column is visible in the Kanban board view now.
+1. On the **Boards portal**, the **QA Approved** column is now visible in the Kanban board view.
 1. Drag the **As a customer, I want to see tutorials I recently viewed** work item from the **Committed** stage into the **QA Approved** stage.
 1. Drag the **As a customer, I want to view new tutorials** work item from the **Approved** stage into the **QA Approved** stage.
 
@@ -374,7 +374,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     ![On the "Settings" panel, review information and click "Save and close"](images/m1/dd_v1.png)
 
-    > **Note**: The **QA Approved** stage now has **Doing** and **Done** columns. You can also click the informational symbol (with letter **i** in a circle) next to the column header to read the **Definition of done**.
+    > **Note**: The **QA Approved** stage now has **Doing** and **Done** columns. You can also click the informational symbol (with letter **i** in a circle) next to the column header to read the **Definition of done**. You may need to refresh the browser to see changes.
 
     ![Split Columns for QA Approved](images/m1/EShop-WEB-qa_2columns_v1.png)
 
@@ -384,11 +384,13 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
 1. On the **Settings** panel, select the **Swimlanes** tab.
 1. On the **Swimlanes** tab, click **+ Swimlane**, directly under the **Swimlane name** label, in the **Name** textbox, type **Expedite**.
-1. On the **Settings** panel, click **Save**.
+1. On the **Settings** panel, click **Save and close**.
 
     ![On the "Settings" panel, review information and click "Save"](images/m1/EShop-WEB-swimlane_v1.png)
 
 1. Back on the **Board** tab of the **Boards** panel, drag and drop the **Committed** work item onto the **QA Approved \| Doing** stage of the **Expedite** swimlane so that it gets recognized as having priority when QA bandwidth becomes available.
+
+    > **Note**: You may need to refresh the browser to make the swimlane visible.
 
 #### Task 5: Customize team process
 
@@ -460,7 +462,7 @@ Dashboards allow teams to visualize status and monitor progress across the proje
 
     ![If necessary, on the "Dashboards" pane, in the upper left corner, in the "eShopOnWeb Team" section, select "eShopOnWeb Team - Overview"](images/m1/EShop-WEB-dashboard_v1.png)
 
-1. On the **Dashboards** pane, select the drop-down menu next to the **eShopOnWeb Team - Overview** title, and select **+ New dashboard**.
+1. On the **Dashboards** pane, in the upper-right corner, select **+ New dashboard**.
 
     ![On the "Dashboards" pane, in the upper left corner, in the "eShopOnWeb Team" section, select "+ New dashboard"](images/m1/new_dashboard_v1.png)
 
@@ -469,7 +471,7 @@ Dashboards allow teams to visualize status and monitor progress across the proje
     ![On the "Create a dashboard" pane, in the "Name" textbox, type "Product training", in the "Team" dropdown list, select the "EShop-WEB" team, and click "Create"](images/m1/EShop-WEB-create_dash_v1.png)
 
 1. On the new dashboard pane, click **Add a widget**.
-1. On the **Add Widget** panel, in the **Search** textbox, type **sprint** to find existing widgets that focus on sprints. In the list of results, select **Sprint Overview** and click **Add**.
+1. On the **Add Widget** panel, in the **Search widgets** textbox, type **sprint** to find existing widgets that focus on sprints. In the list of results, select **Sprint Overview** and click **Add**.
 1. In the rectangle representing the newly added widget, click the **Settings** cogwheel icon and review the **Configuration** pane.
 
     > **Note**: The customization level will vary by widget.
@@ -494,7 +496,7 @@ Dashboards allow teams to visualize status and monitor progress across the proje
 
 1. In the **New query** panel, in the **Enter name** textbox, type **Web tasks**, in the **Folder** dropdown list, select **Shared Queries**, and click **OK**.
 1. From the **Queries>Shared Queries** view, select the **Charts** tab and click **+ New chart**.
-1. On the **Configure Chart** panel, in the **Name** textbox, type **Web tasks - By assignment**, in the **Group by** dropdown list, select **Assigned To**, and click **Save Chart** to save the changes.
+1. On the **Configure Chart** panel, in the **Name** textbox, type **Web tasks - By assignment**, in the **Group by** dropdown list, select **Assigned To**, and click **OK** to save the changes.
 
     ![On the "Configure Chart" panel, in the "Name" textbox, type "Web tasks - By assignment", in the "Group by" dropdown list, select "Assigned To", and click "OK" to save the changes](images/m1/EShop-WEB-chart_v1.png)
 
