@@ -109,7 +109,7 @@ In this task, you will create a storage template module **storage.bicep** which 
 
    ![Commiting the file](./images/m06/commit.png)
 
-1. Next, hover your mouse over the bicep folder and click the ellipsis icon, then select **New**, and **File**. Enter **storage.bicep** for the name and click **Create**.
+1. Next, hover your mouse over the `Infra` folder and click the ellipsis icon, then select **New**, and **File**. Enter **storage.bicep** for the name and click **Create**.
 
    ![New file menu](./images/m06/newfile.png)
 
