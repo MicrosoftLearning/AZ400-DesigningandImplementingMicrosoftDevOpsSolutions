@@ -67,7 +67,11 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-#### Task 2: Create Azure resources
+1. Go to **Repos>Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
+
+#### Task 3: Create Azure resources
 
 In this task, you will create an Azure web app by using the cloud shell in Azure portal.
 
