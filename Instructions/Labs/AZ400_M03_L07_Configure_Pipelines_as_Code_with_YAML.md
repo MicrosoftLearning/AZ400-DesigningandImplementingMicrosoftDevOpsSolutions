@@ -390,7 +390,7 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
            runOnce:
              deploy:
                steps:
-                 - task: DownloadBuildArtifacts@0
+                 - task: DownloadBuildArtifacts@1
                    inputs:
                      buildType: "current"
                      downloadType: "single"
