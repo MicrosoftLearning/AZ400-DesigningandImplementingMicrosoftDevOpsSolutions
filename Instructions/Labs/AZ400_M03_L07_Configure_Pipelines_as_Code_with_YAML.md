@@ -201,7 +201,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 1. The snippet of added code should look similar to below:
 
    ```yaml
-   - task: DownloadBuildArtifacts@0
+   - task: DownloadBuildArtifacts@1
      inputs:
        buildType: "current"
        downloadType: "single"
