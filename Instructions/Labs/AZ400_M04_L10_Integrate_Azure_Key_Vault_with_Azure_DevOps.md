@@ -64,6 +64,12 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 8 website used on the lab scenarios.
 
+#### Task 3: (skip if done) Set main branch as default branch
+
+1. Go to **Repos>Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
+
 ### Exercise 1: Setup CI pipeline to build eShopOnWeb container
 
 Setup CI YAML pipeline for:

@@ -81,6 +81,10 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
    - **.github** folder container YAML GitHub workflow definitions.
    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
+1. Go to **Repos>Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
+
 #### Task 3: (skip if already done) Configure CI Pipeline as Code with YAML in Azure DevOps
 
 In this task, you will add a YAML build definition to the existing project.
