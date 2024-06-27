@@ -191,7 +191,7 @@ If you want to know how to implement this in your application, please take a loo
 In order to make sure that your website is accessing App Configuration, you need to update its configuration.
 
 1. Go back to your Web App.
-1. In the **Settings** section, click on **Configuration**.
+1. In the **Settings** section, click on **Environment Variables**.
 1. Add two new application settings:
     - First app setting
         - **Name:** UseAppConfig
@@ -200,7 +200,7 @@ In order to make sure that your website is accessing App Configuration, you need
         - **Name:** AppConfigEndpoint
         - **Value:** *the value you saved/copied previously from App Configuration Endpoint. It should look like <https://appcs-NAME-REGION.azconfig.io>*
 
-1. Click **Ok** then **Save** and wait for the settings to be updated.
+1. Click **Apply** then **Confirm** and wait for the settings to be updated.
 1. Go to **Overview** and click on **Browse**
 1. At this step, you will see no changes in the website since the App Configuration doesn't contain any data. This is what you will do in the next tasks.
 
