@@ -192,7 +192,7 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
 1. On the **Board** tab of the **EShop-WEB** pane, at the top of the pane, click **View as Backlog** to display the tabular form.
 
-    ![In the "EShop-WEB" board, click "View as Backlog"](images/m1/EShop-WEB-view_backlog_v1.png)
+    ![In the "EShop-WEB" board, click "View as Backlog."](images/m1/EShop-WEB-view_backlog_v1.png)
 
     > **Note**: You can use the plus sign directly under the **Backlog** tab label of the **EShop-WEB** panel to view nested tasks under these work items.
 
