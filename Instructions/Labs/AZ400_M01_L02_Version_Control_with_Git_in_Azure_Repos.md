@@ -330,7 +330,7 @@ In this task, you will use the Azure DevOps portal to test the policy and create
 
 #### Task 6: Working with Pull Requests
 
-In this task, you will use the Azure DevOps portal to create a Pull Request, using the **dev** branch to merge a change into the protected **main** branch. An Azure DevOps work item with be linked to the changes to be able to trace pending work with code activity.
+In this task, you will use the Azure DevOps portal to create a Pull Request, using the **dev** branch to merge a change into the protected **main** branch. An Azure DevOps work item will be linked to the changes to be able to trace pending work with code activity.
 
 1. In the vertical navigational pane of the of the Azure DevOps portal, in the **Boards** section, select **Work Items**.
 1. Click on **+ New Work Item > Product Backlog Item**. In title field, write **Testing my first PR** and click on **Save**.
