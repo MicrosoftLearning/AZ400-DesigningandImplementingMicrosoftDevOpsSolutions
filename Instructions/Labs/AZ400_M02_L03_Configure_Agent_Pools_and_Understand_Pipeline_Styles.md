@@ -190,6 +190,8 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
 ### Exercise 3: Remove the resources used in the lab
 
 1. Stop and remove the agent service by running `.\config.cmd remove` from the command prompt.
+   - You will be asked to input your Personal Access Token again, to remove your agent from your organization.
+   - If you no longer have the Personal Access Token, you may proceed to regenerate the one you initially created in Exercise 2, Task 1, Step 2.
 1. Delete the agent pool.
 1. Revoke the PAT token.
 1. Revert the changes in the **eshoponweb-ci-pr.yml** file by navigating to it from Repos/.ado/eshoponweb-ci-pr.yml, selecting **Edit** and removing lines 13-15 (the agent pool snippet), and changing back to  `vmImage: ubuntu-latest` as it was originally. (This is because you will use the same sample pipeline file in a future lab exercise.)
