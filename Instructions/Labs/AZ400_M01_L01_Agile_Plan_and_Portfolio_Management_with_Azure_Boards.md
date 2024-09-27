@@ -279,7 +279,7 @@ The sprint backlog should contain all the information the team needs to successf
 
 1. In the **Rule criteria** section, select **+ Add new clause**, then in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
 
-    !["Settings" window, make sure all fields have mentioned information](images/m1/EShop-WEB-styles_v1.png)
+    !["Settings" window, make sure all fields have mentioned information](images/m1/EShop-WEB-styles_v2.png)
 
     > **Note**: This will set all cards assigned to **Development** activities green.
 
