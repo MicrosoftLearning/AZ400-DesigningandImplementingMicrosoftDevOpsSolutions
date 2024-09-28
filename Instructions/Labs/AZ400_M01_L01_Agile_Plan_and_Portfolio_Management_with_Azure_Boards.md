@@ -279,25 +279,25 @@ The sprint backlog should contain all the information the team needs to successf
 
 1. In the **Rule criteria** section, select **+ Add new clause**, then in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
 
-    !["Settings" window, make sure all fields have mentioned information](images/m1/EShop-WEB-styles_v1.png)
+    !["Settings" window, make sure all fields have mentioned information](images/m1/EShop-WEB-styles_v2.png)
 
     > **Note**: This will set all cards assigned to **Development** activities green.
 
     ![Sprint Tasks styles](images/m1/EShop-WEB-sprint-green_v1.png)
 
-1. On the **Settings** panel, select the **Backlogs** tab.
+1. In the **Settings** panel, select the **General** tab, and under the **Backlog section**, view and configure the navigation levels.
 
-    > **Note**: Entries on this tab allow you to set the levels available for navigation. Epics are not included by default, but you could change that.
+    > **Note**: Epics are not included by default, but you could change that.
 
-1. On the **Settings** panel, select the **Working days** tab.
+1. In the **Settings** panel, select the **General** tab, and under the **Working days** section specify the working days the team follows.
 
-    > **Note**: Entries on this tab allow you to specify the **Working days** the team follows. This applies to capacity and burndown calculations.
+    > **Note**: This applies to capacity and burndown calculations.
 
-1. On the **Settings** panel, select the **Working with bugs** tab.
+1. In the **Settings** panel, select the **General** tab, and under the **Working with bugs** section you can sepcify how you manage bugs in backlogs and boards.
 
     > **Note**: Entries on this tab allow you to specify how bugs are presented on the board.
 
-1. On the **Settings** panel, click **Save and close** to save the styling rule.
+1. On the **Settings** panel, click **Save** to save and close the styling rule.
 
     > **Note**: The task associated with **Development** is now green and very easy to identify.
 
