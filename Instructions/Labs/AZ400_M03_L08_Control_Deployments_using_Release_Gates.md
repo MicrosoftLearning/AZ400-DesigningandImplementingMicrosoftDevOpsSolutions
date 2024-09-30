@@ -174,7 +174,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 1. From the same **Settings** / **Application Insights** menu option within the Web App, select **View Application Insights Data**. This redirects you to the Application Insights blade in the Azure Portal.
 1. On the Application Insights resource blade, in the **Monitoring** section, click **Alerts** and then click **Create > Alert rule**.
-1. On the **Select a signal** blade, in the **Search by signal name** textbox, type **Requests**. From the list of results, select **Failed Requests**.
+1. On the **Condition** blade, click the **See all signals** link, type **Requests**. From the list of results, select **Failed Requests**.
 1. On the **Create an Alert Rule** blade, in the **Condition** section, leave the **Threshold** set to **Static**, validate the other default settings as follows:
 
    - Aggregation Type: Count
