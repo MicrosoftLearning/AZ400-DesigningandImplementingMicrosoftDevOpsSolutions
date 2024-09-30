@@ -134,7 +134,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
    ```bash
    SERVICEPLANNAME='az400m04l09-sp1'
-   az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
+   az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku P0V3
    ```
 
 1. Create two web apps with unique app names.
