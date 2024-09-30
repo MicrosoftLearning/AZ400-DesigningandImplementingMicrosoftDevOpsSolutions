@@ -160,9 +160,6 @@ In this task, you will create two Azure web apps representing the **DevTest** an
    | Resource group | **az400m04l09-RG**                                                                    |
    | Name           | the name of the DevTest web app you recorded in the previous task                     |
    | Region         | the same Azure region to which you deployed the web apps earlier in the previous task |
-   | Resource Mode  | **Classic**                                                                           |
-
-   > **Note**: Disregard the deprecation message. This is required in order to prevent failures of the Enable Continuous Integration DevOps task you will be using later in this lab.
 
 1. Click **Review + create** and then click **Create**.
 1. Wait for the provisioning process to complete.
