@@ -165,7 +165,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 1. Wait for the provisioning process to complete.
 1. In the Azure portal, navigate to the resource group **az400m04l09-RG** you created in the previous task.
 1. In the list of resources, click the **DevTest** web app.
-1. On the **DevTest** web app page, in the vertical menu on the left, in the **Settings** section, click **Application Insights**.
+1. On the **DevTest** web app page, in the vertical menu on the left, in the **Monitoring** section, click **Application Insights**.
 1. On the **Application Insights** blade, click **Turn on Application Insights**.
 1. In the **Change your resource** section, click the **Select existing resource** option, in the list of existing resources, select the newly created Application Insight resource, click **Apply** and, when prompted for confirmation, click **Yes**.
 1. Wait until the change takes effect.
