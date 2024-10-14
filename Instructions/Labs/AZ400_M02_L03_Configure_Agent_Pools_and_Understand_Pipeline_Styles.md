@@ -86,9 +86,10 @@ In this task, you will create a template-based Azure DevOps YAML pipeline.
 
    - A single Stage: Build
    - A single Job: Build
-   - 3 tasks within the Build Job:
+   - 4 tasks within the Build Job:
    - Dotnet Restore
    - Dotnet Build
+   - Dotnet Test
    - Dotnet Publish
 
 1. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
