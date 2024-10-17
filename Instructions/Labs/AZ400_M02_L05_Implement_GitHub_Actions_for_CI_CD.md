@@ -38,11 +38,11 @@ After you complete this lab, you will be able to:
 In this exercise, you will import the existing [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) repository code to your own GitHub private repo.
 
 The repository is organized the following way:
-    - **.ado** folder contains Azure DevOps YAML pipelines.
-    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
-    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
-    - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 8 website used on the lab scenarios.
+- **.ado** folder contains Azure DevOps YAML pipelines.
+- **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
+- **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+- **.github** folder container YAML GitHub workflow definitions.
+- **src** folder contains the .NET 8 website used on the lab scenarios.
 
 #### Task 1: Create a public repository in GitHub and import eShopOnWeb
 
