@@ -6,8 +6,6 @@ lab:
 
 # Agile planning and portfolio management with Azure Boards
 
-# Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility?view=azure-devops#web-portal-supported-browsers)
@@ -33,9 +31,7 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
-
-> **Note**: If you already created this project during previous labs, this exercise can be skipped.
+### Exercise 0: (skip if already done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -452,6 +448,8 @@ All processes are shared within the same organization. That is, one or more team
     > **Note**: Once the work item is saved, Azure DevOps will also save the new custom information so that it will be available for queries and through the rest of Azure DevOps.
 
 ### Exercise 2 (optional) : Define dashboards
+
+#### Task 1: Create and customize dashboards
 
 In this task, you will step through the process of creating dashboards and their core components.
 

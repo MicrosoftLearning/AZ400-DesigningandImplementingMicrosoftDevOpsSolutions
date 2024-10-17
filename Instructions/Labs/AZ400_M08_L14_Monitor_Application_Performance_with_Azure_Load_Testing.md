@@ -6,8 +6,6 @@ lab:
 
 # Monitor Application Performance with Azure Load Testing
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)

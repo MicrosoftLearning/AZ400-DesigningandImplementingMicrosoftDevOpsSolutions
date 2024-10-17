@@ -6,8 +6,6 @@ lab:
 
 # Enable Dynamic Configuration and Feature Flags
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://learn.microsoft.com/azure/devops/server/compatibility)
