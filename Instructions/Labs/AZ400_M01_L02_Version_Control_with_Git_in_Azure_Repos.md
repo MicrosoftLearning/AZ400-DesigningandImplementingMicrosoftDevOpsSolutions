@@ -37,7 +37,7 @@ After you complete this lab, you will be able to:
 - Review history of changes.
 - Work with branches by using Visual Studio Code.
 
-## Estimated timing: 60 minutes
+## Estimated timing: 45 minutes
 
 ## Instructions
 
@@ -99,7 +99,9 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 ### Exercise 1: Clone an existing repository
 
-In this exercise, you use Visual Studio Code to clone the Git repository you provisioned as part of the previous exercise.
+In this exercise, you will use Visual Studio Code to commit changes to the **main** branch of the **eShopOnWeb** repository.
+
+> **Note**: The **main** branch is the default branch in the **eShopOnWeb** repository and is the branch that you will use for the rest of the lab.
 
 #### Task 1: Clone an existing repository
 
@@ -391,4 +393,4 @@ When going through the different course labs in the order they are presented, th
 
 ## Review
 
-In this lab, you used the Azure DevOps portal to manage branches and repositories.
+In this lab, you have learned how to use Git for version control in Azure Repos.
