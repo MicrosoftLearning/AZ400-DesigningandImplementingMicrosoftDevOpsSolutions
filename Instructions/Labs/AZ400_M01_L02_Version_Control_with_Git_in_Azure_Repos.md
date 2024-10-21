@@ -45,36 +45,7 @@ After you complete this lab, you will be able to:
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1: (skip if done) Create and configure the team project
-
-In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
-
-1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
-
-    ![Create Project](images/create-project.png)
-
-#### Task 2: (skip if done) Import eShopOnWeb Git Repository
-
-In this task you will import the eShopOnWeb Git repository that will be used by several labs.
-
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
-
-    ![Import Repository](images/import-repo.png)
-
-1. The repository is organized the following way:
-    - **.ado** folder contains Azure DevOps YAML pipelines
-    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
-    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
-    - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 8 website used on the lab scenarios.
-
-#### Task 3: (skip if done) Set main branch as default branch
-
-1. Go to **Repos>Branches**.
-1. Hover on the **main** branch then click the ellipsis on the right of the column.
-1. Click on **Set as default branch**.
-
-#### Task 4: Configure Git and Visual Studio Code
+#### Task 1: Configure Git and Visual Studio Code
 
 In this task, you will install and configure Git and Visual Studio Code, including configuring the Git credential helper to securely store the Git credentials used to communicate with Azure DevOps. If you have already implemented these prerequisites, you can proceed directly to the next task.
 
@@ -96,6 +67,35 @@ In this task, you will install and configure Git and Visual Studio Code, includi
     git config --global user.name "<John Doe>"
     git config --global user.email <johndoe@example.com>
     ```
+
+#### Task 2: (skip if done) Create and configure the team project
+
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
+
+    ![Create Project](images/create-project.png)
+
+#### Task 3: (skip if done) Import eShopOnWeb Git Repository
+
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
+
+    ![Import Repository](images/import-repo.png)
+
+1. The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
+
+#### Task 4: (skip if done) Set main branch as default branch
+
+1. Go to **Repos>Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
 
 ### Exercise 1: Clone an existing repository
 
