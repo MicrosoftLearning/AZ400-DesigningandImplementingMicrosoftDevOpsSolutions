@@ -46,7 +46,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -57,7 +57,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -85,7 +85,7 @@ A service principal is automatically created by Azure Pipeline when you connect 
 1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
+   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute:
 
@@ -106,13 +106,13 @@ A service principal is automatically created by Azure Pipeline when you connect 
 
     > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
 
-1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings>Service Connections (under Pipelines)** and **New Service Connection**.
+1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings > Service Connections (under Pipelines)** and **New Service Connection**.
 1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
 1. The choose **Service principal (manual)** and click on **Next**.
 1. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name.
     - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
-    - In **Service connection name** type **azure-connection**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
+    - In **Service connection name** type **`azure-connection`**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
 
 1. Click on **Verify and Save**.
 
@@ -122,7 +122,7 @@ In this exercise, you will import and run the CI pipeline.
 
 #### Task 1: Import and run the CI pipeline
 
-1. Go to **Pipelines>Pipelines**
+1. Go to **Pipelines > Pipelines**
 1. Click on **New pipeline** button (or **Create Pipeline** if you don't have other pipelines previously created)
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
@@ -143,7 +143,7 @@ In this exercise, you will import and run the CI pipeline.
     - [**Docker**](https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/docker-v0?view=azure-pipelines) **- Build**: Build the Docker image and create two tags (Latest and current BuildID)
     - **Docker - Push**: Push the images to Azure Container Registry
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci-docker** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci-docker** and click on **Save**.
 
 1. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container-NAME**). On the left-hand side click **Repositories** under **Services** and make sure that the repository **eshoponweb/web** was created. When you click the repository link, you should see two tags (one of them is **latest**), these are the pushed images. If you don't see this, check the status of your pipeline.
 
@@ -181,7 +181,7 @@ You should now see the JSON output which confirms the success of the command run
 
 In this task, you will import and run the CD pipeline.
 
-1. Go to **Pipelines>Pipelines**
+1. Go to **Pipelines > Pipelines**
 1. Click on **New pipeline** button
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
@@ -202,7 +202,7 @@ In this task, you will import and run the CD pipeline.
     - **AzureResourceManagerTemplateDeployment**: Deploys the Azure App Service using bicep template.
     - **AzureResourceManagerTemplateDeployment**: Add role assignment using Bicep
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and hover on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and hover on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-cd-webapp-docker** and click on **Save**.
 
     > **Note 1**: The use of the **/infra/webapp-docker.bicep** template creates an app service plan, a web app with system assigned managed identity enabled, and references the Docker image pushed previously: **${acr.properties.loginServer}/eshoponweb/web:latest**.
 
@@ -220,7 +220,7 @@ Congratulations! In this exercise, you deployed a website using a custom Docker 
 
 In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
 
->**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+> **Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
 
 #### Task 1: Remove the Azure lab resources
 
@@ -239,7 +239,7 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
     az group list --query "[?starts_with(name,'rg-az400-container-')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
-    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+    > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 

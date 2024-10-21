@@ -40,15 +40,15 @@ In this task, you will create an **eShopOnWeb_MultiStageYAML** Azure DevOps proj
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb_MultiStageYAML** and leave the other fields with defaults. Click on **Create**.
 
-   ![Create Project](images/create-project.png)
+   ![Screenshot of the create new project panel.](images/create-project.png)
 
 #### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb_MultiStageYAML** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb_MultiStageYAML** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git and click **Import**:
 
-   ![Import Repository](images/import-repo.png)
+   ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
    - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -57,7 +57,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
    - **.github** folder container YAML GitHub workflow definitions.
    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -193,7 +193,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 1. Specify the following parameters for this task:
    - Download Artifacts produced by: **Current Build**
    - Download Type: **Specific Artifact**
-   - Artifact Name: **select "Website" from the list** (or **type "Website"** directly if it doesn't appear automatically in the list)
+   - Artifact Name: **select "Website" from the list** (or **type "`Website`"** directly if it doesn't appear automatically in the list)
    - Destination Directory: **$(Build.ArtifactStagingDirectory)**
 1. Click **Add**.
 1. The snippet of added code should look similar to below:

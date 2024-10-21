@@ -47,9 +47,9 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 > **Note**: If your published wiki corresponds to a product version, you can publish new branches as you release new versions of your product.
 
 1. In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **eShopOnWeb** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
-1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **src** folder and brows to **Web-> wwwroot -> images** subfolder. In the **Images** subfolder, locate the **brand.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **Download** to download the **brand.png** file to the local **Downloads** folder on your lab computer.
+1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **src** folder and brows to **Web -> wwwroot -> images** subfolder. In the **Images** subfolder, locate the **brand.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **Download** to download the **brand.png** file to the local **Downloads** folder on your lab computer.
 
-    >**Note**: You will use this image in the next exercise of this lab.
+    > **Note**: You will use this image in the next exercise of this lab.
 
 1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **eShopOnWeb** Repo title on top of the folder structure. **Select the ellipsis (3 dots)**, Choose **New / Folder**, and provide **Documents** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **READ.ME** as New File name.
 1. Confirm the creation of the folder and the file by **pressing the Create button**.
@@ -64,9 +64,9 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
     | Folder | **/Documents** |
     | Wiki name | **eShopOnWeb (Documents)** |
 
-    >**Note**: This will automatically open the Wiki section, and publish **the editor**, where you can provide a Wiki page title, as well as adding the actual content. Notice you are encouraged to use MarkDown format, but make use of the ribbon to help you with some of the MarkDown layout syntax.
+    > **Note**: This will automatically open the Wiki section, and publish **the editor**, where you can provide a Wiki page title, as well as adding the actual content. Notice you are encouraged to use MarkDown format, but make use of the ribbon to help you with some of the MarkDown layout syntax.
 
-1. In the Wiki Page **Title** field, enter "Welcome to our Online Retail Store!"
+1. In the Wiki Page **Title** field, enter "`Welcome to our Online Retail Store!`"
 
 1. In the body of the Wiki Page, paste in the following text:
 
@@ -129,11 +129,11 @@ In this exercise, you will step through creating and managing a project wiki.
 In this task, you will create a project wiki and add to it a Mermaid diagram and an image.
 
 1. On your lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **EShopOnweb** project,  with the content of the **eShopOnWeb (Documents)** wiki selected, at the top of the pane, click the **eShopOnWeb (Documents)** dropdown list header (the arrow down icon), and, in the drop down list, select **Create new project wiki**.
-1. In the **Page title** text box, type **Project Design**.
+1. In the **Page title** text box, type **`Project Design`**.
 1. Place the cursor in the body of the page, click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 1**. This will automatically add the hash character (**#**) at the beginning of the line.
-1. Directly after the newly added **#** character, type **Authentication and Authorization** and press the **Enter** key.
+1. Directly after the newly added **#** character, type **`Authentication and Authorization`** and press the **Enter** key.
 1. Click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 2**. This will automatically add the hash character (**##**) at the beginning of the line.
-1. Directly after the newly added **##** character, type **Azure DevOps OAuth 2.0 Authorization Flow** and press the **Enter** key.
+1. Directly after the newly added **##** character, type **`Azure DevOps OAuth 2.0 Authorization Flow`** and press the **Enter** key.
 1. **Copy and paste** the following code to insert a mermaid diagram on your wiki.
 
     ```text
@@ -155,37 +155,37 @@ In this task, you will create a project wiki and add to it a Mermaid diagram and
     :::
     ```
 
-    >**Note**: For details regarding the Mermaid syntax, refer to [About Mermaid](https://mermaid-js.github.io/mermaid/#/)
+    > **Note**: For details regarding the Mermaid syntax, refer to [About Mermaid](https://mermaid-js.github.io/mermaid/#/)
 
 1. To the right of the editor pane, in the preview pane, click **Load diagram** and review the outcome.
 
-    >**Note**: The output should resemble the flowchart that illustrates how to [Authorize access to REST APIs with OAuth 2.0](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/oauth)
+    > **Note**: The output should resemble the flowchart that illustrates how to [Authorize access to REST APIs with OAuth 2.0](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/oauth)
 
 1. In the upper right corner of the editor pane, click the down-facing caret next to the **Save** button and, in the dropdown menu, click **Save with revision message**.
-1. In the **Save page** dialog box, type **Authentication and authorization section with the OAuth 2.0 Mermaid diagram** and click **Save**.
+1. In the **Save page** dialog box, type **`Authentication and authorization section with the OAuth 2.0 Mermaid diagram`** and click **Save**.
 1. On the **Project Design** editor pane, place the cursor at the end of the Mermaid element you added earlier in this task, press the **Enter** key to add an extra line, click the left-most icon in the toolbar representing the header setting and, in the dropdown list, click **Header 2**. This will automatically add the double hash character (**##**) at the beginning of the line.
-1. Directly after the newly added **##** character, type **User Interface** and press the **Enter** key.
+1. Directly after the newly added **##** character, type **`User Interface`** and press the **Enter** key.
 1. On the **Project Design** editor pane, in the toolbar, click the paper clip icon representing the **Insert a file** action, in the **Open** dialog box, navigate to the **Downloads** folder, select the **Brand.png** file you downloaded in the previous exercise, and click **Open**.
 1. Back on the **Project Design** editor pane, review the preview pane and verify that the image is properly displayed.
 1. In the upper right corner of the editor pane, click the down-facing caret next to the **Save** button and, in the dropdown menu, click **Save with revision message**.
-1. In the **Save page** dialog box, type **User Interface section with the eShopOnWeb image** and click **Save**.
+1. In the **Save page** dialog box, type **`User Interface section with the eShopOnWeb image`** and click **Save**.
 1. Back on the editor pane, in the upper right corner, click **Close**.
 
 #### Task 2: Manage a project wiki
 
 In this task, you will manage the newly created project wiki.
 
->**Note**: You will start by reverting the most recent change to the wiki page.
+> **Note**: You will start by reverting the most recent change to the wiki page.
 
 1. On you lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **eShopOnWeb** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
 1. On the **Revisions** pane, click the entry representing the most recent change.
 1. On the resulting pane, review the comparison between the previous and the current version of the document, click **Revert**, when prompted for the confirmation, click **Revert** again, and then click **Browse Page**.
 1. Back on the **Project Design** pane, verify that the change was successfully reverted.
 
-    >**Note**: Now you will add another page to the project wiki and set it as the wiki home page.
+    > **Note**: Now you will add another page to the project wiki and set it as the wiki home page.
 
 1. On the **Project Design** pane, at the bottom left corner, click **+ New page**.
-1. On the page editor pane, in the **Page title** text box, type **Project Design Overview**, click **Save**, and then click **Close**.
+1. On the page editor pane, in the **Page title** text box, type **`Project Design Overview`**, click **Save**, and then click **Close**.
 1. Back in the pane listing the pages within the **Project Design** project wiki, locate the **Project Design Overview** entry, select it with the mouse pointer, drag and drop it above the **Project Design** page entry.
 1. Confirm the changes by pressing the **Move** button in the appearing window.
 1. Verify that the **Project Design Overview** entry is listed as the top level page with the home icon designating it as the wiki home page.

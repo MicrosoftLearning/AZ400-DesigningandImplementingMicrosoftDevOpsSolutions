@@ -27,11 +27,11 @@ After you complete this lab, you will be able to:
 - Include build validation as part of a Pull Request.
 - Configure CI pipeline as code with YAML.
 
-## Estimated timing: 45 minutes
+## Estimated timing: 30 minutes
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -45,7 +45,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -56,7 +56,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -70,7 +70,7 @@ In this task, you will import the YAML build definition that will be used as a B
 
 Let's start by importing the build pipeline named [eshoponweb-ci-pr.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci-pr.yml).
 
-1. Go to **Pipelines>Pipelines**
+1. Go to **Pipelines > Pipelines**
 1. Click on **Create Pipeline** or **New Pipeline** button
 1. Select **Azure Repos Git (YAML)**
 1. Select the **eShopOnWeb** repository
@@ -84,13 +84,13 @@ Let's start by importing the build pipeline named [eshoponweb-ci-pr.yml](https:/
     - **DotNet Publish**: Publishes the application and its dependencies to a folder for deployment to a hosting system. In this case, it's **Build.ArtifactStagingDirectory**.
 
 1. Click the **Save** button to save the pipeline definition
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci-pr** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci-pr** and click on **Save**.
 
 #### Task 2: Branch Policies
 
 In this task, you will add policies to the main branch and only allow changes using Pull Requests that comply with the defined policies. You want to ensure that changes in a branch are reviewed before they are merged.
 
-1. Go to **Repos>Branches** section.
+1. Go to **Repos > Branches** section.
 1. On the **Mine** tab of the **Branches** pane, hover the mouse pointer over the **main** branch entry to reveal the ellipsis symbol on the right side.
 1. Click the ellipsis and, in the pop-up menu, select **Branch Policies**.
 1. On the **main** tab of the repository settings, enable the option for **Require minimum number of reviewers**. Add **1** reviewer and check the box **Allow requestors to approve their own changes**(as you are the only user in your project for the lab)
@@ -130,7 +130,7 @@ In this task, you will add the YAML build definition that will be used to implem
 
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Go to **Pipelines>Pipelines**.
+1. Go to **Pipelines > Pipelines**.
 1. Click on **New Pipeline** button.
 1. Select **Azure Repos Git (YAML)**.
 1. Select the **eShopOnWeb** repository.
@@ -144,6 +144,8 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
     - **DotNet Publish**: Publishes the application and its dependencies to a folder for deployment to a hosting system. In this case, it's **Build.ArtifactStagingDirectory**.
     - **Publish Artifact - Website**: Publish the app artifact (created in the previous step) and make it available as a pipeline artifact.
     - **Publish Artifact - Bicep**: Publish the infrastructure artifact (Bicep file) and make it available as a pipeline artifact.
+
+1. Click on **Run** and wait for the pipeline to execute successfully.
 
 #### Task 2: Enable Continuous Integration
 
@@ -170,7 +172,7 @@ The default build pipeline definition doesn't enable Continuous Integration.
 1. Select **Create a new branch for this commit**.
 1. Keep the default branch name and **Start a pull request** checked.
 1. Click on **Save**.
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci** and click on **Save**.
 1. Go to **Repos > Pull Requests**.
 1. Click on the **"Update eshoponweb-ci.yml for Azure Pipelines"** pull request.
 1. After all validations are successful, on the top-right click on **Approve**. Now you can click on **Complete**.
@@ -180,7 +182,7 @@ The default build pipeline definition doesn't enable Continuous Integration.
 
 In this task, you will create a Pull Request, using a new branch to merge a change into the protected **main** branch and automatically trigger the CI pipeline.
 
-1. Navigate to the **Repos** section.
+1. Navigate to the **Repos** section, and click on **Branches**.
 1. Create a new branch named **Feature02** based on the **main** branch.
 1. Click the new **Feature02** branch.
 1. Navigate to the **/eShopOnWeb/src/Web/Program.cs** file and click **Edit** in the top-right.
@@ -197,7 +199,7 @@ In this task, you will create a Pull Request, using a new branch to merge a chan
 1. The Pull Request will show some pending requirements, based on the policies applied to the target **main** branch.
 1. After all validations are successful, on the top-right click on **Approve**. Now from the **Set auto-complete** dropdown you can click on **Complete**.
 1. On the **Complete Pull Request** tab, Click on **Complete Merge**
-1. Go back to **Pipelines>Pipelines**, you will notice that the build **eshoponweb-ci** was triggered automatically after the code was merged.
+1. Go back to **Pipelines > Pipelines**, you will notice that the build **eshoponweb-ci** was triggered automatically after the code was merged.
 1. Click on the **eshoponweb-ci** build then select the last run.
 1. After its successful execution, click on **Related > Published** to check the published artifacts:
     - Bicep: the infrastructure artifact.

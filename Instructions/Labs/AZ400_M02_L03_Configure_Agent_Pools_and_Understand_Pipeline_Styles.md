@@ -49,7 +49,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -72,7 +72,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 
 1. In your browser, open the Azure Portal at `https://portal.azure.com`. If prompted, sign in by using an account with the Owner role in your Azure subscription.
 
-1. In the **Search resources, services and docs (G+/)** box, type **Virtual Machines** and select it from the dropdown list.
+1. In the **Search resources, services and docs (G+/)** box, type **`Virtual Machines`** and select it from the dropdown list.
 
 1. Select the **Create** button.
 
@@ -88,7 +88,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
    | -- | -- |
    | **Subscription** drop-down list | Select your Azure subscription. |
    | **Resource group** section | Create a new resource group named **rg-eshoponweb-agentpool**. |
-   | **Virtual machine name** text box | Enter name of your preference, for example, **eshoponweb-vm**. |
+   | **Virtual machine name** text box | Enter name of your preference, for example, **`eshoponweb-vm`**. |
    | **Region** drop-down list | You can choose your closest [azure](https://azure.microsoft.com/explore/global-infrastructure/geographies) region. For example, “eastus”, “eastasia”, “westus”, etc. |
    | **Availability options** drop-down list | Select **No infrastructure redundancy required**. |
    | **Security type** drop-down list | Select with the **Trusted launch virtual machines** option. |
@@ -209,7 +209,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 1. To configure the agent, perform the following actions when prompted:
 
    - Enter the URL of the Azure DevOps organization (**server URL**) in the format `https://aex.dev.azure.com`{your organization name}.
-   - Accept the default authentication type (**PAT**).
+   - Accept the default authentication type (**`PAT`**).
    - Enter the value of the PAT token you created in the previous step.
    - Enter the agent pool name **`eShopOnWebSelfPool`** you created earlier in this exercise.
    - Enter the agent name **`eShopOnWebSelfAgent`**.
@@ -287,7 +287,7 @@ In this task, you will create a YAML-based pipeline for the **eShopOnWeb** proje
 
 1. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
 
-    > Note: we are just creating the pipeline definition for now, without running it. You will first set up an Azure DevOps agent pool and run the pipeline in a later exercise.
+    > **Note**: We are just creating the pipeline definition for now, without running it. You will first set up an Azure DevOps agent pool and run the pipeline in a later exercise.
 
 #### Task 2: Update the YAML pipeline with the self-hosted agent pool
 

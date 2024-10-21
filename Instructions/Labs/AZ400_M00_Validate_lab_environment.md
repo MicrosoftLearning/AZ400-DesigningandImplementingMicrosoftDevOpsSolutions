@@ -88,7 +88,7 @@ First, you'll create an **eShopOnWeb** Azure DevOps project to be used by severa
 
 1. Select **Create**.
 
-   ![Create Project](images/create-project.png)
+   ![Screenshot of the create new project panel.](images/create-project.png)
 
 ### Import eShopOnWeb git repository
 
@@ -102,7 +102,7 @@ Now, you'll import the eShopOnWeb into your git repository.
 
 1. On the **Import a Git Repository** window, paste the following URL `https://github.com/MicrosoftLearning/eShopOnWeb` and select **Import**:
 
-   ![Import Repository](images/import-repo.png)
+   ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
 

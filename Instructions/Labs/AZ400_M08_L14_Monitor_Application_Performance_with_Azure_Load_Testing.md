@@ -48,15 +48,15 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
 
-    ![Create Project](images/create-project.png)
+    ![Screenshot of the create new project panel.](images/create-project.png)
 
 #### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
 
-    ![Import Repository](images/import-repo.png)
+    ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines
@@ -65,7 +65,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
     - **.github** folder container YAML GitHub workflow definitions.
     - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -76,7 +76,7 @@ In this task, you will create an Azure web app by using the cloud shell in Azure
 1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Microsoft Entra tenant associated with this subscription.
 1. In the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
-    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
+    > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'eastus').
 
@@ -124,7 +124,7 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
+   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes:
 
@@ -145,9 +145,9 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 
     > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
 
-1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings>Service Connections (under Pipelines)** and **New Service Connection**.
+1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings > Service Connections (under Pipelines)** and **New Service Connection**.
 
-    ![New Service Connection](images/new-service-connection.png)
+    ![Screenshot of the new service connection button.](images/new-service-connection.png)
 
 1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
 
@@ -156,9 +156,9 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 1. Fill in the empty fields using the information gathered during previous steps:
     - Subscription Id and Name.
     - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
-    - In **Service connection name** type **azure subs**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
+    - In **Service connection name** type **`azure subs`**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
 
-    ![Azure Service Connection](images/azure-service-connection.png)
+    ![Screenshot of the Azure service connection panel.](images/azure-service-connection.png)
 
 1. Click on **Verify and Save**.
 
@@ -279,7 +279,7 @@ In this task, you will add a YAML build definition to the existing project.
 
     > **Note**: if you kept all previous pipelines from previous lab exercises, this new pipeline might have reused a default **eShopOnWeb (#)** sequence name for the pipeline as shown in below screenshot. Select a pipeline (most probably the one with the highest sequence number, select Edit and validate it points to the m09l16-pipeline.yml code file).
 
-    ![Screenshot of Azure Pipelines showing eShopOnWeb runs](images/m3/eshoponweb-m9l16-pipeline.png)
+    ![Screenshot of Azure Pipelines showing eShopOnWeb runs.](images/m3/eshoponweb-m9l16-pipeline.png)
 
 1. Confirm to run this pipeline by clicking **Run** from the appearing pane and confirm by clicking **Run** once more.
 1. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
@@ -313,7 +313,7 @@ In this exercise, you will deploy an Azure Load Testing Resource in Azure, and c
 In this task, you will deploy an Azure Load Testing Resource into your Azure subscription.
 
 1. From the Azure Portal (<https://portal.azure.com>), navigate to **Create Azure Resource**.
-1. In the 'Search Services and marketplace' search field, enter **Azure Load Testing**.
+1. In the 'Search Services and marketplace' search field, enter **`Azure Load Testing`**.
 1. Select **Azure Load Testing** (published by Microsoft), from the search results.
 1. From the Azure Load Testing Page, click **Create** to start the deployment process.
 1. From the 'Create a Load Testing Resource' page, provide the necessary details for the resource deployment:
@@ -563,7 +563,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 
 1. Notice how the last line of the Load testing output says **##[error]TestResult: FAILED**; since we defined a **FailCriteria** having an avg response time of > 300, or having an error percentage of > 20, now seeing an avg response time which is more than 300, the task will be flagged as failed.
 
-    > Note: Imagine in a real-life scenario, you would validate the performance of your App Service, and if the performance is below a certain threshold - typically meaning there is more load on the Web App, you could trigger a new deployment to an additional Azure App Service. As we can't control the response time for Azure lab environments, we decided to revert the logic to guarantee the failure.
+    > **Note**: Imagine in a real-life scenario, you would validate the performance of your App Service, and if the performance is below a certain threshold - typically meaning there is more load on the Web App, you could trigger a new deployment to an additional Azure App Service. As we can't control the response time for Azure lab environments, we decided to revert the logic to guarantee the failure.
 
 1. The FAILED status of the pipeline task, actually reflects a SUCCESS of the Azure Load Testing requirement criteria validation.
 
@@ -590,7 +590,7 @@ In this task, you will use Azure Cloud Shell to remove the Azure resources provi
     az group list --query "[?starts_with(name,'az400m09l16')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
-    >**Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+    > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
 
 ## Review
 

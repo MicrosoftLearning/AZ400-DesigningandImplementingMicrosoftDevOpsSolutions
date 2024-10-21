@@ -46,7 +46,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -57,7 +57,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -71,7 +71,7 @@ In this task, you will add the YAML build definition that will be used to implem
 
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Go to **Pipelines>Pipelines**.
+1. Go to **Pipelines > Pipelines**.
 1. Click on **New Pipeline** button.
 1. Select **Azure Repos Git (YAML)**.
 1. Select the **eShopOnWeb** repository.
@@ -129,13 +129,13 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 1. Once completed, the **Test** tab will show as part of the pipeline run. Click on it to check the summary. It looks like shown below:
 
-    ![Tests Summary](images/AZ400_M05_L09_Tests_Summary.png)
+    ![Screenshot of the tests summary.](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. For more details, at the bottom of the page, the table shows a list of the different run tests.
 
-    >**Note**: If the table is empty, you need to reset the filters to have all the details about the tests run.
+    > **Note**: If the table is empty, you need to reset the filters to have all the details about the tests run.
 
-    ![Tests Table](images/AZ400_M05_L09_Tests_Table.png)
+    ![Screenshot of the tests table.](images/AZ400_M05_L09_Tests_Table.png)
 
 ## Review
 

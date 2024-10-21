@@ -62,15 +62,15 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
 
-   ![Create Project](images/create-project.png)
+   ![Screenshot of the create new project panel.](images/create-project.png)
 
 #### Task 2: (skip if already done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
-   ![Import Repository](images/import-repo.png)
+   ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
    - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -79,7 +79,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
    - **.github** folder container YAML GitHub workflow definitions.
    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -104,7 +104,7 @@ In this task, you will add a YAML build definition to the existing project.
 
    > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci** and click on **Save**.
 
 ### Exercise 2: Creating the necessary Azure Resources for the Release Pipeline
 
@@ -175,7 +175,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 1. From the same **Settings** / **Application Insights** menu option within the Web App, select **View Application Insights Data**. This redirects you to the Application Insights blade in the Azure Portal.
 1. On the Application Insights resource blade, in the **Monitoring** section, click **Alerts** and then click **Create > Alert rule**.
-1. On the **Select a signal** blade, in the **Search by signal name** textbox, type **Requests**. From the list of results, select **Failed Requests**.
+1. On the **Select a signal** blade, in the **Search by signal name** textbox, type **`Requests`**. From the list of results, select **Failed Requests**.
 1. On the **Create an Alert Rule** blade, in the **Condition** section, leave the **Threshold** set to **Static**, validate the other default settings as follows:
 
    - Aggregation Type: Count
@@ -224,7 +224,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. Confirm the App Type is set to "Web App on Windows". Next, in the **App Service name** dropdown list, select the name of the **DevTest** web app.
 1. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
 
-   > notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
+   > **Note**: Notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
 
 1. Open the **Application and Configuration Settings** pane and enter `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` in the **App settings** box.
 
@@ -306,8 +306,8 @@ In this task, you will first generate some alerts for the DevTest Web App, follo
 1. From the Azure Portal, browse to the **DevTest Web App** Resource deployed earlier.
 1. From the Overview pane, notice the **URL** field showing the Hyperlink of the web application. Click this link, which redirects you to the eShopOnWeb web application in the browser.
 1. To simulate a **Failed Request**, add **/discount** to the URL, which will result in an error message, since that page does not exist. Refresh this page several times to generate multiple events.
-1. From the Azure Portal, in the "Search resources, services and docs" field, enter **Application Insights** and select the **DevTest-AppInsights** Resource created in the previous exercise. Next, navigate to **Alerts**.
-1. There should be at least **1** new alert in the list of results, having a **Severity 2** enter **Alerts** to open the Alerts Service of Azure Monitor.
+1. From the Azure Portal, in the "Search resources, services and docs" field, enter **`Application Insights`** and select the **DevTest-AppInsights** Resource created in the previous exercise. Next, navigate to **Alerts**.
+1. There should be at least **1** new alert in the list of results, having a **Severity 2** enter **`Alerts`** to open the Alerts Service of Azure Monitor.
 1. Notice there should be at least **1** Failed_Alert with **Severity 2 - Warning** showing up in the list. This got trigger when you validated the non-existing website URL address in the previous exercise.
 
    > **Note:** If no Alert shows up yet, wait another few minutes.

@@ -74,7 +74,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
 
-    ![Create Project](images/create-project.png)
+    ![Screenshot of the create new project panel.](images/create-project.png)
 
 #### Task 3: (skip if done) Import eShopOnWeb Git Repository
 
@@ -82,7 +82,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
 
-    ![Import Repository](images/import-repo.png)
+    ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines
@@ -112,7 +112,7 @@ In this task, you will step through the process of cloning a Git repository by u
 
 1. In the upper right corner of the **eShopOnWeb** repository pane, click **Clone**.
 
-    ![Clone Git Repository](images/clone-repo.png)
+    ![Screenshot of the clone Git repository.](images/clone-repo.png)
 
     > **Note**: Getting a local copy of a Git repo is called *cloning*. Every mainstream development tool supports this and will be able to connect to Azure Repos to pull down the latest source to work with.
 
@@ -128,7 +128,7 @@ In this task, you will step through the process of cloning a Git repository by u
 
 1. At the Command Palette prompt, run the **Git: Clone** command.
 
-    ![VS Code command palette](images/vscode-command.png)
+    ![Screenshot of the VS Code command palette.](images/vscode-command.png)
 
     > **Note**: To see all relevant commands, you can start by typing **Git**.
 
@@ -166,9 +166,9 @@ In this task, you will use Visual Studio Code to commit changes.
 
 1. Press **Ctrl+S** to save the change.
 1. In the Visual Studio Code window, select the **SOURCE CONTROL** tab to verify that Git recognized the latest change to the file residing in the local clone of the Git repository.
-1. With the **SOURCE CONTROL** tab selected, at the top of the pane, in the textbox, type **My commit** as the commit message and press **Ctrl+Enter** to commit it locally.
+1. With the **SOURCE CONTROL** tab selected, at the top of the pane, in the textbox, type **`My commit`** as the commit message and press **Ctrl+Enter** to commit it locally.
 
-    ![First commit](images/first-commit.png)
+    ![Screenshot of the first commit.](images/first-commit.png)
 
 1. If prompted whether you would like to automatically stage your changes and commit them directly, click **Always**.
 
@@ -184,7 +184,7 @@ In this task, you will use the Azure DevOps portal to review commits.
 1. In the vertical navigational pane of the Azure DevOps portal, in the **Repos** section, select **Commits**.
 1. Verify that your commit appears at the top of list.
 
-    ![ADO Repo Commits](images/ado-commit.png)
+    ![Screenshot of the ADO repo commits.](images/ado-commit.png)
 
 #### Task 3: Stage changes
 
@@ -208,9 +208,9 @@ In this task, you will explore the use of staging changes by using Visual Studio
 
     > **Note**: This stages the change to the **Program.cs** file only, preparing it for commit without **Constants.cs**.
 
-1. With the **SOURCE CONTROL** tab selected, at the top of the pane, in the textbox, type **Added comments** as the commit message.
+1. With the **SOURCE CONTROL** tab selected, at the top of the pane, in the textbox, type **`Added comments`** as the commit message.
 
-    ![Staged changes](images/staged-changes.png)
+    ![Screenshot of the staged changes.](images/staged-changes.png)
 
 1. At the top of the **SOURCE CONTROL** tab, click the ellipsis symbol, in the drop-down menu, select **Commit** and, in the cascading menu, select **Commit Staged**.
 1. In the lower left corner of the Visual Studio Code window, click the **Synchronize Changes** button to synchronize the committed changes with the server and, if prompted, whether to proceed, click **OK** to push and pull commits to and from **origin/main**.
@@ -231,7 +231,7 @@ In this task, you will step through commit history by using the Azure DevOps por
 
 1. With the **SOURCE CONTROL** tab of the Visual Studio Code window open, select **Constants.cs** representing the non-staged version of the file.
 
-    ![File comparison](images/file-comparison.png)
+    ![Screenshot of the file comparison.](images/file-comparison.png)
 
     > **Note**: A comparison view is opened to enable you to easily locate the changes you've made. In this case, it's just the one comment.
 
@@ -239,7 +239,7 @@ In this task, you will step through commit history by using the Azure DevOps por
 1. Scroll down to the **My commit** entry (pushed before) and hover the mouse pointer over it to reveal the ellipsis symbol on the right side.
 1. Click the ellipsis, in the dropdown menu, select **Browse Files**, and review the results.
 
-    ![Commit browse](images/commit-browse.png)
+    ![Screenshot of the commit browse.](images/commit-browse.png)
 
     > **Note**: This view represents the state of the source corresponding to the commit, allowing you to review and download each of source files.
 
@@ -259,10 +259,10 @@ In this task, you will create a branch by using Visual Studio Code.
 1. With the **SOURCE CONTROL** tab selected, in the lower left corner of the Visual Studio Code window, click **main**.
 1. In the pop-up window, select **+ Create new branch from...**.
 
-    ![Create branch](images/create-branch.png)
+    ![Screenshot of the create branch option.](images/create-branch.png)
 
 1. In the **Select a ref to create the branch from** textbox, select **main** as the reference branch.
-1. In the **Branch name** textbox, type **dev** to specify the new branch and press **Enter**.
+1. In the **Branch name** textbox, type **`dev`** to specify the new branch and press **Enter**.
 
     > **Note**: At this point, you are automatically switched to the **dev** branch.
 
@@ -278,18 +278,18 @@ Git keeps track of which branch you are working on and makes sure that, when you
 1. Hover the mouse pointer over the **dev** branch entry to reveal the ellipsis symbol on the right side.
 1. Click the ellipsis, in the pop-up menu, select **Delete branch**, and, when prompted for confirmation, click **Delete**.
 
-    ![Delete branch](images/delete-branch.png)
+    ![Screenshot of the delete branch option.](images/delete-branch.png)
 
 1. Switch back to the **Visual Studio Code** window and, with the **SOURCE CONTROL** tab selected, in the lower left corner of the Visual Studio Code window, click the **dev** entry. This will display the existing branches in the upper portion of the Visual Studio Code window.
 1. Verify that now there are two **dev** branches listed.
 1. Go to the web browser displaying the **Mine** tab of the **Branches**
 1. On the **Mine** tab of the **Branches** pane, select the **All** tab.
-1. On the **All** tab of the **Branches** pane, in the **Search branch name** text box, type **dev**.
+1. On the **All** tab of the **Branches** pane, in the **Search branch name** text box, type **`dev`**.
 1. Review the **Deleted branches** section containing the entry representing the newly deleted branch.
 1. In the **Deleted branches** section, hover the mouse pointer over the **dev** branch entry to reveal the ellipsis symbol on the right side.
 1. Click the ellipsis, in the pop-up menu and select **Restore branch**.
 
-    ![restore branch](images/restore-branch.png)
+    ![Screenshot of the restore branch option.](images/restore-branch.png)
 
     > **Note**: You can use this functionality to restore a deleted branch as long as you know its exact name.
 
@@ -303,12 +303,12 @@ For simplicity we will work directly on the web browser repo editor (working dir
 1. On the **Mine** tab of the **Branches** pane, hover the mouse pointer over the **main** branch entry to reveal the ellipsis symbol on the right side.
 1. Click the ellipsis and, in the pop-up menu, select **Branch Policies**.
 
-    ![Branch Policies](images/branch-policies.png)
+    ![Screenshot of the branch policies option.](images/branch-policies.png)
 
 1. On the **main** tab of the repository settings, enable the option for **Require minimum number of reviewers**. Add **1** reviewer and check the box **Allow requestors to approve their own changes**(as you are the only user in your project for the lab)
 1. On the **main** tab of the repository settings, enable the option for **Check for linked work items** and leave it with **Required** option.
 
-    ![Policy Settings](images/policy-settings.png)
+    ![Screenshot of the policy settings.](images/policy-settings.png)
 
 #### Task 4: Testing branch policy
 
@@ -324,7 +324,7 @@ In this task, you will use the Azure DevOps portal to test the policy and create
 
 1. Click on **Commit > Commit**. You will see a warning: changes to the main branch can only be done using a Pull Request.
 
-    ![Policy denied commit](images/policy-denied.png)
+    ![Screenshot of the policy denied commit.](images/policy-denied.png)
 
 1. Click on **Cancel** to skip the commit.
 
@@ -344,7 +344,7 @@ In this task, you will use the Azure DevOps portal to create a Pull Request, usi
 1. Click on **Commit > Commit** (leave default commit message). This time the commit works, **dev** branch has no policies.
 1. A message will pop-up, proposing to create a Pull Request (as you **dev** branch is now ahead in changes, compared to **main**). Click on **Create a Pull Request**.
 
-    ![Create a Pull Request](images/create-pr.png)
+    ![Screenshot of the create a Pull Request option.](images/create-pr.png)
 
 1. In the **New pull request** tab, leave defaults and click on **Create**.
 1. The Pull Request will show some failed/pending requirements, based on the policies applied to our target **main** branch.
@@ -353,7 +353,7 @@ In this task, you will use the Azure DevOps portal to create a Pull Request, usi
 
 1. On the right side options, click on the **+** button next to **Work Items**. Link the previously created work item to the Pull Request by clicking on it. You will see one of the requirements changes  status.
 
-    ![Link work item](images/link-wit.png)
+    ![Screenshot of the link work item.](images/link-wit.png)
 
 1. Next,  open the **Files** tab to review the proposed changes. In a more complete Pull Request,  you would be able to review files one by one (marked as reviewed) and open comments for lines that may not be clear (hovering the mouse over the line number gives you an option to post a comment).
 1. Go back to the **Overview** tab, and on the top-right click on **Approve**. All the requirements will change to green. Now you can click on **Complete**.
@@ -370,7 +370,7 @@ The product team has decided that the current version of the site should be rele
 
 1. In the vertical navigational pane of the of the Azure DevOps portal, in the **Repos** section, select **Tags**.
 1. In the **Tags** pane, click **New tag**.
-1. In the **Create a tag** panel, in the **Name** text box, type **v1.1.0-beta**, in the **Based on** drop-down list leave the **main** entry selected, in the **Description** text box, type **Beta release v1.1.0** and click **Create**.
+1. In the **Create a tag** panel, in the **Name** text box, type **`v1.1.0-beta`**, in the **Based on** drop-down list leave the **main** entry selected, in the **Description** text box, type **`Beta release v1.1.0`** and click **Create**.
 
     > **Note**: You have now tagged the repository at this release (the latest commit gets linked to the tag). You could tag commits for a variety of reasons and Azure DevOps offers the flexibility to edit and delete them, as well as manage their permissions.
 
@@ -382,12 +382,12 @@ When going through the different course labs in the order they are presented, th
 1. On the **Mine** tab of the **Branches** pane, hover the mouse pointer over the **main** branch entry to reveal the ellipsis symbol (the ...) on the right side.
 1. Click the ellipsis and, in the pop-up menu, select **Branch Policies**.
 
-    ![Policy Settings](images/policy-settings.png)
+    ![Screenshot of the policy settings.](images/policy-settings.png)
 
 1. On the **main** tab of the repository settings, disable the option for **Require minimum number of reviewers**.
 1. On the **main** tab of the repository settings, disable the option for **Check for linked work items**.
 
-    ![Branch Policies](images/branch-policies.png)
+    ![Screenshot of the branch policies.](images/branch-policies.png)
 
 1. You have now disabled/removed the branch policies for the main branch.
 

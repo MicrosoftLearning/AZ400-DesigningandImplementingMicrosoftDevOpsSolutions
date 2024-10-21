@@ -43,7 +43,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 1. Click **Advanced** and specify **Scrum** as **Work Item Process**.
  Click on **Create**.
 
-    ![Create Project](images/create-project.png)
+    ![Screenshot of the create new project panel.](images/create-project.png)
 
 ### Exercise 1: Manage Agile project
 
@@ -69,7 +69,7 @@ Each new project is configured with a default team, which name matches the proje
 
 1. In the **General** section, select the **Teams** tab. There is already a default team in this project, **eShopOnWeb Team** but you'll create a new one for this lab. Click **New Team**.
 
-    ![In project settings window, "Teams" tab, click on "New Team"](images/m1/new_team_v1.png)
+    ![Screenshoot of the Teams project settings window.](images/m1/new_team_v1.png)
 
 1. On the **Create a new team** pane, in the **Team name** textbox, type **`EShop-Web`**, leave other settings with their default values, and click **Create**.
 
@@ -171,11 +171,11 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
 1. Repeat the previous step to add two more PBIs designed to enable the customer to see their recently viewed tutorials and to request new tutorials named, respectively, **`As a customer, I want to see tutorials I recently viewed`** and **`As a customer, I want to request new tutorials`**.
 
-    ![Repeat by clicking on "Add Product Backlog" ](images/m1/EShop-WEB-pbis_v1.png)
+    ![Screenshot of the add Product Backlog.](images/m1/EShop-WEB-pbis_v1.png)
 
 1. On the **Boards** panel, in the upper right corner, select the **Features** entry and, in the dropdown list, select **Backlog items**.
 
-     ![View Backlog Items" ](images/m1/EShop-WEB-backlog_v1.png)
+     ![Screenshot of the view backlog items.](images/m1/EShop-WEB-backlog_v1.png)
 
     > **Note**: Backlog items have a state that defines where they are relative to being completed. While you could open and edit the work item using the form, it's easier to just drag cards on the board.
 
@@ -445,7 +445,7 @@ Dashboards allow teams to visualize status and monitor progress across the proje
 
     ![Screenshot of the new query in the query editor."](images/m1/EShop-WEB-query_v1.png)
 
-1. In the **Enter name** textbox, type **Web tasks**, in the **Folder** dropdown list, select **Shared Queries**, and click **OK**.
+1. In the **Enter name** textbox, type **`Web tasks`**, in the **Folder** dropdown list, select **Shared Queries**, and click **OK**.
 1. On the **Queries > Shared Queries** pane, click **Web tasks** to open the query.
 1. Select the **Charts** tab and click **New chart**.
 1. On the **Configure Chart** panel, in the **Name** textbox, type **`Web tasks - By assignment`**, in the **Group by** dropdown list, select **Assigned To**, and click **Save chart** to save the changes.
