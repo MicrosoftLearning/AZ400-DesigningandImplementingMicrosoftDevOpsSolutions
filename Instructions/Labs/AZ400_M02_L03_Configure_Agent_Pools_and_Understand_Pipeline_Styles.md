@@ -35,7 +35,7 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -60,7 +60,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -84,9 +84,10 @@ In this task, you will create a template-based Azure DevOps YAML pipeline.
 
    - A single Stage: Build
    - A single Job: Build
-   - 3 tasks within the Build Job:
+   - 4 tasks within the Build Job:
    - Dotnet Restore
    - Dotnet Build
+   - Dotnet Test
    - Dotnet Publish
 
 1. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
@@ -182,19 +183,8 @@ In this task, you will configure your lab Virtual Machine as an Azure DevOps sel
     ![Yaml pool syntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
 1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Validate and save**. This will automatically trigger the build based on this pipeline.
-1. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run. 
+1. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run.
 1. On the **Recent** tab of the **Pipelines** pane, click the **eShopOnWeb** entry, on the **Runs** tab of the **eShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
-
-### Exercise 3: Remove the resources used in the lab
-
-1. Stop and remove the agent service by running `.\config.cmd remove` from the command prompt.
-   - You will be asked to input your Personal Access Token again, to remove your agent from your organization.
-   - If you no longer have the Personal Access Token, you may proceed to regenerate the one you initially created in Exercise 2, Task 1, Step 2.
-1. Delete the agent pool.
-1. Revoke the PAT token.
-1. Revert the changes in the **eshoponweb-ci-pr.yml** file by navigating to it from Repos/.ado/eshoponweb-ci-pr.yml, selecting **Edit** and removing lines 13-15 (the agent pool snippet), and changing back to  `vmImage: ubuntu-latest` as it was originally. (This is because you will use the same sample pipeline file in a future lab exercise.)
-
-![Revert pipeline pool back to vmImage settings](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
 ## Review
 
