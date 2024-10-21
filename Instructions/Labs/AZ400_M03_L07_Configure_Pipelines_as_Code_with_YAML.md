@@ -6,8 +6,6 @@ lab:
 
 # Configure Pipelines as Code with YAML
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)

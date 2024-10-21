@@ -6,8 +6,6 @@ lab:
 
 # Deploy Docker containers to Azure App Service web apps
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://learn.microsoft.com/azure/devops/server/compatibility)

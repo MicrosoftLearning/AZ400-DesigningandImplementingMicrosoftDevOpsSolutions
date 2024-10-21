@@ -6,15 +6,13 @@ lab:
 
 # Version Control with Git in Azure Repos
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
-- If you don't have Git 2.29.2 or later installed yet, start a web browser, navigate to the [Git for Windows download page](https://gitforwindows.org/) download it, and install it.
+- If you don't have Git 2.47.0 or later installed yet, start a web browser, navigate to the [Git for Windows download page](https://gitforwindows.org/) download it, and install it.
 - If you don't have Visual Studio Code installed yet, from the web browser window, navigate to the [Visual Studio Code download page](https://code.visualstudio.com/), download it, and install it.
 - If you don't have Visual Studio C# extension installed yet, in the web browser window, navigate to the [C# extension installation page](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) and install it.
 
@@ -39,7 +37,7 @@ After you complete this lab, you will be able to:
 - Review history of changes.
 - Work with branches by using Visual Studio Code.
 
-## Estimated timing: 60 minutes
+## Estimated timing: 45 minutes
 
 ## Instructions
 
@@ -47,36 +45,7 @@ After you complete this lab, you will be able to:
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1: (skip if done) Create and configure the team project
-
-In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
-
-1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
-
-    ![Create Project](images/create-project.png)
-
-#### Task 2: (skip if done) Import eShopOnWeb Git Repository
-
-In this task you will import the eShopOnWeb Git repository that will be used by several labs.
-
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
-
-    ![Import Repository](images/import-repo.png)
-
-1. The repository is organized the following way:
-    - **.ado** folder contains Azure DevOps YAML pipelines
-    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
-    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
-    - **.github** folder container YAML GitHub workflow definitions.
-    - **src** folder contains the .NET 8 website used on the lab scenarios.
-
-#### Task 3: (skip if done) Set main branch as default branch
-
-1. Go to **Repos>Branches**.
-1. Hover on the **main** branch then click the ellipsis on the right of the column.
-1. Click on **Set as default branch**.
-
-#### Task 3: Configure Git and Visual Studio Code
+#### Task 1: Configure Git and Visual Studio Code
 
 In this task, you will install and configure Git and Visual Studio Code, including configuring the Git credential helper to securely store the Git credentials used to communicate with Azure DevOps. If you have already implemented these prerequisites, you can proceed directly to the next task.
 
@@ -99,9 +68,40 @@ In this task, you will install and configure Git and Visual Studio Code, includi
     git config --global user.email <johndoe@example.com>
     ```
 
+#### Task 2: (skip if done) Create and configure the team project
+
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and choose **Scrum** on the **Work Item process** dropdown. Click on **Create**.
+
+    ![Create Project](images/create-project.png)
+
+#### Task 3: (skip if done) Import eShopOnWeb Git Repository
+
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
+
+    ![Import Repository](images/import-repo.png)
+
+1. The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces)
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
+
+#### Task 4: (skip if done) Set main branch as default branch
+
+1. Go to **Repos>Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
+
 ### Exercise 1: Clone an existing repository
 
-In this exercise, you use Visual Studio Code to clone the Git repository you provisioned as part of the previous exercise.
+In this exercise, you will use Visual Studio Code to commit changes to the **main** branch of the **eShopOnWeb** repository.
+
+> **Note**: The **main** branch is the default branch in the **eShopOnWeb** repository and is the branch that you will use for the rest of the lab.
 
 #### Task 1: Clone an existing repository
 
@@ -293,7 +293,7 @@ Git keeps track of which branch you are working on and makes sure that, when you
 
     > **Note**: You can use this functionality to restore a deleted branch as long as you know its exact name.
 
-#### Task 4: Branch Policies
+#### Task 3: Branch Policies
 
 In this task, you will use the Azure DevOps portal to add policies to the main branch and only allow changes using Pull Requests that comply with the defined policies. You want to ensure that changes in a branch are reviewed before they are merged.
 
@@ -310,7 +310,7 @@ For simplicity we will work directly on the web browser repo editor (working dir
 
     ![Policy Settings](images/policy-settings.png)
 
-#### Task 5: Testing branch policy
+#### Task 4: Testing branch policy
 
 In this task, you will use the Azure DevOps portal to test the policy and create your first Pull Request.
 
@@ -328,7 +328,7 @@ In this task, you will use the Azure DevOps portal to test the policy and create
 
 1. Click on **Cancel** to skip the commit.
 
-#### Task 6: Working with Pull Requests
+#### Task 5: Working with Pull Requests
 
 In this task, you will use the Azure DevOps portal to create a Pull Request, using the **dev** branch to merge a change into the protected **main** branch. An Azure DevOps work item will be linked to the changes to be able to trace pending work with code activity.
 
@@ -364,7 +364,7 @@ In this task, you will use the Azure DevOps portal to create a Pull Request, usi
 
 1. Click on **Complete Merge**
 
-#### Task 7: Applying tags
+#### Task 6: Applying tags
 
 The product team has decided that the current version of the site should be released as v1.1.0-beta.
 
@@ -393,4 +393,4 @@ When going through the different course labs in the order they are presented, th
 
 ## Review
 
-In this lab, you used the Azure DevOps portal to manage branches and repositories.
+In this lab, you have learned how to use Git for version control in Azure Repos.
