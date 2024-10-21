@@ -12,7 +12,7 @@ lab:
 
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
-- If you don't have Git 2.29.2 or later installed yet, start a web browser, navigate to the [Git for Windows download page](https://gitforwindows.org/) download it, and install it.
+- If you don't have Git 2.47.0 or later installed yet, start a web browser, navigate to the [Git for Windows download page](https://gitforwindows.org/) download it, and install it.
 - If you don't have Visual Studio Code installed yet, from the web browser window, navigate to the [Visual Studio Code download page](https://code.visualstudio.com/), download it, and install it.
 - If you don't have Visual Studio C# extension installed yet, in the web browser window, navigate to the [C# extension installation page](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) and install it.
 
@@ -74,7 +74,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
-#### Task 3: Configure Git and Visual Studio Code
+#### Task 4: Configure Git and Visual Studio Code
 
 In this task, you will install and configure Git and Visual Studio Code, including configuring the Git credential helper to securely store the Git credentials used to communicate with Azure DevOps. If you have already implemented these prerequisites, you can proceed directly to the next task.
 
@@ -291,7 +291,7 @@ Git keeps track of which branch you are working on and makes sure that, when you
 
     > **Note**: You can use this functionality to restore a deleted branch as long as you know its exact name.
 
-#### Task 4: Branch Policies
+#### Task 3: Branch Policies
 
 In this task, you will use the Azure DevOps portal to add policies to the main branch and only allow changes using Pull Requests that comply with the defined policies. You want to ensure that changes in a branch are reviewed before they are merged.
 
@@ -308,7 +308,7 @@ For simplicity we will work directly on the web browser repo editor (working dir
 
     ![Policy Settings](images/policy-settings.png)
 
-#### Task 5: Testing branch policy
+#### Task 4: Testing branch policy
 
 In this task, you will use the Azure DevOps portal to test the policy and create your first Pull Request.
 
@@ -326,7 +326,7 @@ In this task, you will use the Azure DevOps portal to test the policy and create
 
 1. Click on **Cancel** to skip the commit.
 
-#### Task 6: Working with Pull Requests
+#### Task 5: Working with Pull Requests
 
 In this task, you will use the Azure DevOps portal to create a Pull Request, using the **dev** branch to merge a change into the protected **main** branch. An Azure DevOps work item will be linked to the changes to be able to trace pending work with code activity.
 
@@ -362,7 +362,7 @@ In this task, you will use the Azure DevOps portal to create a Pull Request, usi
 
 1. Click on **Complete Merge**
 
-#### Task 7: Applying tags
+#### Task 6: Applying tags
 
 The product team has decided that the current version of the site should be released as v1.1.0-beta.
 
