@@ -293,7 +293,7 @@ In this task, you will create a YAML-based pipeline for the **eShopOnWeb** proje
 
 1. In the Azure DevOps portal, navigate to the **eShopOnWeb** project, and select **Pipelines** from the left-side menu.
 1. Click on the **Edit** button for the pipeline you created in the previous task.
-1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, remove line 13 which says `vmImage: ubuntu-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, remove line 13 which says **vmImage: ubuntu-latest** designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
     pool: 
