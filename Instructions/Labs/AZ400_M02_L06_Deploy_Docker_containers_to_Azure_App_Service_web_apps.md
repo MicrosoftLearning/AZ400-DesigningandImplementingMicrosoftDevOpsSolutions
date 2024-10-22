@@ -144,4 +144,4 @@ In this task, you will import and run the CD pipeline.
 
 ## Review
 
-In this lab, you learned how to use an Azure DevOps CI/CD pipeline to build a custom Docker image, push it to Azure Container Registry, and deploy it as a container to Azure App Service.
+In this lab, you have learned how to use an Azure DevOps CI/CD pipeline to build a custom Docker image, push it to Azure Container Registry, and deploy it as a container to Azure App Service.
