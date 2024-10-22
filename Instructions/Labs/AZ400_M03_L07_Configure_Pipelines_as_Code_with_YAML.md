@@ -71,7 +71,7 @@ In this task, you will create an Azure web app by using the Azure portal.
 
    > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
-   > **Note:** for a list of regions and their alias, run the following command from the Azure Cloud Shell - Bash:
+   > **Note:** For a list of regions and their alias, run the following command from the Azure Cloud Shell - Bash:
 
    ```bash
    az account list-locations -o table
@@ -84,14 +84,14 @@ In this task, you will create an Azure web app by using the Azure portal.
    ```
 
    ```bash
-   RESOURCEGROUPNAME='az400m05l11-RG'
+   RESOURCEGROUPNAME='az400m03l07-RG'
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
 1. To create a Windows App service plan by running the following command:
 
    ```bash
-   SERVICEPLANNAME='az400m05l11-sp1'
+   SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
 
@@ -149,7 +149,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
      jobs:
        - job: Deploy
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          steps:
    ```
 
@@ -295,7 +295,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
     jobs:
     - job: Deploy
       pool:
-        vmImage: 'windows-2019'
+        vmImage: 'windows-latest'
       steps:
       - task: DownloadBuildArtifacts@0
         inputs:
@@ -314,7 +314,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
    ```
 
-#### Task 4: Review the deployed site
+#### Task 3: Review the deployed site
 
 1. Switch back to web browser window displaying the Azure portal and navigate to the blade displaying the properties of the Azure web app.
 1. On the Azure web app blade, click **Overview** and, on the overview blade, click **Browse** to open your site in a new web browser tab.
@@ -331,11 +331,10 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
 1. From the Azure DevOps Project **eShopOnWeb_MultiStageYAML**, navigate to **Pipelines**.
 1. Under the Pipelines Menu to the left, select **Environments**.
 1. Click **Create Environment**.
-1. In the **New Environment** pane, add a Name for the Environment, called **approvals**.
+1. In the **New Environment** pane, add a Name for the Environment, called **`approvals`**.
 1. Under **Resources**, select **None**.
 1. Confirm the settings by pressing the **Create** button.
-1. Once the environment got created, click on the "ellipsis" (...) next to the button "Add Resource".
-1. Select **Approvals and Checks**.
+1. Once the environment is created, select **Approvals and Checks** tab from the new **approvals** environment.
 1. From the **Add your first check**, select **Approvals**.
 1. Add your Azure DevOps User Account Name to the **approvers** field.
 
@@ -358,12 +357,12 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
      - job: Deploy
        environment: approvals
        pool:
-         vmImage: "windows-2019"
+         vmImage: "windows-latest"
    ```
 
 1. As the environment is a specific setting of a deployment stage, it cannot be used by "jobs". Therefore, we have to make some additional changes to the current job definition.
 1. On Line **60**, rename "- job: Deploy" to **- deployment: Deploy**
-1. Next, under Line **63** (vmImage: Windows-2019), add a new empty line.
+1. Next, under Line **63** (vmImage: windows-latest), add a new empty line.
 1. Paste in the following Yaml Snippet:
 
    ```yaml
@@ -383,7 +382,7 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
        - deployment: Deploy
          environment: approvals
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          strategy:
            runOnce:
              deploy:
