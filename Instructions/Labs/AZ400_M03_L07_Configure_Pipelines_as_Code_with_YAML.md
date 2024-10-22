@@ -26,7 +26,7 @@ After you complete this lab, you will be able to:
 
 - Configure CI/CD pipelines as code with YAML in Azure DevOps.
 
-## Estimated timing: 60 minutes
+## Estimated timing: 45 minutes
 
 ## Instructions
 
