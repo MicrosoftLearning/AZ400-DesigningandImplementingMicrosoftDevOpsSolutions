@@ -61,64 +61,9 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
-### Exercise 1: Manage the service connection
+### Exercise 1: Import and run the CI pipeline
 
-In this exercise, you will configure the service connection with your Azure Subscription then import and run the CI pipeline.
-
-#### Task 1: (skip if done) Manage the service connection
-
-You can create a connection from Azure Pipelines to external and remote services for executing tasks in a job.
-
-In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
-
-- Deploy resources on your azure subscription.
-- Push the Docker image to Azure Container Registry.
-- Add a role assignment to allow Azure App Service pull the Docker image from Azure Container Registry.
-
-> **Note**: If you do already have a service principal, you can proceed directly to the next task.
-
-You will need a service principal to deploy  Azure resources from Azure Pipelines.
-
-A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page (automatic option). You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects.
-
-1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Microsoft Entra tenant associated with this subscription.
-1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
-1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
-
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute:
-
-    ```bash
-    subscriptionName=$(az account show --query name --output tsv)
-    subscriptionId=$(az account show --query id --output tsv)
-    echo $subscriptionName
-    echo $subscriptionId
-    ```
-
-    > **Note**: Copy both values to a text file. You will need them later in this lab.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal:
-
-    ```bash
-    az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
-    ```
-
-    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
-
-1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings > Service Connections (under Pipelines)** and **New Service Connection**.
-1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
-1. The choose **Service principal (manual)** and click on **Next**.
-1. Fill in the empty fields using the information gathered during previous steps:
-    - Subscription Id and Name.
-    - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
-    - In **Service connection name** type **`azure-connection`**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
-
-1. Click on **Verify and Save**.
-
-### Exercise 2: Import and run the CI pipeline
-
-In this exercise, you will import and run the CI pipeline.
+In this exercise, you will import and run the CI pipeline that builds a custom Docker image and pushes it to Azure Container Registry.
 
 #### Task 1: Import and run the CI pipeline
 
@@ -147,7 +92,7 @@ In this exercise, you will import and run the CI pipeline.
 
 1. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container-NAME**). On the left-hand side click **Repositories** under **Services** and make sure that the repository **eshoponweb/web** was created. When you click the repository link, you should see two tags (one of them is **latest**), these are the pushed images. If you don't see this, check the status of your pipeline.
 
-### Exercise 3: Import and run the CD pipeline
+### Exercise 2: Import and run the CD pipeline
 
 In this exercise, you will configure the service connection with your Azure Subscription then import and run the CD pipeline.
 
@@ -214,32 +159,8 @@ In this task, you will import and run the CD pipeline.
 
 1. Navigate to the App Service, then click **Browse**, this will take you to the website.
 
-Congratulations! In this exercise, you deployed a website using a custom Docker image.
-
-### Exercise 4: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
-
-> **Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. List all resource groups created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'rg-az400-container-')].name" --output tsv
-    ```
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'rg-az400-container-')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+> [!IMPORTANT]
+> Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
