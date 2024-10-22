@@ -52,11 +52,9 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-> **Note**: If you already created this project during previous labs, this exercise can be skipped.
+In this exercise, you will set up the prerequisites for the lab.
 
-In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
-
-#### Task 1: (skip if already done) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
@@ -64,7 +62,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
    ![Screenshot of the create new project panel.](images/create-project.png)
 
-#### Task 2: (skip if already done) Import eShopOnWeb Git Repository
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
@@ -83,7 +81,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
-#### Task 3: (skip if already done) Configure CI Pipeline as Code with YAML in Azure DevOps
+#### Task 3: Configure CI Pipeline as Code with YAML in Azure DevOps
 
 In this task, you will add a YAML build definition to the existing project.
 
@@ -104,9 +102,9 @@ In this task, you will add a YAML build definition to the existing project.
 
    > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **`eshoponweb-ci`** and click on **Save**.
 
-### Exercise 2: Creating the necessary Azure Resources for the Release Pipeline
+### Exercise 1: Creating the necessary Azure Resources for the Release Pipeline
 
 #### Task 1: Create two Azure web apps
 
@@ -196,7 +194,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 1. Confirm the creation of the Alert rule by clicking **Review+Create**, and confirm once more by clicking **Create**. Wait for the alert rule to get created successfully.
 
-### Exercise 3: Configure the release pipeline
+### Exercise 2: Configure the release pipeline
 
 In this exercise, you will configure a release pipeline.
 
@@ -250,7 +248,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 
    > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Quality Gates as part of a more advanced Release pipeline.
 
-### Exercise 4: Configure release gates
+### Exercise 3: Configure release gates
 
 In this exercise, you will set up Quality Gates in the release pipeline.
 
@@ -295,7 +293,7 @@ In this task, you will enable the post-deployment gate for the DevTest Environme
 1. Close the **Post-deployment conditions** pane, by clicking the **x** mark in its upper right corner.
 1. Back on the **eshoponweb-cd** pane, click **Save**, and in the **Save** dialog box, click **OK**.
 
-### Exercise 5: Test release gates
+### Exercise 4: Test release gates
 
 In this exercise, you will test the release gates by updating the application, which will trigger a deployment.
 
@@ -326,30 +324,8 @@ In this task, you will first generate some alerts for the DevTest Web App, follo
 
    > **Note:** If your gate fails, close the alert.
 
-### Exercise 6: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
-
-> **Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. List all resource groups created throughout the labs of this module by running the following command:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].name" --output tsv
-   ```
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+   > [!IMPORTANT]
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
