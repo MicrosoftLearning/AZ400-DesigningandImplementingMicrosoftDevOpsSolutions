@@ -75,7 +75,7 @@ In this exercise, you will import and run the CI pipeline that builds a custom D
 1. Select the **main** branch and the **/.ado/eshoponweb-ci-docker.yml** file, then click on **Continue**
 1. In the YAML pipeline definition, customize:
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
-   - **rg-az400-container-NAME** with the resource group name that will be created by the pipeline (it can be an existing resource group too).
+   - Replace the **resourceGroup** with the resource group name that will be created by the pipeline, for example, the string rg-az400-container-123456 followed by a random six-digit number.
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
@@ -90,7 +90,7 @@ In this exercise, you will import and run the CI pipeline that builds a custom D
 
 1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci-docker** and click on **Save**.
 
-1. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container-NAME**). On the left-hand side click **Repositories** under **Services** and make sure that the repository **eshoponweb/web** was created. When you click the repository link, you should see two tags (one of them is **latest**), these are the pushed images. If you don't see this, check the status of your pipeline.
+1. Navigate to the [**Azure Portal**](https://portal.azure.com), search for the Azure Container Registry in the recently created Resource Group (it should be named **rg-az400-container**). On the left-hand side click **Repositories** under **Services** and make sure that the repository **eshoponweb/web** was created. When you click the repository link, you should see two tags (one of them is **latest**), these are the pushed images. If you don't see this, check the status of your pipeline.
 
 ### Exercise 2: Import and run the CD pipeline
 
@@ -114,10 +114,10 @@ In this task, you will add a new role assignment to allow Azure App Service pull
     echo $roleName
     ```
 
-1. After getting the service principal ID and the role name, let's create the role assignment by running this command (replace **&lt;rg-az400-container-NAME&gt;** with your resource group name)
+1. After getting the service principal ID and the role name, let's create the role assignment by running this command (replace **rg-az400-container** with your resource group name)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/<rg-az400-container-NAME>
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/rg-az400-container
     ```
 
 You should now see the JSON output which confirms the success of the command run.
@@ -134,7 +134,7 @@ In this task, you will import and run the CD pipeline.
 1. Select the **main** branch and the **/.ado/eshoponweb-cd-webapp-docker.yml** file, then click on **Continue**
 1. In the YAML pipeline definition, customize:
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
-   - **rg-az400-container-NAME** with the resource group name defined before in the lab.
+   - **rg-az400-container** with the resource group name defined before in the lab.
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
