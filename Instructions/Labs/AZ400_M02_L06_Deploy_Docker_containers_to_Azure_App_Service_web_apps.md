@@ -75,7 +75,7 @@ In this exercise, you will import and run the CI pipeline that builds a custom D
 1. Select the **main** branch and the **/.ado/eshoponweb-ci-docker.yml** file, then click on **Continue**
 1. In the YAML pipeline definition, customize:
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription ID.
-   - Replace the **resourceGroup** with the resource group name that will be created by the pipeline, for example, the string rg-az400-container-123456 followed by a random six-digit number.
+   - Replace the **resourceGroup** with the resource group name that will be created by the pipeline, for example, the string rg-az400-container followed by a random six-digit number.
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
