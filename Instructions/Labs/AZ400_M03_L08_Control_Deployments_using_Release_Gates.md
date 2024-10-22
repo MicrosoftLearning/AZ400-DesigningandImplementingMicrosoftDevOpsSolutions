@@ -122,14 +122,14 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
    ```bash
    REGION='centralus'
-   RESOURCEGROUPNAME='az400m04l09-RG'
+   RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
 
 1. To create an App service plan
 
    ```bash
-   SERVICEPLANNAME='az400m04l09-sp1'
+   SERVICEPLANNAME='az400m03l08-sp1'
    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
    ```
 
@@ -153,7 +153,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
    | Setting        | Value                                                                                 |
    | -------------- | ------------------------------------------------------------------------------------- |
-   | Resource group | **az400m04l09-RG**                                                                    |
+   | Resource group | **az400m03l08-RG**                                                                    |
    | Name           | the name of the DevTest web app you recorded in the previous task                     |
    | Region         | the same Azure region to which you deployed the web apps earlier in the previous task |
    | Resource Mode  | **Classic**                                                                           |
@@ -162,9 +162,9 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 1. Click **Review + create** and then click **Create**.
 1. Wait for the provisioning process to complete.
-1. In the Azure portal, navigate to the resource group **az400m04l09-RG** you created in the previous task.
+1. In the Azure portal, navigate to the resource group **az400m03l08-RG** you created in the previous task.
 1. In the list of resources, click the **DevTest** web app.
-1. On the **DevTest** web app page, in the vertical menu on the left, in the **Settings** section, click **Application Insights**.
+1. On the **DevTest** web app page, in the vertical menu on the left, in the **Monitoring** section, click **Application Insights**.
 1. On the **Application Insights** blade, click **Turn on Application Insights**.
 1. In the **Change your resource** section, click the **Select existing resource** option, in the list of existing resources, select the newly created Application Insight resource, click **Apply** and, when prompted for confirmation, click **Yes**.
 1. Wait until the change takes effect.
@@ -242,8 +242,8 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 
 1. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **eshoponweb-cd** pane, click the entry representing the most recent release.
 1. On the **eshoponweb-cd > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully.
-1. Switch to the Azure portal interface, navigate to the resource group **az400m04l09-RG**, in the list of resources, click the **DevTest** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
-1. Switch back to the Azure portal interface, this time navigating to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
+1. Switch to the Azure portal interface, navigate to the resource group **az400m03l08-RG**, in the list of resources, click the **DevTest** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
+1. Switch back to the Azure portal interface, this time navigating to the resource group **az400m03l08-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
 1. Close the web browser tab displaying the **EShopOnWeb** web site.
 
    > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Quality Gates as part of a more advanced Release pipeline.
@@ -273,7 +273,7 @@ In this task, you will enable the post-deployment gate for the DevTest Environme
 
 1. Back on the **All pipelines > eshoponweb-cd** pane, on the right edge of the rectangle representing the **DevTest Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 1. On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
-1. On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the **service connection** entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m04l09-RG** entry.
+1. On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the **service connection** entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m03l08-RG** entry.
 1. On the **Post-deployment conditions** pane, expand the **Advanced** section and configure the following options:
 
    - Filter type: **None**
