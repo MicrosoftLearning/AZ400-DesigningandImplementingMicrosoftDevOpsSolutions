@@ -31,11 +31,11 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: (skip if already done) Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1:  (skip if already done) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
