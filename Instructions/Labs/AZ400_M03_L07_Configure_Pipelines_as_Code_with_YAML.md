@@ -32,7 +32,7 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
+In this exercise, you will set up the prerequisites for the lab.
 
 #### Task 1: (skip if done) Create and configure the team project
 
@@ -61,7 +61,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
-#### Task 2: Create Azure resources
+#### Task 3: Create Azure resources
 
 In this task, you will create an Azure web app by using the Azure portal.
 
@@ -418,30 +418,8 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
 
    > **Note:** While this example only used the approvals, know the other checks such as Azure Monitor, REST API, etc... can be used in a similar way
 
-### Exercise 3: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
-
-> **Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. List all resource groups created throughout the labs of this module by running the following command:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].name" --output tsv
-   ```
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+   > [!IMPORTANT]
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
