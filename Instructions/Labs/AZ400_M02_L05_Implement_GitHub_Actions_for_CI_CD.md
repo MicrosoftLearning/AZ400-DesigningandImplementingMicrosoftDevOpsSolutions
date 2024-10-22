@@ -31,7 +31,7 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: Import eShopOnWeb to your GitHub Repository
+### Exercise 1: Import eShopOnWeb to your GitHub Repository
 
 In this exercise, you will import the existing [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) repository code to your own GitHub private repo.
 
@@ -69,7 +69,7 @@ In this task, you will create an empty public GitHub repository and import the e
 
     ![Screenshot of the enable GitHub Actions option.](images/enable-actions.png)
 
-### Exercise 1: Setup your GitHub Repository and Azure access
+### Exercise 2: Setup your GitHub Repository and Azure access
 
 In this exercise, you will create an Azure Service Principal to authorize GitHub accessing your Azure subscription from GitHub Actions. You will also setup the GitHub workflow that will build, test and deploy your website to Azure.
 
@@ -77,7 +77,7 @@ In this exercise, you will create an Azure Service Principal to authorize GitHub
 
 In this task, you will create the Azure Service Principal used by GitHub to deploy the desired resources. As an alternative, you could also use [OpenID connect in Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure), as a secretless authentication mechanism.
 
-1. On your lab computer, in a browser window, open the Azure Portal (https://portal.azure.com/).
+1. On your lab computer, in a browser window, open the Azure Portal (<https://portal.azure.com/>).
 1. In the portal, look for **Resource Groups** and click on it.
 1. Click on **+ Create** to create a new Resource Group for the exercise.
 1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-eshoponweb-NAME** (replace NAME for some unique alias). Click on **Review + Create > Create**.
@@ -105,7 +105,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
         }
     ```
 
-1. You also need to run the following command to register the resource provider for the **Azure App Service** you will deploy later:
+1. (Skip if already registered) You also need to run the following command to register the resource provider for the **Azure App Service** you will deploy later:
 
    ```bash
    az provider register --namespace Microsoft.Web
@@ -176,24 +176,8 @@ In this task, you will use GitHub environments to ask for manual approval before
 
 1. Workflow will follow the **deploy** job execution and finish.
 
-### Exercise 2: Remove the Azure lab resources
-
-In this exercise, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. List all resource groups created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'rg-eshoponweb')].name" --output tsv
-    ```
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'rg-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+> [!IMPORTANT]
+> Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
