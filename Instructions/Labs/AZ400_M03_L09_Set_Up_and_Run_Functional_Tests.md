@@ -28,7 +28,7 @@ After you complete this lab, you will be able to configure a CI pipeline for a .
 - Integration Tests
 - Functional Tests
 
-## Estimated timing: 30 minutes
+## Estimated timing: 20 minutes
 
 ## Instructions
 
