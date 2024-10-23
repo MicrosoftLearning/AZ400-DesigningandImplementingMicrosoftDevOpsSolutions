@@ -121,7 +121,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 1. Click **Save**, on the **Save** pane, click **Save** again to commit the changes directly into the main branch.
 
-#### Task 4: Check the tests summary
+#### Task 3: Check the tests summary
 
 1. Click on the **Run**, then from the **Run pipeline** tab, click on **Run** again.
 
