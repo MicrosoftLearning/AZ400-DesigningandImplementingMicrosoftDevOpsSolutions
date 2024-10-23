@@ -30,10 +30,6 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
-
-In this exercise, we want to remind you about validating the lab prerequisites, having both an Azure DevOps Organization ready, as well as having created the eShopOnWeb project. See the instructions above for more details.
-
 ### Exercise 1: Publish code as a wiki
 
 In this exercise, you will step through publishing an Azure DevOps repository as wiki and managing the published wiki.
