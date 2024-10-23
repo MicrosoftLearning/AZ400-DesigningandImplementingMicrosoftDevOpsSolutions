@@ -28,21 +28,21 @@ After you complete this lab, you will be able to configure a CI pipeline for a .
 - Integration Tests
 - Functional Tests
 
-## Estimated timing: 60 minutes
+## Estimated timing: 30 minutes
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1:  (skip if done) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
 
-#### Task 2:  (skip if done) Import the eShopOnWeb Git Repository
+#### Task 2: (skip if done) Import the eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
@@ -139,4 +139,4 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 ## Review
 
-In this lab, you learned how to setup and run different tests types using Azure Pipelines and .Net.
+In this lab, you learned how to setup and run different tests types using Azure Pipelines and .NET.
