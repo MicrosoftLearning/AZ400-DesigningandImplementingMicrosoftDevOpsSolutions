@@ -31,7 +31,7 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -62,7 +62,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 ### Exercise 1: (skip if done) Import and run CI/CD Pipelines
 
-In this exercise, you will import and run the CI pipeline, configure the service connection with your Azure Subscription and then import and run the CD pipeline.
+In this exercise, you will import CI/CD pipelines to build and deploy the eShopOnWeb application. The CI pipeline is already prepared to build the application and run tests. The CD pipeline will deploy the application to an Azure Web App.
 
 #### Task 1: Import and run the CI pipeline
 
@@ -77,60 +77,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 1. Click the **Run** button to run the pipeline.
 1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci** and click on **Save**.
 
-#### Task 2: Manage the service connection
-
-You can create a connection from Azure Pipelines to external and remote services for executing tasks in a job.
-
-In this task, you will create a service principal by using the Azure CLI, which will allow Azure DevOps to:
-
-- Deploy resources on your azure subscription
-- Deploy the eShopOnWeb application
-
-> **Note**: If you do already have a service principal, you can proceed directly to the next task.
-
-You will need a service principal to deploy  Azure resources from Azure Pipelines.
-
-A service principal is automatically created by Azure Pipeline when you connect to an Azure subscription from inside a pipeline definition or when you create a new service connection from the project settings page (automatic option). You can also manually create the service principal from the portal or using Azure CLI and re-use it across projects.
-
-1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Microsoft Entra tenant associated with this subscription.
-1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
-1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
-
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID attribute:
-
-    ```sh
-    subscriptionName=$(az account show --query name --output tsv)
-    subscriptionId=$(az account show --query id --output tsv)
-    echo $subscriptionName
-    echo $subscriptionId
-    ```
-
-    > **Note**: Copy both values to a text file. You will need them later in this lab.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a service principal:
-
-    ```sh
-    az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
-    ```
-
-    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
-
-1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings > Service Connections (under Pipelines)** and **New Service Connection**.
-
-1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
-
-1. The choose **Service principal (manual)** and click on **Next**.
-
-1. Fill in the empty fields using the information gathered during previous steps:
-    - Subscription Id and Name
-    - Service Principal Id (or clientId), Key (or Password) and TenantId.
-    - In **Service connection name** type **`azure subs`**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
-
-1. Click on **Verify and Save**.
-
-#### Task 3: Import and run the CD pipeline
+#### Task 2: Import and run the CD pipeline
 
 Let's import the CD pipeline named [eshoponweb-cd-webapp-code.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-cd-webapp-code.yml).
 
@@ -229,32 +176,8 @@ Let's continue to test the Feature manager.
 1. You should see an image with text "ALL T-SHIRTS ON SALE THIS WEEKEND".
 1. You can disable this feature in App Configuration and then you would see that the image disappears.
 
-Congratulations! In this task, you tested the **Feature manager** in Azure App Configuration.
-
-### Exercise 3: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
-
-> **Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. List all resource groups created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'AZ400-EWebShop-')].name" --output tsv
-    ```
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command:
-
-    ```sh
-    az group list --query "[?starts_with(name,'AZ400-EWebShop-')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+   > [!IMPORTANT]
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
