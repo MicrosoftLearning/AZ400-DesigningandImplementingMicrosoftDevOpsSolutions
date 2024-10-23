@@ -161,8 +161,6 @@ In order to make sure that your website is accessing App Configuration, you need
 1. Click **Apply** then go back to your website and refresh the page.
 1. You should see your new message instead of the old default value.
 
-Congratulations! In this task, you tested the **Configuration explorer** in Azure App Configuration.
-
 #### Task 5: Test the Feature Flag
 
 Let's continue to test the Feature manager.
