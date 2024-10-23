@@ -39,9 +39,38 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, we want to remind you about validating the lab prerequisites, having both an Azure DevOps Organization ready, as well as having created the eShopOnWeb project. See the instructions above for more details.
+In this exercise, you will set up the prerequisites for the lab.
 
-#### Task 1: Configuring the eShopOnWeb solution in Visual Studio
+#### Task 1: (skip if done) Create and configure the team project
+
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
+
+    ![Screenshot of the create new project panel.](images/create-project.png)
+
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
+
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click **Import**:
+
+    ![Screenshot of the import repository panel.](images/import-repo.png)
+
+1. The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines.
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
+
+#### Task 3: (skip if done) Set main branch as default branch
+
+1. Go to **Repos > Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
+
+#### Task 4: Configuring the eShopOnWeb solution in Visual Studio
 
 In this task, you will configure Visual Studio to prepare for the lab.
 
