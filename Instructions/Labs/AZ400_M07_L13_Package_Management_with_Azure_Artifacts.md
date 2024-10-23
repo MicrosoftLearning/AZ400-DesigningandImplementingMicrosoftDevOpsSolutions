@@ -156,7 +156,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
     dotnet pack .\eShopOnWeb.Shared.csproj
     ```
 
-    > **Note**: The **dotnet pack** command builds the project and creates a NuGet package in the **bin\Release** folder.
+    > **Note**: The **dotnet pack** command builds the project and creates a NuGet package in the **bin\Release** folder. If you don't have a **Release** folder, you can use the **Debug** folder instead.
 
     > **Note**: Disregard any warnings displayed in the **Administrator: Windows PowerShell** window.
 
