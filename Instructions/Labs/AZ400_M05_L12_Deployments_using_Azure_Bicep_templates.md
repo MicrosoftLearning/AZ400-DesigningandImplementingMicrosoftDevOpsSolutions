@@ -33,11 +33,11 @@ After you complete this lab, you will be able to:
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1:  (skip if done) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
@@ -45,7 +45,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
     ![Screenshot of the create new project panel.](images/create-project.png)
 
-#### Task 2:  (skip if done) Import eShopOnWeb Git Repository
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
@@ -179,64 +179,9 @@ In this task, you will modify the main template to reference the template module
 
 ### Exercise 2: Deploying the templates to Azure using YAML pipelines
 
-In this lab, you will create a service connection and use it in an Azure DevOps YAML pipeline to deploy your template to your Azure environment.
+In this lab, you will use an Azure DevOps YAML pipeline to deploy your template to your Azure environment.
 
-#### Task 1: (skip if done) Create a Service Connection for deployment
-
-In this task, you will create a Service Principal by using the Azure CLI, which will allow Azure DevOps to:
-
-- Deploy resources on your Azure subscription.
-- Have read access on the later created Key Vault secrets.
-
-> **Note**: If you do already have a Service Principal, you can proceed directly to the next task.
-
-You will need a Service Principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key Vault.
-
-A Service Principal is automatically created by Azure Pipelines, when you connect to an Azure subscription from inside a pipeline definition or when you create a new Service Connection from the project settings page (automatic option). You can also manually create the Service Principal from the portal or using Azure CLI and re-use it across projects.
-
-1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Microsoft Entra tenant associated with this subscription.
-1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
-1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
-
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes:
-
-    ```bash
-    az account show --query id --output tsv
-    az account show --query name --output tsv
-    ```
-
-    > **Note**: Copy both values to a text file. You will need them later in this lab.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a Service Principal (replace the **myServicePrincipalName** with any unique string of characters consisting of letters and digits) and **mySubscriptionID** with your Azure subscriptionId :
-
-    ```bash
-    az ad sp create-for-rbac --name myServicePrincipalName \
-                         --role contributor \
-                         --scopes /subscriptions/mySubscriptionID
-    ```
-
-    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
-
-1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings > Service Connections (under Pipelines)** and **New Service Connection**.
-
-    ![Screenshot of the new service connection button.](images/new-service-connection.png)
-
-1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
-
-1. The choose **Service Principal (manual)** and click on **Next**.
-
-1. Fill in the empty fields using the information gathered during previous steps:
-    - Subscription Id and Name.
-    - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
-    - In **Service connection name** type **`azure subs`**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
-
-    ![Screenshot of the Azure service connection panel.](images/azure-service-connection.png)
-
-1. Click on **Verify and Save**.
-
-#### Task 2: Deploy resources to Azure by YAML pipelines
+#### Task 1: Deploy resources to Azure by YAML pipelines
 
 1. Navigate back to the **Pipelines** pane in of the **Pipelines** hub.
 1. In the **Create your first Pipeline** window, click **Create pipeline**.
@@ -258,18 +203,8 @@ A Service Principal is automatically created by Azure Pipelines, when you connec
 1. Wait for the deployment to finish and review the results.
    ![Screenshot of the successful resource deployment to Azure using YAML pipelines.](./images/m06/deploy.png)
 
-#### Task 3: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. Delete all resource groups you created throughout the labs of this module by running the following command (replace the resource group name with what you chose):
-
-   ```bash
-   az group list --query "[?starts_with(name,'AZ400-EWebShop-NAME')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+   > [!IMPORTANT]
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
