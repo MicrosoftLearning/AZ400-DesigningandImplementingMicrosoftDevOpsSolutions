@@ -156,9 +156,6 @@ In this task, you will create two Azure web apps representing the **DevTest** an
    | Resource group | **az400m03l08-RG**                                                                    |
    | Name           | the name of the DevTest web app you recorded in the previous task                     |
    | Region         | the same Azure region to which you deployed the web apps earlier in the previous task |
-   | Resource Mode  | **Classic**                                                                           |
-
-   > **Note**: Disregard the deprecation message. This is required in order to prevent failures of the Enable Continuous Integration DevOps task you will be using later in this lab.
 
 1. Click **Review + create** and then click **Create**.
 1. Wait for the provisioning process to complete.
@@ -173,7 +170,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 1. From the same **Settings** / **Application Insights** menu option within the Web App, select **View Application Insights Data**. This redirects you to the Application Insights blade in the Azure Portal.
 1. On the Application Insights resource blade, in the **Monitoring** section, click **Alerts** and then click **Create > Alert rule**.
-1. On the **Select a signal** blade, in the **Search by signal name** textbox, type **`Requests`**. From the list of results, select **Failed Requests**.
+1. On the **Create an Alert Rule** blade, in the **Condition** section, click the **See all signals** link, type **Requests**. From the list of results, select **Failed Requests**.
 1. On the **Create an Alert Rule** blade, in the **Condition** section, leave the **Threshold** set to **Static**, validate the other default settings as follows:
 
    - Aggregation Type: Count
