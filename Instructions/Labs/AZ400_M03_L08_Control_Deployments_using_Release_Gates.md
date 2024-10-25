@@ -6,8 +6,6 @@ lab:
 
 # Control Deployments using Release Gates
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -54,25 +52,23 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-> **Note**: If you already created this project during previous labs, this exercise can be skipped.
+In this exercise, you will set up the prerequisites for the lab.
 
-In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
-
-#### Task 1: (skip if already done) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
 
-   ![Create Project](images/create-project.png)
+   ![Screenshot of the create new project panel.](images/create-project.png)
 
-#### Task 2: (skip if already done) Import eShopOnWeb Git Repository
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
-   ![Import Repository](images/import-repo.png)
+   ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
    - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -81,11 +77,11 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
    - **.github** folder container YAML GitHub workflow definitions.
    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
-#### Task 3: (skip if already done) Configure CI Pipeline as Code with YAML in Azure DevOps
+#### Task 3: Configure CI Pipeline as Code with YAML in Azure DevOps
 
 In this task, you will add a YAML build definition to the existing project.
 
@@ -106,9 +102,9 @@ In this task, you will add a YAML build definition to the existing project.
 
    > **Note**: Each task from the YAML file is available for review, including any warnings and errors.
 
-1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **eshoponweb-ci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/move** option. Name it **`eshoponweb-ci`** and click on **Save**.
 
-### Exercise 2: Creating the necessary Azure Resources for the Release Pipeline
+### Exercise 1: Creating the necessary Azure Resources for the Release Pipeline
 
 #### Task 1: Create two Azure web apps
 
@@ -126,14 +122,14 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
    ```bash
    REGION='centralus'
-   RESOURCEGROUPNAME='az400m04l09-RG'
+   RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
 
 1. To create an App service plan
 
    ```bash
-   SERVICEPLANNAME='az400m04l09-sp1'
+   SERVICEPLANNAME='az400m03l08-sp1'
    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
    ```
 
@@ -157,13 +153,13 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
    | Setting        | Value                                                                                 |
    | -------------- | ------------------------------------------------------------------------------------- |
-   | Resource group | **az400m04l09-RG**                                                                    |
+   | Resource group | **az400m03l08-RG**                                                                    |
    | Name           | the name of the DevTest web app you recorded in the previous task                     |
    | Region         | the same Azure region to which you deployed the web apps earlier in the previous task |
 
 1. Click **Review + create** and then click **Create**.
 1. Wait for the provisioning process to complete.
-1. In the Azure portal, navigate to the resource group **az400m04l09-RG** you created in the previous task.
+1. In the Azure portal, navigate to the resource group **az400m03l08-RG** you created in the previous task.
 1. In the list of resources, click the **DevTest** web app.
 1. On the **DevTest** web app page, in the vertical menu on the left, in the **Monitoring** section, click **Application Insights**.
 1. On the **Application Insights** blade, click **Turn on Application Insights**.
@@ -195,7 +191,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 1. Confirm the creation of the Alert rule by clicking **Review+Create**, and confirm once more by clicking **Create**. Wait for the alert rule to get created successfully.
 
-### Exercise 3: Configure the release pipeline
+### Exercise 2: Configure the release pipeline
 
 In this exercise, you will configure a release pipeline.
 
@@ -223,7 +219,7 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. Confirm the App Type is set to "Web App on Windows". Next, in the **App Service name** dropdown list, select the name of the **DevTest** web app.
 1. Select the Task **Deploy Azure App Service**. In the **Package or Folder** field, update the default value of "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" to "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
 
-   > notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
+   > **Note**: Notice an exclamation mark next to the Tasks tab. This is expected, as we need to configure the settings for the Production Stage.
 
 1. Open the **Application and Configuration Settings** pane and enter `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` in the **App settings** box.
 
@@ -243,13 +239,13 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 
 1. In the vertical navigational pane, in the **Pipelines** section, click **Releases** and, on the **eshoponweb-cd** pane, click the entry representing the most recent release.
 1. On the **eshoponweb-cd > Release-1** blade, track the progress of the release and verify that the deployment to both web apps completed successfully.
-1. Switch to the Azure portal interface, navigate to the resource group **az400m04l09-RG**, in the list of resources, click the **DevTest** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
-1. Switch back to the Azure portal interface, this time navigating to the resource group **az400m04l09-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
+1. Switch to the Azure portal interface, navigate to the resource group **az400m03l08-RG**, in the list of resources, click the **DevTest** web app, on the web app blade, click **Browse**, and verify that the web page (E-commerce website) loads successfully in a new web browser tab.
+1. Switch back to the Azure portal interface, this time navigating to the resource group **az400m03l08-RG**, in the list of resources, click the **Production** web app, on the web app blade, click **Browse**, and verify that the web page loads successfully in a new web browser tab.
 1. Close the web browser tab displaying the **EShopOnWeb** web site.
 
    > **Note**: Now you have the application with CI/CD configured. In the next exercise we will set up Quality Gates as part of a more advanced Release pipeline.
 
-### Exercise 4: Configure release gates
+### Exercise 3: Configure release gates
 
 In this exercise, you will set up Quality Gates in the release pipeline.
 
@@ -274,7 +270,7 @@ In this task, you will enable the post-deployment gate for the DevTest Environme
 
 1. Back on the **All pipelines > eshoponweb-cd** pane, on the right edge of the rectangle representing the **DevTest Environment** stage, click the oval shape representing the **Post-deployment conditions**.
 1. On **Post-deployment conditions** pane, set the **Gates** slider to **Enabled**, click **+ Add**, and, in the pop-up menu, click **Query Azure Monitor Alerts**.
-1. On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the **service connection** entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m04l09-RG** entry.
+1. On **Post-deployment conditions** pane, in the **Query Azure Monitor Alerts** section, in the **Azure subscription** dropdown list, select the **service connection** entry representing the connection to your Azure subscription, and, in the **Resource group** dropdown list, select the **az400m03l08-RG** entry.
 1. On the **Post-deployment conditions** pane, expand the **Advanced** section and configure the following options:
 
    - Filter type: **None**
@@ -294,7 +290,7 @@ In this task, you will enable the post-deployment gate for the DevTest Environme
 1. Close the **Post-deployment conditions** pane, by clicking the **x** mark in its upper right corner.
 1. Back on the **eshoponweb-cd** pane, click **Save**, and in the **Save** dialog box, click **OK**.
 
-### Exercise 5: Test release gates
+### Exercise 4: Test release gates
 
 In this exercise, you will test the release gates by updating the application, which will trigger a deployment.
 
@@ -305,8 +301,8 @@ In this task, you will first generate some alerts for the DevTest Web App, follo
 1. From the Azure Portal, browse to the **DevTest Web App** Resource deployed earlier.
 1. From the Overview pane, notice the **URL** field showing the Hyperlink of the web application. Click this link, which redirects you to the eShopOnWeb web application in the browser.
 1. To simulate a **Failed Request**, add **/discount** to the URL, which will result in an error message, since that page does not exist. Refresh this page several times to generate multiple events.
-1. From the Azure Portal, in the "Search resources, services and docs" field, enter **Application Insights** and select the **DevTest-AppInsights** Resource created in the previous exercise. Next, navigate to **Alerts**.
-1. There should be at least **1** new alert in the list of results, having a **Severity 2** enter **Alerts** to open the Alerts Service of Azure Monitor.
+1. From the Azure Portal, in the "Search resources, services and docs" field, enter **`Application Insights`** and select the **DevTest-AppInsights** Resource created in the previous exercise. Next, navigate to **Alerts**.
+1. There should be at least **1** new alert in the list of results, having a **Severity 2** enter **`Alerts`** to open the Alerts Service of Azure Monitor.
 1. Notice there should be at least **1** Failed_Alert with **Severity 2 - Warning** showing up in the list. This got trigger when you validated the non-existing website URL address in the previous exercise.
 
    > **Note:** If no Alert shows up yet, wait another few minutes.
@@ -325,30 +321,8 @@ In this task, you will first generate some alerts for the DevTest Web App, follo
 
    > **Note:** If your gate fails, close the alert.
 
-### Exercise 6: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
-
-> **Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the **Bash** shell session within the **Cloud Shell** pane.
-1. List all resource groups created throughout the labs of this module by running the following command:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].name" --output tsv
-   ```
-
-1. Delete all resource groups you created throughout the labs of this module by running the following command:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Note**: The command executes asynchronously (as determined by the --nowait parameter), so while you will be able to run another Azure CLI command immediately afterwards within the same Bash session, it will take a few minutes before the resource groups are actually removed.
+   > [!IMPORTANT]
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 

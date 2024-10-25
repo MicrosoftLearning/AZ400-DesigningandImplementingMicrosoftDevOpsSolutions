@@ -6,8 +6,6 @@ lab:
 
 # Configure agent pools and understanding pipeline styles
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -33,11 +31,11 @@ After you complete this lab, you will be able to:
 - Implement YAML-based pipelines.
 - Implement self-hosted agents.
 
-## Estimated timing: 45 minutes
+## Estimated timing: 30 minutes
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -51,7 +49,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -62,17 +60,212 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
-### Exercise 1: Author YAML-based Azure Pipelines
+### Exercise 1: Create agents and configure agent pools
+
+In this exercise, you will create an Azure virtual machine (VM) and use it to create an agent and configure agent pools.
+
+#### Task 1: Create and connect to an Azure VM
+
+1. In your browser, open the Azure Portal at `https://portal.azure.com`. If prompted, sign in by using an account with the Owner role in your Azure subscription.
+
+1. In the **Search resources, services and docs (G+/)** box, type **`Virtual Machines`** and select it from the dropdown list.
+
+1. Select the **Create** button.
+
+1. Select the **Azure virtual machine with preset configuration**.
+
+    ![Screenshot of the create virtual machine with preset configuration.](images/create-virtual-machine-preset.png)
+
+1. Select the **Dev/Test** as the workload environment and the **General purpose** as the workload type.
+
+1. Select the **Continue to create a VM** button, on the **Basics** tab perform the following actions and then select **Management**:
+
+   | Setting | Action |
+   | -- | -- |
+   | **Subscription** drop-down list | Select your Azure subscription. |
+   | **Resource group** section | Create a new resource group named **rg-eshoponweb-agentpool**. |
+   | **Virtual machine name** text box | Enter name of your preference, for example, **`eshoponweb-vm`**. |
+   | **Region** drop-down list | You can choose your closest [azure](https://azure.microsoft.com/explore/global-infrastructure/geographies) region. For example, “eastus”, “eastasia”, “westus”, etc. |
+   | **Availability options** drop-down list | Select **No infrastructure redundancy required**. |
+   | **Security type** drop-down list | Select with the **Trusted launch virtual machines** option. |
+   | **Image** drop-down list | Select the **Windows Server 2022 Datacenter: Azure Edition - x64 Gen2** image. |
+   | **Size** drop-down list | Select the cheapest **Standard** size for testing purposes. |
+   | **Username** text box | Enter the username of your preference |
+   | **Password** text box | Enter the password of your preference |
+   | **Public inbound ports** section | Select **Allow selected ports**. |
+   | **Select inbound ports** drop-down list | Select **RDP (3389)**. |
+
+1. On the **Management** tab, in the **Identity** section, select the **Enable system assigned managed identity** checkbox and then select **Review + create**:
+
+1. On the **Review + create** tab, select **Create**.
+
+   > **Note**: Wait for the provisioning process to complete. This should take about 2 minutes.
+
+1. In the Azure portal, navigate to the page displaying configuration of the newly created Azure VM.
+
+1. On the Azure VM page, select **Connect**, in the drop-down menu, select **Connect**, then select **Download RDP file**.
+
+1. Use the downloaded RDP file to establish a Remote Desktop session to the operating system running in the Azure VM.
+
+#### Task 2: Create an agent pool
+
+1. In the Remote Desktop session to the Azure VM, start Microsoft Edge web browser.
+
+1. In the web browser, navigate to the Azure DevOps portal at `https://aex.dev.azure.com` and sign in to access your organization.
+
+   > **Note**: If it is your first time accessing the Azure DevOps portal, you may need to create your profile.
+
+1. Open the **eShopOnWeb** project, and select **Project settings** from the left-side bottom menu.
+
+1. From **Pipelines > Agent Pools**, select the **Add pool** button.
+
+1. Choose the **Self-hosted** pool type.
+
+1. Provide a name for the agent pool, such as **eShopOnWebSelfPool**, and add an optional description.
+
+1. Leave the **Grant access permission to all pipelines** option unchecked.
+
+   ![Screenshot showing add agent pool options with self-hosted type.](images/create-new-agent-pool-self-hosted-agent.png)
+
+   > **Note**: Granting access permission to all pipelines is not recommended for production environments. It is only used in this lab to simplify the configuration of the pipeline.
+
+1. Select **Create** button to create the agent pool.
+
+#### Task 3: Download and extract the agent installation files
+
+1. In the Azure DevOps portal, select the newly created agent pool and then select the **Agents** tab.
+
+1. Select the **New agent** button and then **Download** button from the **Download agent** in the new pop-up window.
+
+   > **Note**: Follow the installation instructions to install the agent.
+
+1. Start a PowerShell session and run the following commands to create a folder named **agent**.
+
+   ```powershell
+   mkdir agent ; cd agent        
+   ```
+
+   > **Note**: Make sure you are in the folder where you want to install the agent, for example, C:\agent.
+
+1. Run the following command to extract the content of the downloaded agent installer files:
+
+   ```powershell
+   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
+   ```
+
+   > **Note**: If you downloaded the agent to a different location (or the downloaded version differs), adjust the above command accordingly.
+
+#### Task 4: Create a PAT token
+
+> **Note**: Before configuring the agent, you need to create a PAT token (unless you have an existing one). To create a PAT token, follow the steps below:
+
+1. Within the Remote Desktop session to the Azure VM, open another browser window, navigate to the Azure DevOps portal at `https://aex.dev.azure.com`, and access your organization and project.
+
+1. Select **User settings** from the right-side top menu (directly to the left of your user's avatar icon).
+
+1. Select the **Personal access tokens** menu item.
+
+   ![Screenshot showing the personal access tokens menu.](images/personal-access-token-menu.png)
+
+1. Select the **New Token** button.
+
+1. Provide a name for the token, such as **eShopOnWebToken**.
+
+1. Select the Azure DevOps organization for you want to use the token.
+
+1. Set the expiration date for the token (only used to configure the agent).
+
+1. Select the custom defined scope.
+
+1. Select to show all scopes.
+
+1. Select the **Agent Pools (Read & Manage)** scope.
+
+1. Select the **Create** button to create the token.
+
+1. Copy the token value and save it in a safe place (you will not be able to see it again. You can only regenerate the token).
+
+   ![Screenshot showing the personal access token configuration.](images/personal-access-token-configuration.png)
+
+   > [!IMPORTANT]
+   > Use the least privilege option, **Agent Pools (Read & Manage)**, only for the agent configuration. Also, make sure you set the minimum expiration date for the token if that is the only purpose of the token. You can create another token with the same privileges if you need to configure the agent again.
+
+#### Task 5: Configure the agent
+
+1. Within the Remote Desktop session to the Azure VM, switch back to the PowerShell window. If necessary, change the current directory to the one into which you extracted the agent installation files earlier in this exercise.
+
+1. To configure your agent to run unattended, invoke the following command:
+
+   ```powershell
+   .\config.cmd
+   ```
+
+   > **Note**: If you want to run the agent interactively, use `.\run.cmd` instead.
+
+1. To configure the agent, perform the following actions when prompted:
+
+   - Enter the URL of the Azure DevOps organization (**server URL**) in the format `https://aex.dev.azure.com`{your organization name}.
+   - Accept the default authentication type (**`PAT`**).
+   - Enter the value of the PAT token you created in the previous step.
+   - Enter the agent pool name **`eShopOnWebSelfPool`** you created earlier in this exercise.
+   - Enter the agent name **`eShopOnWebSelfAgent`**.
+   - Accept the default agent work folder (_work).
+   - Enter **Y** to configure the agent to run as service.
+   - Enter **Y** to enable SERVICE_SID_TYPE_UNRESTRICTED for the agent service.
+   - Enter **NT AUTHORITY\SYSTEM** to set the security context for the service.
+
+   > [!IMPORTANT]
+   > In general, you should follow the principle of least privilege when configuring the service security context.
+
+   - Accept the default option (**N**) to allow the service to start immediately after configuration is finished.
+
+   ![Screenshot showing the agent configuration.](images/agent-configuration.png)
+
+   > **Note**: The agent configuration process will take a few minutes to complete. Once it is done, you will see a message indicating that the agent is running as a service.
+
+   > [!IMPORTANT] If you see an error message indicating that the agent is not running, you may need to start the service manually. To do this, open the **Services** applet in the Windows Control Panel, locate the service named **Azure DevOps Agent (eShopOnWebSelfAgent)**, and start it.
+
+   > [!IMPORTANT] If your agent fails to start, you may need to choose a different folder for the agent work directory. To do this, re-run the agent configuration script and choose a different folder.
+
+1. Check the agent status by switching to the web browser displaying the Azure DevOps portal, navigating to the agent pool and clicking on the **Agents** tab. You should see the new agent in the list.
+
+   ![Screenshot showing the agent status.](images/agent-status.png)
+
+   > **Note**: For more details on Windows agents, see: [Self-hosted Windows agents](https://learn.microsoft.com/azure/devops/pipelines/agents/windows-agent)
+
+   > [!IMPORTANT]
+   > In order for the agent to be able to build and deploy Azure resources from the Azure DevOps pipelines (which you will step through in the upcoming labs), you need to install Azure CLI within the operating system of the Azure VM that is hosting the agent.
+
+1. Start a web browser and navigate to the page [Install Azure CLI on Windows](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli#install-or-update).
+
+1. Download and install Azure CLI.
+
+1. (Optional) If you prefer, run the following PowerShell command to install Azure CLI:
+
+   ```powershell
+   $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
+   ```
+
+   > **Note**: If you are using a different version of the Azure CLI, you may need to adjust the above command accordingly.
+
+1. In the web browser navigate to the page Microsoft .NET 8.0 SDK installer page at `https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.403-windows-x64-installer`.
+
+   > [!IMPORTANT]
+   > You need to install the .NET 8.0 SDK (or higher) on the Azure VM that is hosting the agent. This is required to build the eShopOnWeb application in the upcoming labs. Any other tools or SDKs required for the application build should also be installed on the Azure VM.
+
+1. Download and install Microsoft .NET 8.0 SDK.
+
+### Exercise 2: Author YAML-based Azure Pipelines
 
 In this exercise, you will create an application lifecycle build pipeline, using a YAML-based template.
 
 #### Task 1: Create an Azure DevOps YAML pipeline
 
-In this task, you will create a template-based Azure DevOps YAML pipeline.
+In this task, you will create a YAML-based pipeline for the **eShopOnWeb** project.
 
 1. From the web browser displaying the Azure DevOps portal with the **eShopOnWeb** project open, in the vertical navigational pane on the left side, click **Pipelines**.
 1. Click the **Create Pipeline** button - if you don't have any other pipelines created yet or click **New pipeline** to create an additional new one.
@@ -94,110 +287,33 @@ In this task, you will create a template-based Azure DevOps YAML pipeline.
 
 1. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
 
-    > Note: we are just creating the pipeline definition for now, without running it. You will first set up an Azure DevOps agent pool and run the pipeline in a later exercise. 
+    > **Note**: We are just creating the pipeline definition for now, without running it. You will first set up an Azure DevOps agent pool and run the pipeline in a later exercise.
 
-### Exercise 2: Manage Azure DevOps agent pools
+#### Task 2: Update the YAML pipeline with the self-hosted agent pool
 
-In this exercise, you will implement a self-hosted Azure DevOps agent.
-
-#### Task 1: Configure an Azure DevOps self-hosting agent
-
-In this task, you will configure your lab Virtual Machine as an Azure DevOps self-hosting agent and use it to run a build pipeline.
-
-1. Within the Lab Virtual machine (Lab VM) or your own computer, start a web browser, navigate to [the Azure DevOps portal](https://dev.azure.com) and sign in by using the Microsoft account associated with your Azure DevOps organization.
-
-  > **Note**: The Lab Virtual machine should have all necessary prerequisite software installed. If you are installing on your own computer, you will need to install .NET 8 SDKs or higher necessary to build the demo project. See [Download .NET](https://dotnet.microsoft.com/download/dotnet).
-
-1. In the Azure DevOps portal, in the upper right corner of the Azure DevOps page, click the **User settings** icon, depending on whether or not you have preview features turned on, you should either see a **Security** or **Personal access tokens** item in the menu, if you see **Security**, click on that, then select **Personal access tokens**. On the **Personal Access Tokens** pane, and click **+ New Token**.
-1. On the **Create a new personal access token** pane, click the **Show all scopes** link and, specify the following settings and click **Create** (leave all others with their default values):
-
-    | Setting | Value |
-    | --- | --- |
-    | Name | **eShopOnWeb** |
-    | Scope (custom defined) | **Agent Pools** (show more scopes option below if needed)|
-    | Permissions | **Read and manage** |
-
-1. On the **Success** pane, copy the value of the personal access token to Clipboard.
-
-    > **Note**: Make sure you copy the token. You will not be able to retrieve it once you close this pane.
-
-1. On the **Success** pane, click **Close**.
-1. On the **Personal Access Token** pane of the Azure DevOps portal, click **Azure DevOps** symbol in the upper left corner and then click **Organization settings** label in the lower left corner.
-1. To the left side of the **Overview** pane, in the vertical menu, in the **Pipelines** section, click **Agent pools**.
-1. On the **Agent pools** pane, in the upper right corner, click **Add pool**.
-1. On the **Add agent pool** pane, in the **Pool type** dropdown list, select **Self-hosted**, in the **Name** text box, type **az400m03l03a-pool** and then click **Create**.
-1. Back on the **Agent pools** pane, click the entry representing the newly created **az400m03l03a-pool**.
-1. On the **Jobs** tab of the **az400m03l03a-pool** pane, click the **New agent** button.
-1. On the **Get the agent** pane, ensure that the **Windows** and **x64** tabs are selected, and click **Download** to download the zip archive containing the agent binaries to download it into the local **Downloads** folder within your user profile.
-
-    > **Note**: If you receive an error message at this point indicating that the current system settings prevent you from downloading the file, in the Browser window, in the upper right corner, click the gearwheel symbol designating the **Settings** menu header, in the dropdown menu, select **Internet Options**, in the **Internet Options** dialog box, click **Advanced**, on the **Advanced** tab, click **Reset**, in the **Reset Browser Settings** dialog box, click **Reset** again, click **Close**, and try the download again.
-
-1. Start Windows PowerShell as administrator and in the **Administrator: Windows PowerShell** console run the following lines to create the **C:\\agent** directory and extract the content of the downloaded archive into it.
-
-    ```powershell
-    cd \
-    mkdir agent ; cd agent
-    $TARGET = Get-ChildItem "$Home\Downloads\vsts-agent-win-x64-*.zip"
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($TARGET, "$PWD")
-    ```
-
-1. In the same **Administrator: Windows PowerShell** console, run the following to configure the agent:
-
-    ```powershell
-    .\config.cmd
-    ```
-
-1. When prompted, specify the values of the following settings:
-
-    | Setting | Value |
-    | ------- | ----- |
-    | Enter server URL | the URL of your Azure DevOps organization, in the format **<https://dev.azure.com/>`<organization_name>`**, where `<organization_name>` represents the name of your Azure DevOps organization |
-    | Enter authentication type (press enter for PAT) | **Enter** |
-    | Enter personal access token | The access token you recorded earlier in this task |
-    | Enter agent pool (press enter for default) | **az400m03l03a-pool** |
-    | Enter agent name | **az400m03-vm0** |
-    | Enter work folder (press enter for _work) | **Enter** |
-    | **(Only if shown)** Enter Perform an unzip for tasks for each step. (press enter for N) | **WARNING**: only press **Enter** if the message is shown|
-    | Enter run agent as service? (Y/N) (press enter for N) | **Y** |
-    | enter enable SERVICE_SID_TYPE_UNRESTRICTED (Y/N) (press enter for N) | **Y** |
-    | Enter User account to use for the service (press enter for NT AUTHORITY\NETWORK SERVICE) | **Enter** |
-    | Enter whether to prevent service starting immediately after configuration is finished? (Y/N) (press enter for N) | **Enter** |
-
-    > **Note**: You can run self-hosted agent as either a service or an interactive process. You might want to start with the interactive mode, since this simplifies verifying agent functionality. For production use, you should consider either running the agent as a service or as an interactive process with auto-logon enabled, since both persist their running state and ensure that the agent starts automatically if the operating system is restarted.
-
-1. Switch to the browser window displaying the Azure DevOps portal and close the **Get the agent** pane.
-1. Back on the **Agents** tab of the **az400m03l03a-pool** pane, note that the newly configured agent is listed with the **Online** status.
-1. In the web browser window displaying the Azure DevOps portal, in the upper left corner, click the **Azure DevOps** label.
-1. From the list of projects, click the tile representing your **eShopOnWeb** project.
-1. On the **eShopOnWeb** pane, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**.
-1. On the **Recent** tab of the **Pipelines** pane, select **eShopOnWeb** and, on the **eShopOnWeb** pane, select **Edit**.
-1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, replace line 13 which says  `vmImage: ubuntu-latest` designating the target agent pool the following content, designating the newly created self-hosted agent pool:
+1. In the Azure DevOps portal, navigate to the **eShopOnWeb** project, and select **Pipelines** from the left-side menu.
+1. Click on the **Edit** button for the pipeline you created in the previous task.
+1. On the **eShopOnWeb** edit pane, in the existing YAML-based pipeline, remove line 13 which says **vmImage: ubuntu-latest** designating the target agent pool the following content, designating the newly created self-hosted agent pool:
 
     ```yaml
-    name: az400m03l03a-pool
-    demands:
-    - Agent.Name -equals az400m03-vm0
+    pool: 
+      name: eShopOnWebSelfPool
+      demands: Agent.Name -equals eShopOnWebSelfAgent
     ```
 
     > **WARNING**: Be careful with copy/paste, make sure you have the same indentation shown above.
 
-    ![Yaml pool syntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
+    ![Screenshot showing the YAML pool syntax.](images/eshoponweb-ci-pr-agent-pool.png)
 
-1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Validate and save**. This will automatically trigger the build based on this pipeline.
-1. In the Azure DevOps portal, in the vertical navigational pane on the left side, in the **Pipelines** section, click **Pipelines**. Depending on your lab setup, the pipeline might prompt you for permissions. Click **Permit** to allow the pipeline to run. 
-1. On the **Recent** tab of the **Pipelines** pane, click the **eShopOnWeb** entry, on the **Runs** tab of the **eShopOnWeb** pane, select the most recent run, on the **Summary** pane of the run, scroll down to the bottom, in the **Jobs** section, click **Phase 1** and monitor the job until its successful completion.
+1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Validate and save**. Then click **Save**.
+1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Run pipeline**.
 
-### Exercise 3: Remove the resources used in the lab
+    > **Note**: The pipeline will run on the self-hosted agent pool you created in the previous exercise.
+1. Open the pipeline run and monitor the job until its successful completion.
 
-1. Stop and remove the agent service by running `.\config.cmd remove` from the command prompt.
-   - You will be asked to input your Personal Access Token again, to remove your agent from your organization.
-   - If you no longer have the Personal Access Token, you may proceed to regenerate the one you initially created in Exercise 2, Task 1, Step 2.
-1. Delete the agent pool.
-1. Revoke the PAT token.
-1. Revert the changes in the **eshoponweb-ci-pr.yml** file by navigating to it from Repos/.ado/eshoponweb-ci-pr.yml, selecting **Edit** and removing lines 13-15 (the agent pool snippet), and changing back to  `vmImage: ubuntu-latest` as it was originally. (This is because you will use the same sample pipeline file in a future lab exercise.)
+    > **Note**: If you receive a permissions prompt, click **Permit** to allow the pipeline to run.
 
-![Revert pipeline pool back to vmImage settings](images/m3/eshoponweb-ci-pr-vmimage_v2.png)
+1. Once the pipeline run is complete, review the output and verify that the pipeline ran successfully.
 
 ## Review
 

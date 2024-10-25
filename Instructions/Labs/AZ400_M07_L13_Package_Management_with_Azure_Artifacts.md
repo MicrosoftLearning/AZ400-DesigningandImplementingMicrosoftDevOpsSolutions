@@ -6,8 +6,6 @@ lab:
 
 # Package Management with Azure Artifacts
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -41,9 +39,38 @@ After you complete this lab, you will be able to:
 
 ### Exercise 0: Configure the lab prerequisites
 
-In this exercise, we want to remind you about validating the lab prerequisites, having both an Azure DevOps Organization ready, as well as having created the eShopOnWeb project. See the instructions above for more details.
+In this exercise, you will set up the prerequisites for the lab.
 
-#### Task 1: Configuring the eShopOnWeb solution in Visual Studio
+#### Task 1: (skip if done) Create and configure the team project
+
+In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
+
+    ![Screenshot of the create new project panel.](images/create-project.png)
+
+#### Task 2: (skip if done) Import eShopOnWeb Git Repository
+
+In this task you will import the eShopOnWeb Git repository that will be used by several labs.
+
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click **Import**:
+
+    ![Screenshot of the import repository panel.](images/import-repo.png)
+
+1. The repository is organized the following way:
+    - **.ado** folder contains Azure DevOps YAML pipelines.
+    - **.devcontainer** folder container setup to develop using containers (either locally in VS Code or GitHub Codespaces).
+    - **infra** folder contains Bicep&ARM infrastructure as code templates used in some lab scenarios.
+    - **.github** folder container YAML GitHub workflow definitions.
+    - **src** folder contains the .NET 8 website used on the lab scenarios.
+
+#### Task 3: (skip if done) Set main branch as default branch
+
+1. Go to **Repos > Branches**.
+1. Hover on the **main** branch then click the ellipsis on the right of the column.
+1. Click on **Set as default branch**.
+
+#### Task 4: Configuring the eShopOnWeb solution in Visual Studio
 
 In this task, you will configure Visual Studio to prepare for the lab.
 
@@ -76,7 +103,7 @@ In this task, you will create and connect to a feed.
 
     > **Note**: This feed will be a collection of NuGet packages available to users within the organization and will sit alongside the public NuGet feed as a peer. The scenario in this lab will focus on the workflow for using Azure Artifacts, so the actual architectural and development decisions are purely illustrative.  This feed will include common functionality that can be shared across projects in this organization.
 
-1. On the **Create new feed** pane, in the **Name** textbox, type **eShopOnWebShared**, in the **Scope** section, select the **Organization** option, leave other settings with their default values, and click **Create**.
+1. On the **Create new feed** pane, in the **Name** textbox, type **`eShopOnWebShared`**, in the **Scope** section, select the **Organization** option, leave other settings with their default values, and click **Create**.
 
     > **Note**: Any user who wants to connect to this NuGet feed must configure their environment.
 
@@ -129,7 +156,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
     dotnet pack .\eShopOnWeb.Shared.csproj
     ```
 
-    > **Note**: The **dotnet pack** command builds the project and creates a NuGet package in the **bin\Release** folder.
+    > **Note**: The **dotnet pack** command builds the project and creates a NuGet package in the **bin\Release** folder. If you don't have a **Release** folder, you can use the **Debug** folder instead.
 
     > **Note**: Disregard any warnings displayed in the **Administrator: Windows PowerShell** window.
 
@@ -228,7 +255,7 @@ When you created the Azure DevOps Artifacts Package Feed, by design, it allows f
 
 1. Navigate to the Azure DevOps Portal, browse to **Artifacts**, and select the **eShopOnWebShared** Feed.
 1. Click **Search Upstream Sources**
-1. In the **Go to an Upstream Package** window, select **NuGet** as Package Type, and enter **Newtonsoft.Json** in the search field.
+1. In the **Go to an Upstream Package** window, select **NuGet** as Package Type, and enter **`Newtonsoft.Json`** in the search field.
 1. Confirm by pressing the **Search** button.
 1. This results in a list of all Newtonsoft.Json packages with the different versions available.
 1. Click the **left arrow key** to return to the **eShopOnWebShared** Feed.

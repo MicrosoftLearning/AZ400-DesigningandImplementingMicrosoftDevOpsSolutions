@@ -6,8 +6,6 @@ lab:
 
 # Set up and run functional tests
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -30,25 +28,25 @@ After you complete this lab, you will be able to configure a CI pipeline for a .
 - Integration Tests
 - Functional Tests
 
-## Estimated timing: 60 minutes
+## Estimated timing: 20 minutes
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Task 1:  (skip if done) Create and configure the team project
+#### Task 1: (skip if done) Create and configure the team project
 
 In this task, you will create an **eShopOnWeb** Azure DevOps project to be used by several labs.
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
 
-#### Task 2:  (skip if done) Import the eShopOnWeb Git Repository
+#### Task 2: (skip if done) Import the eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import a Repository**. Select **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> and click **Import**:
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -59,7 +57,7 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
@@ -73,7 +71,7 @@ In this task, you will add the YAML build definition that will be used to implem
 
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Go to **Pipelines>Pipelines**.
+1. Go to **Pipelines > Pipelines**.
 1. Click on **New Pipeline** button.
 1. Select **Azure Repos Git (YAML)**.
 1. Select the **eShopOnWeb** repository.
@@ -123,7 +121,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 1. Click **Save**, on the **Save** pane, click **Save** again to commit the changes directly into the main branch.
 
-#### Task 4: Check the tests summary
+#### Task 3: Check the tests summary
 
 1. Click on the **Run**, then from the **Run pipeline** tab, click on **Run** again.
 
@@ -131,14 +129,14 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 1. Once completed, the **Test** tab will show as part of the pipeline run. Click on it to check the summary. It looks like shown below:
 
-    ![Tests Summary](images/AZ400_M05_L09_Tests_Summary.png)
+    ![Screenshot of the tests summary.](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. For more details, at the bottom of the page, the table shows a list of the different run tests.
 
-    >**Note**: If the table is empty, you need to reset the filters to have all the details about the tests run.
+    > **Note**: If the table is empty, you need to reset the filters to have all the details about the tests run.
 
-    ![Tests Table](images/AZ400_M05_L09_Tests_Table.png)
+    ![Screenshot of the tests table.](images/AZ400_M05_L09_Tests_Table.png)
 
 ## Review
 
-In this lab, you learned how to setup and run different tests types using Azure Pipelines and .Net.
+In this lab, you learned how to setup and run different tests types using Azure Pipelines and .NET.

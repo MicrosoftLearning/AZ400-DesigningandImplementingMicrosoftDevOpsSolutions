@@ -6,8 +6,6 @@ lab:
 
 # Integrate Azure Key Vault with Azure DevOps
 
-## Student lab manual
-
 ## Lab requirements
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://learn.microsoft.com/azure/devops/server/compatibility)
@@ -22,22 +20,24 @@ Azure Key Vault provides secure storage and management of sensitive data, such a
 In this lab, you will see how you can integrate Azure Key Vault with an Azure Pipelines by using the following steps:
 
 - Create an Azure Key Vault to store a ACR password as a secret.
-- Create an Azure Service Principal to provide access to secrets in the Azure Key Vault.
-- Configure permissions to allow the Service Principal to read the secret.
+- Provide access to secrets in the Azure Key Vault.
+- Configure permissions to read the secret.
 - Configure pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Create a Microsoft Entra service principal.
 - Create an Azure Key Vault.
+- Retrieve a secret from Azure Key Vault in an Azure DevOps pipeline.
+- Use the secret in a subsequent task in the pipeline.
+- Deploy a container image to Azure Container Instance (ACI) using the secret.
 
 ## Estimated timing: 40 minutes
 
 ## Instructions
 
-### Exercise 0: Configure the lab prerequisites
+### Exercise 0: (skip if done) Configure the lab prerequisites
 
 In this exercise, you will set up the prerequisites for the lab, which consist of a new Azure DevOps project with a repository based on the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -47,15 +47,15 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 1. On your lab computer, in a browser window open your Azure DevOps organization. Click on **New Project**. Give your project the name **eShopOnWeb** and leave the other fields with defaults. Click on **Create**.
 
-    ![Create Project](images/create-project.png)
+    ![Screenshot of the create new project panel.](images/create-project.png)
 
 #### Task 2: (skip if done) Import eShopOnWeb Git Repository
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL https://github.com/MicrosoftLearning/eShopOnWeb.git  and click on **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos > Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
 
-    ![Import Repository](images/import-repo.png)
+    ![Screenshot of the import repository panel.](images/import-repo.png)
 
 1. The repository is organized the following way:
     - **.ado** folder contains Azure DevOps YAML pipelines.
@@ -66,85 +66,25 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 
 #### Task 3: (skip if done) Set main branch as default branch
 
-1. Go to **Repos>Branches**.
+1. Go to **Repos > Branches**.
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
 ### Exercise 1: Setup CI pipeline to build eShopOnWeb container
 
-Setup CI YAML pipeline for:
+In this exercise, you will create a CI pipeline that builds and pushes the eShopOnWeb container images to an Azure Container Registry (ACR). The pipeline will use Docker Compose to build the images and push them to the ACR.
 
-- Creating an Azure Container Registry to keep the container images
-- Using Docker Compose to build and push **eshoppublicapi** and **eshopwebmvc** container images. Only **eshopwebmvc** container will be deployed.
-
-#### Task 1: (skip if done) Create a Service Principal
-
-In this task, you will create a Service Principal by using the Azure CLI, which will allow Azure DevOps to:
-
-- Deploy resources on your Azure subscription.
-- Have read access on the later created Key Vault secrets.
-
-> **Note**: If you do already have a Service Principal, you can proceed directly to the next task.
-
-You will need a Service Principal to deploy  Azure resources from Azure Pipelines. Since we are going to retrieve secrets in a pipeline, we will need to grant permission to the service when we create the Azure Key Vault.
-
-A Service Principal is automatically created by Azure Pipelines, when you connect to an Azure subscription from inside a pipeline definition or when you create a new Service Connection from the project settings page (automatic option). You can also manually create the Service Principal from the portal or using Azure CLI and re-use it across projects.
-
-1. From the lab computer, start a web browser, navigate to the [**Azure Portal**](https://portal.azure.com), and sign in with the user account that has the Owner role in the Azure subscription you will be using in this lab and has the role of the Global Administrator in the Microsoft Entra tenant associated with this subscription.
-1. In the Azure portal, click on the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
-1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
-
-   >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following commands to retrieve the values of the Azure subscription ID and subscription name attributes:
-
-    ```bash
-    az account show --query id --output tsv
-    az account show --query name --output tsv
-    ```
-
-    > **Note**: Copy both values to a text file. You will need them later in this lab.
-
-1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a Service Principal (replace the **myServicePrincipalName** with any unique string of characters consisting of letters and digits) and **mySubscriptionID** with your Azure subscriptionId :
-
-    ```bash
-    az ad sp create-for-rbac --name myServicePrincipalName \
-                         --role contributor \
-                         --scopes /subscriptions/mySubscriptionID
-    ```
-
-    > **Note**: The command will generate a JSON output. Copy the output to text file. You will need it later in this lab.
-
-1. Next, from the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Click on **Project Settings>Service Connections (under Pipelines)** and **New Service Connection**.
-
-    ![New Service Connection](images/new-service-connection.png)
-
-    > **Note**: If there are no Service Connections previously created on the page, the service connection creation button is located in the center of the page and has the label **Create service connection**
-
-1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
-
-1. Then choose **Service Principal (manual)** and click on **Next**.
-
-1. Fill in the empty fields using the information gathered during previous steps:
-    - Subscription Id and Name.
-    - Service Principal Id (appId), Service principal key (password) and Tenant ID (tenant).
-    - In **Service connection name** type **azure subs**. This name will be referenced in YAML pipelines when needing an Azure DevOps Service Connection to communicate with your Azure subscription.
-
-    ![Azure Service Connection](images/azure-service-connection.png)
-
-1. Click on **Verify and Save**.
-
-#### Task 2: Setup and Run CI pipeline
+#### Task 1: Setup and Run CI pipeline
 
 In this task, you will import an existing CI YAML pipeline definition, modify and run it. It will create a new Azure Container Registry (ACR) and build/publish the eShopOnWeb container images.
 
-1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines>Pipelines** and click on **Create Pipeline** (or **New pipeline**).
+1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines > Pipelines** and click on **Create Pipeline** (or **New pipeline**).
 
 1. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
 1. On the **Configure** section, choose **Existing Azure Pipelines YAML file**. Select branch: **main**, provide the following path **/.ado/eshoponweb-ci-dockercompose.yml** and click on **Continue**.
 
-    ![Select Pipeline](images/select-ci-container-compose.png)
+    ![Screenshot of the existing pipeline YAML.](images/select-ci-container-compose.png)
 
 1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **AZ400-EWebShop-NAME** with a unique value and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId.
 
@@ -157,15 +97,15 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
     - **PowerShell** task take the bicep output (acr login server) and creates pipeline variable.
     - **DockerCompose** task builds and pushes the container images for eShopOnWeb to the Azure Container Registry .
 
-1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the elipsis and **Rename/Remove** option. Name it **eshoponweb-ci-dockercompose** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci-dockercompose** and click on **Save**.
 
 1. Once the execution is finished, on the Azure Portal, open previously defined Resource Group, and you should find an Azure Container Registry (ACR) with the created container images **eshoppublicapi** and **eshopwebmvc**. You will only use **eshopwebmvc** on the deploy phase.
 
-    ![Container Images in ACR](images/azure-container-registry.png)
+    ![Screenshot of container images in ACR.](images/azure-container-registry.png)
 
 1. Click on **Access Keys**, enable the **Admin user** if not done already, and copy the **password** value. It will be used in the following task, as we will keep it as secret in Azure Key Vault.
 
-    ![ACR password](images/acr-password.png)
+    ![Screenshot of the ACR password location.](images/acr-password.png)
 
 #### Task 2: Create an Azure Key Vault
 
@@ -173,8 +113,8 @@ In this task, you will create an Azure Key Vault by using the Azure portal.
 
 For this lab scenario, we will have a Azure Container Instance (ACI) that pulls and runs a container image stored in Azure Container Registry (ACR). We intend to store the password for the ACR as a secret in the key vault.
 
-1. In the Azure portal, in the **Search resources, services, and docs** text box, type **Key vault** and press the **Enter** key.
-1. Select **Key vault** blade, click on **Create>Key Vault**.
+1. In the Azure portal, in the **Search resources, services, and docs** text box, type **`Key vault`** and press the **Enter** key.
+1. Select **Key vault** blade, click on **Create > Key Vault**.
 1. On the **Basics** tab of the **Create a key vault** blade, specify the following settings and click on **Next**:
 
     | Setting | Value |
@@ -212,11 +152,11 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pulls 
 
 #### Task 3: Create a Variable Group connected to Azure Key Vault
 
-In this task, you will create a Variable Group in Azure DevOps that will retrieve the ACR password secret from Key Vault using the Service Connection (Service Principal).
+In this task, you will create a Variable Group in Azure DevOps that will retrieve the ACR password secret from Key Vault using the Service Connection created previously.
 
 1. On your lab computer, start a web browser and navigate to the Azure DevOps project **eShopOnWeb**.
 
-1. In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines>Library**. Click on **+ Variable Group**.
+1. In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines > Library**. Click on **+ Variable Group**.
 
 1. On the **New variable group** blade, specify the following settings:
 
@@ -230,13 +170,13 @@ In this task, you will create a Variable Group in Azure DevOps that will retriev
 1. Under **Variables**, click on **+ Add** and select the **acr-secret** secret. Click on **OK**.
 1. Click on **Save**.
 
-    ![Variable Group create](images/vg-create.png)
+    ![Screenshot of the variable group creation.](images/vg-create.png)
 
 #### Task 4: Setup CD Pipeline to deploy container in Azure Container Instance (ACI)
 
 In this task, you will import a CD pipeline, customize it, and run it for deploying the container image created before in a Azure Container Instance.
 
-1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines>Pipelines** and click on **New Pipeline**.
+1. From the lab computer, start a web browser, navigate to the Azure DevOps **eShopOnWeb** project. Go to **Pipelines > Pipelines** and click on **New Pipeline**.
 
 1. On the **Where is your code?** window, select **Azure Repos Git (YAML)** and select the **eShopOnWeb** repository.
 
@@ -246,7 +186,7 @@ In this task, you will import a CD pipeline, customize it, and run it for deploy
 
     - **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
     - **az400eshop-NAME** replace NAME to make it globally unique.
-    - **YOUR-ACR.azurecr.io** and **ACR-USERNAME** with your ACR login server (both need the ACR name, can be reviewed on the ACR>Access Keys).
+    - **YOUR-ACR.azurecr.io** and **ACR-USERNAME** with your ACR login server (both need the ACR name, can be reviewed on the ACR > Access Keys).
     - **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
 
 1. Click on **Save and Run**.
@@ -259,24 +199,18 @@ In this task, you will import a CD pipeline, customize it, and run it for deploy
     - **Variables (for Deploy stage)** connects to the variable group to consume the Azure Key Vault secret **acr-secret**
     - **AzureResourceManagerTemplateDeployment** deploys the Azure Container Instance (ACI) using bicep template and provides the ACR login parameters to allow ACI to download the previously created container image from Azure Container Registry (ACR).
 
-1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines>Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-cd-aci** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-cd-aci** and click on **Save**.
 
-### Exercise 2: Remove the Azure lab resources
-
-In this exercise, you will remove the Azure resources provisioned in this lab to eliminate unexpected charges.
-
->**Note**: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
-
-#### Task 1: Remove the Azure lab resources
-
-In this task, you will use Azure Cloud Shell to remove the Azure resources provisioned in this lab to eliminate unnecessary charges.
-
-1. In the Azure portal, open the created Resource Group and click on **Delete resource group**.
+   > [!IMPORTANT]
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
 
 ## Review
 
 In this lab, you integrated Azure Key Vault with an Azure DevOps pipeline by using the following steps:
 
-- Created an Azure service principal to provide access to an Azure Key Vault secret and authenticate deployment to Azure from Azure DevOps.
-- Ran two YAML pipelines imported from a Git repository.
-- Configured one pipeline to retrieve the password from Azure Key Vault using a Variable Group and use it on subsequent tasks.
+- Created an Azure Key Vault to store an ACR password as a secret.
+- Provided access to secrets in the Azure Key Vault.
+- Configured permissions to read the secret.
+- Configured a pipeline to retrieve the password from the Azure Key Vault and pass it on to subsequent tasks.
+- Deployed a container image to Azure Container Instance (ACI) using the secret.
+- Created a Variable Group connected to Azure Key Vault.
