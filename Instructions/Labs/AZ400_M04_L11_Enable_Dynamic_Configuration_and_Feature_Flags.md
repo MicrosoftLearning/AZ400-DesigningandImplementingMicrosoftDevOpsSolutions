@@ -175,7 +175,7 @@ Let's continue to test the Feature manager.
 1. You can disable this feature in App Configuration and then you would see that the image disappears.
 
    > [!IMPORTANT]
-   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
+   > Remember to delete the resources created in the Azure portal to avoid unnecessary charges. Be sure to disable the **eshoponweb-cd-webapp-code** pipeline or it will re-create a deleted resource group and associated resources after the next run of **eshoponweb-ci**.
 
 ## Review
 
