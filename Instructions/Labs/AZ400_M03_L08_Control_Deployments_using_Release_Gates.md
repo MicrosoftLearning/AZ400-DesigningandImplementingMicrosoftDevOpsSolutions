@@ -121,7 +121,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
    > **Note**: possible locations can be found by running the following command, use the **Name** on `<region>` : `az account list-locations -o table`
 
    ```bash
-   REGION='centralus'
+   REGION='<region>'
    RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
