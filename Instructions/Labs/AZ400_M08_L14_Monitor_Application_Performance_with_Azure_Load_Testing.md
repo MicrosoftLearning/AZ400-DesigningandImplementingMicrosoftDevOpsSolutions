@@ -397,7 +397,7 @@ Perform the following steps to download the input files for an existing load tes
           inputs:
             azureSubscription: 'AZURE DEMO SUBSCRIPTION'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
-            resourceGroup: 'az400m05l11-RG'
+            resourceGroup: 'az400m08l14-RG'
             loadTestResource: 'eShopOnWebLoadTesting'
             loadTestRunName: 'ado_run'
             loadTestRunDescription: 'load testing from ADO'
