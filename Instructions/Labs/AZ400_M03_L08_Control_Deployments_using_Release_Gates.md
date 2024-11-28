@@ -147,7 +147,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 
 #### Task 2: Configure an Application Insights resource
 
-1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the page to search for **Application Insights** and, in the list of results, select **Application Insights**.
+1. In the Azure portal, use the **Search resources, services, and docs** text box at the top of the page to search for **`Application Insights`** and, in the list of results, select **Application Insights**.
 1. On the **Application Insights** blade, select **+ Create**.
 1. On the **Application Insights** blade, on the **Basics** tab, specify the following settings (leave others with their default values):
 
@@ -203,9 +203,9 @@ In this task, you will set up the release tasks as part of the Release Pipeline.
 1. Click **New Pipeline**.
 1. From the **Select a template** window, **choose** **Azure App Service Deployment** (Deploy your application to Azure App Service. Choose from Web App on Windows, Linux, containers, Function Apps, or WebJobs) under the **Featured** list of templates.
 1. Click **Apply**.
-1. From the **Stage** window appearing, update the default "Stage 1" Stage Name to **DevTest**. Close the popup window by using the **X** button. You are now in the graphical editor of the Release Pipeline, showing the DevTest Stage.
-1. On the top of the page, rename the current pipeline from **New release pipeline** to **eshoponweb-cd**.
-1. Hover the mouse over the DevTest Stage, and click the **Clone** button, to copy the DevTest Stage to an additional Stage. Name this Stage **Production**.
+1. From the **Stage** window appearing, update the default "Stage 1" Stage Name to **`DevTest`**. Close the popup window by using the **X** button. You are now in the graphical editor of the Release Pipeline, showing the DevTest Stage.
+1. On the top of the page, rename the current pipeline from **New release pipeline** to **`eshoponweb-cd`**.
+1. Hover the mouse over the DevTest Stage, and click the **Clone** button, to copy the DevTest Stage to an additional Stage. Name this Stage **`Production`**.
 
    > **Note**: The pipeline now contains two stages named **DevTest** and **Production**.
 
