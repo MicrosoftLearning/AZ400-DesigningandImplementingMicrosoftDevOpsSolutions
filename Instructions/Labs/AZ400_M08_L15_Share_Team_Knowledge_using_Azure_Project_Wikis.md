@@ -43,11 +43,11 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 > **Note**: If your published wiki corresponds to a product version, you can publish new branches as you release new versions of your product.
 
 1. In the vertical menu on the left side, click **Repos**, in the upper section of the **Files** pane, make sure you have  the **eShopOnWeb** repo selected (choose it from the dropdown on the top with Git icon). In the branch dropdown list (on top of "Files" with the branch icon), select **main**, and review the content of the main branch.
-1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **src** folder and brows to **Web -> wwwroot -> images** subfolder. In the **Images** subfolder, locate the **brand.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **Download** to download the **brand.png** file to the local **Downloads** folder on your lab computer.
+1. To the left of the **Files** pane, in the listing of the repo folder and file hierarchy, expand the **src** folder and browse to **Web -> wwwroot -> images** subfolder. In the **Images** subfolder, locate the **brand.png** entry, hover with the mouse pointer over its right end to reveal the vertical ellipsis (three dots) symbol representing the **More** menu, click **Download** to download the **brand.png** file to the local **Downloads** folder on your lab computer.
 
     > **Note**: You will use this image in the next exercise of this lab.
 
-1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **eShopOnWeb** Repo title on top of the folder structure. **Select the ellipsis (3 dots)**, Choose **New / Folder**, and provide **Documents** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **READ.ME** as New File name.
+1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **eShopOnWeb** Repo title on top of the folder structure. **Select the ellipsis (3 dots)**, Choose **New / Folder**, and provide **`Documents`** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **`READ.ME`** as New File name.
 1. Confirm the creation of the folder and the file by **pressing the Create button**.
 1. The READ.ME file will open in the built-in view mode. Since this is stored 'as code', you need to **Commit** the changes by clicking the **Commit** button. In the Commit window, confirm once more by pressing **Commit**.
 1. In the Azure DevOps vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, select **Publish code as wiki*.
@@ -58,7 +58,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
     | Repository | **eShopOnWeb** |
     | Branch | **main** |
     | Folder | **/Documents** |
-    | Wiki name | **eShopOnWeb (Documents)** |
+    | Wiki name | **`eShopOnWeb (Documents)`** |
 
     > **Note**: This will automatically open the Wiki section, and publish **the editor**, where you can provide a Wiki page title, as well as adding the actual content. Notice you are encouraged to use MarkDown format, but make use of the ribbon to help you with some of the MarkDown layout syntax.
 
@@ -173,7 +173,7 @@ In this task, you will manage the newly created project wiki.
 
 > **Note**: You will start by reverting the most recent change to the wiki page.
 
-1. On you lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **eShopOnWeb** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
+1. On your lab computer, in the Azure DevOps portal displaying the **Wiki pane** of the **eShopOnWeb** project, with the content of the **Project Design** wiki selected, in the upper right corner, click the vertical ellipsis symbol and, in the dropdown menu, click **View revisions**.
 1. On the **Revisions** pane, click the entry representing the most recent change.
 1. On the resulting pane, review the comparison between the previous and the current version of the document, click **Revert**, when prompted for the confirmation, click **Revert** again, and then click **Browse Page**.
 1. Back on the **Project Design** pane, verify that the change was successfully reverted.
