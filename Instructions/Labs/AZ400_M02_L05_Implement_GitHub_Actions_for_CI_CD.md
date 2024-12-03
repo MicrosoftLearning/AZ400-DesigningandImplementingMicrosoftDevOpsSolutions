@@ -113,7 +113,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
 1. On the repository page, go to **Settings**, click on **Secrets and variables > Actions**. Click on **New repository secret**
-    - Name : **AZURE_CREDENTIALS**
+    - Name : **`AZURE_CREDENTIALS`**
     - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
 
 1. Click on **Add secret**. Now GitHub Actions will be able to reference the service principal, using the repository secret.
@@ -159,7 +159,7 @@ In this task, you will use GitHub environments to ask for manual approval before
 1. In the **deploy** job section, you can find a reference to an **environment** called **Development**. GitHub used [environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) add protection rules (and secrets) for your targets.
 
 1. On the repository page, go to **Settings**, open **Environments** and click **New environment**.
-1. Give it **Development** name and click on **Configure Environment**.
+1. Give it **`Development`** name and click on **Configure Environment**.
 
     > **Note**: If an environment called **Development** already exists in the **Environments** list, open its configuration by clicking on the environment name.  
 
