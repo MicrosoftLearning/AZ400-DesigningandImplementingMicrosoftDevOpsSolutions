@@ -283,7 +283,7 @@ The sprint backlog should contain all the information the team needs to successf
 
 1. In the **Rule criteria** section, in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
 
-    ![Screenshot of the board style settings.](images/m1/EShop-WEB-styles_v2.jpg)
+    ![Screenshot of the board style settings.](images/m1/EShop-WEB-styles_v2.JPG)
 
 1. Click **Save** to save and close the settings.
 
