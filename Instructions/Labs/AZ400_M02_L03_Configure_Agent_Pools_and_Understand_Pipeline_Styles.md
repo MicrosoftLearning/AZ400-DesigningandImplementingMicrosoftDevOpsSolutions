@@ -216,7 +216,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
    - Accept the default agent work folder (_work).
    - Enter **Y** to configure the agent to run as service.
    - Enter **Y** to enable SERVICE_SID_TYPE_UNRESTRICTED for the agent service.
-   - Enter **NT AUTHORITY\SYSTEM** to set the security context for the service.
+   - Enter **`NT AUTHORITY\SYSTEM`** to set the security context for the service.
 
    > [!IMPORTANT]
    > In general, you should follow the principle of least privilege when configuring the service security context.
