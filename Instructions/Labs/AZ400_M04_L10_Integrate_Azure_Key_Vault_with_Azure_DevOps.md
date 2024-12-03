@@ -97,7 +97,7 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
     - **PowerShell** task take the bicep output (acr login server) and creates pipeline variable.
     - **DockerCompose** task builds and pushes the container images for eShopOnWeb to the Azure Container Registry .
 
-1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-ci-dockercompose** and click on **Save**.
+1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **`eshoponweb-ci-dockercompose`** and click on **Save**.
 
 1. Once the execution is finished, on the Azure Portal, open previously defined Resource Group, and you should find an Azure Container Registry (ACR) with the created container images **eshoppublicapi** and **eshopwebmvc**. You will only use **eshopwebmvc** on the deploy phase.
 
