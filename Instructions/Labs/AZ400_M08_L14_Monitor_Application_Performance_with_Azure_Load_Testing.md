@@ -322,7 +322,7 @@ With both quick tests complete, let's make a few changes to them, and validate t
 1. More below, several of these values are represented using dashboard graph line and chart views.
 1. Take a few minutes to **compare the results** of both simulated tests with each other, and **identify the impact** of more users on the App Service performance.
 
-### Exercise 2: Automate a Load Test with CI/CD in Azure Pipelines
+### Exercise 3: Automate a Load Test with CI/CD in Azure Pipelines
 
 Get started with automating load tests in Azure Load Testing by adding it to a CI/CD pipeline. After running a load test in the Azure portal, you export the configuration files, and configure a CI/CD pipeline in Azure Pipelines (similar capability exists for GitHub Actions).
 
