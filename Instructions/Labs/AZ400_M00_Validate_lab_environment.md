@@ -1,7 +1,7 @@
 ---
 lab:
-    title: 'Validate lab environment'
-    module: 'Module 0: Welcome'
+  title: "Validate lab environment"
+  module: "Module 0: Welcome"
 ---
 
 # Validate lab environment
@@ -13,7 +13,6 @@ In preparation for the labs, it is crucial to have your environment correctly se
 - **Set up an Azure Subscription:** If you don't already have an Azure subscription, create one by following the instructions on this page or visit [https://azure.microsoft.com/free](https://azure.microsoft.com/free) to sign up for a free.
 
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for the labs, create one by following the instructions on this page, or at [Create an organization or project collection](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
-  
 - [Git for Windows download page](https://gitforwindows.org/). This will be installed as part of prerequisites for this lab.
 
 - [Visual Studio Code](https://code.visualstudio.com/). This will be installed as part of prerequisites for this lab.
@@ -38,13 +37,13 @@ In preparation for the labs, it is crucial to have your environment correctly se
 
 1. In the drop-down box on the left, choose **Default Directory**, instead of **Microsoft Account**.
 
-1. If prompted (*"We need a few more details"*), provide your name, e-mail address, and location and click **Continue**.
+1. If prompted (_"We need a few more details"_), provide your name, e-mail address, and location and click **Continue**.
 
 1. Back at `https://aex.dev.azure.com` with **Default Directory** selected click the blue button **Create new organization**.
 
-1. Accept the *Terms of Service* by clicking **Continue**.
+1. Accept the _Terms of Service_ by clicking **Continue**.
 
-1. If prompted (*"Almost done"*), leave the name for the Azure DevOps organization at default (it needs to be a globally unique name) and pick a hosting location close to you from the list.
+1. If prompted (_"Almost done"_), leave the name for the Azure DevOps organization at default (it needs to be a globally unique name) and pick a hosting location close to you from the list.
 
 1. Once the newly created organization opens in **Azure DevOps**, select **Organization settings** in the bottom left corner.
 
@@ -54,7 +53,7 @@ In preparation for the labs, it is crucial to have your environment correctly se
 
 1. Once the screen shows the linked Azure Subscription ID at the top, change the number of **Paid parallel jobs** for **MS Hosted CI/CD** from 0 to **1**. Then select **SAVE** button at the bottom.
 
-   > **Note**: You may **wait a couple of minutes before using the CI/CD capabilities** so that the new settings are reflected in the backend. Otherwise, you will still see the message *"No hosted parallelism has been purchased or granted"*.
+   > **Note**: You may **wait a couple of minutes before using the CI/CD capabilities** so that the new settings are reflected in the backend. Otherwise, you will still see the message _"No hosted parallelism has been purchased or granted"_.
 
 1. In **Organization Settings**, go to section **Pipelines** and click **Settings**.
 
@@ -81,6 +80,7 @@ First, you'll create an **eShopOnWeb** Azure DevOps project to be used by severa
 1. Open your browser and navigate to your Azure DevOps organization.
 
 1. Select the **New Project** option and use the following settings:
+
    - name: **eShopOnWeb**
    - visibility: **Private**
    - Advanced: Version Control: **Git**
@@ -112,7 +112,7 @@ Now, you'll import the eShopOnWeb into your git repository.
    - **.github** folder container YAML GitHub workflow definitions.
    - **src** folder contains the .NET 8 website used on the lab scenarios.
 
-1. Leave the web browser window open.  
+1. Leave the web browser window open.
 
 1. Go to **Repos > Branches**.
 
@@ -136,20 +136,23 @@ You will need to create a service connection in Azure DevOps which will allow yo
 
    ![Screenshot of the new service connection creation button.](images/new-service-connection.png)
 
-1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (may need to scroll down).
+1. On the **New service connection** blade, select **Azure Resource Manager** and **Next** (you may need to scroll down).
 
-1. Select **Workload Identity federation (automatic)** and **Next**.
+1. Select **App registration (automatic)** from the **Identity type** dropbox.
 
-   > **Note**: You can also use **Workload identity federation (manual)** if you prefer to manually configure the service connection. Follow the steps in the [Azure DevOps documentation](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure) to create the service connection manually.
+1. Select **Workload Identity federation** and **Subscription** under the **Scope level**.
+
+   > **Note**: You can also use **App registration or managed identity (manual)** if you prefer to manually configure the service connection. Follow the steps in the [Azure DevOps documentation](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure) to create the service connection manually.
 
 1. Fill in the empty fields using the information:
-    - **Subscription**: Select your Azure subscription.
-    - **Resource group**: Select the resource group where you want to deploy resources. If you don't have a resource group, you can create one in the Azure portal following the instructions in [Manage Azure resource groups by using the Azure portal](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
-    - **Service connection name**: Type **`azure subs`**. This name will be referenced in YAML pipelines to access your Azure subscription.
+
+   - **Subscription**: Select your Azure subscription.
+   - **Resource group**: Select the resource group where you want to deploy resources. If you don't have a resource group, you can create one in the Azure portal following the instructions in [Manage Azure resource groups by using the Azure portal](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   - **Service connection name**: Type **`azure subs`**. This name will be referenced in YAML pipelines to access your Azure subscription.
 
 1. Make sure the **Grant access permission to all pipelines** option is unchecked and select **Save**.
 
-   > **Note:** The **Grant access permission to all pipelines** option is not recommended for production environments. It is only used in this lab to simplify the configuration of the pipeline.
+   > **Important:** The **Grant access permission to all pipelines** option is not recommended for production environments. It is only used in this lab to simplify the configuration of the pipeline.
 
    > **Note**: If you see an error message indicating you don't have the necessary permissions to create a service connection, try again, or configure the service connection manually.
 
