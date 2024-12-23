@@ -299,7 +299,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: This applies to capacity and burndown calculations.
 
-1. In the **Settings** panel, select the **General** tab, and under the **Working with bugs** section you can sepcify how you manage bugs in backlogs and boards.
+1. In the **Settings** panel, select the **General** tab, and under the **Working with bugs** section you can specify how you manage bugs in backlogs and boards.
 
     > **Note**: Entries on this tab allow you to specify how bugs are presented on the board.
 
