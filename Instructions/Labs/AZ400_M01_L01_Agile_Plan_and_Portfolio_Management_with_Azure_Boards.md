@@ -375,7 +375,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     > **Note**: As your team updates the status of work as it progresses from one stage to the next, it helps that they agree on what **done** means. By specifying the **Definition of done** criteria for each Kanban column, you help share the essential tasks to complete before moving an item into a downstream stage.
 
-1. On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **`Passes \*\*all\*\* tests`**.
+1. On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **`Passes **all** tests`**.
 1. Click **Save** to save and close the settings.
 
     ![Screenshot of the settings split column and definition of done configuration.](images/m1/dd_v1.png)
