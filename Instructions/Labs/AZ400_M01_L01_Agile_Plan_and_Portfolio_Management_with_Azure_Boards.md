@@ -299,7 +299,7 @@ The sprint backlog should contain all the information the team needs to successf
 
     > **Note**: This applies to capacity and burndown calculations.
 
-1. In the **Settings** panel, select the **General** tab, and under the **Working with bugs** section you can sepcify how you manage bugs in backlogs and boards.
+1. In the **Settings** panel, select the **General** tab, and under the **Working with bugs** section you can specify how you manage bugs in backlogs and boards.
 
     > **Note**: Entries on this tab allow you to specify how bugs are presented on the board.
 
@@ -375,7 +375,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 
     > **Note**: As your team updates the status of work as it progresses from one stage to the next, it helps that they agree on what **done** means. By specifying the **Definition of done** criteria for each Kanban column, you help share the essential tasks to complete before moving an item into a downstream stage.
 
-1. On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **`Passes \*\*all\*\* tests`**.
+1. On the **QA Approved** tab, at the bottom of the panel, in the **Definition of done** textbox, type **`Passes **all** tests`**.
 1. Click **Save** to save and close the settings.
 
     ![Screenshot of the settings split column and definition of done configuration.](images/m1/dd_v1.png)
