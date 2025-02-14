@@ -168,7 +168,7 @@ The default build pipeline definition doesn't enable Continuous Integration.
 
     Since you enabled Branch Policies, you need to pass by a Pull Request in order to update your code.
 
-1. Click the **Save** button (not **Save and run**) to save the pipeline definition.
+1. Click the **Validate and save** button to validate and save the pipeline definition.
 1. Select **Create a new branch for this commit**.
 1. Keep the default branch name and **Start a pull request** checked.
 1. Click on **Save**.
