@@ -144,23 +144,23 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 1. From your lab workstation, open the Start menu, and search for **Windows PowerShell**. Next, in the cascading menu, click **Open Windows PowerShell as administrator**.
 1. In the **Administrator: Windows PowerShell** window, navigate to the eShopOnWeb.Shared folder, by executing the following command:
 
-   ```text
+   ```powershell
    cd c:\eShopOnWeb\eShopOnWeb.Shared
    ```
 
    > **Note**: The **eShopOnWeb.Shared** folder is the location of the **eShopOnWeb.Shared.csproj** file. If you chose a different location or project name, navigate to that location instead.
 
-1. Run the following to create a **.nupkg** file from the project.
+1. Run the following to create a **.nupkg** file from the project (change the value of `XXXXXX` placeholder with a unique string).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
    ```
 
    > **Note**: The **dotnet pack** command builds the project and creates a NuGet package in the **bin\Release** folder. If you don't have a **Release** folder, you can use the **Debug** folder instead.
 
    > **Note**: Disregard any warnings displayed in the **Administrator: Windows PowerShell** window.
 
-   > **Note**: dotnet pack builds a minimal package based on the information it is able to identify from the project. For example, note that the name is **eShopOnWeb.Shared.1.0.0.nupkg**. That version number was retrieved from the assembly.
+   > **Note**: dotnet pack builds a minimal package based on the information it is able to identify from the project. The argument `-p:PackageId=eShopOnWeb-XXXXXX.Shared` allows you to create a package with a specific name instead using the name contains in the project. For example, if you substitute the string `12345` to the `XXXXXX` placeholder, the name  of the package will be **eShopOnWeb-12345.Shared.1.0.0.nupkg**. The version number was retrieved from the assembly.
 
 1. In the PowerShell window, run the following command to open the **bin\Release** folder:
 
