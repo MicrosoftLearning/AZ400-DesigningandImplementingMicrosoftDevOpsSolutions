@@ -243,75 +243,74 @@ In this task, you will add continuous delivery to the YAML-based definition of t
       - repository: self
         trigger: none
 
-  stages:
-  - stage: Build
-    displayName: Build .Net Core Solution
-    jobs:
-    - job: Build
-      pool:
-        vmImage: ubuntu-latest
-      steps:
-      - task: DotNetCoreCLI@2
-        displayName: Restore
-        inputs:
-          command: 'restore'
-          projects: '**/*.sln'
-          feedsToUse: 'select'
+   stages:
+   - stage: Build
+     displayName: Build .Net Core Solution
+     jobs:
+     - job: Build
+       pool:
+         vmImage: ubuntu-latest
+       steps:
+       - task: DotNetCoreCLI@2
+         displayName: Restore
+         inputs:
+           command: 'restore'
+           projects: '**/*.sln'
+           feedsToUse: 'select'
 
-      - task: DotNetCoreCLI@2
-        displayName: Build
-        inputs:
-          command: 'build'
-          projects: '**/*.sln'
+       - task: DotNetCoreCLI@2
+         displayName: Build
+         inputs:
+           command: 'build'
+           projects: '**/*.sln'
 
-      - task: DotNetCoreCLI@2
-        displayName: Test
-        inputs:
-          command: 'test'
-          projects: 'tests/UnitTests/*.csproj'
+       - task: DotNetCoreCLI@2
+         displayName: Test
+         inputs:
+           command: 'test'
+           projects: 'tests/UnitTests/*.csproj'
 
-      - task: DotNetCoreCLI@2
-        displayName: Publish
-        inputs:
-          command: 'publish'
-          publishWebProjects: true
-          arguments: '-o $(Build.ArtifactStagingDirectory)'
+       - task: DotNetCoreCLI@2
+         displayName: Publish
+         inputs:
+           command: 'publish'
+           publishWebProjects: true
+           arguments: '-o $(Build.ArtifactStagingDirectory)'
 
-      - task: PublishBuildArtifacts@1
-        displayName: Publish Artifacts ADO - Website
-        inputs:
-          pathToPublish: '$(Build.ArtifactStagingDirectory)'
-          artifactName: Website
+       - task: PublishBuildArtifacts@1
+         displayName: Publish Artifacts ADO - Website
+         inputs:
+           pathToPublish: '$(Build.ArtifactStagingDirectory)'
+           artifactName: Website
 
-      - task: PublishBuildArtifacts@1
-        displayName: Publish Artifacts ADO - Bicep
-        inputs:
-          PathtoPublish: '$(Build.SourcesDirectory)/infra/webapp.bicep'
-          ArtifactName: 'Bicep'
-          publishLocation: 'Container'
+       - task: PublishBuildArtifacts@1
+         displayName: Publish Artifacts ADO - Bicep
+         inputs:
+           PathtoPublish: '$(Build.SourcesDirectory)/infra/webapp.bicep'
+           ArtifactName: 'Bicep'
+           publishLocation: 'Container'
 
-   - stage: Deploy
-    displayName: Deploy to an Azure Web App
-    jobs:
-    - job: Deploy
-      pool:
-        vmImage: 'windows-latest'
-      steps:
-      - task: DownloadBuildArtifacts@0
-        inputs:
-          buildType: 'current'
-          downloadType: 'single'
-          artifactName: 'Website'
-          downloadPath: '$(Build.ArtifactStagingDirectory)'
-      - task: AzureRmWebAppDeployment@4
-        inputs:
-          ConnectionType: 'AzureRM'
-          azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
-          appType: 'webApp'
-          WebAppName: 'eshoponWebYAML369825031'
-          packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-          AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
-
+    - stage: Deploy
+      displayName: Deploy to an Azure Web App
+      jobs:
+      - job: Deploy
+        pool:
+          vmImage: 'windows-latest'
+        steps:
+        - task: DownloadBuildArtifacts@0
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'Website'
+            downloadPath: '$(Build.ArtifactStagingDirectory)'
+        - task: AzureRmWebAppDeployment@4
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+            appType: 'webApp'
+            WebAppName: 'eshoponWebYAML369825031'
+            packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+            AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
    ```
 
 #### Task 3: Review the deployed site
