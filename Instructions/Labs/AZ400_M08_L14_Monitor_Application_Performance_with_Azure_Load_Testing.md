@@ -467,7 +467,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 1. From Azure DevOps, navigate to the eShopOnWeb Project, and open **Repos**.
 1. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
 1. Open the Load Testing \*config.yaml** file. Click **Edit\*\* to allow editing of the file.
-1. Replace `failureCriteria: []` with the following snippet of code:
+1. Replace `failureCriteria: []` if present, otherwise append the following snippet of code:
 
    ```text
    failureCriteria:
