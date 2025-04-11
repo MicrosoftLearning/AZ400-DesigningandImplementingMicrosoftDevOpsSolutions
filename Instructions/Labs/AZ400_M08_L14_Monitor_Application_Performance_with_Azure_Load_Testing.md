@@ -378,6 +378,11 @@ Perform the following steps to download the input files for an existing load tes
 1. From the **Folder structure**, navigate to the new created **jmeter** subfolder. Click the **ellipsis(...)** and select **Upload File(s)**.
 1. Using the **Browse** option, navigate to the location of the extracted zip-file, and select both **config.yaml** and **quick_test.jmx**.
 1. Click **Commit** to confirm the file upload into source control.
+1. Within Repos, browse to the **/tests/jmeter** subfolder just created.
+1. Open the Load Testing **config.yaml** file. Click **Edit** to allow editing of the file.
+1. Replace the **displayName** and **testId** attributes with the value **ado_load_test**
+
+  ![Screenshot of the edited config file.](images/config_edit.png)
 
 #### Task 4: Update the CI/CD workflow YAML definition file
 
@@ -467,7 +472,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 1. From Azure DevOps, navigate to the eShopOnWeb Project, and open **Repos**.
 1. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
 1. Open the Load Testing \*config.yaml** file. Click **Edit\*\* to allow editing of the file.
-1. Replace `failureCriteria: []` with the following snippet of code:
+1. Replace `failureCriteria: []` if present, otherwise append the following snippet of code:
 
    ```text
    failureCriteria:
