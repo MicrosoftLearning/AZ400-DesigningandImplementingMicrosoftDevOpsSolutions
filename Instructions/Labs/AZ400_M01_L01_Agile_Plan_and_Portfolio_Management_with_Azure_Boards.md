@@ -65,7 +65,7 @@ Each new project is configured with a default team, which name matches the proje
 
 1. Click the cogwheel icon labeled **Project settings** located in the lower left corner of the page to open the **Project settings** page.
 
-    ![Screenshot of the Azure DevOps settings page.](images/m1/project_settings_v1.png)
+    ![Screenshot of the Azure DevOps settings page.](images/m1/project_settings_v1.png) 
 
 1. In the **General** section, select the **Teams** tab. There is already a default team in this project, **eShopOnWeb Team** but you'll create a new one for this lab. Click **New Team**.
 
@@ -143,13 +143,13 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 
     ![Screenshot of the work item link creation.](images/m1/EShop-WEB-create_child_feature.png)
 
-1. Click **Add link** to save the Child item.
+1. Click **Add link** to save the Child item
 
     ![Screenshot of the work item related work area.](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
     > **Note**: On the **Training dashboard** panel, note that the assignment, **Area**, and **Iteration** are already set to the same values as the epic that the feature is based on. In addition, the feature is automatically linked to the parent item it was created from.
 
-1. On the (New Feature) **Training dashboard** panel, click **Save & Close**.
+1. On the (New Feature) **Training dashboard** panel, click **Save and Close**.
 
 1. In the vertical navigation pane of the Azure DevOps portal, in the list of the **Boards** items, select **Boards**.
 1. On the **Boards** panel, select the **EShop-WEB boards** entry. This will open the board for that particular team.
@@ -209,11 +209,11 @@ Work items play a prominent role in Azure DevOps. Whether describing work to be 
 1. At the top of the **NEW TASK** panel, in the **Enter title** textbox, type **`Add page for most recent tutorials`**.
 1. On the **NEW TASK** panel, in the **Remaining Work** textbox, type **5**.
 1. On the **NEW TASK** panel, in the **Activity** dropdown list, select **Development**.
-1. On the **NEW TASK** panel, click **Save & Close**.
+1. On the **NEW TASK** panel, click **Save and Close**.
 
     ![Screenshot of the new work item creation.](images/m1/EShop-WEB-save_task_v1.png)
 
-1. Repeat the last five steps to add another task named **`Optimize data query for most recent tutorials`**. Set its **Remaining Work** to **3** and its **Activity** to **Design**. Click **Save & Close** once completed.
+1. Repeat the last five steps to add another task named **`Optimize data query for most recent tutorials`**. Set its **Remaining Work** to **3** and its **Activity** to **Design**. Click **Save and Close** once completed.
 
 #### Task 3: Manage sprints and capacity
 
@@ -279,9 +279,9 @@ The sprint backlog should contain all the information the team needs to successf
 1. Click the **Configure team settings** cogwheel icon (directly to the right of the funnel icon).
 1. On the **Settings** panel, select the **Styles** tab, click **+ Add styling rule**, under the **Rule name** label, in the **Name** textbox, type **`Development`**, and, in the **Color** dropdown list, select the green rectangle.
 
-    > **Note**: This will color all cards green if they meet the rule criteria set directly below, in the **Rule criteria** section.
+    > **Note**: This will color all cards green if they meet the rule criteria set directly below the rule name.
 
-1. In the **Rule criteria** section, in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
+1. In the section under the rule name, in the **Field** dropdown list, select **Activity**, in the **Operator** dropdown list, select **=**, and, in the **Value** dropdown list, select **Development**.
 
     ![Screenshot of the board style settings.](images/m1/EShop-WEB-styles_v2.JPG)
 
@@ -337,7 +337,7 @@ To maximize a team's ability to consistently deliver high quality software, Kanb
 1. From the detailed item view, at the top of the panel, to the right of the **0 comments** entry, click **Add tag**.
 1. In the resulting textbox, type **`data`** and press the **Enter** key.
 1. Repeat the previous step to add the **`ux`** tag.
-1. Save these edits by clicking **Save & Close**.
+1. Save these edits by clicking **Save and Close**.
 
     ![Screenshot of the two new tags visible on the card.](images/m1/EShop-WEB-tags_v1.png)
 
@@ -428,7 +428,9 @@ Dashboards allow teams to visualize status and monitor progress across the proje
 
 1. On the **Configuration** pane, click **Close** without making any changes.
 1. Back on the **Add Widget** pane, in the **Search** textbox, type **`sprint`** again to find existing widgets that focus on sprints. In the list of results, select **Sprint Capacity** and click **Add**.
+
     > **Note**: If the widget shows "Set capacity to use the sprint capacity widget", you can select the **Set capacity** link to set the capacity. Set the Activity to Development and the Capacity to 1. Click **Save** and back to the dashboard.
+    
 1. In the **Dashboard** view, at the top of the pane, click **Done Editing**.
 
     ![Screenshot of the dashboard with two new widgets.](images/m1/EShop-WEB-finished_dashboard_v1.png)
