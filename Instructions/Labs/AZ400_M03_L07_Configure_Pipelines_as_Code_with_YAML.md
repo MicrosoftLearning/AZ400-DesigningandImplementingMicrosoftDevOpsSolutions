@@ -205,7 +205,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
        downloadPath: "$(Build.ArtifactStagingDirectory)"
    ```
 
-1. If the YAML indentation is off, With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
+1. If the YAML indentation is off, with the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
 
    > **Note**: Here as well you may also want to add an empty line before and after to make it easier to read.
 
