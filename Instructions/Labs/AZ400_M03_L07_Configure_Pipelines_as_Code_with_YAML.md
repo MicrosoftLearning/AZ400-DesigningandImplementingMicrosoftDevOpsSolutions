@@ -61,6 +61,8 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
+    > **Note**: if the main branch is already the default branch, the **Set as default branch** option is grayed out. In this case, continue with the instructions
+
 #### Task 3: Create Azure resources
 
 In this task, you will create an Azure web app by using the Azure portal.
