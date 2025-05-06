@@ -58,7 +58,7 @@ In this task, you will create an empty public GitHub repository and import the e
 
     | Field | Value |
     | --- | --- |
-    | Your old repository’s clone URL| <https://github.com/MicrosoftLearning/eShopOnWeb> |
+    | The URL for your source reapository| <https://github.com/MicrosoftLearning/eShopOnWeb> |
     | Owner | Your account alias |
     | Repository Name | eShopOnWeb |
     | Privacy | **Public** |
@@ -83,7 +83,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 1. On the **Create a resource group** tab, give the following name to your Resource Group: **rg-eshoponweb-NAME** (replace NAME for some unique alias). Click on **Review + Create > Create**.
 1. In the Azure Portal, open the **Cloud Shell** (next to the search bar).
 
-    > **Note**: if this is the first time you open the Cloud Shell, you need to configure the [persistent storage](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)
+    > **Note**: if the Azure portal asks you to create a storage, you can choose **No storage account required** options, select your subscription and click on **Apply** button
 
 1. Make sure the terminal is running in **Bash** mode and execute the following command, replacing **SUBSCRIPTION-ID** and **RESOURCE-GROUP** with your own identifiers (both can be found on the **Overview** page of the Resource Group):
 
@@ -114,7 +114,7 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 1. In a browser window, go back to your **eShopOnWeb** GitHub repository.
 1. On the repository page, go to **Settings**, click on **Secrets and variables > Actions**. Click on **New repository secret**
     - Name : **`AZURE_CREDENTIALS`**
-    - Secret: **paste the previously copied  JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
+    - Secret: **paste the previously copied JSON object** (GitHub is able to keep multiple secrets under same name, used by  [azure/login](https://github.com/Azure/login) action )
 
 1. Click on **Add secret**. Now GitHub Actions will be able to reference the service principal, using the repository secret.
 
@@ -132,7 +132,7 @@ In this task, you will modify the given GitHub workflow and execute it to deploy
     - Replace **NAME** in **WEBAPP-NAME** with some unique alias. It will be used to create a globally unique website using Azure App Service.
 1. Read the workflow carefully, comments are provided to help understand.
 
-1. Click on **Start Commit** and **Commit Changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
+1. Click on **Commit changes...** on top right and **Commit changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
 
 #### Task 3: Review GitHub Workflow execution
 
