@@ -244,7 +244,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
    > [!IMPORTANT]
    > In order for the agent to be able to build and deploy Azure resources from the Azure DevOps pipelines (which you will step through in the upcoming labs), you need to install Azure CLI within the operating system of the Azure VM that is hosting the agent.
 
-1. Start a web browser and navigate to the page [Install Azure CLI on Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update).
+1. Start a web browser and navigate to the page `https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update`.
 
 1. Download and install Azure CLI.
 
