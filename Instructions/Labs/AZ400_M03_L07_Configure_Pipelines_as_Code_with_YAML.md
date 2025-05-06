@@ -71,13 +71,7 @@ In this task, you will create an Azure web app by using the Azure portal.
 1. In the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
-
-   > **Note:** For a list of regions and their alias, run the following command from the Azure Cloud Shell - Bash:
-
-   ```bash
-   az account list-locations -o table
-   ```
+   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **Getting started** pop-up, select **No storage account required** and the subscription you are using in this lab, and click on **Apply**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'centralus', 'westeurope' or other region of choice).
 
