@@ -212,7 +212,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 
 1. To configure the agent, perform the following actions when prompted:
 
-   - Enter the URL of the Azure DevOps organization (**server URL**) in the format `https://aex.dev.azure.com`{your organization name}.
+   - Enter the URL of the Azure DevOps organization (**server URL**) in the format `https://dev.azure.com/{your organization name}`.
    - Accept the default authentication type (**`PAT`**).
    - Enter the value of the PAT token you created in the previous step.
    - Enter the agent pool name **`eShopOnWebSelfPool`** you created earlier in this exercise.
