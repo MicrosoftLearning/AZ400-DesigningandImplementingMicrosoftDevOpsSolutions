@@ -118,8 +118,6 @@ In this task, you will create the Azure Service Principal used by GitHub to depl
 
 1. Click on **Add secret**. Now GitHub Actions will be able to reference the service principal, using the repository secret.
 
-    > **Note**: if the secret already exists, modify it with the previously copied JSON
-
 #### Task 2: Modify and execute the GitHub workflow
 
 In this task, you will modify the given GitHub workflow and execute it to deploy the solution in your own subscription.
@@ -134,7 +132,7 @@ In this task, you will modify the given GitHub workflow and execute it to deploy
     - Replace **NAME** in **WEBAPP-NAME** with some unique alias. It will be used to create a globally unique website using Azure App Service.
 1. Read the workflow carefully, comments are provided to help understand.
 
-1. Click on **Start Commit** and **Commit Changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
+1. Click on **Commit changes...** on top right and **Commit changes** leaving defaults (changing the main branch). The workflow will get automatically executed.
 
 #### Task 3: Review GitHub Workflow execution
 
