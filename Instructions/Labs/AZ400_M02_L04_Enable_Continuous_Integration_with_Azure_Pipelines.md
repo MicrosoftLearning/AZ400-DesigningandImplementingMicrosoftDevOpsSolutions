@@ -151,7 +151,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 
 The default build pipeline definition doesn't enable Continuous Integration.
 
-1. Click the **Edit** button in the top-right
+1. Click on the **Edit pipeline** option under the ellipsis menu near **Run new** button in the top-right
 1. Now, you need to replace the **# trigger:** and **# - main** lines with the following code:
 
     ```YAML
