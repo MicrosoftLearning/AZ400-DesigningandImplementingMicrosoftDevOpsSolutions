@@ -209,12 +209,12 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
    > **Note**: Here as well you may also want to add an empty line before and after to make it easier to read.
 
-1. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the main branch.
+1. Click **Validate and save**, and on the **Validate and save** pane, click **Save** again to commit the change directly into the main branch.
 
    > **Note**: Since our original CI-YAML was not configured to automatically trigger a new build, we have to initiate this one manually.
 
 1. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again.
-1. Open the **eShopOnWeb_MultiStageYAML** Pipeline and click **Run Pipeline**.
+1. Open the **eShopOnWeb_MultiStageYAML** Pipeline and click **Run pipeline**.
 1. Confirm the **Run** from the appearing pane.
 1. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
 1. Wait for the pipeline to kick off and wait until it completes the Build Stage successfully.
@@ -226,7 +226,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
 1. Click on **View**
 1. From the **Waiting for Review** pane, click **Permit**.
-1. Validate the message in the **Permit popup** window, and confirm by clicking **Permit**.
+1. Validate the message in the **Permit access?** window, and confirm by clicking **Permit**.
 1. This sets off the Deploy Stage. Wait for this to complete successfully.
 
    > **Note**: If the deployment should fail, because of an issue with the YAML Pipeline syntax, use this as a reference:
@@ -406,10 +406,9 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
 1. Click **Run Pipeline** to trigger a new Pipeline run; confirm by clicking **Run**.
 1. Just like before, the Build Stage kicks off as expected. Wait for it to complete successfully.
 1. Next, since we have the _environment:approvals_ configured for the Deploy Stage, it will ask for an approval confirmation before it kicks off.
-1. This is visible from the Pipeline view, where it says **Waiting (0/1 checks passed)**. A notification message is also displayed saying **approval needs review before this run can continue to Deploy to an Azure Web App**.
-1. Click the **View** button next to this message.
-1. From the appearing pane **Checks and manual validations for Deploy to Azure Web App**, click the **Approval Waiting** message.
-1. Click **Approve**.
+1. This is visible from the Pipeline view, where it says **Waiting (1 check in progress)**. A notification message is also displayed saying **1 approval needs review before this run can continue to Deploy to an Azure Web App**.
+1. Click the **Review** button next to this message.
+1. From the appearing pane **Waiting for review**, click the **Approve** button.
 1. This allows the Deploy Stage to kick off and successfully deploying the Azure Web App source code.
 
    > **Note:** While this example only used the approvals, know the other checks such as Azure Monitor, REST API, etc... can be used in a similar way
