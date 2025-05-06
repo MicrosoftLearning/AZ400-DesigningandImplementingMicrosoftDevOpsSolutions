@@ -143,6 +143,8 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 
    > **Note**: Follow the installation instructions to install the agent.
 
+   > **Note**: The name of the zip file you downloaded with the **Download** button should be similar to the following `vsts-agent-win-x64-X.YYY.Z.zip` (at the time of writing this lab the file name is `vsts-agent-win-x64-4.255.0.zip`). The file name will be used later in one of the agent installation commands.
+
 1. Start a PowerShell session and run the following commands to create a folder named **agent**.
 
    ```powershell
@@ -154,10 +156,12 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 1. Run the following command to extract the content of the downloaded agent installer files:
 
    ```powershell
-   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
+   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-4.255.0.zip", "$PWD")
    ```
 
    > **Note**: If you downloaded the agent to a different location (or the downloaded version differs), adjust the above command accordingly.
+
+   > **Note**: Make sure that the zip file name specified inside the `ExtractToDirectory` command is the same as the zip file name you previously downloaded.
 
 #### Task 4: Create a PAT token
 
