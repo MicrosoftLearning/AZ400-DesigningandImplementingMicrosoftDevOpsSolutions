@@ -58,7 +58,7 @@ In this task, you will create an empty public GitHub repository and import the e
 
     | Field | Value |
     | --- | --- |
-    | Your old repository’s clone URL| <https://github.com/MicrosoftLearning/eShopOnWeb> |
+    | The URL for your source reapository| <https://github.com/MicrosoftLearning/eShopOnWeb> |
     | Owner | Your account alias |
     | Repository Name | eShopOnWeb |
     | Privacy | **Public** |
