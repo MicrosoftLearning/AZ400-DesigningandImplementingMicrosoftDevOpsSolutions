@@ -161,7 +161,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab.
    - in the **Package or folder** text box, **update** the Default Value to `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-   - In the **Application and Configuration Settings** add `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
+   - Open the **Application and Configuration Settings** section and, in the **App settings** textbox, add `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
 
 1. Confirm the settings from the Assistant pane by clicking the **Add** button.
 
