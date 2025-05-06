@@ -91,6 +91,8 @@ In this task, you will create an Azure web app by using the Azure portal.
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
 
+    > **Note**: If you get an error like "The subscription is not registered to use namespace 'Microsoft.Web'" when you run the previous command, run the following `az provider register --namespace Microsoft.Web` and then run the command that generated the error again.
+
 1. Create a web app with a unique name.
 
    ```bash
