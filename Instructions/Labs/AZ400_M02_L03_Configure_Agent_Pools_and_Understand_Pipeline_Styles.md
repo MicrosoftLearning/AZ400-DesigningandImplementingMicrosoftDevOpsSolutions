@@ -310,7 +310,7 @@ In this task, you will create a YAML-based pipeline for the **eShopOnWeb** proje
     ![Screenshot showing the YAML pool syntax.](images/eshoponweb-ci-pr-agent-pool.png)
 
 1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Validate and save**. Then click **Save**.
-1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Run pipeline**.
+1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Run**.
 
     > **Note**: The pipeline will run on the self-hosted agent pool you created in the previous exercise.
 1. Open the pipeline run and monitor the job until its successful completion.
