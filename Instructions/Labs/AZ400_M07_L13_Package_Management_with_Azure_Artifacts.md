@@ -194,7 +194,7 @@ Besides developing your own packages, why not using the Open Source NuGet (<http
 
 In this task, we will use a generic "Newtonsoft.Json" sample package, but you can use the same approach for other packages in the library.
 
-1. From the same PowerShell window used in the previous task to push the new package, navigate back to the **eShopOnWeb.Shared** folder (`cd..`), and run the following **dotnet** command to install the sample package:
+1. From the same PowerShell window used in the previous task to push the new package, navigate back to the **eShopOnWeb.Shared** folder (`cd ../..`), and run the following **dotnet** command to install the sample package:
 
    ```powershell
    dotnet add package Newtonsoft.Json
