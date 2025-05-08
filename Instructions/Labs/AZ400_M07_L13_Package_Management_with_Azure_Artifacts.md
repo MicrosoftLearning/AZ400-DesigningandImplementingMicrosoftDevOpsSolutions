@@ -171,7 +171,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 1. Run the following to publish the package to the **eShopOnWebShared** feed. Replace the source with the URL you copied earlier from the Visual Studio **Source** url `https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json`
 
    ```powershell
-   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb.Shared.1.0.0.nupkg"
+   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb-XXXXXX.Shared.1.0.0.nupkg"
    ```
 
    > **Important**: You need to install the credential provider for your operating system to be able to authenticate with Azure DevOps. You can find the installation instructions at [Azure Artifacts Credential Provider](https://go.microsoft.com/fwlink/?linkid=2099625). You can install by running the following command in the PowerShell window: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`
