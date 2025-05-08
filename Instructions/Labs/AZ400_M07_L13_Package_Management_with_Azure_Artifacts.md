@@ -171,10 +171,10 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 1. Run the following to publish the package to the **eShopOnWebShared** feed. Replace the source with the URL you copied earlier from the Visual Studio **Source** url `https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json`
 
    ```powershell
-   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb.Shared.1.0.0.nupkg"
+   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb-XXXXXX.Shared.1.0.0.nupkg"
    ```
 
-   > **Important**: You need to install the credential provider for your operating system to be able to authenticate with Azure DevOps. You can find the installation instructions at [Azure Artifacts Credential Provider](https://go.microsoft.com/fwlink/?linkid=2099625). You can install by running the following command in the PowerShell window: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`
+   > **Important**: If you receive and authorization error (401 Unauthorized), you need to install the credential provider for your operating system to be able to authenticate with Azure DevOps. You can find the installation instructions at [Azure Artifacts Credential Provider](https://go.microsoft.com/fwlink/?linkid=2099625). You can install by running the following command in the PowerShell window: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`
 
    > **Note**: You need to provide an **API Key**, which can be any non-empty string. We're using **az** here. When prompted, sign in to your Azure DevOps organization.
 
@@ -194,7 +194,7 @@ Besides developing your own packages, why not using the Open Source NuGet (<http
 
 In this task, we will use a generic "Newtonsoft.Json" sample package, but you can use the same approach for other packages in the library.
 
-1. From the same PowerShell window used in the previous task to push the new package, navigate back to the **eShopOnWeb.Shared** folder (`cd..`), and run the following **dotnet** command to install the sample package:
+1. From the same PowerShell window used in the previous task to push the new package, navigate back to the **eShopOnWeb.Shared** folder (`cd ../..`), and run the following **dotnet** command to install the sample package:
 
    ```powershell
    dotnet add package Newtonsoft.Json
