@@ -85,7 +85,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
     - **DotNet Publish**: Publishes the application and its dependencies to a folder for deployment to a hosting system. In this case, it's **Build.ArtifactStagingDirectory**.
     - **Publish Artifact - Website**: Publish the app artifact (created in the previous step) and make it available as a pipeline artifact.
     - **Publish Artifact - Bicep**: Publish the infrastructure artifact (Bicep file) and make it available as a pipeline artifact.
-1. Click the **Save** button (not **Save and run**) to save the pipeline definition.
+1. Click the **Save** button (not **Save and run**) on the top-right part of the page to save the pipeline definition. You can find the **Save** button by clicking on the arrow to the right of the **Save and Run** (or **Run**) button.
 
 #### Task 2: Add tests to the CI pipeline
 
