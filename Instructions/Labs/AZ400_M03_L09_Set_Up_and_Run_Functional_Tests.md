@@ -72,7 +72,7 @@ In this task, you will add the YAML build definition that will be used to implem
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
 1. Go to **Pipelines > Pipelines**.
-1. Click on **New Pipeline** button.
+1. Click on **New Pipeline** button (or **Create Pipeline** if you haven't any pipeline).
 1. Select **Azure Repos Git (YAML)**.
 1. Select the **eShopOnWeb** repository.
 1. Select **Existing Azure Pipelines YAML File**.
