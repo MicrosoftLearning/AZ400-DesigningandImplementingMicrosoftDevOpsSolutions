@@ -120,7 +120,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
     > **Functional Tests** are written from the perspective of the user, and verify the correctness of the system based on its requirements. Unlike integration tests that are written from the perspective of the developer, to verify that some components of the system work correctly together.
 
-1. Click **Save**, on the **Save** pane, click **Save** again to commit the changes directly into the main branch.
+1. Click **Validate and Save** button, and if validation is successful, click **Save** again to commit the changes directly into the main branch.
 
 #### Task 3: Check the tests summary
 
