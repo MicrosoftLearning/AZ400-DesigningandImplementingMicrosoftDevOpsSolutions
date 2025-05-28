@@ -95,6 +95,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 - **Unit Tests** test a single part of your application's logic. One can further describe it by listing some of the things that it isn't. A unit test doesn't test how your code works with dependencies or infrastructure – that's what integration tests are for.
 
+1. Edit the pipeline you created in the previous task pressing the **Edit** button.
 1. Now you need to add the Integration Tests task after the Unit Tests task:
 
     ```YAML
