@@ -83,7 +83,7 @@ Let's start by importing the build pipeline named [eshoponweb-ci-pr.yml](https:/
     - **DotNet Test**: .Net test driver used to execute unit tests.
     - **DotNet Publish**: Publishes the application and its dependencies to a folder for deployment to a hosting system. In this case, it's **Build.ArtifactStagingDirectory**.
 
-1. Click the **Save** button to save the pipeline definition
+1. On the **Review your pipeline YAML** pane, click the down-facing caret symbol next to the **Run** button, click **Save**.
 1. Your pipeline will take a name based on the project name. Let's **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Move** option. Name it **eshoponweb-ci-pr** and click on **Save**.
 
 #### Task 2: Branch Policies
@@ -151,7 +151,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
 
 The default build pipeline definition doesn't enable Continuous Integration.
 
-1. Click the **Edit** button in the top-right
+1. Click on the **Edit pipeline** option under the ellipsis menu near **Run new** button in the top-right
 1. Now, you need to replace the **# trigger:** and **# - main** lines with the following code:
 
     ```YAML
