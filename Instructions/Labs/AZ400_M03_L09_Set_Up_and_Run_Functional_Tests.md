@@ -72,7 +72,7 @@ In this task, you will add the YAML build definition that will be used to implem
 Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
 1. Go to **Pipelines > Pipelines**.
-1. Click on **New Pipeline** button.
+1. Click on **New Pipeline** button (or **Create Pipeline** if you haven't any pipeline).
 1. Select **Azure Repos Git (YAML)**.
 1. Select the **eShopOnWeb** repository.
 1. Select **Existing Azure Pipelines YAML File**.
@@ -85,7 +85,7 @@ Let's start by importing the CI pipeline named [eshoponweb-ci.yml](https://githu
     - **DotNet Publish**: Publishes the application and its dependencies to a folder for deployment to a hosting system. In this case, it's **Build.ArtifactStagingDirectory**.
     - **Publish Artifact - Website**: Publish the app artifact (created in the previous step) and make it available as a pipeline artifact.
     - **Publish Artifact - Bicep**: Publish the infrastructure artifact (Bicep file) and make it available as a pipeline artifact.
-1. Click the **Save** button (not **Save and run**) to save the pipeline definition.
+1. Click the **Save** button (not **Save and run**) on the top-right part of the page to save the pipeline definition. You can find the **Save** button by clicking on the arrow to the right of the **Save and Run** (or **Run**) button.
 
 #### Task 2: Add tests to the CI pipeline
 
@@ -95,6 +95,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
 - **Unit Tests** test a single part of your application's logic. One can further describe it by listing some of the things that it isn't. A unit test doesn't test how your code works with dependencies or infrastructure – that's what integration tests are for.
 
+1. Edit the pipeline you created in the previous task pressing the **Edit** button.
 1. Now you need to add the Integration Tests task after the Unit Tests task:
 
     ```YAML
@@ -119,7 +120,7 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
     > **Functional Tests** are written from the perspective of the user, and verify the correctness of the system based on its requirements. Unlike integration tests that are written from the perspective of the developer, to verify that some components of the system work correctly together.
 
-1. Click **Save**, on the **Save** pane, click **Save** again to commit the changes directly into the main branch.
+1. Click **Validate and Save** button, and if validation is successful, click **Save** again to commit the changes directly into the main branch.
 
 #### Task 3: Check the tests summary
 
