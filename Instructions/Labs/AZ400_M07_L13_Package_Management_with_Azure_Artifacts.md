@@ -125,7 +125,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 
    > **Note**: We will now create a shared assembly that will be published as a NuGet package so that other teams can integrate it and stay up to date without having to work directly with the project source.
 
-1. On the **Recent project templates** page of the **Create a new project** pane, use the search textbox to locate the **Class Library** template, select the template for C#, and click **Next**.
+1. In the **Create a new project** pane, use the search textbox to locate the **Class Library** template, select the template for C# that targets .NET or .NET Standard, and click **Next**.
 1. On the **Class Library** page of the **Create a new project** pane, specify the following settings and click **Create**:
 
    | Setting       | Value                    |
