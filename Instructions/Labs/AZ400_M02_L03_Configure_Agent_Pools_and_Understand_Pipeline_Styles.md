@@ -143,6 +143,8 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 
    > **Note**: Follow the installation instructions to install the agent.
 
+   > **Note**: The name of the zip file you downloaded with the **Download** button should be similar to the following `vsts-agent-win-x64-X.YYY.Z.zip` (at the time of writing this lab the file name is `vsts-agent-win-x64-4.255.0.zip`). The file name will be used later in one of the agent installation commands.
+
 1. Start a PowerShell session and run the following commands to create a folder named **agent**.
 
    ```powershell
@@ -154,10 +156,12 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 1. Run the following command to extract the content of the downloaded agent installer files:
 
    ```powershell
-   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
+   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-4.255.0.zip", "$PWD")
    ```
 
    > **Note**: If you downloaded the agent to a different location (or the downloaded version differs), adjust the above command accordingly.
+
+   > **Note**: Make sure that the zip file name specified inside the `ExtractToDirectory` command is the same as the zip file name you previously downloaded.
 
 #### Task 4: Create a PAT token
 
@@ -208,7 +212,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 
 1. To configure the agent, perform the following actions when prompted:
 
-   - Enter the URL of the Azure DevOps organization (**server URL**) in the format `https://aex.dev.azure.com`{your organization name}.
+   - Enter the URL of the Azure DevOps organization (**server URL**) in the format `https://dev.azure.com/{your organization name}`.
    - Accept the default authentication type (**`PAT`**).
    - Enter the value of the PAT token you created in the previous step.
    - Enter the agent pool name **`eShopOnWebSelfPool`** you created earlier in this exercise.
@@ -240,7 +244,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
    > [!IMPORTANT]
    > In order for the agent to be able to build and deploy Azure resources from the Azure DevOps pipelines (which you will step through in the upcoming labs), you need to install Azure CLI within the operating system of the Azure VM that is hosting the agent.
 
-1. Start a web browser and navigate to the page [Install Azure CLI on Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update).
+1. Start a web browser and navigate to the page `https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update`.
 
 1. Download and install Azure CLI.
 
@@ -306,7 +310,7 @@ In this task, you will create a YAML-based pipeline for the **eShopOnWeb** proje
     ![Screenshot showing the YAML pool syntax.](images/eshoponweb-ci-pr-agent-pool.png)
 
 1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Validate and save**. Then click **Save**.
-1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Run pipeline**.
+1. On the **eShopOnWeb** edit pane, in the upper right corner of the pane, click **Run**.
 
     > **Note**: The pipeline will run on the self-hosted agent pool you created in the previous exercise.
 1. Open the pipeline run and monitor the job until its successful completion.
