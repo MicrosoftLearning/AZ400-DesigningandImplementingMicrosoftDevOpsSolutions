@@ -61,6 +61,8 @@ In this task you will import the eShopOnWeb Git repository that will be used by 
 1. Hover on the **main** branch then click the ellipsis on the right of the column.
 1. Click on **Set as default branch**.
 
+    > **Note**: if the main branch is already the default branch, the **Set as default branch** option is grayed out. In this case, continue with the instructions
+
 #### Task 3: Create Azure resources
 
 In this task, you will create an Azure web app by using the Azure portal.
@@ -69,13 +71,7 @@ In this task, you will create an Azure web app by using the Azure portal.
 1. In the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
-
-   > **Note:** For a list of regions and their alias, run the following command from the Azure Cloud Shell - Bash:
-
-   ```bash
-   az account list-locations -o table
-   ```
+   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **Getting started** pop-up, select **No storage account required** and the subscription you are using in this lab, and click on **Apply**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'centralus', 'westeurope' or other region of choice).
 
@@ -94,6 +90,8 @@ In this task, you will create an Azure web app by using the Azure portal.
    SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
+
+    > **Note**: If you get an error like "The subscription is not registered to use namespace 'Microsoft.Web'" when you run the previous command, run the following `az provider register --namespace Microsoft.Web` and then run the command that generated the error again.
 
 1. Create a web app with a unique name.
 
@@ -163,7 +161,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
    - in the **Azure subscription** drop-down list, select the Azure subscription into which you deployed the Azure resources earlier in the lab, click **Authorize**, and, when prompted, authenticate by using the same user account you used during the Azure resource deployment.
    - in the **App Service name** dropdown list, select the name of the web app you deployed earlier in the lab.
    - in the **Package or folder** text box, **update** the Default Value to `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-   - In the **Application and Configuration Settings** add `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
+   - Open the **Application and Configuration Settings** section and, in the **App settings** textbox, add `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
 
 1. Confirm the settings from the Assistant pane by clicking the **Add** button.
 
@@ -207,16 +205,16 @@ In this task, you will add continuous delivery to the YAML-based definition of t
        downloadPath: "$(Build.ArtifactStagingDirectory)"
    ```
 
-1. If the YAML indentation is off, With the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
+1. If the YAML indentation is off, with the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
 
    > **Note**: Here as well you may also want to add an empty line before and after to make it easier to read.
 
-1. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the main branch.
+1. Click **Validate and save**, and on the **Validate and save** pane, click **Save** again to commit the change directly into the main branch.
 
    > **Note**: Since our original CI-YAML was not configured to automatically trigger a new build, we have to initiate this one manually.
 
 1. From the Azure DevOps left menu, navigate to **Pipelines** and select **Pipelines** again.
-1. Open the **eShopOnWeb_MultiStageYAML** Pipeline and click **Run Pipeline**.
+1. Open the **eShopOnWeb_MultiStageYAML** Pipeline and click **Run pipeline**.
 1. Confirm the **Run** from the appearing pane.
 1. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
 1. Wait for the pipeline to kick off and wait until it completes the Build Stage successfully.
@@ -228,7 +226,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
 
 1. Click on **View**
 1. From the **Waiting for Review** pane, click **Permit**.
-1. Validate the message in the **Permit popup** window, and confirm by clicking **Permit**.
+1. Validate the message in the **Permit access?** window, and confirm by clicking **Permit**.
 1. This sets off the Deploy Stage. Wait for this to complete successfully.
 
    > **Note**: If the deployment should fail, because of an issue with the YAML Pipeline syntax, use this as a reference:
@@ -408,10 +406,9 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
 1. Click **Run Pipeline** to trigger a new Pipeline run; confirm by clicking **Run**.
 1. Just like before, the Build Stage kicks off as expected. Wait for it to complete successfully.
 1. Next, since we have the _environment:approvals_ configured for the Deploy Stage, it will ask for an approval confirmation before it kicks off.
-1. This is visible from the Pipeline view, where it says **Waiting (0/1 checks passed)**. A notification message is also displayed saying **approval needs review before this run can continue to Deploy to an Azure Web App**.
-1. Click the **View** button next to this message.
-1. From the appearing pane **Checks and manual validations for Deploy to Azure Web App**, click the **Approval Waiting** message.
-1. Click **Approve**.
+1. This is visible from the Pipeline view, where it says **Waiting (1 check in progress)**. A notification message is also displayed saying **1 approval needs review before this run can continue to Deploy to an Azure Web App**.
+1. Click the **Review** button next to this message.
+1. From the appearing pane **Waiting for review**, click the **Approve** button.
 1. This allows the Deploy Stage to kick off and successfully deploying the Azure Web App source code.
 
    > **Note:** While this example only used the approvals, know the other checks such as Azure Monitor, REST API, etc... can be used in a similar way
