@@ -76,7 +76,7 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
 
 1. Select the **Create** button.
 
-1. Select the **Azure virtual machine with preset configuration**.
+1. Select the **Presets**.
 
     ![Screenshot of the create virtual machine with preset configuration.](images/create-virtual-machine-preset.png)
 
