@@ -10,6 +10,8 @@ lab:
 
 - This lab requires **Microsoft Edge** or an [Azure DevOps supported browser.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
+- **Complete the lab environment validation:** Before starting this lab, ensure you have completed the [Validate lab environment](AZ400_M00_Validate_lab_environment.md) which sets up the Azure DevOps organization, project, and service connection required for this lab.
+
 - **Set up an Azure DevOps organization:** If you don't already have an Azure DevOps organization that you can use for this lab, create one by following the instructions available at [Create an organization or project collection](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
 - Identify an existing Azure subscription or create a new one.
 
@@ -129,10 +131,10 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pulls 
 
 1. On the **Access configuration** tab of the **Create a key vault** blade, select **Vault access policy** and then in the **Access policies** section, click on **+ Create** to setup a new policy.
 
-    > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get/List) permissions to the previously created service principal that you will be using for authentication in the pipeline.
+    > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get/List) permissions to the service connection that you created during the lab environment validation for authentication in the pipeline.
 
     1. On the **Permission** blade, below **Secret permissions**, check **Get** and **List** permissions. Click on **Next**.
-    2. On the **Principal** blade, search for the **previously created Service Principal**, either by using the Id or Name given, and select it from the list. Click on **Next**, **Next**, **Create** (access policy).
+    2. On the **Principal** blade, search for your **Azure subscription service connection** (the one created during lab environment validation, typically named "azure subs"), and select it from the list. You can find the service principal name in Azure DevOps under Project Settings > Service connections > azure subs > Manage service principal. Click on **Next**, **Next**, **Create** (access policy).
     3. On the **Review + create** blade, click on **Create**
 
 1. Back on the **Create a key vault** blade, click on **Review + Create > Create**
