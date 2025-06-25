@@ -37,7 +37,7 @@ After you complete this lab, you will be able to:
 - Review history of changes.
 - Work with branches by using Visual Studio Code.
 
-## Estimated timing: 45 minutes
+## Estimated timing: 60 minutes
 
 ## Instructions
 
@@ -80,7 +80,7 @@ In this task, you will create an **eShopOnWeb** Azure DevOps project to be used 
 
 In this task you will import the eShopOnWeb Git repository that will be used by several labs.
 
-1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>  and click on **Import**:
+1. On your lab computer, in a browser window open your Azure DevOps organization and the previously created **eShopOnWeb** project. Click on **Repos>Files** , **Import**. On the **Import a Git Repository** window, paste the following URL `https://github.com/MicrosoftLearning/eShopOnWeb.git`  and click on **Import**:
 
     ![Screenshot of the import repository panel.](images/import-repo.png)
 
