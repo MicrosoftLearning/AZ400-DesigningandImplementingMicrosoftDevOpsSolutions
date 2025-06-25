@@ -152,7 +152,9 @@ You will need to create a service connection in Azure DevOps which will allow yo
 
 1. Make sure the **Grant access permission to all pipelines** option is unchecked and select **Save**.
 
-   > **Important:** The **Grant access permission to all pipelines** option is not recommended for production environments. It is only used in this lab to simplify the configuration of the pipeline.
+   > **Important:** The **Grant access permission to all pipelines** option is not recommended for production environments: selecting the option means granting access to the service connection to all pipelines in the project, not selecting the option allows you to approve the access to the service connection on the first run of each pipeline.
+
+   > **Note**: If the **Grant access permission to all pipelines** option is disabled (it is in gray) and cannot be changed, continue with the lab.
 
    > **Note**: If you see an error message indicating you don't have the necessary permissions to create a service connection, try again, or configure the service connection manually.
 
