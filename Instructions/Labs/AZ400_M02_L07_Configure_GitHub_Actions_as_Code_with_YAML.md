@@ -1,7 +1,7 @@
 ---
 lab:
     title: "Configure GitHub Actions as Code with YAML"
-    module: "Module 03: Design and implement a release strategy"
+    module: "Module 02: Implement CI with Azure Pipelines and GitHub Actions"
 ---
 
 # Configure GitHub Actions as Code with YAML
@@ -19,6 +19,8 @@ lab:
 ## Lab overview
 
 Many teams prefer to define their CI/CD pipelines using YAML workflows that can be version-controlled alongside their code. GitHub Actions provides a powerful platform for implementing pipelines as code, allowing teams to define complex multi-stage workflows with approvals, environments, and sophisticated deployment strategies. This approach enables better collaboration, version control of pipeline definitions, and the ability to apply software engineering practices to infrastructure and deployment processes.
+
+This lab focuses on advanced GitHub Actions concepts and serves as a GitHub Actions equivalent to the Azure DevOps "Configure Pipelines as Code with YAML" lab. It builds upon the basic GitHub Actions concepts covered in the "Implement GitHub Actions for CI/CD" lab (M02_L05) by introducing more sophisticated workflow patterns, reusable components, and enterprise-grade features.
 
 ## Objectives
 
