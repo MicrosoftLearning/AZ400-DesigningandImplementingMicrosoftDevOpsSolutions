@@ -48,7 +48,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
     > **Note**: You will use this image in the next exercise of this lab.
 
 1. We will store the Wiki source files in a separate folder within the Repos current folder structure. From within **Repos**, select **Files**. Notice the **eShopOnWeb** Repo title on top of the folder structure. **Select the ellipsis (3 dots)**, Choose **New / Folder**, and provide **`Documents`** as title for the New Folder name. As a repo doesn't allow you to create an empty folder, provide **`READ.ME`** as New File name.
-1. Confirm the creation of the folder and the file by **pressing the Create button**.
+1. Confirm the creation of the folder and the file by pressing the **Create** button.
 1. The READ.ME file will open in the built-in view mode. Since this is stored 'as code', you need to **Commit** the changes by clicking the **Commit** button. In the Commit window, confirm once more by pressing **Commit**.
 1. In the Azure DevOps vertical menu on the left side, click **Overview**, in the **Overview** section, select **Wiki**, select **Publish code as wiki*.
 1. On the **Publish code as wiki** pane, specify the following settings and click **Publish**.
@@ -101,7 +101,7 @@ In this task, you will publish a branch of an Azure DevOps repo as wiki.
 
 1. This sample text gives you an overview of several of the common MarkDown syntax features, ranging from Title and subtitles (##), bold (**), italic (*), how to create tables, and more.
 
-1. Once finished, **press** the Save button in the upper right corner.
+1. Once finished, press the **Save** button in the upper right corner.
 
 1. **Refresh** your browser, or select any other DevOps portal option and return to the Wiki section. Notice you are now presented with the **EshopOnWeb (Documents)** Wiki, as well as having the **Welcome to our Online Retail Store** as **HomePage** of the Wiki.
 
