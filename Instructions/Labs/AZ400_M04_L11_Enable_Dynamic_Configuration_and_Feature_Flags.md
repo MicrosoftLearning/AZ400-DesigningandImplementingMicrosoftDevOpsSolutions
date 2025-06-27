@@ -142,7 +142,7 @@ In order to make sure that your website is accessing App Configuration, you need
 1. Add two new application settings:
     - First app setting
         - **Name:** UseAppConfig
-        - **Value:** `true` (type this text)
+        - **Value:** true
     - Second app setting
         - **Name:** AppConfigEndpoint
         - **Value:** *the value you saved/copied previously from App Configuration Endpoint. It should look like <https://appcs-NAME-REGION.azconfig.io>*
@@ -159,7 +159,7 @@ In order to make sure that your website is accessing App Configuration, you need
 1. In the **Operations** section, select **Configuration Explorer**.
 1. Click on **Create > Key-value** then add:
     - **Key:** eShopWeb:Settings:NoResultsMessage
-    - **Value:** *type your custom message* (for example: "No products found matching your search criteria")
+    - **Value:** *type your custom message*
 1. Click **Apply** then go back to your website and refresh the page.
 1. You should see your new message instead of the old default value.
 
