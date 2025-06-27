@@ -153,7 +153,7 @@ In this task, you will create and publish an in-house developed custom NuGet pac
 1. Run the following to create a **.nupkg** file from the project (change the value of `XXXXXX` placeholder with a unique string).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXXX.Shared
    ```
 
    > **Note**: The **dotnet pack** command builds the project and creates a NuGet package in the **bin\Release** folder. If you don't have a **Release** folder, you can use the **Debug** folder instead.
