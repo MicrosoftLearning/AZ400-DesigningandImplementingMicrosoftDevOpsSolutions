@@ -114,7 +114,7 @@ In this task, you will create two Azure web apps representing the **DevTest** an
 1. In the Azure portal, click the **Cloud Shell** icon, located directly to the right of the search textbox at the top of the page.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
+   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and click **Apply**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` variable placeholder with the name of the Azure region that will host the two Azure web apps, for example 'westeurope' or 'centralus' or any other available region of your choice):
 
@@ -142,6 +142,8 @@ In this task, you will create two Azure web apps representing the **DevTest** an
    ```
 
    > **Note**: Record the name of the DevTest web app. You will need it later in this lab.
+
+   > **Note**: If you encounter an error "The subscription is not registered to use namespace 'Microsoft.Web'", run the following command to register the Microsoft.Web resource provider: `az provider register --namespace Microsoft.Web` and wait for the registration to complete before creating the web apps.
 
 1. Wait for the Web App Services Resources provisioning process to complete and close the **Cloud Shell** pane.
 
