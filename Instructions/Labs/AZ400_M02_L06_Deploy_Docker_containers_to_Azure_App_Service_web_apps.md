@@ -122,6 +122,8 @@ In this task, you will import and run the CD pipeline.
 
 1. Open the pipeline execution. If you see a warning message "This pipeline needs permission to access a resource before this run can continue to Deploy", click on **View** and then **Permit** and **Permit** again. This will allow the pipeline to access the Azure subscription.
 
+    > **Important**: If you do not authorize the pipeline when configuring, you will encounter permission errors during execution. Common error messages include "This pipeline needs permission to access a resource" or "Pipeline run failed due to insufficient permissions". To resolve this, navigate to the pipeline run, click **View** next to the permission request, then click **Permit** to grant the necessary access to your Azure subscription and resources.
+
     > **Note**: The deployment may take a few minutes to complete.
 
     > [!IMPORTANT]
@@ -138,6 +140,8 @@ In this task, you will import and run the CD pipeline.
 1. In the Azure Portal, navigate to the recently created Resource Group, you should now see three resources (App Service, App Service Plan and Container Registry).
 
 1. Navigate to the App Service, then click **Browse**, this will take you to the website.
+
+1. Verify that the eShopOnWeb application is running successfully. Once confirmed, you have completed the lab successfully.
 
 > [!IMPORTANT]
 > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
