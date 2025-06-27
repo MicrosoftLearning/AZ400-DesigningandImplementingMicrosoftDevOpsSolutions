@@ -37,7 +37,7 @@ After you complete this lab, you will be able to:
 - Review history of changes.
 - Work with branches by using Visual Studio Code.
 
-## Estimated timing: 60 minutes
+## Estimated timing: 45 minutes
 
 ## Instructions
 
