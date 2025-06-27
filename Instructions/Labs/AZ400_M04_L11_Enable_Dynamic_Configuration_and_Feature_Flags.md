@@ -94,6 +94,8 @@ Let's import the CD pipeline named [eshoponweb-cd-webapp-code.yml](https://githu
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
+    > **Note**: You must click **Save and Run** twice. If the Jobs window displays a permission needed message, select **Deploy** from the Jobs window, select **View**, and then **Permit** twice to complete the pipeline run.
+
     > **Note**: The deployment may take a few minutes to complete.
 
     The CD definition consists of the following tasks:
@@ -128,8 +130,8 @@ If you want to know how to implement this in your application, please take a loo
 1. In the **Settings** section, click on **Identity** then switch status to **On** in the **System Assigned** section, click **save > yes** and wait a few seconds for the operation to finish.
 1. Go back to the App Configuration service and click on **Access control** then **Add role assignment**.
 1. In the **Role** section, select **App Configuration Data Reader**.
-1. In the **Members** section, check **Manage Identity** then select the managed identity of your Web App (they should have the same name).
-1. Click on **Review and assign**.
+1. In the **Members** section, check **Manage Identity**, then click **+ Select members**. In the **Managed Identity** field, select **App Service (1)**, select your app service, then click **Select**.
+1. Click on **Review and assign** twice to complete the role assignment.
 
 #### Task 3: Configure the Web App
 
