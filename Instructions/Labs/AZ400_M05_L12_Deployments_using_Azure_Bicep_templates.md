@@ -29,7 +29,7 @@ After you complete this lab, you will be able to:
 - Modify the main template to use the module
 - Deploy all the resources to Azure using Azure YAML pipelines.
 
-## Estimated timing: 45 minutes
+## Estimated timing: 30 minutes
 
 ## Instructions
 
@@ -201,7 +201,12 @@ In this lab, you will use an Azure DevOps YAML pipeline to deploy your template 
    ![Screenshot of the save and run button.](./images/m06/saveandrun.png)
 
 1. Wait for the deployment to finish and review the results.
+
+   > **Note**: If a Permission needed message appears, select View, Then select Permit twice.
+
    ![Screenshot of the successful resource deployment to Azure using YAML pipelines.](./images/m06/deploy.png)
+
+1. Navigate to the Azure Portal and verify the deployment of the VM in the Resource Group. You should see the virtual machine and associated resources (storage account, network interface, public IP, etc.) have been successfully created.
 
    > [!IMPORTANT]
    > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
