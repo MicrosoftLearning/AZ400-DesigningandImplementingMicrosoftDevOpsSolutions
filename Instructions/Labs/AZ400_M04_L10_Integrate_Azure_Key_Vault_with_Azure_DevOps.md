@@ -90,9 +90,9 @@ In this task, you will import an existing CI YAML pipeline definition, modify an
 
 1. In the YAML pipeline definition, customize your Resource Group name by replacing **NAME** on **AZ400-EWebShop-NAME** with a unique value and replace **YOUR-SUBSCRIPTION-ID** with the your own Azure subscriptionId.
 
-1. Click on **Save and Run** and wait for the pipeline to execute successfully.
+1. Click on **Save and Run** and wait for the pipeline to execute successfully. You may need to click **Save and Run** a second time to complete the pipeline creation and run process.
 
-    > **Important**: If you see the message "This pipeline needs permission to access resources before this run can continue to Docker Compose to ACI", click on View, Permit and Permit again. This is needed to allow the pipeline to create the resource.
+    > **Important**: If you see the message "This pipeline needs permission to access resources before this run can continue to Docker Compose to ACI", click on View, Permit and Permit again. This is needed to allow the pipeline to create the resource. You must click the build job in order to see the Permission message.
 
     > **Note**: The build may take a few minutes to complete. The build definition consists of the following tasks:
     - **AzureResourceManagerTemplateDeployment** uses **bicep** to deploy an Azure Container Registry.
@@ -134,7 +134,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pulls 
     > **Note**: You need to secure access to your key vaults by allowing only authorized applications and users. To access the data from the vault, you will need to provide read (Get/List) permissions to the service connection that you created during the lab environment validation for authentication in the pipeline.
 
     1. On the **Permission** blade, below **Secret permissions**, check **Get** and **List** permissions. Click on **Next**.
-    2. On the **Principal** blade, search for your **Azure subscription service connection** (the one created during lab environment validation, typically named "azure subs"), and select it from the list. You can find the service principal name in Azure DevOps under Project Settings > Service connections > azure subs > Manage service principal. Click on **Next**, **Next**, **Create** (access policy).
+    2. On the **Principal** blade, search for your **Azure subscription service connection** (the one created during lab environment validation, typically named "azure subs"), and select it from the list. You can find the service principal name in Azure DevOps under Project Settings > Service connections > azure subs > Manage service principal. If you encounter a permissions error when selecting the Azure subscription, click the **Authorize** button which will automatically create the access policy for you in the key vault. Click on **Next**, **Next**, **Create** (access policy).
     3. On the **Review + create** blade, click on **Create**
 
 1. Back on the **Create a key vault** blade, click on **Review + Create > Create**
@@ -150,7 +150,7 @@ For this lab scenario, we will have a Azure Container Instance (ACI) that pulls 
     | --- | --- |
     | Upload options | **Manual** |
     | Name | **acr-secret** |
-    | Value | ACR access password copied in previous task |
+    | Secret value | ACR access password copied in previous task |
 
 #### Task 3: Create a Variable Group connected to Azure Key Vault
 
@@ -191,8 +191,8 @@ In this task, you will import a CD pipeline, customize it, and run it for deploy
     - **YOUR-ACR.azurecr.io** and **ACR-USERNAME** with your ACR login server (both need the ACR name, can be reviewed on the ACR > Access Keys).
     - **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
 
-1. Click on **Save and Run**.
-1. Open the pipeline and wait to execute successfully.
+1. Click on **Save and Run**. You may need to click **Save and Run** a second time to complete the pipeline creation and run process. You must click the build job in order to see any Permission messages.
+1. Open the pipeline and wait for it to execute successfully.
 
     > **Important**: If you see the message "This pipeline needs permission to access resources before this run can continue to Docker Compose to ACI", click on View, Permit and Permit again. This is needed to allow the pipeline to create the resource.
 
@@ -200,6 +200,8 @@ In this task, you will import a CD pipeline, customize it, and run it for deploy
     - **Resources** : it is prepared to automatically trigger based on CI pipeline completion. It also download the repository for the bicep file.
     - **Variables (for Deploy stage)** connects to the variable group to consume the Azure Key Vault secret **acr-secret**
     - **AzureResourceManagerTemplateDeployment** deploys the Azure Container Instance (ACI) using bicep template and provides the ACR login parameters to allow ACI to download the previously created container image from Azure Container Registry (ACR).
+
+1. To verify the results of the pipeline deployment, in the Azure portal, search for and select the **AZ400-EWebShop-NAME** resource group. In the list of resources, verify that the **az400eshop** container instance was created by the pipeline.
 
 1. Your pipeline will take a name based on the project name. Lets **rename** it for identifying the pipeline better. Go to **Pipelines > Pipelines** and click on the recently created pipeline. Click on the ellipsis and **Rename/Remove** option. Name it **eshoponweb-cd-aci** and click on **Save**.
 
