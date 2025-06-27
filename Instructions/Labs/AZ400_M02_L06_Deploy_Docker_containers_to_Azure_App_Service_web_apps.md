@@ -28,7 +28,7 @@ After you complete this lab, you will be able to:
 - Push an image to Azure Container Registry.
 - Deploy a Docker image as a container to Azure App Service by using Azure DevOps.
 
-## Estimated timing: 30 minutes
+## Estimated timing: 20 minutes
 
 ## Instructions
 
@@ -67,8 +67,6 @@ In this exercise, you will configure the service connection with your Azure Subs
 
 #### Task 1: Import and run the CI pipeline
 
-1. From the lab computer, start a web browser, navigate to the Azure DevOps portal at `https://dev.azure.com` and sign in with your Azure DevOps organization credentials.
-1. Navigate to the **eShopOnWeb** project that you created in the prerequisites. If you skipped Exercise 0, ensure you have created an Azure DevOps project named **eShopOnWeb** and imported the repository from `https://github.com/MicrosoftLearning/eShopOnWeb.git`.
 1. Go to **Pipelines > Pipelines**
 1. Click on **New pipeline** button (or **Create Pipeline** if you don't have other pipelines previously created)
 1. Select **Azure Repos Git (YAML)**
