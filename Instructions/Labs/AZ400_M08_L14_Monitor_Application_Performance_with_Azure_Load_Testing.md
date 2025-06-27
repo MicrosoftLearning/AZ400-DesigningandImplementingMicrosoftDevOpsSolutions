@@ -386,8 +386,11 @@ Perform the following steps to download the input files for an existing load tes
 1. Within Repos, browse to the **/tests/jmeter** subfolder just created.
 1. Open the Load Testing **config.yaml** file. Click **Edit** to allow editing of the file.
 1. Replace the **displayName** and **testId** attributes with the value **ado_load_test**
+1. Save the changes to the config.yaml file by clicking **Commit**.
 
   ![Screenshot of the edited config file.](images/config_edit.png)
+
+1. Verify that the config.yaml and quick_test.jmx files are properly saved in the **/tests/jmeter** folder before proceeding to the next task.
 
 #### Task 4: Update the CI/CD workflow YAML definition file
 
@@ -406,6 +409,8 @@ Perform the following steps to download the input files for an existing load tes
    - **Load Test Run Description**: load testing from ADO
 
    > **Note**: The pipeline may require permissions to be granted. If prompted, select **View**, then select **Permit**, and select **Permit** again to grant the necessary permissions.
+   
+   > **Note**: If you encounter an "invalid file name error" during the Azure Load Test phase, ensure that the config.yaml file path is correct and that the file was properly uploaded to the repository. You may need to verify the file exists at the specified path in your repository.
 
 1. Confirm the injection of the parameters as a snippet of YAML by clicking **Add**
 1. If the indentation of the YAML snippet is giving errors (red squiggly lines), fix them by adding 2 spaces or tab to position the snippet correctly.
@@ -478,7 +483,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 
 1. From Azure DevOps, navigate to the eShopOnWeb Project, and open **Repos**.
 1. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
-1. Open the Load Testing \*config.yaml** file. Click **Edit\*\* to allow editing of the file.
+1. Open the Load Testing **config.yaml** file. Click **Edit** to allow editing of the file.
 1. Replace `failureCriteria: []` if present, otherwise append the following snippet of code:
 
    ```text
@@ -531,6 +536,18 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 
    > [!IMPORTANT]
    > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
+
+## Troubleshooting
+
+If you encounter issues during the lab, try the following solutions:
+
+- **Invalid file name error in Azure Load Test**: Ensure that the config.yaml and quick_test.jmx files are properly uploaded to the `/tests/jmeter` folder in your repository. Verify the file paths are correct in the Load Test File configuration.
+
+- **Microsoft.Web provider not registered**: Run `az provider register --namespace Microsoft.Web` in the Cloud Shell if you encounter registration errors when creating the App Service Plan.
+
+- **Pipeline permission issues**: When the pipeline requires permissions, select **View**, then **Permit**, and **Permit** again to grant access to Azure resources.
+
+- **File upload issues**: When uploading files to Azure Repos, make sure to click **Create** first to create folders, then **Commit** to save changes. You may need to commit twice for file uploads.
 
 ## Review
 
