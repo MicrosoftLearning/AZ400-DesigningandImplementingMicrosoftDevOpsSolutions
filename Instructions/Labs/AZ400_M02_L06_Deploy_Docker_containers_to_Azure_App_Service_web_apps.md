@@ -28,7 +28,7 @@ After you complete this lab, you will be able to:
 - Push an image to Azure Container Registry.
 - Deploy a Docker image as a container to Azure App Service by using Azure DevOps.
 
-## Estimated timing: 20 minutes
+## Estimated timing: 30 minutes
 
 ## Instructions
 
@@ -67,6 +67,8 @@ In this exercise, you will configure the service connection with your Azure Subs
 
 #### Task 1: Import and run the CI pipeline
 
+1. From the lab computer, start a web browser, navigate to the Azure DevOps portal at `https://dev.azure.com` and sign in with your Azure DevOps organization credentials.
+1. Navigate to the **eShopOnWeb** project that you created in the prerequisites. If you skipped Exercise 0, ensure you have created an Azure DevOps project named **eShopOnWeb** and imported the repository from `https://github.com/MicrosoftLearning/eShopOnWeb.git`.
 1. Go to **Pipelines > Pipelines**
 1. Click on **New pipeline** button (or **Create Pipeline** if you don't have other pipelines previously created)
 1. Select **Azure Repos Git (YAML)**
@@ -122,6 +124,8 @@ In this task, you will import and run the CD pipeline.
 
 1. Open the pipeline execution. If you see a warning message "This pipeline needs permission to access a resource before this run can continue to Deploy", click on **View** and then **Permit** and **Permit** again. This will allow the pipeline to access the Azure subscription.
 
+    > **Important**: If you do not authorize the pipeline when configuring, you will encounter permission errors during execution. Common error messages include "This pipeline needs permission to access a resource" or "Pipeline run failed due to insufficient permissions". To resolve this, navigate to the pipeline run, click **View** next to the permission request, then click **Permit** to grant the necessary access to your Azure subscription and resources.
+
     > **Note**: The deployment may take a few minutes to complete.
 
     > [!IMPORTANT]
@@ -138,6 +142,8 @@ In this task, you will import and run the CD pipeline.
 1. In the Azure Portal, navigate to the recently created Resource Group, you should now see three resources (App Service, App Service Plan and Container Registry).
 
 1. Navigate to the App Service, then click **Browse**, this will take you to the website.
+
+1. Verify that the eShopOnWeb application is running successfully. Once confirmed, you have completed the lab successfully.
 
 > [!IMPORTANT]
 > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
