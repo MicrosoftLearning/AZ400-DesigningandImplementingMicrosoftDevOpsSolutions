@@ -34,7 +34,7 @@ After you complete this lab, you will be able to:
 - Investigate Azure web app performance by using Azure Load Testing.
 - Integrate Azure Load Testing into your CI/CD pipelines.
 
-## Estimated timing: 90 minutes
+## Estimated timing: 60 minutes
 
 ## Instructions
 
@@ -79,7 +79,7 @@ In this task, you will create an Azure web app by using the cloud shell in Azure
 1. In the Azure portal, in the toolbar, click the **Cloud Shell** icon located directly to the right of the search text box.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Apply**.
+   > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select the subscription you are using in this lab, and select **Create storage**.
 
 1. From the **Bash** prompt, in the **Cloud Shell** pane, run the following command to create a resource group (replace the `<region>` placeholder with the name of the Azure region closest to you such as 'eastus').
 
@@ -96,8 +96,6 @@ In this task, you will create an Azure web app by using the cloud shell in Azure
    az appservice plan create --resource-group $RESOURCEGROUPNAME \
        --name $SERVICEPLANNAME --sku B3
    ```
-
-   > **Note**: If you encounter an error about Microsoft.Web not being registered, you may need to register the Microsoft.Web resource provider by running: `az provider register --namespace Microsoft.Web`
 
 1. Create a web app with a unique name.
 
@@ -218,7 +216,7 @@ In this task, you will add a YAML build definition to the existing project.
 
    > **Note**: The **packageForLinux** parameter is misleading in the context of this lab, but it is valid for Windows or Linux.
 
-1. Before saving the updates to the yml-file, give it a more clear name. On top of the yaml-editor window, it shows **EShopOnweb/azure-pipelines-#.yml**. (where # is a number, typically 1 but could be different in your setup.) Select **that filename**, **enable text typing if needed**, and rename it to **m08l14-pipeline.yml**
+1. Before saving the updates to the yml-file, give it a more clear name. On top of the yaml-editor window, it shows **EShopOnweb/azure-pipelines-#.yml**. (where # is a number, typically 1 but could be different in your setup.) Select **that filename**, and rename it to **m08l14-pipeline.yml**
 
 1. Click **Save**, on the **Save** pane, click **Save** again to commit the change directly into the main branch.
 
@@ -291,7 +289,6 @@ In this task, you will create different Azure Load Testing tests, using differen
 1. Uncheck the **Enable advanced settings** checkbox, to display the advanced settings.
 1. Complete the following parameters and settings to create a load test:
 
-   - **Test Name**: `Get_eshoponweb########` (replace ######## with a unique identifier)
    - **Test URL**: Enter the URL from the Azure App Service you deployed in the previous exercise (az400eshoponweb...azurewebsites.net), **including https://**
    - **Specify Load**: Virtual Users
    - **Number of Virtual Users**: 50
@@ -320,7 +317,7 @@ In this task, you will validate the outcome of an Azure Load Testing TestRun.
 
 With both quick tests complete, let's make a few changes to them, and validate the results.
 
-1. From **Azure Load Testing**, navigate to **Tests**. Select either of the test definitions, to open a more detailed view, by **clicking** on one of the tests. This redirects you to the more detailed test page. From here, you can validate the details of the actual runs, by selecting the **TestRun mm/dd/yy-hh:mm** from the resulting list.
+1. From **Azure Load Testing**, navigate to **Tests**. Select either of the test definitions, to open a more detailed view, by **clicking** on one of the tests. This redirects you to the more detailed test page. From here, you can validate the details of the actual runs, by selecting the **TestRun_mm/dd/yy-hh:hh** from the resulting list.
 1. From the detailed **TestRun** page, identify the actual outcome of the Azure Load Testing simulation. Some of the values are:
 
    - Load / Total Requests
@@ -374,43 +371,34 @@ Perform the following steps to download the input files for an existing load tes
    - _config.yaml_: the load test YAML configuration file. You reference this file in the CI/CD workflow definition.
    - _quick_test.jmx_: the JMeter test script
 
-#### Task 3a: Commit all extracted input files to your source control repository
-
-1. Navigate to the **Azure DevOps Portal**(<https://aex.dev.azure.com/>), and navigate to the **eShopOnWeb** DevOps Project.
+1. Commit all extracted input files to your source control repository. To do this, navigate to the **Azure DevOps Portal**(<https://aex.dev.azure.com/>), and navigate to the **eShopOnWeb** DevOps Project.
 1. Select **Repos**. In the source code folder structure, notice the **tests** subfolder. Notice the ellipsis (...), and select **New > Folder**.
 1. specify **jmeter** as folder name, and **placeholder.txt** for the file name (Note: a Folder cannot be created as empty)
-1. Click **Create** to create the folder and file, then click **Commit** to commit the changes to the repository.
+1. Click **Commit** to confirm the creation of the placeholder file and jmeter folder.
 1. From the **Folder structure**, navigate to the new created **jmeter** subfolder. Click the **ellipsis(...)** and select **Upload File(s)**.
 1. Using the **Browse** option, navigate to the location of the extracted zip-file, and select both **config.yaml** and **quick_test.jmx**.
-1. Click **Commit** to confirm the file upload into source control. If prompted, click **Commit** again to finalize the upload.
+1. Click **Commit** to confirm the file upload into source control.
 1. Within Repos, browse to the **/tests/jmeter** subfolder just created.
 1. Open the Load Testing **config.yaml** file. Click **Edit** to allow editing of the file.
 1. Replace the **displayName** and **testId** attributes with the value **ado_load_test**
-1. Save the changes to the config.yaml file by clicking **Commit**.
 
   ![Screenshot of the edited config file.](images/config_edit.png)
-
-1. Verify that the config.yaml and quick_test.jmx files are properly saved in the **/tests/jmeter** folder before proceeding to the next task.
 
 #### Task 4: Update the CI/CD workflow YAML definition file
 
 1. To create and run a load test, the Azure Pipelines workflow definition uses the **Azure Load Testing task extension** from the Azure DevOps Marketplace. Open the [Azure Load Testing task extension](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) in the Azure DevOps Marketplace, and select **Get it free**.
 1. Select your Azure DevOps organization, and then select **Install** to install the extension.
 1. From within the Azure DevOps Portal and Project, navigate to **Pipelines** and select the pipeline created at the start of this exercise. Click **Edit**.
-1. In the YAML script, navigate to **line 43** and press ENTER/RETURN, to add a new empty line. (this is right before the Deploy Stage of the YAML file).
-1. At line 44, select the Tasks Assistant to the right-hand side, and search for **Azure Load Testing**.
+1. In the YAML script, navigate to **line 56** and press ENTER/RETURN, to add a new empty line. (this is right before the Deploy Stage of the YAML file).
+1. At line 57, select the Tasks Assistant to the right-hand side, and search for **Azure Load Testing**.
 1. Complete the graphical pane with the correct settings of your scenario:
 
-   - **Azure Subscription**: Select the subscription which runs your Azure Resources (enter subscription details manually if needed)
-   - **Load Test File**: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
-   - **Load Test Resource Group**: The Resource Group which holds your Azure Load Testing Resources
-   - **Load Test Resource Name**: `eShopOnWebLoadTesting`
-   - **Load Test Run Name**: ado_run
-   - **Load Test Run Description**: load testing from ADO
-
-   > **Note**: The pipeline may require permissions to be granted. If prompted, select **View**, then select **Permit**, and select **Permit** again to grant the necessary permissions.
-   
-   > **Note**: If you encounter an "invalid file name error" during the Azure Load Test phase, ensure that the config.yaml file path is correct and that the file was properly uploaded to the repository. You may need to verify the file exists at the specified path in your repository.
+   - Azure Subscription: Select the subscription which runs your Azure Resources
+   - Load Test File: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
+   - Load Test Resource Group: The Resource Group which holds your Azure Load Testing Resources
+   - Load Test Resource Name: `eShopOnWebLoadTesting`
+   - Load Test Run Name: ado_run
+   - Load Test Run Description: load testing from ADO
 
 1. Confirm the injection of the parameters as a snippet of YAML by clicking **Add**
 1. If the indentation of the YAML snippet is giving errors (red squiggly lines), fix them by adding 2 spaces or tab to position the snippet correctly.
@@ -483,7 +471,7 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 
 1. From Azure DevOps, navigate to the eShopOnWeb Project, and open **Repos**.
 1. Within Repos, browse to the **/tests/jmeter** subfolder created and used earlier.
-1. Open the Load Testing **config.yaml** file. Click **Edit** to allow editing of the file.
+1. Open the Load Testing \*config.yaml** file. Click **Edit\*\* to allow editing of the file.
 1. Replace `failureCriteria: []` if present, otherwise append the following snippet of code:
 
    ```text
@@ -536,18 +524,6 @@ In this task, You'll use load test fail criteria to get alerted (have a failed p
 
    > [!IMPORTANT]
    > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
-
-## Troubleshooting
-
-If you encounter issues during the lab, try the following solutions:
-
-- **Invalid file name error in Azure Load Test**: Ensure that the config.yaml and quick_test.jmx files are properly uploaded to the `/tests/jmeter` folder in your repository. Verify the file paths are correct in the Load Test File configuration.
-
-- **Microsoft.Web provider not registered**: Run `az provider register --namespace Microsoft.Web` in the Cloud Shell if you encounter registration errors when creating the App Service Plan.
-
-- **Pipeline permission issues**: When the pipeline requires permissions, select **View**, then **Permit**, and **Permit** again to grant access to Azure resources.
-
-- **File upload issues**: When uploading files to Azure Repos, make sure to click **Create** first to create folders, then **Commit** to save changes. You may need to commit twice for file uploads.
 
 ## Review
 
