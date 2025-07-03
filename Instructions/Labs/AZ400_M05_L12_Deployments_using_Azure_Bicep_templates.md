@@ -138,9 +138,9 @@ In this task, you will create a storage template module **storage.bicep** which 
    output storageURI string = storageAccount.properties.primaryEndpoints.blob
    ```
 
-#### Task 3: Modify the main template to use the template module
+#### Task 3: Modify the simple-windows-vm template to use the template module
 
-In this task, you will modify the main template to reference the template module you created in the previous task.
+In this task, you will modify the `simple-windows-vm.bicep` template to reference the template module you created in the previous task.
 
 1. Navigate back to the `simple-windows-vm.bicep` file and click on the **Edit** button once again.
 
