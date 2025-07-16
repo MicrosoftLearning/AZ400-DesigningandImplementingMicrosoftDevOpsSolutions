@@ -109,6 +109,10 @@ In this task, you will create a storage template module **storage.bicep** which 
    }
    ```
 
+1. Change the default value of the `publicIPAllocationMethod` parameter from `Dynamic` to `Static` at line 20
+
+1. Change the default value of the `publicIpSku` parameter from `Basic` to `Standard` at line 27
+
 1. Commit the file, however, we're not done with it yet.
 
    ![Screenshot of the file commit button.](./images/m06/commit.png)
@@ -202,6 +206,8 @@ In this lab, you will use an Azure DevOps YAML pipeline to deploy your template 
 
 1. Wait for the deployment to finish and review the results.
    ![Screenshot of the successful resource deployment to Azure using YAML pipelines.](./images/m06/deploy.png)
+
+   > **Note**: Remember to give the pipeline permission to use the previously createdcService Connection.
 
    > [!IMPORTANT]
    > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
