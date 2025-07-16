@@ -207,7 +207,7 @@ In this lab, you will use an Azure DevOps YAML pipeline to deploy your template 
 1. Wait for the deployment to finish and review the results.
    ![Screenshot of the successful resource deployment to Azure using YAML pipelines.](./images/m06/deploy.png)
 
-   > **Note**: Remember to give the pipeline permission to use the previously createdcService Connection.
+   > **Note**: Remember to give the pipeline permission to use the previously created Service Connection.
 
    > [!IMPORTANT]
    > Remember to delete the resources created in the Azure portal to avoid unnecessary charges.
