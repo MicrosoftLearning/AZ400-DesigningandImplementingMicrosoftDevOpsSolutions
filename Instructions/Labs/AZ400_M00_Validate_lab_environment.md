@@ -82,7 +82,7 @@ First, you'll create an **eShopOnWeb** Azure DevOps project to be used by severa
 1. Select the **New Project** option and use the following settings:
 
    - name: **eShopOnWeb**
-   - visibility: **Private**
+   - visibility: **Public**
    - Advanced: Version Control: **Git**
    - Advanced: Work Item Process: **Scrum**
 
