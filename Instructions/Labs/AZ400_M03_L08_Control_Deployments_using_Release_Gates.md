@@ -202,6 +202,7 @@ In this exercise, you will configure a release pipeline.
 In this task, you will set up the release tasks as part of the Release Pipeline.
 
 1. From the **eShopOnWeb** project in the Azure DevOps portal, in the vertical navigational pane, select **Pipelines** and then, within the **Pipelines** section, click **Releases**.
+   > **Note**: If the **Releases** section is not visible, it is likely because the **Disable creation of classic release pipelines** toggle is set to **On** under the **Project Settings** > **Pipelines** > **Settings** > **General** section.
 1. Click **New Pipeline**.
 1. From the **Select a template** window, **choose** **Azure App Service Deployment** (Deploy your application to Azure App Service. Choose from Web App on Windows, Linux, containers, Function Apps, or WebJobs) under the **Featured** list of templates.
 1. Click **Apply**.
