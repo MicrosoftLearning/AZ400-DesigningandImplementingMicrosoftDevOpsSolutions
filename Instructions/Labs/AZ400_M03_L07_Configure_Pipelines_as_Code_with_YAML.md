@@ -187,22 +187,20 @@ In this task, you will add continuous delivery to the YAML-based definition of t
    > **Note**: By default, these two stages run independently. As a result, the build output from the first stage might not be available to the second stage without additional changes. To implement these changes, we will add a new task to download the deployment artifact in the beginning of the deploy stage.
 
 1. Place the cursor on the first line under the **steps** node of the **deploy** stage, and hit Enter/Return to add a new empty line (Line 64).
-1. On the **Tasks** pane, search for and select the **Download build artifacts** task.
+1. On the **Tasks** pane, search for and select the **Download Pipeline Artifacts** task.
 1. Specify the following parameters for this task:
    - Download Artifacts produced by: **Current Build**
-   - Download Type: **Specific Artifact**
    - Artifact Name: **select "Website" from the list** (or **type "`Website`"** directly if it doesn't appear automatically in the list)
    - Destination Directory: **$(Build.ArtifactStagingDirectory)**
 1. Click **Add**.
 1. The snippet of added code should look similar to below:
 
    ```yaml
-   - task: DownloadBuildArtifacts@1
+   - task: DownloadPipelineArtifact@1
      inputs:
        buildType: "current"
-       downloadType: "single"
        artifactName: "Website"
-       downloadPath: "$(Build.ArtifactStagingDirectory)"
+       targetPath: "$(Build.ArtifactStagingDirectory)"
    ```
 
 1. If the YAML indentation is off, with the added task still selected in the editor, press the **Tab** key twice to indent it four spaces.
@@ -295,12 +293,11 @@ In this task, you will add continuous delivery to the YAML-based definition of t
         pool:
           vmImage: 'windows-latest'
         steps:
-        - task: DownloadBuildArtifacts@0
+        - task: DownloadPipelineArtifact@1
           inputs:
             buildType: 'current'
-            downloadType: 'single'
             artifactName: 'Website'
-            downloadPath: '$(Build.ArtifactStagingDirectory)'
+            targetPath: '$(Build.ArtifactStagingDirectory)'
         - task: AzureRmWebAppDeployment@4
           inputs:
             ConnectionType: 'AzureRM'
@@ -384,12 +381,11 @@ YAML Pipelines as Code don't have Release/Quality Gates as we have with Azure De
            runOnce:
              deploy:
                steps:
-                 - task: DownloadBuildArtifacts@1
+                 - task: DownloadPipelineArtifact@1
                    inputs:
                      buildType: "current"
-                     downloadType: "single"
                      artifactName: "Website"
-                     downloadPath: "$(Build.ArtifactStagingDirectory)"
+                     targetPath: "$(Build.ArtifactStagingDirectory)"
                  - task: AzureRmWebAppDeployment@4
                    inputs:
                      ConnectionType: "AzureRM"
