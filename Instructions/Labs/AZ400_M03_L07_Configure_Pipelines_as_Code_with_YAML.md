@@ -295,7 +295,7 @@ In this task, you will add continuous delivery to the YAML-based definition of t
         pool:
           vmImage: 'windows-latest'
         steps:
-        - task: DownloadBuildArtifacts@0
+        - task: DownloadBuildArtifacts@1
           inputs:
             buildType: 'current'
             downloadType: 'single'
