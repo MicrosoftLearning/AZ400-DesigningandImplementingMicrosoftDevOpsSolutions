@@ -204,7 +204,7 @@ In this task, you will add a YAML build definition to the existing project.
 1. The snippet of code added to the editor should look similar to below, reflecting your name for the azureSubscription and WebappName parameters:
 
    ```yml
-   - task: AzureRmWebAppDeployment@4
+   - task: AzureRmWebAppDeployment@5
      inputs:
        ConnectionType: "AzureRM"
        azureSubscription: "SERVICE CONNECTION NAME"
@@ -228,7 +228,7 @@ In this task, you will add a YAML build definition to the existing project.
 
    ![Screenshot of Azure Pipelines showing eShopOnWeb runs.](images/m3/eshoponweb-m9l16-pipeline.png)
 
-1. Confirm to run this pipeline by clicking **Run** from the appearing pane and confirm by clicking **Run** once more.
+1. Confirm to run this pipeline by clicking **Run pipeline** from the appearing pane and confirm by clicking **Run** once more.
 1. Notice the 2 different Stages, **Build .Net Core Solution** and **Deploy to Azure Web App** appearing.
 1. Wait for the pipeline to kick off.
 
@@ -389,8 +389,8 @@ Perform the following steps to download the input files for an existing load tes
 1. To create and run a load test, the Azure Pipelines workflow definition uses the **Azure Load Testing task extension** from the Azure DevOps Marketplace. Open the [Azure Load Testing task extension](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) in the Azure DevOps Marketplace, and select **Get it free**.
 1. Select your Azure DevOps organization, and then select **Install** to install the extension.
 1. From within the Azure DevOps Portal and Project, navigate to **Pipelines** and select the pipeline created at the start of this exercise. Click **Edit**.
-1. In the YAML script, navigate to **line 56** and press ENTER/RETURN, to add a new empty line. (this is right before the Deploy Stage of the YAML file).
-1. At line 57, select the Tasks Assistant to the right-hand side, and search for **Azure Load Testing**.
+1. In the YAML script, navigate to **line 64** and press ENTER/RETURN, to add a new empty line. (this is right before the Deploy Stage of the YAML file).
+1. At line 65, select the Tasks Assistant to the right-hand side, and search for **Azure Load Testing** (make sure you position the cursor at the indentation of the previous task level).
 1. Complete the graphical pane with the correct settings of your scenario:
 
    - Azure Subscription: Select the subscription which runs your Azure Resources
@@ -424,12 +424,12 @@ Perform the following steps to download the input files for an existing load tes
    ```
 
 1. If the indentation of the YAML snippet is giving errors (red squiggly lines), fix them by adding 2 spaces or tab to position the snippet correctly.
-1. With both snippets added to the CI/CD pipeline, **Save** the changes.
+1. With both snippets added to the CI/CD pipeline, click on **Validate and save** and, then, **Save** the changes.
 1. Once saved, click **Run** to trigger the pipeline.
 1. Confirm the branch (main) and click the **Run** button to start the pipeline run.
-1. From the pipeline status page, click the **Build** stage to open the verbose logging details of the different tasks in the pipeline.
-1. Wait for the pipeline to kick off the Build Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline.
-1. While the task is running, browse to the **Azure Load Testing** in the Azure Portal, and see how the pipeline creates a new RunTest, named **adoloadtest1**. You can select it to show the outcome values of the TestRun job.
+1. From the pipeline status page, click the **Deploy** stage to open the verbose logging details of the different tasks in the pipeline.
+1. Wait for the pipeline to kick off the Deploy Stage, and arrive at the **AzureLoadTest** task in the flow of the pipeline.
+1. While the task is running, browse to the **Azure Load Testing** in the Azure Portal, and see how the pipeline creates a new RunTest, named **ado_load_test**. You can select it to show the outcome values of the TestRun job.
 1. Navigate back to the Azure DevOps CI/CD Pipeline Run view, where the **AzureLoadTest task** completed successfully. From the verbose logging output, the resulting values of the load test will be visible as well:
 
    ```text
