@@ -138,6 +138,26 @@ You can notice that the Unit Tests task is already part of the pipeline.
 
     ![Screenshot of the tests table.](images/AZ400_M05_L09_Tests_Table.png)
 
+## Troubleshooting
+
+### Functional Tests Failure
+
+If you encounter the following error when running functional tests:
+
+```
+System.IO.FileNotFoundException : Could not load file or assembly 'Microsoft.Extensions.Configuration.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. The system cannot find the file specified.
+```
+
+This error occurs due to version mismatches in the eShopOnWeb repository dependencies. The project targets .NET 8.0, but some packages reference .NET 9.0 assemblies.
+
+**Workaround options:**
+
+1. **Skip Functional Tests (Recommended for Lab Completion):** Modify the pipeline to exclude functional tests and only run Unit and Integration tests to complete the lab objectives.
+
+2. **Manual Fix:** After importing the repository, you can manually edit the `Directory.Packages.props` file to downgrade the conflicting packages:
+   - Change `Microsoft.EntityFrameworkCore.Tools` from version `9.0.4` to `8.0.8`
+   - Change `System.Text.Json` from version `9.0.4` (or `9.0.2`) to `8.0.1`
+
 ## Review
 
 In this lab, you learned how to setup and run different tests types using Azure Pipelines and .NET.
