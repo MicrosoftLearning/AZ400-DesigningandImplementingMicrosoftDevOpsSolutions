@@ -91,6 +91,7 @@ Let's import the CD pipeline named [eshoponweb-cd-webapp-code.yml](https://githu
    - **YOUR-SUBSCRIPTION-ID** with your Azure subscription id.
    - **az400eshop-NAME** replace NAME to make it globally unique.
    - **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
+   - **csmFile: '$(Pipeline.Workspace)/Bicep/$(templateFile)'** change to **csmFile: '$(Pipeline.Workspace)/eshoponweb-ci/Bicep/$(templateFile)'** to fix the Bicep template file path.
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
