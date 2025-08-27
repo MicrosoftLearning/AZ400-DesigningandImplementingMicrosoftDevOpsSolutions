@@ -92,6 +92,7 @@ Let's import the CD pipeline named [eshoponweb-cd-webapp-code.yml](https://githu
    - **az400eshop-NAME** replace NAME to make it globally unique.
    - **AZ400-EWebShop-NAME** with the resource group name defined before in the lab.
    - **csmFile: '$(Pipeline.Workspace)/Bicep/$(templateFile)'** change to **csmFile: '$(Pipeline.Workspace)/eshoponweb-ci/Bicep/$(templateFile)'** to fix the Bicep template file path.
+   - **packageForLinux: '$(Pipeline.Workspace)/Website/Web.zip'** change to **packageForLinux: '$(Pipeline.Workspace)/eshoponweb-ci/Website/Web.zip'** to fix the website package path.
 
 1. Click on **Save and Run** and wait for the pipeline to execute successfully.
 
