@@ -107,7 +107,7 @@ In this exercise, you will use Visual Studio Code to commit changes to the **mai
 
 In this task, you will step through the process of cloning a Git repository by using Visual Studio Code.
 
-1. Switch to the the web browser displaying your Azure DevOps organization with the **eShopOnWeb** project you generated in the previous exercise.
+1. Switch to the web browser displaying your Azure DevOps organization with the **eShopOnWeb** project you generated in the previous exercise.
 1. In the vertical navigational pane of the Azure DevOps portal, select the **Repos** icon.
 
 1. In the upper right corner of the **eShopOnWeb** repository pane, click **Clone**.
