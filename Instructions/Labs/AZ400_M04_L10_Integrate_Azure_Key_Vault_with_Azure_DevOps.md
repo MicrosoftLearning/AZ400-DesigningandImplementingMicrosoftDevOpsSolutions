@@ -158,7 +158,7 @@ In this task, you will create a Variable Group in Azure DevOps that will retriev
 
 1. On your lab computer, start a web browser and navigate to the Azure DevOps project **eShopOnWeb**.
 
-1. In the vertical navigational pane of the of the Azure DevOps portal, select **Pipelines > Library**. Click on **+ Variable Group**.
+1. In the vertical navigational pane of the Azure DevOps portal, select **Pipelines > Library**. Click on **+ Variable Group**.
 
 1. On the **New variable group** blade, specify the following settings:
 
