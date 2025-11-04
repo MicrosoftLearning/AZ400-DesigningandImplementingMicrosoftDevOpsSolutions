@@ -99,6 +99,9 @@ In this exercise, you will create an Azure virtual machine (VM) and use it to cr
    | **Public inbound ports** section | Select **Allow selected ports**. |
    | **Select inbound ports** drop-down list | Select **RDP (3389)**. |
 
+
+   > **Note**: If the **Windows Server 2022 Datacenter: Azure Edition - x64 Gen2** image is not available in the list of images suggested by the portal, click on the **See all images** link, then, on the marketplace page, select the **Select** combo box for the **Windows Server** product and choose the right image.
+
 1. On the **Management** tab, in the **Identity** section, select the **Enable system assigned managed identity** checkbox and then select **Review + create**:
 
 1. On the **Review + create** tab, select **Create**.
