@@ -1,4 +1,4 @@
-**This course will be archiving on  **2025-11-14**.**
+**This course will be archived on  **2025-11-14**.**
 
 # AZ-400: Designing and Implementing Microsoft DevOps Solutions
 
