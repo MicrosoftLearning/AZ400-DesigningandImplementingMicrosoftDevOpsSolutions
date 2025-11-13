@@ -1,3 +1,5 @@
+**This course will be retiring on  **2025-11-14**.**
+
 # AZ-400: Designing and Implementing Microsoft DevOps Solutions
 
 ## Welcome
